@@ -2867,21 +2867,14 @@ const PRODUCT_DATA_VERSION = "2026-02-11-REV2";
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
-    const storedVersion = localStorage.getItem('productDataVersion');
-    if (storedVersion !== PRODUCT_DATA_VERSION) {
-        // Version mismatch! Force update from file to ensure users see new data
-        console.log('Data version mismatch. Updating from file:', PRODUCT_DATA_VERSION);
-        productData = JSON.parse(JSON.stringify(initialProductData));
-        localStorage.setItem('productData', JSON.stringify(productData));
-        localStorage.setItem('productDataVersion', PRODUCT_DATA_VERSION);
+    // Priority: LocalStorage > Initial File Data
+    const stored = localStorage.getItem('productData');
+    if (stored) {
+        productData = JSON.parse(stored);
     } else {
-        // Version match, use stored data (preserves local admin edits until next version bump)
-        const stored = localStorage.getItem('productData');
-        if (stored) {
-            productData = JSON.parse(stored);
-        } else {
-            productData = JSON.parse(JSON.stringify(initialProductData));
-        }
+        productData = JSON.parse(JSON.stringify(initialProductData));
+        // Initialize Storage
+        localStorage.setItem('productData', JSON.stringify(productData));
     }
 } else {
     productData = initialProductData;

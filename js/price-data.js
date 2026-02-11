@@ -43,20 +43,14 @@ const PRICE_DATA_VERSION = "2026-02-11-REV2";
 
 let priceData = [];
 try {
-    const storedVersion = localStorage.getItem('priceDataVersion');
-    if (storedVersion !== PRICE_DATA_VERSION) {
-        console.log('Price data version mismatch. Updating from file:', PRICE_DATA_VERSION);
-        priceData = JSON.parse(JSON.stringify(initialPriceData));
-        localStorage.setItem('priceData', JSON.stringify(priceData));
-        localStorage.setItem('priceDataVersion', PRICE_DATA_VERSION);
+    // Priority: LocalStorage > Initial File Data
+    const stored = localStorage.getItem('priceData');
+    if (stored) {
+        priceData = JSON.parse(stored);
     } else {
-        const stored = localStorage.getItem('priceData');
-        if (stored) {
-            priceData = JSON.parse(stored);
-        } else {
-            priceData = JSON.parse(JSON.stringify(initialPriceData)); // Deep copy
-            localStorage.setItem('priceData', JSON.stringify(priceData));
-        }
+        priceData = JSON.parse(JSON.stringify(initialPriceData));
+        // Initialize Storage
+        localStorage.setItem('priceData', JSON.stringify(priceData));
     }
 } catch (e) {
     console.error('Local Storage Error:', e);
