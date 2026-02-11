@@ -76,6 +76,19 @@ const initialDealerData = [
         "desc": "Authorized Alpine Dealer",
         "lat": 36.3504,
         "lng": 127.3845
+    },
+    {
+        "id": 7,
+        "category": "Alpine Dealer",
+        "name": "Eunpyeong Auto Gallery",
+        "username": "autogallery",
+        "password": "123",
+        "badge": "",
+        "address": "서울특별시 은평구",
+        "phone": "02-123-4567",
+        "desc": "Alpine Dealer in Seoul",
+        "lat": 37.6027,
+        "lng": 126.9291
     }
 ];
 
