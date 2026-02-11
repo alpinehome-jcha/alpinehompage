@@ -1,38 +1,32 @@
 const initialPromoData = [
     {
-        id: 1733020000000,
-        title: "2025 Brand Campaign 'Sound of Emotion'",
-        date: "2025-01-10",
-        author: "Admin",
-        contentBlocks: [
-            { type: 'text', value: "Experience the new wave of sound with our 2025 campaign." },
-            { type: 'image', value: 'assets/images/promo_main.jpg' },
-            { type: 'text', value: "Download the high-res posters below for your showroom." }
+        "id": 1770615888060,
+        "date": "2026-02-09",
+        "title": "알파인 종합 카다록",
+        "contentBlocks": [],
+        "content": "",
+        "files": [
+            {
+                "name": "2025 알파인 종합카다록(A3)-03.pdf",
+                "path": "assets/files/2025 알파인 종합카다록(A3)-03.pdf"
+            }
         ],
-        files: [{ name: "Campaign_Poster_A1.pdf", path: "assets/files/Campaign_Poster_A1.pdf" }]
-    },
-    {
-        id: 1732150000000,
-        title: "Winter Season Promotional Assets",
-        date: "2024-11-20",
-        author: "Admin",
-        contentBlocks: [
-            { type: 'text', value: "Seasonal assets for the winter sales event." }
-        ],
-        files: [{ name: "Winter_Banner_Set.zip", path: "assets/files/Winter_Banner_Set.zip" }]
+        "author": "Admin"
     }
 ];
 
 let promoData = [];
-
 if (typeof localStorage !== 'undefined') {
     const stored = localStorage.getItem('promoData');
     if (stored) {
         promoData = JSON.parse(stored);
     } else {
         promoData = JSON.parse(JSON.stringify(initialPromoData));
-        localStorage.setItem('promoData', JSON.stringify(promoData));
     }
 } else {
     promoData = initialPromoData;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = promoData;
 }

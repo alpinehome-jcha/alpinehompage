@@ -1,23 +1,31 @@
 const initialResourceData = [
     {
-        id: 1770123456789,
-        date: "2026-02-04",
-        title: "Marketing Guidelines 2026",
-        content: "Standard operating procedures for brand representation and logo usage.",
-        image: "../assets/images/alpine_logo.png",
-        files: [
-            { name: "Brand_Guide_v1.pdf", path: "" }
+        "id": 1770614710476,
+        "date": "2026-02-09",
+        "title": "PXE-C80-88 PC 프로그램",
+        "content": "베타버전입니다.",
+        "image": "assets/images/optim pc.jpg",
+        "files": [
+            {
+                "name": "ALPINE_OPTIM_Setup[3.10000].zip",
+                "path": "assets/files/ALPINE_OPTIM_Setup[3.10000].zip"
+            }
         ],
-        author: "Admin"
+        "author": "Admin"
     },
     {
-        id: 1770123456790,
-        date: "2026-02-03",
-        title: "Technical Schematics - Advanced",
-        content: "Deep dive into DSP wiring diagrams for F#1 Status systems.",
-        image: "",
-        files: [],
-        author: "Admin"
+        "id": 1770613931452,
+        "date": "2026-02-09",
+        "title": "알파인 PC 통합 프로그램",
+        "content": "반드시 인터넷에 접속되어야 하며, 실행시킬 제품을 선택하면 됩니다.\nPXE-C80-88은 별도로 제공합니다.",
+        "image": "assets/images/PC통합.jpg",
+        "files": [
+            {
+                "name": "ALPINE DSP PC Tuning (통합버전).zip",
+                "path": "assets/files/ALPINE DSP PC Tuning (통합버전).zip"
+            }
+        ],
+        "author": "Admin"
     }
 ];
 

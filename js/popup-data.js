@@ -1,4 +1,13 @@
-const initialPopupData = [];
+const initialPopupData = [
+    {
+        "id": 1770694714225,
+        "title": "오키나와렌트",
+        "isActive": true,
+        "imagePath": "assets/images/popupimage/01.jpg",
+        "hideDays": 360,
+        "linkUrl": "https://car.okinawaobaksa.com/kr/okinawa/shop/car_arusu"
+    }
+];
 
 let popupData = [];
 if (typeof localStorage !== 'undefined') {
@@ -6,13 +15,7 @@ if (typeof localStorage !== 'undefined') {
     if (stored) {
         popupData = JSON.parse(stored);
     } else {
-        popupData = initialPopupData;
-        // Try legacy migration
-        const oldList = localStorage.getItem('popupList');
-        if (oldList) {
-            popupData = JSON.parse(oldList);
-            localStorage.setItem('popupData', JSON.stringify(popupData));
-        }
+        popupData = JSON.parse(JSON.stringify(initialPopupData));
     }
 } else {
     popupData = initialPopupData;
