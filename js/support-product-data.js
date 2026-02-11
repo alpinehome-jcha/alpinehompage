@@ -28,16 +28,16 @@ const initialSupport_productData = [
     }
 ];
 
-const DATA_VERSION = "2026-02-11-ForceUpdate";
+const SUPPORT_PRODUCT_DATA_VERSION = "2026-02-11-REV2";
 
 let supportProductData = [];
 if (typeof localStorage !== 'undefined') {
     const storedVersion = localStorage.getItem('supportProductDataVersion');
-    if (storedVersion !== DATA_VERSION) {
-        console.log('Support Product data version mismatch. Updating from file:', DATA_VERSION);
+    if (storedVersion !== SUPPORT_PRODUCT_DATA_VERSION) {
+        console.log('Support Product data version mismatch. Updating from file:', SUPPORT_PRODUCT_DATA_VERSION);
         supportProductData = JSON.parse(JSON.stringify(initialSupport_productData));
         localStorage.setItem('supportProductData', JSON.stringify(supportProductData));
-        localStorage.setItem('supportProductDataVersion', DATA_VERSION);
+        localStorage.setItem('supportProductDataVersion', SUPPORT_PRODUCT_DATA_VERSION);
     } else {
         const stored = localStorage.getItem('supportProductData');
         if (stored) {

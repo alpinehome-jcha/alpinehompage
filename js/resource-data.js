@@ -29,16 +29,16 @@ const initialResourceData = [
     }
 ];
 
-const DATA_VERSION = "2026-02-11-ForceUpdate";
+const RESOURCE_DATA_VERSION = "2026-02-11-REV2";
 
 let resourceData = [];
 if (typeof localStorage !== 'undefined') {
     const storedVersion = localStorage.getItem('resourceDataVersion');
-    if (storedVersion !== DATA_VERSION) {
-        console.log('Resource data version mismatch. Updating from file:', DATA_VERSION);
+    if (storedVersion !== RESOURCE_DATA_VERSION) {
+        console.log('Resource data version mismatch. Updating from file:', RESOURCE_DATA_VERSION);
         resourceData = JSON.parse(JSON.stringify(initialResourceData));
         localStorage.setItem('resourceData', JSON.stringify(resourceData));
-        localStorage.setItem('resourceDataVersion', DATA_VERSION);
+        localStorage.setItem('resourceDataVersion', RESOURCE_DATA_VERSION);
     } else {
         const stored = localStorage.getItem('resourceData');
         if (stored) {

@@ -19,16 +19,16 @@ const initialInstallData = [
     }
 ];
 
-const DATA_VERSION = "2026-02-11-ForceUpdate";
+const INSTALL_DATA_VERSION = "2026-02-11-REV2";
 
 let installData = [];
 if (typeof localStorage !== 'undefined') {
     const storedVersion = localStorage.getItem('installDataVersion');
-    if (storedVersion !== DATA_VERSION) {
-        console.log('Install data version mismatch. Updating from file:', DATA_VERSION);
+    if (storedVersion !== INSTALL_DATA_VERSION) {
+        console.log('Install data version mismatch. Updating from file:', INSTALL_DATA_VERSION);
         installData = JSON.parse(JSON.stringify(initialInstallData));
         localStorage.setItem('installData', JSON.stringify(installData));
-        localStorage.setItem('installDataVersion', DATA_VERSION);
+        localStorage.setItem('installDataVersion', INSTALL_DATA_VERSION);
     } else {
         const stored = localStorage.getItem('installData');
         if (stored) {

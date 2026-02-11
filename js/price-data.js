@@ -39,16 +39,16 @@ function getCategoryLabel(cat) {
 }
 
 // Global accessor for data (used by pages)
-const DATA_VERSION = "2026-02-11-REV2";
+const PRICE_DATA_VERSION = "2026-02-11-REV2";
 
 let priceData = [];
 try {
     const storedVersion = localStorage.getItem('priceDataVersion');
-    if (storedVersion !== DATA_VERSION) {
-        console.log('Price data version mismatch. Updating from file:', DATA_VERSION);
+    if (storedVersion !== PRICE_DATA_VERSION) {
+        console.log('Price data version mismatch. Updating from file:', PRICE_DATA_VERSION);
         priceData = JSON.parse(JSON.stringify(initialPriceData));
         localStorage.setItem('priceData', JSON.stringify(priceData));
-        localStorage.setItem('priceDataVersion', DATA_VERSION);
+        localStorage.setItem('priceDataVersion', PRICE_DATA_VERSION);
     } else {
         const stored = localStorage.getItem('priceData');
         if (stored) {

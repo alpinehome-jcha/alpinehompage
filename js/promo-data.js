@@ -15,16 +15,16 @@ const initialPromoData = [
     }
 ];
 
-const DATA_VERSION = "2026-02-11-ForceUpdate";
+const PROMO_DATA_VERSION = "2026-02-11-REV2";
 
 let promoData = [];
 if (typeof localStorage !== 'undefined') {
     const storedVersion = localStorage.getItem('promoDataVersion');
-    if (storedVersion !== DATA_VERSION) {
-        console.log('Promo data version mismatch. Updating from file:', DATA_VERSION);
+    if (storedVersion !== PROMO_DATA_VERSION) {
+        console.log('Promo data version mismatch. Updating from file:', PROMO_DATA_VERSION);
         promoData = JSON.parse(JSON.stringify(initialPromoData));
         localStorage.setItem('promoData', JSON.stringify(promoData));
-        localStorage.setItem('promoDataVersion', DATA_VERSION);
+        localStorage.setItem('promoDataVersion', PROMO_DATA_VERSION);
     } else {
         const stored = localStorage.getItem('promoData');
         if (stored) {
