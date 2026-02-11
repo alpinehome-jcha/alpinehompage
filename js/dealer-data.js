@@ -92,10 +92,21 @@ const initialDealerData = [
     }
 ];
 
+// Version control
+const DATA_VERSION = "2026-02-11-v1";
+
 let dealerData = [];
 if (typeof localStorage !== 'undefined') {
+    const storedVersion = localStorage.getItem('dealerDataVersion');
     const stored = localStorage.getItem('dealerData');
-    if (stored) {
+
+    // If version mismatch or no stored version, force update from initial data
+    if (storedVersion !== DATA_VERSION) {
+        console.log(`Detected new dealer data version. Updating from ${storedVersion} to ${DATA_VERSION}`);
+        dealerData = JSON.parse(JSON.stringify(initialDealerData));
+        localStorage.setItem('dealerData', JSON.stringify(dealerData));
+        localStorage.setItem('dealerDataVersion', DATA_VERSION);
+    } else if (stored) {
         dealerData = JSON.parse(stored);
 
         // Migration: Check for legacy data without username or coordinates
@@ -132,6 +143,7 @@ if (typeof localStorage !== 'undefined') {
     } else {
         dealerData = JSON.parse(JSON.stringify(initialDealerData));
         localStorage.setItem('dealerData', JSON.stringify(dealerData));
+        localStorage.setItem('dealerDataVersion', DATA_VERSION);
     }
 } else {
     dealerData = initialDealerData;

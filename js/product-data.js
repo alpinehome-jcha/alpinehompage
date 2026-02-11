@@ -125,13 +125,25 @@ const initialProductData = [
     }
 ];
 
+// Version control
+const DATA_VERSION = "2026-02-11-v1";
+
 let productData = [];
 if (typeof localStorage !== 'undefined') {
+    const storedVersion = localStorage.getItem('productDataVersion');
     const stored = localStorage.getItem('productData');
-    if (stored) {
+
+    // If version mismatch or no stored version, force update from initial data
+    if (storedVersion !== DATA_VERSION) {
+        console.log(`Detected new data version. Updating from ${storedVersion} to ${DATA_VERSION}`);
+        productData = JSON.parse(JSON.stringify(initialProductData));
+        localStorage.setItem('productData', JSON.stringify(productData));
+        localStorage.setItem('productDataVersion', DATA_VERSION);
+    } else if (stored) {
         productData = JSON.parse(stored);
     } else {
         productData = JSON.parse(JSON.stringify(initialProductData));
+        localStorage.setItem('productDataVersion', DATA_VERSION);
     }
 } else {
     productData = initialProductData;
