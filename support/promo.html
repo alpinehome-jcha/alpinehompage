@@ -1,0 +1,774 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알파인(ALPINE Korea)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* Board Styles */
+        .board-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .board-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #c0392b;
+            color: white;
+        }
+
+        .btn-warning {
+            background: #f39c12;
+            color: white;
+        }
+
+        .btn-info {
+            background: #3498db;
+            color: white;
+        }
+
+        .board-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .board-table th,
+        .board-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+
+        .board-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .board-table tr:hover {
+            background: #fcfcfc;
+        }
+
+        .board-title {
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .board-title:hover {
+            color: #e74c3c;
+        }
+
+        .write-form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Block Editor Styles */
+        .block-editor {
+            border: 1px solid #eee;
+            padding: 15px;
+            border-radius: 4px;
+            background: #fafafa;
+        }
+
+        .content-block-item {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .content-block-item .block-content {
+            flex-grow: 1;
+        }
+
+        .content-block-item .btn-remove {
+            padding: 5px 10px;
+            background: #e74c3c;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .block-controls {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .view-post {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .view-header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .view-title {
+            font-size: 1.5rem;
+            margin: 0 0 10px;
+        }
+
+        .view-meta {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Dynamic Content View */
+        .view-content-blocks {
+            margin-top: 20px;
+        }
+
+        .view-block-text {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .view-block-image {
+            margin-bottom: 15px;
+        }
+
+        .view-block-image img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        .view-files {
+            margin-top: 20px;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .file-link {
+            display: block;
+            margin-bottom: 5px;
+            color: #3498db;
+            text-decoration: none;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="../assets/images/amark.png">
+    <link rel="shortcut icon" type="image/png" href="../assets/images/amark.png">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/images/alpine_logo.png" alt="ALPINE Korea">
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../pages/about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="../index.html" class="nav-link" data-i18n="nav_products">제품소개</a>
+                    </li>
+                    <li>
+                        <a href="../pages/dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link active" data-i18n="nav_support">고객지원</a>
+                        <ul class="dropdown-content">
+                            <li><a href="product.html" class="dropdown-item" data-i18n="nav_support_product">제품 자료실</a>
+                            </li>
+                            <li><a href="install.html" class="dropdown-item" data-i18n="nav_support_install">시공자료실</a>
+                            </li>
+                            <li><a href="promo.html" class="dropdown-item" data-i18n="nav_support_promo">홍보자료실</a></li>
+                        </ul>
+                    </li>
+                    <li class="social-icons">
+                        <a href="https://blog.naver.com/alpineaudio" target="_blank"><img
+                                src="../assets/images/icon-blog.png" alt="Naver Blog"></a>
+                        <a href="https://www.facebook.com/alpine.korea.2024/about" target="_blank"><img
+                                src="../assets/images/icon-facebook.png" alt="Facebook"></a>
+                        <a href="https://www.youtube.com/playlist?list=PLtdgCQUazuWKIcARYW_4QoysChyGhwivO"
+                            target="_blank"><img src="../assets/images/icon-youtube.png" alt="YouTube"></a>
+                        <a href="https://www.instagram.com/alpine_korea01/" target="_blank"><img
+                                src="../assets/images/icon-instagram.png" alt="Instagram"></a>
+                    </li>
+
+                    <li class="lang-item">
+                        <a href="#" class="lang-toggle" aria-label="Change Language">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-globe">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                            <span class="curr-lang">KO</span>
+                        </a>
+                    </li>
+                    <li class="auth-item">
+                        <a href="../pages/login.html" class="auth-link"
+                            style="margin-left: 15px; font-size: 0.9rem; color: #333; text-decoration: none;">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 100px;">
+        <h2 class="section-title">홍보 자료실 (Promo Materials)</h2>
+        <p class="section-desc">Download marketing assets, banners, and logos.</p>
+
+        <div id="contentArea">
+            <!-- List View -->
+            <div id="boardListSection" class="board-container">
+                <div class="board-header">
+                    <h3>Material List</h3>
+                    <button id="btnWrite" class="btn btn-primary" onclick="openWrite()" style="display:none;">글쓰기
+                        (Write)</button>
+                </div>
+                <table class="board-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 60px;">No.</th>
+                            <th>Title</th>
+                            <th style="width: 120px;">Date</th>
+                            <th style="width: 80px;">Attach</th>
+                        </tr>
+                    </thead>
+                    <tbody id="boardTableBody">
+                        <!-- Items rendered here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Write/Edit View -->
+            <div id="boardWrite" class="board-container write-form">
+                <h3 id="writeModeTitle">새 글 작성 (New Post)</h3>
+                <div class="form-group">
+                    <label>제목 (Title)</label>
+                    <input type="text" id="postTitle" class="form-control" placeholder="Enter title">
+                </div>
+
+                <div class="form-group">
+                    <label>내용 구성 (Content Blocks)</label>
+                    <div id="blockEditorContainer" class="block-editor">
+                        <!-- Dynamic Blocks -->
+                    </div>
+                    <div class="block-controls">
+                        <button class="btn btn-info" onclick="addBlock('text')">+ 텍스트 추가 (Add Text)</button>
+                        <button class="btn btn-info" onclick="addBlock('image')">+ 이미지 추가 (Add Image)</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>첨부파일 (Attachments - Max 3)</label>
+                    <div class="file-list">
+                        <input type="file" onchange="handleFile(this, 'file1')"><input type="hidden" id="fileData1">
+                        <input type="file" onchange="handleFile(this, 'file2')"><input type="hidden" id="fileData2">
+                        <input type="file" onchange="handleFile(this, 'file3')"><input type="hidden" id="fileData3">
+                    </div>
+                </div>
+
+                <div style="text-align: right; margin-top:20px;">
+                    <button class="btn btn-secondary" onclick="cancelWrite()">취소</button>
+                    <button class="btn btn-primary" onclick="savePost()">저장 (Save)</button>
+                </div>
+            </div>
+
+            <!-- Detail View -->
+            <div id="boardView" class="board-container view-post">
+                <div class="view-header">
+                    <h2 id="viewTitle" class="view-title">Title</h2>
+                    <div class="view-meta">
+                        <span id="viewDate">Date</span> | Posted by <span id="viewAuthor">Admin</span>
+                    </div>
+                </div>
+
+                <div id="viewContentArea" class="view-content-blocks">
+                    <!-- Blocks rendered here -->
+                </div>
+
+                <div id="viewFiles" class="view-files" style="display:none;">
+                    <h4>첨부파일</h4>
+                    <div id="fileLinks"></div>
+                </div>
+
+                <div style="text-align: right; margin-top:30px; border-top:1px solid #eee; padding-top:20px;">
+                    <button id="btnEdit" class="btn btn-warning" onclick="editPost()" style="display:none;">수정</button>
+                    <button id="btnDelete" class="btn btn-danger" onclick="deleteCurrentPost()"
+                        style="display:none;">삭제</button>
+                    <button class="btn btn-secondary" onclick="closeView()">목록으로</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="../assets/images/jch_logo.png" alt="JCH Auto" style="height: 30px;" id="footer-logo-img">
+                </div>
+                <p class="footer-text">
+                    <strong data-i18n="footer_ceo">대표 | 이정현</strong><br>
+                    <span data-i18n="footer_address">경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)</span><br>
+                    <span data-i18n="footer_contact">TEL | 1670-7425 FAX | 031-477-7220</span><br>
+                    <span data-i18n="footer_hours">상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)</span><br>
+                    <span data-i18n="footer_biz_info">사업자등록번호 | 619-81-07276 개인정보보호책임자 | 한길전</span>
+                </p>
+            </div>
+            <div class="footer-section footer-links">
+                <h4 data-i18n="footer_products">Products</h4>
+                <ul>
+                    <li><a href="../index.html?category=F%231%20Status">F#1 Status</a></li>
+                    <li><a href="../index.html?category=Alpine%20Status">Alpine Status</a></li>
+                    <li><a href="../index.html?category=DSP%2FAMP">DSP/AMP</a></li>
+                    <li><a href="../index.html?category=Speakers">Speakers</a></li>
+                    <li><a href="../index.html?category=PnP%20Cable">PnP Cable</a></li>
+                    <li><a href="../index.html?category=기타상품" data-i18n="filter_others">기타상품</a></li>
+                    <li><a href="../index.html?category=Alpine%20OEM%20Fit">Alpine OEM Fit</a></li>
+                    <li><a href="../index.html?category=ALPINESTYLE">ALPINESTYLE</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-links">
+                <h4 data-i18n="footer_support">Support</h4>
+                <ul>
+                    <li><a href="product.html" data-i18n="nav_support_product">Product Archives</a></li>
+                    <li><a href="install.html" data-i18n="nav_support_install">Installation Guides</a></li>
+                    <li><a href="promo.html" data-i18n="nav_support_promo">Contact Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-links">
+                <h4 data-i18n="footer_global">Global</h4>
+                <ul>
+                    <li><a href="https://alpine.co.jp/" target="_blank" data-i18n="footer_global_japan">Japan</a></li>
+                    <li><a href="https://www.alpine-asia.com/en" target="_blank" data-i18n="footer_global_asia">Asia</a>
+                    </li>
+                    <li><a href="https://www.alpine.com.au/" target="_blank"
+                            data-i18n="footer_global_australia">Australia</a></li>
+                    <li><a href="https://www.alpine.com.au/" target="_blank" data-i18n="footer_global_europe">Europe</a>
+                    </li>
+                    <li><a href="https://www.alpine.com.cn/" target="_blank" data-i18n="footer_global_china">China</a>
+                    </li>
+                    <li><a href="https://www.alpine-usa.com/" target="_blank" data-i18n="footer_global_na">North
+                            America</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            COPYRIGHT©2026 JCHAUTO,INC. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/promo-data.js"></script>
+    <script>
+        let posts = [];
+        let currentPostId = null;
+        let isEditMode = false;
+
+        const BOARD_ITEMS_PER_PAGE = 20;
+        let currentBoardPage = 1;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load Data
+            if (typeof promoData !== 'undefined') {
+                posts = promoData;
+            } else {
+                const stored = localStorage.getItem('promoData');
+                if (stored) posts = JSON.parse(stored);
+            }
+            renderBoard();
+
+            // Admin Only
+            const role = auth.getRole();
+            if (role === 'admin') {
+                document.getElementById('btnWrite').style.display = 'block';
+            }
+
+            // Initial Routing
+            handleRouting();
+
+            // Handle Hash Change
+            window.addEventListener('hashchange', handleRouting);
+        });
+
+        function handleRouting() {
+            const hash = window.location.hash;
+
+            // View Post Mode
+            if (hash.startsWith('#view-')) {
+                const id = parseInt(hash.replace('#view-', ''));
+                if (!isNaN(id)) {
+                    viewPost(id, false); // false = don't set hash again
+                    return;
+                }
+            }
+
+            // Default (List Mode)
+            document.getElementById('boardListSection').style.display = 'block';
+            document.getElementById('boardView').style.display = 'none';
+            document.getElementById('boardWrite').style.display = 'none';
+        }
+
+        function renderBoard(page = 1) {
+            currentBoardPage = page;
+            const tbody = document.getElementById('boardTableBody');
+            tbody.innerHTML = '';
+            posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            // Pagination Logic
+            const totalItems = posts.length;
+            const totalPages = Math.ceil(totalItems / BOARD_ITEMS_PER_PAGE);
+            const start = (page - 1) * BOARD_ITEMS_PER_PAGE;
+            const end = start + BOARD_ITEMS_PER_PAGE;
+            const paginatedPosts = posts.slice(start, end);
+
+            paginatedPosts.forEach((post, index) => {
+                const tr = document.createElement('tr');
+                const hasAttach = post.files && post.files.length > 0;
+                // Calculate display number
+                const displayNum = totalItems - ((page - 1) * BOARD_ITEMS_PER_PAGE) - index;
+
+                tr.innerHTML = `
+                    <td>${displayNum}</td>
+                    <td><span class="board-title" onclick="viewPost(${post.id})">${post.title}</span></td>
+                    <td>${post.date}</td>
+                    <td>${hasAttach ? '📎' : ''}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Render Pagination
+            let pDiv = document.getElementById('boardPagination');
+            if (!pDiv) {
+                pDiv = document.createElement('div');
+                pDiv.id = 'boardPagination';
+                pDiv.style.textAlign = 'center';
+                pDiv.style.marginTop = '20px';
+                document.getElementById('boardListSection').appendChild(pDiv);
+            }
+
+            if (totalPages > 1) {
+                let pHtml = '';
+                // Prev
+                if (page > 1) pHtml += `<button class="btn btn-secondary btn-sm" onclick="renderBoard(${page - 1})" style="margin-right:5px;">&lt;</button>`;
+
+                // Numbers
+                for (let i = 1; i <= totalPages; i++) {
+                    const activeStyle = (i === page) ? 'background:#e74c3c; color:white; border:none;' : 'background:#fff; border:1px solid #ddd; color:#333;';
+                    pHtml += `<button onclick="renderBoard(${i})" style="padding:5px 10px; margin:0 2px; border-radius:4px; cursor:pointer; ${activeStyle}">${i}</button>`;
+                }
+
+                // Next
+                if (page < totalPages) pHtml += `<button class="btn btn-secondary btn-sm" onclick="renderBoard(${page + 1})" style="margin-left:5px;">&gt;</button>`;
+
+                pDiv.innerHTML = pHtml;
+            } else {
+                pDiv.innerHTML = '';
+            }
+        }
+
+        // --- Block Editor Functions ---
+        function addBlock(type, value = '') {
+            const container = document.getElementById('blockEditorContainer');
+            const div = document.createElement('div');
+            div.className = 'content-block-item';
+            div.dataset.type = type;
+
+            let inputHtml = '';
+            if (type === 'text') {
+                inputHtml = `<textarea class="form-control block-input" rows="3" placeholder="Enter text...">${value}</textarea>`;
+            } else if (type === 'image') {
+                inputHtml = `
+                    <div class="block-content">
+                        <input type="file" onchange="handleBlockImage(this)">
+                        <input type="text" class="form-control block-input" value="${value}" readonly placeholder="Image path..." style="margin-top:5px; background:#f9f9f9;">
+                    </div>
+                `;
+            }
+
+            div.innerHTML = `
+                <div class="block-content">
+                    <label style="font-size:0.8rem; color:#888;">${type.toUpperCase()}</label>
+                    ${inputHtml}
+                </div>
+                <button class="btn btn-remove" onclick="this.parentElement.remove()">X</button>
+            `;
+            container.appendChild(div);
+        }
+
+        function handleBlockImage(input) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                const textInput = input.nextElementSibling;
+                textInput.value = 'assets/images/' + file.name;
+            }
+        }
+
+        // --- View & Edit ---
+
+        function viewPost(id, updateHash = true) {
+            const post = posts.find(p => p.id === id);
+            if (!post) {
+                if (!updateHash) handleRouting();
+                return;
+            }
+            currentPostId = id;
+
+            if (updateHash) {
+                window.location.hash = 'view-' + id;
+                return;
+            }
+
+            document.getElementById('boardListSection').style.display = 'none';
+            document.getElementById('boardWrite').style.display = 'none';
+            document.getElementById('boardView').style.display = 'block';
+
+            document.getElementById('viewTitle').textContent = post.title;
+            document.getElementById('viewDate').textContent = post.date;
+
+            // Render Blocks
+            const contentArea = document.getElementById('viewContentArea');
+            contentArea.innerHTML = '';
+            if (post.contentBlocks && post.contentBlocks.length > 0) {
+                post.contentBlocks.forEach(block => {
+                    const blockDiv = document.createElement('div');
+                    if (block.type === 'text') {
+                        blockDiv.className = 'view-block-text';
+                        blockDiv.innerText = block.value;
+                    } else if (block.type === 'image') {
+                        blockDiv.className = 'view-block-image';
+                        const imgSrc = block.value.startsWith('asset') ? '../' + block.value : block.value;
+                        blockDiv.innerHTML = `<img src="${imgSrc}" alt="Image">`;
+                    }
+                    contentArea.appendChild(blockDiv);
+                });
+            } else if (post.content) {
+                // Fallback
+                contentArea.innerText = post.content;
+            }
+
+            // Files
+            const fileContainer = document.getElementById('viewFiles');
+            const fileLinks = document.getElementById('fileLinks');
+            fileLinks.innerHTML = '';
+            if (post.files && post.files.length > 0) {
+                post.files.forEach(f => {
+                    const a = document.createElement('a');
+                    a.href = '../' + f.path;
+                    a.textContent = `💾 ${f.name}`;
+                    a.className = 'file-link';
+                    a.download = f.name;
+                    fileLinks.appendChild(a);
+                });
+                fileContainer.style.display = 'block';
+            } else {
+                fileContainer.style.display = 'none';
+            }
+
+            if (auth.getRole() === 'admin') {
+                document.getElementById('btnEdit').style.display = 'inline-block';
+                document.getElementById('btnDelete').style.display = 'inline-block';
+            } else {
+                document.getElementById('btnEdit').style.display = 'none';
+                document.getElementById('btnDelete').style.display = 'none';
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function closeView() {
+            window.location.hash = '';
+        }
+
+        function openWrite() {
+            if (auth.getRole() !== 'admin') return;
+            isEditMode = false;
+            currentPostId = null;
+            document.getElementById('writeModeTitle').innerText = "새 글 작성 (New Post)";
+            document.getElementById('postTitle').value = '';
+            document.getElementById('blockEditorContainer').innerHTML = ''; // Clear blocks
+            addBlock('text'); // Start with one text block
+
+            for (let i = 1; i <= 3; i++) if (document.getElementById('fileData' + i)) document.getElementById('fileData' + i).value = '';
+
+            document.getElementById('boardListSection').style.display = 'none';
+            document.getElementById('boardView').style.display = 'none';
+            document.getElementById('boardWrite').style.display = 'block';
+        }
+
+        function editPost() {
+            if (auth.getRole() !== 'admin') return;
+            const post = posts.find(p => p.id === currentPostId);
+            if (!post) return;
+
+            isEditMode = true;
+            document.getElementById('writeModeTitle').innerText = "글 수정 (Edit Post)";
+            document.getElementById('postTitle').value = post.title;
+
+            const container = document.getElementById('blockEditorContainer');
+            container.innerHTML = '';
+
+            if (post.contentBlocks) {
+                post.contentBlocks.forEach(block => {
+                    addBlock(block.type, block.value);
+                });
+            } else {
+                addBlock('text', post.content || '');
+            }
+
+            document.getElementById('boardView').style.display = 'none';
+            document.getElementById('boardWrite').style.display = 'block';
+        }
+
+        function savePost() {
+            if (auth.getRole() !== 'admin') { alert('Access Denied'); return; }
+
+            const title = document.getElementById('postTitle').value;
+            if (!title) { alert('Title is required'); return; }
+
+            // Collect Blocks
+            const blocks = [];
+            const blockItems = document.querySelectorAll('.content-block-item');
+            blockItems.forEach(item => {
+                const type = item.dataset.type;
+                const input = item.querySelector('.block-input');
+                if (input && input.value.trim()) {
+                    blocks.push({ type: type, value: input.value });
+                }
+            });
+
+            // Collect Files
+            let files = [];
+            let hasNewFiles = false;
+            for (let i = 1; i <= 3; i++) {
+                const fname = document.getElementById('fileData' + i).value;
+                if (fname) {
+                    files.push({ name: fname, path: 'assets/files/' + fname });
+                    hasNewFiles = true;
+                }
+            }
+            if (isEditMode && !hasNewFiles) {
+                const oldPost = posts.find(p => p.id === currentPostId);
+                if (oldPost) files = oldPost.files;
+            }
+
+            if (isEditMode) {
+                const index = posts.findIndex(p => p.id === currentPostId);
+                if (index !== -1) {
+                    posts[index].title = title;
+                    posts[index].contentBlocks = blocks;
+                    posts[index].content = blocks.map(b => b.value).join('\n');
+                    if (hasNewFiles || files.length > 0) posts[index].files = files;
+                }
+            } else {
+                const newPost = {
+                    id: Date.now(),
+                    date: new Date().toISOString().split('T')[0],
+                    title: title,
+                    contentBlocks: blocks,
+                    content: blocks.map(b => b.value).join('\n'),
+                    files: files,
+                    author: 'Admin'
+                };
+                posts.unshift(newPost);
+            }
+
+            localStorage.setItem('promoData', JSON.stringify(posts));
+            alert('Saved.');
+            cancelWrite();
+            renderBoard();
+        }
+
+        function deleteCurrentPost() {
+            if (auth.getRole() !== 'admin') return;
+            if (!confirm('Delete this post?')) return;
+            posts = posts.filter(p => p.id !== currentPostId);
+            localStorage.setItem('promoData', JSON.stringify(posts));
+            closeView();
+            renderBoard();
+        }
+
+        function cancelWrite() {
+            document.getElementById('boardWrite').style.display = 'none';
+            if (isEditMode && currentPostId) {
+                document.getElementById('boardView').style.display = 'block';
+            } else {
+                document.getElementById('boardListSection').style.display = 'block';
+            }
+        }
+
+        function handleFile(input, targetId) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                const hiddenInput = input.nextElementSibling;
+                if (hiddenInput) hiddenInput.value = file.name;
+            }
+        }
+    </script>
+</body>
+
+</html>

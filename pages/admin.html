@@ -1,0 +1,1194 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알파인(ALPINE Korea)</title>
+
+
+
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding-top: 80px;
+            /* Space for fixed header */
+            background: #f4f4f4;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            /* Prevent body scroll */
+        }
+
+        /* Header Styles (Copied from style.css mostly, but simplified for Admin) */
+        /* To avoid conflict with local style, we should link style.css but admin has its own overrides */
+
+        .admin-wrapper {
+            display: flex;
+            flex: 1;
+            align-items: flex-start;
+            height: auto;
+            min-height: 0;
+            /* Fixed height removed */
+            overflow: hidden;
+            /* Prevent wrapper scroll */
+        }
+
+        .sidebar {
+            width: 300px;
+            background: #fff;
+            border-right: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            /* Full height */
+            overflow-y: auto;
+            /* Scrollable */
+        }
+
+        .sidebar-header {
+            padding: 1rem;
+            background: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-header h2 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .product-list {
+            flex: 1;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .product-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .product-item:hover,
+        .product-item.active {
+            background: #eef;
+        }
+
+        .product-item h4 {
+            margin: 0 0 0.5rem;
+            font-size: 1rem;
+        }
+
+        .product-item p {
+            margin: 0;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            height: 100%;
+            /* Full height */
+            overflow-y: auto;
+            /* Scrollable */
+        }
+
+        .editor-form {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            color: #fff;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: #fff;
+        }
+
+        .download-zone {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #ffeeba;
+            border: 1px solid #bee5eb;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Detail Blocks Styles */
+        .detail-blocks-container {
+            border: 1px dashed #ccc;
+            padding: 1rem;
+            border-radius: 8px;
+            background: #fafafa;
+            margin-bottom: 1rem;
+        }
+
+        .block-item {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .block-item .remove-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+        }
+
+        .block-type-label {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #888;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .block-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../assets/images/amark.png">
+    <link rel="shortcut icon" type="image/png" href="../assets/images/amark.png">
+    <!-- Ensure global styles for header -->
+
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/images/alpine_logo.png" alt="ALPINE Korea">
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="../index.html" class="nav-link" data-i18n="nav_products">제품소개</a>
+                    </li>
+                    <li>
+                        <a href="dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
+                        <ul class="dropdown-content">
+                            <li><a href="../support/product.html" class="dropdown-item"
+                                    data-i18n="nav_support_product">제품
+                                    자료실</a>
+                            </li>
+                            <li><a href="../support/install.html" class="dropdown-item"
+                                    data-i18n="nav_support_install">시공자료실</a>
+                            </li>
+                            <li><a href="../support/promo.html" class="dropdown-item"
+                                    data-i18n="nav_support_promo">홍보자료실</a></li>
+                        </ul>
+                    </li>
+                    <li class="social-icons">
+                        <a href="https://blog.naver.com/alpineaudio" target="_blank"><img
+                                src="../assets/images/icon-blog.png" alt="Naver Blog"></a>
+                        <a href="https://www.facebook.com/alpine.korea.2024/about" target="_blank"><img
+                                src="../assets/images/icon-facebook.png" alt="Facebook"></a>
+                        <a href="https://www.youtube.com/playlist?list=PLtdgCQUazuWKIcARYW_4QoysChyGhwivO"
+                            target="_blank"><img src="../assets/images/icon-youtube.png" alt="YouTube"></a>
+                        <a href="#" target="_blank"><img src="../assets/images/icon-instagram.png" alt="Instagram"></a>
+                    </li>
+
+                    <li class="lang-item">
+                        <a href="#" class="lang-toggle" aria-label="Change Language">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-globe">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                            <span class="curr-lang">KO</span>
+                        </a>
+                    </li>
+                    <li class="auth-item">
+                        <a href="login.html" class="auth-link"
+                            style="margin-left: 15px; font-size: 0.9rem; color: #333; text-decoration: none;">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="admin-wrapper">
+        <div class="sidebar">
+            <!-- Sidebar content... -->
+            <div class="sidebar-header" style="flex-direction: column; align-items: stretch; gap: 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h2 id="listTitle">Products</h2>
+                    <button class="btn btn-success btn-sm" onclick="createNew()">+ New</button>
+                </div>
+                <!-- Mode Switcher -->
+                <div style="display: flex; background: #444; padding: 3px; border-radius: 4px;">
+                    <button class="btn btn-sm" id="btnModeProduct" onclick="setMode('product')"
+                        style="flex:1; background:#007bff; color:white; border:none;">Products</button>
+                    <button class="btn btn-sm" id="btnModeDealer" onclick="setMode('dealer')"
+                        style="flex:1; background:transparent; color:#aaa; border:none;">Dealers</button>
+                    <button class="btn btn-sm" id="btnModePopup" onclick="setMode('popup')"
+                        style="flex:1; background:transparent; color:#aaa; border:none;">Popup</button>
+                </div>
+            </div>
+            <ul class="product-list" id="itemList">
+                <!-- List items -->
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <!-- Editor content... -->
+            <div class="editor-form" id="editorForm" style="display:none;">
+                <!-- Form fields... -->
+                <h2 id="formTitle">Edit Item</h2>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="conn_category"></select>
+                </div>
+                <!-- ... (rest of form) ... -->
+                <div class="form-group">
+                    <label id="lbl_title">Title</label>
+                    <input type="text" id="conn_title">
+                </div>
+                <div id="dealerFields" style="display:none;">
+                    <div class="form-group">
+                        <label>Region</label>
+                        <select id="conn_region"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Badge Text</label>
+                        <input type="text" id="conn_badge" placeholder="e.g. Sound Master">
+                    </div>
+                    <div class="form-group">
+                        <label>Address (for Map)</label>
+                        <input type="text" id="conn_address">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" id="conn_phone">
+                    </div>
+                    <div class="form-group">
+                        <label>Description (Bottom Text)</label>
+                        <input type="text" id="conn_dealer_desc">
+                    </div>
+                    <div class="form-group">
+                        <label>Dealer ID (Login)</label>
+                        <input type="text" id="conn_dealer_id" placeholder="Enter Login ID">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="text" id="conn_dealer_pass" placeholder="Enter Password">
+                    </div>
+                </div>
+
+                <div id="productFields">
+                    <!-- ... -->
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="conn_desc" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Bottom Description</label>
+                        <textarea id="conn_desc_bottom" rows="3"
+                            placeholder="If empty, defaults to main Description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Price (KRW)</label>
+                        <input type="number" id="conn_price">
+                    </div>
+                    <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+                        <input type="checkbox" id="conn_sold_out" style="width: auto;">
+                        <label for="conn_sold_out" style="margin: 0; cursor: pointer; color: #d9534f;">Sold Out
+                            (품절)</label>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Image</label>
+                        <input type="file" id="file_upload" accept="image/*">
+                        <small style="color: #d9534f; display: block; margin-top: 5px; font-size: 0.85rem;">
+                            * Note: Selecting a file updates the path below. You must manually move the actual image
+                            file to
+                            the
+                            <code>assets/images/</code> folder.
+                        </small>
+                        <input type="text" id="conn_image" placeholder="assets/images/..." readonly
+                            style="background: #f9f9f9; color: #555; margin-top: 5px;">
+                        <div id="img_preview_box" style="margin-top: 10px; text-align: center; display: none;">
+                            <p style="margin:0 0 5px; font-size:0.8rem; color:#888;">Preview:</p>
+                            <img id="img_preview" src=""
+                                style="max-width: 100%; max-height: 200px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                    </div>
+
+                    <div class="form-group"
+                        style="padding: 15px; border: 1px solid #eee; border-radius: 6px; background: #fcfcfc;">
+                        <label>Attachments (Downloads)</label>
+                        <div style="display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-end;">
+                            <div style="flex: 1;">
+                                <small>File Name</small>
+                                <input type="text" id="attach_name" placeholder="e.g. User Manual">
+                            </div>
+                            <div style="flex: 1;">
+                                <small>File</small>
+                                <input type="file" id="attach_file">
+                                <input type="text" id="attach_url" placeholder="assets/files/..." readonly
+                                    style="margin-top:5px; background:#f0f0f0; font-size:0.8rem;">
+                            </div>
+                            <button type="button" class="btn btn-secondary btn-sm"
+                                onclick="addAttachment()">Add</button>
+                        </div>
+                        <div id="attachmentList" style="display: flex; flex-direction: column; gap: 5px;"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Detail Sections</label>
+                        <div class="block-controls">
+                            <button class="btn btn-secondary btn-sm" onclick="addBlock('text')">+ Add Text</button>
+                            <button class="btn btn-secondary btn-sm" onclick="addBlock('image')">+ Add Image</button>
+                            <button class="btn btn-success btn-sm" onclick="addBlock('html')">+ Add Excel Table</button>
+                        </div>
+                        <div id="detailBlocks" class="detail-blocks-container"></div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn btn-primary" onclick="saveCurrent()">Save to List</button>
+                    <button class="btn btn-danger" onclick="deleteCurrent()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="../assets/images/jch_logo.png" alt="JCH Auto" style="height: 30px;" id="footer-logo-img">
+                </div>
+                <p class="footer-text">
+                    <strong data-i18n="footer_ceo">대표 | 이정현</strong><br>
+                    <span data-i18n="footer_address">경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)</span><br>
+                    <span data-i18n="footer_contact">TEL | 1670-7425 FAX | 031-477-7220</span><br>
+                    <span data-i18n="footer_hours">상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)</span><br>
+                    <span data-i18n="footer_biz_info">사업자등록번호 | 619-81-07276 개인정보보호책임자 | 한길전</span>
+                </p>
+            </div>
+            <div class="footer-section footer-links">
+                <h4 data-i18n="footer_products">Products</h4>
+                <ul>
+                    <li><a href="?category=F%231%20Status">F#1 Status</a></li>
+                    <li><a href="?category=Alpine%20Status">Alpine Status</a></li>
+                    <li><a href="?category=DSP%2FAMP">DSP/AMP</a></li>
+                    <li><a href="?category=Speakers">Speakers</a></li>
+                    <li><a href="?category=PnP%20Cable">PnP Cable</a></li>
+                    <li><a href="?category=기타상품" data-i18n="filter_others">기타상품</a></li>
+                    <li><a href="?category=Alpine%20OEM%20Fit">Alpine OEM Fit</a></li>
+                    <li><a href="?category=ALPINESTYLE">ALPINESTYLE</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-links">
+                <h4 data-i18n="footer_support">Support</h4>
+                <ul>
+                    <li><a href="../support/product.html" data-i18n="nav_support_product">Product Archives</a></li>
+                    <li><a href="../support/install.html" data-i18n="nav_support_install">Installation Guides</a></li>
+                    <li><a href="../support/promo.html" data-i18n="nav_support_promo">Contact Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-links">
+                <h4 data-i18n="footer_global">Global</h4>
+                <ul>
+                    <li><a href="https://alpine.co.jp/" target="_blank" data-i18n="footer_global_japan">Japan</a></li>
+                    <li><a href="https://www.alpine-asia.com/en" target="_blank" data-i18n="footer_global_asia">Asia</a>
+                    </li>
+                    <li><a href="https://www.alpine.com.au/" target="_blank"
+                            data-i18n="footer_global_australia">Australia</a></li>
+                    <li><a href="https://www.alpine.com.au/" target="_blank" data-i18n="footer_global_europe">Europe</a>
+                    </li>
+                    <li><a href="https://www.alpine.com.cn/" target="_blank" data-i18n="footer_global_china">China</a>
+                    </li>
+                    <li><a href="https://www.alpine-usa.com/" target="_blank" data-i18n="footer_global_na">North
+                            America</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            COPYRIGHT©2026 JCHAUTO,INC. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/product-data.js"></script>
+    <script src="../js/dealer-data.js"></script>
+    <script>
+        let products = (typeof productData !== 'undefined') ? [...productData] : [];
+        let dealers = (typeof dealerData !== 'undefined') ? [...dealerData] : [];
+
+        let currentMode = 'product'; // 'product' | 'dealer'
+        let currentId = null;
+        let currentBlocks = [];
+
+        // DOM Elements
+        const domList = document.getElementById('itemList');
+        const domForm = document.getElementById('editorForm');
+        const listTitle = document.getElementById('listTitle');
+
+        // Mode Buttons
+        const btnProduct = document.getElementById('btnModeProduct');
+        const btnDealer = document.getElementById('btnModeDealer');
+
+        const inputs = {
+            category: document.getElementById('conn_category'),
+            title: document.getElementById('conn_title'),
+            // Product Specific
+            desc: document.getElementById('conn_desc'),
+            desc_bottom: document.getElementById('conn_desc_bottom'),
+            price: document.getElementById('conn_price'),
+            sold_out: document.getElementById('conn_sold_out'),
+            image: document.getElementById('conn_image'),
+            // Dealer Specific
+            badge: document.getElementById('conn_badge'),
+            address: document.getElementById('conn_address'),
+            phone: document.getElementById('conn_phone'),
+            dealer_desc: document.getElementById('conn_dealer_desc'),
+            dealer_id: document.getElementById('conn_dealer_id'),
+            dealer_pass: document.getElementById('conn_dealer_pass'),
+            region: document.getElementById('conn_region')
+        };
+
+        // ... (existing code)
+
+
+
+        /* --- Popup Manager --- */
+        /* --- Popup Manager --- */
+        let popupList = [];
+
+        function renderPopupManager() {
+            const list = document.getElementById('itemList');
+            list.innerHTML = ''; // Clear list
+
+            // Load Config & Migrate if needed
+            const storedList = localStorage.getItem('popupList');
+            if (storedList) {
+                popupList = JSON.parse(storedList);
+            } else {
+                // Check for old config and migrate
+                const oldConfig = localStorage.getItem('popupConfig');
+                if (oldConfig) {
+                    const c = JSON.parse(oldConfig);
+                    popupList = [{
+                        id: Date.now(),
+                        title: 'Default Popup',
+                        imagePath: c.imagePath || 'assets/images/popup_event.jpg',
+                        linkUrl: c.linkUrl || '#',
+                        hideDays: c.hideDays || 1,
+                        isActive: c.isActive
+                    }];
+                    localStorage.setItem('popupList', JSON.stringify(popupList));
+                    localStorage.removeItem('popupConfig');
+                } else {
+                    popupList = [];
+                }
+            }
+
+            // Render List Items
+            popupList.forEach(p => {
+                const li = document.createElement('li');
+                li.className = `product-item ${p.isActive ? '' : 'inactive-item'}`;
+                li.style.display = 'flex';
+                li.style.justifyContent = 'space-between';
+                li.style.alignItems = 'center';
+
+                li.innerHTML = `
+                    <div onclick="editPopup(${p.id})" style="flex:1; cursor:pointer;">
+                        <h4>${p.title}</h4>
+                        <p style="font-size:0.8rem; color:#666;">${p.imagePath}</p>
+                    </div>
+                    <div>
+                        <span style="font-size:0.8rem; margin-right:10px; color:${p.isActive ? 'green' : 'red'};">${p.isActive ? 'Active' : 'Inactive'}</span>
+                        <button class="btn btn-danger btn-sm" onclick="deletePopup(${p.id})">Del</button>
+                    </div>
+                `;
+                list.appendChild(li);
+            });
+
+            // If empty
+            if (popupList.length === 0) {
+                list.innerHTML = '<li style="padding:20px; text-align:center; color:#999;">No popups. Click + New to create.</li>';
+            }
+
+            // Reset Editor View (Hidden until select)
+            document.getElementById('editorForm').style.display = 'none';
+        }
+
+        function editPopup(id) {
+            currentId = id;
+            const popup = popupList.find(p => p.id === id);
+            if (!popup) return;
+
+            showPopupEditor(popup);
+        }
+
+        function createNewPopup() {
+            currentId = -1;
+            showPopupEditor({
+                title: 'New Popup',
+                imagePath: 'assets/images/popup_event.jpg',
+                linkUrl: '#',
+                hideDays: 1,
+                isActive: true
+            });
+        }
+
+        function showPopupEditor(data) {
+            const form = document.getElementById('editorForm');
+            form.style.display = 'block';
+            document.getElementById('formTitle').textContent = `Popup: ${data.title}`;
+
+            // Hide standard fields
+            const standardFields = form.querySelectorAll('.form-group');
+            standardFields.forEach(f => f.style.display = 'none');
+            form.querySelectorAll('.btn-primary, .btn-danger').forEach(b => b.style.display = 'none');
+
+            // Check/Create Popup Controls
+            let popupControls = document.getElementById('popupControls');
+            if (!popupControls) {
+                popupControls = document.createElement('div');
+                popupControls.id = 'popupControls';
+                // Will populate innerHTML below
+                form.appendChild(popupControls);
+            }
+            popupControls.style.display = 'block';
+
+            popupControls.innerHTML = `
+                <div class="form-group" style="display:block;">
+                    <label>Title (Admin Name)</label>
+                    <input type="text" id="popupTitle" class="form-control" value="${data.title || ''}">
+                </div>
+                <div class="form-group" style="display:block;">
+                    <label>Popup Status</label>
+                    <label class="switch">
+                        <input type="checkbox" id="popupActive" ${data.isActive ? 'checked' : ''}>
+                        <span class="slider round"></span> Active
+                    </label>
+                </div>
+                <div class="form-group" style="display:block;">
+                    <label>Popup Image</label>
+                    <input type="file" id="popupFileSelect" class="form-control" accept="image/*">
+                    <input type="text" id="popupImage" class="form-control" value="${data.imagePath || ''}" readonly style="margin-top:5px; background-color:#eee; color:#555;">
+                    <small style="color:#d9534f; display:block; margin-top:5px;">* Select a file to update path. You must manually move the file to <code>assets/images/popupimage/</code>.</small>
+                </div>
+                 <div class="form-group" style="display:block;">
+                    <label>Image Preview</label>
+                    <img id="popupPreview" src="${data.imagePath ? '../' + data.imagePath : ''}" style="max-width: 300px; display: block; border: 1px solid #ddd; padding: 5px;">
+                </div>
+                <div class="form-group" style="display:block;">
+                    <label>Do Not Show For (Days)</label>
+                    <input type="number" id="popupHideDays" class="form-control" value="${data.hideDays || 1}" min="1">
+                </div>
+                 <div class="form-group" style="display:block;">
+                    <label>Link URL (Optional)</label>
+                    <input type="text" id="popupLink" class="form-control" value="${data.linkUrl || ''}" placeholder="#">
+                </div>
+                <div style="margin-top: 20px;">
+                    <button class="btn btn-primary" style="display:inline-block;" onclick="savePopupConfig()">Save Settings</button>
+                    ${currentId !== -1 ? '<button class="btn btn-danger" style="display:inline-block; margin-left:10px;" onclick="location.reload()">Cancel</button>' : ''}
+                </div>
+            `;
+
+            // Add listener for file select
+            document.getElementById('popupFileSelect').addEventListener('change', function (e) {
+                if (e.target.files && e.target.files[0]) {
+                    const filename = e.target.files[0].name;
+                    const path = 'assets/images/popupimage/' + filename;
+                    document.getElementById('popupImage').value = path;
+
+                    // Show local preview
+                    const reader = new FileReader();
+                    reader.onload = function (ev) {
+                        document.getElementById('popupPreview').src = ev.target.result;
+                    }
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+        }
+
+
+        function savePopupConfig() {
+            const newPopup = {
+                id: currentId === -1 ? Date.now() : currentId,
+                title: document.getElementById('popupTitle').value,
+                isActive: document.getElementById('popupActive').checked,
+                imagePath: document.getElementById('popupImage').value,
+                hideDays: parseInt(document.getElementById('popupHideDays').value) || 1,
+                linkUrl: document.getElementById('popupLink').value
+            };
+
+            if (currentId === -1) {
+                popupList.push(newPopup);
+            } else {
+                const idx = popupList.findIndex(p => p.id === currentId);
+                if (idx !== -1) popupList[idx] = newPopup;
+            }
+
+            localStorage.setItem('popupList', JSON.stringify(popupList));
+            alert('Popup saved!');
+            renderPopupManager();
+        }
+
+        function deletePopup(id) {
+            if (!confirm('Delete this popup?')) return;
+            popupList = popupList.filter(p => p.id !== id);
+            localStorage.setItem('popupList', JSON.stringify(popupList));
+            renderPopupManager();
+        }
+
+        function setMode(newMode) {
+            currentMode = newMode;
+            currentId = null; // Reset currentId when changing mode
+            domForm.style.display = 'none'; // Hide form initially
+
+            // Reset UI for all mode buttons
+            document.getElementById('btnModeProduct').style.background = 'transparent';
+            document.getElementById('btnModeProduct').style.color = '#aaa';
+            document.getElementById('btnModeDealer').style.background = 'transparent';
+            document.getElementById('btnModeDealer').style.color = '#aaa';
+            // Assuming btnModePopup exists in HTML
+            const btnModePopup = document.getElementById('btnModePopup');
+            if (btnModePopup) {
+                btnModePopup.style.background = 'transparent';
+                btnModePopup.style.color = '#aaa';
+            }
+
+            // Hide popup controls if they exist
+            const popupControls = document.getElementById('popupControls');
+            if (popupControls) {
+                popupControls.style.display = 'none';
+            }
+
+            // Show all standard form groups and buttons initially, then hide/show as needed
+            const form = document.getElementById('editorForm');
+            const standardFormGroups = form.querySelectorAll('.form-group');
+            standardFormGroups.forEach(f => {
+                // Only show if it's not part of popupControls
+                if (!f.closest('#popupControls')) {
+                    f.style.display = 'block';
+                }
+            });
+            form.querySelectorAll('.form-actions button').forEach(b => {
+                if (!b.closest('#popupControls')) {
+                    b.style.display = 'inline-block';
+                }
+            });
+
+
+            if (newMode === 'product') {
+                document.getElementById('btnModeProduct').style.background = '#007bff';
+                document.getElementById('btnModeProduct').style.color = 'white';
+                listTitle.textContent = 'Products';
+                document.getElementById('lbl_title').innerText = 'Product Name';
+
+                document.getElementById('productFields').style.display = 'block';
+                document.getElementById('dealerFields').style.display = 'none';
+
+                renderList();
+            } else if (newMode === 'dealer') {
+                document.getElementById('btnModeDealer').style.background = '#007bff';
+                document.getElementById('btnModeDealer').style.color = 'white';
+                listTitle.textContent = 'Dealers';
+                document.getElementById('lbl_title').innerText = 'Dealer Name';
+
+                document.getElementById('productFields').style.display = 'none';
+                document.getElementById('dealerFields').style.display = 'block';
+
+                renderList();
+            } else if (newMode === 'popup') {
+                if (btnModePopup) {
+                    btnModePopup.style.background = '#007bff';
+                    btnModePopup.style.color = 'white';
+                }
+                listTitle.textContent = 'Popup Manager';
+                document.getElementById('lbl_title').innerText = ''; // Clear title for popup mode
+
+                document.getElementById('productFields').style.display = 'none';
+                document.getElementById('dealerFields').style.display = 'none';
+
+                renderPopupManager();
+            }
+        }
+
+        function selectItem(id) {
+            currentId = id;
+            domForm.style.display = 'block';
+            document.getElementById('formTitle').textContent = currentMode === 'product' ? 'Edit Product' : 'Edit Dealer';
+            populateCategories();
+
+            const data = currentMode === 'product' ? products : dealers;
+            const item = data.find(i => i.id === id);
+            if (!item) return;
+
+            inputs.category.value = item.category;
+            inputs.title.value = currentMode === 'product' ? item.title : item.name;
+
+            if (currentMode === 'product') {
+                inputs.desc.value = item.desc;
+                inputs.desc_bottom.value = item.desc_bottom || '';
+                inputs.price.value = item.price;
+                inputs.sold_out.checked = !!item.soldOut;
+                inputs.image.value = item.image;
+
+                // Blocks
+                if (item.detailBlocks) {
+                    currentBlocks = JSON.parse(JSON.stringify(item.detailBlocks));
+                } else {
+                    currentBlocks = [];
+                    if (item.detailImage) currentBlocks.push({ id: Date.now(), type: 'image', value: item.detailImage });
+                }
+                renderBlocks();
+
+                // Attachments
+                if (item.attachments) {
+                    currentAttachments = JSON.parse(JSON.stringify(item.attachments));
+                } else {
+                    currentAttachments = [];
+                }
+                renderAttachments();
+
+                if (item.image) {
+                    imgPreview.src = item.image;
+                    imgPreviewBox.style.display = 'block';
+                } else {
+                    imgPreviewBox.style.display = 'none';
+                }
+            } else {
+                inputs.badge.value = item.badge || '';
+                inputs.address.value = item.address || '';
+                inputs.phone.value = item.phone || '';
+                inputs.dealer_desc.value = item.desc || '';
+                inputs.dealer_id.value = item.username || '';
+                inputs.dealer_pass.value = item.password || '';
+                inputs.region.value = item.region || '서울';
+            }
+            renderList();
+        }
+
+        function createNew() {
+            if (currentMode === 'popup') {
+                createNewPopup();
+                return;
+            }
+
+            currentId = -1;
+            domForm.style.display = 'block';
+            document.getElementById('formTitle').textContent = currentMode === 'product' ? 'New Product' : 'New Dealer';
+            populateCategories();
+
+            inputs.category.selectedIndex = 0;
+            inputs.title.value = '';
+
+            if (currentMode === 'product') {
+                inputs.desc.value = '';
+                inputs.desc_bottom.value = '';
+                inputs.price.value = 0;
+                inputs.sold_out.checked = false;
+                inputs.image.value = 'assets/images/product_placeholder.png';
+                currentBlocks = [];
+                currentAttachments = []; // reset attachments
+                renderBlocks();
+                renderAttachments();
+                imgPreviewBox.style.display = 'none';
+                if (fileInput) fileInput.value = '';
+            } else {
+                inputs.badge.value = '';
+                inputs.address.value = '';
+                inputs.phone.value = '';
+                inputs.dealer_desc.value = '';
+                inputs.dealer_id.value = '';
+                inputs.dealer_pass.value = '';
+                inputs.region.value = '서울';
+            }
+            renderList();
+        }
+
+        function saveCurrent() {
+            const isProduct = currentMode === 'product';
+            const collection = isProduct ? products : dealers;
+            const storageKey = isProduct ? 'productData' : 'dealerData';
+
+            const newItem = {
+                id: currentId === -1 ? Date.now() : currentId,
+                category: inputs.category.value
+            };
+
+            if (isProduct) {
+                newItem.title = inputs.title.value;
+                newItem.desc = inputs.desc.value;
+                newItem.desc_bottom = inputs.desc_bottom.value;
+                newItem.price = parseInt(inputs.price.value) || 0;
+                newItem.soldOut = inputs.sold_out.checked;
+                newItem.image = inputs.image.value;
+                newItem.detailBlocks = currentBlocks;
+                newItem.attachments = currentAttachments;
+            } else {
+                newItem.name = inputs.title.value;
+                newItem.badge = inputs.badge.value;
+                newItem.address = inputs.address.value;
+                newItem.phone = inputs.phone.value;
+                newItem.desc = inputs.dealer_desc.value;
+                newItem.username = inputs.dealer_id.value;
+                newItem.password = inputs.dealer_pass.value;
+                newItem.role = 'dealer';
+                newItem.region = inputs.region.value;
+            }
+
+            if (currentId === -1) {
+                // New Item
+                if (!isProduct) {
+                    // Default Coordinates for new dealers (Seoul Center) to avoid sort error
+                    newItem.lat = 37.5665;
+                    newItem.lng = 126.9780;
+                }
+                collection.push(newItem);
+                currentId = newItem.id;
+                alert('Created successfully!');
+            } else {
+                const idx = collection.findIndex(i => i.id === currentId);
+                if (idx !== -1) {
+                    // PRESERVE EXISTING PROPERTIES (like lat/lng)
+                    collection[idx] = { ...collection[idx], ...newItem };
+                }
+                alert('Updated successfully!');
+            }
+
+            // Save to LocalStorage
+            localStorage.setItem(storageKey, JSON.stringify(collection));
+            renderList();
+        }
+
+        // CATEGORIES (Moved from missing global scope or re-declared)
+        const CAT_PRODUCTS = [
+            "F#1 Status", "Alpine Status", "DSP/AMP", "Speakers",
+            "PnP Cable - 국산차 (Domestic)", "PnP Cable - 독일차 (German Cars)", "PnP Cable - 기타수입차 (Other Imported Cars)", "PnP Cable - DSP", "PnP Cable - 기타 (Other)",
+            "Alpine OEM Fit", "ALPINESTYLE", "Head Units", "Players", "Subwoofers", "Others"
+        ];
+        const CAT_DEALERS = [
+            "Alpine Sound Master", "Team Alpine", "Alpine Style Distributor",
+            "Alpine Regional Distributor", "Alpine Dealer"
+        ];
+
+        const CAT_REGIONS = [
+            '서울',
+            '경기북부(고양,파주,의정부,양주)',
+            '경기서부(김포,부천,광명,안산)',
+            '경기중앙(성남,안양,용인,과천)',
+            '경기동부(남양주,하남,이천,양평)',
+            '경기남부(수원,화성,평택,안성)',
+            '인천', '대전', '세종', '충북', '충남', '강원', '전북', '광주', '전남', '대구', '울산', '경북', '부산', '경남', '제주'
+        ];
+
+        function populateCategories() {
+            const select = inputs.category;
+            select.innerHTML = '';
+            const list = currentMode === 'product' ? CAT_PRODUCTS : CAT_DEALERS;
+            list.forEach(c => {
+                const opt = document.createElement('option');
+                opt.value = c;
+                opt.innerText = c;
+                select.appendChild(opt);
+            });
+
+            // Populate Regions if not already done (or just always do it safely)
+            const regionSelect = inputs.region;
+            if (regionSelect.options.length === 0) {
+                CAT_REGIONS.forEach(r => {
+                    const opt = document.createElement('option');
+                    opt.value = r;
+                    opt.innerText = r;
+                    regionSelect.appendChild(opt);
+                });
+            }
+        }
+
+        function renderList() {
+            domList.innerHTML = '';
+            const data = currentMode === 'product' ? products : dealers;
+
+            data.forEach(item => {
+                const li = document.createElement('li');
+                li.className = `product-item ${item.id === currentId ? 'active' : ''}`;
+                // Dealer uses 'name', Product uses 'title' internally, but we map to title input
+                const title = currentMode === 'product' ? item.title : item.name;
+                li.innerHTML = `<h4>${title}</h4><p>${item.category}</p>`;
+                li.onclick = () => selectItem(item.id);
+                domList.appendChild(li);
+            });
+        }
+
+        function deleteCurrent() {
+            if (!confirm('Are you sure?')) return;
+            const isProduct = currentMode === 'product';
+            const storageKey = isProduct ? 'productData' : 'dealerData';
+
+            if (isProduct) {
+                products = products.filter(p => p.id !== currentId);
+                localStorage.setItem(storageKey, JSON.stringify(products));
+            } else {
+                dealers = dealers.filter(d => d.id !== currentId);
+                localStorage.setItem(storageKey, JSON.stringify(dealers));
+            }
+
+            domForm.style.display = 'none';
+            renderList();
+        }
+
+        // --- Block Logic (Product Only) ---
+        function addBlock(type, initialValue = '') {
+            currentBlocks.push({ id: Date.now() + Math.random(), type, value: initialValue });
+            renderBlocks();
+        }
+        function removeBlock(id) {
+            currentBlocks = currentBlocks.filter(b => b.id !== id);
+            renderBlocks();
+        }
+        function renderBlocks() {
+            const container = document.getElementById('detailBlocks');
+            container.innerHTML = '';
+            currentBlocks.forEach(block => {
+                const item = document.createElement('div');
+                item.className = 'block-item';
+                let contentHTML = '';
+
+                if (block.type === 'text') {
+                    contentHTML = `
+                        <div class="block-type-label">Text Section</div>
+                        <textarea rows="4" placeholder="Enter details..." oninput="updateBlockValue(${block.id}, this.value)">${block.value}</textarea>
+                    `;
+                } else if (block.type === 'image') {
+                    contentHTML = `
+                        <div class="block-type-label">Image Section</div>
+                        <input type="file" accept="image/*" onchange="handleBlockFile(${block.id}, this)">
+                        <input type="text" placeholder="assets/images/..." readonly value="${block.value}" style="background:#f9f9f9; margin-top:5px;">
+                        ${block.value ? `<div style="margin-top:10px; text-align:center;"><img src="${block.value}" style="max-height:150px; border-radius:4px;"></div>` : ''}
+                    `;
+                } else if (block.type === 'html') {
+                    contentHTML = `
+                        <div class="block-type-label" style="color:#28a745;">Excel / HTML Table Section</div>
+                        <p style="font-size:0.8rem; color:#666; margin-bottom:5px;">Paste Excel data below to convert to table:</p>
+                        <textarea rows="3" placeholder="Paste Excel cells here..." oninput="handleExcelPaste(${block.id}, this)"></textarea>
+                        <div style="margin-top:10px; border:1px solid #eee; padding:5px; background:#fff; max-height:200px; overflow:auto;">
+                            ${block.value || '<span style="color:#ccc;">Table Preview...</span>'}
+                        </div>
+                        <input type="hidden" id="block_val_${block.id}" value='${block.value || ""}'>
+                    `;
+                }
+
+                item.innerHTML = `<button class="btn btn-danger btn-sm remove-btn" onclick="removeBlock(${block.id})">Delete</button>${contentHTML}`;
+                container.appendChild(item);
+            });
+        }
+        function updateBlockValue(id, val) { const b = currentBlocks.find(x => x.id === id); if (b) b.value = val; }
+        function handleBlockFile(id, input) {
+            const file = input.files[0];
+            if (!file) return;
+            const b = currentBlocks.find(x => x.id === id);
+            if (b) { b.value = 'assets/images/' + file.name; renderBlocks(); }
+        }
+
+        // Excel Paste Handler
+        function handleExcelPaste(id, textarea) {
+            const raw = textarea.value;
+            if (!raw.trim()) return;
+
+            // Simple Tab-Separated Value Parser
+            const rows = raw.trim().split('\n');
+            let tableHTML = '<table class="product-detail-table" style="width:100%; border-collapse: collapse; margin: 1rem 0;">';
+
+            rows.forEach((row, rIndex) => {
+                tableHTML += '<tr>';
+                const cells = row.split('\t');
+                cells.forEach((cell, cIndex) => {
+                    const tag = rIndex === 0 ? 'th' : 'td';
+                    const style = 'border: 1px solid #ddd; padding: 8px; text-align: left;' + (rIndex === 0 ? 'background-color: #f2f2f2;' : '');
+                    tableHTML += `<${tag} style="${style}">${cell.trim()}</${tag}>`;
+                });
+                tableHTML += '</tr>';
+            });
+            tableHTML += '</table>';
+
+            // Update Block Value
+            const b = currentBlocks.find(x => x.id === id);
+            if (b) {
+                b.value = tableHTML;
+                // We re-render to update the preview, but we want to keep the textarea value if user wants to re-paste? 
+                // Actually re-rendering clears the textarea. Let's just update the preview DOM directly for better UX.
+                const previewDiv = textarea.nextElementSibling;
+                if (previewDiv) previewDiv.innerHTML = tableHTML;
+            }
+        }
+
+        // --- File Upload Listener ---
+        const fileInput = document.getElementById('file_upload');
+        const imgPreview = document.getElementById('img_preview');
+        const imgPreviewBox = document.getElementById('img_preview_box');
+
+        if (fileInput) {
+            fileInput.addEventListener('change', function (e) {
+                const file = e.target.files[0];
+                if (file) {
+                    inputs.image.value = 'assets/images/' + file.name;
+                    const reader = new FileReader();
+                    reader.onload = (e) => { imgPreview.src = e.target.result; imgPreviewBox.style.display = 'block'; };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        let currentAttachments = [];
+
+        // ... existing mode logic ...
+
+        function renderAttachments() {
+            const list = document.getElementById('attachmentList');
+            list.innerHTML = '';
+            currentAttachments.forEach(att => {
+                const row = document.createElement('div');
+                row.style.cssText = 'display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 5px 10px; border: 1px solid #ddd; border-radius: 4px;';
+                row.innerHTML = `
+                    <span style="font-size:0.9rem;">
+                        <strong>${att.name}</strong> 
+                        <span style="color:#888; font-size:0.8rem;">(${att.url})</span>
+                    </span>
+                    <button class="btn btn-danger btn-sm" style="padding: 2px 5px; font-size: 0.7rem;" onclick="removeAttachment(${att.id})">X</button>
+                `;
+                list.appendChild(row);
+            });
+        }
+
+        // Attach File Listener
+        const attachInput = document.getElementById('attach_file');
+        if (attachInput) {
+            attachInput.addEventListener('change', function (e) {
+                const file = e.target.files[0];
+                if (file) {
+                    document.getElementById('attach_url').value = 'assets/files/' + file.name;
+                    // Auto-fill name if empty
+                    const nameInput = document.getElementById('attach_name');
+                    if (!nameInput.value) {
+                        // Remove extension for name
+                        const rawName = file.name.replace(/\.[^/.]+$/, "");
+                        nameInput.value = rawName;
+                    }
+                }
+            });
+        }
+
+        // Removed inline handleAttachFile since we use listener now
+
+        function addAttachment() {
+            const name = document.getElementById('attach_name').value.trim();
+            const url = document.getElementById('attach_url').value.trim();
+            if (!name || !url) return alert('Please enter name and select file');
+
+            currentAttachments.push({ id: Date.now(), name, url });
+            renderAttachments();
+
+            // specific reset
+            document.getElementById('attach_name').value = '';
+            document.getElementById('attach_url').value = '';
+            document.getElementById('attach_file').value = '';
+        }
+
+        function removeAttachment(id) {
+            currentAttachments = currentAttachments.filter(a => a.id !== id);
+            renderAttachments();
+        }
+
+        // Init
+        // Check URL Search Params
+        const urlParams = new URLSearchParams(window.location.search);
+        const modeParam = urlParams.get('mode');
+        if (modeParam === 'dealer') {
+            setMode('dealer');
+        } else if (modeParam === 'popup') {
+            setMode('popup');
+        } else {
+            setMode('product');
+
+        }
+
+
+    </script>
+
+    <script src="js/i18n.js"></script>
+</body>
+
+</html>
+```

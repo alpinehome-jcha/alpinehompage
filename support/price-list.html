@@ -1,0 +1,290 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알파인(ALPINE Korea)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            display: none;
+            /* Hidden by default */
+        }
+
+        .price-table th,
+        .price-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .price-table th {
+            background-color: #f4f4f4;
+            font-weight: 600;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: #eee;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+
+        .access-denied {
+            text-align: center;
+            padding: 50px;
+            color: #e74c3c;
+            display: none;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="../assets/images/amark.png">
+    <link rel="shortcut icon" type="image/png" href="../assets/images/amark.png">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/images/alpine_logo.png" alt="ALPINE Korea">
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../pages/about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="../index.html" class="nav-link" data-i18n="nav_products">제품소개</a>
+                    </li>
+                    <li>
+                        <a href="../pages/dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
+                        <ul class="dropdown-content">
+                            <li><a href="product.html" class="dropdown-item" data-i18n="nav_support_product">제품 자료실</a>
+                            </li>
+                            <li><a href="install.html" class="dropdown-item" data-i18n="nav_support_install">시공자료실</a>
+                            </li>
+                            <li><a href="promo.html" class="dropdown-item" data-i18n="nav_support_promo">홍보자료실</a></li>
+                        </ul>
+                    </li>
+                    <li class="social-icons">
+                        <a href="https://blog.naver.com/alpineaudio" target="_blank"><img
+                                src="../assets/images/icon-blog.png" alt="Naver Blog"></a>
+                        <a href="https://www.facebook.com/alpine.korea.2024/about" target="_blank"><img
+                                src="../assets/images/icon-facebook.png" alt="Facebook"></a>
+                        <a href="https://www.youtube.com/playlist?list=PLtdgCQUazuWKIcARYW_4QoysChyGhwivO"
+                            target="_blank"><img src="../assets/images/icon-youtube.png" alt="YouTube"></a>
+                        <a href="https://www.instagram.com/alpine_korea01/" target="_blank"><img
+                                src="../assets/images/icon-instagram.png" alt="Instagram"></a>
+                    </li>
+
+                    <li class="lang-item">
+                        <a href="#" class="lang-toggle" aria-label="Change Language">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-globe">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                            <span class="curr-lang">KO</span>
+                        </a>
+                    </li>
+                    <li class="auth-item">
+                        <a href="../pages/login.html" class="auth-link"
+                            style="margin-left: 15px; font-size: 0.9rem; color: #333; text-decoration: none;">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 100px;">
+        <h2 class="section-title">Partner Price List</h2>
+
+        <div id="roleDisplay" class="role-badge"></div>
+        <div id="dynamicPriceInfo"></div>
+
+        <div id="accessDenied" class="access-denied">
+            <h3>Access Denied</h3>
+            <p>You do not have permission to view this page. Please login.</p>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="../assets/images/jch_logo.png" alt="JCH Auto" style="height: 30px;" id="footer-logo-img">
+                </div>
+                <p class="footer-text">
+                    <strong data-i18n="footer_ceo">대표 | 이정현</strong><br>
+                    <span data-i18n="footer_address">경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)</span><br>
+                    <span data-i18n="footer_contact">TEL | 1670-7425 FAX | 031-477-7220</span><br>
+                    <span data-i18n="footer_hours">상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)</span><br>
+                    <span data-i18n="footer_biz_info">사업자등록번호 | 619-81-07276 개인정보보호책임자 | 한길전</span>
+                </p>
+            </div>
+            <div class="footer-section footer-links">
+                <h4 data-i18n="footer_products">Products</h4>
+                <ul>
+                    <li><a href="../index.html?category=F%231%20Status">F#1 Status</a></li>
+                    <li><a href="../index.html?category=Alpine%20Status">Alpine Status</a></li>
+                    <li><a href="../index.html?category=DSP%2FAMP">DSP/AMP</a></li>
+                    <li><a href="../index.html?category=Speakers">Speakers</a></li>
+                    <li><a href="../index.html?category=PnP%20Cable">PnP Cable</a></li>
+                    <li><a href="../index.html?category=기타상품" data-i18n="filter_others">기타상품</a></li>
+                    <li><a href="../index.html?category=Alpine%20OEM%20Fit">Alpine OEM Fit</a></li>
+                    <li><a href="../index.html?category=ALPINESTYLE">ALPINESTYLE</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-links">
+                <h4 data-i18n="footer_support">Support</h4>
+                <ul>
+                    <li><a href="product.html" data-i18n="nav_support_product">Product Archives</a></li>
+                    <li><a href="install.html" data-i18n="nav_support_install">Installation Guides</a></li>
+                    <li><a href="promo.html" data-i18n="nav_support_promo">Contact Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-links">
+                <h4 data-i18n="footer_global">Global</h4>
+                <ul>
+                    <li><a href="https://alpine.co.jp/" target="_blank" data-i18n="footer_global_japan">Japan</a></li>
+                    <li><a href="https://www.alpine-asia.com/en" target="_blank" data-i18n="footer_global_asia">Asia</a>
+                    </li>
+                    <li><a href="https://www.alpine.com.au/" target="_blank"
+                            data-i18n="footer_global_australia">Australia</a></li>
+                    <li><a href="https://www.alpine.com.au/" target="_blank" data-i18n="footer_global_europe">Europe</a>
+                    </li>
+                    <li><a href="https://www.alpine.com.cn/" target="_blank" data-i18n="footer_global_china">China</a>
+                    </li>
+                    <li><a href="https://www.alpine-usa.com/" target="_blank" data-i18n="footer_global_na">North
+                            America</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            COPYRIGHT©2026 JCHAUTO,INC. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/price-data.js"></script>
+    <script>
+        function getCategoryLabel(category) {
+            switch (category) {
+                case 'team':
+                    return 'Team Alpine';
+                case 'style':
+                    return 'Alpine Style';
+                case 'region':
+                    return 'Regional Distributor';
+                case 'dealer':
+                    return 'Authorized Dealer';
+                case 'master':
+                    return 'Sound Master';
+                case 'admin':
+                    return 'Admin'; // Although admin sees all, this label might be used if showing an "Admin" category
+                default:
+                    return category.charAt(0).toUpperCase() + category.slice(1);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const role = auth.getRole();
+            const roleDisplay = document.getElementById('roleDisplay');
+            const container = document.getElementById('dynamicPriceInfo');
+
+            if (!auth.isLoggedIn()) {
+                document.querySelector('h2.section-title').style.display = 'none';
+                document.getElementById('accessDenied').style.display = 'block';
+                return;
+            }
+
+            roleDisplay.textContent = 'Current Role: ' + role.toUpperCase();
+
+            // Filter Data based on Role
+            let filteredData = [];
+            if (role === 'admin') {
+                filteredData = priceData; // Show All
+            } else {
+                filteredData = priceData.filter(item => item.category === role);
+            }
+
+            if (filteredData.length === 0) {
+                container.innerHTML = '<p>No price information available for your role.</p>';
+                return;
+            }
+
+            // Group by Category for display (useful for Admin view)
+            const grouped = {};
+            filteredData.forEach(item => {
+                if (!grouped[item.category]) grouped[item.category] = [];
+                grouped[item.category].push(item);
+            });
+
+            // Render Tables
+            for (const [cat, items] of Object.entries(grouped)) {
+                const section = document.createElement('div');
+                section.className = 'price-section';
+                section.style.display = 'block';
+
+                const title = document.createElement('h3');
+                title.textContent = getCategoryLabel(cat) + ' Pricing';
+                section.appendChild(title);
+
+                const table = document.createElement('table');
+                table.className = 'price-table';
+                table.style.display = 'table';
+                table.innerHTML = `
+                    <tr>
+                        <th style="width:15%">분류</th>
+                        <th style="width:15%">제품 분류</th>
+                        <th>제품명</th>
+                        <th style="width:15%">유통가</th>
+                        <th style="width:15%">대리점가</th>
+                        <th style="width:15%">소비자가</th>
+                    </tr>`;
+
+                items.forEach(item => {
+                    const fmt = (val) => {
+                        if (typeof val === 'number') return val.toLocaleString() + '원';
+                        return val || '-';
+                    }
+
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${getCategoryLabel(item.category)}</td>
+                        <td>${item.productCategory || '-'}</td>
+                        <td>${item.product}</td>
+                        <td style="font-weight:bold; color:#e74c3c;">${fmt(item.distPrice)}</td>
+                        <td style="font-weight:bold; color:#2980b9;">${fmt(item.dealerPrice)}</td>
+                        <td>${fmt(item.msrp)}</td>
+                    `;
+                    table.appendChild(tr);
+                });
+
+                section.appendChild(table);
+                container.appendChild(section);
+            }
+        });
+    </script>
+</body>
+
+</html>

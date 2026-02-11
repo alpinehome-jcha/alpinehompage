@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알파인(ALPINE Korea)</title>
+
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 150px auto;
+            padding: 40px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color, #005f9e);
+            /* Fallback */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-login:hover {
+            background-color: #004a80;
+        }
+
+        .error-msg {
+            color: #dc3545;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../assets/images/amark.png">
+    <link rel="shortcut icon" type="image/png" href="../assets/images/amark.png">
+</head>
+
+<body style="background-color: #f5f5f5;">
+
+    <div class="login-container">
+        <h2>로그인</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="text" id="username" class="form-input" placeholder="아이디" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" class="form-input" placeholder="비밀번호" required>
+            </div>
+            <div class="form-group" style="text-align: left; display: flex; align-items: center; margin-bottom: 20px;">
+                <input type="checkbox" id="rememberId" style="width: auto; margin-right: 8px; cursor: pointer;">
+                <label for="rememberId" style="cursor: pointer; font-size: 0.9rem; color: #666;">아이디 저장</label>
+            </div>
+            <button type="submit" class="btn-login">로그인</button>
+            <p class="error-msg" id="errorMsg">아이디 또는 비밀번호가 잘못되었습니다.</p>
+        </form>
+        <div style="margin-top: 30px; text-align: center;">
+            <a href="../index.html" class="logo" style="display: inline-block;">
+                <img src="../assets/images/alpine_logo.png" alt="ALPINE Korea">
+            </a>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const errorMsg = document.getElementById('errorMsg');
+        const usernameInput = document.getElementById('username');
+        const rememberIdCheckbox = document.getElementById('rememberId');
+
+        // Load saved ID
+        const savedId = localStorage.getItem('savedId');
+        if (savedId) {
+            usernameInput.value = savedId;
+            rememberIdCheckbox.checked = true;
+        }
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = usernameInput.value;
+            const password = document.getElementById('password').value;
+
+            if (auth.login(username, password)) {
+                // Save or remove ID based on checkbox
+                if (rememberIdCheckbox.checked) {
+                    localStorage.setItem('savedId', username);
+                } else {
+                    localStorage.removeItem('savedId');
+                }
+                window.location.href = '../index.html';
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>

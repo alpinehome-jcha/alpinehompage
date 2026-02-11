@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" style="background:#f9f9f9;">
+  <!-- South Korea Silhouette (Simplified) -->
+  <path fill="#e0e0e0" stroke="#bbb" stroke-width="1" d="
+    M 120,50 L 180,30 L 220,40 L 250,80 L 280,100 
+    L 290,150 L 280,200 L 300,250 L 280,300 L 260,350 
+    L 280,400 L 250,450 L 200,460 L 150,450 L 100,430 
+    L 80,400 L 60,350 L 50,300 L 60,250 L 40,200 
+    L 60,150 L 80,100 L 100,80 Z
+  " />
+  <!-- Jeju -->
+  <ellipse cx="120" cy="550" rx="30" ry="15" fill="#e0e0e0" stroke="#bbb" stroke-width="1" />
+  <!-- Dokdo/Ulleungdo (Optional stylized) -->
+  <circle cx="320" cy="180" r="5" fill="#e0e0e0" />
+  <circle cx="350" cy="180" r="3" fill="#e0e0e0" />
+  
+  <!-- Region Labels (Optional background text) -->
+  <text x="140" y="120" font-size="12" fill="#aaa">Seoul/Gyeonggi</text>
+  <text x="200" y="250" font-size="12" fill="#aaa">Chungcheong</text>
+  <text x="220" y="350" font-size="12" fill="#aaa">Gyeongsang</text>
+  <text x="100" y="380" font-size="12" fill="#aaa">Jeolla</text>
+  <text x="120" y="550" font-size="10" fill="#aaa" text-anchor="middle">Jeju</text>
+</svg>

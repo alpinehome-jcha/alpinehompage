@@ -1,0 +1,671 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알파인(ALPINE Korea)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/amark.png">
+    <link rel="shortcut icon" type="image/png" href="assets/images/amark.png">
+
+    18:
+
+    <style>
+        /* Temporarily inline critical styles or specific overrides if needed */
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/alpine_logo.png" alt="ALPINE Korea">
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="pages/about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="index.html" class="nav-link active" data-i18n="nav_products">제품소개</a>
+                        <!-- Submenu logic could go here if needed -->
+                    </li>
+                    <li>
+                        <a href="pages/dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
+                        <ul class="dropdown-content">
+                            <li><a href="support/product.html" class="dropdown-item" data-i18n="nav_support_product">제품
+                                    자료실</a></li>
+                            <li><a href="support/install.html" class="dropdown-item"
+                                    data-i18n="nav_support_install">시공자료실</a></li>
+                            <li><a href="support/promo.html" class="dropdown-item"
+                                    data-i18n="nav_support_promo">홍보자료실</a></li>
+                        </ul>
+                    </li>
+                    <li class="social-icons">
+                        <a href="https://blog.naver.com/alpineaudio" target="_blank"><img
+                                src="assets/images/icon-blog.png" alt="Naver Blog"></a>
+                        <a href="https://www.facebook.com/alpine.korea.2024/about" target="_blank"><img
+                                src="assets/images/icon-facebook.png" alt="Facebook"></a>
+                        <a href="https://www.youtube.com/playlist?list=PLtdgCQUazuWKIcARYW_4QoysChyGhwivO"
+                            target="_blank"><img src="assets/images/icon-youtube.png" alt="YouTube"></a>
+                        <a href="https://www.instagram.com/alpine_korea01/" target="_blank"><img
+                                src="assets/images/icon-instagram.png" alt="Instagram"></a>
+                    </li>
+
+                    <li class="lang-item">
+                        <a href="#" class="lang-toggle" aria-label="Change Language">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-globe">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                            <span class="curr-lang">KO</span>
+                        </a>
+                    </li>
+                    <li class="auth-item">
+                        <a href="pages/login.html" class="auth-link"
+                            style="margin-left: 15px; font-size: 0.9rem; color: #333; text-decoration: none;">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <style>
+        /* Blinds Slideshow Styles */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            /* Aspect ratio maintenance using padding or fixed height */
+            /* If we want responsive 1900x680, that is approx 35.8% aspect ratio */
+            /* But previously it was height: auto. Let's keep the user's previous request desire: responsive. */
+            height: auto;
+            min-height: 200px;
+            /* safety */
+            overflow: hidden;
+            padding-top: 35.79%;
+            /* 680 / 1900 * 100 = 35.79% aspect ratio for responsive container */
+            background-color: #000;
+        }
+
+        #hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .blind-slice {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transition: transform 1s ease-in-out;
+            transform-origin: left;
+        }
+
+        /* Sold Out Badge */
+        .sold-out-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(220, 53, 69, 0.9);
+            /* Red */
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 10;
+            text-transform: uppercase;
+            border: 1px solid #fff;
+        }
+
+        .sub-filter-btn {
+            padding: 8px 16px;
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .sub-filter-btn:hover,
+        .sub-filter-btn.active {
+            background: #333;
+            color: #fff;
+            border-color: #333;
+        }
+    </style>
+
+    <section class="hero-container">
+        <div id="hero-slider"></div>
+    </section>
+
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sliderContainer = document.getElementById('hero-slider');
+            const images = [
+                'assets/images/alpine_status_main_v6.jpg',
+                'assets/images/alpine_status_main_v7.jpg',
+                'assets/images/alpine_status_main_v8.jpg'
+            ];
+            let currentIndex = 0;
+            const sliceCount = 10;
+
+            function createSlices(imageSrc) {
+                sliderContainer.innerHTML = '';
+                const widthPerSlice = 100 / sliceCount;
+
+                for (let i = 0; i < sliceCount; i++) {
+                    const slice = document.createElement('div');
+                    slice.classList.add('blind-slice');
+                    slice.style.width = widthPerSlice + '%';
+                    slice.style.left = (i * widthPerSlice) + '%';
+                    slice.style.backgroundImage = `url('${imageSrc}')`;
+                    // Calculate background position to show the correct part of the image
+                    // The background size is cover, so it spans the full container.
+                    // We need to shift the background position for each slice.
+                    // Since size is 'cover' (100% 100%), 
+                    // background-position-x should be: (i * 100 / (sliceCount - 1))% ?
+                    // Actually if background-size is 100% (container width), then:
+                    slice.style.backgroundSize = `${sliceCount * 100}% 100%`;
+                    slice.style.backgroundPosition = `-${i * 100}% 0`;
+
+                    // Wait, simplistic approach:
+                    // background-size: 100% of container width = 100vw or similar.
+                    // Let's rely on standard percentage math.
+                    // slice width is 10%.
+                    // background-size needs to be 1000% of the slice width to match container width.
+                    // background-position-x needs to offset.
+
+                    sliderContainer.appendChild(slice);
+                }
+            }
+
+            // Initial setup
+            // To make "blinds" effect:
+            // 1. Current image is visible on slices.
+            // 2. Container background is set to Next Image.
+            // 3. Slices rotate/shrink to reveal container background.
+
+            function updateSlider() {
+                const currentImg = images[currentIndex];
+                const nextIndex = (currentIndex + 1) % images.length;
+                const nextImg = images[nextIndex];
+
+                // Set container background to next image (the one we want to reveal)
+                sliderContainer.style.background = `url('${nextImg}') no-repeat center center`;
+                sliderContainer.style.backgroundSize = 'cover';
+
+                // Create slices with CURRENT image covering the next image
+                sliderContainer.innerHTML = '';
+                const widthPerSlice = 100 / sliceCount;
+
+                for (let i = 0; i < sliceCount; i++) {
+                    const slice = document.createElement('div');
+                    slice.classList.add('blind-slice');
+                    slice.style.width = `${widthPerSlice + 0.1}%`; // +0.1 to prevent gaps
+                    slice.style.left = (i * widthPerSlice) + '%';
+                    slice.style.backgroundImage = `url('${currentImg}')`;
+                    slice.style.backgroundSize = `${sliceCount * 100}% 100%`; // Scale bg to full width relative to slice
+                    // Position: we need the slice to show the i-th section. 
+                    // If slice is 100px wide, 10 slices, total 1000px.
+                    // bg needs to be 1000px.
+                    // slice 0: bg-pos 0.
+                    // slice 1: bg-pos -100px.
+                    // In percentages relative to the slice:
+                    // positions are usually relative to the element.
+                    // If element is 10% of total, and bg is 1000% of element.
+                    // bg-pos 0% = left edge.
+                    // bg-pos 10% ? No.
+                    // Standard formula for sprites/slices: 
+                    // backgroundPositionX = (i / (sliceCount - 1)) * 100 + '%'
+                    slice.style.backgroundPosition = `${(i / (sliceCount - 1)) * 100}% 0`;
+
+                    sliderContainer.appendChild(slice);
+                }
+
+                // Trigger animation after a small delay
+                setTimeout(() => {
+                    const slices = document.querySelectorAll('.blind-slice');
+                    slices.forEach((slice, i) => {
+                        // Staggered effect
+                        setTimeout(() => {
+                            // "Blinds" effect: scale X to 0 (close the blind)
+                            slice.style.transform = 'scaleX(0)';
+                        }, i * 100); // 100ms delay per slice
+                    });
+
+                    // Update index after animation
+                    setTimeout(() => {
+                        currentIndex = nextIndex;
+                        // Optional: Reset slices or just leave it for next cycle?
+                        // For next cycle, we need to rebuild slices with new CURRENT image.
+                        // But right now, we are looking at the container background (NextImg).
+                        // Is that clean?
+                        // Better to re-render slices with NextImg fully visible (scale 1) to prepare for next loop
+                        // prevent flash?
+                        // Actually, if we just leave it, we are seeing the background.
+                        // Next updateSlider call:
+                        // currentImg = old NextImg.
+                        // nextImg = ...
+                        // It sets container bg to new NextImg.
+                        // Rebuilds slices with currentImg (which is visible now as bg).
+                        // Then animates slices away.
+                        // This works seamlessly.
+                    }, (sliceCount * 100) + 1000); // Wait for all animations + transition time
+
+                }, 100); // Initial delay before starting animation
+            }
+
+            // Start loop
+            // Initial view: just static image or slices?
+            // Let's set initial state.
+            sliderContainer.style.background = `url('${images[0]}') no-repeat center center`;
+            sliderContainer.style.backgroundSize = 'cover';
+
+            // Start interval
+            setInterval(updateSlider, 5000); // Change every 5 seconds
+
+        });
+    </script>
+    <script src="js/i18n.js"></script>
+
+    <main class="container">
+
+        <h2 class="section-title" data-i18n="section_products">Product Lineup</h2>
+
+        <div class="filters">
+            <button class="filter-btn active">F#1 Status</button>
+            <button class="filter-btn">Alpine Status</button>
+            <button class="filter-btn">DSP/AMP</button>
+            <button class="filter-btn">Speakers</button>
+            <button class="filter-btn">PnP Cable</button>
+            <button class="filter-btn" data-i18n="filter_others">기타상품</button>
+            <button class="filter-btn">Alpine OEM Fit</button>
+            <button class="filter-btn">ALPINESTYLE</button>
+        </div>
+
+        <!-- Sub Filters for PnP Cable -->
+        <div id="subFilterContainer" class="sub-filters"
+            style="display: none; justify-content: center; gap: 10px; margin-bottom: 20px;">
+            <button class="sub-filter-btn" data-sub="국산차">국산차 PnP</button>
+            <button class="sub-filter-btn" data-sub="독일차">독일차 PnP</button>
+            <button class="sub-filter-btn" data-sub="기타수입차">기타수입차 PnP</button>
+            <button class="sub-filter-btn" data-sub="DSP">DSP PnP</button>
+            <button class="sub-filter-btn" data-sub="기타">기타 PnP</button>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+            <!-- Products will be populated by JavaScript -->
+
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="assets/images/jch_logo.png" alt="JCH Auto" style="height: 30px;" id="footer-logo-img">
+                </div>
+                <p class="footer-text">
+                    <strong data-i18n="footer_ceo">대표 | 이정현</strong><br>
+                    <span data-i18n="footer_address">경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)</span><br>
+                    <span data-i18n="footer_contact">TEL | 1670-7425 FAX | 031-477-7220</span><br>
+                    <span data-i18n="footer_hours">상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)</span><br>
+                    <span data-i18n="footer_biz_info">사업자등록번호 | 619-81-07276 개인정보보호책임자 | 한길전</span>
+                </p>
+            </div>
+            <div class="footer-section footer-links">
+                <h4 data-i18n="footer_products">Products</h4>
+                <ul>
+                    <li><a href="?category=F%231%20Status">F#1 Status</a></li>
+                    <li><a href="?category=Alpine%20Status">Alpine Status</a></li>
+                    <li><a href="?category=DSP%2FAMP">DSP/AMP</a></li>
+                    <li><a href="?category=Speakers">Speakers</a></li>
+                    <li><a href="?category=PnP%20Cable">PnP Cable</a></li>
+                    <li><a href="?category=기타상품" data-i18n="filter_others">기타상품</a></li>
+                    <li><a href="?category=Alpine%20OEM%20Fit">Alpine OEM Fit</a></li>
+                    <li><a href="?category=ALPINESTYLE">ALPINESTYLE</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-links">
+                <h4 data-i18n="footer_support">Support</h4>
+                <ul>
+                    <li><a href="support/product.html" data-i18n="nav_support_product">Product Archives</a></li>
+                    <li><a href="support/install.html" data-i18n="nav_support_install">Installation Guides</a></li>
+                    <li><a href="support/promo.html" data-i18n="nav_support_promo">Contact Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-links">
+                <h4 data-i18n="footer_global">Global</h4>
+                <ul>
+                    <li><a href="https://alpine.co.jp/" target="_blank" data-i18n="footer_global_japan">Japan</a></li>
+                    <li><a href="https://www.alpine-asia.com/en" target="_blank" data-i18n="footer_global_asia">Asia</a>
+                    </li>
+                    <li><a href="https://www.alpine.com.au/" target="_blank"
+                            data-i18n="footer_global_australia">Australia</a></li>
+                    <li><a href="https://www.alpine.com.au/" target="_blank" data-i18n="footer_global_europe">Europe</a>
+                    </li>
+                    <li><a href="https://www.alpine.com.cn/" target="_blank" data-i18n="footer_global_china">China</a>
+                    </li>
+                    <li><a href="https://www.alpine-usa.com/" target="_blank" data-i18n="footer_global_na">North
+                            America</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            COPYRIGHT©2026 JCHAUTO,INC. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <script src="js/product-data.js"></script>
+    <script>
+        // Render Products
+        const productGrid = document.getElementById('productGrid');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        function renderProducts(filter = 'All') {
+            if (!productGrid) return;
+            productGrid.innerHTML = '';
+
+            // Basic language detection (if global 'translations' not available, default to EN style for now or detecting DOM)
+            // Let's rely on CSS class or text content of language toggle if needed, or just default.
+            // Using price format.
+            const isEnglish = document.querySelector('.curr-lang') ? document.querySelector('.curr-lang').textContent.trim() === 'EN' : false;
+
+            productData.forEach(product => {
+                // Filter logic
+                let isMatch = false;
+
+                if (filter === 'All' || filter === '전체') {
+                    isMatch = true;
+                } else if (filter === 'PnP Cable') {
+                    // Match any PnP Cable sub-category
+                    if (product.category && product.category.startsWith('PnP Cable')) isMatch = true;
+                } else if (filter.startsWith('PnP Cable - ')) {
+                    // Specific sub-category match
+                    if (filter === 'PnP Cable - 기타') {
+                        // Special handling for "Other" to avoid matching "기타수입차" (Other Imported)
+                        // Match "PnP Cable - 기타" OR "PnP Cable - 기타 (Other)"
+                        if (product.category === 'PnP Cable - 기타' || product.category === 'PnP Cable - 기타 (Other)') {
+                            isMatch = true;
+                        }
+                    } else {
+                        // Standard contains check for others
+                        if (product.category && product.category.includes(filter)) isMatch = true;
+                    }
+                } else {
+                    // Exact match for strict categories
+                    if (filter === '기타상품' && product.category === 'Others') isMatch = true;
+                    else if (product.category === filter) isMatch = true;
+                }
+
+                if (!isMatch) return;
+
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.style.cursor = 'pointer';
+                card.onclick = () => window.location.href = `pages/detail.html?id=${product.id}`;
+
+                // Formatter
+                let priceDisplay = '';
+                if (isEnglish) {
+                    priceDisplay = '$' + Math.round(product.price / 1400).toLocaleString();
+                } else {
+                    priceDisplay = '₩' + product.price.toLocaleString();
+                }
+
+                card.innerHTML = `
+                    <div style="position: relative;">
+                        ${product.soldOut ? '<div class="sold-out-badge">SOLD OUT</div>' : ''}
+                        <img src="${product.image}" alt="${product.title}" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <h3 class="product-title">${product.title}</h3>
+                        <p class="product-desc" style="margin: 10px 0;">${product.desc}</p>
+                        <div class="product-price" data-price-krw="${product.price}">${priceDisplay}</div>
+                        <p class="product-desc" style="margin: 10px 0;">${product.desc_bottom !== undefined ? product.desc_bottom : product.desc}</p>
+                        ${product.promoText ? `<div class="product-promo" style="color: #e74c3c; font-weight: bold; margin-bottom: 10px; font-size: 0.9rem;">${product.promoText}</div>` : ''}
+                        <span class="btn-view">View Details</span>
+                    </div>
+                `;
+                productGrid.appendChild(card);
+            });
+        }
+
+        // Simple Filter Script
+        const subFilterContainer = document.getElementById('subFilterContainer');
+        const subFilterBtns = document.querySelectorAll('.sub-filter-btn');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Reset main active
+                document.querySelector('.filter-btn.active').classList.remove('active');
+                btn.classList.add('active');
+
+                const filterName = btn.textContent.trim();
+
+                // PnP Cable Logic
+                if (filterName === 'PnP Cable') {
+                    subFilterContainer.style.display = 'flex';
+
+                    // Reset sub-buttons
+                    document.querySelectorAll('.sub-filter-btn.active').forEach(b => b.classList.remove('active'));
+
+                    // Default to '국산차' (Domestic)
+                    const defaultSub = document.querySelector('.sub-filter-btn[data-sub="국산차"]');
+                    if (defaultSub) {
+                        defaultSub.classList.add('active');
+                        renderProducts('PnP Cable - 국산차');
+                    }
+                } else {
+                    subFilterContainer.style.display = 'none';
+                    renderProducts(filterName);
+                }
+            });
+        });
+
+        // Sub Filter Logic
+        subFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.sub-filter-btn.active').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                // Filter by specific prefix
+                // The category in data is "PnP Cable - 국산차 (Domestic)" etc.
+                // We use "PnP Cable - " + btn.dataset.sub to match.
+                // Or we can just use partial match in renderProducts.
+                renderProducts(`PnP Cable - ${btn.dataset.sub}`);
+            });
+        });
+
+        // Listen for language toggle click to re-render (since prices change)
+        const langToggleBtn = document.querySelector('.lang-toggle');
+        if (langToggleBtn) {
+            langToggleBtn.addEventListener('click', () => {
+                // Wait for the main toggle flow to update state, then re-render
+                setTimeout(() => {
+                    const activeFilterText = document.querySelector('.filter-btn.active').textContent.trim();
+                    renderProducts(activeFilterText === 'All' || activeFilterText === '전체' ? 'All' : activeFilterText);
+                }, 50);
+            });
+        }
+
+        // Handle URL Parameters for Filtering
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryParam = urlParams.get('category');
+
+        if (categoryParam) {
+            let targetBtn = null;
+            filterBtns.forEach(btn => {
+                const btnText = btn.textContent.trim();
+                // Compare btnText with categoryParam
+                if (btnText === categoryParam) {
+                    targetBtn = btn;
+                } else if (categoryParam === 'Others' && btnText === '기타상품') {
+                    // If URL says Others but button says 기타상품
+                    targetBtn = btn;
+                } else if (categoryParam === '기타상품' && btnText === '기타상품') {
+                    targetBtn = btn;
+                }
+            });
+
+            if (targetBtn) {
+                document.querySelector('.filter-btn.active').classList.remove('active');
+                targetBtn.classList.add('active');
+                renderProducts(targetBtn.textContent.trim());
+
+                // Scroll to products section
+                const productSection = document.querySelector('.section-title');
+                if (productSection) {
+                    productSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                renderProducts();
+            }
+        } else {
+            // Default to the active button (F#1 Status) instead of 'All'
+            const activeBtn = document.querySelector('.filter-btn.active');
+            if (activeBtn) {
+                renderProducts(activeBtn.textContent.trim());
+            } else {
+                renderProducts();
+            }
+        }
+    </script>
+
+    <!-- Popup Container -->
+    <div id="popupContainer"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            renderPopups();
+        });
+
+        function renderPopups() {
+            const container = document.getElementById('popupContainer');
+            container.innerHTML = '';
+
+            // 0. Check for Refresh/Reload -> Clear Session Storage for Popups
+            try {
+                const perfEntries = performance.getEntriesByType("navigation");
+                const isReload = (perfEntries.length > 0 && perfEntries[0].type === 'reload') ||
+                    (performance.navigation && performance.navigation.type === 1);
+
+                if (isReload) {
+                    // console.log("Page reloaded. Clearing popup session storage.");
+                    Object.keys(sessionStorage).forEach(key => {
+                        if (key.startsWith('popup_closed_')) {
+                            sessionStorage.removeItem(key);
+                        }
+                    });
+                }
+            } catch (e) {
+                console.error("Navigation API not supported or error:", e);
+            }
+
+            // 1. Get List
+            let popupList = [];
+            const storedList = localStorage.getItem('popupList');
+            if (storedList) {
+                popupList = JSON.parse(storedList);
+            } else {
+                // Fallback / Migration for old config if list doesn't exist
+                const oldConfig = localStorage.getItem('popupConfig');
+                if (oldConfig) {
+                    const c = JSON.parse(oldConfig);
+                    if (c.isActive) {
+                        popupList.push({
+                            id: 'legacy', // valid string id
+                            title: 'Event',
+                            imagePath: c.imagePath,
+                            linkUrl: c.linkUrl,
+                            hideDays: c.hideDays,
+                            isActive: true
+                        });
+                    }
+                }
+            }
+
+            // 2. Filter Active & Not Hidden
+            const now = new Date().getTime();
+            const activePopups = popupList.filter(p => {
+                if (!p.isActive) return false;
+
+                // Check "Do not show today" (LocalStorage)
+                const hiddenUntil = localStorage.getItem('popup_hidden_' + p.id);
+                const now = new Date().getTime();
+                if (hiddenUntil && now < parseInt(hiddenUntil)) return false;
+
+                // Check "Closed in this session" (SessionStorage)
+                if (sessionStorage.getItem('popup_closed_' + p.id)) return false;
+
+                return true;
+            });
+
+            // 3. Render
+            activePopups.forEach((p, index) => {
+                const zIndex = 10000 + index; // Stack them
+
+                const wrapper = document.createElement('div');
+                wrapper.id = 'popup-' + p.id;
+                wrapper.className = 'popup-overlay';
+                wrapper.style.zIndex = zIndex;
+                wrapper.style.display = 'flex'; // Force display
+
+                // Allow clicking background to close? Maybe not for now to be safe/explicit.
+
+                const linkHtml = (p.linkUrl && p.linkUrl !== '#')
+                    ? `<a href="${p.linkUrl}" style="cursor:pointer;" target="_blank"><img src="${p.imagePath}" alt="${p.title}"></a>`
+                    : `<img src="${p.imagePath}" alt="${p.title}">`;
+
+                wrapper.innerHTML = `
+                    <div class="popup-content">
+                        <div class="popup-image-container">
+                            ${linkHtml}
+                            <div class="popup-controls">
+                                <button class="popup-btn" onclick="dontShowPopup('${p.id}', ${p.hideDays})">하루동안 열지 않기</button>
+                                <button class="popup-btn" onclick="closePopup('${p.id}')">닫기</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(wrapper);
+            });
+        }
+
+        function closePopup(id) {
+            const el = document.getElementById('popup-' + id);
+            if (el) el.remove();
+            // Save to sessionStorage to prevent reappearing on reload (navigating to product intro)
+            sessionStorage.setItem('popup_closed_' + id, 'true');
+        }
+
+        function dontShowPopup(id, days) {
+            const expiry = new Date().getTime() + (days * 24 * 60 * 60 * 1000);
+            localStorage.setItem('popup_hidden_' + id, expiry);
+            closePopup(id);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,517 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알파인(ALPINE Korea)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../assets/images/amark.png">
+    <link rel="shortcut icon" type="image/png" href="../assets/images/amark.png">
+
+    +
+
+
+    <style>
+        .dealer-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dealer-card:hover,
+        .dealer-card.active-card {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .dealer-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.8rem 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            flex: 1 1 300px;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .dealer-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .dealer-info {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .dealer-info span {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .dealer-desc {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 0.5rem !important;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .badge-certified {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/images/alpine_logo.png" alt="ALPINE Korea">
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="../index.html" class="nav-link" data-i18n="nav_products">제품소개</a>
+                    </li>
+                    <li>
+                        <a href="dealers.html" class="nav-link active" data-i18n="nav_dealers">전국 대리점 목록</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
+                        <ul class="dropdown-content">
+                            <li><a href="../support/product.html" data-i18n="nav_support_product">Product Archives</a>
+                            </li>
+                            <li><a href="../support/install.html" data-i18n="nav_support_install">Installation
+                                    Guides</a></li>
+                            <li><a href="../support/promo.html" data-i18n="nav_support_promo">Contact Support</a></li>
+                        </ul>
+                    </li>
+                    <li class="social-icons">
+                        <a href="https://blog.naver.com/alpineaudio" target="_blank"><img
+                                src="../assets/images/icon-blog.png" alt="Naver Blog"></a>
+                        <a href="https://www.facebook.com/alpine.korea.2024/about" target="_blank"><img
+                                src="../assets/images/icon-facebook.png" alt="Facebook"></a>
+                        <a href="https://www.youtube.com/playlist?list=PLtdgCQUazuWKIcARYW_4QoysChyGhwivO"
+                            target="_blank"><img src="../assets/images/icon-youtube.png" alt="YouTube"></a>
+                        <a href="https://www.instagram.com/alpine_korea01/" target="_blank"><img
+                                src="../assets/images/icon-instagram.png" alt="Instagram"></a>
+                    </li>
+                    <li class="lang-item">
+                        <a href="#" class="lang-toggle" aria-label="Change Language">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-globe">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                            <span class="curr-lang">KO</span>
+                        </a>
+                    </li>
+                    <li class="auth-item">
+                        <a href="login.html" class="auth-link"
+                            style="margin-left: 15px; font-size: 0.9rem; color: #333; text-decoration: none;">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <main class="container" style="padding-top: 100px;">
+        <h2 class="section-title">Nationwide Dealer Network</h2>
+
+        <!-- Dealer Map Section (Leaflet) -->
+        <div id="map"
+            style="display: none; width: 100%; max-width: 800px; height: 500px; margin: 0 auto 50px; border: 1px solid #ddd; border-radius: 8px; z-index: 1;">
+        </div>
+
+        <style>
+            /* Custom Marker Colors via CSS filters on default marker or simple colored divs */
+            /* Actually Leaflet default markers are images. We can use custom icons or CSS-based icons.
+               For simplicity/reliability without external assets, let's use a simple DivIcon with CSS circles. 
+            */
+            .custom-pin {
+                background-color: #fff;
+                border-radius: 50%;
+                border: 2px solid #333;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+                width: 16px;
+                height: 16px;
+                display: block;
+            }
+
+            .pin-blue {
+                background-color: #007bff;
+                border-color: #0056b3;
+            }
+
+            .pin-green {
+                background-color: #28a745;
+                border-color: #1e7e34;
+            }
+
+            .pin-orange {
+                background-color: #fd7e14;
+                border-color: #ba5d0f;
+            }
+
+            /* Add a little arrow/tail if we want, but dots are fine for high density */
+        </style>
+
+        <!-- Category 1: Alpine Sound Master -->
+        <h3 class="category-title" data-i18n="cat_sound_master">Alpine Sound Master</h3>
+        <div class="dealer-list" id="list_sound_master"></div>
+
+        <!-- Category 2: Team Alpine -->
+        <h3 class="category-title" data-i18n="cat_team_alpine">Team Alpine</h3>
+        <div class="dealer-list" id="list_team_alpine"></div>
+
+        <!-- Category 3: Alpine Style Distributor -->
+        <h3 class="category-title" data-i18n="cat_style_dist">Alpine Style Distributor</h3>
+        <div class="dealer-list" id="list_style_dist"></div>
+
+        <!-- Category 4: Alpine Regional Distributor -->
+        <h3 class="category-title" data-i18n="cat_regional_dist">Alpine Regional Distributor</h3>
+        <div class="dealer-list" id="list_regional_dist"></div>
+
+        <!-- Category 5: Alpine Dealer -->
+        <h3 class="category-title" data-i18n="cat_dealer">Alpine Dealer</h3>
+        <div class="dealer-list" id="list_dealer"></div>
+
+    </main>
+
+    <script src="js/dealer-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render Dealers
+            const containers = {
+                'Alpine Sound Master': document.getElementById('list_sound_master'),
+                'Team Alpine': document.getElementById('list_team_alpine'),
+                'Alpine Style Distributor': document.getElementById('list_style_dist'),
+                'Alpine Regional Distributor': document.getElementById('list_regional_dist'),
+                'Alpine Dealer': document.getElementById('list_dealer')
+            };
+
+            if (typeof dealerData !== 'undefined') {
+                // Region Order
+                const REGION_ORDER = [
+                    '서울',
+                    '경기북부(고양,파주,의정부,양주)',
+                    '경기서부(김포,부천,광명,안산)',
+                    '경기중앙(성남,안양,용인,과천)',
+                    '경기동부(남양주,하남,이천,양평)',
+                    '경기남부(수원,화성,평택,안성)',
+                    '인천', '대전', '세종', '충북', '충남', '강원', '전북', '광주', '전남', '대구', '울산', '경북', '부산', '경남', '제주'
+                ];
+
+                // Fallback Regions for original IDs (Safety net)
+                const fallbackRegions = {
+                    1: '경기중앙(성남,안양,용인,과천)', // Anyang
+                    2: '부산', // Busan
+                    3: '대구', // Daegu
+                    4: '인천', // Incheon
+                    5: '광주', // Gwangju
+                    6: '대전'  // Daejeon
+                };
+
+                // Helper to get effective region
+                function getRegion(d) {
+                    if (d.region) return d.region;
+                    if (fallbackRegions[d.id]) return fallbackRegions[d.id];
+
+                    // Smart Fallback from Address
+                    if (d.address) {
+                        const addr = d.address;
+                        if (addr.includes('서울') || addr.includes('Seoul')) return '서울';
+                        if (addr.includes('인천') || addr.includes('Incheon')) return '인천';
+                        if (addr.includes('대전') || addr.includes('Daejeon')) return '대전';
+                        if (addr.includes('대구') || addr.includes('Daegu')) return '대구';
+                        if (addr.includes('제주') || addr.includes('Jeju')) return '제주';
+
+                        // Gyeonggi details
+                        // Priority Check: Gyeonggi Gwangju vs Gwangju Metro
+                        if (addr.includes('경기') && addr.includes('광주')) return '경기동부(남양주,하남,이천,양평)'; // Gwangju-si, Gyeonggi-do
+
+                        // Standard Gwangju Metro check (if not caught above)
+                        if (addr.includes('광주') || addr.includes('Gwangju')) return '광주';
+
+                        if (addr.includes('고양') || addr.includes('파주') || addr.includes('의정부') || addr.includes('양주')) return '경기북부(고양,파주,의정부,양주)';
+                        if (addr.includes('김포') || addr.includes('부천') || addr.includes('광명') || addr.includes('안산')) return '경기서부(김포,부천,광명,안산)';
+                        if (addr.includes('성남') || addr.includes('안양') || addr.includes('용인') || addr.includes('과천')) return '경기중앙(성남,안양,용인,과천)';
+                        if (addr.includes('남양주') || addr.includes('하남') || addr.includes('이천') || addr.includes('양평')) return '경기동부(남양주,하남,이천,양평)';
+                        if (addr.includes('수원') || addr.includes('화성') || addr.includes('평택') || addr.includes('안성')) return '경기남부(수원,화성,평택,안성)';
+                        if (addr.includes('경기') || addr.includes('Gyeonggi')) return '경기중앙(성남,안양,용인,과천)'; // Default Gyeonggi
+                    }
+                    return '기타';
+                }
+
+                // Data Correction Loop (Fix Bad Data on Load)
+                dealerData.forEach(d => {
+                    // Fix: Auto Gallery (Oto Gallery) location
+                    if (d.name && (d.name.includes('오토갤러리') || d.name.includes('Auto Gall') || d.name.includes('Autogallery'))) {
+                        d.region = '서울'; // Force region correction
+                    }
+
+                    // Fix: Luxury Car Club (럭셔리카클럽)
+                    if (d.name && (d.name.includes('럭셔리카') || d.name.includes('Luxury Car'))) {
+                        d.region = '경기남부(수원,화성,평택,안성)';
+                    }
+                });
+
+                // Sort by Region Order
+                dealerData.sort((a, b) => {
+                    const rA = getRegion(a);
+                    const rB = getRegion(b);
+                    let idxA = REGION_ORDER.indexOf(rA);
+                    let idxB = REGION_ORDER.indexOf(rB);
+
+                    // If not in list, put at the end
+                    if (idxA === -1) idxA = 999;
+                    if (idxB === -1) idxB = 999;
+
+                    return idxA - idxB;
+                });
+
+                // --- Map Logic (Leaflet) ---
+                // Show Map only for Admin
+                const userRole = sessionStorage.getItem('userRole');
+                if (userRole === 'admin') {
+                    const mapDiv = document.getElementById('map');
+                    if (mapDiv) mapDiv.style.display = 'block';
+
+                    // Center roughly on South Korea
+                    const map = L.map('map').setView([36.5, 127.8], 7);
+
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '© OpenStreetMap'
+                    }).addTo(map);
+
+                    // Region Centers for Fallback (Lat/Lng)
+                    const REGION_CENTERS = {
+                        '서울': [37.5665, 126.9780],
+                        '경기북부': [37.7460, 127.0540], // Uijeongbu approx
+                        '경기서부': [37.4200, 126.7800], // Bucheon/Gwangmyeong
+                        '경기중앙': [37.3943, 126.9568], // Anyang
+                        '경기동부': [37.5500, 127.2500], // Hanam/Namyangju
+                        '경기남부': [37.1500, 127.0500], // Osan/Pyeongtaek
+                        '인천': [37.4563, 126.7052],
+                        '대전': [36.3504, 127.3845],
+                        '세종': [36.4800, 127.2890],
+                        '충북': [36.6350, 127.4914], // Cheongju
+                        '충남': [36.6588, 126.6728], // Hongseong (Provincial Gov)
+                        '강원': [37.8854, 127.7298], // Chuncheon
+                        '전북': [35.8242, 127.1480], // Jeonju
+                        '광주': [35.1595, 126.8526],
+                        '전남': [34.8161, 126.4629], // Muan (Provincial Gov)
+                        '대구': [35.8714, 128.6014],
+                        '울산': [35.5384, 129.3114],
+                        '경북': [36.5760, 128.5056], // Andong (Provincial Gov)
+                        '부산': [35.1796, 129.0756],
+                        '경남': [35.2383, 128.6922], // Changwon
+                        '제주': [33.4996, 126.5312]
+                    };
+
+                    // Collision Detection & Prevention
+                    const placedMarkers = [];
+                    const MIN_DIST = 0.04; // Minimum distance in degrees (approx visible separation at zoom 7)
+
+                    function getAdjustedPosition(lat, lng) {
+                        let newLat = lat;
+                        let newLng = lng;
+                        let collision = true;
+                        let attempt = 0;
+
+                        // Spiral parameters
+                        const angleStep = 0.5; // rad
+                        const distStep = 0.005; // degrees
+
+                        while (collision && attempt < 100) {
+                            collision = false;
+                            for (const pos of placedMarkers) {
+                                const dLat = newLat - pos.lat;
+                                const dLng = newLng - pos.lng;
+                                // Euclidean distance approximation is sufficient here
+                                const dist = Math.sqrt(dLat * dLat + dLng * dLng);
+                                if (dist < MIN_DIST) {
+                                    collision = true;
+                                    break;
+                                }
+                            }
+
+                            if (collision) {
+                                attempt++;
+                                // Move in a spiral pattern
+                                const angle = attempt * angleStep;
+                                const radius = attempt * distStep;
+                                newLat = lat + Math.cos(angle) * radius; // Lat usually y
+                                newLng = lng + Math.sin(angle) * radius; // Lng usually x
+                            }
+                        }
+
+                        placedMarkers.push({ lat: newLat, lng: newLng });
+                        return { lat: newLat, lng: newLng };
+                    }
+
+                    dealerData.forEach(d => {
+                        let lat, lng;
+
+                        // STRICT REGION MODE: Always use Region Center
+                        const r = getRegion(d);
+                        let key = r;
+                        if (r.startsWith('경기')) key = r.substring(0, 4); // Match keys: 경기북부, 경기남부 etc.
+
+                        if (REGION_CENTERS[key]) {
+                            lat = REGION_CENTERS[key][0];
+                            lng = REGION_CENTERS[key][1];
+                        } else {
+                            // Default center if unknown region (Sea of OKhotsk to hide?)
+                            lat = 36.5;
+                            lng = 127.8;
+                        }
+
+                        // Adjust position to prevent overlap
+                        const pos = getAdjustedPosition(lat, lng);
+
+                        // Determing Icon Class
+                        let pinClass = 'pin-orange'; // Default
+                        if (d.category === 'Alpine Sound Master' || d.category === 'Team Alpine') {
+                            pinClass = 'pin-blue';
+                        } else if (d.category === 'Alpine Style Distributor') {
+                            pinClass = 'pin-green';
+                        }
+
+                        const startIcon = L.divIcon({
+                            className: 'custom-div-icon',
+                            html: `<div class="custom-pin ${pinClass}"></div>`,
+                            iconSize: [16, 16],
+                            iconAnchor: [8, 8],
+                            popupAnchor: [0, -10]
+                        });
+
+                        const marker = L.marker([pos.lat, pos.lng], { icon: startIcon }).addTo(map);
+
+                        // Popup text
+                        const popupContent = `<b>${d.name}</b><br>${d.category}<br>${d.phone}<br><button onclick="scrollToDealer(${d.id})" style="margin-top:5px; padding:2px 5px; cursor:pointer;">Show Details</button>`;
+                        marker.bindPopup(popupContent);
+                    });
+                } // End Admin Check
+
+                // Global function for scroll (keep accessible)
+                window.scrollToDealer = function (id) {
+                    const card = document.querySelector(`.dealer-card[data-id="${id}"]`);
+                    if (card) {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        card.classList.add('highlight');
+                        setTimeout(() => card.classList.remove('highlight'), 2000);
+                    }
+                };
+
+                dealerData.forEach(dealer => {
+                    const container = containers[dealer.category];
+                    if (container) {
+                        const card = document.createElement('div');
+                        card.className = 'dealer-card';
+                        card.setAttribute('data-id', dealer.id);
+
+                        // Calculate distance for verification (Optional: remove in prod)
+                        // const dist = Math.sqrt(getDistSq(dealer)).toFixed(0); 
+
+                        // Badge HTML if exists
+                        const badgeHtml = dealer.badge ? `<span class="badge-certified">${dealer.badge}</span>` : '';
+
+                        card.innerHTML = `
+                            ${badgeHtml}
+                            <h3 class="dealer-name">${dealer.name}</h3>
+                            <div class="dealer-info">
+                                <span>${dealer.address}</span>
+                                <span>${dealer.phone}</span>
+                                <span class="dealer-desc">${dealer.desc}</span>
+                            </div>
+                         `;
+                        container.appendChild(card);
+                    }
+                });
+            }
+
+            // Hide empty categories
+            Object.values(containers).forEach(container => {
+                if (container && container.children.length === 0) {
+                    container.style.display = 'none';
+                    // Hide the header immediately preceding the list
+                    const header = container.previousElementSibling;
+                    if (header && header.classList.contains('category-title')) {
+                        header.style.display = 'none';
+                    }
+                }
+            });
+        });
+    </script>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="../assets/images/jch_logo.png" alt="JCH Auto" style="height: 30px;" id="footer-logo-img">
+                </div>
+                <p style="color: #888; font-size: 0.9rem; max-width: 600px;">
+                    <strong data-i18n="footer_ceo">대표 | 이정현</strong><br>
+                    <span data-i18n="footer_address">경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)</span><br>
+                    <span data-i18n="footer_contact">TEL | 1670-7425 FAX | 031-477-7220</span><br>
+                    <span data-i18n="footer_hours">상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)</span><br>
+                    <span data-i18n="footer_biz_info">사업자등록번호 | 619-81-07276 개인정보보호책임자 | 한길전</span>
+                </p>
+            </div>
+            <div class="copyright">
+                COPYRIGHT©2026 JCHAUTO,INC. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/dealer-data.js"></script>
+    <script src="../js/i18n.js"></script>
+</body>
+
+</html>
