@@ -9,24 +9,13 @@ const initialPopupData = [
     }
 ];
 
-const POPUP_DATA_VERSION = "2026-02-11-REV2";
-
 let popupData = [];
 if (typeof localStorage !== 'undefined') {
-    const storedVersion = localStorage.getItem('popupDataVersion');
-    if (storedVersion !== POPUP_DATA_VERSION) {
-        // Version mismatch! Force update from file
-        console.log('Popup data version mismatch. Updating from file:', POPUP_DATA_VERSION);
-        popupData = JSON.parse(JSON.stringify(initialPopupData));
-        localStorage.setItem('popupData', JSON.stringify(popupData));
-        localStorage.setItem('popupDataVersion', POPUP_DATA_VERSION);
+    const stored = localStorage.getItem('popupData');
+    if (stored) {
+        popupData = JSON.parse(stored);
     } else {
-        const stored = localStorage.getItem('popupData');
-        if (stored) {
-            popupData = JSON.parse(stored);
-        } else {
-            popupData = JSON.parse(JSON.stringify(initialPopupData));
-        }
+        popupData = JSON.parse(JSON.stringify(initialPopupData));
     }
 } else {
     popupData = initialPopupData;
