@@ -1,105 +1,97 @@
-/**
- * Admin Data Manager
- * Handles exporting localStorage data to downloadable JS files.
- */
-
-const DATA_FILES = {
-    product: {
-        key: 'productData',
-        filename: 'product-data.js',
-        varName: 'initialProductData' // The variable name in the file
-    },
-    dealer: {
-        key: 'dealerData',
-        filename: 'dealer-data.js',
-        varName: 'initialDealerData'
-    },
-    popup: {
-        key: 'popupList', // Note: key in localStorage is popupList, file is popup-data.js
-        filename: 'popup-data.js',
-        varName: 'initialPopupData'
-    },
-    promo: {
-        key: 'promoData',
-        filename: 'promo-data.js',
-        varName: 'initialPromoData'
-    },
-    resource: {
-        key: 'resourceData',
-        filename: 'resource-data.js',
-        varName: 'initialResourceData'
-    },
-    install: {
-        key: 'installData',
-        filename: 'install-data.js',
-        varName: 'initialInstallData'
-    },
-    support_product: {
-        key: 'supportProductData',
-        filename: 'support-product-data.js',
-        varName: 'initialSupportProductData'
-    }
-};
+// Admin Data Manager - Export & Import Logic
 
 function downloadData(type) {
-    const config = DATA_FILES[type];
-    if (!config) {
-        console.error('Unknown data type:', type);
+    let dataName = '';
+    let fileName = '';
+    let dataObj = null;
+
+    switch (type) {
+        case 'product':
+            dataName = 'productData';
+            fileName = 'product-data.js';
+            dataObj = (typeof productData !== 'undefined') ? productData : null;
+            break;
+        case 'dealer':
+            dataName = 'dealerData';
+            fileName = 'dealer-data.js';
+            dataObj = (typeof dealerData !== 'undefined') ? dealerData : null;
+            break;
+        case 'popup':
+            dataName = 'popupData';
+            fileName = 'popup-data.js';
+            dataObj = (typeof popupList !== 'undefined') ? popupList : null; // popupList is the variable in admin
+            if (!dataObj && typeof popupData !== 'undefined') dataObj = popupData;
+            break;
+        case 'promo':
+            dataName = 'promoData';
+            fileName = 'promo-data.js';
+            dataObj = (typeof promoData !== 'undefined') ? promoData : null;
+            break;
+        case 'resource':
+            dataName = 'resourceData';
+            fileName = 'resource-data.js';
+            dataObj = (typeof resourceData !== 'undefined') ? resourceData : null;
+            break;
+        case 'install':
+            dataName = 'installData';
+            fileName = 'install-data.js';
+            dataObj = (typeof installData !== 'undefined') ? installData : null;
+            break;
+        case 'support_product':
+            dataName = 'supportProductData';
+            fileName = 'support-product-data.js';
+            dataObj = (typeof supportProductData !== 'undefined') ? supportProductData : null;
+            break;
+    }
+
+    // Try to get from LocalStorage first (most up to date)
+    const stored = localStorage.getItem(dataName);
+    if (stored) {
+        dataObj = JSON.parse(stored);
+    }
+
+    if (!dataObj) {
+        alert('No data found for ' + type);
         return;
     }
 
-    const rawData = localStorage.getItem(config.key);
-    if (!rawData) {
-        alert(`No data found in Local Storage for ${type}.`);
-        return;
-    }
+    // Format as JS file
+    const jsonStr = JSON.stringify(dataObj, null, 4);
+    const varName = (type === 'popup') ? 'initialPopupData' :
+        (type === 'dealer') ? 'initialDealerData' :
+            (type === 'product') ? 'initialProductData' :
+                (type === 'promo') ? 'initialPromoData' :
+                    (type === 'resource') ? 'initialResourceData' :
+                        (type === 'install') ? 'initialInstallData' :
+                            'initial' + type.charAt(0).toUpperCase() + type.slice(1) + 'Data';
 
-    let parsedData;
-    try {
-        parsedData = JSON.parse(rawData);
-    } catch (e) {
-        alert(`Error parsing data for ${type}.`);
-        return;
-    }
+    // Construct File Content
+    let fileContent = `const ${varName} = ${jsonStr};\n\n`;
 
-    // Generate File Content
-    // We want to reconstruct the file format:
-    // const initialX = [...]; ... logic ...
+    // Add logic block (standard boilerplate for each file)
+    let logicVar = dataName; // e.g. productData
 
-    // 1. Stringify with pretty print
-    const jsonString = JSON.stringify(parsedData, null, 4);
+    fileContent += `let ${logicVar} = [];\n`;
+    fileContent += `if (typeof localStorage !== 'undefined') {\n`;
+    fileContent += `    const stored = localStorage.getItem('${dataName}');\n`;
+    fileContent += `    if (stored) {\n`;
+    fileContent += `        ${logicVar} = JSON.parse(stored);\n`;
+    fileContent += `    } else {\n`;
+    fileContent += `        ${logicVar} = JSON.parse(JSON.stringify(${varName}));\n`;
+    fileContent += `    }\n`;
+    fileContent += `} else {\n`;
+    fileContent += `    ${logicVar} = ${varName};\n`;
+    fileContent += `}\n\n`;
+    fileContent += `if (typeof module !== 'undefined' && module.exports) {\n`;
+    fileContent += `    module.exports = ${logicVar};\n`;
+    fileContent += `}`;
 
-    // 2. Build the script content
-    // We use a simplified template that works for all files based on the pattern we identified.
-    // Note: We need to match the variable names exactly to what the existing files use.
-
-    let content = `const ${config.varName} = ${jsonString};\n\n`;
-
-    // Add the loading logic (Standard Pattern)
-    // We can just use a generic loader logic, or try to mimic the specific one.
-    // The standard pattern used in this project:
-    content += `let ${type === 'popup' ? 'popupData' : config.key} = [];\n`;
-    content += `if (typeof localStorage !== 'undefined') {\n`;
-    content += `    const stored = localStorage.getItem('${config.key}');\n`;
-    content += `    if (stored) {\n`;
-    content += `        ${type === 'popup' ? 'popupData' : config.key} = JSON.parse(stored);\n`;
-    content += `    } else {\n`;
-    content += `        ${type === 'popup' ? 'popupData' : config.key} = JSON.parse(JSON.stringify(${config.varName}));\n`;
-    content += `    }\n`;
-    content += `} else {\n`;
-    content += `    ${type === 'popup' ? 'popupData' : config.key} = ${config.varName};\n`;
-    content += `}\n\n`;
-
-    content += `if (typeof module !== 'undefined' && module.exports) {\n`;
-    content += `    module.exports = ${type === 'popup' ? 'popupData' : config.key};\n`;
-    content += `}\n`;
-
-    // 3. Create Blob and Download
-    const blob = new Blob([content], { type: 'text/javascript' });
+    // Trigger Download
+    const blob = new Blob([fileContent], { type: 'text/javascript' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = config.filename;
+    a.download = fileName;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -107,23 +99,20 @@ function downloadData(type) {
 }
 
 function downloadAll() {
-    if (!confirm('This will download 7 JavaScript files. Please allow multiple file downloads if prompted.')) return;
-
-    const types = Object.keys(DATA_FILES);
+    const types = ['product', 'dealer', 'popup', 'promo', 'resource', 'install', 'support_product'];
     let delay = 0;
-
-    types.forEach((type) => {
+    types.forEach(type => {
         setTimeout(() => {
             downloadData(type);
         }, delay);
-        delay += 500; // Stagger downloads to avoid browser blocking
+        delay += 500; // Stagger downloads
     });
 }
 
 function clearAllLocalStorage() {
-    if (confirm('WARNING: This will delete ALL data in your browser\'s Local Storage and reset the Admin panel to default state associated with the current files.\n\nAre you sure?')) {
+    if (confirm('Are you sure you want to clear ALL Admin data from this browser? This will revert everything to the state of the files on disk.')) {
         localStorage.clear();
-        alert('Local Storage cleared. Reloading page...');
+        alert('Local Storage Cleared. Page will reload.');
         location.reload();
     }
 }

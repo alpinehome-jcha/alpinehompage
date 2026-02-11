@@ -1,33 +1,17 @@
 const initialPopupData = [];
 
 let popupData = [];
-
 if (typeof localStorage !== 'undefined') {
-    const stored = localStorage.getItem('popupList');
+    const stored = localStorage.getItem('popupData');
     if (stored) {
         popupData = JSON.parse(stored);
     } else {
-        // Migration from old config or init
-        const oldConfig = localStorage.getItem('popupConfig');
-        if (oldConfig) {
-            try {
-                const c = JSON.parse(oldConfig);
-                if (c.isActive) {
-                    popupData.push({
-                        id: 'legacy',
-                        title: 'Event',
-                        imagePath: c.imagePath,
-                        linkUrl: c.linkUrl,
-                        hideDays: c.hideDays,
-                        isActive: true
-                    });
-                }
-            } catch (e) {
-                console.error("Error parsing old popupConfig", e);
-            }
-        }
-        if (popupData.length === 0) {
-            popupData = initialPopupData;
+        popupData = initialPopupData;
+        // Try legacy migration
+        const oldList = localStorage.getItem('popupList');
+        if (oldList) {
+            popupData = JSON.parse(oldList);
+            localStorage.setItem('popupData', JSON.stringify(popupData));
         }
     }
 } else {

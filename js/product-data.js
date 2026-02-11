@@ -3,6 +3,7 @@ const initialProductData = [
         "id": 1770178326110,
         "category": "F#1 Status",
         "title": "Alpine F#1 Status Full System",
+        "soldOut": false,
         "desc": "3세대 F#1 스테이터스\n384kHz/32Bit",
         "desc_bottom": "시공비는 별도 협의/600만원부터",
         "price": 45000000,
@@ -91,6 +92,7 @@ const initialProductData = [
         "title": "DAP-7909",
         "desc": "Digital Audio Player",
         "desc_bottom": "개별 판매 불가 상품",
+        "soldOut": false,
         "price": 0,
         "image": "assets/images/F1-DAP.jpg",
         "detailBlocks": [

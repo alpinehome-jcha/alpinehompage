@@ -299,6 +299,8 @@
                         style="flex:1; background:transparent; color:#aaa; border:none;">Dealers</button>
                     <button class="btn btn-sm" id="btnModePopup" onclick="setMode('popup')"
                         style="flex:1; background:transparent; color:#aaa; border:none;">Popup</button>
+                    <button class="btn btn-sm" id="btnModeData" onclick="setMode('data')"
+                        style="flex:1; background:transparent; color:#aaa; border:none;">Data</button>
                 </div>
             </div>
             <ul class="product-list" id="itemList">
@@ -487,6 +489,8 @@
     <script src="../js/auth.js"></script>
     <script src="../js/product-data.js"></script>
     <script src="../js/dealer-data.js"></script>
+    <script src="../js/popup-data.js"></script>
+    <script src="../js/admin-data-manager.js"></script>
     <script>
         let products = (typeof productData !== 'undefined') ? [...productData] : [];
         let dealers = (typeof dealerData !== 'undefined') ? [...dealerData] : [];
@@ -727,6 +731,15 @@
                 btnModePopup.style.background = 'transparent';
                 btnModePopup.style.color = '#aaa';
             }
+            const btnModeData = document.getElementById('btnModeData');
+            if (btnModeData) {
+                btnModeData.style.background = 'transparent';
+                btnModeData.style.color = '#aaa';
+            }
+
+            // Hide Data Manager if exists
+            const dataManager = document.getElementById('dataManager');
+            if (dataManager) dataManager.style.display = 'none';
 
             // Hide popup controls if they exist
             const popupControls = document.getElementById('popupControls');
@@ -782,6 +795,19 @@
                 document.getElementById('dealerFields').style.display = 'none';
 
                 renderPopupManager();
+            } else if (newMode === 'data') {
+                if (btnModeData) {
+                    btnModeData.style.background = '#007bff';
+                    btnModeData.style.color = 'white';
+                }
+                listTitle.textContent = 'Data Management';
+                document.getElementById('lbl_title').innerText = '';
+
+                document.getElementById('productFields').style.display = 'none';
+                document.getElementById('dealerFields').style.display = 'none';
+                domList.innerHTML = '';
+
+                renderDataManager();
             }
         }
 
@@ -1181,13 +1207,62 @@
             setMode('popup');
         } else {
             setMode('product');
+        }
 
+        function renderDataManager() {
+            const form = document.getElementById('editorForm');
+            form.style.display = 'block';
+            document.getElementById('formTitle').textContent = 'Data Export & Management';
+
+            // Hide standard fields
+            const standardFields = form.querySelectorAll('.form-group');
+            standardFields.forEach(f => f.style.display = 'none');
+            form.querySelectorAll('.btn-primary, .btn-danger').forEach(b => b.style.display = 'none');
+
+            let dataManager = document.getElementById('dataManager');
+            if (!dataManager) {
+                dataManager = document.createElement('div');
+                dataManager.id = 'dataManager';
+                form.appendChild(dataManager);
+            }
+            dataManager.style.display = 'block';
+
+            dataManager.innerHTML = `
+                <div class="file-list" style="margin-top: 20px;">
+                    <p style="background: #eafbea; padding: 15px; border-left: 5px solid #28a745; margin-bottom: 25px;">
+                        <strong>About Data Export:</strong><br>
+                        Since this Admin panel runs in your browser, changed data is stored in your browser's "Local Storage".
+                        To update the actual website files, you must download the data files below and replace the existing files in your <code>js/</code> folder.
+                    </p>
+                
+                    <h3>1. Download Individual Files</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 25px;">
+                        <button class="btn btn-secondary" onclick="downloadData('product')">Download product-data.js</button>
+                        <button class="btn btn-secondary" onclick="downloadData('dealer')">Download dealer-data.js</button>
+                        <button class="btn btn-secondary" onclick="downloadData('popup')">Download popup-data.js</button>
+                        <button class="btn btn-secondary" onclick="downloadData('promo')">Download promo-data.js</button>
+                        <button class="btn btn-secondary" onclick="downloadData('resource')">Download resource-data.js</button>
+                        <button class="btn btn-secondary" onclick="downloadData('install')">Download install-data.js</button>
+                        <button class="btn btn-secondary" onclick="downloadData('support_product')">Download support-product-data.js</button>
+                    </div>
+
+                    <h3>2. Download All (Standard)</h3>
+                    <p style="margin-bottom: 5px; color: #666;">Click below to trigger downloads for all files at once.</p>
+                    <button class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1em;" onclick="downloadAll()">
+                        Download All Data Files
+                    </button>
+                    
+                    <hr style="margin: 30px 0;">
+                    
+                    <h3>Danger Zone</h3>
+                    <button class="btn btn-danger" onclick="clearAllLocalStorage()">Reset Admin Data (Clear Local Storage)</button>
+                    <p style="margin-top: 5px; color: #dc3545; font-size: 0.9em;">* This will revert the Admin panel to show only the data currently in the <code>js/</code> files.</p>
+                </div>
+            `;
         }
 
     </script>
-
     <script src="js/i18n.js"></script>
 </body>
 
 </html>
-```
