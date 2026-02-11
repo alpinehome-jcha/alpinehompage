@@ -2862,13 +2862,26 @@ const initialProductData = [
     }
 ];
 
+// Version control
+const DATA_VERSION = "2026-02-11-ForceUpdate";
+
 let productData = [];
 if (typeof localStorage !== 'undefined') {
-    const stored = localStorage.getItem('productData');
-    if (stored) {
-        productData = JSON.parse(stored);
-    } else {
+    const storedVersion = localStorage.getItem('productDataVersion');
+    if (storedVersion !== DATA_VERSION) {
+        // Version mismatch! Force update from file to ensure users see new data
+        console.log('Data version mismatch. Updating from file:', DATA_VERSION);
         productData = JSON.parse(JSON.stringify(initialProductData));
+        localStorage.setItem('productData', JSON.stringify(productData));
+        localStorage.setItem('productDataVersion', DATA_VERSION);
+    } else {
+        // Version match, use stored data (preserves local admin edits until next version bump)
+        const stored = localStorage.getItem('productData');
+        if (stored) {
+            productData = JSON.parse(stored);
+        } else {
+            productData = JSON.parse(JSON.stringify(initialProductData));
+        }
     }
 } else {
     productData = initialProductData;

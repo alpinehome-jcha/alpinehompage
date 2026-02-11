@@ -569,13 +569,25 @@ const initialDealerData = [
     }
 ];
 
+// Version control
+const DATA_VERSION = "2026-02-11-ForceUpdate";
+
 let dealerData = [];
 if (typeof localStorage !== 'undefined') {
-    const stored = localStorage.getItem('dealerData');
-    if (stored) {
-        dealerData = JSON.parse(stored);
-    } else {
+    const storedVersion = localStorage.getItem('dealerDataVersion');
+    if (storedVersion !== DATA_VERSION) {
+        // Version mismatch! Force update from file
+        console.log('Dealer data version mismatch. Updating from file:', DATA_VERSION);
         dealerData = JSON.parse(JSON.stringify(initialDealerData));
+        localStorage.setItem('dealerData', JSON.stringify(dealerData));
+        localStorage.setItem('dealerDataVersion', DATA_VERSION);
+    } else {
+        const stored = localStorage.getItem('dealerData');
+        if (stored) {
+            dealerData = JSON.parse(stored);
+        } else {
+            dealerData = JSON.parse(JSON.stringify(initialDealerData));
+        }
     }
 } else {
     dealerData = initialDealerData;
