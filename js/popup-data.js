@@ -9,7 +9,7 @@ const initialPopupData = [
     }
 ];
 
-const DATA_VERSION = "2026-02-11-ForceUpdate";
+const DATA_VERSION = "2026-02-11-REV2";
 
 let popupData = [];
 if (typeof localStorage !== 'undefined') {

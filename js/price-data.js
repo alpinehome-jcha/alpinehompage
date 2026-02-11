@@ -39,7 +39,7 @@ function getCategoryLabel(cat) {
 }
 
 // Global accessor for data (used by pages)
-const DATA_VERSION = "2026-02-11-ForceUpdate";
+const DATA_VERSION = "2026-02-11-REV2";
 
 let priceData = [];
 try {
