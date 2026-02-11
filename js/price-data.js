@@ -39,14 +39,24 @@ function getCategoryLabel(cat) {
 }
 
 // Global accessor for data (used by pages)
+const DATA_VERSION = "2026-02-11-ForceUpdate";
+
 let priceData = [];
 try {
-    const stored = localStorage.getItem('priceData');
-    if (stored) {
-        priceData = JSON.parse(stored);
-    } else {
-        priceData = JSON.parse(JSON.stringify(initialPriceData)); // Deep copy
+    const storedVersion = localStorage.getItem('priceDataVersion');
+    if (storedVersion !== DATA_VERSION) {
+        console.log('Price data version mismatch. Updating from file:', DATA_VERSION);
+        priceData = JSON.parse(JSON.stringify(initialPriceData));
         localStorage.setItem('priceData', JSON.stringify(priceData));
+        localStorage.setItem('priceDataVersion', DATA_VERSION);
+    } else {
+        const stored = localStorage.getItem('priceData');
+        if (stored) {
+            priceData = JSON.parse(stored);
+        } else {
+            priceData = JSON.parse(JSON.stringify(initialPriceData)); // Deep copy
+            localStorage.setItem('priceData', JSON.stringify(priceData));
+        }
     }
 } catch (e) {
     console.error('Local Storage Error:', e);

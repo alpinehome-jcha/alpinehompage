@@ -28,13 +28,23 @@ const initialSupport_productData = [
     }
 ];
 
+const DATA_VERSION = "2026-02-11-ForceUpdate";
+
 let supportProductData = [];
 if (typeof localStorage !== 'undefined') {
-    const stored = localStorage.getItem('supportProductData');
-    if (stored) {
-        supportProductData = JSON.parse(stored);
-    } else {
+    const storedVersion = localStorage.getItem('supportProductDataVersion');
+    if (storedVersion !== DATA_VERSION) {
+        console.log('Support Product data version mismatch. Updating from file:', DATA_VERSION);
         supportProductData = JSON.parse(JSON.stringify(initialSupport_productData));
+        localStorage.setItem('supportProductData', JSON.stringify(supportProductData));
+        localStorage.setItem('supportProductDataVersion', DATA_VERSION);
+    } else {
+        const stored = localStorage.getItem('supportProductData');
+        if (stored) {
+            supportProductData = JSON.parse(stored);
+        } else {
+            supportProductData = JSON.parse(JSON.stringify(initialSupport_productData));
+        }
     }
 } else {
     supportProductData = initialSupport_productData;
