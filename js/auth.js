@@ -286,28 +286,24 @@ function addPartnerMenu(role) {
             <li><a href="${prefix}dealer-only.html" class="dropdown-item">전용 자료실</a></li>
     `;
 
-    if (role === 'admin') {
+    if (role === 'admin' || role === 'master') {
         let adminPrefix = 'pages/';
         if (isInPages) adminPrefix = '';
         else if (isInSupport) adminPrefix = '../pages/';
 
-        menuItems += `<li><a href="${prefix}price-input.html" class="dropdown-item">가격표 입력</a></li>`;
-        // admin.html is in pages/ now
-        menuItems += `<li><a href="${adminPrefix}admin.html?mode=product" class="dropdown-item">제품 관리</a></li>`;
+        if (role === 'admin') {
+            menuItems += `<li><a href="${prefix}price-input.html" class="dropdown-item">가격표 입력</a></li>`;
+            menuItems += `<li><a href="${adminPrefix}admin.html?mode=product" class="dropdown-item">제품 관리</a></li>`;
+        }
+
         menuItems += `<li><a href="${adminPrefix}admin.html?mode=dealer" class="dropdown-item">대리점 관리</a></li>`;
-        menuItems += `<li><a href="${adminPrefix}admin.html?mode=popup" class="dropdown-item">팝업 관리</a></li>`;
 
-        // Visit Log Link
-        // product.html is in support/
-        // if in pages/, ../support/product.html
-        // if in support/, product.html
-        // if root, support/product.html
-        // This is exactly what 'prefix' does (points to support/ folder contents)
-        // EXCEPT if we are IN product.html itself?
-        // window.location.pathname.includes('/support/product.html')
-
-        const visitLogLink = window.location.pathname.includes('product.html') ? '#visitLogSection' : `${prefix}product.html#visitLogSection`;
-        menuItems += `<li><a href="${visitLogLink}" class="dropdown-item" style="border-top:1px solid #eee;">방문 기록</a></li>`;
+        if (role === 'admin') {
+            menuItems += `<li><a href="${adminPrefix}admin.html?mode=popup" class="dropdown-item">팝업 관리</a></li>`;
+            // Visit Log Link
+            const visitLogLink = window.location.pathname.includes('product.html') ? '#visitLogSection' : `${prefix}product.html#visitLogSection`;
+            menuItems += `<li><a href="${visitLogLink}" class="dropdown-item" style="border-top:1px solid #eee;">방문 기록</a></li>`;
+        }
     }
 
     partnerLi.innerHTML = `

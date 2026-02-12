@@ -495,7 +495,13 @@
         let products = (typeof productData !== 'undefined') ? [...productData] : [];
         let dealers = (typeof dealerData !== 'undefined') ? [...dealerData] : [];
 
+
+
+        // Check Role
+        const currentUserRole = sessionStorage.getItem('userRole');
+
         let currentMode = 'product'; // 'product' | 'dealer'
+        if (currentUserRole === 'master') currentMode = 'dealer'; // Default to dealer for master
         let currentId = null;
         let currentBlocks = [];
 
@@ -774,6 +780,10 @@
 
                 renderList();
             } else if (newMode === 'dealer') {
+                if (currentUserRole !== 'admin' && currentUserRole !== 'master') {
+                    alert('Access Denied');
+                    return;
+                }
                 document.getElementById('btnModeDealer').style.background = '#007bff';
                 document.getElementById('btnModeDealer').style.color = 'white';
                 listTitle.textContent = 'Dealers';
@@ -1007,15 +1017,28 @@
             domList.innerHTML = '';
             const data = currentMode === 'product' ? products : dealers;
 
-            data.forEach(item => {
-                const li = document.createElement('li');
-                li.className = `product-item ${item.id === currentId ? 'active' : ''}`;
-                // Dealer uses 'name', Product uses 'title' internally, but we map to title input
-                const title = currentMode === 'product' ? item.title : item.name;
-                li.innerHTML = `<h4>${title}</h4><p>${item.category}</p>`;
-                li.onclick = () => selectItem(item.id);
-                domList.appendChild(li);
-            });
+            // If Master, filter dealer list to only Team Alpine
+            if (currentMode === 'dealer' && currentUserRole === 'master') {
+                const filtered = dealers.filter(d => d.category === 'Team Alpine');
+
+                filtered.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = `product-item ${item.id === currentId ? 'active' : ''}`;
+                    li.innerHTML = `<h4>${item.name}</h4><p>${item.category}</p>`;
+                    li.onclick = () => selectItem(item.id);
+                    domList.appendChild(li);
+                });
+            } else {
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = `product-item ${item.id === currentId ? 'active' : ''}`;
+                    // Dealer uses 'name', Product uses 'title' internally, but we map to title input
+                    const title = currentMode === 'product' ? item.title : item.name;
+                    li.innerHTML = `<h4>${title}</h4><p>${item.category}</p>`;
+                    li.onclick = () => selectItem(item.id);
+                    domList.appendChild(li);
+                });
+            }
         }
 
         function deleteCurrent() {
@@ -1199,14 +1222,37 @@
 
         // Init
         // Check URL Search Params
+        // Check Role & Hide Buttons Immediately
+        if (currentUserRole === 'master') {
+            const btnProduct = document.getElementById('btnModeProduct');
+            const btnPopup = document.getElementById('btnModePopup');
+            const btnData = document.getElementById('btnModeData');
+            if (btnProduct) btnProduct.style.display = 'none';
+            if (btnPopup) btnPopup.style.display = 'none';
+            if (btnData) btnData.style.display = 'none';
+        }
+
         const urlParams = new URLSearchParams(window.location.search);
-        const modeParam = urlParams.get('mode');
+        let modeParam = urlParams.get('mode');
+
+        // Force Dealer mode for Master if they try to access others
+        if (currentUserRole === 'master' && modeParam !== 'dealer') {
+            modeParam = 'dealer';
+        }
+
         if (modeParam === 'dealer') {
             setMode('dealer');
         } else if (modeParam === 'popup') {
             setMode('popup');
+        } else if (modeParam === 'data') { // Support direct data link if needed
+            setMode('data');
         } else {
-            setMode('product');
+            // Default based on role
+            if (currentUserRole === 'master') {
+                setMode('dealer');
+            } else {
+                setMode('product');
+            }
         }
 
         function renderDataManager() {
