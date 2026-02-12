@@ -1,4 +1,4 @@
-﻿const initialPriceData = [
+const initialPriceData = [
     {
         "category": "master",
         "productCategory": "F#1 Status",
@@ -42,202 +42,26 @@
     {
         "category": "master",
         "productCategory": "F#1 Status",
-        "product": "DAP-7909",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "team",
-        "productCategory": "F#1 Status",
-        "product": "DAP-7909",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
-    },
-    {
-        "category": "style",
-        "productCategory": "F#1 Status",
-        "product": "DAP-7909",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "region",
-        "productCategory": "F#1 Status",
-        "product": "DAP-7909",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "dealer",
-        "productCategory": "F#1 Status",
-        "product": "DAP-7909",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
+        "product": "F#1 12V Full Package",
+        "msrp": 29000000,
+        "distPrice": 11600000,
+        "dealerPrice": 17400000
     },
     {
         "category": "master",
         "productCategory": "F#1 Status",
-        "product": "HDS-7909",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "team",
-        "productCategory": "F#1 Status",
-        "product": "HDS-7909",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
-    },
-    {
-        "category": "style",
-        "productCategory": "F#1 Status",
-        "product": "HDS-7909",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "region",
-        "productCategory": "F#1 Status",
-        "product": "HDS-7909",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "dealer",
-        "productCategory": "F#1 Status",
-        "product": "HDS-7909",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
+        "product": "F#1 3Way Speaker Package",
+        "msrp": 16000000,
+        "distPrice": 6400000,
+        "dealerPrice": 9600000
     },
     {
         "category": "master",
         "productCategory": "F#1 Status",
-        "product": "HDP-H900",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "team",
-        "productCategory": "F#1 Status",
-        "product": "HDP-H900",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
-    },
-    {
-        "category": "style",
-        "productCategory": "F#1 Status",
-        "product": "HDP-H900",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "region",
-        "productCategory": "F#1 Status",
-        "product": "HDP-H900",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "dealer",
-        "productCategory": "F#1 Status",
-        "product": "HDP-H900",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
-    },
-    {
-        "category": "master",
-        "productCategory": "F#1 Status",
-        "product": "HDA-F90",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "team",
-        "productCategory": "F#1 Status",
-        "product": "HDA-F90",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
-    },
-    {
-        "category": "style",
-        "productCategory": "F#1 Status",
-        "product": "HDA-F90",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "region",
-        "productCategory": "F#1 Status",
-        "product": "HDA-F90",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "dealer",
-        "productCategory": "F#1 Status",
-        "product": "HDA-F90",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
-    },
-    {
-        "category": "master",
-        "productCategory": "F#1 Status",
-        "product": "HDZ-9000",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "team",
-        "productCategory": "F#1 Status",
-        "product": "HDZ-9000",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
-    },
-    {
-        "category": "style",
-        "productCategory": "F#1 Status",
-        "product": "HDZ-9000",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "region",
-        "productCategory": "F#1 Status",
-        "product": "HDZ-9000",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "dealer",
-        "productCategory": "F#1 Status",
-        "product": "HDZ-9000",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
+        "product": "F#1 Subwoofer",
+        "msrp": 5000000,
+        "distPrice": 2000000,
+        "dealerPrice": 3000000
     },
     {
         "category": "master",
@@ -601,11 +425,35 @@
     },
     {
         "category": "master",
+        "productCategory": "Alpine Status",
+        "product": "HDZ-TWEETER(Custom fit)",
+        "msrp": 700000,
+        "distPrice": 280000,
+        "dealerPrice": 420000
+    },
+    {
+        "category": "master",
+        "productCategory": "Alpine Status",
+        "product": "HDZ-Midrange",
+        "msrp": 850000,
+        "distPrice": 340000,
+        "dealerPrice": 510000
+    },
+    {
+        "category": "master",
+        "productCategory": "Alpine Status",
+        "product": "HDZ-MidWoofer",
+        "msrp": 1200000,
+        "distPrice": 480000,
+        "dealerPrice": 720000
+    },
+    {
+        "category": "master",
         "productCategory": "DSP/AMP",
         "product": "PXE-M60-4",
         "msrp": 750000,
-        "distPrice": 300000,
-        "dealerPrice": 450000
+        "distPrice": 225000,
+        "dealerPrice": 262500
     },
     {
         "category": "team",
@@ -613,23 +461,23 @@
         "product": "PXE-M60-4",
         "msrp": 750000,
         "distPrice": "-",
-        "dealerPrice": 450000
+        "dealerPrice": 262500
     },
     {
         "category": "style",
         "productCategory": "DSP/AMP",
         "product": "PXE-M60-4",
         "msrp": 750000,
-        "distPrice": 375000,
-        "dealerPrice": 450000
+        "distPrice": 225000,
+        "dealerPrice": 262500
     },
     {
         "category": "region",
         "productCategory": "DSP/AMP",
         "product": "PXE-M60-4",
         "msrp": 750000,
-        "distPrice": 375000,
-        "dealerPrice": 450000
+        "distPrice": 225000,
+        "dealerPrice": 262500
     },
     {
         "category": "dealer",
@@ -637,7 +485,7 @@
         "product": "PXE-M60-4",
         "msrp": 750000,
         "distPrice": "-",
-        "dealerPrice": 450000
+        "dealerPrice": 262500
     },
     {
         "category": "master",
@@ -1044,8 +892,8 @@
         "productCategory": "DSP/AMP",
         "product": "PWE-M770",
         "msrp": 360000,
-        "distPrice": 144000,
-        "dealerPrice": 216000
+        "distPrice": 162000,
+        "dealerPrice": 234000
     },
     {
         "category": "team",
@@ -1053,23 +901,23 @@
         "product": "PWE-M770",
         "msrp": 360000,
         "distPrice": "-",
-        "dealerPrice": 216000
+        "dealerPrice": 234000
     },
     {
         "category": "style",
         "productCategory": "DSP/AMP",
         "product": "PWE-M770",
         "msrp": 360000,
-        "distPrice": 180000,
-        "dealerPrice": 216000
+        "distPrice": 162000,
+        "dealerPrice": 245000
     },
     {
         "category": "region",
         "productCategory": "DSP/AMP",
         "product": "PWE-M770",
         "msrp": 360000,
-        "distPrice": 180000,
-        "dealerPrice": 216000
+        "distPrice": 198000,
+        "dealerPrice": 234000
     },
     {
         "category": "dealer",
@@ -1077,7 +925,7 @@
         "product": "PWE-M770",
         "msrp": 360000,
         "distPrice": "-",
-        "dealerPrice": 216000
+        "dealerPrice": 234000
     },
     {
         "category": "master",
@@ -1101,7 +949,7 @@
         "product": "PWE-770-RCU",
         "msrp": 40000,
         "distPrice": 20000,
-        "dealerPrice": 24000
+        "dealerPrice": 25000
     },
     {
         "category": "region",
@@ -1844,8 +1692,8 @@
         "productCategory": "Speakers",
         "product": "DPS-25M",
         "msrp": 250000,
-        "distPrice": 100000,
-        "dealerPrice": 150000
+        "distPrice": 75000,
+        "dealerPrice": 75000
     },
     {
         "category": "team",
@@ -1853,23 +1701,23 @@
         "product": "DPS-25M",
         "msrp": 250000,
         "distPrice": "-",
-        "dealerPrice": 150000
+        "dealerPrice": 75000
     },
     {
         "category": "style",
         "productCategory": "Speakers",
         "product": "DPS-25M",
         "msrp": 250000,
-        "distPrice": 125000,
-        "dealerPrice": 150000
+        "distPrice": 75000,
+        "dealerPrice": 75000
     },
     {
         "category": "region",
         "productCategory": "Speakers",
         "product": "DPS-25M",
         "msrp": 250000,
-        "distPrice": 125000,
-        "dealerPrice": 150000
+        "distPrice": 75000,
+        "dealerPrice": 75000
     },
     {
         "category": "dealer",
@@ -1900,7 +1748,7 @@
         "productCategory": "Speakers",
         "product": "EV-65CF",
         "msrp": 380000,
-        "distPrice": 190000,
+        "distPrice": 178600,
         "dealerPrice": 228000
     },
     {
@@ -1940,7 +1788,7 @@
         "productCategory": "Speakers",
         "product": "EV-65CF-Converter P",
         "msrp": 30000,
-        "distPrice": 15000,
+        "distPrice": 14100,
         "dealerPrice": 18000
     },
     {
@@ -1980,7 +1828,7 @@
         "productCategory": "Speakers",
         "product": "EV-40M-T",
         "msrp": 560000,
-        "distPrice": 280000,
+        "distPrice": 263200,
         "dealerPrice": 336000
     },
     {
@@ -2020,7 +1868,7 @@
         "productCategory": "Speakers",
         "product": "EV-40MR-T",
         "msrp": 320000,
-        "distPrice": 160000,
+        "distPrice": 150400,
         "dealerPrice": 192000
     },
     {
@@ -2060,7 +1908,7 @@
         "productCategory": "Speakers",
         "product": "EV-100SW 3",
         "msrp": 660000,
-        "distPrice": 330000,
+        "distPrice": 310200,
         "dealerPrice": 396000
     },
     {
@@ -2100,7 +1948,7 @@
         "productCategory": "Speakers",
         "product": "EV-100SW Y",
         "msrp": 660000,
-        "distPrice": 330000,
+        "distPrice": 310200,
         "dealerPrice": 396000
     },
     {
@@ -2321,91 +2169,51 @@
     },
     {
         "category": "master",
-        "productCategory": "Others",
+        "productCategory": "기타상품",
         "product": "UTS-A100",
         "msrp": 600000,
-        "distPrice": 240000,
-        "dealerPrice": 360000
+        "distPrice": 420000,
+        "dealerPrice": 480000
     },
     {
         "category": "team",
-        "productCategory": "Others",
+        "productCategory": "기타상품",
         "product": "UTS-A100",
         "msrp": 600000,
         "distPrice": "-",
-        "dealerPrice": 360000
+        "dealerPrice": 480000
     },
     {
         "category": "style",
-        "productCategory": "Others",
+        "productCategory": "기타상품",
         "product": "UTS-A100",
         "msrp": 600000,
-        "distPrice": 300000,
-        "dealerPrice": 360000
+        "distPrice": 450000,
+        "dealerPrice": 480000
     },
     {
         "category": "region",
-        "productCategory": "Others",
+        "productCategory": "기타상품",
         "product": "UTS-A100",
         "msrp": 600000,
-        "distPrice": 300000,
-        "dealerPrice": 360000
+        "distPrice": 450000,
+        "dealerPrice": 480000
     },
     {
         "category": "dealer",
-        "productCategory": "Others",
+        "productCategory": "기타상품",
         "product": "UTS-A100",
         "msrp": 600000,
         "distPrice": "-",
-        "dealerPrice": 360000
-    },
-    {
-        "category": "master",
-        "productCategory": "Speakers",
-        "product": "RAV4 Lift Up Speaker",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "team",
-        "productCategory": "Speakers",
-        "product": "RAV4 Lift Up Speaker",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
-    },
-    {
-        "category": "style",
-        "productCategory": "Speakers",
-        "product": "RAV4 Lift Up Speaker",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "region",
-        "productCategory": "Speakers",
-        "product": "RAV4 Lift Up Speaker",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "dealer",
-        "productCategory": "Speakers",
-        "product": "RAV4 Lift Up Speaker",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
+        "dealerPrice": 480000
     },
     {
         "category": "master",
         "productCategory": "ALPINESTYLE",
         "product": "DVR-DM1000KO-IC",
         "msrp": 800000,
-        "distPrice": 320000,
-        "dealerPrice": 480000
+        "distPrice": 490000,
+        "dealerPrice": 620000
     },
     {
         "category": "team",
@@ -2413,23 +2221,23 @@
         "product": "DVR-DM1000KO-IC",
         "msrp": 800000,
         "distPrice": "-",
-        "dealerPrice": 480000
+        "dealerPrice": 620000
     },
     {
         "category": "style",
         "productCategory": "ALPINESTYLE",
         "product": "DVR-DM1000KO-IC",
         "msrp": 800000,
-        "distPrice": 400000,
-        "dealerPrice": 480000
+        "distPrice": 490000,
+        "dealerPrice": 620000
     },
     {
         "category": "region",
         "productCategory": "ALPINESTYLE",
         "product": "DVR-DM1000KO-IC",
         "msrp": 800000,
-        "distPrice": 400000,
-        "dealerPrice": 480000
+        "distPrice": 490000,
+        "dealerPrice": 620000
     },
     {
         "category": "dealer",
@@ -2437,15 +2245,15 @@
         "product": "DVR-DM1000KO-IC",
         "msrp": 800000,
         "distPrice": "-",
-        "dealerPrice": 480000
+        "dealerPrice": 620000
     },
     {
         "category": "master",
         "productCategory": "ALPINESTYLE",
         "product": "MS-165-KO-WH",
         "msrp": 850000,
-        "distPrice": 340000,
-        "dealerPrice": 510000
+        "distPrice": 500000,
+        "dealerPrice": 600000
     },
     {
         "category": "team",
@@ -2453,23 +2261,23 @@
         "product": "MS-165-KO-WH",
         "msrp": 850000,
         "distPrice": "-",
-        "dealerPrice": 510000
+        "dealerPrice": 600000
     },
     {
         "category": "style",
         "productCategory": "ALPINESTYLE",
         "product": "MS-165-KO-WH",
         "msrp": 850000,
-        "distPrice": 425000,
-        "dealerPrice": 510000
+        "distPrice": 500000,
+        "dealerPrice": 600000
     },
     {
         "category": "region",
         "productCategory": "ALPINESTYLE",
         "product": "MS-165-KO-WH",
         "msrp": 850000,
-        "distPrice": 425000,
-        "dealerPrice": 510000
+        "distPrice": 500000,
+        "dealerPrice": 600000
     },
     {
         "category": "dealer",
@@ -2477,19 +2285,19 @@
         "product": "MS-165-KO-WH",
         "msrp": 850000,
         "distPrice": "-",
-        "dealerPrice": 510000
+        "dealerPrice": 600000
     },
     {
         "category": "master",
-        "productCategory": "Others",
+        "productCategory": "기타상품",
         "product": "Status Tweeter Chamber",
         "msrp": 240000,
-        "distPrice": 96000,
+        "distPrice": 144000,
         "dealerPrice": 144000
     },
     {
         "category": "team",
-        "productCategory": "Others",
+        "productCategory": "기타상품",
         "product": "Status Tweeter Chamber",
         "msrp": 240000,
         "distPrice": "-",
@@ -2497,23 +2305,23 @@
     },
     {
         "category": "style",
-        "productCategory": "Others",
+        "productCategory": "기타상품",
         "product": "Status Tweeter Chamber",
         "msrp": 240000,
-        "distPrice": 120000,
+        "distPrice": 144000,
         "dealerPrice": 144000
     },
     {
         "category": "region",
-        "productCategory": "Others",
+        "productCategory": "기타상품",
         "product": "Status Tweeter Chamber",
         "msrp": 240000,
-        "distPrice": 120000,
+        "distPrice": 144000,
         "dealerPrice": 144000
     },
     {
         "category": "dealer",
-        "productCategory": "Others",
+        "productCategory": "기타상품",
         "product": "Status Tweeter Chamber",
         "msrp": 240000,
         "distPrice": "-",
@@ -2521,7 +2329,7 @@
     },
     {
         "category": "master",
-        "productCategory": "Others",
+        "productCategory": "기타상품",
         "product": "현대/기아 6.5\" 배플",
         "msrp": 50000,
         "distPrice": 20000,
@@ -2529,7 +2337,7 @@
     },
     {
         "category": "team",
-        "productCategory": "Others",
+        "productCategory": "기타상품",
         "product": "현대/기아 6.5\" 배플",
         "msrp": 50000,
         "distPrice": "-",
@@ -2537,7 +2345,7 @@
     },
     {
         "category": "style",
-        "productCategory": "Others",
+        "productCategory": "기타상품",
         "product": "현대/기아 6.5\" 배플",
         "msrp": 50000,
         "distPrice": 25000,
@@ -2545,7 +2353,7 @@
     },
     {
         "category": "region",
-        "productCategory": "Others",
+        "productCategory": "기타상품",
         "product": "현대/기아 6.5\" 배플",
         "msrp": 50000,
         "distPrice": 25000,
@@ -2553,7 +2361,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "Others",
+        "productCategory": "기타상품",
         "product": "현대/기아 6.5\" 배플",
         "msrp": 50000,
         "distPrice": "-",
@@ -2561,7 +2369,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-101 / HK-102 / HK-103",
         "msrp": 90000,
         "distPrice": 36000,
@@ -2569,7 +2377,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-101 / HK-102 / HK-103",
         "msrp": 90000,
         "distPrice": "-",
@@ -2577,23 +2385,23 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
-        "product": "HK-101 / HK-102 / HK-103",
-        "msrp": 90000,
-        "distPrice": 45000,
-        "dealerPrice": 54000
-    },
-    {
-        "category": "region",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-101 / HK-102 / HK-103",
         "msrp": 90000,
         "distPrice": 45000,
         "dealerPrice": 54000
     },
     {
+        "category": "region",
+        "productCategory": "PnP Cable",
+        "product": "HK-101 / HK-102 / HK-103",
+        "msrp": 90000,
+        "distPrice": 45000,
+        "dealerPrice": 54000
+    },
+    {
         "category": "dealer",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-101 / HK-102 / HK-103",
         "msrp": 90000,
         "distPrice": "-",
@@ -2601,7 +2409,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-104",
         "msrp": 150000,
         "distPrice": 60000,
@@ -2609,7 +2417,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-104",
         "msrp": 150000,
         "distPrice": "-",
@@ -2617,7 +2425,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-104",
         "msrp": 150000,
         "distPrice": 75000,
@@ -2625,7 +2433,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-104",
         "msrp": 150000,
         "distPrice": 75000,
@@ -2633,7 +2441,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-104",
         "msrp": 150000,
         "distPrice": "-",
@@ -2641,7 +2449,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-106",
         "msrp": 150000,
         "distPrice": 60000,
@@ -2649,7 +2457,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-106",
         "msrp": 150000,
         "distPrice": "-",
@@ -2657,7 +2465,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-106",
         "msrp": 150000,
         "distPrice": 75000,
@@ -2665,7 +2473,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-106",
         "msrp": 150000,
         "distPrice": 75000,
@@ -2673,7 +2481,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-106",
         "msrp": 150000,
         "distPrice": "-",
@@ -2681,7 +2489,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-107",
         "msrp": 150000,
         "distPrice": 60000,
@@ -2689,7 +2497,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-107",
         "msrp": 150000,
         "distPrice": "-",
@@ -2697,7 +2505,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-107",
         "msrp": 150000,
         "distPrice": 75000,
@@ -2705,7 +2513,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-107",
         "msrp": 150000,
         "distPrice": 75000,
@@ -2713,7 +2521,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-107",
         "msrp": 150000,
         "distPrice": "-",
@@ -2721,7 +2529,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-1A",
         "msrp": 155000,
         "distPrice": 62000,
@@ -2729,7 +2537,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-1A",
         "msrp": 155000,
         "distPrice": "-",
@@ -2737,7 +2545,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-1A",
         "msrp": 155000,
         "distPrice": 77500,
@@ -2745,7 +2553,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-1A",
         "msrp": 155000,
         "distPrice": 77500,
@@ -2753,7 +2561,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-1A",
         "msrp": 155000,
         "distPrice": "-",
@@ -2761,7 +2569,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-2A",
         "msrp": 120000,
         "distPrice": 48000,
@@ -2769,7 +2577,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-2A",
         "msrp": 120000,
         "distPrice": "-",
@@ -2777,23 +2585,23 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
-        "product": "HK-2A",
-        "msrp": 120000,
-        "distPrice": 60000,
-        "dealerPrice": 72000
-    },
-    {
-        "category": "region",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-2A",
         "msrp": 120000,
         "distPrice": 60000,
         "dealerPrice": 72000
     },
     {
+        "category": "region",
+        "productCategory": "PnP Cable",
+        "product": "HK-2A",
+        "msrp": 120000,
+        "distPrice": 60000,
+        "dealerPrice": 72000
+    },
+    {
         "category": "dealer",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-2A",
         "msrp": 120000,
         "distPrice": "-",
@@ -2801,7 +2609,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-12A / HK-13A / HK-15A / HK-16A",
         "msrp": 180000,
         "distPrice": 72000,
@@ -2809,7 +2617,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-12A / HK-13A / HK-15A / HK-16A",
         "msrp": 180000,
         "distPrice": "-",
@@ -2817,7 +2625,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-12A / HK-13A / HK-15A / HK-16A",
         "msrp": 180000,
         "distPrice": 90000,
@@ -2825,7 +2633,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-12A / HK-13A / HK-15A / HK-16A",
         "msrp": 180000,
         "distPrice": 90000,
@@ -2833,7 +2641,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-12A / HK-13A / HK-15A / HK-16A",
         "msrp": 180000,
         "distPrice": "-",
@@ -2841,7 +2649,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-14A / HK-19A / HK-20A / HK-21A / HK-23A /  HK-24A / HK-26A / HK-28A",
         "msrp": 180000,
         "distPrice": 72000,
@@ -2849,7 +2657,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-14A / HK-19A / HK-20A / HK-21A / HK-23A /  HK-24A / HK-26A / HK-28A",
         "msrp": 180000,
         "distPrice": "-",
@@ -2857,7 +2665,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-14A / HK-19A / HK-20A / HK-21A / HK-23A /  HK-24A / HK-26A / HK-28A",
         "msrp": 180000,
         "distPrice": 90000,
@@ -2865,7 +2673,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-14A / HK-19A / HK-20A / HK-21A / HK-23A /  HK-24A / HK-26A / HK-28A",
         "msrp": 180000,
         "distPrice": 90000,
@@ -2873,7 +2681,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "HK-14A / HK-19A / HK-20A / HK-21A / HK-23A /  HK-24A / HK-26A / HK-28A",
         "msrp": 180000,
         "distPrice": "-",
@@ -2881,7 +2689,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "GE-2A / GE-3A / GE-6A / GE-7A / GE-8A / GE-9A / GE-10A / GE-11A",
         "msrp": 180000,
         "distPrice": 72000,
@@ -2889,7 +2697,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "GE-2A / GE-3A / GE-6A / GE-7A / GE-8A / GE-9A / GE-10A / GE-11A",
         "msrp": 180000,
         "distPrice": "-",
@@ -2897,7 +2705,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "GE-2A / GE-3A / GE-6A / GE-7A / GE-8A / GE-9A / GE-10A / GE-11A",
         "msrp": 180000,
         "distPrice": 90000,
@@ -2905,7 +2713,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "GE-2A / GE-3A / GE-6A / GE-7A / GE-8A / GE-9A / GE-10A / GE-11A",
         "msrp": 180000,
         "distPrice": 90000,
@@ -2913,7 +2721,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 국산차 (Domestic)",
+        "productCategory": "PnP Cable",
         "product": "GE-2A / GE-3A / GE-6A / GE-7A / GE-8A / GE-9A / GE-10A / GE-11A",
         "msrp": 180000,
         "distPrice": "-",
@@ -2921,7 +2729,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-401",
         "msrp": 260000,
         "distPrice": 104000,
@@ -2929,7 +2737,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-401",
         "msrp": 260000,
         "distPrice": "-",
@@ -2937,7 +2745,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-401",
         "msrp": 260000,
         "distPrice": 130000,
@@ -2945,7 +2753,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-401",
         "msrp": 260000,
         "distPrice": 130000,
@@ -2953,7 +2761,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-401",
         "msrp": 260000,
         "distPrice": "-",
@@ -2961,7 +2769,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-402",
         "msrp": 260000,
         "distPrice": 104000,
@@ -2969,7 +2777,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-402",
         "msrp": 260000,
         "distPrice": "-",
@@ -2977,7 +2785,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-402",
         "msrp": 260000,
         "distPrice": 130000,
@@ -2985,7 +2793,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-402",
         "msrp": 260000,
         "distPrice": 130000,
@@ -2993,7 +2801,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-402",
         "msrp": 260000,
         "distPrice": "-",
@@ -3001,7 +2809,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-403",
         "msrp": 350000,
         "distPrice": 140000,
@@ -3009,7 +2817,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-403",
         "msrp": 350000,
         "distPrice": "-",
@@ -3017,7 +2825,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-403",
         "msrp": 350000,
         "distPrice": 175000,
@@ -3025,7 +2833,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-403",
         "msrp": 350000,
         "distPrice": 175000,
@@ -3033,7 +2841,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-403",
         "msrp": 350000,
         "distPrice": "-",
@@ -3041,7 +2849,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-1A",
         "msrp": 210000,
         "distPrice": 84000,
@@ -3049,7 +2857,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-1A",
         "msrp": 210000,
         "distPrice": "-",
@@ -3057,7 +2865,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-1A",
         "msrp": 210000,
         "distPrice": 105000,
@@ -3065,7 +2873,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-1A",
         "msrp": 210000,
         "distPrice": 105000,
@@ -3073,7 +2881,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-1A",
         "msrp": 210000,
         "distPrice": "-",
@@ -3081,7 +2889,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-2A",
         "msrp": 300000,
         "distPrice": 120000,
@@ -3089,7 +2897,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-2A",
         "msrp": 300000,
         "distPrice": "-",
@@ -3097,7 +2905,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-2A",
         "msrp": 300000,
         "distPrice": 150000,
@@ -3105,7 +2913,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-2A",
         "msrp": 300000,
         "distPrice": 150000,
@@ -3113,7 +2921,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BM-2A",
         "msrp": 300000,
         "distPrice": "-",
@@ -3121,7 +2929,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-501",
         "msrp": 390000,
         "distPrice": 156000,
@@ -3129,7 +2937,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-501",
         "msrp": 390000,
         "distPrice": "-",
@@ -3137,7 +2945,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-501",
         "msrp": 390000,
         "distPrice": 195000,
@@ -3145,7 +2953,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-501",
         "msrp": 390000,
         "distPrice": 195000,
@@ -3153,7 +2961,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-501",
         "msrp": 390000,
         "distPrice": "-",
@@ -3161,7 +2969,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-502",
         "msrp": 450000,
         "distPrice": 180000,
@@ -3169,7 +2977,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-502",
         "msrp": 450000,
         "distPrice": "-",
@@ -3177,7 +2985,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-502",
         "msrp": 450000,
         "distPrice": 225000,
@@ -3185,7 +2993,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-502",
         "msrp": 450000,
         "distPrice": 225000,
@@ -3193,7 +3001,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-502",
         "msrp": 450000,
         "distPrice": "-",
@@ -3201,7 +3009,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-503",
         "msrp": 350000,
         "distPrice": 140000,
@@ -3209,7 +3017,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-503",
         "msrp": 350000,
         "distPrice": "-",
@@ -3217,7 +3025,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-503",
         "msrp": 350000,
         "distPrice": 175000,
@@ -3225,7 +3033,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-503",
         "msrp": 350000,
         "distPrice": 175000,
@@ -3233,7 +3041,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-503",
         "msrp": 350000,
         "distPrice": "-",
@@ -3241,7 +3049,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-1A",
         "msrp": 340000,
         "distPrice": 136000,
@@ -3249,7 +3057,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-1A",
         "msrp": 340000,
         "distPrice": "-",
@@ -3257,7 +3065,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-1A",
         "msrp": 340000,
         "distPrice": 170000,
@@ -3265,7 +3073,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-1A",
         "msrp": 340000,
         "distPrice": 170000,
@@ -3273,7 +3081,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-1A",
         "msrp": 340000,
         "distPrice": "-",
@@ -3281,7 +3089,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-2A",
         "msrp": 540000,
         "distPrice": 216000,
@@ -3289,7 +3097,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-2A",
         "msrp": 540000,
         "distPrice": "-",
@@ -3297,7 +3105,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-2A",
         "msrp": 540000,
         "distPrice": 270000,
@@ -3305,7 +3113,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-2A",
         "msrp": 540000,
         "distPrice": 270000,
@@ -3313,7 +3121,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-2A",
         "msrp": 540000,
         "distPrice": "-",
@@ -3321,7 +3129,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-3A",
         "msrp": 400000,
         "distPrice": 160000,
@@ -3329,7 +3137,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-3A",
         "msrp": 400000,
         "distPrice": "-",
@@ -3337,7 +3145,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-3A",
         "msrp": 400000,
         "distPrice": 200000,
@@ -3345,7 +3153,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-3A",
         "msrp": 400000,
         "distPrice": 200000,
@@ -3353,7 +3161,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "BZ-3A",
         "msrp": 400000,
         "distPrice": "-",
@@ -3361,7 +3169,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "BY-101",
         "msrp": 200000,
         "distPrice": 80000,
@@ -3369,7 +3177,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "BY-101",
         "msrp": 200000,
         "distPrice": "-",
@@ -3377,7 +3185,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "BY-101",
         "msrp": 200000,
         "distPrice": 100000,
@@ -3385,7 +3193,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "BY-101",
         "msrp": 200000,
         "distPrice": 100000,
@@ -3393,7 +3201,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "BY-101",
         "msrp": 200000,
         "distPrice": "-",
@@ -3401,7 +3209,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "BY-2A",
         "msrp": 300000,
         "distPrice": 120000,
@@ -3409,7 +3217,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "BY-2A",
         "msrp": 300000,
         "distPrice": "-",
@@ -3417,7 +3225,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "BY-2A",
         "msrp": 300000,
         "distPrice": 150000,
@@ -3425,7 +3233,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "BY-2A",
         "msrp": 300000,
         "distPrice": 150000,
@@ -3433,7 +3241,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "BY-2A",
         "msrp": 300000,
         "distPrice": "-",
@@ -3441,7 +3249,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "RR-1A",
         "msrp": 400000,
         "distPrice": 160000,
@@ -3449,7 +3257,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "RR-1A",
         "msrp": 400000,
         "distPrice": "-",
@@ -3457,7 +3265,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "RR-1A",
         "msrp": 400000,
         "distPrice": 200000,
@@ -3465,7 +3273,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "RR-1A",
         "msrp": 400000,
         "distPrice": 200000,
@@ -3473,7 +3281,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "RR-1A",
         "msrp": 400000,
         "distPrice": "-",
@@ -3481,7 +3289,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "RR-2A",
         "msrp": 370000,
         "distPrice": 148000,
@@ -3489,7 +3297,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "RR-2A",
         "msrp": 370000,
         "distPrice": "-",
@@ -3497,7 +3305,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "RR-2A",
         "msrp": 370000,
         "distPrice": 185000,
@@ -3505,7 +3313,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "RR-2A",
         "msrp": 370000,
         "distPrice": 185000,
@@ -3513,7 +3321,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "productCategory": "PnP Cable",
         "product": "RR-2A",
         "msrp": 370000,
         "distPrice": "-",
@@ -3521,7 +3329,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "AU-1A",
         "msrp": 400000,
         "distPrice": 160000,
@@ -3529,7 +3337,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "AU-1A",
         "msrp": 400000,
         "distPrice": "-",
@@ -3537,7 +3345,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "AU-1A",
         "msrp": 400000,
         "distPrice": 200000,
@@ -3545,7 +3353,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "AU-1A",
         "msrp": 400000,
         "distPrice": 200000,
@@ -3553,7 +3361,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
+        "productCategory": "PnP Cable",
         "product": "AU-1A",
         "msrp": 400000,
         "distPrice": "-",
@@ -3561,7 +3369,247 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
+        "product": "TS-301",
+        "msrp": 390000,
+        "distPrice": 156000,
+        "dealerPrice": 234000
+    },
+    {
+        "category": "team",
+        "productCategory": "PnP Cable",
+        "product": "TS-301",
+        "msrp": 390000,
+        "distPrice": "-",
+        "dealerPrice": 234000
+    },
+    {
+        "category": "style",
+        "productCategory": "PnP Cable",
+        "product": "TS-301",
+        "msrp": 390000,
+        "distPrice": 195000,
+        "dealerPrice": 234000
+    },
+    {
+        "category": "region",
+        "productCategory": "PnP Cable",
+        "product": "TS-301",
+        "msrp": 390000,
+        "distPrice": 195000,
+        "dealerPrice": 234000
+    },
+    {
+        "category": "dealer",
+        "productCategory": "PnP Cable",
+        "product": "TS-301",
+        "msrp": 390000,
+        "distPrice": "-",
+        "dealerPrice": 234000
+    },
+    {
+        "category": "master",
+        "productCategory": "PnP Cable",
+        "product": "TS-302",
+        "msrp": 390000,
+        "distPrice": 156000,
+        "dealerPrice": 234000
+    },
+    {
+        "category": "team",
+        "productCategory": "PnP Cable",
+        "product": "TS-302",
+        "msrp": 390000,
+        "distPrice": "-",
+        "dealerPrice": 234000
+    },
+    {
+        "category": "style",
+        "productCategory": "PnP Cable",
+        "product": "TS-302",
+        "msrp": 390000,
+        "distPrice": 195000,
+        "dealerPrice": 234000
+    },
+    {
+        "category": "region",
+        "productCategory": "PnP Cable",
+        "product": "TS-302",
+        "msrp": 390000,
+        "distPrice": 195000,
+        "dealerPrice": 234000
+    },
+    {
+        "category": "dealer",
+        "productCategory": "PnP Cable",
+        "product": "TS-302",
+        "msrp": 390000,
+        "distPrice": "-",
+        "dealerPrice": 234000
+    },
+    {
+        "category": "master",
+        "productCategory": "PnP Cable",
+        "product": "TS-303",
+        "msrp": 390000,
+        "distPrice": 156000,
+        "dealerPrice": 234000
+    },
+    {
+        "category": "team",
+        "productCategory": "PnP Cable",
+        "product": "TS-303",
+        "msrp": 390000,
+        "distPrice": "-",
+        "dealerPrice": 234000
+    },
+    {
+        "category": "style",
+        "productCategory": "PnP Cable",
+        "product": "TS-303",
+        "msrp": 390000,
+        "distPrice": 195000,
+        "dealerPrice": 234000
+    },
+    {
+        "category": "region",
+        "productCategory": "PnP Cable",
+        "product": "TS-303",
+        "msrp": 390000,
+        "distPrice": 195000,
+        "dealerPrice": 234000
+    },
+    {
+        "category": "dealer",
+        "productCategory": "PnP Cable",
+        "product": "TS-303",
+        "msrp": 390000,
+        "distPrice": "-",
+        "dealerPrice": 234000
+    },
+    {
+        "category": "master",
+        "productCategory": "PnP Cable",
+        "product": "TS-304",
+        "msrp": 390000,
+        "distPrice": 156000,
+        "dealerPrice": 234000
+    },
+    {
+        "category": "team",
+        "productCategory": "PnP Cable",
+        "product": "TS-304",
+        "msrp": 390000,
+        "distPrice": "-",
+        "dealerPrice": 234000
+    },
+    {
+        "category": "style",
+        "productCategory": "PnP Cable",
+        "product": "TS-304",
+        "msrp": 390000,
+        "distPrice": 195000,
+        "dealerPrice": 234000
+    },
+    {
+        "category": "region",
+        "productCategory": "PnP Cable",
+        "product": "TS-304",
+        "msrp": 390000,
+        "distPrice": 195000,
+        "dealerPrice": 234000
+    },
+    {
+        "category": "dealer",
+        "productCategory": "PnP Cable",
+        "product": "TS-304",
+        "msrp": 390000,
+        "distPrice": "-",
+        "dealerPrice": 234000
+    },
+    {
+        "category": "master",
+        "productCategory": "PnP Cable",
+        "product": "VW-1A",
+        "msrp": 230000,
+        "distPrice": 92000,
+        "dealerPrice": 138000
+    },
+    {
+        "category": "team",
+        "productCategory": "PnP Cable",
+        "product": "VW-1A",
+        "msrp": 230000,
+        "distPrice": "-",
+        "dealerPrice": 138000
+    },
+    {
+        "category": "style",
+        "productCategory": "PnP Cable",
+        "product": "VW-1A",
+        "msrp": 230000,
+        "distPrice": 115000,
+        "dealerPrice": 138000
+    },
+    {
+        "category": "region",
+        "productCategory": "PnP Cable",
+        "product": "VW-1A",
+        "msrp": 230000,
+        "distPrice": 115000,
+        "dealerPrice": 138000
+    },
+    {
+        "category": "dealer",
+        "productCategory": "PnP Cable",
+        "product": "VW-1A",
+        "msrp": 230000,
+        "distPrice": "-",
+        "dealerPrice": 138000
+    },
+    {
+        "category": "master",
+        "productCategory": "PnP Cable",
+        "product": "CH-1A",
+        "msrp": 230000,
+        "distPrice": 92000,
+        "dealerPrice": 138000
+    },
+    {
+        "category": "team",
+        "productCategory": "PnP Cable",
+        "product": "CH-1A",
+        "msrp": 230000,
+        "distPrice": "-",
+        "dealerPrice": 138000
+    },
+    {
+        "category": "style",
+        "productCategory": "PnP Cable",
+        "product": "CH-1A",
+        "msrp": 230000,
+        "distPrice": 115000,
+        "dealerPrice": 138000
+    },
+    {
+        "category": "region",
+        "productCategory": "PnP Cable",
+        "product": "CH-1A",
+        "msrp": 230000,
+        "distPrice": 115000,
+        "dealerPrice": 138000
+    },
+    {
+        "category": "dealer",
+        "productCategory": "PnP Cable",
+        "product": "CH-1A",
+        "msrp": 230000,
+        "distPrice": "-",
+        "dealerPrice": 138000
+    },
+    {
+        "category": "master",
+        "productCategory": "PnP Cable",
         "product": "DS-4B",
         "msrp": 95000,
         "distPrice": 38000,
@@ -3569,7 +3617,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-4B",
         "msrp": 95000,
         "distPrice": "-",
@@ -3577,7 +3625,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-4B",
         "msrp": 95000,
         "distPrice": 47500,
@@ -3585,7 +3633,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-4B",
         "msrp": 95000,
         "distPrice": 47500,
@@ -3593,7 +3641,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-4B",
         "msrp": 95000,
         "distPrice": "-",
@@ -3601,7 +3649,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-4B(S)",
         "msrp": 95000,
         "distPrice": 38000,
@@ -3609,7 +3657,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-4B(S)",
         "msrp": 95000,
         "distPrice": "-",
@@ -3617,23 +3665,23 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - DSP",
-        "product": "DS-4B(S)",
-        "msrp": 95000,
-        "distPrice": 47500,
-        "dealerPrice": 57000
-    },
-    {
-        "category": "region",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-4B(S)",
         "msrp": 95000,
         "distPrice": 47500,
         "dealerPrice": 57000
     },
     {
+        "category": "region",
+        "productCategory": "PnP Cable",
+        "product": "DS-4B(S)",
+        "msrp": 95000,
+        "distPrice": 47500,
+        "dealerPrice": 57000
+    },
+    {
         "category": "dealer",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-4B(S)",
         "msrp": 95000,
         "distPrice": "-",
@@ -3641,7 +3689,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-8B",
         "msrp": 130000,
         "distPrice": 52000,
@@ -3649,7 +3697,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-8B",
         "msrp": 130000,
         "distPrice": "-",
@@ -3657,7 +3705,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-8B",
         "msrp": 130000,
         "distPrice": 65000,
@@ -3665,7 +3713,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-8B",
         "msrp": 130000,
         "distPrice": 65000,
@@ -3673,7 +3721,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-8B",
         "msrp": 130000,
         "distPrice": "-",
@@ -3681,7 +3729,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-8B(S)",
         "msrp": 130000,
         "distPrice": 52000,
@@ -3689,7 +3737,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-8B(S)",
         "msrp": 130000,
         "distPrice": "-",
@@ -3697,7 +3745,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-8B(S)",
         "msrp": 130000,
         "distPrice": 65000,
@@ -3705,7 +3753,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-8B(S)",
         "msrp": 130000,
         "distPrice": 65000,
@@ -3713,7 +3761,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-8B(S)",
         "msrp": 130000,
         "distPrice": "-",
@@ -3721,7 +3769,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-81B",
         "msrp": 130000,
         "distPrice": 52000,
@@ -3729,7 +3777,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-81B",
         "msrp": 130000,
         "distPrice": "-",
@@ -3737,7 +3785,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-81B",
         "msrp": 130000,
         "distPrice": 65000,
@@ -3745,7 +3793,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-81B",
         "msrp": 130000,
         "distPrice": 65000,
@@ -3753,7 +3801,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-81B",
         "msrp": 130000,
         "distPrice": "-",
@@ -3761,7 +3809,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-81B(S)",
         "msrp": 130000,
         "distPrice": 52000,
@@ -3769,7 +3817,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-81B(S)",
         "msrp": 130000,
         "distPrice": "-",
@@ -3777,23 +3825,23 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - DSP",
-        "product": "DS-81B(S)",
-        "msrp": 130000,
-        "distPrice": 65000,
-        "dealerPrice": 78000
-    },
-    {
-        "category": "region",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-81B(S)",
         "msrp": 130000,
         "distPrice": 65000,
         "dealerPrice": 78000
     },
     {
+        "category": "region",
+        "productCategory": "PnP Cable",
+        "product": "DS-81B(S)",
+        "msrp": 130000,
+        "distPrice": 65000,
+        "dealerPrice": 78000
+    },
+    {
         "category": "dealer",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-81B(S)",
         "msrp": 130000,
         "distPrice": "-",
@@ -3801,7 +3849,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-82B",
         "msrp": 180000,
         "distPrice": 72000,
@@ -3809,7 +3857,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-82B",
         "msrp": 180000,
         "distPrice": "-",
@@ -3817,7 +3865,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-82B",
         "msrp": 180000,
         "distPrice": 90000,
@@ -3825,7 +3873,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-82B",
         "msrp": 180000,
         "distPrice": 90000,
@@ -3833,7 +3881,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-82B",
         "msrp": 180000,
         "distPrice": "-",
@@ -3841,7 +3889,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-10B",
         "msrp": 180000,
         "distPrice": 72000,
@@ -3849,7 +3897,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-10B",
         "msrp": 180000,
         "distPrice": "-",
@@ -3857,7 +3905,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-10B",
         "msrp": 180000,
         "distPrice": 90000,
@@ -3865,7 +3913,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-10B",
         "msrp": 180000,
         "distPrice": 90000,
@@ -3873,7 +3921,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-10B",
         "msrp": 180000,
         "distPrice": "-",
@@ -3881,7 +3929,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-10B(S)",
         "msrp": 180000,
         "distPrice": 72000,
@@ -3889,7 +3937,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-10B(S)",
         "msrp": 180000,
         "distPrice": "-",
@@ -3897,7 +3945,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-10B(S)",
         "msrp": 180000,
         "distPrice": 90000,
@@ -3905,7 +3953,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-10B(S)",
         "msrp": 180000,
         "distPrice": 90000,
@@ -3913,7 +3961,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-10B(S)",
         "msrp": 180000,
         "distPrice": "-",
@@ -3921,7 +3969,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-12B",
         "msrp": 130000,
         "distPrice": 52000,
@@ -3929,7 +3977,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-12B",
         "msrp": 130000,
         "distPrice": "-",
@@ -3937,7 +3985,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-12B",
         "msrp": 130000,
         "distPrice": 65000,
@@ -3945,7 +3993,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-12B",
         "msrp": 130000,
         "distPrice": 65000,
@@ -3953,7 +4001,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-12B",
         "msrp": 130000,
         "distPrice": "-",
@@ -3961,7 +4009,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-12B(S)",
         "msrp": 180000,
         "distPrice": 72000,
@@ -3969,7 +4017,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-12B(S)",
         "msrp": 180000,
         "distPrice": "-",
@@ -3977,7 +4025,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-12B(S)",
         "msrp": 180000,
         "distPrice": 90000,
@@ -3985,7 +4033,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-12B(S)",
         "msrp": 180000,
         "distPrice": 90000,
@@ -3993,7 +4041,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-12B(S)",
         "msrp": 180000,
         "distPrice": "-",
@@ -4001,7 +4049,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-14B",
         "msrp": 130000,
         "distPrice": 52000,
@@ -4009,7 +4057,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-14B",
         "msrp": 130000,
         "distPrice": "-",
@@ -4017,7 +4065,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-14B",
         "msrp": 130000,
         "distPrice": 65000,
@@ -4025,7 +4073,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-14B",
         "msrp": 130000,
         "distPrice": 65000,
@@ -4033,7 +4081,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-14B",
         "msrp": 130000,
         "distPrice": "-",
@@ -4041,7 +4089,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-14B(S)",
         "msrp": 180000,
         "distPrice": 72000,
@@ -4049,7 +4097,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-14B(S)",
         "msrp": 180000,
         "distPrice": "-",
@@ -4057,7 +4105,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-14B(S)",
         "msrp": 180000,
         "distPrice": 90000,
@@ -4065,7 +4113,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-14B(S)",
         "msrp": 180000,
         "distPrice": 90000,
@@ -4073,7 +4121,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - DSP",
+        "productCategory": "PnP Cable",
         "product": "DS-14B(S)",
         "msrp": 180000,
         "distPrice": "-",
@@ -4081,7 +4129,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "M60 3M 연장케이블",
         "msrp": 90000,
         "distPrice": 36000,
@@ -4089,7 +4137,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "M60 3M 연장케이블",
         "msrp": 90000,
         "distPrice": "-",
@@ -4097,7 +4145,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "M60 3M 연장케이블",
         "msrp": 90000,
         "distPrice": 45000,
@@ -4105,7 +4153,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "M60 3M 연장케이블",
         "msrp": 90000,
         "distPrice": 45000,
@@ -4113,7 +4161,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "M60 3M 연장케이블",
         "msrp": 90000,
         "distPrice": "-",
@@ -4121,7 +4169,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "M60 유니버셜 젠더 (20P)",
         "msrp": 25000,
         "distPrice": 10000,
@@ -4129,7 +4177,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "M60 유니버셜 젠더 (20P)",
         "msrp": 25000,
         "distPrice": "-",
@@ -4137,7 +4185,7 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "M60 유니버셜 젠더 (20P)",
         "msrp": 25000,
         "distPrice": 12500,
@@ -4145,7 +4193,7 @@
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "M60 유니버셜 젠더 (20P)",
         "msrp": 25000,
         "distPrice": 12500,
@@ -4153,7 +4201,7 @@
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "M60 유니버셜 젠더 (20P)",
         "msrp": 25000,
         "distPrice": "-",
@@ -4161,7 +4209,7 @@
     },
     {
         "category": "master",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "3.5M 연장 케이블",
         "msrp": 50000,
         "distPrice": 20000,
@@ -4169,7 +4217,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "3.5M 연장 케이블",
         "msrp": 50000,
         "distPrice": "-",
@@ -4177,23 +4225,23 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 기타 (Other)",
-        "product": "3.5M 연장 케이블",
-        "msrp": 50000,
-        "distPrice": 25000,
-        "dealerPrice": 30000
-    },
-    {
-        "category": "region",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "3.5M 연장 케이블",
         "msrp": 50000,
         "distPrice": 25000,
         "dealerPrice": 30000
     },
     {
+        "category": "region",
+        "productCategory": "PnP Cable",
+        "product": "3.5M 연장 케이블",
+        "msrp": 50000,
+        "distPrice": 25000,
+        "dealerPrice": 30000
+    },
+    {
         "category": "dealer",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "3.5M 연장 케이블",
         "msrp": 50000,
         "distPrice": "-",
@@ -4201,247 +4249,7 @@
     },
     {
         "category": "master",
-        "productCategory": "Alpine OEM Fit",
-        "product": "테슬라 프론트 스피커 패키지",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "team",
-        "productCategory": "Alpine OEM Fit",
-        "product": "테슬라 프론트 스피커 패키지",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
-    },
-    {
-        "category": "style",
-        "productCategory": "Alpine OEM Fit",
-        "product": "테슬라 프론트 스피커 패키지",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "region",
-        "productCategory": "Alpine OEM Fit",
-        "product": "테슬라 프론트 스피커 패키지",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "dealer",
-        "productCategory": "Alpine OEM Fit",
-        "product": "테슬라 프론트 스피커 패키지",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
-    },
-    {
-        "category": "master",
-        "productCategory": "Alpine OEM Fit",
-        "product": "KGM 알파인오디오 옵션 차량 서브우퍼 패키지",
-        "msrp": 600000,
-        "distPrice": 240000,
-        "dealerPrice": 360000
-    },
-    {
-        "category": "team",
-        "productCategory": "Alpine OEM Fit",
-        "product": "KGM 알파인오디오 옵션 차량 서브우퍼 패키지",
-        "msrp": 600000,
-        "distPrice": "-",
-        "dealerPrice": 360000
-    },
-    {
-        "category": "style",
-        "productCategory": "Alpine OEM Fit",
-        "product": "KGM 알파인오디오 옵션 차량 서브우퍼 패키지",
-        "msrp": 600000,
-        "distPrice": 300000,
-        "dealerPrice": 360000
-    },
-    {
-        "category": "region",
-        "productCategory": "Alpine OEM Fit",
-        "product": "KGM 알파인오디오 옵션 차량 서브우퍼 패키지",
-        "msrp": 600000,
-        "distPrice": 300000,
-        "dealerPrice": 360000
-    },
-    {
-        "category": "dealer",
-        "productCategory": "Alpine OEM Fit",
-        "product": "KGM 알파인오디오 옵션 차량 서브우퍼 패키지",
-        "msrp": 600000,
-        "distPrice": "-",
-        "dealerPrice": 360000
-    },
-    {
-        "category": "master",
-        "productCategory": "Alpine OEM Fit",
-        "product": "BMW 스피커 패키지",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "team",
-        "productCategory": "Alpine OEM Fit",
-        "product": "BMW 스피커 패키지",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
-    },
-    {
-        "category": "style",
-        "productCategory": "Alpine OEM Fit",
-        "product": "BMW 스피커 패키지",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "region",
-        "productCategory": "Alpine OEM Fit",
-        "product": "BMW 스피커 패키지",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "dealer",
-        "productCategory": "Alpine OEM Fit",
-        "product": "BMW 스피커 패키지",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
-    },
-    {
-        "category": "master",
-        "productCategory": "Alpine OEM Fit",
-        "product": "KGM 앰비언트 트위터 패키지",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "team",
-        "productCategory": "Alpine OEM Fit",
-        "product": "KGM 앰비언트 트위터 패키지",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
-    },
-    {
-        "category": "style",
-        "productCategory": "Alpine OEM Fit",
-        "product": "KGM 앰비언트 트위터 패키지",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "region",
-        "productCategory": "Alpine OEM Fit",
-        "product": "KGM 앰비언트 트위터 패키지",
-        "msrp": 0,
-        "distPrice": 0,
-        "dealerPrice": 0
-    },
-    {
-        "category": "dealer",
-        "productCategory": "Alpine OEM Fit",
-        "product": "KGM 앰비언트 트위터 패키지",
-        "msrp": 0,
-        "distPrice": "-",
-        "dealerPrice": 0
-    },
-    {
-        "category": "master",
-        "productCategory": "Alpine OEM Fit",
-        "product": "레인지로버 18CH 메리디안 3D 서라운드 / 알파인 Status 패키지",
-        "msrp": 12000000,
-        "distPrice": 4800000,
-        "dealerPrice": 7200000
-    },
-    {
-        "category": "team",
-        "productCategory": "Alpine OEM Fit",
-        "product": "레인지로버 18CH 메리디안 3D 서라운드 / 알파인 Status 패키지",
-        "msrp": 12000000,
-        "distPrice": "-",
-        "dealerPrice": 7200000
-    },
-    {
-        "category": "style",
-        "productCategory": "Alpine OEM Fit",
-        "product": "레인지로버 18CH 메리디안 3D 서라운드 / 알파인 Status 패키지",
-        "msrp": 12000000,
-        "distPrice": 6000000,
-        "dealerPrice": 7200000
-    },
-    {
-        "category": "region",
-        "productCategory": "Alpine OEM Fit",
-        "product": "레인지로버 18CH 메리디안 3D 서라운드 / 알파인 Status 패키지",
-        "msrp": 12000000,
-        "distPrice": 6000000,
-        "dealerPrice": 7200000
-    },
-    {
-        "category": "dealer",
-        "productCategory": "Alpine OEM Fit",
-        "product": "레인지로버 18CH 메리디안 3D 서라운드 / 알파인 Status 패키지",
-        "msrp": 12000000,
-        "distPrice": "-",
-        "dealerPrice": 7200000
-    },
-    {
-        "category": "master",
-        "productCategory": "Alpine OEM Fit",
-        "product": "G80 알파인 Status 패키지",
-        "msrp": 7590000,
-        "distPrice": 3036000,
-        "dealerPrice": 4554000
-    },
-    {
-        "category": "team",
-        "productCategory": "Alpine OEM Fit",
-        "product": "G80 알파인 Status 패키지",
-        "msrp": 7590000,
-        "distPrice": "-",
-        "dealerPrice": 4554000
-    },
-    {
-        "category": "style",
-        "productCategory": "Alpine OEM Fit",
-        "product": "G80 알파인 Status 패키지",
-        "msrp": 7590000,
-        "distPrice": 3795000,
-        "dealerPrice": 4554000
-    },
-    {
-        "category": "region",
-        "productCategory": "Alpine OEM Fit",
-        "product": "G80 알파인 Status 패키지",
-        "msrp": 7590000,
-        "distPrice": 3795000,
-        "dealerPrice": 4554000
-    },
-    {
-        "category": "dealer",
-        "productCategory": "Alpine OEM Fit",
-        "product": "G80 알파인 Status 패키지",
-        "msrp": 7590000,
-        "distPrice": "-",
-        "dealerPrice": 4554000
-    },
-    {
-        "category": "master",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "PXE-M770 External Cable(8M)",
         "msrp": 60000,
         "distPrice": 24000,
@@ -4449,7 +4257,7 @@
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "PXE-M770 External Cable(8M)",
         "msrp": 60000,
         "distPrice": "-",
@@ -4457,271 +4265,222 @@
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 기타 (Other)",
-        "product": "PXE-M770 External Cable(8M)",
-        "msrp": 60000,
-        "distPrice": 30000,
-        "dealerPrice": 36000
-    },
-    {
-        "category": "region",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "PXE-M770 External Cable(8M)",
         "msrp": 60000,
         "distPrice": 30000,
         "dealerPrice": 36000
     },
     {
+        "category": "region",
+        "productCategory": "PnP Cable",
+        "product": "PXE-M770 External Cable(8M)",
+        "msrp": 60000,
+        "distPrice": 30000,
+        "dealerPrice": 36000
+    },
+    {
         "category": "dealer",
-        "productCategory": "PnP Cable - 기타 (Other)",
+        "productCategory": "PnP Cable",
         "product": "PXE-M770 External Cable(8M)",
         "msrp": 60000,
         "distPrice": "-",
         "dealerPrice": 36000
     },
     {
-        "category": "master",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-301",
-        "msrp": 390000,
-        "distPrice": 156000,
-        "dealerPrice": 234000
-    },
-    {
         "category": "team",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-301",
-        "msrp": 390000,
-        "distPrice": "-",
-        "dealerPrice": 234000
-    },
-    {
-        "category": "style",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-301",
-        "msrp": 390000,
-        "distPrice": 195000,
-        "dealerPrice": 234000
-    },
-    {
-        "category": "region",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-301",
-        "msrp": 390000,
-        "distPrice": 195000,
-        "dealerPrice": 234000
+        "productCategory": "F#1 Status",
+        "product": "F#1 12V Full Package",
+        "msrp": 29000000,
+        "dealerPrice": 17400000,
+        "distPrice": "-"
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-301",
-        "msrp": 390000,
-        "distPrice": "-",
-        "dealerPrice": 234000
-    },
-    {
-        "category": "master",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-302",
-        "msrp": 390000,
-        "distPrice": 156000,
-        "dealerPrice": 234000
-    },
-    {
-        "category": "team",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-302",
-        "msrp": 390000,
-        "distPrice": "-",
-        "dealerPrice": 234000
+        "productCategory": "F#1 Status",
+        "product": "F#1 12V Full Package",
+        "msrp": 29000000,
+        "dealerPrice": 17400000,
+        "distPrice": "-"
     },
     {
         "category": "style",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-302",
-        "msrp": 390000,
-        "distPrice": 195000,
-        "dealerPrice": 234000
+        "productCategory": "F#1 Status",
+        "product": "F#1 12V Full Package",
+        "msrp": 29000000,
+        "dealerPrice": 17400000,
+        "distPrice": "-"
     },
     {
         "category": "region",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-302",
-        "msrp": 390000,
-        "distPrice": 195000,
-        "dealerPrice": 234000
-    },
-    {
-        "category": "dealer",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-302",
-        "msrp": 390000,
-        "distPrice": "-",
-        "dealerPrice": 234000
-    },
-    {
-        "category": "master",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-303",
-        "msrp": 390000,
-        "distPrice": 156000,
-        "dealerPrice": 234000
+        "productCategory": "F#1 Status",
+        "product": "F#1 12V Full Package",
+        "msrp": 29000000,
+        "dealerPrice": 17400000,
+        "distPrice": "-"
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-303",
-        "msrp": 390000,
-        "distPrice": "-",
-        "dealerPrice": 234000
-    },
-    {
-        "category": "style",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-303",
-        "msrp": 390000,
-        "distPrice": 195000,
-        "dealerPrice": 234000
-    },
-    {
-        "category": "region",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-303",
-        "msrp": 390000,
-        "distPrice": 195000,
-        "dealerPrice": 234000
+        "productCategory": "F#1 Status",
+        "product": "F#1 3Way Speaker Package",
+        "msrp": 16000000,
+        "dealerPrice": 9600000,
+        "distPrice": "-"
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-303",
-        "msrp": 390000,
-        "distPrice": "-",
-        "dealerPrice": 234000
+        "productCategory": "F#1 Status",
+        "product": "F#1 3Way Speaker Package",
+        "msrp": 16000000,
+        "dealerPrice": 9600000,
+        "distPrice": "-"
     },
     {
-        "category": "master",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-304",
-        "msrp": 390000,
-        "distPrice": 156000,
-        "dealerPrice": 234000
+        "category": "style",
+        "productCategory": "F#1 Status",
+        "product": "F#1 3Way Speaker Package",
+        "msrp": 16000000,
+        "dealerPrice": 9600000,
+        "distPrice": "-"
+    },
+    {
+        "category": "region",
+        "productCategory": "F#1 Status",
+        "product": "F#1 3Way Speaker Package",
+        "msrp": 16000000,
+        "dealerPrice": 9600000,
+        "distPrice": "-"
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-304",
-        "msrp": 390000,
-        "distPrice": "-",
-        "dealerPrice": 234000
-    },
-    {
-        "category": "style",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-304",
-        "msrp": 390000,
-        "distPrice": 195000,
-        "dealerPrice": 234000
-    },
-    {
-        "category": "region",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-304",
-        "msrp": 390000,
-        "distPrice": 195000,
-        "dealerPrice": 234000
+        "productCategory": "F#1 Status",
+        "product": "F#1 Subwoofer",
+        "msrp": 5000000,
+        "dealerPrice": 3000000,
+        "distPrice": "-"
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "TS-304",
-        "msrp": 390000,
-        "distPrice": "-",
-        "dealerPrice": 234000
+        "productCategory": "F#1 Status",
+        "product": "F#1 Subwoofer",
+        "msrp": 5000000,
+        "dealerPrice": 3000000,
+        "distPrice": "-"
     },
     {
-        "category": "master",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
-        "product": "VW-1A",
-        "msrp": 230000,
-        "distPrice": 92000,
-        "dealerPrice": 138000
+        "category": "style",
+        "productCategory": "F#1 Status",
+        "product": "F#1 Subwoofer",
+        "msrp": 5000000,
+        "dealerPrice": 3000000,
+        "distPrice": "-"
+    },
+    {
+        "category": "region",
+        "productCategory": "F#1 Status",
+        "product": "F#1 Subwoofer",
+        "msrp": 5000000,
+        "dealerPrice": 3000000,
+        "distPrice": "-"
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
-        "product": "VW-1A",
-        "msrp": 230000,
-        "distPrice": "-",
-        "dealerPrice": 138000
-    },
-    {
-        "category": "style",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
-        "product": "VW-1A",
-        "msrp": 230000,
-        "distPrice": 115000,
-        "dealerPrice": 138000
-    },
-    {
-        "category": "region",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
-        "product": "VW-1A",
-        "msrp": 230000,
-        "distPrice": 115000,
-        "dealerPrice": 138000
+        "productCategory": "Alpine Status",
+        "product": "HDZ-TWEETER(Custom fit)",
+        "msrp": 700000,
+        "dealerPrice": 420000,
+        "distPrice": "-"
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 독일차 (German Cars)",
-        "product": "VW-1A",
-        "msrp": 230000,
-        "distPrice": "-",
-        "dealerPrice": 138000
+        "productCategory": "Alpine Status",
+        "product": "HDZ-TWEETER(Custom fit)",
+        "msrp": 700000,
+        "dealerPrice": 420000,
+        "distPrice": "-"
     },
     {
-        "category": "master",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "CH-1A",
-        "msrp": 230000,
-        "distPrice": 92000,
-        "dealerPrice": 138000
+        "category": "style",
+        "productCategory": "Alpine Status",
+        "product": "HDZ-TWEETER(Custom fit)",
+        "msrp": 700000,
+        "dealerPrice": 420000,
+        "distPrice": "-"
+    },
+    {
+        "category": "region",
+        "productCategory": "Alpine Status",
+        "product": "HDZ-TWEETER(Custom fit)",
+        "msrp": 700000,
+        "dealerPrice": 420000,
+        "distPrice": "-"
     },
     {
         "category": "team",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "CH-1A",
-        "msrp": 230000,
-        "distPrice": "-",
-        "dealerPrice": 138000
-    },
-    {
-        "category": "style",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "CH-1A",
-        "msrp": 230000,
-        "distPrice": 115000,
-        "dealerPrice": 138000
-    },
-    {
-        "category": "region",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "CH-1A",
-        "msrp": 230000,
-        "distPrice": 115000,
-        "dealerPrice": 138000
+        "productCategory": "Alpine Status",
+        "product": "HDZ-Midrange",
+        "msrp": 850000,
+        "dealerPrice": 510000,
+        "distPrice": "-"
     },
     {
         "category": "dealer",
-        "productCategory": "PnP Cable - 기타수입차 (Other Imported Cars)",
-        "product": "CH-1A",
-        "msrp": 230000,
-        "distPrice": "-",
-        "dealerPrice": 138000
+        "productCategory": "Alpine Status",
+        "product": "HDZ-Midrange",
+        "msrp": 850000,
+        "dealerPrice": 510000,
+        "distPrice": "-"
+    },
+    {
+        "category": "style",
+        "productCategory": "Alpine Status",
+        "product": "HDZ-Midrange",
+        "msrp": 850000,
+        "dealerPrice": 510000,
+        "distPrice": "-"
+    },
+    {
+        "category": "region",
+        "productCategory": "Alpine Status",
+        "product": "HDZ-Midrange",
+        "msrp": 850000,
+        "dealerPrice": 510000,
+        "distPrice": "-"
+    },
+    {
+        "category": "team",
+        "productCategory": "Alpine Status",
+        "product": "HDZ-MidWoofer",
+        "msrp": 1200000,
+        "dealerPrice": 720000,
+        "distPrice": "-"
+    },
+    {
+        "category": "dealer",
+        "productCategory": "Alpine Status",
+        "product": "HDZ-MidWoofer",
+        "msrp": 1200000,
+        "dealerPrice": 720000,
+        "distPrice": "-"
+    },
+    {
+        "category": "style",
+        "productCategory": "Alpine Status",
+        "product": "HDZ-MidWoofer",
+        "msrp": 1200000,
+        "dealerPrice": 720000,
+        "distPrice": "-"
+    },
+    {
+        "category": "region",
+        "productCategory": "Alpine Status",
+        "product": "HDZ-MidWoofer",
+        "msrp": 1200000,
+        "dealerPrice": 720000,
+        "distPrice": "-"
     }
 ];
 
-// Function to get text label for category
 // Function to get text label for category
 function getCategoryLabel(cat) {
     const labels = {
@@ -4759,48 +4518,8 @@ try {
     priceData = initialPriceData;
 }
 
-// Data Synchronization & Sanitization (Master -> Others)
-// logic is no longer strictly needed if we regenerate everything for everyone, 
-// but kept for future manual additions
+// Sync Logic maintained for dynamic checks
 let isUpdated = false;
-
-// 1. Sync Logic
-const masterItems = priceData.filter(item => item.category === 'master');
-const targetCategories = ['team', 'dealer', 'style', 'region'];
-
-masterItems.forEach(masterItem => {
-    targetCategories.forEach(targetCat => {
-        const targetIdx = priceData.findIndex(p => p.category === targetCat && p.product === masterItem.product);
-        if (targetIdx === -1) {
-            // Calculate prices if missing
-            let dPrice = masterItem.dealerPrice;
-            let distPrice = '-';
-
-            // Simple fallback logic matches script logic
-            if (targetCat === 'style' || targetCat === 'region') {
-                // Try to recalc if original msrp is number? 
-                // For getting started just copy structure is safer, but prices might be wrong if copied from master.
-                // However, since we regenerated ALL data above, this block only runs for NEW user entries manually added to master later.
-                // For now, let's just ensure basic structure exists.
-            }
-
-            priceData.push({
-                category: targetCat,
-                productCategory: masterItem.productCategory,
-                product: masterItem.product,
-                msrp: masterItem.msrp,
-                dealerPrice: dPrice,
-                distPrice: distPrice
-            });
-            isUpdated = true;
-        }
-    });
-});
-
-if (isUpdated) {
-    localStorage.setItem('priceData', JSON.stringify(priceData));
-}
-
 function savePriceData() {
     localStorage.setItem('priceData', JSON.stringify(priceData));
 }
