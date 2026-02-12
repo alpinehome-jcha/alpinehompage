@@ -94,6 +94,10 @@
                     style="padding: 10px 15px; background: #2980b9; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">
                     엑셀 일괄 업로드 (Upload Excel)
                 </button>
+                <button type="button" id="btn-download-js"
+                    style="padding: 10px 15px; background: #8e44ad; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">
+                    JS 파일 다운로드 (For Server Upload)
+                </button>
             </div>
 
             <form id="priceForm"
@@ -339,7 +343,82 @@
             btnDownload.addEventListener('click', downloadExcel);
             btnUpload.addEventListener('click', () => excelInput.click());
             excelInput.addEventListener('change', uploadExcel);
+
+            // JS Download Handling
+            const btnDownloadJs = document.getElementById('btn-download-js');
+            btnDownloadJs.addEventListener('click', downloadPriceDataJS);
         });
+
+        // Function to download data as a JS file (compatible with price-data.js structure)
+        function downloadPriceDataJS() {
+            if (!priceData || priceData.length === 0) {
+                alert('다운로드할 데이터가 없습니다.');
+                return;
+            }
+
+            if (!confirm('현재 화면의 데이터로 price-data.js 파일을 생성합니다.\n다운로드된 파일을 프로젝트의 js/ 폴더에 덮어쓰고 서버에 업로드해야 다른 사용자에게도 반영됩니다.')) {
+                return;
+            }
+
+            // 1. Stringify the data with formatting
+            const jsonStr = JSON.stringify(priceData, null, 4);
+
+            // 2. Construct the file content to match js/price-data.js
+            let fileContent = `const initialPriceData = ${jsonStr};\n\n`;
+
+            // 3. Append the logic block (Copied from original price-data.js or admin-data-manager.js pattern)
+            fileContent += `// Function to get text label for category\n`;
+            fileContent += `function getCategoryLabel(cat) {\n`;
+            fileContent += `    const labels = {\n`;
+            fileContent += `        'master': '알파인사운드마스터',\n`;
+            fileContent += `        'team': '팀알파인',\n`;
+            fileContent += `        'style': '알파인스타일총판',\n`;
+            fileContent += `        'region': '알파인 지역총판',\n`;
+            fileContent += `        'dealer': '알파인 대리점'\n`;
+            fileContent += `    };\n`;
+            fileContent += `    return labels[cat] || cat;\n`;
+            fileContent += `}\n\n`;
+
+            fileContent += `let priceData = [];\n`;
+            fileContent += `const FORCE_RESTORE_KEY = 'priceDataRestored_v2_calculated';\n\n`;
+
+            fileContent += `try {\n`;
+            fileContent += `    // Check if we already have data in localStorage\n`;
+            fileContent += `    const storedData = localStorage.getItem('priceData');\n`;
+            fileContent += `    const hasRestored = localStorage.getItem(FORCE_RESTORE_KEY);\n\n`;
+            fileContent += `    if (storedData && hasRestored) {\n`;
+            fileContent += `        // Load from storage if it exists and we've already done the initial restore\n`;
+            fileContent += `        console.log('Loading price data from local storage...');\n`;
+            fileContent += `        priceData = JSON.parse(storedData);\n`;
+            fileContent += `    } else {\n`;
+            fileContent += `        // First run or force restore needed: Initialize with default data\n`;
+            fileContent += `        console.log('Initializing price data (First run)...');\n`;
+            fileContent += `        priceData = JSON.parse(JSON.stringify(initialPriceData));\n`;
+            fileContent += `        localStorage.setItem('priceData', JSON.stringify(priceData));\n`;
+            fileContent += `        localStorage.setItem(FORCE_RESTORE_KEY, new Date().toISOString());\n`;
+            fileContent += `    }\n\n`;
+            fileContent += `} catch (e) {\n`;
+            fileContent += `    console.error('Local Storage Error:', e);\n`;
+            fileContent += `    priceData = initialPriceData;\n`;
+            fileContent += `}\n\n`;
+
+            fileContent += `// Sync Logic maintained for dynamic checks\n`;
+            fileContent += `let isUpdated = false;\n`;
+            fileContent += `function savePriceData() {\n`;
+            fileContent += `    localStorage.setItem('priceData', JSON.stringify(priceData));\n`;
+            fileContent += `}\n`;
+
+            // Trigger Download
+            const blob = new Blob([fileContent], { type: 'text/javascript' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'price-data.js'; // The filename to replace
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
 
         // Helper for Category Labels (Reverse Lookup needed for Upload)
         const categoryMap = {
