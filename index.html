@@ -335,7 +335,9 @@
         });
     </script>
 
-    <script src="js/product-data.js?v=20260211"></script>
+    <script>
+        document.write('<script src="js/product-data.js?v=' + Date.now() + '"><\/script>');
+    </script>
     <script>
         // Render Products
         const productGrid = document.getElementById('productGrid');
@@ -514,7 +516,9 @@
     <!-- Popup Container -->
     <div id="popupContainer"></div>
 
-    <script src="js/popup-data.js?v=20260211-REV2"></script>
+    <script>
+        document.write('<script src="js/popup-data.js?v=' + Date.now() + '"><\/script>');
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             renderPopups();

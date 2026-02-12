@@ -256,7 +256,9 @@
     </footer>
 
     <script src="../js/auth.js?v=20260211"></script>
-    <script src="../js/product-data.js?v=20260211"></script>
+    <script>
+        document.write('<script src="../js/product-data.js?v=' + Date.now() + '"><\/script>');
+    </script>
     <script>
         const translations = {
             ko: {

@@ -487,10 +487,17 @@
     </footer>
 
     <script src="../js/auth.js?v=20260211"></script>
-    <script src="../js/product-data.js?v=20260211"></script>
-    <script src="../js/dealer-data.js?v=20260211"></script>
-    <script src="../js/popup-data.js?v=20260211-REV2"></script>
-    <script src="../js/admin-data-manager.js?v=20260211"></script>
+    <script>
+        const v = Date.now();
+        document.write('<script src="../js/product-data.js?v=' + v + '"><\/script>');
+        document.write('<script src="../js/dealer-data.js?v=' + v + '"><\/script>');
+        document.write('<script src="../js/popup-data.js?v=' + v + '"><\/script>');
+        document.write('<script src="../js/promo-data.js?v=' + v + '"><\/script>');
+        document.write('<script src="../js/resource-data.js?v=' + v + '"><\/script>');
+        document.write('<script src="../js/install-data.js?v=' + v + '"><\/script>');
+        document.write('<script src="../js/support-product-data.js?v=' + v + '"><\/script>');
+        document.write('<script src="../js/admin-data-manager.js?v=' + v + '"><\/script>');
+    </script>
     <script>
         let products = (typeof productData !== 'undefined') ? [...productData] : [];
         let dealers = (typeof dealerData !== 'undefined') ? [...dealerData] : [];
