@@ -2862,14 +2862,23 @@ const initialProductData = [
         "attachments": []
     }
 ];
+const DATA_VERSION = 1770872028278;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
+    const storedVersion = localStorage.getItem('productDataVersion');
     const stored = localStorage.getItem('productData');
-    if (stored) {
+
+    if (typeof DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < DATA_VERSION)) {
+        // Server has newer version, force update
+        productData = JSON.parse(JSON.stringify(initialProductData));
+        localStorage.setItem('productData', JSON.stringify(productData));
+        localStorage.setItem('productDataVersion', DATA_VERSION.toString());
+    } else if (stored) {
         productData = JSON.parse(stored);
     } else {
         productData = JSON.parse(JSON.stringify(initialProductData));
+        if (typeof DATA_VERSION !== 'undefined') localStorage.setItem('productDataVersion', DATA_VERSION.toString());
     }
 } else {
     productData = initialProductData;
