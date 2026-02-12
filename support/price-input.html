@@ -430,9 +430,11 @@
 
                 // 1. Stringify Data
                 const jsonStr = JSON.stringify(priceData, null, 4);
+                const version = Date.now(); // Current timestamp as version
 
                 // 2. Wrap in File Content
-                let fileContent = `const initialPriceData = ${jsonStr};\n\n`;
+                let fileContent = `const initialPriceData = ${jsonStr};\n`;
+                fileContent += `const DATA_VERSION = ${version};\n\n`; // Inject Version
 
                 fileContent += `// Function to get text label for category\n`;
                 fileContent += `function getCategoryLabel(cat) {\n`;
@@ -447,21 +449,32 @@
                 fileContent += `}\n\n`;
 
                 fileContent += `let priceData = [];\n`;
-                fileContent += `const FORCE_RESTORE_KEY = 'priceDataRestored_v2_calculated';\n\n`;
+                fileContent += `const FORCE_RESTORE_KEY = 'priceDataRestored_v2_calculated';\n`;
+                fileContent += `const VERSION_KEY = 'priceDataVersion';\n\n`; // Version Key
 
                 fileContent += `try {\n`;
-                fileContent += `    // Check if we already have data in localStorage\n`;
+                fileContent += `    // Check LocalStorage Version\n`;
+                fileContent += `    const storedVersion = localStorage.getItem(VERSION_KEY);\n`;
                 fileContent += `    const storedData = localStorage.getItem('priceData');\n`;
                 fileContent += `    const hasRestored = localStorage.getItem(FORCE_RESTORE_KEY);\n\n`;
-                fileContent += `    if (storedData && hasRestored) {\n`;
-                fileContent += `        // Load from storage if it exists and we've already done the initial restore\n`;
+
+                fileContent += `    // If Server Version is newer than Stored Version, use Server Data\n`;
+                fileContent += `    if (typeof DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < DATA_VERSION)) {\n`;
+                fileContent += `        console.log('Newer data version found on server. Updating local storage...');\n`;
+                fileContent += `        priceData = JSON.parse(JSON.stringify(initialPriceData));\n`;
+                fileContent += `        localStorage.setItem('priceData', JSON.stringify(priceData));\n`;
+                fileContent += `        localStorage.setItem(VERSION_KEY, DATA_VERSION.toString());\n`;
+                fileContent += `        localStorage.setItem(FORCE_RESTORE_KEY, new Date().toISOString());\n`;
+                fileContent += `    } else if (storedData && hasRestored) {\n`;
+                fileContent += `        // Load from storage if it exists and version is up to date\n`;
                 fileContent += `        console.log('Loading price data from local storage...');\n`;
                 fileContent += `        priceData = JSON.parse(storedData);\n`;
                 fileContent += `    } else {\n`;
-                fileContent += `        // First run or force restore needed: Initialize with default data\n`;
+                fileContent += `        // First run or force restore needed\n`;
                 fileContent += `        console.log('Initializing price data (First run)...');\n`;
                 fileContent += `        priceData = JSON.parse(JSON.stringify(initialPriceData));\n`;
                 fileContent += `        localStorage.setItem('priceData', JSON.stringify(priceData));\n`;
+                fileContent += `        if (typeof DATA_VERSION !== 'undefined') localStorage.setItem(VERSION_KEY, DATA_VERSION.toString());\n`;
                 fileContent += `        localStorage.setItem(FORCE_RESTORE_KEY, new Date().toISOString());\n`;
                 fileContent += `    }\n\n`;
                 fileContent += `} catch (e) {\n`;

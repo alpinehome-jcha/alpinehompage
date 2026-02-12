@@ -1401,6 +1401,7 @@
 
             // Format as JS file content
             const jsonStr = JSON.stringify(dataObj, null, 4);
+            const version = Date.now(); // Version timestamp
             const varName = (type === 'popup') ? 'initialPopupData' :
                 (type === 'dealer') ? 'initialDealerData' :
                     (type === 'product') ? 'initialProductData' :
@@ -1409,16 +1410,27 @@
                                 (type === 'install') ? 'initialInstallData' :
                                     'initial' + type.charAt(0).toUpperCase() + type.slice(1) + 'Data';
 
-            let fileContent = `const ${varName} = ${jsonStr};\n\n`;
+            let fileContent = `const ${varName} = ${jsonStr};\n`;
+            fileContent += `const DATA_VERSION = ${version};\n\n`; // Inject Version
+
             let logicVar = dataName;
+            let versionKey = dataName + 'Version'; // e.g. dealerDataVersion
 
             fileContent += `let ${logicVar} = [];\n`;
             fileContent += `if (typeof localStorage !== 'undefined') {\n`;
-            fileContent += `    const stored = localStorage.getItem('${dataName}');\n`;
-            fileContent += `    if (stored) {\n`;
+            fileContent += `    const storedVersion = localStorage.getItem('${versionKey}');\n`;
+            fileContent += `    const stored = localStorage.getItem('${dataName}');\n\n`;
+
+            fileContent += `    if (typeof DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < DATA_VERSION)) {\n`;
+            fileContent += `        // Server has newer version, force update\n`;
+            fileContent += `        ${logicVar} = JSON.parse(JSON.stringify(${varName}));\n`;
+            fileContent += `        localStorage.setItem('${dataName}', JSON.stringify(${logicVar}));\n`;
+            fileContent += `        localStorage.setItem('${versionKey}', DATA_VERSION.toString());\n`;
+            fileContent += `    } else if (stored) {\n`;
             fileContent += `        ${logicVar} = JSON.parse(stored);\n`;
             fileContent += `    } else {\n`;
             fileContent += `        ${logicVar} = JSON.parse(JSON.stringify(${varName}));\n`;
+            fileContent += `        if (typeof DATA_VERSION !== 'undefined') localStorage.setItem('${versionKey}', DATA_VERSION.toString());\n`;
             fileContent += `    }\n`;
             fileContent += `} else {\n`;
             fileContent += `    ${logicVar} = ${varName};\n`;
