@@ -360,6 +360,9 @@
                 savePriceData(); // Persist to LocalStorage
                 renderTable();
                 resetForm();
+
+                // Auto Save
+                saveToGitHub(true);
             });
 
             cancelBtn.addEventListener('click', resetForm);
@@ -411,9 +414,10 @@
                 boxGhSettings.style.display = 'none';
             });
 
-            btnSaveServer.addEventListener('click', async () => {
+            // Refactored Auto-Save Function
+            async function saveToGitHub(silent = false) {
                 if (!priceData || priceData.length === 0) {
-                    alert('저장할 데이터가 없습니다.');
+                    if (!silent) alert('저장할 데이터가 없습니다.');
                     return;
                 }
 
@@ -421,11 +425,13 @@
                 const repo = localStorage.getItem('github_repo');
 
                 if (!token || !repo) {
-                    alert('GitHub 설정이 필요합니다. "GitHub 설정" 버튼을 눌러 설정해주세요.');
+                    if (!silent) alert('GitHub 설정이 필요합니다. "GitHub 설정" 버튼을 눌러 설정해주세요.');
                     return;
                 }
 
-                if (!confirm('현재 가격표 데이터를 서버(GitHub)에 저장하시겠습니까?\n저장 후 사이트 반영까지 약 1~2분이 소요됩니다.')) return;
+                if (!silent) {
+                    if (!confirm('현재 가격표 데이터를 서버(GitHub)에 저장하시겠습니까?\\n저장 후 사이트 반영까지 약 1~2분이 소요됩니다.')) return;
+                }
 
                 const client = new GitHubClient();
                 client.configure(token, repo);
@@ -435,71 +441,93 @@
                 const version = Date.now(); // Current timestamp as version
 
                 // 2. Wrap in File Content
-                let fileContent = `const initialPriceData = ${jsonStr};\n`;
-                fileContent += `const DATA_VERSION = ${version};\n\n`; // Inject Version
+                let fileContent = `const initialPriceData = ${jsonStr};\\n`;
+                fileContent += `const DATA_VERSION = ${version};\\n\\n`; // Inject Version
 
-                fileContent += `// Function to get text label for category\n`;
-                fileContent += `function getCategoryLabel(cat) {\n`;
-                fileContent += `    const labels = {\n`;
-                fileContent += `        'master': '알파인사운드마스터',\n`;
-                fileContent += `        'team': '팀알파인',\n`;
-                fileContent += `        'style': '알파인스타일총판',\n`;
-                fileContent += `        'region': '알파인 지역총판',\n`;
-                fileContent += `        'dealer': '알파인 대리점'\n`;
-                fileContent += `    };\n`;
-                fileContent += `    return labels[cat] || cat;\n`;
-                fileContent += `}\n\n`;
+                fileContent += `// Function to get text label for category\\n`;
+                fileContent += `function getCategoryLabel(cat) {\\n`;
+                fileContent += `    const labels = {\\n`;
+                fileContent += `        'master': '알파인사운드마스터',\\n`;
+                fileContent += `        'team': '팀알파인',\\n`;
+                fileContent += `        'style': '알파인스타일총판',\\n`;
+                fileContent += `        'region': '알파인 지역총판',\\n`;
+                fileContent += `        'dealer': '알파인 대리점'\\n`;
+                fileContent += `    };\\n`;
+                fileContent += `    return labels[cat] || cat;\\n`;
+                fileContent += `}\\n\\n`;
 
-                fileContent += `let priceData = [];\n`;
-                fileContent += `const FORCE_RESTORE_KEY = 'priceDataRestored_v2_calculated';\n`;
-                fileContent += `const VERSION_KEY = 'priceDataVersion';\n\n`; // Version Key
+                fileContent += `let priceData = [];\\n`;
+                fileContent += `const FORCE_RESTORE_KEY = 'priceDataRestored_v2_calculated';\\n`;
+                fileContent += `const VERSION_KEY = 'priceDataVersion';\\n\\n`; // Version Key
 
-                fileContent += `try {\n`;
-                fileContent += `    // Check LocalStorage Version\n`;
-                fileContent += `    const storedVersion = localStorage.getItem(VERSION_KEY);\n`;
-                fileContent += `    const storedData = localStorage.getItem('priceData');\n`;
-                fileContent += `    const hasRestored = localStorage.getItem(FORCE_RESTORE_KEY);\n\n`;
+                fileContent += `try {\\n`;
+                fileContent += `    // Check LocalStorage Version\\n`;
+                fileContent += `    const storedVersion = localStorage.getItem(VERSION_KEY);\\n`;
+                fileContent += `    const storedData = localStorage.getItem('priceData');\\n`;
+                fileContent += `    const hasRestored = localStorage.getItem(FORCE_RESTORE_KEY);\\n\\n`;
 
-                fileContent += `    // If Server Version is newer than Stored Version, use Server Data\n`;
-                fileContent += `    if (typeof DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < DATA_VERSION)) {\n`;
-                fileContent += `        console.log('Newer data version found on server. Updating local storage...');\n`;
-                fileContent += `        priceData = JSON.parse(JSON.stringify(initialPriceData));\n`;
-                fileContent += `        localStorage.setItem('priceData', JSON.stringify(priceData));\n`;
-                fileContent += `        localStorage.setItem(VERSION_KEY, DATA_VERSION.toString());\n`;
-                fileContent += `        localStorage.setItem(FORCE_RESTORE_KEY, new Date().toISOString());\n`;
-                fileContent += `    } else if (storedData && hasRestored) {\n`;
-                fileContent += `        // Load from storage if it exists and version is up to date\n`;
-                fileContent += `        console.log('Loading price data from local storage...');\n`;
-                fileContent += `        priceData = JSON.parse(storedData);\n`;
-                fileContent += `    } else {\n`;
-                fileContent += `        // First run or force restore needed\n`;
-                fileContent += `        console.log('Initializing price data (First run)...');\n`;
-                fileContent += `        priceData = JSON.parse(JSON.stringify(initialPriceData));\n`;
-                fileContent += `        localStorage.setItem('priceData', JSON.stringify(priceData));\n`;
-                fileContent += `        if (typeof DATA_VERSION !== 'undefined') localStorage.setItem(VERSION_KEY, DATA_VERSION.toString());\n`;
-                fileContent += `        localStorage.setItem(FORCE_RESTORE_KEY, new Date().toISOString());\n`;
-                fileContent += `    }\n\n`;
-                fileContent += `} catch (e) {\n`;
-                fileContent += `    console.error('Local Storage Error:', e);\n`;
-                fileContent += `    priceData = initialPriceData;\n`;
-                fileContent += `}\n\n`;
+                fileContent += `    // If Server Version is newer than Stored Version, use Server Data\\n`;
+                fileContent += `    if (typeof DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < DATA_VERSION)) {\\n`;
+                fileContent += `        console.log('Newer data version found on server. Updating local storage...');\\n`;
+                fileContent += `        priceData = JSON.parse(JSON.stringify(initialPriceData));\\n`;
+                fileContent += `        localStorage.setItem('priceData', JSON.stringify(priceData));\\n`;
+                fileContent += `        localStorage.setItem(VERSION_KEY, DATA_VERSION.toString());\\n`;
+                fileContent += `        localStorage.setItem(FORCE_RESTORE_KEY, new Date().toISOString());\\n`;
+                fileContent += `    } else if (storedData && hasRestored) {\\n`;
+                fileContent += `        // Load from storage if it exists and version is up to date\\n`;
+                fileContent += `        console.log('Loading price data from local storage...');\\n`;
+                fileContent += `        priceData = JSON.parse(storedData);\\n`;
+                fileContent += `    } else {\\n`;
+                fileContent += `        // First run or force restore needed\\n`;
+                fileContent += `        console.log('Initializing price data (First run)...');\\n`;
+                fileContent += `        priceData = JSON.parse(JSON.stringify(initialPriceData));\\n`;
+                fileContent += `        localStorage.setItem('priceData', JSON.stringify(priceData));\\n`;
+                fileContent += `        if (typeof DATA_VERSION !== 'undefined') localStorage.setItem(VERSION_KEY, DATA_VERSION.toString());\\n`;
+                fileContent += `        localStorage.setItem(FORCE_RESTORE_KEY, new Date().toISOString());\\n`;
+                fileContent += `    }\\n\\n`;
+                fileContent += `} catch (e) {\\n`;
+                fileContent += `    console.error('Local Storage Error:', e);\\n`;
+                fileContent += `    priceData = initialPriceData;\\n`;
+                fileContent += `}\\n\\n`;
 
-                fileContent += `// Sync Logic maintained for dynamic checks\n`;
-                fileContent += `let isUpdated = false;\n`;
-                fileContent += `function savePriceData() {\n`;
-                fileContent += `    localStorage.setItem('priceData', JSON.stringify(priceData));\n`;
-                fileContent += `}\n`;
+                fileContent += `// Sync Logic maintained for dynamic checks\\n`;
+                fileContent += `let isUpdated = false;\\n`;
+                fileContent += `function savePriceData() {\\n`;
+                fileContent += `    localStorage.setItem('priceData', JSON.stringify(priceData));\\n`;
+                fileContent += `}\\n`;
 
                 // 3. Commit
                 try {
                     // Note: path is relative to repo root
-                    await client.commitFile('js/price-data.js', fileContent, 'Update Price List from Admin Pannel');
-                    alert('성공적으로 저장되었습니다! Vercel 배포가 완료되면(약 1~2분) 변경사항이 반영됩니다.');
+                    const msg = silent ? 'Auto-save Price List' : 'Update Price List from Admin Panel';
+                    if (silent) console.log('Auto-saving Price List to GitHub...');
+
+                    await client.commitFile('js/price-data.js', fileContent, msg);
+
+                    if (silent) {
+                        const toast = document.createElement('div');
+                        toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:#2ecc71; color:white; padding:10px 20px; border-radius:4px; z-index:9999; box-shadow:0 2px 10px rgba(0,0,0,0.2); animation: fadein 0.5s, fadeout 0.5s 2.5s forwards;';
+                        toast.textContent = 'Price data saved to Server (GitHub)!';
+                        document.body.appendChild(toast);
+                        setTimeout(() => toast.remove(), 3000);
+                    } else {
+                        alert('성공적으로 저장되었습니다! Vercel 배포가 완료되면(약 1~2분) 변경사항이 반영됩니다.');
+                    }
                 } catch (err) {
                     console.error(err);
-                    alert(`저장 중 오류가 발생했습니다: ${err.message}`);
+                    if (silent) {
+                        const toast = document.createElement('div');
+                        toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:#e74c3c; color:white; padding:10px 20px; border-radius:4px; z-index:9999; box-shadow:0 2px 10px rgba(0,0,0,0.2);';
+                        toast.textContent = `Auto-save failed: ${err.message}`;
+                        document.body.appendChild(toast);
+                        setTimeout(() => toast.remove(), 5000);
+                    } else {
+                        alert(`저장 중 오류가 발생했습니다: ${err.message}`);
+                    }
                 }
-            });
+            }
+
+            btnSaveServer.addEventListener('click', () => saveToGitHub(false));
 
         });
 
@@ -695,6 +723,10 @@
                     priceData = newPriceData;
                     savePriceData();
                     renderTable();
+
+                    // Auto Save
+                    saveToGitHub(true);
+
                     alert('가격표가 성공적으로 업데이트되었습니다.');
 
                 } catch (err) {
@@ -790,6 +822,8 @@
                 priceData.splice(index, 1);
                 savePriceData(); // Persist
                 renderTable();
+                // Auto Save
+                saveToGitHub(true);
             }
         }
 
