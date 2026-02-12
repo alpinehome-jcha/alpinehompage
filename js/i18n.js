@@ -171,10 +171,10 @@ function applyLanguage(newLang) {
     // Switch Footer Logo
     const footerLogo = document.getElementById('footer-logo-img');
     if (footerLogo) {
-        // Adjust path if in support folder
-        const isSupport = window.location.pathname.includes('/support/');
-        const prefix = isSupport ? '../' : '';
-        footerLogo.src = newLang === 'en' ? prefix + 'assets/images/jch_logo_en.png' : prefix + 'assets/images/jch_logo.png';
+        const currentSrc = footerLogo.getAttribute('src');
+        // Extract the path before the filename (e.g., "../assets/images/")
+        const pathPrefix = currentSrc.substring(0, currentSrc.lastIndexOf('/') + 1);
+        footerLogo.src = pathPrefix + (newLang === 'en' ? 'jch_logo_en.png' : 'jch_logo.png');
     }
 
     // Update i18n elements

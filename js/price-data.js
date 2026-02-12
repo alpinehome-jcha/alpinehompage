@@ -4738,17 +4738,21 @@ let priceData = [];
 const FORCE_RESTORE_KEY = 'priceDataRestored_v2_calculated';
 
 try {
-    // FORCE RESTORE: Always use initialPriceData and overwrite localStorage
-    // This is a temporary measure to ensure the user sees the restored data.
-    console.log('Forcing restoration of price data (Calculated)...');
+    // Check if we already have data in localStorage
+    const storedData = localStorage.getItem('priceData');
+    const hasRestored = localStorage.getItem(FORCE_RESTORE_KEY);
 
-    // Check if we already did V2 restore to avoid constant reset if user edits later
-    // But user asked to restore now, so we force it once then mark it?
-    // Actually, user lost data, so we force overwrite now.
-
-    priceData = JSON.parse(JSON.stringify(initialPriceData));
-    localStorage.setItem('priceData', JSON.stringify(priceData));
-    localStorage.setItem(FORCE_RESTORE_KEY, new Date().toISOString());
+    if (storedData && hasRestored) {
+        // Load from storage if it exists and we've already done the initial restore
+        console.log('Loading price data from local storage...');
+        priceData = JSON.parse(storedData);
+    } else {
+        // First run or force restore needed: Initialize with default data
+        console.log('Initializing price data (First run)...');
+        priceData = JSON.parse(JSON.stringify(initialPriceData));
+        localStorage.setItem('priceData', JSON.stringify(priceData));
+        localStorage.setItem(FORCE_RESTORE_KEY, new Date().toISOString());
+    }
 
 } catch (e) {
     console.error('Local Storage Error:', e);

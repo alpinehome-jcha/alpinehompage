@@ -11,6 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
 
     <link rel="icon" type="image/png" href="../assets/images/amark.png">
     <link rel="shortcut icon" type="image/png" href="../assets/images/amark.png">
@@ -81,6 +82,20 @@
 
         <div id="adminContent">
             <h3 style="margin-bottom: 20px;">새 제품 가격 등록</h3>
+
+            <!-- Excel Controls -->
+            <div style="margin-bottom: 20px; display: flex; gap: 10px; justify-content: flex-end;">
+                <input type="file" id="excelInput" style="display: none;" accept=".xlsx, .xls">
+                <button type="button" id="btn-download-excel"
+                    style="padding: 10px 15px; background: #27ae60; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">
+                    엑셀 다운로드 (Download Excel)
+                </button>
+                <button type="button" id="btn-upload-excel"
+                    style="padding: 10px 15px; background: #2980b9; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">
+                    엑셀 일괄 업로드 (Upload Excel)
+                </button>
+            </div>
+
             <form id="priceForm"
                 style="max-width: 600px; margin: 0 auto; padding: 30px; border: 1px solid #eee; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-radius: 8px;">
                 <input type="hidden" id="reg-index" value="-1">
@@ -171,62 +186,13 @@
         </div>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <div class="footer-logo">
-                    <img src="../assets/images/jch_logo.png" alt="JCH Auto" style="height: 30px;" id="footer-logo-img">
-                </div>
-                <p class="footer-text">
-                    <strong data-i18n="footer_ceo">대표 | 이정현</strong><br>
-                    <span data-i18n="footer_address">경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)</span><br>
-                    <span data-i18n="footer_contact">TEL | 1670-7425 FAX | 031-477-7220</span><br>
-                    <span data-i18n="footer_hours">상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)</span><br>
-                    <span data-i18n="footer_biz_info">사업자등록번호 | 619-81-07276 개인정보보호책임자 | 한길전</span>
-                </p>
-            </div>
-            <div class="footer-section footer-links">
-                <h4 data-i18n="footer_products">Products</h4>
-                <ul>
-                    <li><a href="../index.html?category=F%231%20Status">F#1 Status</a></li>
-                    <li><a href="../index.html?category=Alpine%20Status">Alpine Status</a></li>
-                    <li><a href="../index.html?category=DSP%2FAMP">DSP/AMP</a></li>
-                    <li><a href="../index.html?category=Speakers">Speakers</a></li>
-                    <li><a href="../index.html?category=PnP%20Cable">PnP Cable</a></li>
-                    <li><a href="../index.html?category=기타상품" data-i18n="filter_others">기타상품</a></li>
-                    <li><a href="../index.html?category=Alpine%20OEM%20Fit">Alpine OEM Fit</a></li>
-                    <li><a href="../index.html?category=ALPINESTYLE">ALPINESTYLE</a></li>
-                </ul>
-            </div>
-            <div class="footer-section footer-links">
-                <h4 data-i18n="footer_support">Support</h4>
-                <ul>
-                    <li><a href="product.html" data-i18n="nav_support_product">Product Archives</a></li>
-                    <li><a href="install.html" data-i18n="nav_support_install">Installation Guides</a></li>
-                    <li><a href="promo.html" data-i18n="nav_support_promo">Contact Support</a></li>
-                </ul>
-            </div>
-            <div class="footer-section footer-links">
-                <h4 data-i18n="footer_global">Global</h4>
-                <ul>
-                    <li><a href="https://alpine.co.jp/" target="_blank" data-i18n="footer_global_japan">Japan</a></li>
-                    <li><a href="https://www.alpine-asia.com/en" target="_blank" data-i18n="footer_global_asia">Asia</a>
-                    </li>
-                    <li><a href="https://www.alpine.com.au/" target="_blank"
-                            data-i18n="footer_global_australia">Australia</a></li>
-                    <li><a href="https://www.alpine.com.au/" target="_blank" data-i18n="footer_global_europe">Europe</a>
-                    </li>
-                    <li><a href="https://www.alpine.com.cn/" target="_blank" data-i18n="footer_global_china">China</a>
-                    </li>
-                    <li><a href="https://www.alpine-usa.com/" target="_blank" data-i18n="footer_global_na">North
-                            America</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            COPYRIGHT©2026 JCHAUTO,INC. ALL RIGHTS RESERVED.
-        </div>
-    </footer>
+    <div id="footer-container"></div>
+    <script src="../js/layout.js?v=20260212"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Layout.renderFooter('footer-container', '../');
+        });
+    </script>
 
     <script src="../js/auth.js"></script>
     <script src="../js/i18n.js"></script>
@@ -365,7 +331,148 @@
             });
 
             cancelBtn.addEventListener('click', resetForm);
+            // Excel Handling
+            const btnDownload = document.getElementById('btn-download-excel');
+            const btnUpload = document.getElementById('btn-upload-excel');
+            const excelInput = document.getElementById('excelInput');
+
+            btnDownload.addEventListener('click', downloadExcel);
+            btnUpload.addEventListener('click', () => excelInput.click());
+            excelInput.addEventListener('change', uploadExcel);
         });
+
+        // Helper for Category Labels (Reverse Lookup needed for Upload)
+        const categoryMap = {
+            'master': '알파인사운드마스터',
+            'team': '팀알파인',
+            'style': '알파인스타일총판',
+            'region': '알파인 지역총판',
+            'dealer': '알파인 대리점'
+        };
+
+        const reverseCategoryMap = Object.fromEntries(Object.entries(categoryMap).map(([k, v]) => [v, k]));
+
+        function getCategoryLabel(code) {
+            return categoryMap[code] || code;
+        }
+
+        function downloadExcel() {
+            if (!priceData || priceData.length === 0) {
+                alert('다운로드할 데이터가 없습니다.');
+                return;
+            }
+
+            // Map data to Korean headers
+            const exportData = priceData.map(item => ({
+                '분류': getCategoryLabel(item.category),
+                '제품 분류': item.productCategory,
+                '제품명': item.product,
+                '유통가': item.distPrice,
+                '대리점가': item.dealerPrice,
+                '소비자가': item.msrp
+            }));
+
+            // Create Worksheet
+            const ws = XLSX.utils.json_to_sheet(exportData);
+
+            // Auto-width columns
+            const colWidths = [
+                { wch: 20 }, // 분류
+                { wch: 15 }, // 제품 분류
+                { wch: 30 }, // 제품명
+                { wch: 15 }, // 유통가
+                { wch: 15 }, // 대리점가
+                { wch: 15 }  // 소비자가
+            ];
+            ws['!cols'] = colWidths;
+
+            // Create Workbook
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "PriceList");
+
+            // Generate filename with date
+            const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+            XLSX.writeFile(wb, `PriceList_${dateStr}.xlsx`);
+        }
+
+        function uploadExcel(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+
+                    const firstSheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[firstSheetName];
+
+                    const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+                    if (jsonData.length === 0) {
+                        alert('엑셀 파일에 데이터가 없습니다.');
+                        return;
+                    }
+
+                    if (!confirm(`총 ${jsonData.length}개의 데이터를 불러왔습니다.\n기존 가격표를 모두 삭제하고 이 데이터로 덮어쓰시겠습니까?`)) {
+                        excelInput.value = ''; // Reset input
+                        return;
+                    }
+
+                    // Transform back to internal format
+                    const newPriceData = jsonData.map(row => {
+                        // Validate Category
+                        let catCode = reverseCategoryMap[row['분류']];
+                        // If not found (maybe manual entry?), keep original or default to dealer
+                        if (!catCode) {
+                            // Try to see if it Matches key directly
+                            if (categoryMap[row['분류']]) {
+                                catCode = row['분류']; // user put 'master' instead of Korean
+                            } else {
+                                catCode = 'dealer'; // Fallback
+                            }
+                        }
+
+                        // Helper to parse price
+                        const parseExcelPrice = (val) => {
+                            if (val === undefined || val === null || val === '-') return '-';
+                            if (typeof val === 'number') return val;
+                            if (typeof val === 'string') {
+                                // Remove commas and spaces
+                                const clean = val.replace(/[, ]/g, '');
+                                if (clean === '' || clean === '-') return '-';
+                                const num = Number(clean);
+                                return isNaN(num) ? val : num;
+                            }
+                            return val;
+                        };
+
+                        return {
+                            category: catCode,
+                            productCategory: row['제품 분류'] || '',
+                            product: row['제품명'] || '',
+                            msrp: parseExcelPrice(row['소비자가']),
+                            distPrice: parseExcelPrice(row['유통가']),
+                            dealerPrice: parseExcelPrice(row['대리점가'])
+                        };
+                    });
+
+                    // Update Global Data
+                    priceData = newPriceData;
+                    savePriceData();
+                    renderTable();
+                    alert('가격표가 성공적으로 업데이트되었습니다.');
+
+                } catch (err) {
+                    console.error(err);
+                    alert('엑셀 파일을 읽는 중 오류가 발생했습니다.\n형식이 올바른지 확인해주세요.');
+                } finally {
+                    excelInput.value = ''; // Reset for next upload
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        }
 
         function renderTable() {
             const tbody = document.getElementById('priceListBody');
