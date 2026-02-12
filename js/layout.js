@@ -11,21 +11,29 @@ const Layout = {
         const header = document.querySelector('.header-container');
         if (!header) return;
 
-        // Prevent duplicate creation
-        if (document.querySelector('.mobile-menu-btn')) return;
+        // Check if button exists (it should now be in HTML)
+        let btn = document.querySelector('.mobile-menu-btn');
 
-        const btn = document.createElement('button');
-        btn.className = 'mobile-menu-btn';
-        btn.setAttribute('aria-label', 'Toggle Menu');
-        btn.innerHTML = '<span></span><span></span><span></span>';
+        // If not found in HTML (legacy support or other pages), create it
+        if (!btn) {
+            btn = document.createElement('button');
+            btn.className = 'mobile-menu-btn';
+            btn.setAttribute('aria-label', 'Toggle Menu');
+            btn.innerHTML = '<span></span><span></span><span></span>';
+            header.appendChild(btn);
+        }
 
-        // Add to header (usually appending puts it on the right due to space-between)
-        header.appendChild(btn);
+        // Prevent duplicate event listeners
+        if (btn.hasAttribute('data-init')) return;
 
         btn.addEventListener('click', () => {
             const nav = document.querySelector('.nav-menu');
             if (nav) nav.classList.toggle('active');
+            btn.classList.toggle('active'); // Optional: Animate button itself if CSS supports it
         });
+
+        // Mark as initialized
+        btn.setAttribute('data-init', 'true');
     },
 
     /**

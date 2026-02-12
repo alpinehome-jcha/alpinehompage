@@ -531,6 +531,9 @@ footer {
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         border-bottom: 1px solid var(--border-color);
         gap: 0;
+        /* Scroll if too tall */
+        max-height: calc(100vh - 60px);
+        overflow-y: auto;
     }
 
     .nav-menu.active {
@@ -546,6 +549,12 @@ footer {
         display: block;
         padding: 1rem;
         width: 100%;
+    }
+
+    /* Center social icons on mobile */
+    .social-icons {
+        justify-content: center;
+        padding: 1rem 0;
     }
 
     .hero-title {
