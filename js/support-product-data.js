@@ -28,17 +28,13 @@ const initialSupport_productData = [
     }
 ];
 
-const SUPPORT_PRODUCT_DATA_VERSION = "2026-02-11-REV2";
-
 let supportProductData = [];
 if (typeof localStorage !== 'undefined') {
-    // Priority: LocalStorage > Initial File Data
     const stored = localStorage.getItem('supportProductData');
     if (stored) {
         supportProductData = JSON.parse(stored);
     } else {
         supportProductData = JSON.parse(JSON.stringify(initialSupport_productData));
-        localStorage.setItem('supportProductData', JSON.stringify(supportProductData));
     }
 } else {
     supportProductData = initialSupport_productData;
