@@ -144,11 +144,69 @@ const auth = {
             window.location.href = loginPath;
         }
     },
+    openGitHubSettings: (e) => {
+        if (e) e.preventDefault();
+        const modal = document.getElementById('ghSettingsModal');
+        if (modal) {
+            modal.style.display = 'block';
+            // Load current values
+            document.getElementById('global_gh_token').value = localStorage.getItem('github_token') || '';
+            document.getElementById('global_gh_repo').value = localStorage.getItem('github_repo') || '';
+        }
+    },
     updateUI: () => {
         const isLogged = auth.isLoggedIn();
         const role = auth.getRole();
 
-        // Inject Modal if not exists
+        // Inject Password Modal if not exists
+        if (!document.getElementById('pwChangeModal')) {
+            // ... (existing password modal code is assumed to be here or handled by previous parts of file) ...
+            // We will re-inject it or just assume it is there. 
+            // To be safe and minimal, I will just append the GitHub modal logic here.
+        }
+
+        // Inject GitHub Settings Modal if not exists
+        if (!document.getElementById('ghSettingsModal')) {
+            const ghModalHTML = `
+                <div id="ghSettingsModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.4);">
+                    <div style="background-color:#fefefe; margin:15% auto; padding:20px; border:1px solid #888; width:350px; border-radius:8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                        <h3 style="margin-top:0;">GitHub 설정</h3>
+                        <p style="font-size:0.9rem; color:#666; margin-bottom:15px;">서버 저장을 위한 인증 정보를 입력하세요.</p>
+                        <div style="margin-bottom:10px;">
+                            <label style="display:block; margin-bottom:5px; font-weight:bold;">Personal Access Token</label>
+                            <input type="password" id="global_gh_token" placeholder="ghp_..." style="width:100%; padding:8px; margin-bottom:10px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;">
+                            
+                            <label style="display:block; margin-bottom:5px; font-weight:bold;">Repository (owner/repo)</label>
+                            <input type="text" id="global_gh_repo" placeholder="username/repository" style="width:100%; padding:8px; margin-bottom:5px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;">
+                        </div>
+                        <div style="text-align:right;">
+                            <button id="btnCancelGh" style="padding:8px 12px; cursor:pointer; background:#ccc; border:none; border-radius:4px; margin-right:5px;">닫기</button>
+                            <button id="btnSaveGh" style="padding:8px 12px; cursor:pointer; background:#28a745; color:white; border:none; border-radius:4px;">저장</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', ghModalHTML);
+
+            // GitHub Modal Events
+            document.getElementById('btnCancelGh').onclick = () => {
+                document.getElementById('ghSettingsModal').style.display = 'none';
+            };
+            document.getElementById('btnSaveGh').onclick = () => {
+                const token = document.getElementById('global_gh_token').value.trim();
+                const repo = document.getElementById('global_gh_repo').value.trim();
+
+                if (!token || !repo) { alert('토큰과 저장소 주소를 모두 입력해주세요.'); return; }
+
+                localStorage.setItem('github_token', token);
+                localStorage.setItem('github_repo', repo);
+                alert('설정이 저장되었습니다.');
+                document.getElementById('ghSettingsModal').style.display = 'none';
+            };
+        }
+
+        // ... (The rest of updateUI continues) ...
+        // Inject Modal if not exists (Original Logic for Password Modal)
         if (!document.getElementById('pwChangeModal')) {
             const modalHTML = `
                 <div id="pwChangeModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.4);">
@@ -301,6 +359,9 @@ function addPartnerMenu(role) {
         // Visit Log Link
         const visitLogLink = window.location.pathname.includes('product.html') ? '#visitLogSection' : `${prefix}product.html#visitLogSection`;
         menuItems += `<li><a href="${visitLogLink}" class="dropdown-item" style="border-top:1px solid #eee;">방문 기록</a></li>`;
+
+        // GitHub Settings Link
+        menuItems += `<li><a href="#" class="dropdown-item" onclick="auth.openGitHubSettings(event)">GitHub 설정</a></li>`;
     }
 
     partnerLi.innerHTML = `
