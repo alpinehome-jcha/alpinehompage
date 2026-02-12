@@ -2,7 +2,7 @@ const initialProductData = [
     {
         "id": 1770186124033,
         "category": "F#1 Status",
-        "title": "Alpine F#1 Status Full System.",
+        "title": "Alpine F#1 Status Full System",
         "desc": "384kHz/32Bit\n\nDAP+Head Unit+DSP+AMP+Speaker+SubWoofer",
         "desc_bottom": "시공비 별도 협의/600만원부터",
         "price": 45000000,
@@ -2862,7 +2862,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const DATA_VERSION = 1770872028278;
+const DATA_VERSION = 1770872784704;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
