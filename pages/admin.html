@@ -1026,15 +1026,9 @@
 
             // If Master, filter dealer list to only Team Alpine
             if (currentMode === 'dealer' && currentUserRole === 'master') {
-                const filtered = dealers.filter(d => d.category === 'Team Alpine');
-
-                filtered.forEach(item => {
-                    const li = document.createElement('li');
-                    li.className = `product-item ${item.id === currentId ? 'active' : ''}`;
-                    li.innerHTML = `<h4>${item.name}</h4><p>${item.category}</p>`;
-                    li.onclick = () => selectItem(item.id);
-                    domList.appendChild(li);
-                });
+                // Master role is deprecated for dealer management, but keeping safe logic just in case
+                domList.innerHTML = '<p style="padding:1rem; color:red;">Access Denied</p>';
+                return;
             } else {
                 data.forEach(item => {
                     const li = document.createElement('li');
@@ -1229,22 +1223,22 @@
 
         // Init
         // Check URL Search Params
-        // Check Role & Hide Buttons Immediately
-        if (currentUserRole === 'master') {
-            const btnProduct = document.getElementById('btnModeProduct');
-            const btnPopup = document.getElementById('btnModePopup');
-            const btnData = document.getElementById('btnModeData');
-            if (btnProduct) btnProduct.style.display = 'none';
-            if (btnPopup) btnPopup.style.display = 'none';
-            // if (btnData) btnData.style.display = 'none'; // Unhide Data for Master to allow GitHub Settings
+
+        // Strict Role Check
+        if (currentUserRole !== 'admin') {
+            alert('Access Denied. Admins only.');
+            window.location.href = '../index.html';
         }
 
         const urlParams = new URLSearchParams(window.location.search);
         let modeParam = urlParams.get('mode');
 
         // Force Dealer mode for Master if they try to access others
-        if (currentUserRole === 'master' && modeParam !== 'dealer') {
-            modeParam = 'dealer';
+        // (Reverted: Master no longer has access)
+        if (currentUserRole !== 'admin') {
+            // Basic protection: Non-admins shouldn't be here generally, 
+            // but if they are (e.g. Master for some other future reason), default to something safe or alert.
+            // For now, if master tries to load, they might see empty product list or we can redirect.
         }
 
         if (modeParam === 'dealer') {
@@ -1254,12 +1248,8 @@
         } else if (modeParam === 'data') { // Support direct data link if needed
             setMode('data');
         } else {
-            // Default based on role
-            if (currentUserRole === 'master') {
-                setMode('dealer');
-            } else {
-                setMode('product');
-            }
+            // Default check
+            setMode('product');
         }
 
         function renderDataManager() {
