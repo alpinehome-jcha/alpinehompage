@@ -1422,7 +1422,7 @@ const initialProductData = [
     {
         "id": 1770345538900,
         "category": "Speakers",
-        "title": "S2-A10TW",
+        "title": "S2-S10TW",
         "desc": "1\" Tweeter Set",
         "desc_bottom": "장착 공임 별도/20만원 부터",
         "price": 150000,
@@ -2862,19 +2862,13 @@ const initialProductData = [
     }
 ];
 
-// Version control
-const PRODUCT_DATA_VERSION = "2026-02-11-REV2";
-
 let productData = [];
 if (typeof localStorage !== 'undefined') {
-    // Priority: LocalStorage > Initial File Data
     const stored = localStorage.getItem('productData');
     if (stored) {
         productData = JSON.parse(stored);
     } else {
         productData = JSON.parse(JSON.stringify(initialProductData));
-        // Initialize Storage
-        localStorage.setItem('productData', JSON.stringify(productData));
     }
 } else {
     productData = initialProductData;

@@ -29,17 +29,13 @@ const initialResourceData = [
     }
 ];
 
-const RESOURCE_DATA_VERSION = "2026-02-11-REV2";
-
 let resourceData = [];
 if (typeof localStorage !== 'undefined') {
-    // Priority: LocalStorage > Initial File Data
     const stored = localStorage.getItem('resourceData');
     if (stored) {
         resourceData = JSON.parse(stored);
     } else {
         resourceData = JSON.parse(JSON.stringify(initialResourceData));
-        localStorage.setItem('resourceData', JSON.stringify(resourceData));
     }
 } else {
     resourceData = initialResourceData;

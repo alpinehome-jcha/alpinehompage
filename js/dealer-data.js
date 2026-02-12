@@ -2,13 +2,13 @@ const initialDealerData = [
     {
         "id": 1,
         "category": "Alpine Sound Master",
-        "name": "가인 오디오",
+        "name": "가인 오디오.",
         "badge": "알파인사운드마스터",
         "address": "경기도 안양시 만안구 안양로 21",
         "phone": "010-8545-5311",
         "desc": "F#1 Status 및 알파인 모든 사운드 시스템을 취급합니다.",
         "username": "gain",
-        "password": "1234",
+        "password": "1235",
         "role": "dealer",
         "lat": 37.3887,
         "lng": 126.9238,
@@ -189,7 +189,7 @@ const initialDealerData = [
         "phone": "010-9126-9223",
         "desc": "알파인 테슬라패키지, 알파인 디지털룸미러, 메티오사운드, 알파인 OEM Fit",
         "username": "beisitauto01",
-        "password": "1234",
+        "password": "1235",
         "role": "dealer",
         "region": "경기동부(남양주,하남,이천,양평)"
     },
@@ -569,18 +569,13 @@ const initialDealerData = [
     }
 ];
 
-// Version control
-const DEALER_DATA_VERSION = "2026-02-11-REV2";
-
 let dealerData = [];
 if (typeof localStorage !== 'undefined') {
-    // Priority: LocalStorage > Initial File Data
     const stored = localStorage.getItem('dealerData');
     if (stored) {
         dealerData = JSON.parse(stored);
     } else {
         dealerData = JSON.parse(JSON.stringify(initialDealerData));
-        localStorage.setItem('dealerData', JSON.stringify(dealerData));
     }
 } else {
     dealerData = initialDealerData;
