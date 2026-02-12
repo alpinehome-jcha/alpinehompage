@@ -2,7 +2,7 @@ const initialDealerData = [
     {
         "id": 1,
         "category": "Alpine Sound Master",
-        "name": "가인 오디오.",
+        "name": "가인 오디오",
         "badge": "알파인사운드마스터",
         "address": "경기도 안양시 만안구 안양로 21",
         "phone": "010-8545-5311",
@@ -568,9 +568,9 @@ const initialDealerData = [
         "region": "경남"
     }
 ];
-const DEALER_DATA_VERSION = 1770872075981;
+const DEALER_DATA_VERSION = 1770879038207;
 
-var dealerData = [];
+let dealerData = [];
 if (typeof localStorage !== 'undefined') {
     const storedVersion = localStorage.getItem('dealerDataVersion');
     const stored = localStorage.getItem('dealerData');
@@ -582,26 +582,22 @@ if (typeof localStorage !== 'undefined') {
         localStorage.setItem('dealerDataVersion', DEALER_DATA_VERSION.toString());
     } else if (stored) {
         dealerData = JSON.parse(stored);
-        // Safety Check: If stored data is empty but we have initial data, restore it.
+        // Safety Check for empty data
         if (dealerData.length === 0 && initialDealerData.length > 0) {
-            console.warn('Stored dealerData is empty. Restoring from initial data.');
-            dealerData = JSON.parse(JSON.stringify(initialDealerData));
-            localStorage.setItem('dealerData', JSON.stringify(dealerData));
-            // Don't update version here, arguably, or maybe we should? 
-            // If we restore, we match current version.
-            if (typeof DEALER_DATA_VERSION !== 'undefined') localStorage.setItem('dealerDataVersion', DEALER_DATA_VERSION.toString());
+             dealerData = JSON.parse(JSON.stringify(initialDealerData));
+             localStorage.setItem('dealerData', JSON.stringify(dealerData));
+             if (typeof DEALER_DATA_VERSION !== 'undefined') localStorage.setItem('dealerDataVersion', DEALER_DATA_VERSION.toString());
         }
     } else {
         dealerData = JSON.parse(JSON.stringify(initialDealerData));
         if (typeof DEALER_DATA_VERSION !== 'undefined') localStorage.setItem('dealerDataVersion', DEALER_DATA_VERSION.toString());
     }
+} else {
     dealerData = initialDealerData;
 }
 
-// Explicitly attach to window to ensure global access
 if (typeof window !== 'undefined') {
     window.dealerData = dealerData;
-    console.log('dealer-data.js loaded. dealerData length:', dealerData.length);
 }
 
 if (typeof module !== 'undefined' && module.exports) {
