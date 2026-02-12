@@ -2,7 +2,7 @@ const initialProductData = [
     {
         "id": 1770186124033,
         "category": "F#1 Status",
-        "title": "Alpine F#1 Status Full System",
+        "title": "Alpine F#1 Status Full System.",
         "desc": "384kHz/32Bit\n\nDAP+Head Unit+DSP+AMP+Speaker+SubWoofer",
         "desc_bottom": "시공비 별도 협의/600만원부터",
         "price": 45000000,
@@ -165,7 +165,8 @@ const initialProductData = [
                 "name": "F1-OM_68-47428Z48-A_KR",
                 "url": "assets/files/F1-OM_68-47428Z48-A_KR.pdf"
             }
-        ]
+        ],
+        "soldOut": false
     },
     {
         "id": 1770265116216,
@@ -1422,7 +1423,7 @@ const initialProductData = [
     {
         "id": 1770345538900,
         "category": "Speakers",
-        "title": "S2-S10TW",
+        "title": "S2-A10TW",
         "desc": "1\" Tweeter Set",
         "desc_bottom": "장착 공임 별도/20만원 부터",
         "price": 150000,
