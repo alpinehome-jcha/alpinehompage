@@ -23,12 +23,14 @@ class GitHubClient {
     async getFileSha(path) {
         if (!this.isConfigured()) throw new Error('GitHub Settings not configured.');
 
-        const url = `https://api.github.com/repos/${this.repo}/contents/${path}?ref=${this.branch}`;
+        const url = `https://api.github.com/repos/${this.repo}/contents/${path}?ref=${this.branch}&_t=${Date.now()}`;
         const response = await fetch(url, {
             headers: {
                 'Authorization': `token ${this.token}`,
-                'Accept': 'application/vnd.github.v3+json'
-            }
+                'Accept': 'application/vnd.github.v3+json',
+                'Cache-Control': 'no-cache'
+            },
+            cache: 'no-store'
         });
 
         if (response.status === 404) return null; // File doesn't exist yet
