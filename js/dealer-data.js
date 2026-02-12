@@ -568,14 +568,23 @@ const initialDealerData = [
         "region": "경남"
     }
 ];
+const DATA_VERSION = 1770872075981;
 
 let dealerData = [];
 if (typeof localStorage !== 'undefined') {
+    const storedVersion = localStorage.getItem('dealerDataVersion');
     const stored = localStorage.getItem('dealerData');
-    if (stored) {
+
+    if (typeof DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < DATA_VERSION)) {
+        // Server has newer version, force update
+        dealerData = JSON.parse(JSON.stringify(initialDealerData));
+        localStorage.setItem('dealerData', JSON.stringify(dealerData));
+        localStorage.setItem('dealerDataVersion', DATA_VERSION.toString());
+    } else if (stored) {
         dealerData = JSON.parse(stored);
     } else {
         dealerData = JSON.parse(JSON.stringify(initialDealerData));
+        if (typeof DATA_VERSION !== 'undefined') localStorage.setItem('dealerDataVersion', DATA_VERSION.toString());
     }
 } else {
     dealerData = initialDealerData;
