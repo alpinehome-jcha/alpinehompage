@@ -1278,37 +1278,170 @@
                     <p style="background: #eafbea; padding: 15px; border-left: 5px solid #28a745; margin-bottom: 25px;">
                         <strong>About Data Export:</strong><br>
                         Since this Admin panel runs in your browser, changed data is stored in your browser's "Local Storage".
-                        To update the actual website files, you must download the data files below and replace the existing files in your <code>js/</code> folder.
+                        To save changes permanently to the server, use the "Save to Server (GitHub)" button below.
                     </p>
                 
-                    <h3>1. Download Individual Files</h3>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 25px;">
-                        <button class="btn btn-secondary" onclick="downloadData('product')">Download product-data.js</button>
-                        <button class="btn btn-secondary" onclick="downloadData('dealer')">Download dealer-data.js</button>
-                        <button class="btn btn-secondary" onclick="downloadData('popup')">Download popup-data.js</button>
-                        <button class="btn btn-secondary" onclick="downloadData('promo')">Download promo-data.js</button>
-                        <button class="btn btn-secondary" onclick="downloadData('resource')">Download resource-data.js</button>
-                        <button class="btn btn-secondary" onclick="downloadData('install')">Download install-data.js</button>
-                        <button class="btn btn-secondary" onclick="downloadData('support_product')">Download support-product-data.js</button>
+                    <h3>1. GitHub Integration</h3>
+                    <div style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; background: #f9f9f9; border-radius: 4px;">
+                        <h4 style="margin-top: 0;">Settings</h4>
+                        <div class="form-group">
+                            <label>GitHub Personal Access Token</label>
+                            <input type="password" id="gh_token" placeholder="ghp_..." style="width: 100%; padding: 8px; margin-bottom: 10px;">
+                        </div>
+                        <div class="form-group">
+                            <label>Repository (owner/repo)</label>
+                            <input type="text" id="gh_repo" placeholder="username/repository" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+                        </div>
+                        <button class="btn btn-primary" onclick="saveGitHubSettings()">Save Settings</button>
                     </div>
 
-                    <h3>2. Download All (Standard)</h3>
-                    <p style="margin-bottom: 5px; color: #666;">Click below to trigger downloads for all files at once.</p>
-                    <button class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1em;" onclick="downloadAll()">
-                        Download All Data Files
-                    </button>
+                    <h3>2. Save Data to Server</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 25px;">
+                        <button class="btn btn-success" onclick="saveToGitHub('product')">Save Products (product-data.js)</button>
+                        <button class="btn btn-success" onclick="saveToGitHub('dealer')">Save Dealers (dealer-data.js)</button>
+                        <button class="btn btn-success" onclick="saveToGitHub('popup')">Save Popups (popup-data.js)</button>
+                        <button class="btn btn-success" onclick="saveToGitHub('promo')">Save Promos (promo-data.js)</button>
+                        <button class="btn btn-success" onclick="saveToGitHub('resource')">Save Resources (resource-data.js)</button>
+                        <button class="btn btn-success" onclick="saveToGitHub('install')">Save Install Data (install-data.js)</button>
+                        <button class="btn btn-success" onclick="saveToGitHub('support_product')">Save Support Products (support-product-data.js)</button>
+                    </div>
                     
                     <hr style="margin: 30px 0;">
                     
                     <h3>Danger Zone</h3>
                     <button class="btn btn-danger" onclick="clearAllLocalStorage()">Reset Admin Data (Clear Local Storage)</button>
-                    <p style="margin-top: 5px; color: #dc3545; font-size: 0.9em;">* This will revert the Admin panel to show only the data currently in the <code>js/</code> files.</p>
                 </div>
             `;
+
+            // Load saved settings
+            const token = localStorage.getItem('github_token');
+            const repo = localStorage.getItem('github_repo');
+            if (token) document.getElementById('gh_token').value = token;
+            if (repo) document.getElementById('gh_repo').value = repo;
         }
 
+        function saveGitHubSettings() {
+            const token = document.getElementById('gh_token').value.trim();
+            const repo = document.getElementById('gh_repo').value.trim();
+            if (!token || !repo) {
+                alert('Please enter both Token and Repository.');
+                return;
+            }
+            localStorage.setItem('github_token', token);
+            localStorage.setItem('github_repo', repo);
+            alert('Settings Saved!');
+        }
+
+        async function saveToGitHub(type) {
+            const token = localStorage.getItem('github_token');
+            const repo = localStorage.getItem('github_repo');
+
+            if (!token || !repo) {
+                alert('GitHub Settings are missing. Please configure them first.');
+                return;
+            }
+
+            if (!confirm(`Are you sure you want to commit changes to ${type}-data.js on GitHub? This will trigger a site redeploy.`)) return;
+
+            // Use logic similar to downloadData but instead of downloading, generate content string
+            // Initialize dummy valid variables for eval-like context or reuse logic
+            let dataName = '';
+            let fileName = '';
+            let dataObj = null;
+
+            switch (type) {
+                case 'product':
+                    dataName = 'productData';
+                    fileName = 'js/product-data.js'; // Path in repo
+                    dataObj = (typeof productData !== 'undefined') ? productData : null;
+                    break;
+                case 'dealer':
+                    dataName = 'dealerData';
+                    fileName = 'js/dealer-data.js';
+                    dataObj = (typeof dealerData !== 'undefined') ? dealerData : null;
+                    break;
+                case 'popup':
+                    dataName = 'popupData';
+                    fileName = 'js/popup-data.js';
+                    dataObj = (typeof popupList !== 'undefined') ? popupList : null;
+                    if (!dataObj && typeof popupData !== 'undefined') dataObj = popupData;
+                    break;
+                case 'promo':
+                    dataName = 'promoData';
+                    fileName = 'js/promo-data.js';
+                    dataObj = (typeof promoData !== 'undefined') ? promoData : null;
+                    break;
+                case 'resource':
+                    dataName = 'resourceData';
+                    fileName = 'js/resource-data.js';
+                    dataObj = (typeof resourceData !== 'undefined') ? resourceData : null;
+                    break;
+                case 'install':
+                    dataName = 'installData';
+                    fileName = 'js/install-data.js';
+                    dataObj = (typeof installData !== 'undefined') ? installData : null;
+                    break;
+                case 'support_product':
+                    dataName = 'supportProductData';
+                    fileName = 'js/support-product-data.js';
+                    dataObj = (typeof supportProductData !== 'undefined') ? supportProductData : null;
+                    break;
+            }
+
+            // Try to get from LocalStorage first (most up to date)
+            const stored = localStorage.getItem(dataName);
+            if (stored) {
+                dataObj = JSON.parse(stored);
+            }
+
+            if (!dataObj) {
+                alert('No data found for ' + type);
+                return;
+            }
+
+            // Format as JS file content
+            const jsonStr = JSON.stringify(dataObj, null, 4);
+            const varName = (type === 'popup') ? 'initialPopupData' :
+                (type === 'dealer') ? 'initialDealerData' :
+                    (type === 'product') ? 'initialProductData' :
+                        (type === 'promo') ? 'initialPromoData' :
+                            (type === 'resource') ? 'initialResourceData' :
+                                (type === 'install') ? 'initialInstallData' :
+                                    'initial' + type.charAt(0).toUpperCase() + type.slice(1) + 'Data';
+
+            let fileContent = `const ${varName} = ${jsonStr};\n\n`;
+            let logicVar = dataName;
+
+            fileContent += `let ${logicVar} = [];\n`;
+            fileContent += `if (typeof localStorage !== 'undefined') {\n`;
+            fileContent += `    const stored = localStorage.getItem('${dataName}');\n`;
+            fileContent += `    if (stored) {\n`;
+            fileContent += `        ${logicVar} = JSON.parse(stored);\n`;
+            fileContent += `    } else {\n`;
+            fileContent += `        ${logicVar} = JSON.parse(JSON.stringify(${varName}));\n`;
+            fileContent += `    }\n`;
+            fileContent += `} else {\n`;
+            fileContent += `    ${logicVar} = ${varName};\n`;
+            fileContent += `}\n\n`;
+            fileContent += `if (typeof module !== 'undefined' && module.exports) {\n`;
+            fileContent += `    module.exports = ${logicVar};\n`;
+            fileContent += `}`;
+
+            // Execute Commit
+            const client = new GitHubClient(); // Assuming script is loaded
+            client.configure(token, repo);
+
+            try {
+                const result = await client.commitFile(fileName, fileContent, `Update ${type} data from Admin Panel`);
+                alert(`Successfully saved ${fileName} to GitHub! Vercel should deploy shortly.`);
+            } catch (err) {
+                console.error(err);
+                alert(`Error saving to GitHub: ${err.message}`);
+            }
+        }
     </script>
-    <script src="js/i18n.js"></script>
+    <script src="../js/github-client.js"></script>
+    <script src="../js/i18n.js"></script>
 </body>
 
 </html>

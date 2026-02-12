@@ -94,10 +94,35 @@
                     style="padding: 10px 15px; background: #2980b9; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">
                     엑셀 일괄 업로드 (Upload Excel)
                 </button>
-                <button type="button" id="btn-download-js"
-                    style="padding: 10px 15px; background: #8e44ad; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">
-                    JS 파일 다운로드 (For Server Upload)
+                <button type="button" id="btn-gh-settings"
+                    style="padding: 10px 15px; background: #333; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">
+                    GitHub 설정
                 </button>
+                <button type="button" id="btn-save-server"
+                    style="padding: 10px 15px; background: #8e44ad; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">
+                    서버에 저장 (Save to Server)
+                </button>
+            </div>
+
+            <!-- GitHub Settings Modal (Hidden by default) -->
+            <div id="gh-settings-box"
+                style="display:none; margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; background: #f9f9f9; border-radius: 4px;">
+                <h4 style="margin-top: 0;">GitHub Settings</h4>
+                <div style="margin-bottom: 10px;">
+                    <label style="display:block; margin-bottom: 5px;">GitHub Personal Access Token</label>
+                    <input type="password" id="gh_token" placeholder="ghp_..."
+                        style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label style="display:block; margin-bottom: 5px;">Repository (owner/repo)</label>
+                    <input type="text" id="gh_repo" placeholder="username/repository"
+                        style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                <button type="button" id="btn-save-gh-settings"
+                    style="padding: 8px 15px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Save
+                    Settings</button>
+                <button type="button" id="btn-close-gh-settings"
+                    style="padding: 8px 15px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 5px;">Close</button>
             </div>
 
             <form id="priceForm"
@@ -201,6 +226,7 @@
     <script src="../js/auth.js"></script>
     <script src="../js/i18n.js"></script>
     <script src="../js/price-data.js?v=20260211-REV2"></script>
+    <script src="../js/github-client.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const role = auth.getRole();
@@ -344,9 +370,122 @@
             btnUpload.addEventListener('click', () => excelInput.click());
             excelInput.addEventListener('change', uploadExcel);
 
-            // JS Download Handling
-            const btnDownloadJs = document.getElementById('btn-download-js');
-            btnDownloadJs.addEventListener('click', downloadPriceDataJS);
+            // GitHub Integration
+            const btnGhSettings = document.getElementById('btn-gh-settings');
+            const boxGhSettings = document.getElementById('gh-settings-box');
+            const btnSaveGhSettings = document.getElementById('btn-save-gh-settings');
+            const btnCloseGhSettings = document.getElementById('btn-close-gh-settings');
+            const btnSaveServer = document.getElementById('btn-save-server');
+
+            // Load saved settings on init
+            const savedToken = localStorage.getItem('github_token');
+            const savedRepo = localStorage.getItem('github_repo');
+            if (savedToken) document.getElementById('gh_token').value = savedToken;
+            if (savedRepo) document.getElementById('gh_repo').value = savedRepo;
+
+            btnGhSettings.addEventListener('click', () => {
+                boxGhSettings.style.display = 'block';
+            });
+            btnCloseGhSettings.addEventListener('click', () => {
+                boxGhSettings.style.display = 'none';
+            });
+            btnSaveGhSettings.addEventListener('click', () => {
+                const token = document.getElementById('gh_token').value.trim();
+                const repo = document.getElementById('gh_repo').value.trim();
+
+                if (!token || !repo) {
+                    alert('Token과 Repository를 모두 입력해주세요.');
+                    return;
+                }
+
+                localStorage.setItem('github_token', token);
+                localStorage.setItem('github_repo', repo);
+
+                // Also configure client instance
+                const client = new GitHubClient(); // Assuming loaded
+                client.configure(token, repo);
+
+                alert('설정이 저장되었습니다.');
+                boxGhSettings.style.display = 'none';
+            });
+
+            btnSaveServer.addEventListener('click', async () => {
+                if (!priceData || priceData.length === 0) {
+                    alert('저장할 데이터가 없습니다.');
+                    return;
+                }
+
+                const token = localStorage.getItem('github_token');
+                const repo = localStorage.getItem('github_repo');
+
+                if (!token || !repo) {
+                    alert('GitHub 설정이 필요합니다. "GitHub 설정" 버튼을 눌러 설정해주세요.');
+                    return;
+                }
+
+                if (!confirm('현재 가격표 데이터를 서버(GitHub)에 저장하시겠습니까?\n저장 후 사이트 반영까지 약 1~2분이 소요됩니다.')) return;
+
+                const client = new GitHubClient();
+                client.configure(token, repo);
+
+                // 1. Stringify Data
+                const jsonStr = JSON.stringify(priceData, null, 4);
+
+                // 2. Wrap in File Content
+                let fileContent = `const initialPriceData = ${jsonStr};\n\n`;
+
+                fileContent += `// Function to get text label for category\n`;
+                fileContent += `function getCategoryLabel(cat) {\n`;
+                fileContent += `    const labels = {\n`;
+                fileContent += `        'master': '알파인사운드마스터',\n`;
+                fileContent += `        'team': '팀알파인',\n`;
+                fileContent += `        'style': '알파인스타일총판',\n`;
+                fileContent += `        'region': '알파인 지역총판',\n`;
+                fileContent += `        'dealer': '알파인 대리점'\n`;
+                fileContent += `    };\n`;
+                fileContent += `    return labels[cat] || cat;\n`;
+                fileContent += `}\n\n`;
+
+                fileContent += `let priceData = [];\n`;
+                fileContent += `const FORCE_RESTORE_KEY = 'priceDataRestored_v2_calculated';\n\n`;
+
+                fileContent += `try {\n`;
+                fileContent += `    // Check if we already have data in localStorage\n`;
+                fileContent += `    const storedData = localStorage.getItem('priceData');\n`;
+                fileContent += `    const hasRestored = localStorage.getItem(FORCE_RESTORE_KEY);\n\n`;
+                fileContent += `    if (storedData && hasRestored) {\n`;
+                fileContent += `        // Load from storage if it exists and we've already done the initial restore\n`;
+                fileContent += `        console.log('Loading price data from local storage...');\n`;
+                fileContent += `        priceData = JSON.parse(storedData);\n`;
+                fileContent += `    } else {\n`;
+                fileContent += `        // First run or force restore needed: Initialize with default data\n`;
+                fileContent += `        console.log('Initializing price data (First run)...');\n`;
+                fileContent += `        priceData = JSON.parse(JSON.stringify(initialPriceData));\n`;
+                fileContent += `        localStorage.setItem('priceData', JSON.stringify(priceData));\n`;
+                fileContent += `        localStorage.setItem(FORCE_RESTORE_KEY, new Date().toISOString());\n`;
+                fileContent += `    }\n\n`;
+                fileContent += `} catch (e) {\n`;
+                fileContent += `    console.error('Local Storage Error:', e);\n`;
+                fileContent += `    priceData = initialPriceData;\n`;
+                fileContent += `}\n\n`;
+
+                fileContent += `// Sync Logic maintained for dynamic checks\n`;
+                fileContent += `let isUpdated = false;\n`;
+                fileContent += `function savePriceData() {\n`;
+                fileContent += `    localStorage.setItem('priceData', JSON.stringify(priceData));\n`;
+                fileContent += `}\n`;
+
+                // 3. Commit
+                try {
+                    // Note: path is relative to repo root
+                    await client.commitFile('js/price-data.js', fileContent, 'Update Price List from Admin Pannel');
+                    alert('성공적으로 저장되었습니다! Vercel 배포가 완료되면(약 1~2분) 변경사항이 반영됩니다.');
+                } catch (err) {
+                    console.error(err);
+                    alert(`저장 중 오류가 발생했습니다: ${err.message}`);
+                }
+            });
+
         });
 
         // Function to download data as a JS file (compatible with price-data.js structure)
