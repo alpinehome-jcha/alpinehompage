@@ -166,7 +166,7 @@ const translations = {
 function applyLanguage(newLang) {
     const langText = document.querySelector('.curr-lang');
     if (langText) langText.textContent = newLang.toUpperCase();
-    localStorage.setItem('lang', newLang);
+    sessionStorage.setItem('lang', newLang);
 
     // Switch Footer Logo
     const footerLogo = document.getElementById('footer-logo-img');
@@ -218,6 +218,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Init Language from Storage
-    const savedLang = localStorage.getItem('lang') || 'ko';
+    const savedLang = sessionStorage.getItem('lang') || 'ko';
     applyLanguage(savedLang);
 });

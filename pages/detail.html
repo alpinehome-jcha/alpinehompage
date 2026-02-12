@@ -445,7 +445,7 @@
                 const currentLang = langText.textContent.toLowerCase();
                 const newLang = currentLang === 'ko' ? 'en' : 'ko';
                 langText.textContent = newLang.toUpperCase();
-                localStorage.setItem('lang', newLang);
+                sessionStorage.setItem('lang', newLang);
 
                 // Update static content
                 document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -461,7 +461,7 @@
         }
 
         // Init
-        const savedLang = localStorage.getItem('lang') || 'ko';
+        const savedLang = sessionStorage.getItem('lang') || 'ko';
         if (langText) langText.textContent = savedLang.toUpperCase();
 
         // Initial translation update for header/footer

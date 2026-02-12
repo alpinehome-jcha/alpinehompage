@@ -703,10 +703,22 @@
             `;
 
             // Add listener for file select
-            document.getElementById('popupFileSelect').addEventListener('change', function (e) {
+            document.getElementById('popupFileSelect').addEventListener('change', async function (e) {
                 if (e.target.files && e.target.files[0]) {
-                    const filename = e.target.files[0].name;
+                    const file = e.target.files[0];
+                    const filename = file.name;
                     const path = 'assets/images/popupimage/' + filename;
+
+                    // Instant Upload
+                    if (confirm(`Upload ${filename} to GitHub now?`)) {
+                        try {
+                            await ghClient.uploadFile(path, file, `Upload Popup Image: ${filename}`);
+                            alert('Image uploaded to GitHub!');
+                        } catch (err) {
+                            alert('Upload Failed: ' + err.message);
+                        }
+                    }
+
                     document.getElementById('popupImage').value = path;
 
                     // Show local preview
@@ -714,7 +726,7 @@
                     reader.onload = function (ev) {
                         document.getElementById('popupPreview').src = ev.target.result;
                     }
-                    reader.readAsDataURL(e.target.files[0]);
+                    reader.readAsDataURL(file);
                 }
             });
         }
@@ -992,6 +1004,17 @@
 
             // Auto Save to Server
             saveToGitHub(currentMode, true);
+
+            // Check if Main Image was changed/selected
+            const fileInput = document.getElementById('file_upload');
+            if (isProduct && fileInput && fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const path = inputs.image.value; // already set by change listener
+                // We should upload this too
+                ghClient.uploadFile(path, file, `Upload Product Image: ${file.name}`)
+                    .then(() => alert(`Image ${file.name} uploaded to GitHub.`))
+                    .catch(err => alert(`Image Upload Failed: ${err.message}`));
+            }
         }
 
         // CATEGORIES (Moved from missing global scope or re-declared)
@@ -1134,8 +1157,17 @@
         function handleBlockFile(id, input) {
             const file = input.files[0];
             if (!file) return;
+            const path = 'assets/images/' + file.name;
+
+            // Upload immediately
+            if (confirm(`Upload ${file.name} to GitHub now?`)) {
+                ghClient.uploadFile(path, file, `Upload Detail Block Image: ${file.name}`)
+                    .then(() => alert('Image Uploaded!'))
+                    .catch(err => alert('Upload Failed: ' + err.message));
+            }
+
             const b = currentBlocks.find(x => x.id === id);
-            if (b) { b.value = 'assets/images/' + file.name; renderBlocks(); }
+            if (b) { b.value = path; renderBlocks(); }
         }
 
         // Excel Paste Handler
@@ -1209,16 +1241,28 @@
         // Attach File Listener
         const attachInput = document.getElementById('attach_file');
         if (attachInput) {
-            attachInput.addEventListener('change', function (e) {
+            attachInput.addEventListener('change', async function (e) {
                 const file = e.target.files[0];
                 if (file) {
-                    document.getElementById('attach_url').value = 'assets/files/' + file.name;
+                    const path = 'assets/files/' + file.name;
+                    document.getElementById('attach_url').value = path;
+
                     // Auto-fill name if empty
                     const nameInput = document.getElementById('attach_name');
                     if (!nameInput.value) {
                         // Remove extension for name
                         const rawName = file.name.replace(/\.[^/.]+$/, "");
                         nameInput.value = rawName;
+                    }
+
+                    // Upload immediately
+                    if (confirm(`Upload ${file.name} to GitHub now?`)) {
+                        try {
+                            await ghClient.uploadFile(path, file, `Upload Attachment: ${file.name}`);
+                            alert('File Uploaded Successfully!');
+                        } catch (err) {
+                            alert('Upload Failed: ' + err.message);
+                        }
                     }
                 }
             });

@@ -689,6 +689,7 @@
             if (auth.getRole() !== 'admin') { alert('Access Denied'); return; }
 
             const title = document.getElementById('postTitle').value;
+            const content = document.getElementById('postContent').value;
             if (!title) { alert('Title is required'); return; }
 
             // Loading Indicator
@@ -705,48 +706,34 @@
                     ghClient.configure(token, repo);
                 }
 
-                // Collect Blocks & Upload Images
-                const blocks = [];
-                const blockItems = document.querySelectorAll('.content-block-item');
-
-                for (const item of blockItems) {
-                    const type = item.dataset.type;
-                    const input = item.querySelector('.block-input');
-
-                    if (type === 'image') {
-                        const fileInput = item.querySelector('input[type="file"]');
-                        if (fileInput && fileInput.files[0]) {
-                            const file = fileInput.files[0];
-                            const path = 'assets/images/' + file.name;
-                            if (ghClient.isConfigured()) {
-                                try {
-                                    await ghClient.uploadFile(path, file);
-                                    console.log('Uploaded image:', path);
-                                } catch (e) {
-                                    if (!confirm(`Failed to upload ${file.name}. Continue?`)) throw new Error('Upload cancelled');
-                                }
-                            }
-                            blocks.push({ type: type, value: path });
-                        } else if (input && input.value.trim()) {
-                            blocks.push({ type: type, value: input.value });
+                // 1. Upload Main Image
+                let mainImagePath = document.getElementById('postImage').value;
+                const fileInput = document.querySelector('input[onchange="handleFile(this, \'postImage\')"]');
+                if (fileInput && fileInput.files[0]) {
+                    const file = fileInput.files[0];
+                    const path = 'assets/images/' + file.name;
+                    if (ghClient.isConfigured()) {
+                        try {
+                            await ghClient.uploadFile(path, file, `Upload Product Image: ${file.name}`);
+                        } catch (e) {
+                            if (!confirm(`Failed to upload ${file.name}. Continue?`)) throw new Error('Upload cancelled');
                         }
-                    } else if (input && input.value.trim()) {
-                        blocks.push({ type: type, value: input.value });
                     }
+                    mainImagePath = path;
                 }
 
-                // Collect Files & Upload
+                // 2. Upload Attachments (Max 5)
                 let files = [];
                 let hasNewFiles = false;
-                for (let i = 1; i <= 3; i++) {
-                    const fileInput = document.querySelector(`input[onchange="handleFile(this, 'file${i}')"]`);
-                    if (fileInput && fileInput.files[0]) {
-                        const file = fileInput.files[0];
+                for (let i = 1; i <= 5; i++) {
+                    const fInput = document.querySelector(`input[onchange="handleFile(this, 'file${i}')"]`);
+                    if (fInput && fInput.files[0]) {
+                        const file = fInput.files[0];
                         const path = 'assets/files/' + file.name;
+
                         if (ghClient.isConfigured()) {
                             try {
-                                await ghClient.uploadFile(path, file);
-                                console.log('Uploaded file:', path);
+                                await ghClient.uploadFile(path, file, `Upload Product File ${i}: ${file.name}`);
                             } catch (e) {
                                 if (!confirm(`Failed to upload ${file.name}. Continue?`)) throw new Error('Upload cancelled');
                             }
@@ -754,24 +741,33 @@
                         files.push({ name: file.name, path: path });
                         hasNewFiles = true;
                     } else {
-                        const fname = document.getElementById('fileData' + i).value;
-                        if (fname) {
-                            // Preserve
-                        }
+                        // Check if preserving existing file (not easily possible with current UI structure unless we read from existing data)
+                        // For now, if editing and no new file selected for this slot, we might lose it if we strictly follow inputs.
+                        // But let's check if we can preserve old files if no new ones are added across ALL slots.
                     }
                 }
 
-                if (isEditMode && files.length === 0) {
+                // Merge old files if edit mode and no new files uploaded
+                if (isEditMode) {
                     const oldPost = posts.find(p => p.id === currentPostId);
-                    if (oldPost) files = oldPost.files || [];
+                    if (oldPost) {
+                        // If no new files were selected, keep the old list
+                        if (files.length === 0) {
+                            files = oldPost.files || [];
+                        } else {
+                            // If new files added, we replace the list (simple logic) or we could append.
+                            // Given the UI is "File 1..5", maybe we should try to merge? 
+                            // But for now, replacing if new files exist is safer than duplicating.
+                        }
+                    }
                 }
 
                 if (isEditMode) {
                     const index = posts.findIndex(p => p.id === currentPostId);
                     if (index !== -1) {
                         posts[index].title = title;
-                        posts[index].contentBlocks = blocks;
-                        posts[index].content = blocks.map(b => b.value).join('\n');
+                        posts[index].content = content;
+                        posts[index].image = mainImagePath;
                         if (hasNewFiles || files.length > 0) posts[index].files = files;
                     }
                 } else {
@@ -779,8 +775,8 @@
                         id: Date.now(),
                         date: new Date().toISOString().split('T')[0],
                         title: title,
-                        contentBlocks: blocks,
-                        content: blocks.map(b => b.value).join('\n'),
+                        content: content,
+                        image: mainImagePath,
                         files: files,
                         author: 'Admin'
                     };
@@ -800,6 +796,7 @@
 
             } catch (e) {
                 alert('Error: ' + e.message);
+                console.error(e);
             } finally {
                 btnSave.innerText = originalText;
                 btnSave.disabled = false;
