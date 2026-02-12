@@ -490,6 +490,11 @@ footer {
     }
 }
 
+/* Mobile Menu Button - Default Hidden */
+.mobile-menu-btn {
+    display: none;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .header-container {
@@ -567,10 +572,7 @@ footer {
     }
 }
 
-/* Hide mobile menu button on desktop */
-.mobile-menu-btn {
-    display: none;
-}
+
 
 /* Modal Popup Styles */
 .popup-overlay {
