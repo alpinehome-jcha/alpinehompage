@@ -352,6 +352,8 @@
     <script>
         document.write('<script src="../js/support-product-data.js?v=' + Date.now() + '"><\/script>');
     </script>
+    <script src="../js/github-client.js"></script>
+    <script src="../js/admin-data-manager.js"></script>
     <script>
         let posts = [];
         let currentPostId = null;
@@ -683,64 +685,125 @@
             document.getElementById('boardWrite').style.display = 'block';
         }
 
-        function savePost() {
+        async function savePost() {
             if (auth.getRole() !== 'admin') { alert('Access Denied'); return; }
 
             const title = document.getElementById('postTitle').value;
-            const content = document.getElementById('postContent').value;
-            const image = document.getElementById('postImage').value;
-
             if (!title) { alert('Title is required'); return; }
 
-            // Collect Files
-            // Note: In a real app, merging new files with old files is tricky without a backend.
-            // customized for this simple mock: if file inputs have values, use them.
-            // if editing and no new files, keep old? 
-            let files = [];
-            let hasNewFiles = false;
-            for (let i = 1; i <= 5; i++) {
-                const fname = document.getElementById('fileData' + i).value;
-                if (fname) {
-                    files.push({ name: fname, path: 'assets/files/' + fname });
-                    hasNewFiles = true;
+            // Loading Indicator
+            const btnSave = document.querySelector('button[onclick="savePost()"]');
+            const originalText = btnSave.innerText;
+            btnSave.innerText = 'Saving...';
+            btnSave.disabled = true;
+
+            try {
+                // Configure GitHub
+                const token = localStorage.getItem('github_token');
+                const repo = localStorage.getItem('github_repo');
+                if (token && repo && typeof ghClient !== 'undefined') {
+                    ghClient.configure(token, repo);
                 }
-            }
 
-            if (isEditMode && !hasNewFiles) {
-                // Keep existing files if no new ones selected
-                const oldPost = posts.find(p => p.id === currentPostId);
-                if (oldPost) files = oldPost.files;
-            }
+                // Collect Blocks & Upload Images
+                const blocks = [];
+                const blockItems = document.querySelectorAll('.content-block-item');
 
-            if (isEditMode) {
-                // Update
-                const index = posts.findIndex(p => p.id === currentPostId);
-                if (index !== -1) {
-                    posts[index].title = title;
-                    posts[index].content = content;
-                    posts[index].image = image;
-                    if (hasNewFiles || files.length > 0) posts[index].files = files;
-                    // Update date? usually last modified. let's keep original date or upd? 
-                    // Let's keep original date for now.
+                for (const item of blockItems) {
+                    const type = item.dataset.type;
+                    const input = item.querySelector('.block-input');
+
+                    if (type === 'image') {
+                        const fileInput = item.querySelector('input[type="file"]');
+                        if (fileInput && fileInput.files[0]) {
+                            const file = fileInput.files[0];
+                            const path = 'assets/images/' + file.name;
+                            if (ghClient.isConfigured()) {
+                                try {
+                                    await ghClient.uploadFile(path, file);
+                                    console.log('Uploaded image:', path);
+                                } catch (e) {
+                                    if (!confirm(`Failed to upload ${file.name}. Continue?`)) throw new Error('Upload cancelled');
+                                }
+                            }
+                            blocks.push({ type: type, value: path });
+                        } else if (input && input.value.trim()) {
+                            blocks.push({ type: type, value: input.value });
+                        }
+                    } else if (input && input.value.trim()) {
+                        blocks.push({ type: type, value: input.value });
+                    }
                 }
-            } else {
-                // Create
-                const newPost = {
-                    id: Date.now(),
-                    date: new Date().toISOString().split('T')[0],
-                    title: title,
-                    content: content,
-                    image: image,
-                    files: files,
-                    author: 'Admin'
-                };
-                posts.unshift(newPost);
-            }
 
-            localStorage.setItem('supportProductData', JSON.stringify(posts));
-            alert('Saved.');
-            cancelWrite();
-            renderBoard();
+                // Collect Files & Upload
+                let files = [];
+                let hasNewFiles = false;
+                for (let i = 1; i <= 3; i++) {
+                    const fileInput = document.querySelector(`input[onchange="handleFile(this, 'file${i}')"]`);
+                    if (fileInput && fileInput.files[0]) {
+                        const file = fileInput.files[0];
+                        const path = 'assets/files/' + file.name;
+                        if (ghClient.isConfigured()) {
+                            try {
+                                await ghClient.uploadFile(path, file);
+                                console.log('Uploaded file:', path);
+                            } catch (e) {
+                                if (!confirm(`Failed to upload ${file.name}. Continue?`)) throw new Error('Upload cancelled');
+                            }
+                        }
+                        files.push({ name: file.name, path: path });
+                        hasNewFiles = true;
+                    } else {
+                        const fname = document.getElementById('fileData' + i).value;
+                        if (fname) {
+                            // Preserve
+                        }
+                    }
+                }
+
+                if (isEditMode && files.length === 0) {
+                    const oldPost = posts.find(p => p.id === currentPostId);
+                    if (oldPost) files = oldPost.files || [];
+                }
+
+                if (isEditMode) {
+                    const index = posts.findIndex(p => p.id === currentPostId);
+                    if (index !== -1) {
+                        posts[index].title = title;
+                        posts[index].contentBlocks = blocks;
+                        posts[index].content = blocks.map(b => b.value).join('\n');
+                        if (hasNewFiles || files.length > 0) posts[index].files = files;
+                    }
+                } else {
+                    const newPost = {
+                        id: Date.now(),
+                        date: new Date().toISOString().split('T')[0],
+                        title: title,
+                        contentBlocks: blocks,
+                        content: blocks.map(b => b.value).join('\n'),
+                        files: files,
+                        author: 'Admin'
+                    };
+                    posts.unshift(newPost);
+                }
+
+                localStorage.setItem('supportProductData', JSON.stringify(posts));
+
+                // Auto Save Data
+                if (typeof saveToGitHub === 'function') {
+                    await saveToGitHub('support_product', true);
+                }
+
+                alert('Saved & Uploaded to GitHub.');
+                cancelWrite();
+                renderBoard();
+
+            } catch (e) {
+                alert('Error: ' + e.message);
+            } finally {
+                btnSave.innerText = originalText;
+                btnSave.disabled = false;
+            }
         }
 
         function deleteCurrentPost() {

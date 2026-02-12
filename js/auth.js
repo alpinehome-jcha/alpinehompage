@@ -180,6 +180,7 @@ const auth = {
                             <input type="text" id="global_gh_repo" placeholder="username/repository" style="width:100%; padding:8px; margin-bottom:5px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;">
                         </div>
                         <div style="text-align:right;">
+                            <button id="btnTestGh" style="padding:8px 12px; cursor:pointer; background:#17a2b8; color:white; border:none; border-radius:4px; margin-right:5px;">연결 테스트</button>
                             <button id="btnCancelGh" style="padding:8px 12px; cursor:pointer; background:#ccc; border:none; border-radius:4px; margin-right:5px;">닫기</button>
                             <button id="btnSaveGh" style="padding:8px 12px; cursor:pointer; background:#28a745; color:white; border:none; border-radius:4px;">저장</button>
                         </div>
@@ -189,6 +190,24 @@ const auth = {
             document.body.insertAdjacentHTML('beforeend', ghModalHTML);
 
             // GitHub Modal Events
+            document.getElementById('btnTestGh').onclick = async () => {
+                const token = document.getElementById('global_gh_token').value.trim();
+                const repo = document.getElementById('global_gh_repo').value.trim();
+                if (!token || !repo) { alert('설정 값을 먼저 입력해주세요 (테스트 전).'); return; }
+
+                // Temporary configure for test
+                const tempClient = new GitHubClient(); // Create temp, don't mess with global yet? 
+                // actually we can just use the static instance if we want, but let's be safe.
+                // Or just use the global one but configure it? 
+                // let's use the method on the global instance if available, or create new.
+                // Assuming ghClient is available globally from github-client.js
+                if (typeof ghClient === 'undefined') { alert('GitHub Client Library not loaded'); return; }
+
+                ghClient.configure(token, repo);
+                const result = await ghClient.testConnection();
+                alert(result.message);
+            };
+
             document.getElementById('btnCancelGh').onclick = () => {
                 document.getElementById('ghSettingsModal').style.display = 'none';
             };
