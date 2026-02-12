@@ -1050,10 +1050,8 @@
 
 
             // If Master, filter dealer list to only Team Alpine
+            // If Master, filter dealer list to only Team Alpine
             let displayData = data;
-            if (currentMode === 'dealer' && currentUserRole === 'master') {
-                displayData = data.filter(item => item.category === 'Team Alpine');
-            }
 
             displayData.forEach(item => {
                 const li = document.createElement('li');
@@ -1252,7 +1250,7 @@
             currentUserRole = sessionStorage.getItem('userRole');
 
             // Strict Role Check
-            if (currentUserRole !== 'admin' && currentUserRole !== 'master') {
+            if (currentUserRole !== 'admin') {
                 alert('Access Denied. Admins only.');
                 window.location.href = '../index.html';
                 return;
@@ -1260,11 +1258,6 @@
 
             const urlParams = new URLSearchParams(window.location.search);
             let modeParam = urlParams.get('mode');
-
-            // Force Dealer mode for Master if they try to access others
-            if (currentUserRole === 'master') {
-                currentMode = 'dealer';
-            }
 
             // Initialize Data from Global Variables (loaded by scripts)
             products = (typeof productData !== 'undefined') ? [...productData] : [];
