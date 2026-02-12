@@ -15,17 +15,23 @@ const initialPromoData = [
     }
 ];
 
-const PROMO_DATA_VERSION = "2026-02-11-REV2";
+const PROMO_DATA_VERSION = 1770872784704;
 
 let promoData = [];
 if (typeof localStorage !== 'undefined') {
-    // Priority: LocalStorage > Initial File Data
+    const storedVersion = localStorage.getItem('promoDataVersion');
     const stored = localStorage.getItem('promoData');
-    if (stored) {
+
+    if (typeof PROMO_DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < PROMO_DATA_VERSION)) {
+        // Server has newer version, force update
+        promoData = JSON.parse(JSON.stringify(initialPromoData));
+        localStorage.setItem('promoData', JSON.stringify(promoData));
+        localStorage.setItem('promoDataVersion', PROMO_DATA_VERSION.toString());
+    } else if (stored) {
         promoData = JSON.parse(stored);
     } else {
         promoData = JSON.parse(JSON.stringify(initialPromoData));
-        localStorage.setItem('promoData', JSON.stringify(promoData));
+        if (typeof PROMO_DATA_VERSION !== 'undefined') localStorage.setItem('promoDataVersion', PROMO_DATA_VERSION.toString());
     }
 } else {
     promoData = initialPromoData;

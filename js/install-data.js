@@ -19,17 +19,23 @@ const initialInstallData = [
     }
 ];
 
-const INSTALL_DATA_VERSION = "2026-02-11-REV2";
+const INSTALL_DATA_VERSION = 1770872784704;
 
 let installData = [];
 if (typeof localStorage !== 'undefined') {
-    // Priority: LocalStorage > Initial File Data
+    const storedVersion = localStorage.getItem('installDataVersion');
     const stored = localStorage.getItem('installData');
-    if (stored) {
+
+    if (typeof INSTALL_DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < INSTALL_DATA_VERSION)) {
+        // Server has newer version, force update
+        installData = JSON.parse(JSON.stringify(initialInstallData));
+        localStorage.setItem('installData', JSON.stringify(installData));
+        localStorage.setItem('installDataVersion', INSTALL_DATA_VERSION.toString());
+    } else if (stored) {
         installData = JSON.parse(stored);
     } else {
         installData = JSON.parse(JSON.stringify(initialInstallData));
-        localStorage.setItem('installData', JSON.stringify(installData));
+        if (typeof INSTALL_DATA_VERSION !== 'undefined') localStorage.setItem('installDataVersion', INSTALL_DATA_VERSION.toString());
     }
 } else {
     installData = initialInstallData;

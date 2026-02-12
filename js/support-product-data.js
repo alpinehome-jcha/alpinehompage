@@ -28,13 +28,23 @@ const initialSupport_productData = [
     }
 ];
 
+const SUPPORT_PRODUCT_DATA_VERSION = 1770872784704;
+
 let supportProductData = [];
 if (typeof localStorage !== 'undefined') {
+    const storedVersion = localStorage.getItem('supportProductDataVersion');
     const stored = localStorage.getItem('supportProductData');
-    if (stored) {
+
+    if (typeof SUPPORT_PRODUCT_DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < SUPPORT_PRODUCT_DATA_VERSION)) {
+        // Server has newer version, force update
+        supportProductData = JSON.parse(JSON.stringify(initialSupport_productData));
+        localStorage.setItem('supportProductData', JSON.stringify(supportProductData));
+        localStorage.setItem('supportProductDataVersion', SUPPORT_PRODUCT_DATA_VERSION.toString());
+    } else if (stored) {
         supportProductData = JSON.parse(stored);
     } else {
         supportProductData = JSON.parse(JSON.stringify(initialSupport_productData));
+        if (typeof SUPPORT_PRODUCT_DATA_VERSION !== 'undefined') localStorage.setItem('supportProductDataVersion', SUPPORT_PRODUCT_DATA_VERSION.toString());
     }
 } else {
     supportProductData = initialSupport_productData;

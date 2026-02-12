@@ -66,14 +66,29 @@ function downloadData(type) {
                             'initial' + type.charAt(0).toUpperCase() + type.slice(1) + 'Data';
 
     // Construct File Content
-    let fileContent = `const ${varName} = ${jsonStr};\n\n`;
+    let fileContent = `const ${varName} = ${jsonStr};\n`;
+
+    // Inject Version
+    const version = Date.now();
+    const versionVarName = (type === 'dealer') ? 'DEALER_DATA_VERSION' :
+        (type === 'product') ? 'PRODUCT_DATA_VERSION' :
+            (type === 'popup') ? 'POPUP_DATA_VERSION' :
+                (type === 'promo') ? 'PROMO_DATA_VERSION' :
+                    (type === 'resource') ? 'RESOURCE_DATA_VERSION' :
+                        (type === 'install') ? 'INSTALL_DATA_VERSION' :
+                            (type === 'support_product') ? 'SUPPORT_PRODUCT_DATA_VERSION' :
+                                'DATA_VERSION';
+
+    fileContent += `const ${versionVarName} = ${version};\n\n`;
 
     // Add logic block (standard boilerplate for each file)
     let logicVar = dataName; // e.g. productData
+    let versionKey = dataName + 'Version';
 
     fileContent += `let ${logicVar} = [];\n`;
     fileContent += `if (typeof localStorage !== 'undefined') {\n`;
     fileContent += `    const stored = localStorage.getItem('${dataName}');\n`;
+    fileContent += `    const storedVer = localStorage.getItem('${dataName}_version');\n`;
     fileContent += `    if (stored) {\n`;
     fileContent += `        ${logicVar} = JSON.parse(stored);\n`;
     fileContent += `    } else {\n`;

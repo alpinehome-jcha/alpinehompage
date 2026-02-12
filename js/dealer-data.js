@@ -568,18 +568,18 @@ const initialDealerData = [
         "region": "경남"
     }
 ];
-const DATA_VERSION = 1770872075981;
+const DEALER_DATA_VERSION = 1770872075981;
 
 var dealerData = [];
 if (typeof localStorage !== 'undefined') {
     const storedVersion = localStorage.getItem('dealerDataVersion');
     const stored = localStorage.getItem('dealerData');
 
-    if (typeof DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < DATA_VERSION)) {
+    if (typeof DEALER_DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < DEALER_DATA_VERSION)) {
         // Server has newer version, force update
         dealerData = JSON.parse(JSON.stringify(initialDealerData));
         localStorage.setItem('dealerData', JSON.stringify(dealerData));
-        localStorage.setItem('dealerDataVersion', DATA_VERSION.toString());
+        localStorage.setItem('dealerDataVersion', DEALER_DATA_VERSION.toString());
     } else if (stored) {
         dealerData = JSON.parse(stored);
         // Safety Check: If stored data is empty but we have initial data, restore it.
@@ -589,14 +589,19 @@ if (typeof localStorage !== 'undefined') {
             localStorage.setItem('dealerData', JSON.stringify(dealerData));
             // Don't update version here, arguably, or maybe we should? 
             // If we restore, we match current version.
-            if (typeof DATA_VERSION !== 'undefined') localStorage.setItem('dealerDataVersion', DATA_VERSION.toString());
+            if (typeof DEALER_DATA_VERSION !== 'undefined') localStorage.setItem('dealerDataVersion', DEALER_DATA_VERSION.toString());
         }
     } else {
         dealerData = JSON.parse(JSON.stringify(initialDealerData));
-        if (typeof DATA_VERSION !== 'undefined') localStorage.setItem('dealerDataVersion', DATA_VERSION.toString());
+        if (typeof DEALER_DATA_VERSION !== 'undefined') localStorage.setItem('dealerDataVersion', DEALER_DATA_VERSION.toString());
     }
-} else {
     dealerData = initialDealerData;
+}
+
+// Explicitly attach to window to ensure global access
+if (typeof window !== 'undefined') {
+    window.dealerData = dealerData;
+    console.log('dealer-data.js loaded. dealerData length:', dealerData.length);
 }
 
 if (typeof module !== 'undefined' && module.exports) {

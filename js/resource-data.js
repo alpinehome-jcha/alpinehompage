@@ -29,13 +29,23 @@ const initialResourceData = [
     }
 ];
 
+const RESOURCE_DATA_VERSION = 1770872784704;
+
 let resourceData = [];
 if (typeof localStorage !== 'undefined') {
+    const storedVersion = localStorage.getItem('resourceDataVersion');
     const stored = localStorage.getItem('resourceData');
-    if (stored) {
+
+    if (typeof RESOURCE_DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < RESOURCE_DATA_VERSION)) {
+        // Server has newer version, force update
+        resourceData = JSON.parse(JSON.stringify(initialResourceData));
+        localStorage.setItem('resourceData', JSON.stringify(resourceData));
+        localStorage.setItem('resourceDataVersion', RESOURCE_DATA_VERSION.toString());
+    } else if (stored) {
         resourceData = JSON.parse(stored);
     } else {
         resourceData = JSON.parse(JSON.stringify(initialResourceData));
+        if (typeof RESOURCE_DATA_VERSION !== 'undefined') localStorage.setItem('resourceDataVersion', RESOURCE_DATA_VERSION.toString());
     }
 } else {
     resourceData = initialResourceData;

@@ -2862,23 +2862,23 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const DATA_VERSION = 1770872784704;
+const PRODUCT_DATA_VERSION = 1770872784704;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
     const storedVersion = localStorage.getItem('productDataVersion');
     const stored = localStorage.getItem('productData');
 
-    if (typeof DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < DATA_VERSION)) {
+    if (typeof PRODUCT_DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < PRODUCT_DATA_VERSION)) {
         // Server has newer version, force update
         productData = JSON.parse(JSON.stringify(initialProductData));
         localStorage.setItem('productData', JSON.stringify(productData));
-        localStorage.setItem('productDataVersion', DATA_VERSION.toString());
+        localStorage.setItem('productDataVersion', PRODUCT_DATA_VERSION.toString());
     } else if (stored) {
         productData = JSON.parse(stored);
     } else {
         productData = JSON.parse(JSON.stringify(initialProductData));
-        if (typeof DATA_VERSION !== 'undefined') localStorage.setItem('productDataVersion', DATA_VERSION.toString());
+        if (typeof PRODUCT_DATA_VERSION !== 'undefined') localStorage.setItem('productDataVersion', PRODUCT_DATA_VERSION.toString());
     }
 } else {
     productData = initialProductData;

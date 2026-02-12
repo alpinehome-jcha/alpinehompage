@@ -434,11 +434,7 @@
 
     </div>
 
-    <!-- DEBUG PANEL -->
-    <div id="debugPanel"
-        style="position:fixed; bottom:0; right:0; background:rgba(0,0,0,0.8); color:#fff; padding:10px; z-index:9999; font-size:12px; pointer-events:none;">
-        Initializing Debug...
-    </div>
+
 
     <footer>
         <div class="footer-content">
@@ -500,18 +496,42 @@
     <script src="../js/auth.js?v=20260211"></script>
 
     <script>
+        // Data Loader
+        const dataScripts = [
+            '../js/product-data.js',
+            '../js/dealer-data.js',
+            '../js/popup-data.js',
+            '../js/promo-data.js',
+            '../js/resource-data.js',
+            '../js/install-data.js',
+            '../js/support-product-data.js',
+            '../js/admin-data-manager.js'
+        ];
+
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const s = document.createElement('script');
+                s.src = src + '?v=' + Date.now();
+                s.onload = resolve;
+                s.onerror = (e) => { console.error('Failed to load ' + src, e); resolve(); }; // Continue even if fail? Better verify.
+                document.head.appendChild(s);
+            });
+        }
+
+        // Initialize App after scripts load
+        Promise.all(dataScripts.map(loadScript)).then(() => {
+            console.log('All data scripts loaded');
+            startAdmin();
+        });
+
         let products = [];
         let dealers = [];
-
-
-
-        // Check Role
-        const currentUserRole = sessionStorage.getItem('userRole');
-
-        let currentMode = 'product'; // 'product' | 'dealer'
-        if (currentUserRole === 'master') currentMode = 'dealer'; // Default to dealer for master
+        let currentUserRole = null;
+        let currentMode = 'product';
         let currentId = null;
         let currentBlocks = [];
+        let currentAttachments = [];
+
 
         // DOM Elements
         const domList = document.getElementById('itemList');
@@ -1027,35 +1047,23 @@
 
             const data = currentMode === 'product' ? products : dealers;
 
-            // Update Debug Panel
-            const dbg = document.getElementById('debugPanel');
-            if (dbg) {
-                dbg.innerHTML = `
-                    Role: ${currentUserRole}<br>
-                    Mode: ${currentMode}<br>
-                    Data Length: ${data ? data.length : 'null'}<br>
-                    dealerData type: ${typeof dealerData}<br>
-                    dealerData len: ${typeof dealerData !== 'undefined' ? dealerData.length : 'N/A'}
-                `;
-            }
+
 
             // If Master, filter dealer list to only Team Alpine
-
+            let displayData = data;
             if (currentMode === 'dealer' && currentUserRole === 'master') {
-                // Master role is deprecated for dealer management, but keeping safe logic just in case
-                domList.innerHTML = '<p style="padding:1rem; color:red;">Access Denied</p>';
-                return;
-            } else {
-                data.forEach(item => {
-                    const li = document.createElement('li');
-                    li.className = `product-item ${item.id === currentId ? 'active' : ''}`;
-                    // Dealer uses 'name', Product uses 'title' internally, but we map to title input
-                    const title = currentMode === 'product' ? item.title : item.name;
-                    li.innerHTML = `<h4>${title}</h4><p>${item.category}</p>`;
-                    li.onclick = () => selectItem(item.id);
-                    domList.appendChild(li);
-                });
+                displayData = data.filter(item => item.category === 'Team Alpine');
             }
+
+            displayData.forEach(item => {
+                const li = document.createElement('li');
+                li.className = `product-item ${item.id === currentId ? 'active' : ''}`;
+                // Dealer uses 'name', Product uses 'title' internally, but we map to title input
+                const title = currentMode === 'product' ? item.title : item.name;
+                li.innerHTML = `<h4>${title}</h4><p>${item.category}</p>`;
+                li.onclick = () => selectItem(item.id);
+                domList.appendChild(li);
+            });
         }
 
         function deleteCurrent() {
@@ -1181,9 +1189,7 @@
             });
         }
 
-        let currentAttachments = [];
 
-        // ... existing mode logic ...
 
         function renderAttachments() {
             const list = document.getElementById('attachmentList');
@@ -1241,44 +1247,39 @@
             renderAttachments();
         }
 
-        // Init
-        // Check URL Search Params
+        function startAdmin() {
+            // Check Role
+            currentUserRole = sessionStorage.getItem('userRole');
 
-        // Strict Role Check
-        if (currentUserRole !== 'admin') {
-            alert('Access Denied. Admins only.');
-            window.location.href = '../index.html';
-        }
+            // Strict Role Check
+            if (currentUserRole !== 'admin' && currentUserRole !== 'master') {
+                alert('Access Denied. Admins only.');
+                window.location.href = '../index.html';
+                return;
+            }
 
-        const urlParams = new URLSearchParams(window.location.search);
-        let modeParam = urlParams.get('mode');
+            const urlParams = new URLSearchParams(window.location.search);
+            let modeParam = urlParams.get('mode');
 
-        // Force Dealer mode for Master if they try to access others
-        // (Reverted: Master no longer has access)
-        if (currentUserRole !== 'admin') {
-            // Basic protection: Non-admins shouldn't be here generally, 
-            // but if they are (e.g. Master for some other future reason), default to something safe or alert.
-            // For now, if master tries to load, they might see empty product list or we can redirect.
-        }
+            // Force Dealer mode for Master if they try to access others
+            if (currentUserRole === 'master') {
+                currentMode = 'dealer';
+            }
 
-        // Initialize Data
-        products = (typeof productData !== 'undefined') ? [...productData] : [];
-        dealers = (typeof dealerData !== 'undefined') ? [...dealerData] : [];
+            // Initialize Data from Global Variables (loaded by scripts)
+            products = (typeof productData !== 'undefined') ? [...productData] : [];
+            dealers = (typeof dealerData !== 'undefined') ? [...dealerData] : [];
 
-        console.log('Admin Debug: Products:', products.length, 'Dealers:', dealers.length);
-        if (products.length === 0 && dealers.length === 0) {
-            console.warn('Data arrays are empty. Checking raw existing objects...');
-            console.log('typeof productData:', typeof productData);
-            console.log('typeof dealerData:', typeof dealerData);
-        }
+            console.log('Admin Debug: Products:', products.length, 'Dealers:', dealers.length);
+            // Debug Panel update will happen in renderList
 
-        if (modeParam === 'dealer') {
-            setMode('dealer');
-        } else if (modeParam === 'popup') {
-            setMode('popup');
-        } else {
-            // Default check
-            setMode('product');
+            if (modeParam === 'dealer') {
+                setMode('dealer');
+            } else if (modeParam === 'popup') {
+                setMode('popup');
+            } else {
+                setMode('product');
+            }
         }
 
 
@@ -1360,10 +1361,20 @@
                         (type === 'promo') ? 'initialPromoData' :
                             (type === 'resource') ? 'initialResourceData' :
                                 (type === 'install') ? 'initialInstallData' :
-                                    'initial' + type.charAt(0).toUpperCase() + type.slice(1) + 'Data';
+                                    (type === 'support_product') ? 'initialSupportProductData' :
+                                        'initial' + type.charAt(0).toUpperCase() + type.slice(1) + 'Data';
+
+            const versionVarName = (type === 'dealer') ? 'DEALER_DATA_VERSION' :
+                (type === 'product') ? 'PRODUCT_DATA_VERSION' :
+                    (type === 'popup') ? 'POPUP_DATA_VERSION' :
+                        (type === 'promo') ? 'PROMO_DATA_VERSION' :
+                            (type === 'resource') ? 'RESOURCE_DATA_VERSION' :
+                                (type === 'install') ? 'INSTALL_DATA_VERSION' :
+                                    (type === 'support_product') ? 'SUPPORT_PRODUCT_DATA_VERSION' :
+                                        'DATA_VERSION';
 
             let fileContent = `const ${varName} = ${jsonStr};\n`;
-            fileContent += `const DATA_VERSION = ${version};\n\n`; // Inject Version
+            fileContent += `const ${versionVarName} = ${version};\n\n`; // Inject Version
 
             let logicVar = dataName;
             let versionKey = dataName + 'Version'; // e.g. dealerDataVersion
@@ -1373,20 +1384,32 @@
             fileContent += `    const storedVersion = localStorage.getItem('${versionKey}');\n`;
             fileContent += `    const stored = localStorage.getItem('${dataName}');\n\n`;
 
-            fileContent += `    if (typeof DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < DATA_VERSION)) {\n`;
+            fileContent += `    if (typeof ${versionVarName} !== 'undefined' && (!storedVersion || parseInt(storedVersion) < ${versionVarName})) {\n`;
             fileContent += `        // Server has newer version, force update\n`;
             fileContent += `        ${logicVar} = JSON.parse(JSON.stringify(${varName}));\n`;
             fileContent += `        localStorage.setItem('${dataName}', JSON.stringify(${logicVar}));\n`;
-            fileContent += `        localStorage.setItem('${versionKey}', DATA_VERSION.toString());\n`;
+            fileContent += `        localStorage.setItem('${versionKey}', ${versionVarName}.toString());\n`;
             fileContent += `    } else if (stored) {\n`;
             fileContent += `        ${logicVar} = JSON.parse(stored);\n`;
+            fileContent += `        // Safety Check for empty data\n`;
+            fileContent += `        if (${logicVar}.length === 0 && ${varName}.length > 0) {\n`;
+            fileContent += `             ${logicVar} = JSON.parse(JSON.stringify(${varName}));\n`;
+            fileContent += `             localStorage.setItem('${dataName}', JSON.stringify(${logicVar}));\n`;
+            fileContent += `             if (typeof ${versionVarName} !== 'undefined') localStorage.setItem('${versionKey}', ${versionVarName}.toString());\n`;
+            fileContent += `        }\n`;
             fileContent += `    } else {\n`;
             fileContent += `        ${logicVar} = JSON.parse(JSON.stringify(${varName}));\n`;
-            fileContent += `        if (typeof DATA_VERSION !== 'undefined') localStorage.setItem('${versionKey}', DATA_VERSION.toString());\n`;
+            fileContent += `        if (typeof ${versionVarName} !== 'undefined') localStorage.setItem('${versionKey}', ${versionVarName}.toString());\n`;
             fileContent += `    }\n`;
             fileContent += `} else {\n`;
             fileContent += `    ${logicVar} = ${varName};\n`;
             fileContent += `}\n\n`;
+
+            // Explicitly attach to window
+            fileContent += `if (typeof window !== 'undefined') {\n`;
+            fileContent += `    window.${logicVar} = ${logicVar};\n`;
+            fileContent += `}\n\n`;
+
             fileContent += `if (typeof module !== 'undefined' && module.exports) {\n`;
             fileContent += `    module.exports = ${logicVar};\n`;
             fileContent += `}`;
