@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>알파인(ALPINE Korea)</title>
+    <script>
+        document.write('<script src="../js/product-data.js?v=' + Date.now() + '"><\/script>');
+        document.write('<script src="../js/dealer-data.js?v=' + Date.now() + '"><\/script>');
+        document.write('<script src="../js/popup-data.js?v=' + Date.now() + '"><\/script>');
+    </script>
 
 
 
@@ -427,6 +432,14 @@
         </div>
     </div>
 
+    </div>
+
+    <!-- DEBUG PANEL -->
+    <div id="debugPanel"
+        style="position:fixed; bottom:0; right:0; background:rgba(0,0,0,0.8); color:#fff; padding:10px; z-index:9999; font-size:12px; pointer-events:none;">
+        Initializing Debug...
+    </div>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -485,20 +498,10 @@
     </footer>
 
     <script src="../js/auth.js?v=20260211"></script>
+
     <script>
-        const v = Date.now();
-        document.write('<script src="../js/product-data.js?v=' + v + '"><\/script>');
-        document.write('<script src="../js/dealer-data.js?v=' + v + '"><\/script>');
-        document.write('<script src="../js/popup-data.js?v=' + v + '"><\/script>');
-        document.write('<script src="../js/promo-data.js?v=' + v + '"><\/script>');
-        document.write('<script src="../js/resource-data.js?v=' + v + '"><\/script>');
-        document.write('<script src="../js/install-data.js?v=' + v + '"><\/script>');
-        document.write('<script src="../js/support-product-data.js?v=' + v + '"><\/script>');
-        document.write('<script src="../js/admin-data-manager.js?v=' + v + '"><\/script>');
-    </script>
-    <script>
-        let products = (typeof productData !== 'undefined') ? [...productData] : [];
-        let dealers = (typeof dealerData !== 'undefined') ? [...dealerData] : [];
+        let products = [];
+        let dealers = [];
 
 
 
@@ -1017,9 +1020,27 @@
 
         function renderList() {
             domList.innerHTML = '';
+
+            // Safeguard: Ensure data is loaded
+            if (currentMode === 'product' && products.length === 0 && typeof productData !== 'undefined') products = [...productData];
+            if (currentMode === 'dealer' && dealers.length === 0 && typeof dealerData !== 'undefined') dealers = [...dealerData];
+
             const data = currentMode === 'product' ? products : dealers;
 
+            // Update Debug Panel
+            const dbg = document.getElementById('debugPanel');
+            if (dbg) {
+                dbg.innerHTML = `
+                    Role: ${currentUserRole}<br>
+                    Mode: ${currentMode}<br>
+                    Data Length: ${data ? data.length : 'null'}<br>
+                    dealerData type: ${typeof dealerData}<br>
+                    dealerData len: ${typeof dealerData !== 'undefined' ? dealerData.length : 'N/A'}
+                `;
+            }
+
             // If Master, filter dealer list to only Team Alpine
+
             if (currentMode === 'dealer' && currentUserRole === 'master') {
                 // Master role is deprecated for dealer management, but keeping safe logic just in case
                 domList.innerHTML = '<p style="padding:1rem; color:red;">Access Denied</p>';
@@ -1238,6 +1259,17 @@
             // Basic protection: Non-admins shouldn't be here generally, 
             // but if they are (e.g. Master for some other future reason), default to something safe or alert.
             // For now, if master tries to load, they might see empty product list or we can redirect.
+        }
+
+        // Initialize Data
+        products = (typeof productData !== 'undefined') ? [...productData] : [];
+        dealers = (typeof dealerData !== 'undefined') ? [...dealerData] : [];
+
+        console.log('Admin Debug: Products:', products.length, 'Dealers:', dealers.length);
+        if (products.length === 0 && dealers.length === 0) {
+            console.warn('Data arrays are empty. Checking raw existing objects...');
+            console.log('typeof productData:', typeof productData);
+            console.log('typeof dealerData:', typeof dealerData);
         }
 
         if (modeParam === 'dealer') {

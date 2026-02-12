@@ -570,7 +570,7 @@ const initialDealerData = [
 ];
 const DATA_VERSION = 1770872075981;
 
-let dealerData = [];
+var dealerData = [];
 if (typeof localStorage !== 'undefined') {
     const storedVersion = localStorage.getItem('dealerDataVersion');
     const stored = localStorage.getItem('dealerData');
@@ -582,6 +582,15 @@ if (typeof localStorage !== 'undefined') {
         localStorage.setItem('dealerDataVersion', DATA_VERSION.toString());
     } else if (stored) {
         dealerData = JSON.parse(stored);
+        // Safety Check: If stored data is empty but we have initial data, restore it.
+        if (dealerData.length === 0 && initialDealerData.length > 0) {
+            console.warn('Stored dealerData is empty. Restoring from initial data.');
+            dealerData = JSON.parse(JSON.stringify(initialDealerData));
+            localStorage.setItem('dealerData', JSON.stringify(dealerData));
+            // Don't update version here, arguably, or maybe we should? 
+            // If we restore, we match current version.
+            if (typeof DATA_VERSION !== 'undefined') localStorage.setItem('dealerDataVersion', DATA_VERSION.toString());
+        }
     } else {
         dealerData = JSON.parse(JSON.stringify(initialDealerData));
         if (typeof DATA_VERSION !== 'undefined') localStorage.setItem('dealerDataVersion', DATA_VERSION.toString());
