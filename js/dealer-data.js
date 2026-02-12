@@ -568,7 +568,7 @@ const initialDealerData = [
         "region": "경남"
     }
 ];
-const DEALER_DATA_VERSION = 1770879038207;
+const DEALER_DATA_VERSION = 1770879196628;
 
 let dealerData = [];
 if (typeof localStorage !== 'undefined') {
