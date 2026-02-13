@@ -152,6 +152,7 @@ const auth = {
             // Load current values
             document.getElementById('global_gh_token').value = localStorage.getItem('github_token') || '';
             document.getElementById('global_gh_repo').value = localStorage.getItem('github_repo') || '';
+            document.getElementById('global_gh_branch').value = localStorage.getItem('github_branch') || 'main';
         }
     },
     updateUI: () => {
