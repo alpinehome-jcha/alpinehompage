@@ -616,10 +616,11 @@
             if (post.files && post.files.length > 0) {
                 post.files.forEach(f => {
                     const a = document.createElement('a');
-                    a.href = '../' + f.path;
+                    a.href = f.path.startsWith('http') ? f.path : '../' + f.path;
                     a.textContent = `💾 ${f.name}`;
                     a.className = 'file-link';
-                    a.download = f.name;
+                    a.setAttribute('target', '_blank');
+                    a.setAttribute('rel', 'noopener noreferrer');
                     fileLinks.appendChild(a);
                 });
                 fileContainer.style.display = 'block';
