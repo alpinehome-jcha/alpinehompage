@@ -790,6 +790,9 @@
             }
 
             localStorage.setItem('popupList', JSON.stringify(popupList));
+            // Sync to 'popupData' which is used by saveToGitHub and index.html
+            localStorage.setItem('popupData', JSON.stringify(popupList));
+
             alert('Popup saved!');
             renderPopupManager();
             // Auto Save
@@ -1416,6 +1419,18 @@
                     fileName = 'js/popup-data.js';
                     dataObj = (typeof popupList !== 'undefined') ? popupList : null;
                     if (!dataObj && typeof popupData !== 'undefined') dataObj = popupData;
+
+                    // Checking LocalStorage for most recent edits
+                    const localPopupList = localStorage.getItem('popupList');
+                    const localPopupData = localStorage.getItem('popupData');
+
+                    // Prefer popupList as it is the "Working Copy" in Admin
+                    if (localPopupList) {
+                        // Ensure they are synced before saving
+                        if (localPopupList !== localPopupData) {
+                            localStorage.setItem('popupData', localPopupList);
+                        }
+                    }
                     break;
                 case 'promo':
                     dataName = 'promoData';

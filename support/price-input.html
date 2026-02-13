@@ -104,6 +104,16 @@
                 </button>
             </div>
 
+            <!-- Emergency Restore -->
+            <div style="margin-bottom: 20px; text-align: right;">
+                <span style="font-size: 0.9rem; color: #666; margin-right: 10px;">서버 데이터가 손상된 경우 로컬 파일로 복구:</span>
+                <input type="file" id="jsFileInput" accept=".js" style="display: none;">
+                <button type="button" id="btn-upload-js"
+                    style="padding: 8px 12px; background: #7f8c8d; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem;">
+                    📂 로컬 price-data.js 업로드하여 복구
+                </button>
+            </div>
+
             <form id="priceForm"
                 style="max-width: 600px; margin: 0 auto; padding: 30px; border: 1px solid #eee; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-radius: 8px;">
                 <input type="hidden" id="reg-index" value="-1">
@@ -218,6 +228,13 @@
             }
 
             // Render Table
+            if (typeof priceData === 'undefined' || !priceData || priceData.length === 0) {
+                console.error('Price Data is missing or empty:', priceData);
+                const msg = document.createElement('div');
+                msg.style.cssText = 'padding:20px; text-align:center; color:red; background:#fff0f0; border:1px solid red; margin:20px; border-radius:8px;';
+                msg.innerHTML = '<h3>⚠️ 데이터 로드 실패 (Data Load Failed)</h3><p>가격표 데이터가 비어있거나 로드되지 않았습니다.<br>위의 주황색 <b>[데이터 복구 (Restore Data)]</b> 버튼을 눌러 초기화해주세요.</p>';
+                document.getElementById('adminContent').prepend(msg);
+            }
             renderTable();
 
             // Form Handling
@@ -366,6 +383,65 @@
             });
 
 
+
+            // Emergency JS File Restore logic
+            const btnUploadJs = document.getElementById('btn-upload-js');
+            const jsFileInput = document.getElementById('jsFileInput');
+
+            if (btnUploadJs && jsFileInput) {
+                btnUploadJs.addEventListener('click', () => jsFileInput.click());
+                jsFileInput.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+
+                    const reader = new FileReader();
+                    reader.onload = function (evt) {
+                        const content = evt.target.result;
+                        // Regex to extract the array array content
+                        // Matches: const initialPriceData = [...];
+                        // We look for [ ... ] structure
+                        try {
+                            // Find the array start and end
+                            const startMatch = content.match(/const initialPriceData\s*=\s*(\[)/);
+                            if (startMatch) {
+                                const startIndex = startMatch.index + startMatch[0].length - 1; // start at [
+                                // Simple balance counter isn't enough due to nested strings.
+                                // But since we know the structure is rigid...
+                                // Let's try to extract everything until the NEXT "const " or end of file?
+                                // Better: Use a simple regex if the file is standard JSON-like.
+                                // Actually, let's try to eval it in a sandbox? No, dangerous/complex.
+                                // Let's try regex for the whole array if possible, or naive parsing.
+
+                                // Alternative: Find the first [ and the last ]; before "const DATA_VERSION"
+                                const versionMatch = content.match(/const DATA_VERSION/);
+                                const endIndex = versionMatch ? versionMatch.index : content.length;
+
+                                let jsonPart = content.substring(startIndex, endIndex).trim();
+                                if (jsonPart.endsWith(';')) jsonPart = jsonPart.slice(0, -1);
+
+                                const parsed = JSON.parse(jsonPart);
+                                if (Array.isArray(parsed) && parsed.length > 0) {
+                                    if (confirm(`파일에서 ${parsed.length}개의 데이터를 찾았습니다. 이 데이터로 서버를 복구하시겠습니까?`)) {
+                                        priceData = parsed;
+                                        savePriceData();
+                                        renderTable();
+                                        saveToGitHub(true);
+                                        alert('복구 성공! 서버에 업로드 중입니다... 잠시 후 새로고침하세요.');
+                                    }
+                                } else {
+                                    alert('유효한 데이터가 없습니다.');
+                                }
+                            } else {
+                                alert('price-data.js 형식이 올바르지 않습니다.');
+                            }
+                        } catch (err) {
+                            console.error(err);
+                            alert('파일 파싱 실패: ' + err.message);
+                        }
+                    };
+                    reader.readAsText(file);
+                });
+            }
 
         });
 
