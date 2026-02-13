@@ -548,23 +548,30 @@
 
             // 1. Get List
             let popupList = [];
-            const storedList = localStorage.getItem('popupList');
-            if (storedList) {
-                popupList = JSON.parse(storedList);
+
+            // Try to get from Server Data (popup-data.js)
+            if (typeof popupData !== 'undefined') {
+                popupList = popupData;
             } else {
-                // Fallback / Migration for old config if list doesn't exist
-                const oldConfig = localStorage.getItem('popupConfig');
-                if (oldConfig) {
-                    const c = JSON.parse(oldConfig);
-                    if (c.isActive) {
-                        popupList.push({
-                            id: 'legacy', // valid string id
-                            title: 'Event',
-                            imagePath: c.imagePath,
-                            linkUrl: c.linkUrl,
-                            hideDays: c.hideDays,
-                            isActive: true
-                        });
+                // Fallback to LocalStorage (mainly for Admin testing before deploy, or if file fails)
+                const storedList = localStorage.getItem('popupList');
+                if (storedList) {
+                    popupList = JSON.parse(storedList);
+                } else {
+                    // Fallback / Migration for old config
+                    const oldConfig = localStorage.getItem('popupConfig');
+                    if (oldConfig) {
+                        const c = JSON.parse(oldConfig);
+                        if (c.isActive) {
+                            popupList.push({
+                                id: 'legacy',
+                                title: 'Event',
+                                imagePath: c.imagePath,
+                                linkUrl: c.linkUrl,
+                                hideDays: c.hideDays,
+                                isActive: true
+                            });
+                        }
                     }
                 }
             }

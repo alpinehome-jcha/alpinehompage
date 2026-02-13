@@ -742,14 +742,44 @@
         }
 
 
-        function savePopupConfig() {
+        async function savePopupConfig() {
+            const title = document.getElementById('popupTitle').value;
+            const isActive = document.getElementById('popupActive').checked;
+            const hideDays = parseInt(document.getElementById('popupHideDays').value) || 1;
+            const linkUrl = document.getElementById('popupLink').value;
+
+            // Image Handling
+            let imagePath = document.getElementById('popupImage').value;
+            const fileInput = document.getElementById('popupImageFile');
+
+            if (fileInput && fileInput.files[0]) {
+                const file = fileInput.files[0];
+                const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+                const uploadPath = 'assets/images/popups/' + safeName;
+
+                if (ghClient.isConfigured()) {
+                    try {
+                        const res = await ghClient.uploadFile(uploadPath, file, `Upload Popup Image: ${safeName}`);
+                        if (res.content && res.content.download_url) {
+                            imagePath = res.content.download_url;
+                        } else {
+                            imagePath = uploadPath;
+                        }
+                        alert('Image uploaded to GitHub!');
+                    } catch (e) {
+                        console.error('Popup upload failed', e);
+                        if (!confirm(`Failed to upload image. Use local path?`)) return;
+                    }
+                }
+            }
+
             const newPopup = {
                 id: currentId === -1 ? Date.now() : currentId,
-                title: document.getElementById('popupTitle').value,
-                isActive: document.getElementById('popupActive').checked,
-                imagePath: document.getElementById('popupImage').value,
-                hideDays: parseInt(document.getElementById('popupHideDays').value) || 1,
-                linkUrl: document.getElementById('popupLink').value
+                title: title,
+                isActive: isActive,
+                imagePath: imagePath,
+                hideDays: hideDays,
+                linkUrl: linkUrl
             };
 
             if (currentId === -1) {
