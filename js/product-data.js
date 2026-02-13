@@ -2474,7 +2474,7 @@ const initialProductData = [
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 400000,
         "soldOut": true,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/RR-1A.jpg",
         "detailBlocks": [],
         "attachments": []
     },
@@ -2862,7 +2862,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1770872784704;
+const PRODUCT_DATA_VERSION = 1770955432627;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
@@ -2876,12 +2876,22 @@ if (typeof localStorage !== 'undefined') {
         localStorage.setItem('productDataVersion', PRODUCT_DATA_VERSION.toString());
     } else if (stored) {
         productData = JSON.parse(stored);
+        // Safety Check for empty data
+        if (productData.length === 0 && initialProductData.length > 0) {
+             productData = JSON.parse(JSON.stringify(initialProductData));
+             localStorage.setItem('productData', JSON.stringify(productData));
+             if (typeof PRODUCT_DATA_VERSION !== 'undefined') localStorage.setItem('productDataVersion', PRODUCT_DATA_VERSION.toString());
+        }
     } else {
         productData = JSON.parse(JSON.stringify(initialProductData));
         if (typeof PRODUCT_DATA_VERSION !== 'undefined') localStorage.setItem('productDataVersion', PRODUCT_DATA_VERSION.toString());
     }
 } else {
     productData = initialProductData;
+}
+
+if (typeof window !== 'undefined') {
+    window.productData = productData;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
