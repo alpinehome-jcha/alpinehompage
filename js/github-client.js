@@ -30,8 +30,9 @@ class GitHubClient {
         if (!this.isConfigured()) return { success: false, message: 'Configuration missing' };
 
         try {
-            const url = `https://api.github.com/repos/${this.repo}`;
-            const response = await fetch(url, {
+            // 1. Check Repo
+            const repoUrl = `https://api.github.com/repos/${this.repo}`;
+            const repoResp = await fetch(repoUrl, {
                 headers: {
                     'Authorization': `token ${this.token}`,
                     'Accept': 'application/vnd.github.v3+json'
@@ -39,23 +40,44 @@ class GitHubClient {
                 cache: 'no-store'
             });
 
-            if (response.ok) {
-                const data = await response.json();
-                return { success: true, message: `Connected to ${data.full_name} as ${data.permissions ? 'Authorized' : 'Viewer'}` };
-            } else {
-                if (response.status === 401) return { success: false, message: 'Invalid Token (401)' };
-                if (response.status === 404) return { success: false, message: 'Repository Not Found (404)' };
-                return { success: false, message: `GitHub API Error: ${response.status}` };
+            if (!repoResp.ok) {
+                if (repoResp.status === 401) return { success: false, message: 'Invalid Token (401)' };
+                if (repoResp.status === 404) return { success: false, message: 'Repository Not Found (404)' };
+                return { success: false, message: `GitHub API Error: ${repoResp.status}` };
             }
+
+            const repoData = await repoResp.json();
+
+            // 2. Check Branch
+            const branchUrl = `https://api.github.com/repos/${this.repo}/branches/${this.branch}`;
+            const branchResp = await fetch(branchUrl, {
+                headers: {
+                    'Authorization': `token ${this.token}`,
+                    'Accept': 'application/vnd.github.v3+json'
+                },
+                cache: 'no-store'
+            });
+
+            if (!branchResp.ok) {
+                return { success: false, message: `Branch '${this.branch}' not found. Please check branch name (main vs master).` };
+            }
+
+            return { success: true, message: `Connected to ${repoData.full_name} (Branch: ${this.branch})` };
+
         } catch (error) {
             return { success: false, message: `Network/CORS Error: ${error.message}. Please check if your Token and Repo settings are correct and contain no extra spaces.` };
         }
     }
 
+    _encodePath(path) {
+        return path.split('/').map(encodeURIComponent).join('/');
+    }
+
     async getFileSha(path) {
         if (!this.isConfigured()) throw new Error('GitHub Settings not configured.');
 
-        const url = `https://api.github.com/repos/${this.repo}/contents/${path}?ref=${this.branch}&_t=${Date.now()}`;
+        const encodedPath = this._encodePath(path);
+        const url = `https://api.github.com/repos/${this.repo}/contents/${encodedPath}?ref=${this.branch}&_t=${Date.now()}`;
         let response;
         try {
             response = await fetch(url, {
@@ -67,7 +89,7 @@ class GitHubClient {
                 cache: 'no-store'
             });
         } catch (error) {
-            throw new Error(`Network/CORS Error: ${error.message}`);
+            throw new Error(`Network/CORS Error (SHA): ${error.message}`);
         }
 
         if (response.status === 404) return null; // File doesn't exist yet
@@ -102,7 +124,8 @@ class GitHubClient {
         }
 
         // 4. Send Request
-        const url = `https://api.github.com/repos/${this.repo}/contents/${path}`;
+        const encodedPath = this._encodePath(path);
+        const url = `https://api.github.com/repos/${this.repo}/contents/${encodedPath}`;
         const response = await fetch(url, {
             method: 'PUT',
             headers: {
@@ -152,7 +175,8 @@ class GitHubClient {
         }
 
         // 5. Send Request
-        const url = `https://api.github.com/repos/${this.repo}/contents/${path}`;
+        const encodedPath = this._encodePath(path);
+        const url = `https://api.github.com/repos/${this.repo}/contents/${encodedPath}`;
         const response = await fetch(url, {
             method: 'PUT',
             headers: {
@@ -172,7 +196,7 @@ class GitHubClient {
         // Ensure download_url exists (Manual construction if missing)
         if (!data.content) data.content = {};
         if (!data.content.download_url) {
-            data.content.download_url = `https://raw.githubusercontent.com/${this.repo}/${this.branch}/${path}`;
+            data.content.download_url = `https://raw.githubusercontent.com/${this.repo}/${this.branch}/${encodedPath}`;
         }
         return data;
     }
