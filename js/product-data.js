@@ -2174,12 +2174,37 @@ const initialProductData = [
         "desc_bottom": "AB타입",
         "price": 90000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-103.jpg",
         "detailBlocks": [
             {
-                "id": 1770363558584.7527,
+                "id": 1770959368570.7615,
+                "type": "image",
+                "value": ""
+            },
+            {
+                "id": 1770959383874.5767,
                 "type": "text",
-                "value": "HK-101\n현대/기아 16P / 05년~11년 자출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결\n\nHK-102\n현대/기아 42P / 12년~18년 자출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결\n\nHK-103\n현대/기아 73P / 17년~23년 차출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결"
+                "value": "HK-101\n현대/기아 16P / 05년~11년 자출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결"
+            },
+            {
+                "id": 1770959384730.0535,
+                "type": "image",
+                "value": ""
+            },
+            {
+                "id": 1770959385482.1953,
+                "type": "text",
+                "value": "HK-102\n현대/기아 42P / 12년~18년 자출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결"
+            },
+            {
+                "id": 1770959403618.736,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-103.jpg"
+            },
+            {
+                "id": 1770959404226.675,
+                "type": "text",
+                "value": "HK-103\n현대/기아 73P / 17년~23년 차출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결"
             }
         ],
         "attachments": []
@@ -2234,7 +2259,7 @@ const initialProductData = [
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 155000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-1A.jpg",
         "detailBlocks": [],
         "attachments": []
     },
@@ -2845,7 +2870,7 @@ const initialProductData = [
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 230000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/VW-1A.jpg",
         "detailBlocks": [],
         "attachments": []
     },
@@ -2857,12 +2882,12 @@ const initialProductData = [
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 230000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/CH-1A.jpg",
         "detailBlocks": [],
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1770957085855;
+const PRODUCT_DATA_VERSION = 1770963787198;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
