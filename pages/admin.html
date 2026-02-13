@@ -332,11 +332,63 @@
                     <input type="text" id="gh_repo" placeholder="username/repository">
                     <small style="color:#888;">Example: <code>yourname/alpinehompage</code></small>
                 </div>
+                <div class="form-group">
+                    <label>Branch (Main/Master)</label>
+                    <input type="text" id="gh_branch" placeholder="main">
+                    <small style="color:#888;">Default: main (try 'master' if upload fails)</small>
+                </div>
                 <div class="form-actions">
                     <button class="btn btn-primary" onclick="saveGithubSettings()">Test & Save Connection</button>
                     <button class="btn btn-secondary" onclick="cancelSettings()">Cancel</button>
                 </div>
             </div>
+
+            <script>
+                function showSettings() {
+                    // Hide all other views
+                    document.getElementById('editorForm').style.display = 'none';
+                    document.getElementById('itemList').style.display = 'none'; // Depending on layout, might need to hide list or overlay
+                    // Actually, in this layout, list is in sidebar, editor is in main-content.
+                    // We just replace editorForm with settingsForm
+                    document.getElementById('editorForm').style.display = 'none';
+                    document.getElementById('settingsForm').style.display = 'block';
+
+                    // Populate current values
+                    document.getElementById('gh_token').value = localStorage.getItem('github_token') || '';
+                    document.getElementById('gh_repo').value = localStorage.getItem('github_repo') || '';
+                    document.getElementById('gh_branch').value = localStorage.getItem('github_branch') || 'main';
+                }
+
+                function cancelSettings() {
+                    document.getElementById('settingsForm').style.display = 'none';
+                    // Show editor form or empty state?
+                    // Ideally check what mode we are in. For now just hide settings.
+                }
+
+                async function saveGithubSettings() {
+                    const token = document.getElementById('gh_token').value.trim();
+                    const repo = document.getElementById('gh_repo').value.trim();
+                    const branch = document.getElementById('gh_branch').value.trim() || 'main';
+
+                    if (!token || !repo) {
+                        alert('Please enter Token, Repository and Branch.');
+                        return;
+                    }
+
+                    // Configure Client
+                    ghClient.configure(token, repo, branch);
+
+                    // Test Connection
+                    const result = await ghClient.testConnection();
+                    if (result.success) {
+                        alert('Connection Successful! Settings Saved.\n' + result.message);
+                        localStorage.setItem('github_branch', branch);
+                        cancelSettings();
+                    } else {
+                        alert('Connection Failed:\n' + result.message);
+                    }
+                }
+            </script>
             <!-- Editor content... -->
             <div class="editor-form" id="editorForm" style="display:none;">
                 <!-- Form fields... -->
@@ -1545,91 +1597,7 @@
 
     </script>
 
-    <!-- Settings Form -->
-    <div id="settingsForm" class="form-container" style="display:none;">
-        <h2>GitHub 설정</h2>
-        <div class="form-group">
-            <label>Personal Access Token</label>
-            <input type="password" id="gh_token" placeholder="ghp_...">
-            <small>Repo 권한이 있는 토큰이 필요합니다.</small>
-        </div>
-        <div class="form-group">
-            <label>Repository (owner/repo)</label>
-            <input type="text" id="gh_repo" placeholder="username/repository">
-        </div>
-        <div class="form-group">
-            <label>Branch (Main/Master)</label>
-            <input type="text" id="gh_branch" placeholder="main">
-            <small>기본값: main</small>
-        </div>
-        <div class="btn-group">
-            <button class="btn-save" onclick="saveGithubSettings()">테스트 및 저장</button>
-            <button class="btn-cancel" onclick="cancelSettings()">취소</button>
-        </div>
-    </div>
-    </div>
 
-    <script>
-        // ... (Global variables) ...
-
-        function showSettings() {
-            // Hide other views
-            domForm.style.display = 'none';
-            document.getElementById('itemList').innerHTML = '';
-            document.getElementById('btnModeProduct').style.background = 'transparent';
-            document.getElementById('btnModeProduct').style.color = '#aaa';
-            document.getElementById('btnModeDealer').style.background = 'transparent';
-            document.getElementById('btnModeDealer').style.color = '#aaa';
-            const btnModePopup = document.getElementById('btnModePopup');
-            if (btnModePopup) {
-                btnModePopup.style.background = 'transparent';
-                btnModePopup.style.color = '#aaa';
-            }
-            document.getElementById('dealerList').style.display = 'none';
-            document.getElementById('dealerForm').style.display = 'none';
-            document.getElementById('popupList').style.display = 'none';
-            document.getElementById('popupForm').style.display = 'none';
-
-            // Show Settings
-            const settingsForm = document.getElementById('settingsForm');
-            settingsForm.style.display = 'block';
-
-            // Populate current values
-            document.getElementById('gh_token').value = localStorage.getItem('github_token') || '';
-            document.getElementById('gh_repo').value = localStorage.getItem('github_repo') || '';
-            document.getElementById('gh_branch').value = localStorage.getItem('github_branch') || 'main';
-        }
-
-        function cancelSettings() {
-            document.getElementById('settingsForm').style.display = 'none';
-            // Return to default view (Product)
-            setMode('product');
-        }
-
-        async function saveGithubSettings() {
-            const token = document.getElementById('gh_token').value.trim();
-            const repo = document.getElementById('gh_repo').value.trim();
-            const branch = document.getElementById('gh_branch').value.trim() || 'main';
-
-            if (!token || !repo) {
-                alert('Please enter Token, Repository and Branch.');
-                return;
-            }
-
-            // Configure Client
-            ghClient.configure(token, repo, branch);
-
-            // Test Connection
-            const result = await ghClient.testConnection();
-            if (result.success) {
-                alert('Connection Successful! Settings Saved.\n' + result.message);
-                localStorage.setItem('github_branch', branch); // Ensure specific save if client didn't (client does though)
-                cancelSettings();
-            } else {
-                alert('Connection Failed:\n' + result.message);
-            }
-        }
-    </script>
     <script src="../js/github-client.js"></script>
     <script src="../js/i18n.js"></script>
 </body>
