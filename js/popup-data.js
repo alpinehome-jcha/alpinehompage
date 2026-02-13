@@ -1,6 +1,5 @@
 const initialPopupData = [];
-
-const POPUP_DATA_VERSION = 1770872784704;
+const POPUP_DATA_VERSION = 1770957768895;
 
 let popupData = [];
 if (typeof localStorage !== 'undefined') {
@@ -14,12 +13,22 @@ if (typeof localStorage !== 'undefined') {
         localStorage.setItem('popupDataVersion', POPUP_DATA_VERSION.toString());
     } else if (stored) {
         popupData = JSON.parse(stored);
+        // Safety Check for empty data
+        if (popupData.length === 0 && initialPopupData.length > 0) {
+             popupData = JSON.parse(JSON.stringify(initialPopupData));
+             localStorage.setItem('popupData', JSON.stringify(popupData));
+             if (typeof POPUP_DATA_VERSION !== 'undefined') localStorage.setItem('popupDataVersion', POPUP_DATA_VERSION.toString());
+        }
     } else {
         popupData = JSON.parse(JSON.stringify(initialPopupData));
         if (typeof POPUP_DATA_VERSION !== 'undefined') localStorage.setItem('popupDataVersion', POPUP_DATA_VERSION.toString());
     }
 } else {
     popupData = initialPopupData;
+}
+
+if (typeof window !== 'undefined') {
+    window.popupData = popupData;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
