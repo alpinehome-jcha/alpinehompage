@@ -1384,6 +1384,56 @@
         }
 
 
+        // System Status Logic
+        function updateStatusPanel() {
+            // Popups
+            const pList = (typeof popupList !== 'undefined') ? popupList : [];
+            const pData = (typeof popupData !== 'undefined') ? popupData : [];
+            document.getElementById('statusPopupCount').textContent = pList.length;
+            document.getElementById('statusPopupDataCount').textContent = pData.length;
+
+            // GitHub
+            const token = localStorage.getItem('github_token');
+            document.getElementById('statusToken').textContent = token ? 'Configured' : 'Missing';
+            document.getElementById('statusToken').style.color = token ? 'green' : 'red';
+        }
+
+        async function forceFixPopup() {
+            if (!confirm('This will overwrite the public popup data with your current Admin list and force an upload to GitHub. Continue?')) return;
+
+            // 1. Sync LocalStorage
+            if (typeof popupList === 'undefined') {
+                alert('Popup List is undefined. Cannot fix.');
+                return;
+            }
+            localStorage.setItem('popupData', JSON.stringify(popupList));
+            popupData = popupList; // Update Valid Reference
+
+            updateStatusPanel();
+
+            // 2. Upload
+            await saveToGitHub('popup', false); // Not silent, so user sees alerts
+            alert('Fix sequence completed. Please wait for deployment.');
+        }
+
+        async function checkGitHubStatus() {
+            const client = new GitHubClient();
+            if (client.isConfigured()) {
+                try {
+                    // Try to fetch something simple, or just check user
+                    // The client doesn't expose getUser easily unless we add it, but we can assume configured = ok for now
+                    alert('GitHub Client is configured locally.');
+                } catch (e) {
+                    alert('Error: ' + e.message);
+                }
+            } else {
+                alert('GitHub Client is NOT configured.');
+            }
+        }
+
+        // Initialize Status Panel on Load
+        document.addEventListener('DOMContentLoaded', updateStatusPanel);
+
         async function saveToGitHub(type, silent = false) {
             const token = localStorage.getItem('github_token');
             const repo = localStorage.getItem('github_repo');
@@ -1417,19 +1467,21 @@
                 case 'popup':
                     dataName = 'popupData';
                     fileName = 'js/popup-data.js';
-                    dataObj = (typeof popupList !== 'undefined') ? popupList : null;
-                    if (!dataObj && typeof popupData !== 'undefined') dataObj = popupData;
+                    // Explicitly prefer popupList if available and valid
+                    if (typeof popupList !== 'undefined' && popupList.length > 0) {
+                        dataObj = popupList;
+                    } else if (typeof popupData !== 'undefined') {
+                        dataObj = popupData;
+                    } else if (typeof popupList !== 'undefined') {
+                        dataObj = popupList; // even if empty
+                    } else {
+                        dataObj = null;
+                    }
 
-                    // Checking LocalStorage for most recent edits
-                    const localPopupList = localStorage.getItem('popupList');
-                    const localPopupData = localStorage.getItem('popupData');
-
-                    // Prefer popupList as it is the "Working Copy" in Admin
-                    if (localPopupList) {
-                        // Ensure they are synced before saving
-                        if (localPopupList !== localPopupData) {
-                            localStorage.setItem('popupData', localPopupList);
-                        }
+                    // Sync LocalStorage before save
+                    if (dataObj) {
+                        localStorage.setItem('popupData', JSON.stringify(dataObj));
+                        if (typeof popupList !== 'undefined') localStorage.setItem('popupList', JSON.stringify(dataObj));
                     }
                     break;
                 case 'promo':
