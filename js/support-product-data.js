@@ -1,4 +1,18 @@
-const initialSupport_productData = [
+const initialSupportProductData = [
+    {
+        "id": 1770957118621,
+        "date": "2026-02-13",
+        "title": "F#1 Status카다록",
+        "content": "F#1 Status카다록입니다.",
+        "image": "",
+        "files": [
+            {
+                "name": "2025 Alpine Catalog (KOR)-22-F1(16Page)215mm x 280mm.pdf",
+                "path": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/files/2025_Alpine_Catalog__KOR_-22-F1_16Page_215mm_x_280mm.pdf"
+            }
+        ],
+        "author": "Admin"
+    },
     {
         "id": 1770615678275,
         "date": "2026-02-09",
@@ -27,8 +41,7 @@ const initialSupport_productData = [
         "author": "Admin"
     }
 ];
-
-const SUPPORT_PRODUCT_DATA_VERSION = 1770872784704;
+const SUPPORT_PRODUCT_DATA_VERSION = 1770957118621;
 
 let supportProductData = [];
 if (typeof localStorage !== 'undefined') {
@@ -37,17 +50,27 @@ if (typeof localStorage !== 'undefined') {
 
     if (typeof SUPPORT_PRODUCT_DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < SUPPORT_PRODUCT_DATA_VERSION)) {
         // Server has newer version, force update
-        supportProductData = JSON.parse(JSON.stringify(initialSupport_productData));
+        supportProductData = JSON.parse(JSON.stringify(initialSupportProductData));
         localStorage.setItem('supportProductData', JSON.stringify(supportProductData));
         localStorage.setItem('supportProductDataVersion', SUPPORT_PRODUCT_DATA_VERSION.toString());
     } else if (stored) {
         supportProductData = JSON.parse(stored);
+        // Safety Check for empty data
+        if (supportProductData.length === 0 && initialSupportProductData.length > 0) {
+             supportProductData = JSON.parse(JSON.stringify(initialSupportProductData));
+             localStorage.setItem('supportProductData', JSON.stringify(supportProductData));
+             if (typeof SUPPORT_PRODUCT_DATA_VERSION !== 'undefined') localStorage.setItem('supportProductDataVersion', SUPPORT_PRODUCT_DATA_VERSION.toString());
+        }
     } else {
-        supportProductData = JSON.parse(JSON.stringify(initialSupport_productData));
+        supportProductData = JSON.parse(JSON.stringify(initialSupportProductData));
         if (typeof SUPPORT_PRODUCT_DATA_VERSION !== 'undefined') localStorage.setItem('supportProductDataVersion', SUPPORT_PRODUCT_DATA_VERSION.toString());
     }
 } else {
-    supportProductData = initialSupport_productData;
+    supportProductData = initialSupportProductData;
+}
+
+if (typeof window !== 'undefined') {
+    window.supportProductData = supportProductData;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
