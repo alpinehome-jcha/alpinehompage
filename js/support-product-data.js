@@ -41,7 +41,7 @@ const initialSupportProductData = [
         "author": "Admin"
     }
 ];
-const SUPPORT_PRODUCT_DATA_VERSION = 1770957118621;
+const SUPPORT_PRODUCT_DATA_VERSION = 1770957833431;
 
 let supportProductData = [];
 if (typeof localStorage !== 'undefined') {
