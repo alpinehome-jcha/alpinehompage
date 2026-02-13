@@ -178,6 +178,9 @@ const auth = {
                             
                             <label style="display:block; margin-bottom:5px; font-weight:bold;">Repository (owner/repo)</label>
                             <input type="text" id="global_gh_repo" placeholder="username/repository" style="width:100%; padding:8px; margin-bottom:5px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;">
+                            
+                            <label style="display:block; margin-bottom:5px; font-weight:bold;">Branch (Main/Master)</label>
+                            <input type="text" id="global_gh_branch" placeholder="main" style="width:100%; padding:8px; margin-bottom:5px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;">
                         </div>
                         <div style="text-align:right;">
                             <button id="btnTestGh" style="padding:8px 12px; cursor:pointer; background:#17a2b8; color:white; border:none; border-radius:4px; margin-right:5px;">연결 테스트</button>
@@ -218,6 +221,8 @@ const auth = {
             document.getElementById('btnTestGh').onclick = async () => {
                 const token = document.getElementById('global_gh_token').value.trim();
                 const repo = document.getElementById('global_gh_repo').value.trim();
+                const branch = document.getElementById('global_gh_branch').value.trim() || 'main'; // Default main
+
                 if (!token || !repo) { alert('설정 값을 먼저 입력해주세요 (테스트 전).'); return; }
 
                 try {
@@ -230,7 +235,7 @@ const auth = {
                 // Configure Global Client
                 if (typeof ghClient === 'undefined') { alert('Client loaded but object not found.'); return; }
 
-                ghClient.configure(token, repo);
+                ghClient.configure(token, repo, branch);
 
                 // Test Connection
                 const result = await ghClient.testConnection();
@@ -240,6 +245,7 @@ const auth = {
                     // Auto-save if successful
                     localStorage.setItem('github_token', token);
                     localStorage.setItem('github_repo', repo);
+                    localStorage.setItem('github_branch', branch);
                 }
             };
 
@@ -250,6 +256,7 @@ const auth = {
             document.getElementById('btnSaveGh').onclick = async () => {
                 const token = document.getElementById('global_gh_token').value.trim();
                 const repo = document.getElementById('global_gh_repo').value.trim();
+                const branch = document.getElementById('global_gh_branch').value.trim() || 'main';
 
                 if (!token || !repo) { alert('토큰과 저장소 주소를 모두 입력해주세요.'); return; }
 
@@ -257,7 +264,7 @@ const auth = {
                     await loadGitHubClient();
                     // Configure & Test before saving to be sure
                     if (typeof ghClient !== 'undefined') {
-                        ghClient.configure(token, repo);
+                        ghClient.configure(token, repo, branch);
                         const result = await ghClient.testConnection();
                         if (!result.success) {
                             if (!confirm('연결 테스트에 실패했습니다. 그래도 저장하시겠습니까?\n' + result.message)) return;
@@ -270,6 +277,7 @@ const auth = {
 
                 localStorage.setItem('github_token', token);
                 localStorage.setItem('github_repo', repo);
+                localStorage.setItem('github_branch', branch);
                 alert('설정이 저장되었습니다. 이제 파일 업로드가 가능합니다.');
                 document.getElementById('ghSettingsModal').style.display = 'none';
             };

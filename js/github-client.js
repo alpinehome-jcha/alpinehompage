@@ -7,19 +7,23 @@ class GitHubClient {
     constructor() {
         this.token = localStorage.getItem('github_token') || '';
         this.repo = localStorage.getItem('github_repo') || ''; // e.g. "username/repo"
-        this.branch = 'main'; // Default branch
+        this.branch = localStorage.getItem('github_branch') || 'main'; // Default to main
     }
 
     isConfigured() {
         return this.token && this.repo;
     }
 
-    configure(token, repo) {
+    configure(token, repo, branch) {
         this.token = token ? token.trim() : '';
         this.repo = repo ? repo.trim() : '';
+        this.branch = branch ? branch.trim() : 'main';
+
         if (this.repo.endsWith('/')) this.repo = this.repo.slice(0, -1);
+
         localStorage.setItem('github_token', this.token);
         localStorage.setItem('github_repo', this.repo);
+        localStorage.setItem('github_branch', this.branch);
     }
 
     async testConnection() {
