@@ -353,7 +353,7 @@
     <script>
         document.write('<script src="../js/support-product-data.js?v=' + Date.now() + '"><\/script>');
     </script>
-    <script src="../js/github-client.js"></script>
+    <script src="../js/github-client.js?v=20260213"></script>
     <script src="../js/admin-data-manager.js"></script>
     <script>
         let posts = [];
@@ -707,19 +707,26 @@
                     ghClient.configure(token, repo);
                 }
 
+                const sanitizeFilename = (name) => {
+                    // Replace spaces and special chars with underscore, keep dots
+                    return name.replace(/[^a-zA-Z0-9._-]/g, '_');
+                };
+
                 // 1. Upload Main Image
                 let mainImagePath = document.getElementById('postImage').value;
                 const fileInput = document.querySelector('input[onchange="handleFile(this, \'postImage\')"]');
                 if (fileInput && fileInput.files[0]) {
                     const file = fileInput.files[0];
-                    const path = 'assets/images/' + file.name;
+                    const safeName = sanitizeFilename(file.name);
+                    const path = 'assets/images/' + safeName;
+
                     if (ghClient.isConfigured()) {
                         try {
-                            const res = await ghClient.uploadFile(path, file, `Upload Product Image: ${file.name}`);
+                            const res = await ghClient.uploadFile(path, file, `Upload Product Image: ${safeName}`);
                             if (res.content && res.content.download_url) {
                                 mainImagePath = res.content.download_url;
                             } else {
-                                mainImagePath = path;
+                                mainImagePath = path; // Fallback
                             }
                         } catch (e) {
                             if (!confirm(`Failed to upload ${file.name}. Continue?`)) throw new Error('Upload cancelled');
@@ -734,12 +741,13 @@
                     const fInput = document.querySelector(`input[onchange="handleFile(this, 'file${i}')"]`);
                     if (fInput && fInput.files[0]) {
                         const file = fInput.files[0];
-                        const path = 'assets/files/' + file.name;
+                        const safeName = sanitizeFilename(file.name);
+                        const path = 'assets/files/' + safeName;
                         let finalPath = path;
 
                         if (ghClient.isConfigured()) {
                             try {
-                                const res = await ghClient.uploadFile(path, file, `Upload Product File ${i}: ${file.name}`);
+                                const res = await ghClient.uploadFile(path, file, `Upload Product File ${i}: ${safeName}`);
                                 if (res.content && res.content.download_url) {
                                     finalPath = res.content.download_url;
                                 }
@@ -747,12 +755,17 @@
                                 if (!confirm(`Failed to upload ${file.name}. Continue?`)) throw new Error('Upload cancelled');
                             }
                         }
+                        // Use original name for display, but safe path
                         files.push({ name: file.name, path: finalPath });
                         hasNewFiles = true;
                     } else {
-                        // Check if preserving existing file (not easily possible with current UI structure unless we read from existing data)
-                        // For now, if editing and no new file selected for this slot, we might lose it if we strictly follow inputs.
-                        // But let's check if we can preserve old files if no new ones are added across ALL slots.
+                        // Check hidden input
+                        const fname = document.getElementById('fileData' + i).value;
+                        if (fname) {
+                            // If we have a filename but no file object, it might be an existing file.
+                            // We don't have the path here easily unless we stored it.
+                            // But for now, we just proceed.
+                        }
                     }
                 }
 

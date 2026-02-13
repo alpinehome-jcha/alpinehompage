@@ -379,7 +379,7 @@
     <script>
         document.write('<script src="../js/promo-data.js?v=' + Date.now() + '"><\/script>');
     </script>
-    <script src="../js/github-client.js"></script>
+    <script src="../js/github-client.js?v=20260213"></script>
     <script src="../js/admin-data-manager.js"></script>
     <script>
         let posts = [];
@@ -660,6 +660,10 @@
                     ghClient.configure(token, repo);
                 }
 
+                const sanitizeFilename = (name) => {
+                    return name.replace(/[^a-zA-Z0-9._-]/g, '_');
+                };
+
                 // 1. Upload Images from Blocks
                 // Collect Blocks
                 const blocks = [];
@@ -675,7 +679,9 @@
                         if (fileInput && fileInput.files[0]) {
                             // Upload Image
                             const file = fileInput.files[0];
-                            let path = 'assets/images/' + file.name;
+                            const safeName = sanitizeFilename(file.name);
+                            let path = 'assets/images/' + safeName;
+
                             if (ghClient.isConfigured()) {
                                 try {
                                     const res = await ghClient.uploadFile(path, file);
@@ -704,13 +710,16 @@
                     const fileInput = document.querySelector(`input[onchange="handleFile(this, 'file${i}')"]`);
                     if (fileInput && fileInput.files[0]) {
                         const file = fileInput.files[0];
-                        let path = 'assets/files/' + file.name;
+                        const safeName = sanitizeFilename(file.name);
+                        let path = 'assets/files/' + safeName;
+                        let finalPath = path;
+
                         // Upload
                         if (ghClient.isConfigured()) {
                             try {
                                 const res = await ghClient.uploadFile(path, file);
                                 console.log('Uploaded file:', path);
-                                if (res.content && res.content.download_url) path = res.content.download_url;
+                                if (res.content && res.content.download_url) finalPath = res.content.download_url;
                             } catch (e) {
                                 console.error('File upload failed', e);
                                 if (!confirm(`Failed to upload ${file.name}. Continue saving data anyway?`)) {
@@ -718,7 +727,7 @@
                                 }
                             }
                         }
-                        files.push({ name: file.name, path: path });
+                        files.push({ name: file.name, path: finalPath });
                         hasNewFiles = true;
                     } else {
                         // Check hidden input for existing value
