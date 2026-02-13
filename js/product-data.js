@@ -2885,9 +2885,21 @@ const initialProductData = [
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/CH-1A.jpg",
         "detailBlocks": [],
         "attachments": []
+    },
+    {
+        "id": 1770988034579,
+        "category": "PnP Cable - 국산차 (Domestic)",
+        "title": "GE-203",
+        "desc": "G80 Actune(24년이전)/케이블길이 2M / PXE-C80-88과 연결",
+        "desc_bottom": "AB타입",
+        "price": 0,
+        "soldOut": false,
+        "image": "assets/images/product_placeholder.png",
+        "detailBlocks": [],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1770965655372;
+const PRODUCT_DATA_VERSION = 1770988035964;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
