@@ -306,8 +306,7 @@
                     <button class="btn btn-sm" id="btnModePopup" onclick="setMode('popup')"
                         style="flex:1; background:transparent; color:#aaa; border:none;">Popup</button>
                 </div>
-                <button class="btn btn-secondary btn-sm" onclick="showSettings()"
-                    style="margin-top:10px; width:100%;">GitHub Settings</button>
+
             </div>
             <ul class="product-list" id="itemList">
                 <!-- List items -->
@@ -315,80 +314,8 @@
         </div>
 
         <div class="main-content">
-            <!-- Settings Form -->
-            <div class="editor-form" id="settingsForm" style="display:none; border-color: #007bff;">
-                <h2 style="color: #007bff;">GitHub Connection Settings</h2>
-                <p style="color:#666; font-size:0.9rem; margin-bottom:20px;">
-                    To save data to the live website, you must configure your personal GitHub Access Token.
-                    This information is saved locally in your browser (LocalStorage).
-                </p>
-                <div class="form-group">
-                    <label>GitHub Personal Access Token</label>
-                    <input type="password" id="gh_token" placeholder="ghp_..." autocomplete="off">
-                    <small style="color:#888;">Token must have 'repo' scope permissions.</small>
-                </div>
-                <div class="form-group">
-                    <label>Repository Name</label>
-                    <input type="text" id="gh_repo" placeholder="username/repository">
-                    <small style="color:#888;">Example: <code>yourname/alpinehompage</code></small>
-                </div>
-                <div class="form-group">
-                    <label>Branch (Main/Master)</label>
-                    <input type="text" id="gh_branch" placeholder="main">
-                    <small style="color:#888;">Default: main (try 'master' if upload fails)</small>
-                </div>
-                <div class="form-actions">
-                    <button class="btn btn-primary" onclick="saveGithubSettings()">Test & Save Connection</button>
-                    <button class="btn btn-secondary" onclick="cancelSettings()">Cancel</button>
-                </div>
-            </div>
 
-            <script>
-                function showSettings() {
-                    // Hide all other views
-                    document.getElementById('editorForm').style.display = 'none';
-                    document.getElementById('itemList').style.display = 'none'; // Depending on layout, might need to hide list or overlay
-                    // Actually, in this layout, list is in sidebar, editor is in main-content.
-                    // We just replace editorForm with settingsForm
-                    document.getElementById('editorForm').style.display = 'none';
-                    document.getElementById('settingsForm').style.display = 'block';
 
-                    // Populate current values
-                    document.getElementById('gh_token').value = localStorage.getItem('github_token') || '';
-                    document.getElementById('gh_repo').value = localStorage.getItem('github_repo') || '';
-                    document.getElementById('gh_branch').value = localStorage.getItem('github_branch') || 'main';
-                }
-
-                function cancelSettings() {
-                    document.getElementById('settingsForm').style.display = 'none';
-                    // Show editor form or empty state?
-                    // Ideally check what mode we are in. For now just hide settings.
-                }
-
-                async function saveGithubSettings() {
-                    const token = document.getElementById('gh_token').value.trim();
-                    const repo = document.getElementById('gh_repo').value.trim();
-                    const branch = document.getElementById('gh_branch').value.trim() || 'main';
-
-                    if (!token || !repo) {
-                        alert('Please enter Token, Repository and Branch.');
-                        return;
-                    }
-
-                    // Configure Client
-                    ghClient.configure(token, repo, branch);
-
-                    // Test Connection
-                    const result = await ghClient.testConnection();
-                    if (result.success) {
-                        alert('Connection Successful! Settings Saved.\n' + result.message);
-                        localStorage.setItem('github_branch', branch);
-                        cancelSettings();
-                    } else {
-                        alert('Connection Failed:\n' + result.message);
-                    }
-                }
-            </script>
             <!-- Editor content... -->
             <div class="editor-form" id="editorForm" style="display:none;">
                 <!-- Form fields... -->
