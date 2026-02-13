@@ -98,6 +98,10 @@
                     style="padding: 10px 15px; background: #2980b9; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">
                     엑셀 일괄 업로드 (Upload Excel)
                 </button>
+                <button type="button" id="btn-restore-data"
+                    style="padding: 10px 15px; background: #e67e22; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">
+                    데이터 복구 (Restore Data)
+                </button>
             </div>
 
             <form id="priceForm"
@@ -349,6 +353,17 @@
             btnDownload.addEventListener('click', downloadExcel);
             btnUpload.addEventListener('click', () => excelInput.click());
             excelInput.addEventListener('change', uploadExcel);
+
+            // Restore Data Handler
+            document.getElementById('btn-restore-data').addEventListener('click', () => {
+                if (confirm('데이터가 보이지 않거나 오류가 있을 때 사용합니다.\n로컬 저장소를 초기화하고 서버의 최신 데이터를 다시 불러오시겠습니까?')) {
+                    localStorage.removeItem('priceData');
+                    localStorage.removeItem('priceDataVersion');
+                    localStorage.removeItem('priceDataRestored_v2_calculated'); // Also clear the hash key just in case
+                    alert('복구되었습니다. 페이지를 새로고침합니다.');
+                    location.reload();
+                }
+            });
 
 
 
