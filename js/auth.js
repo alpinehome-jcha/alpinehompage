@@ -195,31 +195,44 @@ const auth = {
                 const repo = document.getElementById('global_gh_repo').value.trim();
                 if (!token || !repo) { alert('설정 값을 먼저 입력해주세요 (테스트 전).'); return; }
 
-                // Temporary configure for test
-                const tempClient = new GitHubClient(); // Create temp, don't mess with global yet? 
-                // actually we can just use the static instance if we want, but let's be safe.
-                // Or just use the global one but configure it? 
-                // let's use the method on the global instance if available, or create new.
-                // Assuming ghClient is available globally from github-client.js
-                if (typeof ghClient === 'undefined') { alert('GitHub Client Library not loaded'); return; }
+                if (typeof ghClient === 'undefined') { alert('GitHub Client Library (github-client.js) not loaded'); return; }
 
+                // Configure Global Client
                 ghClient.configure(token, repo);
+
+                // Test Connection
                 const result = await ghClient.testConnection();
                 alert(result.message);
+
+                if (result.success) {
+                    // Auto-save if successful
+                    localStorage.setItem('github_token', token);
+                    localStorage.setItem('github_repo', repo);
+                }
             };
 
             document.getElementById('btnCancelGh').onclick = () => {
                 document.getElementById('ghSettingsModal').style.display = 'none';
             };
-            document.getElementById('btnSaveGh').onclick = () => {
+
+            document.getElementById('btnSaveGh').onclick = async () => {
                 const token = document.getElementById('global_gh_token').value.trim();
                 const repo = document.getElementById('global_gh_repo').value.trim();
 
                 if (!token || !repo) { alert('토큰과 저장소 주소를 모두 입력해주세요.'); return; }
 
+                // Configure & Test before saving to be sure
+                if (typeof ghClient !== 'undefined') {
+                    ghClient.configure(token, repo);
+                    const result = await ghClient.testConnection();
+                    if (!result.success) {
+                        if (!confirm('연결 테스트에 실패했습니다. 그래도 저장하시겠습니까?\n' + result.message)) return;
+                    }
+                }
+
                 localStorage.setItem('github_token', token);
                 localStorage.setItem('github_repo', repo);
-                alert('설정이 저장되었습니다.');
+                alert('설정이 저장되었습니다. 이제 파일 업로드가 가능합니다.');
                 document.getElementById('ghSettingsModal').style.display = 'none';
             };
         }
