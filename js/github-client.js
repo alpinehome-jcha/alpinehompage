@@ -15,10 +15,11 @@ class GitHubClient {
     }
 
     configure(token, repo) {
-        this.token = token;
-        this.repo = repo;
-        localStorage.setItem('github_token', token);
-        localStorage.setItem('github_repo', repo);
+        this.token = token ? token.trim() : '';
+        this.repo = repo ? repo.trim() : '';
+        if (this.repo.endsWith('/')) this.repo = this.repo.slice(0, -1);
+        localStorage.setItem('github_token', this.token);
+        localStorage.setItem('github_repo', this.repo);
     }
 
     async testConnection() {
@@ -43,7 +44,7 @@ class GitHubClient {
                 return { success: false, message: `GitHub API Error: ${response.status}` };
             }
         } catch (error) {
-            return { success: false, message: `Network Error: ${error.message}. Check CORS/Internet.` };
+            return { success: false, message: `Network/CORS Error: ${error.message}. Please check if your Token and Repo settings are correct and contain no extra spaces.` };
         }
     }
 
