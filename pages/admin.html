@@ -712,14 +712,20 @@
                     // Instant Upload
                     if (confirm(`Upload ${filename} to GitHub now?`)) {
                         try {
-                            await ghClient.uploadFile(path, file, `Upload Popup Image: ${filename}`);
+                            const res = await ghClient.uploadFile(path, file, `Upload Popup Image: ${filename}`);
                             alert('Image uploaded to GitHub!');
+                            if (res.content && res.content.download_url) {
+                                document.getElementById('popupImage').value = res.content.download_url;
+                            } else {
+                                document.getElementById('popupImage').value = path;
+                            }
                         } catch (err) {
                             alert('Upload Failed: ' + err.message);
+                            document.getElementById('popupImage').value = path;
                         }
+                    } else {
+                        document.getElementById('popupImage').value = path;
                     }
-
-                    document.getElementById('popupImage').value = path;
 
                     // Show local preview
                     const reader = new FileReader();
@@ -948,7 +954,26 @@
             renderList();
         }
 
-        function saveCurrent() {
+        async function saveCurrent() {
+            // Check if Main Image was changed/selected (Upload First)
+            const fileInput = document.getElementById('file_upload');
+            if (currentMode === 'product' && fileInput && fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const path = 'assets/images/' + file.name;
+                try {
+                    const res = await ghClient.uploadFile(path, file, `Upload Product Image: ${file.name}`);
+                    if (res.content && res.content.download_url) {
+                        inputs.image.value = res.content.download_url;
+                    } else {
+                        inputs.image.value = path;
+                    }
+                    alert(`Image ${file.name} uploaded.`);
+                } catch (err) {
+                    alert(`Image Upload Failed: ${err.message}`);
+                    // We continue anyway, maybe they want to save broken link or retry
+                }
+            }
+
             const isProduct = currentMode === 'product';
             const collection = isProduct ? products : dealers;
             const storageKey = isProduct ? 'productData' : 'dealerData';
@@ -1004,17 +1029,6 @@
 
             // Auto Save to Server
             saveToGitHub(currentMode, true);
-
-            // Check if Main Image was changed/selected
-            const fileInput = document.getElementById('file_upload');
-            if (isProduct && fileInput && fileInput.files.length > 0) {
-                const file = fileInput.files[0];
-                const path = inputs.image.value; // already set by change listener
-                // We should upload this too
-                ghClient.uploadFile(path, file, `Upload Product Image: ${file.name}`)
-                    .then(() => alert(`Image ${file.name} uploaded to GitHub.`))
-                    .catch(err => alert(`Image Upload Failed: ${err.message}`));
-            }
         }
 
         // CATEGORIES (Moved from missing global scope or re-declared)
@@ -1162,12 +1176,20 @@
             // Upload immediately
             if (confirm(`Upload ${file.name} to GitHub now?`)) {
                 ghClient.uploadFile(path, file, `Upload Detail Block Image: ${file.name}`)
-                    .then(() => alert('Image Uploaded!'))
+                    .then((res) => {
+                        alert('Image Uploaded!');
+                        const b = currentBlocks.find(x => x.id === id);
+                        if (b) {
+                            if (res.content && res.content.download_url) b.value = res.content.download_url;
+                            else b.value = path;
+                            renderBlocks();
+                        }
+                    })
                     .catch(err => alert('Upload Failed: ' + err.message));
+            } else {
+                const b = currentBlocks.find(x => x.id === id);
+                if (b) { b.value = path; renderBlocks(); }
             }
-
-            const b = currentBlocks.find(x => x.id === id);
-            if (b) { b.value = path; renderBlocks(); }
         }
 
         // Excel Paste Handler
@@ -1258,8 +1280,11 @@
                     // Upload immediately
                     if (confirm(`Upload ${file.name} to GitHub now?`)) {
                         try {
-                            await ghClient.uploadFile(path, file, `Upload Attachment: ${file.name}`);
+                            const res = await ghClient.uploadFile(path, file, `Upload Attachment: ${file.name}`);
                             alert('File Uploaded Successfully!');
+                            if (res.content && res.content.download_url) {
+                                document.getElementById('attach_url').value = res.content.download_url;
+                            }
                         } catch (err) {
                             alert('Upload Failed: ' + err.message);
                         }

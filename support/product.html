@@ -714,12 +714,16 @@
                     const path = 'assets/images/' + file.name;
                     if (ghClient.isConfigured()) {
                         try {
-                            await ghClient.uploadFile(path, file, `Upload Product Image: ${file.name}`);
+                            const res = await ghClient.uploadFile(path, file, `Upload Product Image: ${file.name}`);
+                            if (res.content && res.content.download_url) {
+                                mainImagePath = res.content.download_url;
+                            } else {
+                                mainImagePath = path;
+                            }
                         } catch (e) {
                             if (!confirm(`Failed to upload ${file.name}. Continue?`)) throw new Error('Upload cancelled');
                         }
                     }
-                    mainImagePath = path;
                 }
 
                 // 2. Upload Attachments (Max 5)
@@ -730,15 +734,19 @@
                     if (fInput && fInput.files[0]) {
                         const file = fInput.files[0];
                         const path = 'assets/files/' + file.name;
+                        let finalPath = path;
 
                         if (ghClient.isConfigured()) {
                             try {
-                                await ghClient.uploadFile(path, file, `Upload Product File ${i}: ${file.name}`);
+                                const res = await ghClient.uploadFile(path, file, `Upload Product File ${i}: ${file.name}`);
+                                if (res.content && res.content.download_url) {
+                                    finalPath = res.content.download_url;
+                                }
                             } catch (e) {
                                 if (!confirm(`Failed to upload ${file.name}. Continue?`)) throw new Error('Upload cancelled');
                             }
                         }
-                        files.push({ name: file.name, path: path });
+                        files.push({ name: file.name, path: finalPath });
                         hasNewFiles = true;
                     } else {
                         // Check if preserving existing file (not easily possible with current UI structure unless we read from existing data)

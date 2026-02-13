@@ -674,11 +674,12 @@
                         if (fileInput && fileInput.files[0]) {
                             // Upload Image
                             const file = fileInput.files[0];
-                            const path = 'assets/images/' + file.name;
+                            let path = 'assets/images/' + file.name;
                             if (ghClient.isConfigured()) {
                                 try {
-                                    await ghClient.uploadFile(path, file);
+                                    const res = await ghClient.uploadFile(path, file);
                                     console.log('Uploaded image:', path);
+                                    if (res.content && res.content.download_url) path = res.content.download_url;
                                 } catch (e) {
                                     console.error('Image upload failed', e);
                                     if (!confirm(`Failed to upload ${file.name}. Continue saving data anyway?`)) {
@@ -702,12 +703,13 @@
                     const fileInput = document.querySelector(`input[onchange="handleFile(this, 'file${i}')"]`);
                     if (fileInput && fileInput.files[0]) {
                         const file = fileInput.files[0];
-                        const path = 'assets/files/' + file.name;
+                        let path = 'assets/files/' + file.name;
                         // Upload
                         if (ghClient.isConfigured()) {
                             try {
-                                await ghClient.uploadFile(path, file);
+                                const res = await ghClient.uploadFile(path, file);
                                 console.log('Uploaded file:', path);
+                                if (res.content && res.content.download_url) path = res.content.download_url;
                             } catch (e) {
                                 console.error('File upload failed', e);
                                 if (!confirm(`Failed to upload ${file.name}. Continue saving data anyway?`)) {
