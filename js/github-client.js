@@ -21,7 +21,8 @@ class GitHubClient {
     }
 
     configure(token, repo, branch) {
-        this.token = token ? token.trim() : '';
+        // Aggressive sanitization: remove ALL whitespace/newlines
+        this.token = token ? token.replace(/\s+/g, '') : '';
         this.repo = repo ? repo.trim() : '';
         this.branch = branch ? branch.trim() : 'main';
 
@@ -92,14 +93,16 @@ class GitHubClient {
             response = await fetch(url, {
                 headers: {
                     'Authorization': `token ${this.token}`,
-                    'Accept': 'application/vnd.github.v3+json',
-                    'Cache-Control': 'no-cache'
+                    // Removed Cache-Control to reduce preflight complexity
+                    'Accept': 'application/vnd.github.v3+json'
                 },
                 cache: 'no-store'
             });
         } catch (error) {
             console.error('SHA Fetch Failed URL:', url);
-            throw new Error(`Network Error (SHA): ${error.message}. Repo: ${this.repo}`);
+            // Include Token Length in error for debugging (safe)
+            const tokenLen = this.token ? this.token.length : 0;
+            throw new Error(`Network Error (SHA): ${error.message}. Repo: ${this.repo}, TokenLen: ${tokenLen}`);
         }
 
         if (response.status === 404) return null; // File doesn't exist yet
