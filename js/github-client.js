@@ -6,7 +6,13 @@
 class GitHubClient {
     constructor() {
         this.token = localStorage.getItem('github_token') || '';
-        this.repo = localStorage.getItem('github_repo') || ''; // e.g. "username/repo"
+        let repo = localStorage.getItem('github_repo') || '';
+
+        // Auto-sanitize on load (in case it was saved incorrectly before)
+        repo = repo.replace(/^https?:\/\/github\.com\//, '').replace(/\.git$/, '');
+        if (repo.endsWith('/')) repo = repo.slice(0, -1);
+
+        this.repo = repo;
         this.branch = localStorage.getItem('github_branch') || 'main'; // Default to main
     }
 
@@ -19,6 +25,8 @@ class GitHubClient {
         this.repo = repo ? repo.trim() : '';
         this.branch = branch ? branch.trim() : 'main';
 
+        // Sanitization: Remove full URL if pasted
+        this.repo = this.repo.replace(/^https?:\/\/github\.com\//, '').replace(/\.git$/, '');
         if (this.repo.endsWith('/')) this.repo = this.repo.slice(0, -1);
 
         localStorage.setItem('github_token', this.token);
@@ -41,8 +49,8 @@ class GitHubClient {
             });
 
             if (!repoResp.ok) {
-                if (repoResp.status === 401) return { success: false, message: 'Invalid Token (401)' };
-                if (repoResp.status === 404) return { success: false, message: 'Repository Not Found (404)' };
+                if (repoResp.status === 401) return { success: false, message: 'Invalid Token (401). Check if token has expired.' };
+                if (repoResp.status === 404) return { success: false, message: `Repository '${this.repo}' Not Found (404). Check owner/repo name.` };
                 return { success: false, message: `GitHub API Error: ${repoResp.status}` };
             }
 
@@ -65,7 +73,8 @@ class GitHubClient {
             return { success: true, message: `Connected to ${repoData.full_name} (Branch: ${this.branch})` };
 
         } catch (error) {
-            return { success: false, message: `Network/CORS Error: ${error.message}. Please check if your Token and Repo settings are correct and contain no extra spaces.` };
+            console.error('Connection Test Error:', error);
+            return { success: false, message: `Network/CORS Error: ${error.message}. Check Internet or Repo Name format.` };
         }
     }
 
@@ -89,11 +98,12 @@ class GitHubClient {
                 cache: 'no-store'
             });
         } catch (error) {
-            throw new Error(`Network/CORS Error (SHA): ${error.message}`);
+            console.error('SHA Fetch Failed URL:', url);
+            throw new Error(`Network Error (SHA): ${error.message}. Repo: ${this.repo}`);
         }
 
         if (response.status === 404) return null; // File doesn't exist yet
-        if (!response.ok) throw new Error(`GitHub API Error: ${response.statusText}`);
+        if (!response.ok) throw new Error(`GitHub API Error: ${response.status} ${response.statusText}`);
 
         const data = await response.json();
         return data.sha;
