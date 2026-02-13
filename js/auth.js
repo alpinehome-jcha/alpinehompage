@@ -189,15 +189,47 @@ const auth = {
             `;
             document.body.insertAdjacentHTML('beforeend', ghModalHTML);
 
+            // Helper to load GitHub Client
+            const loadGitHubClient = () => {
+                return new Promise((resolve, reject) => {
+                    if (typeof ghClient !== 'undefined') {
+                        resolve();
+                        return;
+                    }
+
+                    const script = document.createElement('script');
+                    // Determine path based on location
+                    const isInPages = window.location.pathname.includes('/pages/');
+                    const isInSupport = window.location.pathname.includes('/support/');
+                    let scriptPath = 'js/github-client.js';
+                    if (isInPages) scriptPath = '../js/github-client.js';
+                    else if (isInSupport) scriptPath = '../js/github-client.js';
+                    else if (window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html')) scriptPath = 'js/github-client.js';
+                    else scriptPath = 'js/github-client.js'; // Fallback
+
+                    script.src = scriptPath;
+                    script.onload = () => resolve();
+                    script.onerror = () => reject(new Error('Failed to load ' + scriptPath));
+                    document.head.appendChild(script);
+                });
+            };
+
             // GitHub Modal Events
             document.getElementById('btnTestGh').onclick = async () => {
                 const token = document.getElementById('global_gh_token').value.trim();
                 const repo = document.getElementById('global_gh_repo').value.trim();
                 if (!token || !repo) { alert('설정 값을 먼저 입력해주세요 (테스트 전).'); return; }
 
-                if (typeof ghClient === 'undefined') { alert('GitHub Client Library (github-client.js) not loaded'); return; }
+                try {
+                    await loadGitHubClient();
+                } catch (e) {
+                    alert('GitHub Client Library 로드 실패: ' + e.message);
+                    return;
+                }
 
                 // Configure Global Client
+                if (typeof ghClient === 'undefined') { alert('Client loaded but object not found.'); return; }
+
                 ghClient.configure(token, repo);
 
                 // Test Connection
@@ -221,13 +253,19 @@ const auth = {
 
                 if (!token || !repo) { alert('토큰과 저장소 주소를 모두 입력해주세요.'); return; }
 
-                // Configure & Test before saving to be sure
-                if (typeof ghClient !== 'undefined') {
-                    ghClient.configure(token, repo);
-                    const result = await ghClient.testConnection();
-                    if (!result.success) {
-                        if (!confirm('연결 테스트에 실패했습니다. 그래도 저장하시겠습니까?\n' + result.message)) return;
+                try {
+                    await loadGitHubClient();
+                    // Configure & Test before saving to be sure
+                    if (typeof ghClient !== 'undefined') {
+                        ghClient.configure(token, repo);
+                        const result = await ghClient.testConnection();
+                        if (!result.success) {
+                            if (!confirm('연결 테스트에 실패했습니다. 그래도 저장하시겠습니까?\n' + result.message)) return;
+                        }
                     }
+                } catch (e) {
+                    console.error(e);
+                    // Allow save even if test fails/client fails, just warn
                 }
 
                 localStorage.setItem('github_token', token);
