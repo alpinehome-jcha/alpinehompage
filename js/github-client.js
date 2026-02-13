@@ -162,7 +162,13 @@ class GitHubClient {
             throw new Error(`GitHub Upload Failed: ${errData.message}`);
         }
 
-        return await response.json();
+        const data = await response.json();
+        // Ensure download_url exists (Manual construction if missing)
+        if (!data.content) data.content = {};
+        if (!data.content.download_url) {
+            data.content.download_url = `https://raw.githubusercontent.com/${this.repo}/${this.branch}/${path}`;
+        }
+        return data;
     }
 }
 
