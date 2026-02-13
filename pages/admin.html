@@ -306,6 +306,8 @@
                     <button class="btn btn-sm" id="btnModePopup" onclick="setMode('popup')"
                         style="flex:1; background:transparent; color:#aaa; border:none;">Popup</button>
                 </div>
+                <button class="btn btn-secondary btn-sm" onclick="showSettings()"
+                    style="margin-top:10px; width:100%;">GitHub Settings</button>
             </div>
             <ul class="product-list" id="itemList">
                 <!-- List items -->
@@ -313,6 +315,28 @@
         </div>
 
         <div class="main-content">
+            <!-- Settings Form -->
+            <div class="editor-form" id="settingsForm" style="display:none; border-color: #007bff;">
+                <h2 style="color: #007bff;">GitHub Connection Settings</h2>
+                <p style="color:#666; font-size:0.9rem; margin-bottom:20px;">
+                    To save data to the live website, you must configure your personal GitHub Access Token.
+                    This information is saved locally in your browser (LocalStorage).
+                </p>
+                <div class="form-group">
+                    <label>GitHub Personal Access Token</label>
+                    <input type="password" id="gh_token" placeholder="ghp_..." autocomplete="off">
+                    <small style="color:#888;">Token must have 'repo' scope permissions.</small>
+                </div>
+                <div class="form-group">
+                    <label>Repository Name</label>
+                    <input type="text" id="gh_repo" placeholder="username/repository">
+                    <small style="color:#888;">Example: <code>yourname/alpinehompage</code></small>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary" onclick="saveGithubSettings()">Test & Save Connection</button>
+                    <button class="btn btn-secondary" onclick="cancelSettings()">Cancel</button>
+                </div>
+            </div>
             <!-- Editor content... -->
             <div class="editor-form" id="editorForm" style="display:none;">
                 <!-- Form fields... -->
@@ -776,6 +800,8 @@
             currentMode = newMode;
             currentId = null; // Reset currentId when changing mode
             domForm.style.display = 'none'; // Hide form initially
+            const settingsForm = document.getElementById('settingsForm');
+            if (settingsForm) settingsForm.style.display = 'none';
 
             // Reset UI for all mode buttons
             document.getElementById('btnModeProduct').style.background = 'transparent';
@@ -1511,6 +1537,58 @@
                 } else {
                     alert(`Error saving to GitHub: ${err.message}`);
                 }
+            }
+        }
+
+        // --- GitHub Settings Logic ---
+        function showSettings() {
+            // Hide other views
+            domForm.style.display = 'none';
+            document.getElementById('itemList').innerHTML = '';
+            document.getElementById('btnModeProduct').style.background = 'transparent';
+            document.getElementById('btnModeProduct').style.color = '#aaa';
+            document.getElementById('btnModeDealer').style.background = 'transparent';
+            document.getElementById('btnModeDealer').style.color = '#aaa';
+            const btnModePopup = document.getElementById('btnModePopup');
+            if (btnModePopup) {
+                btnModePopup.style.background = 'transparent';
+                btnModePopup.style.color = '#aaa';
+            }
+
+            // Show Settings
+            const settingsForm = document.getElementById('settingsForm');
+            settingsForm.style.display = 'block';
+
+            // Populate current values
+            document.getElementById('gh_token').value = localStorage.getItem('github_token') || '';
+            document.getElementById('gh_repo').value = localStorage.getItem('github_repo') || '';
+        }
+
+        function cancelSettings() {
+            document.getElementById('settingsForm').style.display = 'none';
+            // Return to default view (Product)
+            setMode('product');
+        }
+
+        async function saveGithubSettings() {
+            const token = document.getElementById('gh_token').value.trim();
+            const repo = document.getElementById('gh_repo').value.trim();
+
+            if (!token || !repo) {
+                alert('Please enter both Token and Repository.');
+                return;
+            }
+
+            // Configure Client
+            ghClient.configure(token, repo);
+
+            // Test Connection
+            const result = await ghClient.testConnection();
+            if (result.success) {
+                alert('Connection Successful! Settings Saved.\n' + result.message);
+                cancelSettings();
+            } else {
+                alert('Connection Failed:\n' + result.message);
             }
         }
     </script>
