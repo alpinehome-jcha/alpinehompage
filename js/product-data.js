@@ -2260,7 +2260,13 @@ const initialProductData = [
         "price": 155000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-1A.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771044668280.3772,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-1A-C.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2994,7 +3000,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771044664108;
+const PRODUCT_DATA_VERSION = 1771044681404;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
