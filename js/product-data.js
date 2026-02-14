@@ -2573,12 +2573,18 @@ const initialProductData = [
         "id": 1770597493775,
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "RR-1A",
-        "desc": "RandRover 18CH [메리디안 3D 서라운드] / 케이블길이 1.5M",
+        "desc": "RandRover / 레인지로 18CH [메리디안 3D 서라운드] / 케이블길이 1.5M",
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 400000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/RR-1A.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771042547411.9358,
+                "type": "text",
+                "value": "레인지로버 : 18채널(메리디안 3D 서라운드)\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
+            }
+        ],
         "attachments": []
     },
     {
@@ -2977,7 +2983,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771042535414;
+const PRODUCT_DATA_VERSION = 1771042617673;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
