@@ -2560,7 +2560,13 @@ const initialProductData = [
         "price": 300000,
         "soldOut": false,
         "image": "assets/images/BY-2A.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771042496645.0986,
+                "type": "text",
+                "value": "25년 이후 : 6채널 : Seal / Sealion7\n\n"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2971,7 +2977,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771042476464;
+const PRODUCT_DATA_VERSION = 1771042524970;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
