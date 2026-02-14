@@ -3035,7 +3035,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771045441410;
+const PRODUCT_DATA_VERSION = 1771045491334;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
