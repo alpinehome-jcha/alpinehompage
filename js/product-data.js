@@ -2420,7 +2420,7 @@ const initialProductData = [
             {
                 "id": 1771042189893.2913,
                 "type": "text",
-                "value": "20년~23년 : 9채널(Harman) : 630 / 540 / X7\n\n24년 이후 : 9채널(Bower & Wilkins) : 630 / 540 / X7\n\nDSP : PXE-X120-10DP와 연결되는 케이블입니다."
+                "value": "20년~23년 : 9채널(Harman) : 630 / 540 / X7\n\n24년 이후 : 9채널(Bower & Wilkins) : 630 / 540 / X7\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
             }
         ],
         "attachments": []
@@ -2959,7 +2959,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771042195577;
+const PRODUCT_DATA_VERSION = 1771042209072;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
