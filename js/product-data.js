@@ -2842,7 +2842,7 @@ const initialProductData = [
         "id": 1770603681161,
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "TS-303",
-        "desc": "Tesla Model Y 21년 이전 / PXE-X121-12EV와 연결",
+        "desc": "KCU-TSL21MY-1 / Tesla 13채널 롱레인지 / 21년 이전 / Model3 ModelY / PXE-X121-12EV와 연결",
         "desc_bottom": "AB타입",
         "price": 390000,
         "soldOut": false,
@@ -2899,7 +2899,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771040670465;
+const PRODUCT_DATA_VERSION = 1771040694504;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
