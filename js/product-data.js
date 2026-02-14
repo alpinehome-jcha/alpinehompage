@@ -2488,7 +2488,13 @@ const initialProductData = [
         "price": 340000,
         "soldOut": true,
         "image": "assets/images/product_placeholder.png",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771042355352.2598,
+                "type": "text",
+                "value": "Stereo 4채널 차량\n\n"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2959,7 +2965,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771042345925;
+const PRODUCT_DATA_VERSION = 1771042361023;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
