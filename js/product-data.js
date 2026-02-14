@@ -2398,7 +2398,13 @@ const initialProductData = [
         "price": 210000,
         "soldOut": false,
         "image": "assets/images/BM-1A.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771042135204.2234,
+                "type": "text",
+                "value": "20년~23년 : 7채널(신형 Hi-Fi) : \n520 / 320 / X4 / X3 / X1 / 118D / 218D\n\n24년 이후 : 7채널(Harman) : 520 / 320 / X4 / X3 / X1 / 118D / 218D\n\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
+            }
+        ],
         "attachments": []
     },
     {
@@ -2947,7 +2953,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771042118483;
+const PRODUCT_DATA_VERSION = 1771042170927;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
