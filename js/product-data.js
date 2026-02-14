@@ -2348,7 +2348,7 @@ const initialProductData = [
             {
                 "id": 1771041767990.4573,
                 "type": "text",
-                "value": "19년이전 7채널(구형 Hi-Fi) 차량"
+                "value": "19년이전 7채널(구형 Hi-Fi) 차량\n\nDSP : PXE-X120-10DP와 연결되는 케이블입니다."
             }
         ],
         "attachments": []
@@ -2941,7 +2941,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771042008270;
+const PRODUCT_DATA_VERSION = 1771042022234;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
