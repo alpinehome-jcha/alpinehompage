@@ -2542,7 +2542,13 @@ const initialProductData = [
         "price": 200000,
         "soldOut": false,
         "image": "assets/images/BY-101.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771042392827.5042,
+                "type": "text",
+                "value": "25년 이후 : ATTO3 / Dolphin / 4채널\n\nDSP : PXE-M60-4와 연결되는 케이블입니다."
+            }
+        ],
         "attachments": []
     },
     {
@@ -2965,7 +2971,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771042369602;
+const PRODUCT_DATA_VERSION = 1771042439341;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
