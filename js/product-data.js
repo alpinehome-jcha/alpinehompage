@@ -2287,7 +2287,7 @@ const initialProductData = [
             {
                 "id": 1771044400831.4958,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-104-C.jpg"
+                "value": "assets/images/HK-2A-C.jpg"
             }
         ],
         "attachments": []
@@ -3000,7 +3000,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771044717757;
+const PRODUCT_DATA_VERSION = 1771044757103;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
