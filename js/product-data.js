@@ -2344,7 +2344,13 @@ const initialProductData = [
         "price": 260000,
         "soldOut": false,
         "image": "assets/images/product_placeholder.png",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771041767990.4573,
+                "type": "text",
+                "value": "19년이전 7채널(구형 Hi-Fi) 차량"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2929,7 +2935,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771041742999;
+const PRODUCT_DATA_VERSION = 1771041859809;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
