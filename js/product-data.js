@@ -2474,7 +2474,7 @@ const initialProductData = [
             {
                 "id": 1771041705628.0156,
                 "type": "text",
-                "value": "20년 이후 : 10채널(Burmeater) : E300 / E350 / E450 / GLE400D / CLS450 / EQC(p,e)"
+                "value": "20년 이후 : 10채널(Burmeater) : E300 / E350 / E450 / GLE400D / CLS450 / EQC(p,e)\n\nDSP : PXE-X120-10DP와 연결되는 케이블입니다."
             }
         ],
         "attachments": []
@@ -2959,7 +2959,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771042274909;
+const PRODUCT_DATA_VERSION = 1771042300074;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
