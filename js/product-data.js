@@ -2440,7 +2440,13 @@ const initialProductData = [
         "price": 350000,
         "soldOut": false,
         "image": "assets/images/BZ-503.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771041705628.0156,
+                "type": "text",
+                "value": "20년 이후 : 10채널(Burmeater) : E300 / E350 / E450 / GLE400D / CLS450 / EQC(p,e)"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2917,7 +2923,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771041691037;
+const PRODUCT_DATA_VERSION = 1771041731719;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
