@@ -2362,7 +2362,13 @@ const initialProductData = [
         "price": 260000,
         "soldOut": false,
         "image": "assets/images/product_placeholder.png",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771041876149.264,
+                "type": "text",
+                "value": "20년~23년 : 7채널(신형 Hi-Fi) : \n520 / 320 / X4 / X3 / X1 / 118D / 218D\n\n24년 이후 : 7채널(Harman) : 520 / 320 / X4 / X3 / X1 / 118D / 218D\n\n\nDSP : PXE-X120-10DP와 연결되는 케이블입니다.\n"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2935,7 +2941,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771041859809;
+const PRODUCT_DATA_VERSION = 1771042008270;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
