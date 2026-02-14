@@ -2818,7 +2818,7 @@ const initialProductData = [
         "id": 1770603575697,
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "TS-301",
-        "desc": "Tesla Model3 21년 이전 / PXE-X121-12EV와 연결",
+        "desc": "KCU-TSL21M3-1 / Tesla 11채널 스탠다드 / 21년 이전 / Model3 ModelY / PXE-X121-12EV와 연결",
         "desc_bottom": "AB타입",
         "price": 390000,
         "soldOut": false,
@@ -2899,7 +2899,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771036353267;
+const PRODUCT_DATA_VERSION = 1771040651965;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
