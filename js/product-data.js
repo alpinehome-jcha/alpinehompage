@@ -2537,7 +2537,7 @@ const initialProductData = [
         "id": 1770597358732,
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "BY-101",
-        "desc": "BYD Atto3 4CH 자출 /케이블길이 1.5M/ PXE-M60-4와 연결",
+        "desc": "BYD Atto3 / Dolphin 4CH 자출 /케이블길이 1.5M/ PXE-M60-4와 연결",
         "desc_bottom": "AB타입",
         "price": 200000,
         "soldOut": false,
@@ -2971,7 +2971,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771042459666;
+const PRODUCT_DATA_VERSION = 1771042476464;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
