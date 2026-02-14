@@ -2380,7 +2380,13 @@ const initialProductData = [
         "price": 350000,
         "soldOut": false,
         "image": "assets/images/BM-403.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771042034444.938,
+                "type": "text",
+                "value": "20년~23년 : 9채널(Harman) : 630 / 540 / X7\n\n24년 이후 : 9채널(Bower & Wilkins) : 630 / 540 / X7\n\nDSP : PXE-X120-10DP와 연결되는 케이블입니다."
+            }
+        ],
         "attachments": []
     },
     {
@@ -2941,7 +2947,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771042022234;
+const PRODUCT_DATA_VERSION = 1771042118483;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
