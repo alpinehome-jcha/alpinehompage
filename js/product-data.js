@@ -2555,7 +2555,7 @@ const initialProductData = [
         "id": 1770597414437,
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "BY-2A",
-        "desc": "BYD Seal 앰프 / 케이블길이 1.5M",
+        "desc": "BYD Seal / Sealion7 앰프 / 케이블길이 1.5M",
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 300000,
         "soldOut": false,
@@ -2971,7 +2971,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771042439341;
+const PRODUCT_DATA_VERSION = 1771042459666;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
