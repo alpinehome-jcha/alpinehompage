@@ -2422,7 +2422,13 @@ const initialProductData = [
         "price": 450000,
         "soldOut": false,
         "image": "assets/images/BZ-502.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771041587129.0527,
+                "type": "text",
+                "value": "20년 이후 : 5채널(Mbux1st) : E250 / E250D\n\n20년 이후 : 6채널(Mbux2nd) : C300"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2905,7 +2911,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771041574592;
+const PRODUCT_DATA_VERSION = 1771041663173;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
