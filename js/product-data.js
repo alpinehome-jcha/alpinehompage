@@ -2416,7 +2416,13 @@ const initialProductData = [
         "price": 300000,
         "soldOut": false,
         "image": "assets/images/BM-2A.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771042189893.2913,
+                "type": "text",
+                "value": "20년~23년 : 9채널(Harman) : 630 / 540 / X7\n\n24년 이후 : 9채널(Bower & Wilkins) : 630 / 540 / X7\n\nDSP : PXE-X120-10DP와 연결되는 케이블입니다."
+            }
+        ],
         "attachments": []
     },
     {
@@ -2953,7 +2959,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771042170927;
+const PRODUCT_DATA_VERSION = 1771042195577;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
