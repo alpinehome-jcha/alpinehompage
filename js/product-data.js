@@ -2492,7 +2492,7 @@ const initialProductData = [
             {
                 "id": 1771042355352.2598,
                 "type": "text",
-                "value": "Stereo 4채널 차량\n\n"
+                "value": "Stereo 4채널 차량\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
             }
         ],
         "attachments": []
@@ -2965,7 +2965,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771042361023;
+const PRODUCT_DATA_VERSION = 1771042369602;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
