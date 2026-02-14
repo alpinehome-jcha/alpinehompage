@@ -2596,7 +2596,13 @@ const initialProductData = [
         "price": 370000,
         "soldOut": false,
         "image": "assets/images/RR-2A.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771042628051.5857,
+                "type": "text",
+                "value": "디스커버리 : 14채널(메리디안 서라운드)\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
+            }
+        ],
         "attachments": []
     },
     {
@@ -2983,7 +2989,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771042617673;
+const PRODUCT_DATA_VERSION = 1771042693325;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
