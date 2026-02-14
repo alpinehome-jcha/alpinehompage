@@ -2464,7 +2464,13 @@ const initialProductData = [
         "price": 540000,
         "soldOut": false,
         "image": "assets/images/BZ-2A.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771041686859.4126,
+                "type": "text",
+                "value": "20년 이후 : 5채널(Mbux1st) : E250 / E250D\n\n20년 이후 : 6채널(Mbux2nd) : C300"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2911,7 +2917,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771041663173;
+const PRODUCT_DATA_VERSION = 1771041691037;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
