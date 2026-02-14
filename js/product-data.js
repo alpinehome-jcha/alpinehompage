@@ -2830,7 +2830,7 @@ const initialProductData = [
         "id": 1770603638565,
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "TS-302",
-        "desc": "KCU-TSL22M3-1 / Tesla 11채널 스탠다드 / 22년 이후 / Model3 ModelY / PXE-X121-12EV와 연결",
+        "desc": "KCU-TSL22M3-1 / Tesla 11채널 스탠다드 / 22년~24년 / Model3 ModelY / PXE-X121-12EV와 연결",
         "desc_bottom": "AB타입",
         "price": 390000,
         "soldOut": false,
@@ -2899,7 +2899,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771040713544;
+const PRODUCT_DATA_VERSION = 1771040947031;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
