@@ -2438,7 +2438,7 @@ const initialProductData = [
             {
                 "id": 1771041552331.6233,
                 "type": "text",
-                "value": "Stereo 4채널 차량"
+                "value": "Stereo 4채널 차량\n\nDSP : PXE-C80-88과 연결되는 케이블입니다."
             }
         ],
         "attachments": []
@@ -2959,7 +2959,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771042209072;
+const PRODUCT_DATA_VERSION = 1771042237781;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
