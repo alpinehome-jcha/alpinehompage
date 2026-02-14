@@ -2312,7 +2312,7 @@ const initialProductData = [
             {
                 "id": 1770362983513.3757,
                 "type": "text",
-                "value": "HK-14A\n카니발(KA4) 12CH BOSE\n\nHK-19A\nK9(RJ)12CH [크렐]\n\nHK-20A\nK9(RJ)12CH [렉시콘]\n\nHK-21A\nK7(YG)11CH [크렐]\nK8(GL3)11CH [메리디안]\n\nHK-23A\nK5(DL3)12CH [크렐]\n스팅어(CK)7CH [액튠]\n스포티지(NQ5)8CH [25년이후 크렐]\n쏘렌토(MQ4)12CH [크렐]\n카니발(KA4)12CH [크렐]\n\nHK-24A\n스팅어(CK)11CH [렉시콘]\n모하비(HM)11CH [렉시콘]\n\nHK-26A\n스포티지(NQ5)8CH\n\nHK-28A\nEV3(SV1)7CH [스탠다드]\nEV4(CT1)7CH [스탠다드]\nEV5(OV1k)7CH[스탠다드]\nEV6(CV)11CH [스탠다드]\nEV9(MV)11CH [메리디안]"
+                "value": "HK-14A\n카니발(KA4) 12CH BOSE\n\nHK-19A\nK9(RJ)12CH [크렐]\n\nHK-20A\nK9(RJ)12CH [렉시콘]\n\nHK-21A\nK7(YG)11CH [크렐]\nK8(GL3)11CH [메리디안]\n\nHK-23A\nK5(DL3)12CH [크렐]\n스팅어(CK)7CH [액튠]\n스포티지(NQ5)8CH [25년이후 크렐]\n쏘렌토(MQ4)12CH [크렐]\n카니발(KA4)12CH [크렐]\n\nHK-24A\n스팅어(CK)11CH [렉시콘]\n모하비(HM)11CH [렉시콘]\n\nHK-26A\n스포티지(NQ5)8CH\n\nHK-28A\nEV3(SV1)7CH [스탠다드]\nEV4(CT1)7CH [스탠다드]\nEV5(OV1k)7CH[스탠다드]\nEV6(CV)11CH [스탠다드]\nEV9(MV)11CH [메리디안]\n타스만(TK1) 7CH"
             }
         ],
         "attachments": []
@@ -2899,7 +2899,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1770990308250;
+const PRODUCT_DATA_VERSION = 1771036353267;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
