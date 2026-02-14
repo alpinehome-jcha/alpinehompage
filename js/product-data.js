@@ -2564,7 +2564,7 @@ const initialProductData = [
             {
                 "id": 1771042496645.0986,
                 "type": "text",
-                "value": "25년 이후 : 6채널 : Seal / Sealion7\n\n"
+                "value": "25년 이후 : 6채널 : Seal / Sealion7\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
             }
         ],
         "attachments": []
@@ -2977,7 +2977,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771042524970;
+const PRODUCT_DATA_VERSION = 1771042535414;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
