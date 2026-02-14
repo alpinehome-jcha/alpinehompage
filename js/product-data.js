@@ -2404,7 +2404,13 @@ const initialProductData = [
         "price": 390000,
         "soldOut": false,
         "image": "assets/images/BZ-501.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771041552331.6233,
+                "type": "text",
+                "value": "Stereo 4채널 차량"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2899,7 +2905,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771040958125;
+const PRODUCT_DATA_VERSION = 1771041574592;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
