@@ -1109,6 +1109,38 @@
                 newItem.region = inputs.region.value;
             }
 
+            // [Change Detection]
+            let hasChanges = false;
+            let existingIdx = -1;
+
+            if (currentId === -1) {
+                hasChanges = true; // New item always has changes
+            } else {
+                existingIdx = collection.findIndex(i => i.id === currentId);
+                if (existingIdx !== -1) {
+                    const existing = collection[existingIdx];
+                    // Compare fields present in newItem
+                    const keys = Object.keys(newItem);
+                    for (const key of keys) {
+                        // Use JSON stringify for deep comparison of arrays/objects, simple equality for others
+                        if (JSON.stringify(newItem[key]) !== JSON.stringify(existing[key])) {
+                            hasChanges = true;
+                            break;
+                        }
+                    }
+                } else {
+                    // ID set but not found? Treat as new/change
+                    hasChanges = true;
+                }
+            }
+
+            if (!hasChanges) {
+                loadingText.innerText = '';
+                overlay.style.display = 'none';
+                alert('변경 내용이 없습니다.');
+                return;
+            }
+
             if (currentId === -1) {
                 // New Item
                 if (!isProduct) {
@@ -1118,13 +1150,11 @@
                 }
                 collection.push(newItem);
                 currentId = newItem.id;
-                // alert('Created successfully!'); // Removed early alert
             } else {
-                if (idx !== -1) {
+                if (existingIdx !== -1) {
                     // PRESERVE EXISTING PROPERTIES (like lat/lng)
-                    collection[idx] = { ...collection[idx], ...newItem };
+                    collection[existingIdx] = { ...collection[existingIdx], ...newItem };
                 }
-                // alert('Updated successfully!'); // Removed early alert
             }
 
             // Save to LocalStorage
@@ -1132,16 +1162,21 @@
             renderList();
 
             // Auto Save to Server
-            loadingText.innerText = 'Syncing to Server (GitHub)...';
+            loadingText.innerText = '서버에 동기화 중 (GitHub)...';
             try {
-                await saveToGitHub(currentMode, true); // true = silent mode originally, but we might want feedback
+                await saveToGitHub(currentMode, true);
                 overlay.style.display = 'none';
-                // Success Alert AFTER everything
-                alert('Saved to List & Synced to Server Successfully!');
+
+                // Final Success Message
+                if (currentId === -1 || (collection.findIndex(i => i.id === currentId) === -1)) { // Should not happen for update
+                    alert('새 항목이 추가되고 서버에 반영되었습니다.');
+                } else {
+                    alert('변경내용을 반영했습니다.\n(서버 동기화 성공)');
+                }
             } catch (e) {
                 console.error(e);
                 overlay.style.display = 'none';
-                alert('Saved to List, but Server Sync Failed: ' + e.message);
+                alert('변경내용은 저장되었으나, 서버 동기화에 실패했습니다:\n' + e.message);
             }
         }
 
