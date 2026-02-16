@@ -2496,7 +2496,7 @@ const initialProductData = [
             {
                 "id": 1771248715286.4485,
                 "type": "image",
-                "value": "assets/images/HK-15A-C.jpg"
+                "value": "assets/images/GE-8A-C.jpg"
             },
             {
                 "id": 1771248715941.6362,
@@ -3185,7 +3185,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771249683079;
+const PRODUCT_DATA_VERSION = 1771249786891;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
