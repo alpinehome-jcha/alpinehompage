@@ -11,6 +11,21 @@
     <script src="../js/dealer-data.js?v=20260213"></script>
     <script src="../js/popup-data.js?v=20260213"></script>
 
+    <!-- Global Error Handler (Emergency Debugging) -->
+    <script>
+        window.onerror = function (msg, url, lineNo, columnNo, error) {
+            const statusDiv = document.getElementById('systemStatus');
+            const errorMsg = `Script Error: ${msg} at line ${lineNo}`;
+            console.error(errorMsg, error);
+            if (statusDiv) {
+                statusDiv.innerHTML = `<span style="color:red; font-weight:bold;">❌ Fatal Error: ${msg} (Line ${lineNo})</span>`;
+                statusDiv.style.background = '#ffe6e6';
+            }
+            alert(errorMsg);
+            return false;
+        };
+    </script>
+
 
 
     <style>
@@ -1240,12 +1255,21 @@
                     `;
                 } else if (block.type === 'image') {
                     const imgSrc = block.value && block.value.startsWith('assets/') ? '../' + block.value : block.value;
-                    console.log(`Render Block ${block.id}: Value='${block.value}', Src='${imgSrc}'`); // Debug Log
+                    console.log(`Render Block ${block.id}: Value='${block.value}', Src='${imgSrc}'`);
+
+                    let imgHTML = '';
+                    if (block.value) {
+                        imgHTML = `<div style="margin-top:10px; text-align:center;">
+                            <img src="${imgSrc}" style="max-height:150px; border-radius:4px;" 
+                                 onerror="console.error('Img Load Error:', this.src); this.style.display='none'; alert('Preview failed for: ' + this.src);">
+                         </div>`;
+                    }
+
                     contentHTML = `
                         <div class="block-type-label">Image Section</div>
                         <input type="file" accept="image/*" onchange="handleBlockFile(${block.id}, this)">
                         <input type="text" placeholder="assets/images/..." readonly value="${block.value}" style="background:#f9f9f9; margin-top:5px;">
-                        ${block.value ? `<div style="margin-top:10px; text-align:center;"><img src="${imgSrc}" style="max-height:150px; border-radius:4px;" onerror="console.error('Img Load Error:', this.src); this.style.display='none'; alert('Preview failed for: ' + this.src);"></div>` : ''}
+                        ${imgHTML}
                     `;
                 } else if (block.type === 'html') {
                     contentHTML = `
