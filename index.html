@@ -259,6 +259,34 @@
         .pnp-link-btn:hover {
             background: #0056b3;
         }
+
+        .pnp-breadcrumbs {
+            margin-bottom: 15px;
+            padding: 8px;
+            background: #f1f1f1;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .pnp-crumb-item {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .pnp-breadcrumbs {
+            margin-bottom: 15px;
+            padding: 8px;
+            background: #f1f1f1;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .pnp-crumb-item {
+            font-weight: bold;
+            color: #333;
+        }
     </style>
 
     <section class="hero-container">
@@ -623,6 +651,7 @@
         <div class="pnp-modal-content">
             <span class="pnp-close">&times;</span>
             <h3 id="pnpModalTitle">PnP Cable Finder</h3>
+            <div id="pnpBreadcrumbs" class="pnp-breadcrumbs" style="display:none;"></div>
             <div id="pnpModalBody">
                 <!-- Step 1: Manufacturer -->
                 <div id="pnpStep1" class="pnp-step active">
@@ -695,6 +724,7 @@
             showStep(1);
             pnpCurrentManuf = '';
             pnpCurrentModel = '';
+            updateBreadcrumbs();
             renderManufacturers();
         }
 
@@ -704,7 +734,37 @@
         }
 
         function pnpGoBack(toStep) {
+            if (toStep === 1) {
+                pnpCurrentManuf = '';
+                pnpCurrentModel = '';
+            } else if (toStep === 2) {
+                pnpCurrentModel = '';
+            }
+            updateBreadcrumbs(toStep);
             showStep(toStep);
+        }
+
+        function updateBreadcrumbs(step) {
+            const bc = document.getElementById('pnpBreadcrumbs');
+            if (!bc) return;
+
+            let text = '';
+            // If going back to step 1, clear everything
+            if (step === 1) {
+                bc.style.display = 'none';
+                bc.innerHTML = '';
+                return;
+            }
+
+            if (pnpCurrentManuf) text += `<span class="pnp-crumb-item">${pnpCurrentManuf}</span>`;
+            if (pnpCurrentModel && step !== 1) text += ` > <span class="pnp-crumb-item">${pnpCurrentModel}</span>`;
+
+            if (text) {
+                bc.innerHTML = text;
+                bc.style.display = 'block';
+            } else {
+                bc.style.display = 'none';
+            }
         }
 
         // Render Steps
@@ -724,6 +784,7 @@
 
         function selectManufacturer(manuf) {
             pnpCurrentManuf = manuf;
+            updateBreadcrumbs();
             renderModels();
             showStep(2);
         }
@@ -745,6 +806,7 @@
 
         function selectModel(modelName) {
             pnpCurrentModel = modelName;
+            updateBreadcrumbs();
             renderDetails();
             showStep(3);
         }
@@ -771,6 +833,12 @@
             const content = document.getElementById('pnpResultContent');
             content.innerHTML = '';
 
+            // Update Breadcrumbs to include details
+            const bc = document.getElementById('pnpBreadcrumbs');
+            if (bc) {
+                bc.innerHTML += ` > <span class="pnp-crumb-item">${detail.year} / ${detail.code} / ${detail.sound}</span>`;
+            }
+
             // Build Result HTML
             let html = `<div class="pnp-result-card">
                 <h4>선택 사양 (Specification)</h4>
@@ -783,12 +851,12 @@
             if (detail.integrated) {
                 if (detail.integrated === '본사문의') {
                     html += `<div class="pnp-result-card" style="border-left: 5px solid red;">
-                        <h4>Integrated Cable (통합)</h4>
+                        <h4>차측과 DSP 통합형 케이블</h4>
                         <p style="color:red; font-weight:bold;">본사 문의 요망</p>
                     </div>`;
                 } else {
                     html += `<div class="pnp-result-card" style="border-left: 5px solid #007bff;">
-                        <h4>Integrated Cable (통합)</h4>
+                        <h4>차측과 DSP 통합형 케이블</h4>
                         <p style="font-size:1.2rem; font-weight:bold;">${detail.integrated}</p>
                         ${getLinkButton(detail.integrated)}
                     </div>`;
@@ -801,12 +869,12 @@
                     // Skip
                 } else if (detail.typeA === '본사문의') {
                     html += `<div class="pnp-result-card" style="border-left: 5px solid orange;">
-                        <h4>Type A (차측)</h4>
+                        <h4>A Type(차측 케이블)</h4>
                         <p style="color:red; font-weight:bold;">본사 문의 요망</p>
                     </div>`;
                 } else {
                     html += `<div class="pnp-result-card" style="border-left: 5px solid #28a745;">
-                        <h4>Type A (차측)</h4>
+                        <h4>A Type(차측 케이블)</h4>
                         <p style="font-size:1.2rem; font-weight:bold;">${detail.typeA}</p>
                         ${getLinkButton(detail.typeA)}
                     </div>`;
