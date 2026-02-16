@@ -819,15 +819,20 @@
 
         function getLinkButton(code) {
             // Find product ID by code in productData
-            // Code can be "HK-103", "HK-101 / HK-102", etc.
-            // We search for a product whose title includes the code.
 
             if (typeof productData === 'undefined') return '';
+            if (!code || code === 'X' || code === 'x' || code === '-') return '';
 
             // Handle multiple codes like "HK-101 / HK-102" -> Search just one
             const searchKey = code.split('/')[0].trim();
 
-            const product = productData.find(p => p.title.includes(searchKey) || p.title.includes(code));
+            // Refined Search Logic:
+            // 1. Avoid matching "X" to "RUX-C810" or similar.
+            // 2. Ensure searchKey is at least 2 chars long.
+            if (searchKey.length < 2) return '';
+
+            // Search product title
+            const product = productData.find(p => p.title.includes(searchKey));
 
             if (product) {
                 return `<div class="pnp-link-btn" onclick="window.location.href='pages/detail.html?id=${product.id}'">제품 보기 (View Product)</div>`;
