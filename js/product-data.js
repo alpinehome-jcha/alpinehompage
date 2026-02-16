@@ -2321,6 +2321,11 @@ const initialProductData = [
                 "id": 1771045406884.7034,
                 "type": "text",
                 "value": "HK-16A\n아반떼(CN7)6CH [BOSE]\n코나(SX2)6CH [BOSE]"
+            },
+            {
+                "id": 1771239774883.3137,
+                "type": "image",
+                "value": "assets/images/HK-12A-C.jpg"
             }
         ],
         "attachments": []
@@ -3015,7 +3020,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771239701437;
+const PRODUCT_DATA_VERSION = 1771239793508;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
