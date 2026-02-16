@@ -157,6 +157,108 @@
             color: #fff;
             border-color: #333;
         }
+
+        /* PnP Search Modal Styles */
+        .pnp-modal {
+            display: none;
+            position: fixed;
+            z-index: 10001;
+            /* Higher than other popups */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .pnp-modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .pnp-close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .pnp-close:hover,
+        .pnp-close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .pnp-step {
+            display: none;
+        }
+
+        .pnp-step.active {
+            display: block;
+        }
+
+        .pnp-btn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .pnp-option-btn {
+            padding: 10px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+            cursor: pointer;
+            border-radius: 4px;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        .pnp-option-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .pnp-back-btn {
+            margin-top: 20px;
+            padding: 8px 16px;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .pnp-result-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 4px;
+            background: #f8f9fa;
+        }
+
+        .pnp-link-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .pnp-link-btn:hover {
+            background: #0056b3;
+        }
     </style>
 
     <section class="hero-container">
@@ -312,6 +414,9 @@
         <!-- Sub Filters for PnP Cable -->
         <div id="subFilterContainer" class="sub-filters"
             style="display: none; justify-content: center; gap: 10px; margin-bottom: 20px;">
+            <button id="btnPnpSearch" class="sub-filter-btn"
+                style="display: none; background-color: #007bff; color: white; border-color: #007bff;">차종별 PnP Cable
+                찾기</button>
             <button class="sub-filter-btn" data-sub="국산차">국산차 PnP</button>
             <button class="sub-filter-btn" data-sub="독일차">독일차 PnP</button>
             <button class="sub-filter-btn" data-sub="기타수입차">기타수입차 PnP</button>
@@ -509,6 +614,225 @@
                 renderProducts(activeBtn.textContent.trim());
             } else {
                 renderProducts();
+            }
+        }
+    </script>
+
+    <!-- PnP Search Modal -->
+    <div id="pnpSearchModal" class="pnp-modal">
+        <div class="pnp-modal-content">
+            <span class="pnp-close">&times;</span>
+            <h3 id="pnpModalTitle">PnP Cable Finder</h3>
+            <div id="pnpModalBody">
+                <!-- Step 1: Manufacturer -->
+                <div id="pnpStep1" class="pnp-step active">
+                    <p>제조사를 선택하세요 (Select Manufacturer)</p>
+                    <div class="pnp-btn-grid" id="pnpManufGrid"></div>
+                </div>
+                <!-- Step 2: Model -->
+                <div id="pnpStep2" class="pnp-step">
+                    <p>차종을 선택하세요 (Select Model)</p>
+                    <div class="pnp-btn-grid" id="pnpModelGrid"></div>
+                    <button class="pnp-back-btn" onclick="pnpGoBack(1)">이전 (Back)</button>
+                </div>
+                <!-- Step 3: Details (Year/Code/Sound) -->
+                <div id="pnpStep3" class="pnp-step">
+                    <p>세부 사양을 선택하세요 (Select Specification)</p>
+                    <div class="pnp-btn-grid" id="pnpDetailGrid"></div>
+                    <button class="pnp-back-btn" onclick="pnpGoBack(2)">이전 (Back)</button>
+                </div>
+                <!-- Step 4: Result -->
+                <div id="pnpStep4" class="pnp-step">
+                    <p>검색 결과 (Result)</p>
+                    <div id="pnpResultUnknown" style="display:none; color:red;">
+                        해당 차량에 맞는 데이터가 없습니다. 본사 문의 요망.
+                    </div>
+                    <div id="pnpResultContent"></div>
+                    <button class="pnp-back-btn" onclick="pnpGoBack(3)">이전 (Back)</button>
+                    <button class="pnp-back-btn" onclick="pnpReset()" style="background:#dc3545; float:right;">처음으로
+                        (Reset)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include PnP Search Data -->
+    <script src="js/pnp-search-data.js?v=20260217"></script>
+
+    <script>
+        // PnP Search Logic
+        let pnpCurrentManuf = '';
+        let pnpCurrentModel = '';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Check Admin for Button Visibility
+            if (typeof auth !== 'undefined' && auth.getRole() === 'admin') {
+                const btn = document.getElementById('btnPnpSearch');
+                if (btn) {
+                    btn.style.display = 'block';
+                    btn.addEventListener('click', openPnpModal);
+                }
+            }
+
+            // 2. Modal Controls
+            const modal = document.getElementById('pnpSearchModal');
+            const closeBtn = document.querySelector('.pnp-close');
+            if (closeBtn) {
+                closeBtn.onclick = () => modal.style.display = 'none';
+            }
+            window.onclick = (event) => {
+                if (event.target == modal) modal.style.display = 'none';
+            }
+        });
+
+        function openPnpModal() {
+            const modal = document.getElementById('pnpSearchModal');
+            modal.style.display = 'block';
+            pnpReset();
+        }
+
+        function pnpReset() {
+            showStep(1);
+            pnpCurrentManuf = '';
+            pnpCurrentModel = '';
+            renderManufacturers();
+        }
+
+        function showStep(step) {
+            document.querySelectorAll('.pnp-step').forEach(el => el.classList.remove('active'));
+            document.getElementById('pnpStep' + step).classList.add('active');
+        }
+
+        function pnpGoBack(toStep) {
+            showStep(toStep);
+        }
+
+        // Render Steps
+        function renderManufacturers() {
+            const grid = document.getElementById('pnpManufGrid');
+            grid.innerHTML = '';
+            if (typeof pnpSearchData === 'undefined') return;
+
+            pnpSearchData.forEach(item => {
+                const btn = document.createElement('div');
+                btn.className = 'pnp-option-btn';
+                btn.textContent = item.manufacturer;
+                btn.onclick = () => selectManufacturer(item.manufacturer);
+                grid.appendChild(btn);
+            });
+        }
+
+        function selectManufacturer(manuf) {
+            pnpCurrentManuf = manuf;
+            renderModels();
+            showStep(2);
+        }
+
+        function renderModels() {
+            const grid = document.getElementById('pnpModelGrid');
+            grid.innerHTML = '';
+            const manufData = pnpSearchData.find(m => m.manufacturer === pnpCurrentManuf);
+            if (!manufData) return;
+
+            manufData.models.forEach(m => {
+                const btn = document.createElement('div');
+                btn.className = 'pnp-option-btn';
+                btn.textContent = m.model;
+                btn.onclick = () => selectModel(m.model);
+                grid.appendChild(btn);
+            });
+        }
+
+        function selectModel(modelName) {
+            pnpCurrentModel = modelName;
+            renderDetails();
+            showStep(3);
+        }
+
+        function renderDetails() {
+            const grid = document.getElementById('pnpDetailGrid');
+            grid.innerHTML = '';
+            const manufData = pnpSearchData.find(m => m.manufacturer === pnpCurrentManuf);
+            if (!manufData) return;
+            const modelData = manufData.models.find(m => m.model === pnpCurrentModel);
+            if (!modelData) return;
+
+            modelData.details.forEach((d, idx) => {
+                const btn = document.createElement('div');
+                btn.className = 'pnp-option-btn';
+                // Format: Year / Code / Sound
+                btn.innerHTML = `<strong>${d.year}</strong><br>${d.code}<br>${d.sound}`;
+                btn.onclick = () => showResult(d);
+                grid.appendChild(btn);
+            });
+        }
+
+        function showResult(detail) {
+            const content = document.getElementById('pnpResultContent');
+            content.innerHTML = '';
+
+            // Build Result HTML
+            let html = `<div class="pnp-result-card">
+                <h4>선택 사양 (Specification)</h4>
+                <p><strong>연식:</strong> ${detail.year}</p>
+                <p><strong>코드:</strong> ${detail.code}</p>
+                <p><strong>사운드:</strong> ${detail.sound}</p>
+            </div>`;
+
+            // Integrated Cable Logic
+            if (detail.integrated) {
+                if (detail.integrated === '본사문의') {
+                    html += `<div class="pnp-result-card" style="border-left: 5px solid red;">
+                        <h4>Integrated Cable (통합)</h4>
+                        <p style="color:red; font-weight:bold;">본사 문의 요망</p>
+                    </div>`;
+                } else {
+                    html += `<div class="pnp-result-card" style="border-left: 5px solid #007bff;">
+                        <h4>Integrated Cable (통합)</h4>
+                        <p style="font-size:1.2rem; font-weight:bold;">${detail.integrated}</p>
+                        ${getLinkButton(detail.integrated)}
+                    </div>`;
+                }
+            }
+
+            // Type A Logic
+            if (detail.typeA) {
+                if (detail.typeA === '해당없음' || detail.typeA === '-') {
+                    // Skip
+                } else if (detail.typeA === '본사문의') {
+                    html += `<div class="pnp-result-card" style="border-left: 5px solid orange;">
+                        <h4>Type A (차측)</h4>
+                        <p style="color:red; font-weight:bold;">본사 문의 요망</p>
+                    </div>`;
+                } else {
+                    html += `<div class="pnp-result-card" style="border-left: 5px solid #28a745;">
+                        <h4>Type A (차측)</h4>
+                        <p style="font-size:1.2rem; font-weight:bold;">${detail.typeA}</p>
+                        ${getLinkButton(detail.typeA)}
+                    </div>`;
+                }
+            }
+
+            content.innerHTML = html;
+            showStep(4);
+        }
+
+        function getLinkButton(code) {
+            // Find product ID by code in productData
+            // Code can be "HK-103", "HK-101 / HK-102", etc.
+            // We search for a product whose title includes the code.
+
+            if (typeof productData === 'undefined') return '';
+
+            // Handle multiple codes like "HK-101 / HK-102" -> Search just one
+            const searchKey = code.split('/')[0].trim();
+
+            const product = productData.find(p => p.title.includes(searchKey) || p.title.includes(code));
+
+            if (product) {
+                return `<div class="pnp-link-btn" onclick="window.location.href='pages/detail.html?id=${product.id}'">제품 보기 (View Product)</div>`;
+            } else {
+                return `<span style="color:#999; font-size:0.9rem;">(제품 페이지 없음)</span>`;
             }
         }
     </script>
