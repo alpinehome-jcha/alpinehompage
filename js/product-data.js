@@ -2308,24 +2308,39 @@ const initialProductData = [
                 "value": "HK-12A\n쏘나타(DN8)10CH [프리미엄]\n그랜저(GN7)10CH [BOSE]\n싼타페(MX5)10CH [BOSE] \n팰리세이드(LX3)10CH [25년 이후 크렐]\n아이오닉9(ME EV)10CH [프리미엄]\n"
             },
             {
-                "id": 1771045359320.3936,
+                "id": 1771239774883.3137,
+                "type": "image",
+                "value": "assets/images/HK-12A-C.jpg"
+            },
+            {
+                "id": 1771239837478.7693,
                 "type": "text",
                 "value": "HK-13A\n그랜저(IG)11CH [JBL]"
             },
             {
-                "id": 1771045377942.5298,
+                "id": 1771239845520.4312,
+                "type": "image",
+                "value": "assets/images/HK-13A-C.jpg"
+            },
+            {
+                "id": 1771239874708.6877,
                 "type": "text",
                 "value": "HK-15A\n팰리세이드(LX2)11CH [24년 이전 크렐]"
             },
             {
-                "id": 1771045406884.7034,
+                "id": 1771239887409.1829,
+                "type": "image",
+                "value": "assets/images/HK-15A-C.jpg"
+            },
+            {
+                "id": 1771239898348.91,
                 "type": "text",
                 "value": "HK-16A\n아반떼(CN7)6CH [BOSE]\n코나(SX2)6CH [BOSE]"
             },
             {
-                "id": 1771239774883.3137,
+                "id": 1771239907904.5142,
                 "type": "image",
-                "value": "assets/images/HK-12A-C.jpg"
+                "value": "assets/images/HK-16A-C.jpg"
             }
         ],
         "attachments": []
@@ -3020,7 +3035,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771239793508;
+const PRODUCT_DATA_VERSION = 1771239925893;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
