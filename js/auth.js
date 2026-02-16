@@ -434,6 +434,7 @@ function addPartnerMenu(role) {
         menuItems += `<li><a href="${adminPrefix}admin.html?mode=product" class="dropdown-item">제품 관리</a></li>`;
         menuItems += `<li><a href="${adminPrefix}admin.html?mode=dealer" class="dropdown-item">대리점 관리</a></li>`;
         menuItems += `<li><a href="${adminPrefix}admin.html?mode=popup" class="dropdown-item">팝업 관리</a></li>`;
+        menuItems += `<li><a href="${adminPrefix}pnp-setup.html" class="dropdown-item">PnP 찾기 설정</a></li>`;
 
         // Visit Log Link
         const visitLogLink = window.location.pathname.includes('product.html') ? '#visitLogSection' : `${prefix}product.html#visitLogSection`;

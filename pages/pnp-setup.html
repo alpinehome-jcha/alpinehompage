@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PnP Search Settings - Alpine Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../assets/images/amark.png">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #f4f4f4;
+            padding-top: 80px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .admin-container {
+            display: flex;
+            flex: 1;
+            padding: 20px;
+            gap: 20px;
+            overflow: hidden;
+        }
+
+        .column {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .col-1 {
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+        }
+
+        .col-2 {
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+        }
+
+        .col-3 {
+            flex: 3;
+        }
+
+        .col-header {
+            padding: 15px;
+            background: #333;
+            color: #fff;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .col-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .list-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .list-item:hover {
+            background: #f9f9f9;
+        }
+
+        .list-item.active {
+            background: #e0e7ff;
+            border-left: 4px solid #007bff;
+        }
+
+        .btn-add {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .btn-sm {
+            font-size: 0.8rem;
+            padding: 2px 5px;
+            margin-left: 5px;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /* Details Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: #f8f9fa;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            border: 1px solid #ddd;
+            padding: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Detail Form (Hidden by default) */
+        #detailForm {
+            background: #f9f9f9;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #btnSaveAll {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        #btnSaveAll:hover {
+            background: #0056b3;
+        }
+
+        #loadingOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/images/alpine_logo.png" alt="ALPINE Korea">
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="admin.html" class="nav-link">Admin Home</a></li>
+                    <li class="auth-item"><a href="#" class="auth-link">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <!-- Col 1: Manufacturer -->
+        <div class="column col-1">
+            <div class="col-header">
+                <span>Manufacturers</span>
+                <button class="btn-add" onclick="addManufacturer()">+ Add</button>
+            </div>
+            <div class="col-content" id="manufList"></div>
+        </div>
+
+        <!-- Col 2: Models -->
+        <div class="column col-2">
+            <div class="col-header">
+                <span>Models</span>
+                <button class="btn-add" onclick="addModel()" id="btnAddModel" disabled>+ Add</button>
+            </div>
+            <div class="col-content" id="modelList">
+                <div style="color:#999; text-align:center; padding:20px;">Select Manufacturer</div>
+            </div>
+        </div>
+
+        <!-- Col 3: Details -->
+        <div class="column col-3">
+            <div class="col-header">
+                <span id="detailHeaderTitle">Details</span>
+                <button class="btn-add" onclick="showDetailForm()" id="btnAddDetail" disabled>+ Add Detail</button>
+            </div>
+            <div class="col-content">
+                <table id="detailTable">
+                    <thead>
+                        <tr>
+                            <th width="15%">Year</th>
+                            <th width="15%">Code</th>
+                            <th width="20%">Sound</th>
+                            <th width="20%">Integrated</th>
+                            <th width="20%">Type A</th>
+                            <th width="10%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="detailBody">
+                        <tr>
+                            <td colspan="6" style="text-align:center; padding:20px; color:#999;">Select Model to view
+                                details</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Detail Editor Form -->
+            <div id="detailForm" style="display:none;">
+                <h4>Edit Detail</h4>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Year (연식)</label>
+                        <input type="text" id="editYear" placeholder="e.g. 21~">
+                    </div>
+                    <div class="form-group">
+                        <label>Code (코드명)</label>
+                        <input type="text" id="editCode" placeholder="e.g. AX1">
+                    </div>
+                    <div class="form-group">
+                        <label>Sound System</label>
+                        <input type="text" id="editSound" placeholder="e.g. 4ch">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Integrated Cable (통합형 케이블)</label>
+                        <input type="text" id="editIntegrated" placeholder="e.g. HK-103 or X">
+                    </div>
+                    <div class="form-group">
+                        <label>Type A Cable (A타입 케이블)</label>
+                        <input type="text" id="editTypeA" placeholder="e.g. HK-1A or X">
+                    </div>
+                </div>
+                <div style="text-align:right; margin-top:10px;">
+                    <button class="btn-add" style="background:#6c757d;" onclick="hideDetailForm()">Cancel</button>
+                    <button class="btn-add" onclick="saveDetail()">Save to List</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="btnSaveAll" onclick="saveToGitHub()">💾 Save Changes</button>
+
+    <div id="loadingOverlay">
+        <div class="spinner"
+            style="border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;">
+        </div>
+        <p style="margin-top: 15px; font-size: 1.2rem;" id="loadingText">Processing...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/auth.js"></script>
+    <script src="../js/pnp-search-data.js?v=1"></script>
+    <!-- Use dynamic loading for Client in auth.js, but here we enforce check -->
+
+    <script>
+        // Init Check
+        document.addEventListener('DOMContentLoaded', () => {
+            if (auth.getRole() !== 'admin') {
+                alert('Admin Access Only');
+                window.location.href = '../index.html';
+                return;
+            }
+            auth.updateUI();
+
+            // Load GitHub Client manually if needed or reuse auth logic
+            const s = document.createElement('script');
+            s.src = '../js/github-client.js?v=' + Date.now();
+            s.onload = () => console.log('GitHub Client Loaded');
+            document.head.appendChild(s);
+
+            // Load Data
+            if (typeof pnpSearchData !== 'undefined') {
+                // Working on a deep copy to allow edits without mutating original immediately? 
+                // No, mutate distinct variable.
+                appData = JSON.parse(JSON.stringify(pnpSearchData));
+                renderManufacturers();
+            } else {
+                alert('Failed to load PnP Data');
+            }
+        });
+
+        // --- App Logic ---
+        let appData = [];
+        let curManufIndex = -1;
+        let curModelIndex = -1;
+        let curDetailIndex = -1; // -1 for new
+
+        function renderManufacturers() {
+            const list = document.getElementById('manufList');
+            list.innerHTML = '';
+            appData.forEach((m, idx) => {
+                const div = document.createElement('div');
+                div.className = `list-item ${idx === curManufIndex ? 'active' : ''}`;
+                div.innerHTML = `
+                    <span>${m.manufacturer}</span>
+                    <button class="btn-danger btn-sm" style="float:right; display:${idx === curManufIndex ? 'block' : 'none'}" onclick="deleteManufacturer(event, ${idx})">Del</button>
+                `;
+                div.onclick = () => selectManufacturer(idx);
+                list.appendChild(div);
+            });
+        }
+
+        function addManufacturer() {
+            const name = prompt('Enter Manufacturer Name:');
+            if (!name) return;
+            appData.push({ manufacturer: name, models: [] });
+            renderManufacturers();
+            selectManufacturer(appData.length - 1);
+        }
+
+        function deleteManufacturer(e, idx) {
+            e.stopPropagation();
+            if (!confirm('Delete this Manufacturer?\nAll models inside will be lost.')) return;
+            appData.splice(idx, 1);
+            curManufIndex = -1;
+            curModelIndex = -1;
+            renderManufacturers();
+            renderModels();
+            renderDetails();
+        }
+
+        function selectManufacturer(idx) {
+            curManufIndex = idx;
+            curModelIndex = -1;
+            renderManufacturers();
+            renderModels();
+            renderDetails(); // Clear details
+            document.getElementById('btnAddModel').disabled = false;
+        }
+
+        function renderModels() {
+            const list = document.getElementById('modelList');
+            list.innerHTML = '';
+
+            if (curManufIndex === -1) {
+                list.innerHTML = '<div style="color:#999; text-align:center; padding:20px;">Select Manufacturer</div>';
+                document.getElementById('btnAddModel').disabled = true;
+                return;
+            }
+
+            const models = appData[curManufIndex].models;
+            models.forEach((m, idx) => {
+                const div = document.createElement('div');
+                div.className = `list-item ${idx === curModelIndex ? 'active' : ''}`;
+                div.innerHTML = `
+                    <span>${m.model}</span>
+                    <button class="btn-danger btn-sm" style="float:right; display:${idx === curModelIndex ? 'block' : 'none'}" onclick="deleteModel(event, ${idx})">Del</button>
+                `;
+                div.onclick = () => selectModel(idx);
+                list.appendChild(div);
+            });
+        }
+
+        function addModel() {
+            const name = prompt('Enter Model Name:');
+            if (!name) return;
+            appData[curManufIndex].models.push({ model: name, details: [] });
+            renderModels();
+            selectModel(appData[curManufIndex].models.length - 1);
+        }
+
+        function deleteModel(e, idx) {
+            e.stopPropagation();
+            if (!confirm('Delete this Model?')) return;
+            appData[curManufIndex].models.splice(idx, 1);
+            curModelIndex = -1;
+            renderModels();
+            renderDetails();
+        }
+
+        function selectModel(idx) {
+            curModelIndex = idx;
+            renderModels();
+            renderDetails();
+            document.getElementById('btnAddDetail').disabled = false;
+        }
+
+        function renderDetails() {
+            const tbody = document.getElementById('detailBody');
+            tbody.innerHTML = '';
+            hideDetailForm(); // Close form on switch
+
+            if (curManufIndex === -1 || curModelIndex === -1) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px; color:#999;">Select Model to view details</td></tr>';
+                document.getElementById('btnAddDetail').disabled = true;
+                return;
+            }
+
+            const details = appData[curManufIndex].models[curModelIndex].details;
+            if (details.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px;">No details found. Click + Add Detail.</td></tr>';
+                return;
+            }
+
+            details.forEach((d, idx) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${d.year}</td>
+                    <td>${d.code}</td>
+                    <td>${d.sound}</td>
+                    <td>${d.integrated}</td>
+                    <td>${d.typeA}</td>
+                    <td>
+                        <button class="btn-add" style="background:#007bff; padding:2px 5px;" onclick="editDetail(${idx})">Edit</button>
+                        <button class="btn-danger btn-sm" onclick="deleteDetail(${idx})">Del</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function showDetailForm() {
+            document.getElementById('detailForm').style.display = 'block';
+            document.getElementById('detailTable').style.display = 'none'; // Optional: hide table or just show below
+            // Actually let's keep table visible for reference? No, maybe simpler UI to scroll
+            // Let's scroll to form
+            document.getElementById('detailForm').scrollIntoView({ behavior: 'smooth' });
+
+            // Clear inputs for new
+            curDetailIndex = -1;
+            document.getElementById('editYear').value = '';
+            document.getElementById('editCode').value = '';
+            document.getElementById('editSound').value = '';
+            document.getElementById('editIntegrated').value = '';
+            document.getElementById('editTypeA').value = '';
+        }
+
+        function hideDetailForm() {
+            document.getElementById('detailForm').style.display = 'none';
+            document.getElementById('detailTable').style.display = 'table';
+        }
+
+        function editDetail(idx) {
+            curDetailIndex = idx;
+            const d = appData[curManufIndex].models[curModelIndex].details[idx];
+
+            document.getElementById('editYear').value = d.year;
+            document.getElementById('editCode').value = d.code;
+            document.getElementById('editSound').value = d.sound;
+            document.getElementById('editIntegrated').value = d.integrated;
+            document.getElementById('editTypeA').value = d.typeA;
+
+            showDetailForm();
+        }
+
+        function saveDetail() {
+            const newDetail = {
+                year: document.getElementById('editYear').value,
+                code: document.getElementById('editCode').value,
+                sound: document.getElementById('editSound').value,
+                integrated: document.getElementById('editIntegrated').value,
+                typeA: document.getElementById('editTypeA').value
+            };
+
+            if (!newDetail.year || !newDetail.code) {
+                alert('Year and Code are required!');
+                return;
+            }
+
+            const details = appData[curManufIndex].models[curModelIndex].details;
+
+            if (curDetailIndex === -1) {
+                // Add
+                details.push(newDetail);
+            } else {
+                // Update
+                details[curDetailIndex] = newDetail;
+            }
+
+            renderDetails();
+            hideDetailForm();
+        }
+
+        function deleteDetail(idx) {
+            if (!confirm('Delete this detail?')) return;
+            appData[curManufIndex].models[curModelIndex].details.splice(idx, 1);
+            renderDetails();
+        }
+
+        // --- Save Logic ---
+        async function saveToGitHub() {
+            if (!ghClient) {
+                alert('GitHub Client not initialized.');
+                return;
+            }
+
+            if (!confirm('Save changes to GitHub?\nThis will update js/pnp-search-data.js live.')) return;
+
+            const overlay = document.getElementById('loadingOverlay');
+            overlay.style.display = 'flex';
+            document.getElementById('loadingText').innerText = 'Saving pnp-search-data.js...';
+
+            try {
+                // Serialize
+                const jsonContent = JSON.stringify(appData, null, 4);
+                const fileContent = `/**\n * PnP Cable Search Data\n * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products\n * Updated: ${new Date().toLocaleString()}\n */\nconst pnpSearchData = ${jsonContent};\n\n// Export for usage\nif (typeof module !== 'undefined' && module.exports) {\n    module.exports = pnpSearchData;\n}`;
+
+                // Upload
+                // Needs configure if not already done? Admin page handles it. 
+                // We should check if configured.
+                if (!ghClient.isConfigured()) {
+                    // Try to load from localStorage
+                    const token = localStorage.getItem('github_token');
+                    const repo = localStorage.getItem('github_repo');
+                    const branch = localStorage.getItem('github_branch') || 'main'; // default to main
+                    if (token && repo) ghClient.configure(token, repo, branch);
+                    else throw new Error('GitHub settings missing. Go to Product Admin -> GitHub Settings.');
+                }
+
+                await ghClient.uploadFile('js/pnp-search-data.js', fileContent, 'Update PnP Search Data via Admin Setup');
+                alert('Successfully Saved!');
+            } catch (e) {
+                console.error(e);
+                alert('Failed to save: ' + e.message);
+            } finally {
+                overlay.style.display = 'none';
+            }
+        }
+
+        // Animation Keyframes
+        const style = document.createElement('style');
+        style.innerHTML = `@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`;
+        document.head.appendChild(style);
+
+    </script>
+</body>
+
+</html>
