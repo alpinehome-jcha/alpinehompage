@@ -1118,14 +1118,13 @@
                 }
                 collection.push(newItem);
                 currentId = newItem.id;
-                alert('Created successfully!');
+                // alert('Created successfully!'); // Removed early alert
             } else {
-                const idx = collection.findIndex(i => i.id === currentId);
                 if (idx !== -1) {
                     // PRESERVE EXISTING PROPERTIES (like lat/lng)
                     collection[idx] = { ...collection[idx], ...newItem };
                 }
-                alert('Updated successfully!');
+                // alert('Updated successfully!'); // Removed early alert
             }
 
             // Save to LocalStorage
@@ -1133,9 +1132,17 @@
             renderList();
 
             // Auto Save to Server
-            await saveToGitHub(currentMode, true);
-
-            overlay.style.display = 'none';
+            loadingText.innerText = 'Syncing to Server (GitHub)...';
+            try {
+                await saveToGitHub(currentMode, true); // true = silent mode originally, but we might want feedback
+                overlay.style.display = 'none';
+                // Success Alert AFTER everything
+                alert('Saved to List & Synced to Server Successfully!');
+            } catch (e) {
+                console.error(e);
+                overlay.style.display = 'none';
+                alert('Saved to List, but Server Sync Failed: ' + e.message);
+            }
         }
 
         // CATEGORIES (Moved from missing global scope or re-declared)
@@ -1301,11 +1308,35 @@
                 }
                 ghClient.uploadFile(path, file, `Upload Detail Block Image: ${file.name}`)
                     .then((res) => {
-                        // alert('Image Uploaded!');
+                        console.log('Upload Response:', res); // Debug Log
                         const b = currentBlocks.find(x => x.id === id);
                         if (b) {
-                            if (res.content && res.content.download_url) b.value = res.content.download_url;
-                            else b.value = path;
+                            let finalUrl = null;
+
+                            // 1. Try API Response
+                            if (res.content && res.content.download_url) {
+                                finalUrl = res.content.download_url;
+                            }
+
+                            // 2. Fallback to Manual Construction (API sometimes omits download_url or we prefer raw)
+                            if (!finalUrl) {
+                                const repo = ghClient.repo; // Guaranteed to be set if upload succeeded
+                                const branch = ghClient.branch || 'main';
+                                if (repo) {
+                                    // Ensure path is URI encoded if needed, but usually raw handles spaces ok or we encode
+                                    // ghClient._encodePath is internal, but we can do a simple encode
+                                    const safePath = path.split('/').map(encodeURIComponent).join('/');
+                                    finalUrl = `https://raw.githubusercontent.com/${repo}/${branch}/${safePath}`;
+                                }
+                            }
+
+                            if (finalUrl) {
+                                b.value = finalUrl;
+                            } else {
+                                b.value = path; // Worst case
+                                alert('Warning: Could not determine public URL. Preview may fail.');
+                            }
+
                             renderBlocks();
                         }
                     })
