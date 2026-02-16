@@ -1113,26 +1113,37 @@
             let hasChanges = false;
             let existingIdx = -1;
 
+            console.log('Checking for changes... CurrentID:', currentId); // Debug
+
             if (currentId === -1) {
+                console.log('New Item detected -> Changes = true');
                 hasChanges = true; // New item always has changes
             } else {
                 existingIdx = collection.findIndex(i => i.id === currentId);
+                console.log('Existing Index:', existingIdx);
+
                 if (existingIdx !== -1) {
                     const existing = collection[existingIdx];
                     // Compare fields present in newItem
                     const keys = Object.keys(newItem);
                     for (const key of keys) {
-                        // Use JSON stringify for deep comparison of arrays/objects, simple equality for others
-                        if (JSON.stringify(newItem[key]) !== JSON.stringify(existing[key])) {
+                        const newVal = JSON.stringify(newItem[key]);
+                        const oldVal = JSON.stringify(existing[key]);
+                        // console.log(`Field ${key}: ${newVal} vs ${oldVal}`); // Verbose Debug
+
+                        if (newVal !== oldVal) {
+                            console.log(`Change detected in ${key}:`, newVal, oldVal);
                             hasChanges = true;
                             break;
                         }
                     }
                 } else {
-                    // ID set but not found? Treat as new/change
+                    console.log('ID set but not found in collection -> Changes = true');
                     hasChanges = true;
                 }
             }
+
+            console.log('Final hasChanges:', hasChanges);
 
             if (!hasChanges) {
                 loadingText.innerText = '';
