@@ -2363,7 +2363,7 @@ const initialProductData = [
             {
                 "id": 1771243582731.5273,
                 "type": "image",
-                "value": "assets/images/HK-14A-C.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-14A-C.jpg"
             },
             {
                 "id": 1771243601704.6052,
@@ -2373,7 +2373,7 @@ const initialProductData = [
             {
                 "id": 1771243619238.0486,
                 "type": "image",
-                "value": "assets/images/HK-19A-C.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-19A-C.jpg"
             },
             {
                 "id": 1771243630359.8813,
@@ -2383,7 +2383,7 @@ const initialProductData = [
             {
                 "id": 1771243642657.9768,
                 "type": "image",
-                "value": "assets/images/HK-20A-C.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-20A-C.jpg"
             },
             {
                 "id": 1771243652395.7893,
@@ -2393,7 +2393,7 @@ const initialProductData = [
             {
                 "id": 1771243661324.0889,
                 "type": "image",
-                "value": "assets/images/HK-21A-C.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-21A-C.jpg"
             },
             {
                 "id": 1771243671519.7524,
@@ -2403,7 +2403,7 @@ const initialProductData = [
             {
                 "id": 1771243684152.5112,
                 "type": "image",
-                "value": "assets/images/HK-23A-C.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-23A-C.jpg"
             },
             {
                 "id": 1771243693532.7742,
@@ -2413,7 +2413,7 @@ const initialProductData = [
             {
                 "id": 1771243705836.6226,
                 "type": "image",
-                "value": "assets/images/HK-24A-C.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-24A-C.jpg"
             },
             {
                 "id": 1771243718259.0276,
@@ -2423,7 +2423,7 @@ const initialProductData = [
             {
                 "id": 1771243731101.2996,
                 "type": "image",
-                "value": "assets/images/HK-26A-C.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-26A-C.jpg"
             },
             {
                 "id": 1771243741533.5112,
@@ -2433,7 +2433,7 @@ const initialProductData = [
             {
                 "id": 1771243787216.4705,
                 "type": "image",
-                "value": "assets/images/HK-28A-C.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-28A-C.jpg"
             }
         ],
         "attachments": []
@@ -3110,7 +3110,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771247188130;
+const PRODUCT_DATA_VERSION = 1771247680110;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
