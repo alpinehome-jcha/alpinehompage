@@ -2451,7 +2451,82 @@ const initialProductData = [
             {
                 "id": 1770363285150.3655,
                 "type": "text",
-                "value": "GE-2A\nGV60(JW1 EV) 7CH\nG70(IK)7CH [18년 이후 모비스]\nGV70(JK1)7CH [스탠다드]\nGV80(JX1)7CH [스탠다드]\nG80(RG3)7CH [액튠]\n\nGE-3A\nG70(IK) 11CH [18년이후 프리미엄]\n\nGE-6A\nGV60(JW1 EV) 14CH[B&O]\nGV70(JK1)14CH[프리미엄]\nG80(RG3)14CH [렉시콘] \nG80(RG3)14CH [B&O]\nGV80(JX1)14CH[24년 이후 프리미엄]\nGV80(JX1)14CH[23년 이전 프리미엄]\n\nGE-7A\nG80(DH)7CH [액튠]\n\nGE-8A\nG80(DH)12CH [JBL]\n\nGE-9A\nG90(RS4)11CH [22년 이후 STD]\n\nGE-10A\nG90(RS4)14CH [22년 이후 High]\n\nGE-11A\nG90(HI)10CH[21년 이전]\nG90(HI)12CH[21년 이전High]"
+                "value": "GE-2A\nGV60(JW1 EV) 7CH\nG70(IK)7CH [18년 이후 모비스]\nGV70(JK1)7CH [스탠다드]\nGV80(JX1)7CH [스탠다드]\nG80(RG3)7CH [액튠]"
+            },
+            {
+                "id": 1771248622812.1372,
+                "type": "image",
+                "value": "assets/images/GE-2A-C.jpg"
+            },
+            {
+                "id": 1771248653496.6587,
+                "type": "text",
+                "value": "GE-3A\nG70(IK) 11CH [18년이후 프리미엄]"
+            },
+            {
+                "id": 1771248666674.634,
+                "type": "image",
+                "value": ""
+            },
+            {
+                "id": 1771248671067.767,
+                "type": "text",
+                "value": "GE-6A\nGV60(JW1 EV) 14CH[B&O]\nGV70(JK1)14CH[프리미엄]\nG80(RG3)14CH [렉시콘] \nG80(RG3)14CH [B&O]\nGV80(JX1)14CH[24년 이후 프리미엄]\nGV80(JX1)14CH[23년 이전 프리미엄]"
+            },
+            {
+                "id": 1771248685123.5874,
+                "type": "image",
+                "value": ""
+            },
+            {
+                "id": 1771248685979.079,
+                "type": "text",
+                "value": "GE-7A\nG80(DH)7CH [액튠]"
+            },
+            {
+                "id": 1771248701959.792,
+                "type": "image",
+                "value": ""
+            },
+            {
+                "id": 1771248702786.565,
+                "type": "text",
+                "value": "GE-8A\nG80(DH)12CH [JBL]"
+            },
+            {
+                "id": 1771248715286.4485,
+                "type": "image",
+                "value": ""
+            },
+            {
+                "id": 1771248715941.6362,
+                "type": "text",
+                "value": "GE-9A\nG90(RS4)11CH [22년 이후 STD]"
+            },
+            {
+                "id": 1771248735441.7258,
+                "type": "image",
+                "value": ""
+            },
+            {
+                "id": 1771248736084.68,
+                "type": "text",
+                "value": "GE-10A\nG90(RS4)14CH [22년 이후 High]"
+            },
+            {
+                "id": 1771248750559.903,
+                "type": "image",
+                "value": ""
+            },
+            {
+                "id": 1771248751301.0518,
+                "type": "text",
+                "value": "GE-11A\nG90(HI)10CH[21년 이전]\nG90(HI)12CH[21년 이전High]"
+            },
+            {
+                "id": 1771248764106.5605,
+                "type": "image",
+                "value": ""
             }
         ],
         "attachments": []
@@ -3110,7 +3185,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771247680110;
+const PRODUCT_DATA_VERSION = 1771248776885;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
