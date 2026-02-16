@@ -2466,7 +2466,7 @@ const initialProductData = [
             {
                 "id": 1771248666674.634,
                 "type": "image",
-                "value": ""
+                "value": "assets/images/GE-3A-C.jpg"
             },
             {
                 "id": 1771248671067.767,
@@ -2476,7 +2476,7 @@ const initialProductData = [
             {
                 "id": 1771248685123.5874,
                 "type": "image",
-                "value": ""
+                "value": "assets/images/GE-6A-C.jpg"
             },
             {
                 "id": 1771248685979.079,
@@ -2486,7 +2486,7 @@ const initialProductData = [
             {
                 "id": 1771248701959.792,
                 "type": "image",
-                "value": ""
+                "value": "assets/images/GE-7A-C.jpg"
             },
             {
                 "id": 1771248702786.565,
@@ -2496,7 +2496,7 @@ const initialProductData = [
             {
                 "id": 1771248715286.4485,
                 "type": "image",
-                "value": ""
+                "value": "assets/images/GE-8A-C.jpg"
             },
             {
                 "id": 1771248715941.6362,
@@ -2506,7 +2506,7 @@ const initialProductData = [
             {
                 "id": 1771248735441.7258,
                 "type": "image",
-                "value": ""
+                "value": "assets/images/GE-9A-C.jpg"
             },
             {
                 "id": 1771248736084.68,
@@ -2516,7 +2516,7 @@ const initialProductData = [
             {
                 "id": 1771248750559.903,
                 "type": "image",
-                "value": ""
+                "value": "assets/images/GE-10A-C.jpg"
             },
             {
                 "id": 1771248751301.0518,
@@ -2526,7 +2526,7 @@ const initialProductData = [
             {
                 "id": 1771248764106.5605,
                 "type": "image",
-                "value": ""
+                "value": "assets/images/GE-11A-C.jpg"
             }
         ],
         "attachments": []
@@ -3185,7 +3185,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771248776885;
+const PRODUCT_DATA_VERSION = 1771249786891;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
