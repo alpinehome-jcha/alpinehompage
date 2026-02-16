@@ -211,7 +211,7 @@ const auth = {
                     else if (window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html')) scriptPath = 'js/github-client.js';
                     else scriptPath = 'js/github-client.js'; // Fallback
 
-                    script.src = scriptPath;
+                    script.src = scriptPath + '?v=202602162250';
                     script.onload = () => resolve();
                     script.onerror = () => reject(new Error('Failed to load ' + scriptPath));
                     document.head.appendChild(script);
