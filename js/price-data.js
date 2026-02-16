@@ -1,4 +1,4 @@
-const initialPriceData = [
+﻿const initialPriceData = [
     {
         "category": "master",
         "productCategory": "F#1 Status",
@@ -4479,4 +4479,58 @@ const initialPriceData = [
         "dealerPrice": 720000,
         "distPrice": "-"
     }
-];\nconst DATA_VERSION = 1770964035167;\n\n// Function to get text label for category\nfunction getCategoryLabel(cat) {\n    const labels = {\n        'master': '알파인사운드마스터',\n        'team': '팀알파인',\n        'style': '알파인스타일총판',\n        'region': '알파인 지역총판',\n        'dealer': '알파인 대리점'\n    };\n    return labels[cat] || cat;\n}\n\nlet priceData = [];\nconst FORCE_RESTORE_KEY = 'priceDataRestored_v2_calculated';\nconst VERSION_KEY = 'priceDataVersion';\n\ntry {\n    // Check LocalStorage Version\n    const storedVersion = localStorage.getItem(VERSION_KEY);\n    const storedData = localStorage.getItem('priceData');\n    const hasRestored = localStorage.getItem(FORCE_RESTORE_KEY);\n\n    // If Server Version is newer than Stored Version, use Server Data\n    if (typeof DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < DATA_VERSION)) {\n        console.log('Newer data version found on server. Updating local storage...');\n        priceData = JSON.parse(JSON.stringify(initialPriceData));\n        localStorage.setItem('priceData', JSON.stringify(priceData));\n        localStorage.setItem(VERSION_KEY, DATA_VERSION.toString());\n        localStorage.setItem(FORCE_RESTORE_KEY, new Date().toISOString());\n    } else if (storedData && hasRestored) {\n        // Load from storage if it exists and version is up to date\n        console.log('Loading price data from local storage...');\n        priceData = JSON.parse(storedData);\n    } else {\n        // First run or force restore needed\n        console.log('Initializing price data (First run)...');\n        priceData = JSON.parse(JSON.stringify(initialPriceData));\n        localStorage.setItem('priceData', JSON.stringify(priceData));\n        if (typeof DATA_VERSION !== 'undefined') localStorage.setItem(VERSION_KEY, DATA_VERSION.toString());\n        localStorage.setItem(FORCE_RESTORE_KEY, new Date().toISOString());\n    }\n\n} catch (e) {\n    console.error('Local Storage Error:', e);\n    priceData = initialPriceData;\n}\n\n// Sync Logic maintained for dynamic checks\nlet isUpdated = false;\nfunction savePriceData() {\n    localStorage.setItem('priceData', JSON.stringify(priceData));\n}\n
+];
+const DATA_VERSION = 1770964035167;
+
+// Function to get text label for category
+function getCategoryLabel(cat) {
+    const labels = {
+        'master': '알파인사운드마스터',
+        'team': '팀알파인',
+        'style': '알파인스타일총판',
+        'region': '알파인 지역총판',
+        'dealer': '알파인 대리점'
+    };
+    return labels[cat] || cat;
+}
+
+let priceData = [];
+const FORCE_RESTORE_KEY = 'priceDataRestored_v2_calculated';
+const VERSION_KEY = 'priceDataVersion';
+
+try {
+    // Check LocalStorage Version
+    const storedVersion = localStorage.getItem(VERSION_KEY);
+    const storedData = localStorage.getItem('priceData');
+    const hasRestored = localStorage.getItem(FORCE_RESTORE_KEY);
+
+    // If Server Version is newer than Stored Version, use Server Data
+    if (typeof DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < DATA_VERSION)) {
+        console.log('Newer data version found on server. Updating local storage...');
+        priceData = JSON.parse(JSON.stringify(initialPriceData));
+        localStorage.setItem('priceData', JSON.stringify(priceData));
+        localStorage.setItem(VERSION_KEY, DATA_VERSION.toString());
+        localStorage.setItem(FORCE_RESTORE_KEY, new Date().toISOString());
+    } else if (storedData && hasRestored) {
+        // Load from storage if it exists and version is up to date
+        console.log('Loading price data from local storage...');
+        priceData = JSON.parse(storedData);
+    } else {
+        // First run or force restore needed
+        console.log('Initializing price data (First run)...');
+        priceData = JSON.parse(JSON.stringify(initialPriceData));
+        localStorage.setItem('priceData', JSON.stringify(priceData));
+        if (typeof DATA_VERSION !== 'undefined') localStorage.setItem(VERSION_KEY, DATA_VERSION.toString());
+        localStorage.setItem(FORCE_RESTORE_KEY, new Date().toISOString());
+    }
+
+} catch (e) {
+    console.error('Local Storage Error:', e);
+    priceData = initialPriceData;
+}
+
+// Sync Logic maintained for dynamic checks
+let isUpdated = false;
+function savePriceData() {
+    localStorage.setItem('priceData', JSON.stringify(priceData));
+}
