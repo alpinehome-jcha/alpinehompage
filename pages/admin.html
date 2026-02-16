@@ -217,6 +217,24 @@
             gap: 10px;
             margin-bottom: 1rem;
         }
+
+        /* System Status Banner */
+        #systemStatus {
+            background: #eef;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        #systemStatus span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
     </style>
 </head>
 
@@ -287,6 +305,10 @@
             </nav>
         </div>
     </header>
+
+    <div id="systemStatus">
+        <span>Initializing System Diagnostics...</span>
+    </div>
 
     <div class="admin-wrapper">
         <div class="sidebar">
@@ -1484,7 +1506,68 @@
         }
 
         // Initialize Status Panel on Load
-        document.addEventListener('DOMContentLoaded', updateStatusPanel);
+        document.addEventListener('DOMContentLoaded', () => {
+            updateStatusPanel();
+            checkSystemHealth();
+        });
+
+        async function checkSystemHealth() {
+            const statusDiv = document.getElementById('systemStatus');
+            const token = localStorage.getItem('github_token');
+            let html = '';
+
+            // 1. GitHub Check
+            if (!token) {
+                html += '<span style="color:red; font-weight:bold;">⚠️ GitHub Disconnected (Uploads Disabled)</span>';
+                statusDiv.style.background = '#ffe6e6';
+            } else {
+                html += '<span style="color:green; font-weight:bold;">✅ GitHub Connected</span>';
+            }
+
+            // 2. File API Check
+            if (window.FileReader && window.File && window.FileList && window.Blob) {
+                html += '<span style="color:blue;">✅ File API Ready</span>';
+            } else {
+                html += '<span style="color:red; font-weight:bold;">❌ File API Not Supported (Update Browser)</span>';
+            }
+
+            // 3. Version Check (Simple Timestamp)
+            const vDate = new Date().toLocaleTimeString();
+            html += `<span style="color:#666;">🕒 Script Loaded: ${vDate}</span>`;
+
+            statusDiv.innerHTML = html;
+
+            // Critical DOM Checks
+            if (!document.getElementById('file_upload')) console.error('CRITICAL: file_upload input missing');
+            if (!document.getElementById('img_preview')) console.error('CRITICAL: img_preview element missing');
+        }
+
+        // --- File Upload Listener with Debugging ---
+        const fileInputDebug = document.getElementById('file_upload');
+        if (fileInputDebug) {
+            // Remove old listener if any (cleaner way is difficult without named function, 
+            // but we are replacing the block where it was defined or adding a new specific debug one.
+            // Actually, let's just add a debug listener that doesn't interfere but logs issues.)
+            fileInputDebug.addEventListener('change', function (e) {
+                console.log('File Input Changed');
+                if (!e.target.files || e.target.files.length === 0) {
+                    console.warn('No file selected');
+                    return;
+                }
+                const file = e.target.files[0];
+                console.log('File Selected:', file.name, file.type, file.size);
+
+                if (!file.type.startsWith('image/')) {
+                    alert('Warning: Selected file does not appear to be an image.');
+                }
+
+                // Size Check (e.g. 5MB warning)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('Warning: Image is larger than 5MB. Upload might be slow.');
+                }
+            });
+        }
+
 
         async function saveToGitHub(type, silent = false) {
             const token = localStorage.getItem('github_token');
