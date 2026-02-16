@@ -689,7 +689,7 @@
                 </div>
                  <div class="form-group" style="display:block;">
                     <label>Image Preview</label>
-                    <img id="popupPreview" src="${data.imagePath ? '../' + data.imagePath : ''}" style="max-width: 300px; display: block; border: 1px solid #ddd; padding: 5px;">
+                    <img id="popupPreview" src="${data.imagePath && data.imagePath.startsWith('assets/') ? '../' + data.imagePath : data.imagePath}" style="max-width: 300px; display: block; border: 1px solid #ddd; padding: 5px;">
                 </div>
                 <div class="form-group" style="display:block;">
                     <label>Do Not Show For (Days)</label>
@@ -937,7 +937,8 @@
                 renderAttachments();
 
                 if (item.image) {
-                    imgPreview.src = item.image;
+                    const imgSrc = item.image.startsWith('assets/') ? '../' + item.image : item.image;
+                    imgPreview.src = imgSrc;
                     imgPreviewBox.style.display = 'block';
                 } else {
                     imgPreviewBox.style.display = 'none';
@@ -1183,11 +1184,12 @@
                         <textarea rows="4" placeholder="Enter details..." oninput="updateBlockValue(${block.id}, this.value)">${block.value}</textarea>
                     `;
                 } else if (block.type === 'image') {
+                    const imgSrc = block.value && block.value.startsWith('assets/') ? '../' + block.value : block.value;
                     contentHTML = `
                         <div class="block-type-label">Image Section</div>
                         <input type="file" accept="image/*" onchange="handleBlockFile(${block.id}, this)">
                         <input type="text" placeholder="assets/images/..." readonly value="${block.value}" style="background:#f9f9f9; margin-top:5px;">
-                        ${block.value ? `<div style="margin-top:10px; text-align:center;"><img src="${block.value}" style="max-height:150px; border-radius:4px;"></div>` : ''}
+                        ${block.value ? `<div style="margin-top:10px; text-align:center;"><img src="${imgSrc}" style="max-height:150px; border-radius:4px;"></div>` : ''}
                     `;
                 } else if (block.type === 'html') {
                     contentHTML = `
