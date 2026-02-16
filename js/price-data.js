@@ -1,4 +1,4 @@
-﻿const initialPriceData = [
+﻿var initialPriceData = [
     {
         "category": "master",
         "productCategory": "F#1 Status",
@@ -4480,7 +4480,7 @@
         "distPrice": "-"
     }
 ];
-const DATA_VERSION = 1770964035167;
+var DATA_VERSION = 1770964035167;
 
 // Function to get text label for category
 function getCategoryLabel(cat) {
@@ -4494,9 +4494,9 @@ function getCategoryLabel(cat) {
     return labels[cat] || cat;
 }
 
-let priceData = [];
-const FORCE_RESTORE_KEY = 'priceDataRestored_v2_calculated';
-const VERSION_KEY = 'priceDataVersion';
+var priceData = [];
+var FORCE_RESTORE_KEY = 'priceDataRestored_v2_calculated';
+var VERSION_KEY = 'priceDataVersion';
 
 try {
     // Check LocalStorage Version
