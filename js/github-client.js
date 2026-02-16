@@ -160,18 +160,18 @@ class GitHubClient {
     async uploadFile(path, file, message) {
         if (!this.isConfigured()) throw new Error('GitHub Settings not configured.');
 
-        // 1. Read File as ArrayBuffer
-        const buffer = await file.arrayBuffer();
-
-        // 2. Convert to Base64
-        // efficient way for large files
-        let binary = '';
-        const bytes = new Uint8Array(buffer);
-        const len = bytes.byteLength;
-        for (let i = 0; i < len; i++) {
-            binary += String.fromCharCode(bytes[i]);
-        }
-        const contentBase64 = btoa(binary);
+        // Optimized Base64 conversion using FileReader
+        const contentBase64 = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => {
+                const result = reader.result;
+                // Remove data URL prefix (e.g., "data:image/png;base64,")
+                const base64 = result.split(',')[1];
+                resolve(base64);
+            };
+            reader.onerror = error => reject(new Error('File reading failed: ' + error));
+            reader.readAsDataURL(file);
+        });
 
         // 3. Get SHA if exists (to update)
         const sha = await this.getFileSha(path);

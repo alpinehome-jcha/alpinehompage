@@ -730,7 +730,10 @@
                                 mainImagePath = path; // Fallback
                             }
                         } catch (e) {
-                            if (!confirm(`Failed to upload ${file.name}. Continue?`)) throw new Error('Upload cancelled');
+                            console.error('Image Upload Error:', e);
+                            if (!confirm(`Failed to upload ${file.name}.\nError: ${e.message}\n\nContinue saving without this image?`)) {
+                                throw new Error('Upload cancelled by user');
+                            }
                         }
                     }
                 }
@@ -753,7 +756,10 @@
                                     finalPath = res.content.download_url;
                                 }
                             } catch (e) {
-                                if (!confirm(`Failed to upload ${file.name}. Continue?`)) throw new Error('Upload cancelled');
+                                console.error('File Upload Error:', e);
+                                if (!confirm(`Failed to upload ${file.name}.\nError: ${e.message}\n\nContinue saving without this file?`)) {
+                                    throw new Error('Upload cancelled by user');
+                                }
                             }
                         }
                         // Use original name for display, but safe path
