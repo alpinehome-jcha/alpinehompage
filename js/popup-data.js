@@ -1,5 +1,14 @@
-const initialPopupData = [];
-const POPUP_DATA_VERSION = 1770957768895;
+const initialPopupData = [
+    {
+        "id": 1771241865574,
+        "title": "New Popup",
+        "isActive": true,
+        "imagePath": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/popupimage/01.jpg",
+        "hideDays": 365,
+        "linkUrl": "https://car.okinawaobaksa.com/kr/okinawa/shop/car_arusu"
+    }
+];
+const POPUP_DATA_VERSION = 1771241866767;
 
 let popupData = [];
 if (typeof localStorage !== 'undefined') {
