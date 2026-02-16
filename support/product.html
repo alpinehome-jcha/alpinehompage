@@ -735,6 +735,8 @@
                                 throw new Error('Upload cancelled by user');
                             }
                         }
+                    } else {
+                        alert('GitHub 설정이 되어있지 않아 이미지를 업로드할 수 없습니다.\nPartner Zone > Github Settings에서 설정을 확인해주세요.');
                     }
                 }
 
@@ -761,6 +763,8 @@
                                     throw new Error('Upload cancelled by user');
                                 }
                             }
+                        } else {
+                            alert('GitHub 설정이 되어있지 않아 파일을 업로드할 수 없습니다.\nPartner Zone > Github Settings에서 설정을 확인해주세요.');
                         }
                         // Use original name for display, but safe path
                         files.push({ name: file.name, path: finalPath });

@@ -199,6 +199,7 @@ class GitHubClient {
             },
             body: JSON.stringify(payload)
         });
+        console.log(`GitHub API Response for ${path}: ${response.status} ${response.statusText}`);
 
         if (!response.ok) {
             const errData = await response.json();
