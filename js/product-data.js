@@ -2506,7 +2506,7 @@ const initialProductData = [
             {
                 "id": 1771248735441.7258,
                 "type": "image",
-                "value": ""
+                "value": "assets/images/GE-9A-C.jpg"
             },
             {
                 "id": 1771248736084.68,
@@ -3185,7 +3185,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771248776885;
+const PRODUCT_DATA_VERSION = 1771249617568;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
