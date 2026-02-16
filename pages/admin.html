@@ -6,10 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>알파인(ALPINE Korea)</title>
-    <!-- Load Data Scripts -->
-    <script src="../js/product-data.js?v=20260213"></script>
-    <script src="../js/dealer-data.js?v=20260213"></script>
-    <script src="../js/popup-data.js?v=20260213"></script>
 
     <!-- Global Error Handler (Emergency Debugging) -->
     <script>
@@ -1299,8 +1295,10 @@
             const overlay = document.getElementById('loadingOverlay');
             const loadingText = document.getElementById('loadingText');
             if (confirm(`Upload ${file.name} to GitHub now?`)) {
-                overlay.style.display = 'flex';
-                loadingText.innerText = 'Uploading Block Image...';
+                if (overlay && loadingText) {
+                    overlay.style.display = 'flex';
+                    loadingText.innerText = 'Uploading Block Image...';
+                }
                 ghClient.uploadFile(path, file, `Upload Detail Block Image: ${file.name}`)
                     .then((res) => {
                         // alert('Image Uploaded!');
@@ -1316,7 +1314,7 @@
                         alert('Upload Failed: ' + err.message);
                     })
                     .finally(() => {
-                        overlay.style.display = 'none';
+                        if (overlay) overlay.style.display = 'none';
                     });
             } else {
                 const b = currentBlocks.find(x => x.id === id);
