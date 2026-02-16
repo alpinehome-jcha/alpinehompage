@@ -1010,6 +1010,7 @@
         }
 
         function createNew() {
+            console.log('createNew called'); // Debug Log
             if (currentMode === 'popup') {
                 createNewPopup();
                 return;
@@ -1048,6 +1049,7 @@
         }
 
         async function saveCurrent() {
+            console.log('saveCurrent called'); // Debug Log
             // Show Loading
             const overlay = document.getElementById('loadingOverlay');
             const loadingText = document.getElementById('loadingText');
