@@ -714,6 +714,11 @@
 
                     // Instant Upload
                     if (confirm(`Upload ${filename} to GitHub now?`)) {
+                        const overlay = document.getElementById('loadingOverlay');
+                        const loadingText = document.getElementById('loadingText');
+                        overlay.style.display = 'flex';
+                        loadingText.innerText = 'Uploading Popup Image...';
+
                         try {
                             const res = await ghClient.uploadFile(path, file, `Upload Popup Image: ${filename}`);
                             alert('Image uploaded to GitHub!');
@@ -725,6 +730,8 @@
                         } catch (err) {
                             alert('Upload Failed: ' + err.message);
                             document.getElementById('popupImage').value = path;
+                        } finally {
+                            overlay.style.display = 'none';
                         }
                     } else {
                         document.getElementById('popupImage').value = path;
@@ -757,6 +764,11 @@
                 const uploadPath = 'assets/images/popups/' + safeName;
 
                 if (ghClient.isConfigured()) {
+                    const overlay = document.getElementById('loadingOverlay');
+                    const loadingText = document.getElementById('loadingText');
+                    overlay.style.display = 'flex';
+                    loadingText.innerText = 'Uploading Popup Image...';
+
                     try {
                         const res = await ghClient.uploadFile(uploadPath, file, `Upload Popup Image: ${safeName}`);
                         if (res.content && res.content.download_url) {
@@ -767,7 +779,12 @@
                         alert('Image uploaded to GitHub!');
                     } catch (e) {
                         console.error('Popup upload failed', e);
-                        if (!confirm(`Failed to upload image. Use local path?`)) return;
+                        if (!confirm(`Failed to upload image. Use local path?`)) {
+                            overlay.style.display = 'none';
+                            return;
+                        }
+                    } finally {
+                        overlay.style.display = 'none';
                     }
                 }
             }
@@ -994,6 +1011,12 @@
         }
 
         async function saveCurrent() {
+            // Show Loading
+            const overlay = document.getElementById('loadingOverlay');
+            const loadingText = document.getElementById('loadingText');
+            overlay.style.display = 'flex';
+            loadingText.innerText = 'Uploading Main Image...';
+
             // Check if Main Image was changed/selected (Upload First)
             const fileInput = document.getElementById('file_upload');
             if (currentMode === 'product' && fileInput && fileInput.files.length > 0) {
@@ -1006,12 +1029,20 @@
                     } else {
                         inputs.image.value = path;
                     }
-                    alert(`Image ${file.name} uploaded.`);
+                    // alert(`Image ${file.name} uploaded.`); // Skip alert to be faster
                 } catch (err) {
-                    alert(`Image Upload Failed: ${err.message}`);
-                    // We continue anyway, maybe they want to save broken link or retry
+                    overlay.style.display = 'none';
+                    console.error('Image Upload Failed:', err);
+                    if (!confirm(`Image Upload Failed:\n${err.message}\n\nClick OK to continue saving (Image link will be broken on other devices).\nClick Cancel to abort and try again.`)) {
+                        return; // Abort
+                    }
+                    // If OK, continue -> overlay needs to show again for saving?
+                    overlay.style.display = 'flex';
+                    loadingText.innerText = 'Saving Data...';
                 }
             }
+
+            loadingText.innerText = 'Saving Data...';
 
             const isProduct = currentMode === 'product';
             const collection = isProduct ? products : dealers;
@@ -1067,7 +1098,9 @@
             renderList();
 
             // Auto Save to Server
-            saveToGitHub(currentMode, true);
+            await saveToGitHub(currentMode, true);
+
+            overlay.style.display = 'none';
         }
 
         // CATEGORIES (Moved from missing global scope or re-declared)
@@ -1214,10 +1247,14 @@
             const path = 'assets/images/' + file.name;
 
             // Upload immediately
+            const overlay = document.getElementById('loadingOverlay');
+            const loadingText = document.getElementById('loadingText');
             if (confirm(`Upload ${file.name} to GitHub now?`)) {
+                overlay.style.display = 'flex';
+                loadingText.innerText = 'Uploading Block Image...';
                 ghClient.uploadFile(path, file, `Upload Detail Block Image: ${file.name}`)
                     .then((res) => {
-                        alert('Image Uploaded!');
+                        // alert('Image Uploaded!');
                         const b = currentBlocks.find(x => x.id === id);
                         if (b) {
                             if (res.content && res.content.download_url) b.value = res.content.download_url;
@@ -1225,7 +1262,13 @@
                             renderBlocks();
                         }
                     })
-                    .catch(err => alert('Upload Failed: ' + err.message));
+                    .catch(err => {
+                        console.error(err);
+                        alert('Upload Failed: ' + err.message);
+                    })
+                    .finally(() => {
+                        overlay.style.display = 'none';
+                    });
             } else {
                 const b = currentBlocks.find(x => x.id === id);
                 if (b) { b.value = path; renderBlocks(); }
@@ -1319,6 +1362,11 @@
 
                     // Upload immediately
                     if (confirm(`Upload ${file.name} to GitHub now?`)) {
+                        const overlay = document.getElementById('loadingOverlay');
+                        const loadingText = document.getElementById('loadingText');
+                        overlay.style.display = 'flex';
+                        loadingText.innerText = 'Uploading Attachment...';
+
                         try {
                             const res = await ghClient.uploadFile(path, file, `Upload Attachment: ${file.name}`);
                             alert('File Uploaded Successfully!');
@@ -1327,6 +1375,9 @@
                             }
                         } catch (err) {
                             alert('Upload Failed: ' + err.message);
+                            // Keep local path on error?
+                        } finally {
+                            overlay.style.display = 'none';
                         }
                     }
                 }
