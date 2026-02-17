@@ -2966,7 +2966,13 @@ const initialProductData = [
         "price": 180000,
         "soldOut": false,
         "image": "assets/images/product_placeholder.png",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337235774.3003,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-C80-88.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -3269,7 +3275,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771337224819;
+const PRODUCT_DATA_VERSION = 1771337245609;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
