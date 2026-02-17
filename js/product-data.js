@@ -2858,7 +2858,13 @@ const initialProductData = [
         "price": 95000,
         "soldOut": false,
         "image": "assets/images/DS-4B.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337050613.0498,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-M60-4-C.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -3233,7 +3239,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771329708745;
+const PRODUCT_DATA_VERSION = 1771337060834;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
