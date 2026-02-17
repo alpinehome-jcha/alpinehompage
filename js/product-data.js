@@ -3020,7 +3020,13 @@ const initialProductData = [
         "price": 130000,
         "soldOut": false,
         "image": "assets/images/DS-12B.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337292448.3403,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X121-12EV.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -3287,7 +3293,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771337279773;
+const PRODUCT_DATA_VERSION = 1771337301630;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
