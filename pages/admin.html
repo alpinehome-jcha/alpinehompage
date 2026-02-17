@@ -1478,6 +1478,10 @@
         // Duplicate listener removed to prevent conflicts with Instant Upload logic below.
         // See 'File Upload Listener with Instant Upload' section.
 
+        // Restore declarations for global use (createNew, etc.)
+        const imgPreview = document.getElementById('img_preview');
+        const imgPreviewBox = document.getElementById('img_preview_box');
+
 
 
         function renderAttachments() {
