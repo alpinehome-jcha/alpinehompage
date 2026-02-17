@@ -220,7 +220,7 @@ if (typeof GitHubClient === 'undefined') {
 
 // Export instance
 window.GitHubClient = GitHubClient;
-}
+
 
 if (typeof ghClient === 'undefined') {
     window.ghClient = new GitHubClient();
