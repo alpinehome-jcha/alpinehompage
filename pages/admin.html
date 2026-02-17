@@ -1085,35 +1085,16 @@
             // Show Loading
             const overlay = document.getElementById('loadingOverlay');
             const loadingText = document.getElementById('loadingText');
-            overlay.style.display = 'flex';
-            loadingText.innerText = 'Uploading Main Image...';
+            if (overlay) overlay.style.display = 'flex';
+            if (loadingText) loadingText.innerText = 'Saving Data...';
 
-            // Check if Main Image was changed/selected (Upload First)
-            const fileInput = document.getElementById('file_upload');
-            if (currentMode === 'product' && fileInput && fileInput.files.length > 0) {
-                const file = fileInput.files[0];
-                const path = 'assets/images/' + file.name;
-                try {
-                    const res = await ghClient.uploadFile(path, file, `Upload Product Image: ${file.name}`);
-                    if (res.content && res.content.download_url) {
-                        inputs.image.value = res.content.download_url;
-                    } else {
-                        inputs.image.value = path;
-                    }
-                    // alert(`Image ${file.name} uploaded.`); // Skip alert to be faster
-                } catch (err) {
-                    overlay.style.display = 'none';
-                    console.error('Image Upload Failed:', err);
-                    if (!confirm(`Image Upload Failed:\n${err.message}\n\nClick OK to continue saving (Image link will be broken on other devices).\nClick Cancel to abort and try again.`)) {
-                        return; // Abort
-                    }
-                    // If OK, continue -> overlay needs to show again for saving?
-                    overlay.style.display = 'flex';
-                    loadingText.innerText = 'Saving Data...';
-                }
-            }
+            // [Modified] Main Image Upload is now handled by 'change' event (Instant Upload)
+            // We just proceed to save the data in inputs.image.value
 
-            loadingText.innerText = 'Saving Data...';
+            // Safety check: if file selected but input empty? 
+            // The change listener clears file input on success. 
+            // If file input has file but success didn't happen, user might have cancelled.
+            // In that case, we just save what is in the text field (local path or old url).
 
             const isProduct = currentMode === 'product';
             const collection = isProduct ? products : dealers;
@@ -1692,27 +1673,62 @@
         }
 
         // --- File Upload Listener with Debugging ---
+        // --- File Upload Listener with Instant Upload ---
         const fileInputDebug = document.getElementById('file_upload');
         if (fileInputDebug) {
-            // Remove old listener if any (cleaner way is difficult without named function, 
-            // but we are replacing the block where it was defined or adding a new specific debug one.
-            // Actually, let's just add a debug listener that doesn't interfere but logs issues.)
-            fileInputDebug.addEventListener('change', function (e) {
+            fileInputDebug.addEventListener('change', async function (e) {
                 console.log('File Input Changed');
                 if (!e.target.files || e.target.files.length === 0) {
-                    console.warn('No file selected');
                     return;
                 }
                 const file = e.target.files[0];
-                console.log('File Selected:', file.name, file.type, file.size);
+                const path = 'assets/images/' + file.name;
 
-                if (!file.type.startsWith('image/')) {
-                    alert('Warning: Selected file does not appear to be an image.');
-                }
+                // 1. Local Preview
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const imgPreview = document.getElementById('img_preview');
+                    const imgPreviewBox = document.getElementById('img_preview_box');
+                    imgPreview.src = e.target.result;
+                    imgPreviewBox.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
 
-                // Size Check (e.g. 5MB warning)
-                if (file.size > 5 * 1024 * 1024) {
-                    alert('Warning: Image is larger than 5MB. Upload might be slow.');
+                // 2. Instant Upload Confirmation
+                if (confirm(`Upload ${file.name} to GitHub now?\n(Required for saving to server)`)) {
+                    const overlay = document.getElementById('loadingOverlay');
+                    const loadingText = document.getElementById('loadingText');
+
+                    if (overlay) overlay.style.display = 'flex';
+                    if (loadingText) loadingText.innerText = 'Uploading Product Image...';
+
+                    try {
+                        const res = await ghClient.uploadFile(path, file, `Upload Product Image: ${file.name}`);
+
+                        // 3. Update Input with GitHub URL
+                        const imageInput = document.getElementById('conn_image');
+                        if (res.content && res.content.download_url) {
+                            imageInput.value = res.content.download_url;
+                        } else {
+                            imageInput.value = path; // Fallback
+                        }
+
+                        alert('Image Uploaded Successfully!');
+
+                        // 4. Clear File Input to prevent re-upload during save
+                        fileInputDebug.value = '';
+
+                    } catch (err) {
+                        console.error('Image Upload Failed:', err);
+                        alert(`Upload Failed: ${err.message}\n\nPlease try again.`);
+                        // Keep value so user can retry or save as local path (though not recommended)
+                        document.getElementById('conn_image').value = path;
+                    } finally {
+                        if (overlay) overlay.style.display = 'none';
+                    }
+                } else {
+                    // User cancelled upload - just set local path text
+                    document.getElementById('conn_image').value = path;
                 }
             });
         }
