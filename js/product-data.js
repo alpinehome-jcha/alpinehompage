@@ -2717,6 +2717,11 @@ const initialProductData = [
                 "id": 1771041686859.4126,
                 "type": "text",
                 "value": "20년 이후 : 5채널(Mbux1st) : E250 / E250D\n\n20년 이후 : 6채널(Mbux2nd) : C300\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
+            },
+            {
+                "id": 1771306044165.5034,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BZ-2A-C.jpg"
             }
         ],
         "attachments": []
@@ -3195,7 +3200,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771305927264;
+const PRODUCT_DATA_VERSION = 1771306056690;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
