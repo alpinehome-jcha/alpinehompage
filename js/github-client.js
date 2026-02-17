@@ -216,9 +216,9 @@ if (typeof GitHubClient === 'undefined') {
             return data;
         }
     }
-
-    // Export instance
 }
+
+// Export instance
 window.GitHubClient = GitHubClient;
 }
 
