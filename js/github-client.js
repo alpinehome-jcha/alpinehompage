@@ -216,10 +216,9 @@ if (typeof GitHubClient === 'undefined') {
             return data;
         }
     }
+    // Export instance inside the block where class is defined
+    window.GitHubClient = GitHubClient;
 }
-
-// Export instance
-window.GitHubClient = GitHubClient;
 
 
 if (typeof ghClient === 'undefined') {
