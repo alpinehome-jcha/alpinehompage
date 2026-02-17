@@ -2948,7 +2948,13 @@ const initialProductData = [
         "price": 130000,
         "soldOut": true,
         "image": "assets/images/DS-81B.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337207287.8074,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X120-8.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -3263,7 +3269,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771337198098;
+const PRODUCT_DATA_VERSION = 1771337224819;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
