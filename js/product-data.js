@@ -2742,7 +2742,7 @@ const initialProductData = [
                 "value": "20년 이후 : 10채널(Burmeater) : E300 / E350 / E450 / GLE400D / CLS450 / EQC(p,e)\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
             },
             {
-                "id": 1771306414417.0566,
+                "id": 1771306447409.8262,
                 "type": "image",
                 "value": "assets/images/BZ-3A-C.jpg"
             }
@@ -3205,7 +3205,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771306427692;
+const PRODUCT_DATA_VERSION = 1771306457349;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
