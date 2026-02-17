@@ -3074,7 +3074,13 @@ const initialProductData = [
         "price": 180000,
         "soldOut": true,
         "image": "assets/images/product_placeholder.png",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337356905.3525,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HDP-D90-C.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -3305,7 +3311,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771337349737;
+const PRODUCT_DATA_VERSION = 1771337367452;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
