@@ -3211,7 +3211,13 @@ const initialProductData = [
         "price": 230000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/CH-1A.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771329584107.2905,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/CH-1A-C.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -3227,7 +3233,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771329476695;
+const PRODUCT_DATA_VERSION = 1771329708745;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
