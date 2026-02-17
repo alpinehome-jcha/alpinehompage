@@ -2799,6 +2799,11 @@ const initialProductData = [
                 "id": 1771042547411.9358,
                 "type": "text",
                 "value": "레인지로버 : 18채널(메리디안 3D 서라운드)\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
+            },
+            {
+                "id": 1771329228089.6304,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/RR-1A-C.jpg"
             }
         ],
         "attachments": []
@@ -3217,7 +3222,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771329043901;
+const PRODUCT_DATA_VERSION = 1771329246999;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
