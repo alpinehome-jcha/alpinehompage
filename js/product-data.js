@@ -3183,7 +3183,13 @@ const initialProductData = [
         "price": 230000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/VW-1A.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771329034194.1387,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/VW-1A-C.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -3211,7 +3217,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771327587813;
+const PRODUCT_DATA_VERSION = 1771329043901;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
