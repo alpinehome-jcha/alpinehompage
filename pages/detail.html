@@ -357,7 +357,7 @@
                     } else if (block.type === 'image') {
                         blocksHTML += `
                             <div class="detail-content-item">
-                                <img src="${fixPath(block.value)}" alt="Product Detail">
+                                <img src="${fixPath(block.value)}" alt="Product Detail" onerror="this.style.display='none'">
                             </div>
                         `;
                     } else if (block.type === 'html') {

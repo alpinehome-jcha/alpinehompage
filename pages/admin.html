@@ -1119,6 +1119,54 @@
                 }
             }
 
+            // [New] Detail Blocks Fallback Upload Logic
+            if (currentMode === 'product' && currentBlocks.length > 0) {
+                if (loadingText) loadingText.innerText = 'Checking Detail Images...';
+
+                for (const block of currentBlocks) {
+                    if (block.type === 'image') {
+                        const fileInput = document.getElementById(`block_file_${block.id}`);
+                        // Only upload if user actually selected a file in the input
+                        // If input is empty, accessing block.value (existing url) is fine.
+                        if (fileInput && fileInput.files.length > 0) {
+                            const file = fileInput.files[0];
+                            const path = 'assets/images/' + file.name;
+
+                            if (loadingText) loadingText.innerText = `Uploading Block Image: ${file.name}...`;
+
+                            try {
+                                const res = await ghClient.uploadFile(path, file, `Upload Detail Block Image: ${file.name}`);
+                                let finalUrl = null;
+                                if (res.content && res.content.download_url) {
+                                    finalUrl = res.content.download_url;
+                                }
+
+                                if (!finalUrl) {
+                                    const repo = ghClient.repo;
+                                    const branch = ghClient.branch || 'main';
+                                    if (repo) {
+                                        const safePath = path.split('/').map(encodeURIComponent).join('/');
+                                        finalUrl = `https://raw.githubusercontent.com/${repo}/${branch}/${safePath}`;
+                                    }
+                                }
+
+                                if (finalUrl) {
+                                    block.value = finalUrl;
+                                } else {
+                                    block.value = path;
+                                }
+                            } catch (err) {
+                                console.error(`Failed to upload block image ${file.name}:`, err);
+                                if (!confirm(`Failed to upload ${file.name}.\nContinue saving without assuring it is online?`)) {
+                                    if (overlay) overlay.style.display = 'none';
+                                    return; // Abort save
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             if (loadingText) loadingText.innerText = 'Saving Data...';
 
             const isProduct = currentMode === 'product';
@@ -1348,10 +1396,11 @@
                     `;
                 } else if (block.type === 'image') {
                     const imgSrc = block.value && block.value.startsWith('assets/') ? '../' + block.value : block.value;
-                    console.log(`Render Block ${block.id}: Value='${block.value}', Src='${imgSrc}'`);
+                    // console.log(`Render Block ${block.id}: Value='${block.value}', Src='${imgSrc}'`);
 
                     let imgHTML = '';
                     if (block.value) {
+                        // Only show preview if value exists
                         imgHTML = `<div style="margin-top:10px; text-align:center;">
                             <img src="${imgSrc}" style="max-height:150px; border-radius:4px;" 
                                  onerror="console.error('Img Load Error:', this.src); this.style.display='none';">
@@ -1360,8 +1409,8 @@
 
                     contentHTML = `
                         <div class="block-type-label">Image Section</div>
-                        <input type="file" accept="image/*" onchange="handleBlockFile(${block.id}, this)">
-                        <input type="text" placeholder="assets/images/..." readonly value="${block.value}" style="background:#f9f9f9; margin-top:5px;">
+                        <input type="file" id="block_file_${block.id}" accept="image/*" onchange="handleBlockFile(${block.id}, this)">
+                        <input type="text" id="block_text_${block.id}" placeholder="assets/images/..." readonly value="${block.value}" style="background:#f9f9f9; margin-top:5px;">
                         ${imgHTML}
                     `;
                 } else if (block.type === 'html') {
@@ -1389,6 +1438,8 @@
             // Upload immediately
             const overlay = document.getElementById('loadingOverlay');
             const loadingText = document.getElementById('loadingText');
+
+            // 1. Ask User
             if (confirm(`Upload ${file.name} to GitHub now?`)) {
                 if (overlay && loadingText) {
                     overlay.style.display = 'flex';
@@ -1406,13 +1457,11 @@
                                 finalUrl = res.content.download_url;
                             }
 
-                            // 2. Fallback to Manual Construction (API sometimes omits download_url or we prefer raw)
+                            // 2. Fallback to Manual Construction
                             if (!finalUrl) {
-                                const repo = ghClient.repo; // Guaranteed to be set if upload succeeded
+                                const repo = ghClient.repo;
                                 const branch = ghClient.branch || 'main';
                                 if (repo) {
-                                    // Ensure path is URI encoded if needed, but usually raw handles spaces ok or we encode
-                                    // ghClient._encodePath is internal, but we can do a simple encode
                                     const safePath = path.split('/').map(encodeURIComponent).join('/');
                                     finalUrl = `https://raw.githubusercontent.com/${repo}/${branch}/${safePath}`;
                                 }
@@ -1421,25 +1470,34 @@
                             if (finalUrl) {
                                 b.value = finalUrl;
                             } else {
-                                b.value = path; // Worst case
+                                b.value = path;
                                 alert('Warning: Could not determine public URL. Preview may fail.');
                             }
 
-                            renderBlocks();
+                            renderBlocks(); // Re-render to show updated value & preview
                         }
                     })
                     .catch(err => {
                         console.error(err);
                         alert('Upload Failed: ' + err.message);
+                        if (overlay) overlay.style.display = 'none';
                     })
                     .finally(() => {
                         if (overlay) overlay.style.display = 'none';
                     });
             } else {
+                // 2. User Cancelled - Set Local Path & Prepare for Fallback Save
                 const b = currentBlocks.find(x => x.id === id);
-                if (b) { b.value = path; renderBlocks(); }
+                if (b) b.value = path;
+
+                // Update text input directly (do NOT re-render, or file input is lost)
+                const textInput = document.getElementById(`block_text_${id}`);
+                if (textInput) textInput.value = path;
+
+                console.log(`Block ${id} set to local path '${path}' (Pending Fallback Upload)`);
             }
         }
+
 
         // Excel Paste Handler
         function handleExcelPaste(id, textarea) {
@@ -1664,6 +1722,10 @@
             let html = '';
 
             // 1. GitHub Check
+            if (typeof ghClient === 'undefined') {
+                html += '<span style="color:red; font-weight:bold; margin-right:10px;">❌ Script Error (ghClient missing)</span>';
+            }
+
             if (!token) {
                 html += '<span style="color:red; font-weight:bold;">⚠️ GitHub Disconnected (Uploads Disabled)</span>';
                 statusDiv.style.background = '#ffe6e6';
