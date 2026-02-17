@@ -2622,11 +2622,6 @@ const initialProductData = [
                 "id": 1771042189893.2913,
                 "type": "text",
                 "value": "20년~23년 : 9채널(Harman) : 630 / 540 / X7\n\n24년 이후 : 9채널(Bower & Wilkins) : 630 / 540 / X7\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다"
-            },
-            {
-                "id": 1771304170955.0564,
-                "type": "image",
-                "value": "assets/images/BM-2A-C.jpg"
             }
         ],
         "attachments": []
@@ -3195,7 +3190,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771304194319;
+const PRODUCT_DATA_VERSION = 1771305037423;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
