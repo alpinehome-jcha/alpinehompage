@@ -1088,13 +1088,38 @@
             if (overlay) overlay.style.display = 'flex';
             if (loadingText) loadingText.innerText = 'Saving Data...';
 
-            // [Modified] Main Image Upload is now handled by 'change' event (Instant Upload)
-            // We just proceed to save the data in inputs.image.value
+            // [Modified] Main Image Upload Logic
+            // 1. Instant Upload is handled by 'change' event. 
+            // 2. Fallback: If 'file_upload' still has a file (user cancelled instant upload or it failed),
+            //    we attempt to upload it here before saving.
+            const fileInput = document.getElementById('file_upload');
+            if (currentMode === 'product' && fileInput && fileInput.files.length > 0) {
+                // Only if input is not empty (cleared on success instant upload)
+                const file = fileInput.files[0];
+                const path = 'assets/images/' + file.name;
 
-            // Safety check: if file selected but input empty? 
-            // The change listener clears file input on success. 
-            // If file input has file but success didn't happen, user might have cancelled.
-            // In that case, we just save what is in the text field (local path or old url).
+                // Show uploading status
+                if (loadingText) loadingText.innerText = 'Uploading Image (Fallback)...';
+
+                try {
+                    const res = await ghClient.uploadFile(path, file, `Upload Product Image: ${file.name}`);
+                    if (res.content && res.content.download_url) {
+                        inputs.image.value = res.content.download_url;
+                    } else {
+                        inputs.image.value = path;
+                    }
+                } catch (err) {
+                    console.error('Fallback Upload Failed:', err);
+                    if (!confirm(`Image Upload Failed:\n${err.message}\n\nClick OK to continue saving (Image link might be broken).\nClick Cancel to abort and try again.`)) {
+                        if (overlay) overlay.style.display = 'none';
+                        return; // Abort
+                    }
+                    // If OK, proceed with saving what we have
+                    if (overlay) overlay.style.display = 'flex';
+                }
+            }
+
+            if (loadingText) loadingText.innerText = 'Saving Data...';
 
             const isProduct = currentMode === 'product';
             const collection = isProduct ? products : dealers;
@@ -1449,21 +1474,9 @@
         }
 
         // --- File Upload Listener ---
-        const fileInput = document.getElementById('file_upload');
-        const imgPreview = document.getElementById('img_preview');
-        const imgPreviewBox = document.getElementById('img_preview_box');
-
-        if (fileInput) {
-            fileInput.addEventListener('change', function (e) {
-                const file = e.target.files[0];
-                if (file) {
-                    inputs.image.value = 'assets/images/' + file.name;
-                    const reader = new FileReader();
-                    reader.onload = (e) => { imgPreview.src = e.target.result; imgPreviewBox.style.display = 'block'; };
-                    reader.readAsDataURL(file);
-                }
-            });
-        }
+        // --- File Upload Listener ---
+        // Duplicate listener removed to prevent conflicts with Instant Upload logic below.
+        // See 'File Upload Listener with Instant Upload' section.
 
 
 
