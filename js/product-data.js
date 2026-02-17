@@ -2719,9 +2719,9 @@ const initialProductData = [
                 "value": "20년 이후 : 5채널(Mbux1st) : E250 / E250D\n\n20년 이후 : 6채널(Mbux2nd) : C300\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
             },
             {
-                "id": 1771305544701.6147,
+                "id": 1771306044165.5034,
                 "type": "image",
-                "value": "assets/images/BZ-2A-C.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BZ-2A-C.jpg"
             }
         ],
         "attachments": []
@@ -2740,6 +2740,11 @@ const initialProductData = [
                 "id": 1771041736250.9705,
                 "type": "text",
                 "value": "20년 이후 : 10채널(Burmeater) : E300 / E350 / E450 / GLE400D / CLS450 / EQC(p,e)\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
+            },
+            {
+                "id": 1771306819562.0295,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BZ-3A-C.jpg"
             }
         ],
         "attachments": []
@@ -2825,7 +2830,13 @@ const initialProductData = [
         "price": 400000,
         "soldOut": false,
         "image": "assets/images/AU-1A.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771326898810.0393,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AU-1A-C.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -3200,7 +3211,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771305594240;
+const PRODUCT_DATA_VERSION = 1771327587813;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
