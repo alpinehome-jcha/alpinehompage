@@ -2984,7 +2984,13 @@ const initialProductData = [
         "price": 180000,
         "soldOut": false,
         "image": "assets/images/product_placeholder.png",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337254397.9119,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X120-10DP.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -3275,7 +3281,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771337245609;
+const PRODUCT_DATA_VERSION = 1771337264615;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
