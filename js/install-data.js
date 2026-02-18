@@ -50,7 +50,7 @@ const initialInstallData = [
         "author": "Admin"
     }
 ];
-const INSTALL_DATA_VERSION = 1771373837377;
+const INSTALL_DATA_VERSION = 1771373935972;
 
 let installData = [];
 if (typeof localStorage !== 'undefined') {
