@@ -1,5 +1,63 @@
 const initialInstallData = [
     {
+        "id": 1771418204568,
+        "date": "2026-02-18",
+        "title": "레인지로버 스포츠 메리디안 3D 서라운드 차량, Alpine Status 풀 세트",
+        "contentBlocks": [
+            {
+                "type": "text",
+                "value": "레인지로버 스포츠 메리디안 3D 서라운드는 18채널 사운드 시스템 차량으로, 왠만한 사운드 업그레이드로는 만족하지 못합니다.\n\nHi-Fi 사운드 시스템이 필수지만, 궁합만 잘 맞추면 얼마든지 저렴하게 구성할 수 있습니다.\n\n그런 시스템은 알파인만 유일하게 보유하고 있습니다.\n\n최초 Alpine F#1 Status가 있고, 그 다음으로는 ALpine status가 있습니다.\n\n즉 플레이어, DSP,  AMP, 스피커가 Hi-Res인증과 서로 세트로 맞춰져 있는 풀 세트입니다.\n\n\n레인지로버 스포츠 메리디안 3D 서라운드에 Alpine Status(알파인 스테이터스) 풀 세트를 장착합니다.\n[소스기기는 HDS-990을 적용하지 않고 OEM 플레이어를 사용합니다.]\n\nDSP AMP : HDP-D90\n\nHi-Res Audio Certified (192kHz / 24Bit)\nPC Tuning Application with Selectable Preloaded Sound System Configurations\nEmbedded RTA Signals for Sound Tuning\nBluetooth ® Audio Streaming with included External Module\n31 Band Parametric or Graphic EQ\nHi Pass / Low Pass Crossover per Channel\nMatrix Input Summing\nSampling Rate = Internal: 192kHz / 32Bit\nS/N: >110dB, THD: <0.001%\nInputs: 12-Ch Hi-Level, 2-Ch RCA/Optical (SPDIF) / Coaxial (Digital)\nInput Votage : High level : 26Vpp\nOutputs: 10-Ch RCA Output / 12-Ch Hi-Level Amplified Outputs (50W x 1ch~8ch @ 4Ω + 80W x 9ch~12ch @ 4Ω)\nhttps://www.alpine-korea.co.kr/pages/detail.html?id=1770271955069\n\n스피커 : HDZ-653S\n\nHi-Res Audio Certified (192kHz/24Bit w/full Alpine Status system)\nCarbon Composite Diaphragm Material\nAlpine Proprietary DoubleGathered Edge Surround\n6.5\" Mid-Bass + 3.5\" Midrange + 1\"\n- High-Range OEM-fit Driver\nFrequency Response: 55Hz - 40kHz\nSensitivity: 88dB\nPower Handling: 100W RMS / 300W Peak\nhttps://www.alpine-korea.co.kr/pages/detail.html?id=1770274708541"
+            },
+            {
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실_AST-D90.jpg"
+            },
+            {
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실_AST-653S.jpg"
+            },
+            {
+                "type": "text",
+                "value": "DSP부터 스피커까지 24Bit/192kHz를 유지하는 최상의 조합, 진정한 H-Fi 오디오 입니다."
+            },
+            {
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실_AST-D90_653S.jpg"
+            },
+            {
+                "type": "text",
+                "value": "센터 스피커와 미드레인지 스피커는 일반 MDF가 아닌 OEM Fit으로 설계된 스피커 가이드(Baffle)을 사용합니다."
+            },
+            {
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실_AST-653S-01.jpg"
+            },
+            {
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실_AST-653S-02.jpg"
+            },
+            {
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실_AST-653S-03.jpg"
+            },
+            {
+                "type": "text",
+                "value": "미드우퍼는 나무 스피커 가이드를 사용합니다."
+            },
+            {
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실_AST-653S-04.jpg"
+            },
+            {
+                "type": "text",
+                "value": "RTA와 사운드 세팅으로 마무리 됩니다.\n\n이 처럼 알파인은 플레이어 부터 DSP AMP 스피커의 모든 라인업을 갖추고 있어서, 타사의 고가 브랜드들의 조합에 비해 저렴하면서 좋은 사운드 조합을 이루는 유일한 브랜드입니다.\n\n알파인 사운드 마스터 : 가인오디오 | 경기도 안양시만안구 안양로21 | 010-8545-5311"
+            }
+        ],
+        "content": "레인지로버 스포츠 메리디안 3D 서라운드는 18채널 사운드 시스템 차량으로, 왠만한 사운드 업그레이드로는 만족하지 못합니다.\n\nHi-Fi 사운드 시스템이 필수지만, 궁합만 잘 맞추면 얼마든지 저렴하게 구성할 수 있습니다.\n\n그런 시스템은 알파인만 유일하게 보유하고 있습니다.\n\n최초 Alpine F#1 Status가 있고, 그 다음으로는 ALpine status가 있습니다.\n\n즉 플레이어, DSP,  AMP, 스피커가 Hi-Res인증과 서로 세트로 맞춰져 있는 풀 세트입니다.\n\n\n레인지로버 스포츠 메리디안 3D 서라운드에 Alpine Status(알파인 스테이터스) 풀 세트를 장착합니다.\n[소스기기는 HDS-990을 적용하지 않고 OEM 플레이어를 사용합니다.]\n\nDSP AMP : HDP-D90\n\nHi-Res Audio Certified (192kHz / 24Bit)\nPC Tuning Application with Selectable Preloaded Sound System Configurations\nEmbedded RTA Signals for Sound Tuning\nBluetooth ® Audio Streaming with included External Module\n31 Band Parametric or Graphic EQ\nHi Pass / Low Pass Crossover per Channel\nMatrix Input Summing\nSampling Rate = Internal: 192kHz / 32Bit\nS/N: >110dB, THD: <0.001%\nInputs: 12-Ch Hi-Level, 2-Ch RCA/Optical (SPDIF) / Coaxial (Digital)\nInput Votage : High level : 26Vpp\nOutputs: 10-Ch RCA Output / 12-Ch Hi-Level Amplified Outputs (50W x 1ch~8ch @ 4Ω + 80W x 9ch~12ch @ 4Ω)\nhttps://www.alpine-korea.co.kr/pages/detail.html?id=1770271955069\n\n스피커 : HDZ-653S\n\nHi-Res Audio Certified (192kHz/24Bit w/full Alpine Status system)\nCarbon Composite Diaphragm Material\nAlpine Proprietary DoubleGathered Edge Surround\n6.5\" Mid-Bass + 3.5\" Midrange + 1\"\n- High-Range OEM-fit Driver\nFrequency Response: 55Hz - 40kHz\nSensitivity: 88dB\nPower Handling: 100W RMS / 300W Peak\nhttps://www.alpine-korea.co.kr/pages/detail.html?id=1770274708541\nhttps://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실_AST-D90.jpg\nhttps://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실_AST-653S.jpg\nDSP부터 스피커까지 24Bit/192kHz를 유지하는 최상의 조합, 진정한 H-Fi 오디오 입니다.\nhttps://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실_AST-D90_653S.jpg\n센터 스피커와 미드레인지 스피커는 일반 MDF가 아닌 OEM Fit으로 설계된 스피커 가이드(Baffle)을 사용합니다.\nhttps://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실_AST-653S-01.jpg\nhttps://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실_AST-653S-02.jpg\nhttps://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실_AST-653S-03.jpg\n미드우퍼는 나무 스피커 가이드를 사용합니다.\nhttps://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실_AST-653S-04.jpg\nRTA와 사운드 세팅으로 마무리 됩니다.\n\n이 처럼 알파인은 플레이어 부터 DSP AMP 스피커의 모든 라인업을 갖추고 있어서, 타사의 고가 브랜드들의 조합에 비해 저렴하면서 좋은 사운드 조합을 이루는 유일한 브랜드입니다.\n\n알파인 사운드 마스터 : 가인오디오 | 경기도 안양시만안구 안양로21 | 010-8545-5311",
+        "files": [],
+        "author": "Admin"
+    },
+    {
         "id": 1770615804817,
         "date": "2026-02-09",
         "title": "무쏘EV 알파인 오디오 옵션 차량_저음보강 알파인 서브우퍼 장착_PWE-M770",
@@ -50,7 +108,7 @@ const initialInstallData = [
         "author": "Admin"
     }
 ];
-const INSTALL_DATA_VERSION = 1771374768902;
+const INSTALL_DATA_VERSION = 1771418204569;
 
 let installData = [];
 if (typeof localStorage !== 'undefined') {
