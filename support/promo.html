@@ -691,7 +691,7 @@
                                     if (res.content && res.content.download_url) path = res.content.download_url;
                                 } catch (e) {
                                     console.error('Image upload failed', e);
-                                    if (!confirm(`Failed to upload ${file.name}. Continue saving data anyway?`)) {
+                                    if (!confirm(`Failed to upload ${file.name}.\nError: ${e.message}\n\nContinue saving data anyway?`)) {
                                         throw new Error('Upload cancelled');
                                     }
                                 }
@@ -724,7 +724,7 @@
                                 if (res.content && res.content.download_url) finalPath = res.content.download_url;
                             } catch (e) {
                                 console.error('File upload failed', e);
-                                if (!confirm(`Failed to upload ${file.name}. Continue saving data anyway?`)) {
+                                if (!confirm(`Failed to upload ${file.name}.\nError: ${e.message}\n\nContinue saving data anyway?`)) {
                                     throw new Error('Upload cancelled');
                                 }
                             }
