@@ -2799,6 +2799,11 @@ const initialProductData = [
                 "id": 1771042547411.9358,
                 "type": "text",
                 "value": "레인지로버 : 18채널(메리디안 3D 서라운드)\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
+            },
+            {
+                "id": 1771329228089.6304,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/RR-1A-C.jpg"
             }
         ],
         "attachments": []
@@ -2817,6 +2822,11 @@ const initialProductData = [
                 "id": 1771042628051.5857,
                 "type": "text",
                 "value": "디스커버리 : 14채널(메리디안 서라운드)\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
+            },
+            {
+                "id": 1771329427402.6135,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/RR-2A-C.jpg"
             }
         ],
         "attachments": []
@@ -2848,7 +2858,13 @@ const initialProductData = [
         "price": 95000,
         "soldOut": false,
         "image": "assets/images/DS-4B.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337050613.0498,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-M60-4-C.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2860,7 +2876,13 @@ const initialProductData = [
         "price": 95000,
         "soldOut": true,
         "image": "assets/images/DS-4B.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337072303.7183,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-M60-4-C.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2872,7 +2894,13 @@ const initialProductData = [
         "price": 130000,
         "soldOut": false,
         "image": "assets/images/DS-8B.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337107793.574,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-R80-8.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2884,7 +2912,13 @@ const initialProductData = [
         "price": 130000,
         "soldOut": true,
         "image": "assets/images/DS-8B.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337128417.741,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-R80-8.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2896,7 +2930,13 @@ const initialProductData = [
         "price": 130000,
         "soldOut": false,
         "image": "assets/images/DS-81B.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337189520.0796,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X120-8.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2908,7 +2948,13 @@ const initialProductData = [
         "price": 130000,
         "soldOut": true,
         "image": "assets/images/DS-81B.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337207287.8074,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X120-8.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2920,7 +2966,13 @@ const initialProductData = [
         "price": 180000,
         "soldOut": false,
         "image": "assets/images/product_placeholder.png",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337235774.3003,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-C80-88.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2932,7 +2984,13 @@ const initialProductData = [
         "price": 180000,
         "soldOut": false,
         "image": "assets/images/product_placeholder.png",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337254397.9119,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X120-10DP.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2944,7 +3002,13 @@ const initialProductData = [
         "price": 180000,
         "soldOut": true,
         "image": "assets/images/product_placeholder.png",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337271863.7468,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X120-10DP.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2956,7 +3020,13 @@ const initialProductData = [
         "price": 130000,
         "soldOut": false,
         "image": "assets/images/DS-12B.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337292448.3403,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X121-12EV.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2968,7 +3038,13 @@ const initialProductData = [
         "price": 180000,
         "soldOut": true,
         "image": "assets/images/DS-12B.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337309994.5417,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X121-12EV.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2980,7 +3056,13 @@ const initialProductData = [
         "price": 130000,
         "soldOut": false,
         "image": "assets/images/product_placeholder.png",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337330175.7275,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HDP-D90-C.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -2992,7 +3074,13 @@ const initialProductData = [
         "price": 180000,
         "soldOut": true,
         "image": "assets/images/product_placeholder.png",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771337356905.3525,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HDP-D90-C.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -3183,7 +3271,13 @@ const initialProductData = [
         "price": 230000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/VW-1A.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771329034194.1387,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/VW-1A-C.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -3195,7 +3289,13 @@ const initialProductData = [
         "price": 230000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/CH-1A.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1771329584107.2905,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/CH-1A-C.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -3211,7 +3311,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771327587813;
+const PRODUCT_DATA_VERSION = 1771337367452;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
