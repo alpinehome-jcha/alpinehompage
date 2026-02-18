@@ -689,7 +689,8 @@
                                     console.log('Uploaded image:', path);
                                     if (res.content && res.content.download_url) path = res.content.download_url;
                                 } catch (e) {
-                                    if (!confirm(`Failed to upload ${file.name}. Continue?`)) throw new Error('Upload cancelled');
+                                    console.error('Upload failed:', e);
+                                    if (!confirm(`Failed to upload ${file.name}.\nError: ${e.message}\n\nContinue?`)) throw new Error('Upload cancelled');
                                 }
                             }
                             blocks.push({ type: type, value: path });
