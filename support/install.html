@@ -663,7 +663,9 @@
                 }
 
                 const sanitizeFilename = (name) => {
-                    return name.replace(/[^a-zA-Z0-9._-]/g, '_');
+                    // Allow Korean, English, numbers, dots, underscores, dashes
+                    // Remove other special characters that might be unsafe in URLs
+                    return name.replace(/[^a-zA-Z0-9가-힣._-]/g, '_');
                 };
 
                 // Collect Blocks & Upload Images

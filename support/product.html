@@ -709,8 +709,8 @@
                 }
 
                 const sanitizeFilename = (name) => {
-                    // Replace spaces and special chars with underscore, keep dots
-                    return name.replace(/[^a-zA-Z0-9._-]/g, '_');
+                    // Allow Korean, English, numbers, dots, underscores, dashes
+                    return name.replace(/[^a-zA-Z0-9가-힣._-]/g, '_');
                 };
 
                 // 1. Upload Main Image
