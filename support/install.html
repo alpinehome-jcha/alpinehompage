@@ -685,7 +685,7 @@
 
                             if (ghClient.isConfigured()) {
                                 try {
-                                    const res = await ghClient.uploadFile(path, file);
+                                    const res = await ghClient.uploadFile(path, file, `Upload image: ${safeName}`);
                                     console.log('Uploaded image:', path);
                                     if (res.content && res.content.download_url) path = res.content.download_url;
                                 } catch (e) {
@@ -715,7 +715,7 @@
 
                         if (ghClient.isConfigured()) {
                             try {
-                                const res = await ghClient.uploadFile(path, file);
+                                const res = await ghClient.uploadFile(path, file, `Upload attachment: ${safeName}`);
                                 console.log('Uploaded file:', path);
                                 if (res.content && res.content.download_url) finalPath = res.content.download_url;
                             } catch (e) {

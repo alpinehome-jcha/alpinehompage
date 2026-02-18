@@ -113,7 +113,7 @@ if (typeof GitHubClient === 'undefined') {
             return data.sha;
         }
 
-        async commitFile(path, content, message) {
+        async commitFile(path, content, message = 'Update file via Web Client') {
             if (!this.isConfigured()) throw new Error('GitHub Settings not configured.');
 
             // 1. Get SHA of existing file (if any)
@@ -158,7 +158,7 @@ if (typeof GitHubClient === 'undefined') {
             return await response.json();
         }
 
-        async uploadFile(path, file, message) {
+        async uploadFile(path, file, message = 'Upload file via Web Client') {
             if (!this.isConfigured()) throw new Error('GitHub Settings not configured.');
 
             // Optimized Base64 conversion using FileReader
