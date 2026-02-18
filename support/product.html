@@ -879,7 +879,7 @@
             // 2. Linkify URLs
             const urlRegex = /(https?:\/\/[^\s]+)/g;
             safeText = safeText.replace(urlRegex, function (url) {
-                return `<a href="${url}" target="_blank" style="color:#3498db; text-decoration:underline;">${url}</a>`;
+                return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color:#3498db; text-decoration:underline;">${url}</a>`;
             });
 
             // 3. Convert newlines to <br>

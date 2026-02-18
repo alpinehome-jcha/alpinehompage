@@ -527,6 +527,13 @@
 
         // --- View & Edit ---
 
+        function linkify(text) {
+            const urlRegex = /(https?:\/\/[^\s]+)/g;
+            return text.replace(urlRegex, function (url) {
+                return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color:#3498db; text-decoration:underline;">${url}</a>`;
+            });
+        }
+
         function viewPost(id, updateHash = true) {
             const post = posts.find(p => p.id === id);
             if (!post) {
@@ -555,7 +562,7 @@
                     const blockDiv = document.createElement('div');
                     if (block.type === 'text') {
                         blockDiv.className = 'view-block-text';
-                        blockDiv.innerText = block.value;
+                        blockDiv.innerHTML = linkify(block.value);
                     } else if (block.type === 'image') {
                         blockDiv.className = 'view-block-image';
                         const imgSrc = block.value.startsWith('asset') ? '../' + block.value : block.value;
@@ -565,7 +572,7 @@
                 });
             } else if (post.content) {
                 // Fallback
-                contentArea.innerText = post.content;
+                contentArea.innerHTML = linkify(post.content);
             }
 
             // Files
