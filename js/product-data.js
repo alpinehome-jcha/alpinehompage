@@ -2965,7 +2965,7 @@ const initialProductData = [
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 180000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-82B-2.jpg",
         "detailBlocks": [
             {
                 "id": 1771337235774.3003,
@@ -3311,7 +3311,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771337367452;
+const PRODUCT_DATA_VERSION = 1771465363636;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
