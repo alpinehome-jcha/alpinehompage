@@ -391,13 +391,19 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             // Load Data
-            if (typeof promoData !== 'undefined') {
+            const stored = localStorage.getItem('promoData');
+            if (stored) {
+                posts = JSON.parse(stored);
+            } else if (typeof promoData !== 'undefined') {
                 posts = promoData;
-            } else {
-                const stored = localStorage.getItem('promoData');
-                if (stored) posts = JSON.parse(stored);
             }
+
             renderBoard();
+
+            // Hydrate Static Page
+            if (currentPostId) {
+                viewPost(currentPostId, false);
+            }
 
             // Admin Only
             const role = auth.getRole();

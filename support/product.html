@@ -362,13 +362,20 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             // Load Data
-            if (typeof supportProductData !== 'undefined') {
+            // Prioritize LocalStorage for immediate updates
+            const stored = localStorage.getItem('supportProductData');
+            if (stored) {
+                posts = JSON.parse(stored);
+            } else if (typeof supportProductData !== 'undefined') {
                 posts = supportProductData;
-            } else {
-                const stored = localStorage.getItem('supportProductData');
-                if (stored) posts = JSON.parse(stored);
             }
+
             renderBoard();
+
+            // Hydrate Static Page
+            if (currentPostId) {
+                viewPost(currentPostId, false);
+            }
 
             // Admin Only
             const role = auth.getRole();

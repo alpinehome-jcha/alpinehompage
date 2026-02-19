@@ -183,21 +183,12 @@ function Generate-StaticPages {
         # Modify HTML
         $pageHtml = $templateHtml
 
-        # 3.8 Inject currentPostId and Admin Button Logic
-        # We need to set currentPostId so editPost() works.
-        # And we need to run the admin check logic that viewPost() usually does.
-        $adminLogic = @"
-        currentPostId = $id;
-        document.addEventListener('DOMContentLoaded', () => {
-            const role = auth.getRole();
-            if (role === 'admin') {
-                const btnEdit = document.getElementById('btnEdit');
-                const btnDelete = document.getElementById('btnDelete');
-                if (btnEdit) btnEdit.style.display = 'inline-block';
-                if (btnDelete) btnDelete.style.display = 'inline-block';
-            }
-        });
-"@
+        # 3.8 Inject currentPostId
+        # We only need to set the ID. The template's DOMContentLoaded event
+        # will handle calling viewPost(currentPostId) to hydrate the page
+        # and show admin buttons if applicable.
+        $adminLogic = "currentPostId = $id;"
+        
         # Insert this before the end of the script
         $pageHtml = $pageHtml -replace "let isEditMode = false;", "let isEditMode = false;`n        $adminLogic"
 
