@@ -55,7 +55,6 @@ function Generate-StaticPages {
     $posts = $null
 
     # Regex to find variable: const varName = [...]; or let varName = [...];
-    # We use a flexible regex
     if ($jsContent -match "const $VarName\s*=\s*(\[[\s\S]*?\]);") {
         $jsonString = $matches[1]
     }
@@ -139,7 +138,6 @@ function Generate-StaticPages {
             else {
                 # Hide container if it exists, or empty image
                 $mainImgHtml = "<!-- No Image -->" 
-                # We can inject style to hide container later
             }
 
             # Content logic
@@ -158,7 +156,6 @@ function Generate-StaticPages {
                 if ($fPath -notmatch "^http") { $fPath = "../../$fPath" }
                 $filesHtml += "<a href='$fPath' class='file-link' target='_blank' rel='noopener noreferrer'>💾 $($f.name)</a>`n"
             }
-            # We need to ensure container is visible
         }
 
         # Schema JSON Construction
@@ -187,7 +184,19 @@ function Generate-StaticPages {
         $pageHtml = $templateHtml
 
         # 3.1 Adjust Relative Paths
-        $pageHtml = $pageHtml -replace '(src|href)="\.\./', '$1="../../'
+        # Depth structure: support/SECTION/ID/index.html (3 levels from root)
+        # support/SECTION.html uses ../ (1 level from root)
+        # So we need to increase depth by +2.
+        # ../ -> ../../../
+        $pageHtml = $pageHtml -replace '(src|href)="\.\./', '$1="../../../'
+
+        # 3.1.b Adjust Sibling Paths (in Navigation)
+        # product.html, install.html, promo.html are siblings in support/
+        # From support/SECTION/ID/index.html, they are 2 levels up.
+        # We replace precise matches to not break other things
+        $pageHtml = $pageHtml -replace 'href="product.html"', 'href="../../product.html"'
+        $pageHtml = $pageHtml -replace 'href="install.html"', 'href="../../install.html"'
+        $pageHtml = $pageHtml -replace 'href="promo.html"', 'href="../../promo.html"'
 
         # 3.2 Inject Title & Meta
         $pageHtml = $pageHtml -replace '<title>.*?</title>', "<title>$title - Alpine Korea</title>"
@@ -222,6 +231,17 @@ function Generate-StaticPages {
                 # Replace the whole img tag or container content
                 # Template: <img id="viewImage" src="" style="max-width:100%; border-radius:4px;">
                 # Use Regex to replace the img tag or src attribute
+                # Note: $imgSrc in mainImgHtml logic top was relative to data file? No wait.
+                # Top $imgSrc calculation: if ($imgSrc -notmatch "^http") { $imgSrc = "../../$imgSrc" }
+                # This assumes ../.. is correct for content images.
+                # If assets are in root, ../../ is correct (2 levels up from ID folder = support/ -> wait)
+                # From support/product/1234/: ../../ reaches support/.
+                # Assets are in root/assets.
+                # So images also need ../../../
+                # Let's fix image path logic here too.
+                $imgSrc = $post.image
+                if ($imgSrc -notmatch "^http") { $imgSrc = "../../../$imgSrc" }
+                 
                 $pageHtml = $pageHtml -replace 'src="" style="max-width:100%; border-radius:4px;"', "src='$imgSrc' style='max-width:100%; border-radius:4px;'"
             }
             else {
@@ -231,9 +251,30 @@ function Generate-StaticPages {
 
             # Files
             if ($filesHtml) {
+                # Files html also calculated above.
+                # need to recalc with ../../../
+                $filesHtml = ""
+                foreach ($f in $post.files) {
+                    $fPath = $f.path
+                    if ($fPath -notmatch "^http") { $fPath = "../../../$fPath" }
+                    $filesHtml += "<a href='$fPath' class='file-link' target='_blank' rel='noopener noreferrer'>💾 $($f.name)</a>`n"
+                }
+
                 $pageHtml = $pageHtml -replace '<div id="fileLinks"></div>', "<div id='fileLinks'>$filesHtml</div>"
                 $pageHtml = $pageHtml -replace 'id="viewFiles" class="view-files" style="display:none;"', 'id="viewFiles" class="view-files" style="display:block;"'
             }
+        }
+        
+        # Re-calc block images if they were calculated with ../../
+        if ($Type -eq "block") {
+            # We already generated $contentHtml with ../../
+            # Need to replace ../../ with ../../../ in the content string?
+            # Or regen content string.
+            # Easier to regen or replacement.
+            # Let's just do a string replace on contentHtml
+            $contentHtml = $contentHtml -replace 'src=''\.\./\.\./', 'src=''../../../'
+            $contentHtml = $contentHtml -replace 'src="\.\./\.\./', 'src="../../../'
+            $pageHtml = $pageHtml -replace '<!-- Blocks rendered here -->', $contentHtml
         }
 
         # 3.6 Toggle Display States
@@ -244,10 +285,17 @@ function Generate-StaticPages {
         $pageHtml = $pageHtml -replace 'handleRouting\(\);', '// handleRouting(); // Static Page'
         
         # 3.8 Fix "List" button
-        # Different pages have different filenames
+        # ListPageName (e.g. product.html) is in support/
+        # Path from support/product/1234/ -> ../../product.html
         $listPageName = "$SectionName.html"
-        $locationStr = 'onclick="location.href=''../../support/' + $listPageName + '''"'
+        $locationStr = 'onclick="location.href=''../../' + $listPageName + '''"'
         $pageHtml = $pageHtml -replace 'onclick="closeView\(\)"', $locationStr
+        $pageHtml = $pageHtml -replace 'onclick="location.href=''\.\./\.\./support/.*?""', $locationStr 
+
+        # 3.9 Fix Layout.renderFooter
+        # It's inside a script string: Layout.renderFooter('footer-container', '../');
+        # Need to replace '../' with '../../../'
+        $pageHtml = $pageHtml -replace "Layout\.renderFooter\('footer-container', '\.\./'\);", "Layout.renderFooter('footer-container', '../../../');"
 
         # Save File
         $outFile = Join-Path $postDir "index.html"
