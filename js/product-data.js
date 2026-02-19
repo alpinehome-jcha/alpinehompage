@@ -742,6 +742,16 @@ const initialProductData = [
                 "id": 1770279718849.2869,
                 "type": "image",
                 "value": "assets/images/DSP-R100-01.jpg"
+            },
+            {
+                "id": 1771486226997.1343,
+                "type": "text",
+                "value": "알파인(Alpine)의 PXE-R100-8은 하이엔드 오디오 시스템의 정점을 찍기 위해 설계된 8채널 앰프 일체형 DSP입니다.\n\nR100-8은 더 강력한 출력과 압도적인 신호 처리 능력으로 무장한 모델입니다.\n\n1. 고출력 파워 앰프의 안정성 (8채널 x 50W RMS)\n단순히 소리를 키우는 것이 아니라, 고음역대의 미세한 떨림부터 저음역대의 묵직한 타격감까지 **댐핑 능력(스피커를 제어하는 힘)**이 정교합니다.\n\n2.12채널의 정밀한 프로세싱 & 확장성\n총 12채널의 독립적인 프로세싱이 가능하여, 8채널은 내장 앰프로 구동하고 나머지 4채널은 RCA 출력을 통해 고성능 외장 앰프나 서브우퍼 전용 앰프로 연결할 수 있습니다.\n\n3-Way 프런트 + 리어 + 서브우퍼라는 완벽한 풀 시스템을 구축할 때 가장 이상적인 허브 역할을 합니다.\n\n3. 하이엔드 전용 부품 채용 (Audiophile Grade)\n내부 커패시터와 OP-AMP 등 핵심 소자들이 음질 지향적인 하이엔드 등급으로 업그레이드되어 있습니다. 노이즈 억제력이 탁월하며, 대음량에서도 소리가 뭉개지지 않는 '하이파이(Hi-Fi)' 본연의 해상력을 선사합니다.\n\n4. 통합 마스터 컨트롤 및 고해상도 지원\nR100-8은 고해상도 오디오 인증을 받았을 뿐만 아니라, 동축(Coaxial) 및 광(Optical) 입력을 모두 지원하여 디지털 소스 기기와의 직결 시 손실 없는 원음 재생이 가능합니다.\n\n5. PXE-R100-8은 차량의 오디오 시스템이 매우 복잡하거나, 소리 하나하나의 질감에 집중하는 환경에 강력히 추천합니다.\n\n - 순정 프리미엄 오디오 옵션 완벽 대응: 앰프 신호가 다채널로 분리된 최고급 오디오 옵션(예: 제네시스 렉시콘, 벤츠 부메스터, BMW 바워스 앤 윌킨스 등) 차량에서 순정 기능을 유지하며 음질만 극대화하고 싶을 때.\n\n - 본격적인 '풀 멀티' 시스템 구축: 트위터, 미드레인지, 미드우퍼를 각각 독립적으로 정밀 제어하고자 하는 하이엔드 지향 시스템.\n\n - 노이즈에 민감한 전기차(EV): 전기차 특유의 정숙한 실내 환경에서 느껴지는 미세한 화이트 노이즈를 최소화하고 선명한 사운드를 즐기고 싶은 경우.\n\n6. 추천 차종 예시\n\n - 프리미엄 세단 및 SUV: 제네시스 GV80/G80, 벤츠 S클래스/GLE, BMW X5/X7, 아우디 A8/Q8 등.\n\n - 신규 플랫폼 차량: KGM 액티언(Q300), 토레스 등 최신 인포테인먼트가 적용되어 정밀한 신호 보정(Summing/EQ)이 필수적인 차량."
+            },
+            {
+                "id": 1771486432143.9194,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-R80-8-001.jpg"
             }
         ],
         "attachments": [
@@ -750,7 +760,8 @@ const initialProductData = [
                 "name": "PXE-R100-8 Owners manual",
                 "url": "assets/files/PXE-R100-8 Owners manual.pdf"
             }
-        ]
+        ],
+        "soldOut": false
     },
     {
         "id": 1770279980374,
@@ -3333,7 +3344,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771486043571;
+const PRODUCT_DATA_VERSION = 1771486442915;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
