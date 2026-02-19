@@ -300,7 +300,29 @@ function Generate-StaticPages {
         # Save File
         $outFile = Join-Path $postDir "index.html"
         Write-FileContent -Path $outFile -Content $pageHtml
+        
+        # Add to Sitemap List
+        $global:SitemapUrls += "https://alpine-korea.co.kr/support/$SectionName/$id/"
+        $global:SitemapLastMods += $date
     }
+}
+
+# Initialize Sitemap Data
+$global:SitemapUrls = @()
+$global:SitemapLastMods = @()
+
+# Add Main Pages
+$mainPages = @(
+    "https://alpine-korea.co.kr/",
+    "https://alpine-korea.co.kr/pages/about.html",
+    "https://alpine-korea.co.kr/pages/dealers.html",
+    "https://alpine-korea.co.kr/support/product.html",
+    "https://alpine-korea.co.kr/support/install.html",
+    "https://alpine-korea.co.kr/support/promo.html"
+)
+foreach ($p in $mainPages) {
+    $global:SitemapUrls += $p
+    $global:SitemapLastMods += (Get-Date -Format "yyyy-MM-dd")
 }
 
 # Run for Install
@@ -312,4 +334,28 @@ Generate-StaticPages -SectionName "product" -DataFileRelative ".\js\support-prod
 # Run for Promo
 Generate-StaticPages -SectionName "promo" -DataFileRelative ".\js\promo-data.js" -TemplateFileRelative ".\support\promo.html" -OutputDirRelative ".\support\promo" -VarName "initialPromoData" -Type "block"
 
-Write-Host "All Sections Generated."
+# Generate Sitemap.xml
+Write-Host "Generating sitemap.xml..."
+$sitemapContent = '<?xml version="1.0" encoding="UTF-8"?>' + "`n"
+$sitemapContent += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + "`n"
+
+for ($i = 0; $i -lt $global:SitemapUrls.Count; $i++) {
+    $url = $global:SitemapUrls[$i]
+    $mod = $global:SitemapLastMods[$i]
+    if (!$mod) { $mod = (Get-Date -Format "yyyy-MM-dd") }
+    
+    $sitemapContent += "  <url>`n"
+    $sitemapContent += "    <loc>$url</loc>`n"
+    $sitemapContent += "    <lastmod>$mod</lastmod>`n"
+    $sitemapContent += "  </url>`n"
+}
+
+$sitemapContent += '</urlset>'
+Write-FileContent -Path "sitemap.xml" -Content $sitemapContent
+
+# Generate Robots.txt
+Write-Host "Generating robots.txt..."
+$robotsContent = "User-agent: *`nAllow: /`n`nSitemap: https://alpine-korea.co.kr/sitemap.xml"
+Write-FileContent -Path "robots.txt" -Content $robotsContent
+
+Write-Host "All Sections Generated + Sitemap & Robots."
