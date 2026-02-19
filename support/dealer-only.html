@@ -357,9 +357,9 @@
             }
             renderBoard();
 
-            // Admin Only Buttons
+            // Admin & Master Buttons
             const role = auth.getRole();
-            if (role === 'admin') {
+            if (role === 'admin' || role === 'master') {
                 document.getElementById('btnWrite').style.display = 'block';
             }
 
@@ -469,7 +469,8 @@
         }
 
         function editPost() {
-            if (auth.getRole() !== 'admin') return;
+            const role = auth.getRole();
+            if (role !== 'admin' && role !== 'master') return;
             const post = posts.find(p => p.id === currentPostId);
             if (!post) return;
 
@@ -512,8 +513,9 @@
         }
 
         function savePost() {
-            if (auth.getRole() !== 'admin') {
-                alert('관리자만 작성할 수 있습니다. (Access Denied)');
+            const role = auth.getRole();
+            if (role !== 'admin' && role !== 'master') {
+                alert('관리자(Admin/Master)만 작성할 수 있습니다. (Access Denied)');
                 return;
             }
 
@@ -622,8 +624,9 @@
                 fileContainer.style.display = 'none';
             }
 
-            // Admin Buttons
-            if (auth.getRole() === 'admin') {
+            // Admin & Master Buttons
+            const role = auth.getRole();
+            if (role === 'admin' || role === 'master') {
                 document.getElementById('btnEdit').style.display = 'inline-block';
                 document.getElementById('btnDelete').style.display = 'inline-block';
             } else {
