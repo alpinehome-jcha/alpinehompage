@@ -297,6 +297,7 @@ function Generate-StaticPages {
         # Need to replace '../' with '../../../'
         $pageHtml = $pageHtml -replace "Layout\.renderFooter\('footer-container', '\.\./'\);", "Layout.renderFooter('footer-container', '../../../');"
 
+
         # Save File
         $outFile = Join-Path $postDir "index.html"
         Write-FileContent -Path $outFile -Content $pageHtml

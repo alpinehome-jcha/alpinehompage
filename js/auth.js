@@ -411,12 +411,39 @@ function addPartnerMenu(role) {
     if (!navMenu) return;
 
     // Determine paths based on current location
-    const isInPages = window.location.pathname.includes('/pages/');
-    const isInSupport = window.location.pathname.includes('/support/');
+    // Determine paths based on current location
+    const path = window.location.pathname;
+    const isInPages = path.includes('/pages/');
+    const isInSupport = path.includes('/support/');
+
+    // Calculate depth from root for relative paths
+    // root: /index.html (depth 1)
+    // support/index.html (depth 2)
+    // support/install/123/index.html (depth 4)
+    // But we need relative path to 'support/' for prefix.
 
     let prefix = 'support/';
-    if (isInPages) prefix = '../support/';
-    else if (isInSupport) prefix = '';
+    let depth = 0;
+
+    if (path.includes('/support/')) {
+        // Check if we are in deeper structure like support/install/ID/
+        // Simple heuristic: count slashes after support
+        const parts = path.split('/support/')[1].split('/');
+        // parts = ['install.html'] -> length 1
+        // parts = ['install', '123', 'index.html'] -> length 3
+
+        if (parts.length > 2) {
+            // We are deep. e.g. support/install/123/
+            prefix = '../../';
+            depth = 3; // roughly
+        } else {
+            prefix = '';
+            depth = 2;
+        }
+    } else if (isInPages) {
+        prefix = '../support/';
+        depth = 2;
+    }
 
     const partnerLi = document.createElement('li');
     partnerLi.className = 'dropdown partner-item';
@@ -428,7 +455,10 @@ function addPartnerMenu(role) {
     if (role === 'admin') {
         let adminPrefix = 'pages/';
         if (isInPages) adminPrefix = '';
-        else if (isInSupport) adminPrefix = '../pages/';
+        else if (isInSupport) {
+            if (depth > 2) adminPrefix = '../../pages/';
+            else adminPrefix = '../pages/';
+        }
 
         menuItems += `<li><a href="${prefix}price-input.html" class="dropdown-item">가격표 입력</a></li>`;
         menuItems += `<li><a href="${adminPrefix}admin.html?mode=product" class="dropdown-item">제품 관리</a></li>`;
