@@ -369,6 +369,16 @@
         let posts = [];
         let currentPostId = null;
         let isEditMode = false;
+                currentPostId = 1770957118621;
+        document.addEventListener('DOMContentLoaded', () => {
+            const role = auth.getRole();
+            if (role === 'admin') {
+                const btnEdit = document.getElementById('btnEdit');
+                const btnDelete = document.getElementById('btnDelete');
+                if (btnEdit) btnEdit.style.display = 'inline-block';
+                if (btnDelete) btnDelete.style.display = 'inline-block';
+            }
+        });
 
         document.addEventListener('DOMContentLoaded', () => {
             // Load Data

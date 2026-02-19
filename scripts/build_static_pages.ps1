@@ -183,7 +183,25 @@ function Generate-StaticPages {
         # Modify HTML
         $pageHtml = $templateHtml
 
-        # 3.1 Adjust Relative Paths
+        # 3.8 Inject currentPostId and Admin Button Logic
+        # We need to set currentPostId so editPost() works.
+        # And we need to run the admin check logic that viewPost() usually does.
+        $adminLogic = @"
+        currentPostId = $id;
+        document.addEventListener('DOMContentLoaded', () => {
+            const role = auth.getRole();
+            if (role === 'admin') {
+                const btnEdit = document.getElementById('btnEdit');
+                const btnDelete = document.getElementById('btnDelete');
+                if (btnEdit) btnEdit.style.display = 'inline-block';
+                if (btnDelete) btnDelete.style.display = 'inline-block';
+            }
+        });
+"@
+        # Insert this before the end of the script
+        $pageHtml = $pageHtml -replace "let isEditMode = false;", "let isEditMode = false;`n        $adminLogic"
+
+        # 3.9 Update Relative Paths (layout.js, etc.)
         # Depth structure: support/SECTION/ID/index.html (3 levels from root)
         # support/SECTION.html uses ../ (1 level from root)
         # So we need to increase depth by +2.
