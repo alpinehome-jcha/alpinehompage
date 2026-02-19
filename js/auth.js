@@ -425,8 +425,7 @@ function addPartnerMenu(role) {
     if (!navMenu) return;
 
     // Determine paths based on current location
-    // Determine paths based on current location
-    const path = window.location.pathname;
+    const path = window.location.pathname.toLowerCase();
     const isInPages = path.includes('/pages/');
     const isInSupport = path.includes('/support/');
 
@@ -470,7 +469,7 @@ function addPartnerMenu(role) {
         let adminPrefix = 'pages/';
         if (isInPages) adminPrefix = '';
         else if (isInSupport) {
-            if (depth > 2) adminPrefix = '../../pages/';
+            if (depth > 2) adminPrefix = '../../../pages/';
             else adminPrefix = '../pages/';
         }
 
