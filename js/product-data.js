@@ -781,6 +781,16 @@ const initialProductData = [
                 "id": 1770280340336.0093,
                 "type": "image",
                 "value": "assets/images/DSP-X120-8-01.jpg"
+            },
+            {
+                "id": 1771486799332.9878,
+                "type": "text",
+                "value": "알파인의 PXE-X120-8은 알파인 DSP 라인업 중에서도 **'플래그십(Flagship)'**의 등급을 담당하는 고성능 모델입니다.\n\n1. 초정밀 하이엔드 오디오 프로세싱 (64-bit DSP)\n32-bit 프로세싱을 사용한다면, X120-8은 64-bit 더블 프리시전(Double Precision) 부동 소수점 DSP 칩을 탑재하여 연산 속도와 정밀도가 비약적으로 향상되었습니다.\n\n이는 소리의 왜곡(Distortion)을 극한으로 줄이고, 아주 미세한 배음(Harmonics)까지 재생하여 훨씬 더 입체적이고 사실적인 사운드 스테이지를 구현합니다.\n\n2. 압도적인 신호 대 잡음비 (S/N Ratio 110dB 이상)\n하이엔드 소스 유닛에 버금가는 110dB 이상의 S/N비를 자랑합니다.\n\n엔진 소음이 적은 전기차나 정숙한 대형 세단에서 음악의 휴지기(Silence) 동안 들리는 미세한 '화이트 노이즈'를 완벽에 가깝게 억제하여, 극강의 투명한 음질을 제공합니다.\n\n3. 강력하고 안정적인 전원부 설계\nX120-8은 8채널 정격 출력을 지원하면서도, 전원부 회로에 대용량 고품질 커패시터를 대거 채용했습니다.\n\n급격한 출력이 필요한 저음역대의 비트나 오케스트라의 총주 시에도 전압 강하 없이 안정적으로 스피커를 드라이빙하여, 소리의 밀도감이 좋습니다.\n\n4. 지능형 매트릭스 믹싱 (Advanced Matrix Mixing)\n순정 오디오 시스템의 신호가 트위터/미드/우퍼로 복잡하게 쪼개져 있는 경우, 이를 완벽하게 하나의 신호로 합치거나(Summing) 사용자가 원하는 대로 자유롭게 분배하는 능력이 매우 뛰어납니다. 복잡한 시스템에서도 위상 간섭 없는 완벽한 보정이 가능합니다.\n\n5. PXE-X120-8은 단순한 '소리 개선'을 넘어, '차 안을 청음실로 바꾸고 싶은' 하이파이 유저들에게 추천합니다.\n\n - 순정 시스템이 극도로 복잡한 최신 수입차: 단순한 앰프 추가로는 해결되지 않는 정교한 신호 보정이 필요한 차량(예: 최신 BMW OS8 적용 차량, 벤츠 하이퍼스크린 탑재 차량 등).\n\n - 고성능 스피커 유닛과의 조합: 유토피아(Utopia), 소너스 파베르 등 초고가 스피커 유닛의 잠재력을 100% 끌어내고 싶은 환경.\n\n - 프로페셔널 튜너의 손길이 닿는 시스템: 장비의 성능이 워낙 뛰어나기 때문에, RTA(실시간 분석기) 장비를 활용한 정밀 튜닝이 수반되는 환경에서 그 가치가 증명됩니다.\n\n6. 추천 차종 예시\n\n - 플래그십 세단: 벤츠 S클래스(W223), BMW 7시리즈(G70), 제네시스 G90.\n\n - 고급 전기차: 테슬라 모델 S/X, 포르쉐 타이칸, 제네시스 GV60 등 전원의 안정성과 저노이즈가 생명인 차량.\n\n - KGM 프리미엄 라인: **액티언(Q300)**이나 렉스턴급 차량에서 순정 오디오 시스템의 한계를 완전히 뛰어넘고 싶을 때.\n\n"
+            },
+            {
+                "id": 1771486980288.1765,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X120-8-001.jpg"
             }
         ],
         "attachments": [
@@ -789,7 +799,8 @@ const initialProductData = [
                 "name": "PXE-R100-8 Owners manual",
                 "url": "assets/files/PXE-X120-8 Owners manual.pdf"
             }
-        ]
+        ],
+        "soldOut": false
     },
     {
         "id": 1770280979586,
@@ -3344,7 +3355,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771486442915;
+const PRODUCT_DATA_VERSION = 1771486991766;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
