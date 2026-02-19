@@ -3073,7 +3073,7 @@ const initialProductData = [
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 180000,
         "soldOut": true,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-14B-2.jpg",
         "detailBlocks": [
             {
                 "id": 1771337356905.3525,
@@ -3311,7 +3311,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771483177372;
+const PRODUCT_DATA_VERSION = 1771483202408;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
