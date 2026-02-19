@@ -120,9 +120,20 @@ const auth = {
         sessionStorage.removeItem(ROLE_KEY);
         sessionStorage.removeItem('dealerName');
         sessionStorage.removeItem('currentUser');
-        const isInPages = window.location.pathname.includes('/pages/');
-        const isInSupport = window.location.pathname.includes('/support/');
-        window.location.href = (isInPages || isInSupport) ? '../index.html' : 'index.html';
+
+        const path = window.location.pathname;
+        let redirectPath = 'index.html'; // Default for root
+
+        if (path.includes('/pages/')) {
+            redirectPath = '../index.html';
+        } else if (path.includes('/support/')) {
+            const parts = path.split('/support/')[1].split('/');
+            // If deep (e.g. install/123/index.html -> len 3), go up 3 levels to root
+            if (parts.length > 2) redirectPath = '../../../index.html';
+            else redirectPath = '../index.html';
+        }
+
+        window.location.href = redirectPath;
     },
     isLoggedIn: () => {
         return sessionStorage.getItem(AUTH_KEY) === 'true';
@@ -132,14 +143,17 @@ const auth = {
     },
     checkAuthAndRedirect: () => {
         if (!auth.isLoggedIn()) {
-            // Redirect to login handled by page logic usually, or we can force it here
-            // Redirect logic
-            const isInPages = window.location.pathname.includes('/pages/');
-            const isInSupport = window.location.pathname.includes('/support/');
-            // If in pages/, login is in same dir. If in support, ../pages/login.html. If root, pages/login.html
-            let loginPath = 'pages/login.html';
-            if (isInPages) loginPath = 'login.html';
-            else if (isInSupport) loginPath = '../pages/login.html';
+            const path = window.location.pathname;
+            let loginPath = 'pages/login.html'; // Default for root
+
+            if (path.includes('/pages/')) {
+                loginPath = 'login.html';
+            } else if (path.includes('/support/')) {
+                const parts = path.split('/support/')[1].split('/');
+                // If deep (e.g. install/123/index.html -> len 3), go up 3 levels then to pages/
+                if (parts.length > 2) loginPath = '../../../pages/login.html';
+                else loginPath = '../pages/login.html';
+            }
 
             window.location.href = loginPath;
         }
