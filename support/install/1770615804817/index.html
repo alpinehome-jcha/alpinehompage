@@ -3,7 +3,7 @@
 <html lang="ko">
 
 <head>
-    <meta name='description' content='무쏘 EV 블랙엣지 차량에 기본 장착된 알파인 오디오는 OEM 4채널 사운드 시스템을 비약적으로 향상 시킨 프리미엄 사운드입니다. 아쉬운점은 4채널 특성상 서브우퍼가 부재한점입니다.  알파인 서브우퍼 PWE-M770은 300W급 모노앰프가 내장된 7\" 고성능 제품으로 ...'>
+    <meta name='description' content='무쏘EV 알파인 오디오 옵션 차량_저음보강 알파인 서브우퍼 장착_PWE-M770'>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>무쏘EV 알파인 오디오 옵션 차량_저음보강 알파인 서브우퍼 장착_PWE-M770 - Alpine Korea</title>
@@ -216,13 +216,13 @@
         }
     </style>
 <script type='application/ld+json'>{
-        "@context": "https://schema.org",
-        "@type": "TechArticle",
-        "headline": "무쏘EV 알파인 오디오 옵션 차량_저음보강 알파인 서브우퍼 장착_PWE-M770",
-        "datePublished": "2026-02-09",
-        "author": {"@type": "Organization", "name": "Alpine Korea"},
-        "publisher": {"@type": "Organization", "name": "Alpine Korea", "logo": {"@type": "ImageObject", "url": "https://alpine-korea.co.kr/assets/images/alpine_logo.png"}},
-        "description": "무쏘 EV 블랙엣지 차량에 기본 장착된 알파인 오디오는 OEM 4채널 사운드 시스템을 비약적으로 향상 시킨 프리미엄 사운드입니다. 아쉬운점은 4채널 특성상 서브우퍼가 부재한점입니다.  알파인 서브우퍼 PWE-M770은 300W급 모노앰프가 내장된 7\" 고성능 제품으로 ...", "image": "https://alpine-korea.co.kr/assets/images/amp-m770-0.jpg"}</script>
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": "무쏘EV 알파인 오디오 옵션 차량_저음보강 알파인 서브우퍼 장착_PWE-M770",
+            "datePublished": "2026-02-09",
+            "author": {"@type": "Organization", "name": "Alpine Korea"},
+            "publisher": {"@type": "Organization", "name": "Alpine Korea", "logo": {"@type": "ImageObject", "url": "https://alpine-korea.co.kr/assets/images/alpine_logo.png"}},
+            "description": "무쏘EV 알파인 오디오 옵션 차량_저음보강 알파인 서브우퍼 장착_PWE-M770", "image": "https://alpine-korea.co.kr/assets/images/amp-m770-0.jpg"}</script>
 </head>
 
 <body>
@@ -438,7 +438,9 @@
             if (hash.startsWith('#view-')) {
                 const id = parseInt(hash.replace('#view-', ''));
                 if (!isNaN(id)) {
-                    viewPost(id, false); // false = don't set hash again
+                    // Redirect to new static URL (preserve query strings if any, but usually hash is last)
+                    // If we are on support/install.html, go to support/install/id/
+                    window.location.href = `./install/${id}/`;
                     return;
                 }
             }
@@ -469,8 +471,8 @@
                 const displayNum = totalItems - ((page - 1) * BOARD_ITEMS_PER_PAGE) - index;
 
                 tr.innerHTML = `
-                    <td>${displayNum}</td>
-                    <td><span class="board-title" onclick="viewPost(${post.id})">${post.title}</span></td>
+                     <td>${displayNum}</td>
+                    <td><a href="./install/${post.id}/" class="board-title">${post.title}</a></td>
                     <td>${post.date}</td>
                     <td>${hasAttach ? '📎' : ''}</td>
                 `;

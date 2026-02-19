@@ -419,7 +419,8 @@
             if (hash.startsWith('#view-')) {
                 const id = parseInt(hash.replace('#view-', ''));
                 if (!isNaN(id)) {
-                    viewPost(id, false); // false = don't set hash again
+                    // Redirect to new static URL
+                    window.location.href = `./promo/${id}/`;
                     return;
                 }
             }
@@ -451,7 +452,7 @@
 
                 tr.innerHTML = `
                     <td>${displayNum}</td>
-                    <td><span class="board-title" onclick="viewPost(${post.id})">${post.title}</span></td>
+                    <td><a href="./promo/${post.id}/" class="board-title">${post.title}</a></td>
                     <td>${post.date}</td>
                     <td>${hasAttach ? '📎' : ''}</td>
                 `;

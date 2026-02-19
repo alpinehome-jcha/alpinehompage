@@ -3,7 +3,7 @@
 <html lang="ko">
 
 <head>
-    <meta name='description' content='레인지로버 스포츠 메리디안 3D 서라운드는 18채널 사운드 시스템 차량으로, 왠만한 사운드 업그레이드로는 만족하지 못합니다.  Hi-Fi 사운드 시스템이 필수지만, 궁합만 잘 맞추면 얼마든지 저렴하게 구성할 수 있습니다.  그런 시스템은 알파인만 유일하게 보유하고 있습...'>
+    <meta name='description' content='레인지로버 스포츠 메리디안 3D 서라운드 차량, Alpine Status 풀 세트'>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>레인지로버 스포츠 메리디안 3D 서라운드 차량, Alpine Status 풀 세트 - Alpine Korea</title>
@@ -216,13 +216,13 @@
         }
     </style>
 <script type='application/ld+json'>{
-        "@context": "https://schema.org",
-        "@type": "TechArticle",
-        "headline": "레인지로버 스포츠 메리디안 3D 서라운드 차량, Alpine Status 풀 세트",
-        "datePublished": "2026-02-18",
-        "author": {"@type": "Organization", "name": "Alpine Korea"},
-        "publisher": {"@type": "Organization", "name": "Alpine Korea", "logo": {"@type": "ImageObject", "url": "https://alpine-korea.co.kr/assets/images/alpine_logo.png"}},
-        "description": "레인지로버 스포츠 메리디안 3D 서라운드는 18채널 사운드 시스템 차량으로, 왠만한 사운드 업그레이드로는 만족하지 못합니다.  Hi-Fi 사운드 시스템이 필수지만, 궁합만 잘 맞추면 얼마든지 저렴하게 구성할 수 있습니다.  그런 시스템은 알파인만 유일하게 보유하고 있습...", "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실_AST-D90.jpg"}</script>
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": "레인지로버 스포츠 메리디안 3D 서라운드 차량, Alpine Status 풀 세트",
+            "datePublished": "2026-02-18",
+            "author": {"@type": "Organization", "name": "Alpine Korea"},
+            "publisher": {"@type": "Organization", "name": "Alpine Korea", "logo": {"@type": "ImageObject", "url": "https://alpine-korea.co.kr/assets/images/alpine_logo.png"}},
+            "description": "레인지로버 스포츠 메리디안 3D 서라운드 차량, Alpine Status 풀 세트", "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실_AST-D90.jpg"}</script>
 </head>
 
 <body>
@@ -447,7 +447,9 @@
             if (hash.startsWith('#view-')) {
                 const id = parseInt(hash.replace('#view-', ''));
                 if (!isNaN(id)) {
-                    viewPost(id, false); // false = don't set hash again
+                    // Redirect to new static URL (preserve query strings if any, but usually hash is last)
+                    // If we are on support/install.html, go to support/install/id/
+                    window.location.href = `./install/${id}/`;
                     return;
                 }
             }
@@ -478,8 +480,8 @@
                 const displayNum = totalItems - ((page - 1) * BOARD_ITEMS_PER_PAGE) - index;
 
                 tr.innerHTML = `
-                    <td>${displayNum}</td>
-                    <td><span class="board-title" onclick="viewPost(${post.id})">${post.title}</span></td>
+                     <td>${displayNum}</td>
+                    <td><a href="./install/${post.id}/" class="board-title">${post.title}</a></td>
                     <td>${post.date}</td>
                     <td>${hasAttach ? '📎' : ''}</td>
                 `;
