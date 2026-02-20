@@ -6,7 +6,7 @@ const ROLE_KEY = 'userRole';
 // ⚠️ SECURITY WARNING: This token is visible to anyone who inspects the source code.
 // Use a Fine-grained Personal Access Token scoped ONLY to this repository and 'Contents' permission.
 const SHARED_GH_CONFIG = {
-    TOKEN: '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', // Shared Token
+    TOKEN: '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', // Shared Token
     REPO: 'alpinehome-jcha/alpinehompage', // Auto-detected from .git/config
     BRANCH: 'main'
 };
