@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GitHub Token Validator</title>
+</head>
+
+<body>
+    <h1>GitHub Token Validator</h1>
+    <p>This tool checks if your token is valid for authentication/login (ignoring repository permissions for a moment).
+    </p>
+
+    <label>Paste Token:</label>
+    <input type="text" id="tokenInput" value="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" style="width: 400px;">
+    <button onclick="checkToken()">Check Validity</button>
+
+    <div id="result" style="margin-top: 20px; font-weight: bold;"></div>
+
+    <script>
+        async function checkToken() {
+            const token = document.getElementById('tokenInput').value.trim();
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerText = 'Checking...';
+
+            try {
+                const resp = await fetch('https://api.github.com/user', {
+                    headers: {
+                        'Authorization': `token ${token}`
+                    }
+                });
+
+                if (resp.ok) {
+                    const data = await resp.json();
+                    resultDiv.innerText = `SUCCESS! Token is VALID. Authenticated as: ${data.login}`;
+                    resultDiv.style.color = 'green';
+                } else {
+                    const error = await resp.json();
+                    resultDiv.innerText = `FAILED: ${resp.status} ${error.message}`;
+                    resultDiv.style.color = 'red';
+                }
+            } catch (e) {
+                resultDiv.innerText = `ERROR: ${e.message}`;
+                resultDiv.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+
+</html>

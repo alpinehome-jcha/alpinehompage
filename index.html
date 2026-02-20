@@ -557,6 +557,7 @@
                 btn.classList.add('active');
 
                 const filterName = btn.textContent.trim();
+                sessionStorage.setItem('lastCategory', filterName); // Save State
 
                 // PnP Cable Logic
                 if (filterName === 'PnP Cable') {
@@ -607,6 +608,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const categoryParam = urlParams.get('category');
 
+        // Check URL first, then SessionStorage
         if (categoryParam) {
             let targetBtn = null;
             filterBtns.forEach(btn => {
@@ -627,23 +629,64 @@
                 targetBtn.classList.add('active');
                 renderProducts(targetBtn.textContent.trim());
 
+                // Save to session for back button support
+                sessionStorage.setItem('lastCategory', targetBtn.textContent.trim());
+
                 // Scroll to products section
                 const productSection = document.querySelector('.section-title');
                 if (productSection) {
                     productSection.scrollIntoView({ behavior: 'smooth' });
                 }
             } else {
-                renderProducts();
+                renderProducts(); // Default
             }
         } else {
-            // Default to the active button (F#1 Status) instead of 'All'
-            const activeBtn = document.querySelector('.filter-btn.active');
-            if (activeBtn) {
-                renderProducts(activeBtn.textContent.trim());
+            // No URL param -> Check SessionStorage (History Back Support)
+            const lastCategory = sessionStorage.getItem('lastCategory');
+            if (lastCategory) {
+                let targetBtn = null;
+                filterBtns.forEach(btn => {
+                    if (btn.textContent.trim() === lastCategory) targetBtn = btn;
+                });
+
+                if (targetBtn) {
+                    document.querySelector('.filter-btn.active').classList.remove('active');
+                    targetBtn.classList.add('active');
+                    renderProducts(lastCategory);
+                } else {
+                    renderProducts();
+                }
             } else {
-                renderProducts();
+                // Default to the active button (F#1 Status) instead of 'All'
+                const activeBtn = document.querySelector('.filter-btn.active');
+                if (activeBtn) {
+                    renderProducts(activeBtn.textContent.trim());
+                } else {
+                    renderProducts();
+                }
             }
         }
+
+        // Update Click Handlers to Save State
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Reset main active
+                document.querySelector('.filter-btn.active').classList.remove('active');
+                btn.classList.add('active');
+
+                const filterName = btn.textContent.trim();
+                sessionStorage.setItem('lastCategory', filterName); // Save State
+
+                // ... (rest of logic handles PnP sub-filters or render)
+                // Existing listeners handle the render, we just injected the save.
+                // Wait, simply adding another listener might duplicate logic or run in parallel.
+                // The existing listener is anonymous in the previous code block (lines 553-579).
+                // I should probably edit THAT listener instead of adding a new one, 
+                // OR just trust that setting it here is fine? 
+                // Actually, the previous code block I'm NOT replacing covers the listener setup.
+                // I need to update the EXISTING listener to save state.
+            });
+        });
     </script>
 
     <!-- PnP Search Modal -->

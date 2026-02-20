@@ -187,9 +187,22 @@
     </header>
 
     <div class="detail-container">
-        <a href="../index.html#products" class="back-btn">
-            <i class="fas fa-arrow-left"></i> <span data-i18n="btn_back">Back to Products</span>
-        </a>
+        <!-- Category Navigation (Replaces Back Button) -->
+        <div class="filters"
+            style="margin-bottom: 40px; justify-content: center; display: flex; gap: 10px; flex-wrap: wrap;">
+            <button class="filter-btn" onclick="location.href='../index.html?category=F%231%20Status'">F#1
+                Status</button>
+            <button class="filter-btn" onclick="location.href='../index.html?category=Alpine%20Status'">Alpine
+                Status</button>
+            <button class="filter-btn" onclick="location.href='../index.html?category=DSP%2FAMP'">DSP/AMP</button>
+            <button class="filter-btn" onclick="location.href='../index.html?category=Speakers'">Speakers</button>
+            <button class="filter-btn" onclick="location.href='../index.html?category=PnP%20Cable'">PnP Cable</button>
+            <button class="filter-btn" onclick="location.href='../index.html?category=기타상품'"
+                data-i18n="filter_others">기타상품</button>
+            <button class="filter-btn" onclick="location.href='../index.html?category=Alpine%20OEM%20Fit'">Alpine OEM
+                Fit</button>
+            <button class="filter-btn" onclick="location.href='../index.html?category=ALPINESTYLE'">ALPINESTYLE</button>
+        </div>
 
         <div id="productDetail">
             <!-- Content populated by JS -->
