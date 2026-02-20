@@ -16,8 +16,9 @@ const USERS = {
 };
 
 const auth = {
-    // Expose Shared Config for other files (e.g. product.html)
-    sharedConfig: SHARED_GH_CONFIG,
+    // Expose Shared Config removed.
+    // sharedConfig: {},
+
 
     // Helper to load GitHub Client
     loadGitHubClient: () => {
