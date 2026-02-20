@@ -680,11 +680,7 @@
                     sessionStorage.setItem('lastCategory', targetBtn.textContent.trim());
                 }
 
-                // Scroll to products section
-                const productSection = document.querySelector('.section-title');
-                if (productSection) {
-                    productSection.scrollIntoView({ behavior: 'smooth' });
-                }
+
             } else {
                 renderProducts(); // Default
             }
