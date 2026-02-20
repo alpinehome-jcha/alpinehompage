@@ -2350,7 +2350,7 @@ const initialProductData = [
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 120000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-2A.jpg",
         "detailBlocks": [
             {
                 "id": 1770362305243.9382,
@@ -3384,7 +3384,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771565089031;
+const PRODUCT_DATA_VERSION = 1771566248471;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
