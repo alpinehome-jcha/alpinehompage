@@ -308,9 +308,21 @@
                             else if (btnLabel.includes('DSP')) keyword = 'DSP';
                             else if (btnLabel.includes('기타')) keyword = '기타';
 
-                            if (keyword && currentCat.includes(keyword)) {
-                                subBtn.classList.add('active');
+                            let match = false;
+                            if (keyword) {
+                                if (keyword === '기타') {
+                                    // "기타" matches "PnP Cable - 기타" but NOT "PnP Cable - 기타수입차"
+                                    if (currentCat.includes('기타') && !currentCat.includes('기타수입차')) {
+                                        match = true;
+                                    }
+                                } else {
+                                    if (currentCat.includes(keyword)) {
+                                        match = true;
+                                    }
+                                }
                             }
+
+                            if (match) subBtn.classList.add('active');
                         });
                     }
                 }
