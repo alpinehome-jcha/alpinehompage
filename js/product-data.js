@@ -1976,7 +1976,7 @@ const initialProductData = [
         "desc_bottom": ".",
         "price": 30000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/EV-65CF-Converter%20P.jpg",
         "detailBlocks": [],
         "attachments": []
     },
@@ -3383,7 +3383,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771564047873;
+const PRODUCT_DATA_VERSION = 1771564635458;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
