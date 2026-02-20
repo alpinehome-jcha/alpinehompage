@@ -452,47 +452,16 @@
                 logSection.style.display = 'none';
             }
 
-            // Get Data from GitHub (Using Shared Token)
+            // Fetch from LocalStorage (Reverted to local only)
             let logs = [];
-            // Use Shared Config from auth.js
-            const token = auth.sharedConfig ? auth.sharedConfig.TOKEN : '';
-            const repo = auth.sharedConfig ? auth.sharedConfig.REPO : '';
-            const branch = auth.sharedConfig ? auth.sharedConfig.BRANCH : 'main';
-
-            if (token && repo) {
-                // Fetch from GitHub
-                const path = 'data/visit-log.json';
-                const apiUrl = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`;
+            const storedLogs = localStorage.getItem('visitLog');
+            if (storedLogs) {
                 try {
-                    const resp = await fetch(apiUrl, {
-                        headers: {
-                            'Authorization': `token ${token}`,
-                            'Accept': 'application/vnd.github.v3+json'
-                        },
-                        cache: 'no-store'
-                    });
-                    if (resp.ok) {
-                        const data = await resp.json();
-                        if (data.content) {
-                            const binaryString = atob(data.content);
-                            const bytes = Uint8Array.from(binaryString, c => c.charCodeAt(0));
-                            const decodedValue = new TextDecoder().decode(bytes);
-                            logs = JSON.parse(decodedValue);
-                        }
-                    } else {
-                        console.warn('GitHub Log Fetch Failed:', resp.status);
-                    }
+                    logs = JSON.parse(storedLogs);
                 } catch (e) {
-                    console.error('GitHub Fetch Error:', e);
+                    console.error('Local Log Parse Error:', e);
                 }
-            } else {
-                // Fallback to local
-                try {
-                    const stored = localStorage.getItem('visitLog');
-                    if (stored) logs = JSON.parse(stored);
-                } catch (e) { console.error(e); }
             }
-
             // Pagination Logic
             const totalItems = logs.length;
             const totalPages = Math.ceil(totalItems / LOG_ITEMS_PER_PAGE);

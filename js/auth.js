@@ -2,14 +2,8 @@
 const AUTH_KEY = 'isLoggedIn';
 const ROLE_KEY = 'userRole';
 
-// Shared GitHub Configuration (For Visit Logs)
-// ⚠️ SECURITY WARNING: This token is visible to anyone who inspects the source code.
-// Use a Fine-grained Personal Access Token scoped ONLY to this repository and 'Contents' permission.
-const SHARED_GH_CONFIG = {
-    TOKEN: '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', // Shared Token (Owner)
-    REPO: 'alpinehome-jcha/alpinehompage', // Auto-detected from .git/config
-    BRANCH: 'main'
-};
+// Shared GitHub Configuration REVERTED due to authentication issues.
+// Visit logs will be stored in localStorage only for now.
 
 // Credentials Database (Demo)
 const USERS = {
@@ -521,8 +515,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Helper to save visit log
+// Helper to save visit log
 async function saveVisitLog(entry) {
-    // 1. Always save to LocalStorage as backup/cache
+    // Save to LocalStorage (Original Logic)
     try {
         let logs = [];
         const stored = localStorage.getItem('visitLog');
@@ -532,75 +527,5 @@ async function saveVisitLog(entry) {
         localStorage.setItem('visitLog', JSON.stringify(logs));
     } catch (e) {
         console.error('Local Visit Log Error:', e);
-    }
-
-    // 2. Save to GitHub (Using Shared Token for ALL users)
-    try {
-        // Ensure ghClient is loaded
-        if (typeof ghClient === 'undefined') {
-            await auth.loadGitHubClient();
-        }
-
-        // PRIORITIZE SHARED TOKEN
-        const token = auth.sharedConfig.TOKEN;
-        const repo = auth.sharedConfig.REPO;
-        const branch = auth.sharedConfig.BRANCH;
-
-        if (token && repo && typeof ghClient !== 'undefined') {
-            // Re-configure client temporarily for this operation
-            ghClient.configure(token, repo, branch);
-
-            // Fetch existing logs
-            let serverLogs = [];
-            const path = 'data/visit-log.json';
-
-            try {
-                // Manually fetch content using API to get latest state
-                const apiUrl = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`;
-                const resp = await fetch(apiUrl, {
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    },
-                    cache: 'no-store'
-                });
-
-                if (resp.ok) {
-                    const data = await resp.json();
-                    if (data.content) {
-                        // Decode Base64 (handle Unicode)
-                        const binaryString = atob(data.content);
-                        const bytes = Uint8Array.from(binaryString, c => c.charCodeAt(0));
-                        const decodedValue = new TextDecoder().decode(bytes);
-                        serverLogs = JSON.parse(decodedValue);
-                    }
-                } else if (resp.status === 404) {
-                    console.log('No existing visit log found on server, creating new.');
-                } else {
-                    console.error('Failed to fetch visit log:', resp.status);
-                }
-            } catch (e) {
-                console.error('Error fetching existing visit log:', e);
-            }
-
-            // Append New
-            serverLogs.unshift(entry);
-            // Limit to 200 on server
-            if (serverLogs.length > 200) serverLogs = serverLogs.slice(0, 200);
-
-            // Upload
-            await ghClient.uploadFile(path, new Blob([JSON.stringify(serverLogs, null, 2)], { type: 'application/json' }), `Visit Log: ${entry.username}`);
-
-            // Restore user's personal token if it exists (Optional, but good practice if they are admin)
-            const userToken = localStorage.getItem('github_token');
-            const userRepo = localStorage.getItem('github_repo');
-            if (userToken && userRepo) {
-                ghClient.configure(userToken, userRepo, localStorage.getItem('github_branch') || 'main');
-            }
-        } else {
-            console.warn('Shared GitHub Token not configured in js/auth.js');
-        }
-    } catch (e) {
-        console.error('GitHub Visit Log Error:', e);
     }
 }

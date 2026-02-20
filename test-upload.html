@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GitHub Token Test</title>
+</head>
+
+<body>
+    <h1>Github Upload Test</h1>
+    <button onclick="testUpload()">Test Upload</button>
+    <div id="result"></div>
+    <script>
+        async function testUpload() {
+            const token = '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';
+            const repo = 'alpinehome-jcha/alpinehompage';
+            const path = 'data/test-log.txt';
+            const content = btoa('Hello GitHub ' + new Date().toISOString());
+
+            const url = `https://api.github.com/repos/${repo}/contents/${path}`;
+
+            document.getElementById('result').innerText = 'Testing...';
+
+            try {
+                // 1. Get SHA (check if file exists)
+                let sha = null;
+                const getResp = await fetch(url, {
+                    headers: { 'Authorization': `token ${token}` }
+                });
+                if (getResp.ok) {
+                    const data = await getResp.json();
+                    sha = data.sha;
+                }
+
+                // 2. Put File
+                const payload = {
+                    message: 'Test Upload',
+                    content: content,
+                    branch: 'main'
+                };
+                if (sha) payload.sha = sha;
+
+                const putResp = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (putResp.ok) {
+                    document.getElementById('result').innerText = 'SUCCESS! Token works. File uploaded.';
+                    document.getElementById('result').style.color = 'green';
+                } else {
+                    const err = await putResp.json();
+                    document.getElementById('result').innerText = 'FAILED: ' + JSON.stringify(err);
+                    document.getElementById('result').style.color = 'red';
+                }
+            } catch (e) {
+                document.getElementById('result').innerText = 'ERROR: ' + e.message;
+                document.getElementById('result').style.color = 'red';
+            }
+        }
+    </script>
+</body>
+
+</html>
