@@ -26,14 +26,15 @@
 
     <header>
         <div class="header-container">
-            <a href="index.html" class="logo">
+            <a href="index.html?category=F%231%20Status" class="logo">
                 <img src="assets/images/alpine_logo.png" alt="ALPINE Korea">
             </a>
             <nav>
                 <ul class="nav-menu">
                     <li><a href="pages/about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
                     <li class="dropdown">
-                        <a href="index.html" class="nav-link active" data-i18n="nav_products">제품소개</a>
+                        <a href="index.html?category=F%231%20Status" class="nav-link active"
+                            data-i18n="nav_products">제품소개</a>
                         <!-- Submenu logic could go here if needed -->
                     </li>
                     <li>
@@ -609,28 +610,62 @@
         const categoryParam = urlParams.get('category');
 
         // Check URL first, then SessionStorage
+        // Check URL first, then SessionStorage
         if (categoryParam) {
             let targetBtn = null;
-            filterBtns.forEach(btn => {
-                const btnText = btn.textContent.trim();
-                // Compare btnText with categoryParam
-                if (btnText === categoryParam) {
-                    targetBtn = btn;
-                } else if (categoryParam === 'Others' && btnText === '기타상품') {
-                    // If URL says Others but button says 기타상품
-                    targetBtn = btn;
-                } else if (categoryParam === '기타상품' && btnText === '기타상품') {
-                    targetBtn = btn;
-                }
-            });
+            let isSubCategory = false;
+
+            // Check if it's a sub-category (PnP Cable - ...)
+            if (categoryParam.startsWith('PnP Cable - ')) {
+                isSubCategory = true;
+                // Find Parent Button (PnP Cable)
+                filterBtns.forEach(btn => {
+                    if (btn.textContent.trim() === 'PnP Cable') targetBtn = btn;
+                });
+            } else {
+                // Normal Category Match
+                filterBtns.forEach(btn => {
+                    const btnText = btn.textContent.trim();
+                    if (btnText === categoryParam) {
+                        targetBtn = btn;
+                    } else if (categoryParam === 'Others' && btnText === '기타상품') {
+                        targetBtn = btn;
+                    } else if (categoryParam === '기타상품' && btnText === '기타상품') {
+                        targetBtn = btn;
+                    }
+                });
+            }
 
             if (targetBtn) {
                 document.querySelector('.filter-btn.active').classList.remove('active');
                 targetBtn.classList.add('active');
-                renderProducts(targetBtn.textContent.trim());
 
-                // Save to session for back button support
-                sessionStorage.setItem('lastCategory', targetBtn.textContent.trim());
+                // If it's a sub-category, handle sub-menu
+                if (isSubCategory) {
+                    subFilterContainer.style.display = 'flex';
+                    // Deactivate all sub-btns
+                    document.querySelectorAll('.sub-filter-btn.active').forEach(b => b.classList.remove('active'));
+
+                    // Activate specific sub-btn
+                    // categoryParam e.g. "PnP Cable - 국산차"
+                    // sub-btn data-sub="국산차"
+                    const subKey = categoryParam.replace('PnP Cable - ', '');
+                    // Need to match data-sub. simple string match?
+                    const subBtns = document.querySelectorAll('.sub-filter-btn');
+                    subBtns.forEach(sb => {
+                        if (sb.dataset.sub === subKey || categoryParam.includes(sb.dataset.sub)) {
+                            sb.classList.add('active');
+                        }
+                    });
+
+                    renderProducts(categoryParam);
+                    sessionStorage.setItem('lastCategory', categoryParam);
+                } else {
+                    // Normal Category
+                    subFilterContainer.style.display = 'none'; // Hide if not PnP
+                    renderProducts(targetBtn.textContent.trim());
+                    sessionStorage.setItem('lastCategory', targetBtn.textContent.trim());
+                }
 
                 // Scroll to products section
                 const productSection = document.querySelector('.section-title');
