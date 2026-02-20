@@ -551,6 +551,7 @@
         const subFilterContainer = document.getElementById('subFilterContainer');
         const subFilterBtns = document.querySelectorAll('.sub-filter-btn');
 
+        // Update Click Handlers to Save State AND Update URL
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 // Reset main active
@@ -559,6 +560,10 @@
 
                 const filterName = btn.textContent.trim();
                 sessionStorage.setItem('lastCategory', filterName); // Save State
+
+                // Update URL without reloading
+                const newUrl = `${window.location.pathname}?category=${encodeURIComponent(filterName)}`;
+                history.pushState({ path: newUrl }, '', newUrl);
 
                 // PnP Cable Logic
                 if (filterName === 'PnP Cable') {
@@ -572,6 +577,11 @@
                     if (defaultSub) {
                         defaultSub.classList.add('active');
                         renderProducts('PnP Cable - 국산차');
+                        // Update URL for default sub-category
+                        const subName = 'PnP Cable - 국산차';
+                        const subUrl = `${window.location.pathname}?category=${encodeURIComponent(subName)}`;
+                        history.replaceState({ path: subUrl }, '', subUrl);
+                        sessionStorage.setItem('lastCategory', subName);
                     }
                 } else {
                     subFilterContainer.style.display = 'none';
@@ -585,11 +595,14 @@
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.sub-filter-btn.active').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
+
                 // Filter by specific prefix
-                // The category in data is "PnP Cable - 국산차 (Domestic)" etc.
-                // We use "PnP Cable - " + btn.dataset.sub to match.
-                // Or we can just use partial match in renderProducts.
-                renderProducts(`PnP Cable - ${btn.dataset.sub}`);
+                const categoryName = `PnP Cable - ${btn.dataset.sub}`;
+                renderProducts(categoryName);
+
+                sessionStorage.setItem('lastCategory', categoryName);
+                const newUrl = `${window.location.pathname}?category=${encodeURIComponent(categoryName)}`;
+                history.pushState({ path: newUrl }, '', newUrl);
             });
         });
 
