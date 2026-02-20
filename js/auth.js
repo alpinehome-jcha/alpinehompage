@@ -6,7 +6,7 @@ const ROLE_KEY = 'userRole';
 // ⚠️ SECURITY WARNING: This token is visible to anyone who inspects the source code.
 // Use a Fine-grained Personal Access Token scoped ONLY to this repository and 'Contents' permission.
 const SHARED_GH_CONFIG = {
-    TOKEN: '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', // Shared Token (Classic)
+    TOKEN: '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', // Shared Token (Owner)
     REPO: 'alpinehome-jcha/alpinehompage', // Auto-detected from .git/config
     BRANCH: 'main'
 };

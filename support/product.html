@@ -463,8 +463,6 @@
                 // Fetch from GitHub
                 const path = 'data/visit-log.json';
                 const apiUrl = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`;
-                console.log('Fetching Visit Log from:', apiUrl); // DEBUG
-                console.log('Using Token:', token ? token.substring(0, 7) + '...' : 'NONE'); // DEBUG: Check if token is updated
                 try {
                     const resp = await fetch(apiUrl, {
                         headers: {
@@ -473,7 +471,6 @@
                         },
                         cache: 'no-store'
                     });
-                    console.log('GitHub Fetch Status:', resp.status); // DEBUG
                     if (resp.ok) {
                         const data = await resp.json();
                         if (data.content) {
@@ -481,12 +478,9 @@
                             const bytes = Uint8Array.from(binaryString, c => c.charCodeAt(0));
                             const decodedValue = new TextDecoder().decode(bytes);
                             logs = JSON.parse(decodedValue);
-                            console.log('Loaded Logs:', logs.length); // DEBUG
                         }
                     } else {
-                        console.warn('GitHub Log Fetch Failed:', resp.status, resp.statusText);
-                        const errText = await resp.text();
-                        console.error('GitHub Error Details:', errText);
+                        console.warn('GitHub Log Fetch Failed:', resp.status);
                     }
                 } catch (e) {
                     console.error('GitHub Fetch Error:', e);
