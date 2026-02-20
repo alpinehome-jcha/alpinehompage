@@ -2611,7 +2611,7 @@ const initialProductData = [
         "desc_bottom": "AB타입",
         "price": 260000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BM-401.jpg",
         "detailBlocks": [
             {
                 "id": 1771041767990.4573,
@@ -3383,7 +3383,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771563831182;
+const PRODUCT_DATA_VERSION = 1771564047873;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
