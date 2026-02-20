@@ -795,9 +795,9 @@ const initialProductData = [
         ],
         "attachments": [
             {
-                "id": 1770280001125,
-                "name": "PXE-R100-8 Owners manual",
-                "url": "assets/files/PXE-X120-8 Owners manual.pdf"
+                "id": 1771560045802,
+                "name": "PXE-X120-8 Owners manual",
+                "url": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/files/PXE-X120-8%20Owners%20manual.pdf"
             }
         ],
         "soldOut": false
@@ -2307,7 +2307,7 @@ const initialProductData = [
         "desc_bottom": "AB타입",
         "price": 150000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-106.jpg",
         "detailBlocks": [],
         "attachments": []
     },
@@ -3383,7 +3383,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771489123011;
+const PRODUCT_DATA_VERSION = 1771560057089;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
