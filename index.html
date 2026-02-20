@@ -675,9 +675,37 @@
                     sessionStorage.setItem('lastCategory', categoryParam);
                 } else {
                     // Normal Category
-                    subFilterContainer.style.display = 'none'; // Hide if not PnP
-                    renderProducts(targetBtn.textContent.trim());
-                    sessionStorage.setItem('lastCategory', targetBtn.textContent.trim());
+                    const filterName = targetBtn.textContent.trim();
+
+                    if (filterName === 'PnP Cable') {
+                        // Redirect 'PnP Cable' to 'Domestic Cars' (PnP Cable - 국산차)
+                        subFilterContainer.style.display = 'flex';
+
+                        // Reset active sub-buttons
+                        document.querySelectorAll('.sub-filter-btn.active').forEach(b => b.classList.remove('active'));
+
+                        // Select 'Domestic Cars' by default
+                        const defaultSub = document.querySelector('.sub-filter-btn[data-sub="국산차"]');
+                        if (defaultSub) {
+                            defaultSub.classList.add('active');
+                            renderProducts('PnP Cable - 국산차');
+
+                            // Update State to match the specific sub-category
+                            const subName = 'PnP Cable - 국산차';
+                            sessionStorage.setItem('lastCategory', subName);
+                            // Optionally update URL to reflect the redirect
+                            const subUrl = `${window.location.pathname}?category=${encodeURIComponent(subName)}`;
+                            history.replaceState({ path: subUrl }, '', subUrl);
+                        } else {
+                            // Fallback
+                            renderProducts(filterName);
+                            sessionStorage.setItem('lastCategory', filterName);
+                        }
+                    } else {
+                        subFilterContainer.style.display = 'none'; // Hide if not PnP
+                        renderProducts(filterName);
+                        sessionStorage.setItem('lastCategory', filterName);
+                    }
                 }
 
 
