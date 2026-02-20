@@ -2,6 +2,15 @@
 const AUTH_KEY = 'isLoggedIn';
 const ROLE_KEY = 'userRole';
 
+// Shared GitHub Configuration (For Visit Logs)
+// ⚠️ SECURITY WARNING: This token is visible to anyone who inspects the source code.
+// Use a Fine-grained Personal Access Token scoped ONLY to this repository and 'Contents' permission.
+const SHARED_GH_CONFIG = {
+    TOKEN: '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', // Shared Token
+    REPO: 'alpinehome-jcha/alpinehompage', // Auto-detected from .git/config
+    BRANCH: 'main'
+};
+
 // Credentials Database (Demo)
 const USERS = {
     'alpineaudio': { pass: '6198107276aa!!', role: 'admin' },
@@ -13,7 +22,35 @@ const USERS = {
 };
 
 const auth = {
-    login: (username, password) => {
+    // Expose Shared Config for other files (e.g. product.html)
+    sharedConfig: SHARED_GH_CONFIG,
+
+    // Helper to load GitHub Client
+    loadGitHubClient: () => {
+        return new Promise((resolve, reject) => {
+            if (typeof ghClient !== 'undefined') {
+                resolve();
+                return;
+            }
+
+            const script = document.createElement('script');
+            // Determine path based on location
+            const isInPages = window.location.pathname.includes('/pages/');
+            const isInSupport = window.location.pathname.includes('/support/');
+            let scriptPath = 'js/github-client.js';
+            if (isInPages) scriptPath = '../js/github-client.js';
+            else if (isInSupport) scriptPath = '../js/github-client.js';
+            else if (window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html')) scriptPath = 'js/github-client.js';
+            else scriptPath = 'js/github-client.js'; // Fallback
+
+            script.src = scriptPath + '?v=202602162250';
+            script.onload = () => resolve();
+            script.onerror = () => reject(new Error('Failed to load ' + scriptPath));
+            document.head.appendChild(script);
+        });
+    },
+
+    login: async (username, password) => {
         // 1. Check Hardcoded Users (Admin / Special Roles)
         const user = USERS[username];
         if (user && user.pass === password) {
@@ -37,7 +74,7 @@ const auth = {
                 name: names[username] || username,
                 role: user.role
             };
-            saveVisitLog(logEntry);
+            await saveVisitLog(logEntry);
 
             return true;
         }
@@ -70,7 +107,7 @@ const auth = {
                         name: matchedDealer.name,
                         role: role
                     };
-                    saveVisitLog(logEntry);
+                    await saveVisitLog(logEntry);
 
                     return true;
                 }
@@ -175,9 +212,7 @@ const auth = {
 
         // Inject Password Modal if not exists
         if (!document.getElementById('pwChangeModal')) {
-            // ... (existing password modal code is assumed to be here or handled by previous parts of file) ...
-            // We will re-inject it or just assume it is there. 
-            // To be safe and minimal, I will just append the GitHub modal logic here.
+            // ... (existing password modal logic implied)
         }
 
         // Inject GitHub Settings Modal if not exists
@@ -207,31 +242,6 @@ const auth = {
             `;
             document.body.insertAdjacentHTML('beforeend', ghModalHTML);
 
-            // Helper to load GitHub Client
-            const loadGitHubClient = () => {
-                return new Promise((resolve, reject) => {
-                    if (typeof ghClient !== 'undefined') {
-                        resolve();
-                        return;
-                    }
-
-                    const script = document.createElement('script');
-                    // Determine path based on location
-                    const isInPages = window.location.pathname.includes('/pages/');
-                    const isInSupport = window.location.pathname.includes('/support/');
-                    let scriptPath = 'js/github-client.js';
-                    if (isInPages) scriptPath = '../js/github-client.js';
-                    else if (isInSupport) scriptPath = '../js/github-client.js';
-                    else if (window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html')) scriptPath = 'js/github-client.js';
-                    else scriptPath = 'js/github-client.js'; // Fallback
-
-                    script.src = scriptPath + '?v=202602162250';
-                    script.onload = () => resolve();
-                    script.onerror = () => reject(new Error('Failed to load ' + scriptPath));
-                    document.head.appendChild(script);
-                });
-            };
-
             // GitHub Modal Events
             document.getElementById('btnTestGh').onclick = async () => {
                 const token = document.getElementById('global_gh_token').value.trim();
@@ -241,7 +251,7 @@ const auth = {
                 if (!token || !repo) { alert('설정 값을 먼저 입력해주세요 (테스트 전).'); return; }
 
                 try {
-                    await loadGitHubClient();
+                    await auth.loadGitHubClient();
                 } catch (e) {
                     alert('GitHub Client Library 로드 실패: ' + e.message);
                     return;
@@ -276,7 +286,7 @@ const auth = {
                 if (!token || !repo) { alert('토큰과 저장소 주소를 모두 입력해주세요.'); return; }
 
                 try {
-                    await loadGitHubClient();
+                    await auth.loadGitHubClient();
                     // Configure & Test before saving to be sure
                     if (typeof ghClient !== 'undefined') {
                         ghClient.configure(token, repo, branch);
@@ -298,7 +308,6 @@ const auth = {
             };
         }
 
-        // ... (The rest of updateUI continues) ...
         // Inject Modal if not exists (Original Logic for Password Modal)
         if (!document.getElementById('pwChangeModal')) {
             const modalHTML = `
@@ -512,7 +521,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Helper to save visit log
-function saveVisitLog(entry) {
+async function saveVisitLog(entry) {
+    // 1. Always save to LocalStorage as backup/cache
     try {
         let logs = [];
         const stored = localStorage.getItem('visitLog');
@@ -521,6 +531,76 @@ function saveVisitLog(entry) {
         if (logs.length > 100) logs = logs.slice(0, 100);
         localStorage.setItem('visitLog', JSON.stringify(logs));
     } catch (e) {
-        console.error('Visit Log Error:', e);
+        console.error('Local Visit Log Error:', e);
+    }
+
+    // 2. Save to GitHub (Using Shared Token for ALL users)
+    try {
+        // Ensure ghClient is loaded
+        if (typeof ghClient === 'undefined') {
+            await auth.loadGitHubClient();
+        }
+
+        // PRIORITIZE SHARED TOKEN
+        const token = auth.sharedConfig.TOKEN;
+        const repo = auth.sharedConfig.REPO;
+        const branch = auth.sharedConfig.BRANCH;
+
+        if (token && repo && typeof ghClient !== 'undefined') {
+            // Re-configure client temporarily for this operation
+            ghClient.configure(token, repo, branch);
+
+            // Fetch existing logs
+            let serverLogs = [];
+            const path = 'data/visit-log.json';
+
+            try {
+                // Manually fetch content using API to get latest state
+                const apiUrl = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`;
+                const resp = await fetch(apiUrl, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    },
+                    cache: 'no-store'
+                });
+
+                if (resp.ok) {
+                    const data = await resp.json();
+                    if (data.content) {
+                        // Decode Base64 (handle Unicode)
+                        const binaryString = atob(data.content);
+                        const bytes = Uint8Array.from(binaryString, c => c.charCodeAt(0));
+                        const decodedValue = new TextDecoder().decode(bytes);
+                        serverLogs = JSON.parse(decodedValue);
+                    }
+                } else if (resp.status === 404) {
+                    console.log('No existing visit log found on server, creating new.');
+                } else {
+                    console.error('Failed to fetch visit log:', resp.status);
+                }
+            } catch (e) {
+                console.error('Error fetching existing visit log:', e);
+            }
+
+            // Append New
+            serverLogs.unshift(entry);
+            // Limit to 200 on server
+            if (serverLogs.length > 200) serverLogs = serverLogs.slice(0, 200);
+
+            // Upload
+            await ghClient.uploadFile(path, new Blob([JSON.stringify(serverLogs, null, 2)], { type: 'application/json' }), `Visit Log: ${entry.username}`);
+
+            // Restore user's personal token if it exists (Optional, but good practice if they are admin)
+            const userToken = localStorage.getItem('github_token');
+            const userRepo = localStorage.getItem('github_repo');
+            if (userToken && userRepo) {
+                ghClient.configure(userToken, userRepo, localStorage.getItem('github_branch') || 'main');
+            }
+        } else {
+            console.warn('Shared GitHub Token not configured in js/auth.js');
+        }
+    } catch (e) {
+        console.error('GitHub Visit Log Error:', e);
     }
 }

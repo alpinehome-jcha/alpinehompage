@@ -104,12 +104,12 @@
             rememberIdCheckbox.checked = true;
         }
 
-        loginForm.addEventListener('submit', (e) => {
+        loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const username = usernameInput.value;
             const password = document.getElementById('password').value;
 
-            if (auth.login(username, password)) {
+            if (await auth.login(username, password)) {
                 // Save or remove ID based on checkbox
                 if (rememberIdCheckbox.checked) {
                     localStorage.setItem('savedId', username);
