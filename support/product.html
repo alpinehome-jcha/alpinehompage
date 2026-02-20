@@ -464,6 +464,7 @@
                 const path = 'data/visit-log.json';
                 const apiUrl = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`;
                 console.log('Fetching Visit Log from:', apiUrl); // DEBUG
+                console.log('Using Token:', token ? token.substring(0, 7) + '...' : 'NONE'); // DEBUG: Check if token is updated
                 try {
                     const resp = await fetch(apiUrl, {
                         headers: {
