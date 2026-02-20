@@ -1,0 +1,160 @@
+/* Estimate Floating Button */
+.estimate-float-btn {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 70px;
+    height: 70px;
+    background: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 9999;
+    transition: transform 0.3s, background 0.3s;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.estimate-float-btn:hover {
+    transform: scale(1.1);
+    background: #0056b3;
+}
+
+.estimate-float-btn img {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 3px;
+}
+
+/* Modal Styles */
+.estimate-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+}
+
+.estimate-modal-content {
+    background: #fff;
+    margin: 50px auto;
+    width: 90%;
+    max-width: 900px;
+    height: 80vh;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.estimate-header {
+    padding: 20px;
+    background: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.estimate-body {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+.estimate-sidebar {
+    width: 250px;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+    background: #f9f9f9;
+    overflow-y: auto;
+}
+
+.estimate-main {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.estimate-footer {
+    padding: 20px;
+    background: #eee;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Product Selection Styles */
+.product-item {
+    padding: 10px;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    transition: background 0.2s;
+}
+
+.product-item:hover {
+    background: #f0f7ff;
+}
+
+.product-item.selected {
+    background: #e7f3ff;
+    border-color: #007bff;
+}
+
+.estimate-summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.total-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #007bff;
+}
+
+.close-btn {
+    cursor: pointer;
+    font-size: 24px;
+}
