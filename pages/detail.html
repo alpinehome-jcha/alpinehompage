@@ -188,21 +188,125 @@
 
     <div class="detail-container">
         <!-- Category Navigation (Replaces Back Button) -->
-        <div class="filters"
-            style="margin-bottom: 40px; justify-content: center; display: flex; gap: 10px; flex-wrap: wrap;">
-            <button class="filter-btn" onclick="location.href='../index.html?category=F%231%20Status'">F#1
-                Status</button>
-            <button class="filter-btn" onclick="location.href='../index.html?category=Alpine%20Status'">Alpine
-                Status</button>
-            <button class="filter-btn" onclick="location.href='../index.html?category=DSP%2FAMP'">DSP/AMP</button>
-            <button class="filter-btn" onclick="location.href='../index.html?category=Speakers'">Speakers</button>
-            <button class="filter-btn" onclick="location.href='../index.html?category=PnP%20Cable'">PnP Cable</button>
-            <button class="filter-btn" onclick="location.href='../index.html?category=기타상품'"
-                data-i18n="filter_others">기타상품</button>
-            <button class="filter-btn" onclick="location.href='../index.html?category=Alpine%20OEM%20Fit'">Alpine OEM
-                Fit</button>
-            <button class="filter-btn" onclick="location.href='../index.html?category=ALPINESTYLE'">ALPINESTYLE</button>
+        <div class="filters" <button class="filter-btn" onclick="goToCategory('ALPINESTYLE')">ALPINESTYLE</button>
         </div>
+
+        <!-- Sub Filters for PnP Cable (Hidden by default) -->
+        <div id="subFilterContainer" class="sub-filters"
+            style="display: none; justify-content: center; gap: 10px; margin-bottom: 40px; margin-top: -20px;">
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 국산차')">국산차 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 독일차')">독일차 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기타수입차')">기타수입차 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - DSP')">DSP PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기타')">기타 PnP</button>
+        </div>
+
+        <!-- Add Styles for Active State -->
+        <style>
+            .filter-btn.active {
+                background-color: #333;
+                /* Dark background for active */
+                color: #fff;
+                border-color: #333;
+            }
+
+            .sub-filter-btn {
+                padding: 8px 16px;
+                background: #f4f4f4;
+                border: 1px solid #ddd;
+                border-radius: 20px;
+                cursor: pointer;
+                font-size: 0.9rem;
+                transition: all 0.3s;
+            }
+
+            .sub-filter-btn:hover,
+            .sub-filter-btn.active {
+                background: #333;
+                color: #fff;
+                border-color: #333;
+            }
+        </style>
+
+        <script>
+            // Helper to navigate and save state
+            function goToCategory(category) {
+                // If sub-category (starts with PnP Cable - ), we want to go to index with that filter
+                // existing logic in index.html handles 'PnP Cable - ...' active state? 
+                // We need to pass the specific sub-category if it's a sub-filter click.
+                window.location.href = '../index.html?category=' + encodeURIComponent(category);
+            }
+
+            // Highlight logic based on product.category
+            document.addEventListener('DOMContentLoaded', () => {
+                if (!product) return;
+
+                const currentCat = product.category;
+                const buttons = document.querySelectorAll('.filter-btn');
+                let mainCategory = currentCat;
+                let subCategory = '';
+
+                // Identify Parent Category
+                if (currentCat.startsWith('PnP Cable')) {
+                    mainCategory = 'PnP Cable';
+                    subCategory = currentCat; // e.g., "PnP Cable - 국산차 (Domestic)" or just "PnP Cable - 국산차"
+                } else if (currentCat === 'Others') {
+                    mainCategory = '기타상품'; // Button text
+                }
+
+                // Highlight Main Button
+                buttons.forEach(btn => {
+                    // Update onclick to use function
+                    const btnText = btn.innerText.trim();
+                    // We need to match btnText to mainCategory
+                    // Clean up existing onclicks first? Or just override active class?
+                    // Let's just update the class.
+
+                    // Simple text match or mapping
+                    let match = false;
+                    if (btnText === mainCategory) match = true;
+                    // Handle 'F#1 Status' encoding issues if any, but InnerText should be fine.
+
+                    if (match) {
+                        btn.classList.add('active');
+                    }
+
+                    // Update onclick to store state? No, direct link is fine, index.html handles state on load.
+                    // But we want the button active visual HERE.
+                    // Also we updated the buttons above to use goToCategory for cleaner handling? 
+                    // Wait, replacement content above changed onclicks to goToCategory. 
+                    // But I need to make sure I replaced ALL buttons in the target block. YES.
+                });
+
+                // Show/Highlight Sub-Filters
+                if (mainCategory === 'PnP Cable') {
+                    const subContainer = document.getElementById('subFilterContainer');
+                    if (subContainer) {
+                        subContainer.style.display = 'flex';
+
+                        const subButtons = document.querySelectorAll('.sub-filter-btn');
+                        subButtons.forEach(subBtn => {
+                            // subBtn text: "국산차 PnP" -> we need to map to category "PnP Cable - 국산차"
+                            // active logic: check if currentCat contains the keyword?
+                            // Data category: "PnP Cable - 국산차 (Domestic)"
+                            // Button text: "국산차 PnP"
+
+                            const btnLabel = subBtn.innerText;
+                            let keyword = '';
+                            if (btnLabel.includes('국산차')) keyword = '국산차';
+                            else if (btnLabel.includes('독일차')) keyword = '독일차';
+                            else if (btnLabel.includes('기타수입차')) keyword = '기타수입차'; // or Other Imported
+                            else if (btnLabel.includes('DSP')) keyword = 'DSP';
+                            else if (btnLabel.includes('기타')) keyword = '기타';
+
+                            if (keyword && currentCat.includes(keyword)) {
+                                subBtn.classList.add('active');
+                            }
+                        });
+                    }
+                }
+            });
+        </script>
 
         <div id="productDetail">
             <!-- Content populated by JS -->
