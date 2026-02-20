@@ -809,8 +809,8 @@
         let pnpCurrentModel = '';
 
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Check Admin for Button Visibility
-            if (typeof auth !== 'undefined' && auth.getRole() === 'admin') {
+            // 1. Check Login for Button Visibility (Visible to all logged-in users)
+            if (typeof auth !== 'undefined' && auth.isLoggedIn()) {
                 const btn = document.getElementById('btnPnpSearch');
                 if (btn) {
                     btn.style.display = 'block';
