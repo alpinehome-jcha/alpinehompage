@@ -613,7 +613,7 @@ const initialProductData = [
         "category": "Alpine Status",
         "title": "HDA-F60",
         "desc": "Hi-Res Audio 4CH Amplifier",
-        "desc_bottom": "장착공임 별",
+        "desc_bottom": "장착공임 별도",
         "price": 1800000,
         "image": "assets/images/AST-F60.jpg",
         "detailBlocks": [
@@ -644,7 +644,8 @@ const initialProductData = [
                 "name": "OM_HDA-M80_HDA-F60_HDA-V90",
                 "url": "assets/files/OM_HDA-M80_HDA-F60_HDA-V90.pdf"
             }
-        ]
+        ],
+        "soldOut": false
     },
     {
         "id": 1770276535208,
@@ -3384,7 +3385,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771566712313;
+const PRODUCT_DATA_VERSION = 1771571856450;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
