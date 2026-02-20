@@ -921,9 +921,10 @@ const initialProductData = [
         "desc": "HDS-990의 컨트롤러 연장 케이블(2.5m 추가 연장용)",
         "desc_bottom": "",
         "price": 70000,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/KTX-990.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "soldOut": false
     },
     {
         "id": 1770334880774,
@@ -3383,7 +3384,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771564635458;
+const PRODUCT_DATA_VERSION = 1771565089031;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
