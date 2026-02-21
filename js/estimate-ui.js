@@ -361,9 +361,11 @@ const EstimateUI = {
         const items = list.filter(i => i !== "선택 안함" && i !== "DSP 선택 안함");
         if (items.length === 0) return list[0];
 
-        // 1. 명시적 레벨 매칭 ([입문용] 등)
-        const rankTag = `[${level}]`;
-        const exactMatch = items.find(i => this.getProductWithRank(i).startsWith(rankTag));
+        // 1. 명시적 레벨 매칭 (ranks 맵 활용)
+        const exactMatch = items.find(i => {
+            const rank = this.getProductRank(i);
+            return rank === level;
+        });
         if (exactMatch) return exactMatch;
 
         // 2. 항목이 1개뿐인 경우 무조건 선택
@@ -376,53 +378,48 @@ const EstimateUI = {
         return isHighEnd ? sorted[sorted.length - 1] : sorted[0];
     },
 
-    getProductWithRank(name) {
-        if (name === "DSP 선택 안함") return name;
-
+    getProductRank(name) {
         const ranks = {
-            // DSPs
-            "PXE-M60-4": "[입문용] PXE-M60-4",
-            "PXE-R80-8": "[입문용] PXE-R80-8",
-            "PXE-R100-8": "[가성비] PXE-R100-8",
-            "PXE-X120-8": "[가성비] PXE-X120-8",
-            "PXE-C80-88": "[프로] PXE-C80-88",
-            "PXE-X120-10DP": "[프로] PXE-X120-10DP",
-            "PXE-X121-12EV": "[하이엔드] PXE-X121-12EV",
-            "HDP-D90": "[어나더레벨] HDP-D90",
-
-            // Speakers
-            "DM-65C": "[입문용] DM-65C",
-            "DM-65": "[입문용] DM-65",
-            "S2-S65C": "[가성비] S2-S65C",
-            "S2-S65": "[가성비] S2-S65",
-            "S2-S10TW": "[가성비] S2-S10TW",
-            "R2-S653": "[프로] R2-S653",
-            "DPS-25M": "[프로] DPS-25M",
-            "DP2-653": "[하이엔드] DP2-653",
-            "DP2-65C": "[하이엔드] DP2-65C",
-            "DP2-35M": "[하이엔드] DP2-35M",
-            "HDZ-653": "[어나더레벨] HDZ-653",
-            "HDZ-653S": "[어나더레벨] HDZ-653S",
-            "HDZ-65C": "[어나더레벨] HDZ-65C",
-            "HDZ-65CS": "[어나더레벨] HDZ-65CS",
-            "HDZ-65": "[어나더레벨] HDZ-65",
-
-            // Subwoofers & Amps
-            "PWE-M770": "[입문용] PWE-M770",
-            "S2-W8D4 (외장박스 포함)": "[가성비] S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)": "[프로] S2-W10D2 (외장박스 포함)",
-            "S2-W12D2 (외장박스 포함)": "[프로] S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)": "[하이엔드] RS-W10D2 (외장박스 포함)",
-            "HDZ-W10": "[어나더레벨] HDZ-W10",
-
-            "R2-A60F": "[하이엔드] R2-A60F",
-            "S2-A60F": "[하이엔드] S2-A60F",
-            "HDA-F60": "[어나더레벨] HDA-F60",
-
-            // Players
-            "HDS-990": "[어나더레벨] HDS-990"
+            "PXE-M60-4": "입문용",
+            "PXE-R80-8": "입문용",
+            "PXE-R100-8": "가성비",
+            "PXE-X120-8": "가성비",
+            "PXE-C80-88": "프로",
+            "PXE-X120-10DP": "프로",
+            "PXE-X121-12EV": "하이엔드",
+            "HDP-D90": "어나더레벨",
+            "DM-65C": "입문용",
+            "DM-65": "입문용",
+            "S2-S65C": "가성비",
+            "S2-S65": "가성비",
+            "S2-S10TW": "가성비",
+            "R2-S653": "프로",
+            "DPS-25M": "프로",
+            "DP2-653": "하이엔드",
+            "DP2-65C": "하이엔드",
+            "DP2-35M": "하이엔드",
+            "HDZ-653": "어나더레벨",
+            "HDZ-653S": "어나더레벨",
+            "HDZ-65C": "어나더레벨",
+            "HDZ-65CS": "어나더레벨",
+            "HDZ-65": "어나더레벨",
+            "PWE-M770": "입문용",
+            "S2-W8D4 (외장박스 포함)": "가성비",
+            "S2-W10D2 (외장박스 포함)": "프로",
+            "S2-W12D2 (외장박스 포함)": "프로",
+            "RS-W10D2 (외장박스 포함)": "하이엔드",
+            "HDZ-W10": "어나더레벨",
+            "R2-A60F": "하이엔드",
+            "S2-A60F": "하이엔드",
+            "HDA-F60": "어나더레벨",
+            "HDS-990": "어나더레벨"
         };
-        return ranks[name] || name;
+        return ranks[name] || "";
+    },
+
+    getProductWithRank(name) {
+        // UI 표시 시에는 등급 태그를 제거하여 이름만 반환
+        return name;
     },
 
     updateSelectionArea() {
@@ -729,17 +726,32 @@ const EstimateUI = {
             'amp_4ch', 'amp_sub', 'player'
         ];
 
+        let hasDSP = false;
+        let hasFrontRearSpeaker = false;
+
         stepOrder.forEach(catId => {
             if (this.selections[catId]) {
                 const selected = this.selections[catId];
                 const pNames = Array.isArray(selected) ? selected : [selected];
 
                 pNames.forEach(pName => {
-                    if (pName === "DSP 선택 안함" || pName === "선택 안함") return;
+                    if (pName === "선택 안함" || pName === "DSP 선택 안함") return;
                     const price = this.getProductPrice(pName);
+                    if (price === 0) return; // 0원인 항목 숨기기
+
                     productTotal += price;
-                    if (catId === 'dsp') dspPrice = price;
-                    if (catId === 'amp_4ch' || catId === 'amp_sub') ampPrice += price;
+                    if (catId === 'dsp') {
+                        dspPrice = price;
+                        hasDSP = true;
+                    }
+                    if (catId === 'amp_4ch' || catId === 'amp_sub') {
+                        ampPrice += price;
+                    }
+
+                    // 전면/후면 스피커 체크
+                    if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) {
+                        hasFrontRearSpeaker = true;
+                    }
 
                     summaryHtml += `<div class="estimate-summary-item">
                         <span>${this.getProductWithRank(pName)}</span>
@@ -749,10 +761,23 @@ const EstimateUI = {
             }
         });
 
-        let labor = (dspPrice * 0.3) + (ampPrice * 0.1);
-        const speakerCats = ['front_door', 'tweeter', 'add_front', 'rear_door', 'center', 'surround', 'subwoofer'];
-        const hasSpeaker = Object.keys(this.selections).some(catId => speakerCats.includes(catId));
-        if (hasSpeaker && this.selectedCar && this.selectedCar.extraLabor) labor += this.selectedCar.extraLabor;
+        // 기술료 계산 공식 업데이트
+        let labor = 0;
+        const extraLaborTotal = (this.selectedCar && this.selectedCar.extraLabor) ? this.selectedCar.extraLabor : 0;
+
+        // 1. DSP 선택: (30%) + (extraLabor 50%)
+        if (hasDSP) {
+            labor += (dspPrice * 0.3) + (extraLaborTotal * 0.5);
+        }
+
+        // 2. 전면/후면 스피커 선택: 200,000 + (extraLabor 50%)
+        if (hasFrontRearSpeaker) {
+            labor += 200000 + (extraLaborTotal * 0.5);
+        }
+
+        // 3. 일반 앰프 선택: (10%)
+        labor += (ampPrice * 0.1);
+
         labor = Math.round(labor);
 
         if (productTotal > 0 || labor > 0) {
@@ -810,11 +835,11 @@ const EstimateUI = {
         let labels = items.map(i => this.getProductWithRank(i));
 
         const counts = {
-            입문: labels.filter(l => l.includes('[입문용]')).length,
-            가성비: labels.filter(l => l.includes('[가성비]')).length,
-            프로: labels.filter(l => l.includes('[프로]')).length,
-            하이: labels.filter(l => l.includes('[하이엔드]')).length,
-            어나더: labels.filter(l => l.includes('[어나더레벨]')).length
+            입문: items.filter(i => this.getProductRank(i) === '입문용').length,
+            가성비: items.filter(i => this.getProductRank(i) === '가성비').length,
+            프로: items.filter(i => this.getProductRank(i) === '프로').length,
+            하이: items.filter(i => this.getProductRank(i) === '하이엔드').length,
+            어나더: items.filter(i => this.getProductRank(i) === '어나더레벨').length
         };
 
         let mainLevel = "커스텀";
@@ -901,16 +926,30 @@ const EstimateUI = {
         let dspPrice = 0;
         let ampPrice = 0;
 
+        let hasDSP = false;
+        let hasFrontRearSpeaker = false;
+
         for (const catId in this.selections) {
             const selected = this.selections[catId];
             const pNames = Array.isArray(selected) ? selected : [selected];
 
             pNames.forEach(pName => {
-                if (pName === "DSP 선택 안함") return;
+                if (pName === "선택 안함" || pName === "DSP 선택 안함") return;
                 const price = this.getProductPrice(pName);
+                if (price === 0) return; // 0원인 항목 숨기기
+
                 productTotal += price;
-                if (catId === 'dsp') dspPrice = price;
-                if (catId === 'amp_4ch' || catId === 'amp_sub') ampPrice += price;
+                if (catId === 'dsp') {
+                    dspPrice = price;
+                    hasDSP = true;
+                }
+                if (catId === 'amp_4ch' || catId === 'amp_sub') {
+                    ampPrice += price;
+                }
+
+                if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) {
+                    hasFrontRearSpeaker = true;
+                }
 
                 productHtml += `
                     <tr>
@@ -923,10 +962,11 @@ const EstimateUI = {
             });
         }
 
-        const speakerCats = ['front_door', 'tweeter', 'add_front', 'rear_door', 'center', 'surround', 'subwoofer'];
-        const hasSpeaker = Object.keys(this.selections).some(catId => speakerCats.includes(catId));
-        let labor = (dspPrice * 0.3) + (ampPrice * 0.1);
-        if (hasSpeaker && this.selectedCar && this.selectedCar.extraLabor) labor += this.selectedCar.extraLabor;
+        const extraLaborTotal = (this.selectedCar && this.selectedCar.extraLabor) ? this.selectedCar.extraLabor : 0;
+        let labor = 0;
+        if (hasDSP) labor += (dspPrice * 0.3) + (extraLaborTotal * 0.5);
+        if (hasFrontRearSpeaker) labor += 200000 + (extraLaborTotal * 0.5);
+        labor += (ampPrice * 0.1);
         labor = Math.round(labor);
 
         const grandTotal = productTotal + labor;
