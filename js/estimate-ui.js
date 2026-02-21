@@ -436,7 +436,17 @@ const EstimateUI = {
                     if (!isHDZ) return;
                 }
 
-                this.selections[cat] = this.findBestMatch(list, level);
+                const match = this.findBestMatch(list, level);
+                // 11, 12, 13단계 (amp_4ch, amp_sub, player)는 동일 레벨일 때만 자동 선택
+                if (['amp_4ch', 'amp_sub', 'player'].includes(cat)) {
+                    if (this.getProductRank(match) === level) {
+                        this.selections[cat] = match;
+                    } else {
+                        this.selections[cat] = "선택 안함";
+                    }
+                } else {
+                    this.selections[cat] = match;
+                }
             }
         });
 
@@ -498,6 +508,7 @@ const EstimateUI = {
             "HDZ-W10": "어나더레벨",
             "R2-A60F": "하이엔드",
             "S2-A60F": "하이엔드",
+            "S2-A60M": "하이엔드",
             "HDA-F60": "어나더레벨",
             "HDS-990": "어나더레벨"
         };
@@ -545,6 +556,7 @@ const EstimateUI = {
 
             "R2-A60F": "[하이엔드] R2-A60F",
             "S2-A60F": "[하이엔드] S2-A60F",
+            "S2-A60M": "[하이엔드] S2-A60M",
             "HDA-F60": "[어나더레벨] HDA-F60",
 
             // Players
