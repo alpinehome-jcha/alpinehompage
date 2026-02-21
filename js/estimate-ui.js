@@ -205,14 +205,14 @@ const EstimateUI = {
             { id: 'tweeter', label: '4단계: 전면 트위터 챔버 선택 (견적3-1-1)' },
             { id: 'add_front', label: '4단계: 전면 스피커 추가 선택 (견적3-2)' },
             { id: 'front_baffle', label: '5단계: 전면 스피커 가이드 선택 (견적3-3)' },
-            { id: 'rear_door', label: '4단계: 후면도어 스피커 선택 (견적4-1)' },
-            { id: 'rear_baffle', label: '4-1단계: 후면 스피커 가이드 선택 (견적4-2)' },
-            { id: 'center', label: '5단계: 센터스피커 선택 (견적5)' },
-            { id: 'surround', label: '6단계: 서라운드스피커 선택 (견적6)' },
-            { id: 'subwoofer', label: '7단계: 서브우퍼 선택 (견적7)' },
-            { id: 'amp_4ch', label: '8단계: 4채널 앰프 선택 (견적8)' },
-            { id: 'amp_sub', label: '9단계: 서브우퍼 앰프 선택 (견적9)' },
-            { id: 'player', label: '10단계: 플레이어 선택 (견적10)' }
+            { id: 'rear_door', label: '6단계: 후면도어 스피커 선택 (견적4-1)' },
+            { id: 'rear_baffle', label: '7단계: 후면 스피커 가이드 선택 (견적4-2)' },
+            { id: 'center', label: '8단계: 센터스피커 선택 (견적5)' },
+            { id: 'surround', label: '9단계: 서라운드스피커 선택 (견적6)' },
+            { id: 'subwoofer', label: '10단계: 서브우퍼 선택 (견적7)' },
+            { id: 'amp_4ch', label: '11단계: 4채널 앰프 선택 (견적8)' },
+            { id: 'amp_sub', label: '12단계: 서브우퍼 앰프 선택 (견적9)' },
+            { id: 'player', label: '13단계: 플레이어 선택 (견적10)' }
         ];
 
         let html = `<h3>${this.selectedCar.model} (${this.selectedCar.code}) 제품 선택</h3>`;
@@ -238,9 +238,29 @@ const EstimateUI = {
                 const isHDZ = (selectedFront === "HDZ-65C" || selectedFront === "HDZ-653S" || selectedFront === "HDZ-653C");
                 if (!isHDZ) return;
             }
-            if (cat.id === 'add_front' || cat.id === 'front_baffle') {
-                // 4/5단계: 3단계(전면 스피커) 선택이 완료된 후에만 나타납니다.
+            if (cat.id === 'front_baffle') {
+                // 5단계: 3단계 선택 직후 나타남 (사용자 요청)
                 if (!selectedFront) return;
+            }
+            if (cat.id === 'rear_door') {
+                // 6단계: 5단계(가이드) 완료 후 나타남
+                if (!this.selections['front_baffle']) return;
+            }
+            if (cat.id === 'rear_baffle') {
+                // 7단계: 6단계(후면스피커) 완료 후 나타남
+                if (!this.selections['rear_door']) return;
+            }
+            if (cat.id === 'center') {
+                // 8단계: 7단계 완료 후 (데이터 있을때만)
+                if (!this.selections['rear_door']) return; // 후면 선택 이후 흐름 유지
+            }
+            if (cat.id === 'surround') {
+                // 9단계: 8/7단계 이후
+                if (!this.selections['rear_door']) return;
+            }
+            if (cat.id === 'subwoofer') {
+                // 10단계: 9단계 이후
+                if (!this.selections['rear_door']) return;
             }
 
             if (list.length > 0) {
@@ -376,6 +396,7 @@ const EstimateUI = {
     },
 
     getSingleProductPrice(name) {
+        if (name === "커스텀 배플") return 50000;
         if (!window.initialPriceData) return 0;
         const items = initialPriceData.filter(i => i.product === name && i.category === 'master');
         if (items.length > 0) return items[0].msrp;
