@@ -12,10 +12,14 @@ const EstimateUI = {
     },
 
     renderFloatingButton() {
+        // 경로 보정: 현재 페이지 위치에 따라 assets 경로 조정
+        const isSubPage = window.location.pathname.includes('/pages/') || window.location.pathname.includes('/support/');
+        const root = isSubPage ? '../' : './';
+
         const btn = document.createElement('div');
         btn.className = 'estimate-float-btn';
         btn.innerHTML = `
-            <img src="assets/images/amark.png" alt="Alpine">
+            <img src="${root}assets/images/amark.png" alt="Alpine">
             <span>나의<br>견적</span>
         `;
         btn.onclick = () => this.openModal();
@@ -27,6 +31,20 @@ const EstimateUI = {
         modal.id = 'estimateModal';
         modal.className = 'estimate-modal';
         modal.innerHTML = `
+            <style>
+                #estimateModal .estimate-modal-content {
+                    max-height: 90vh;
+                    overflow-y: auto;
+                }
+                #estimatePrintModal .estimate-modal-content {
+                    max-height: 95vh;
+                    overflow-y: auto;
+                }
+                @media print {
+                    .no-print { display: none !important; }
+                    .printable-area { padding: 0 !important; }
+                }
+            </style>
             <div class="estimate-modal-content">
                 <div class="estimate-header">
                     <h2>My 알파인 가상 견적</h2>
@@ -59,7 +77,7 @@ const EstimateUI = {
                 </div>
                 <div class="estimate-footer">
                     <div>
-                        <span>총 합계 (부가세 별도): </span>
+                        <span>총 합계: </span>
                         <span class="total-price" id="estTotalPrice">₩0</span>
                     </div>
                     <button class="sub-filter-btn" style="background:#333; color:#fff; margin-right:10px;" onclick="EstimateUI.resetSelections()">초기화</button>
@@ -69,15 +87,15 @@ const EstimateUI = {
             
             <!-- 견적서 출력용 모달 -->
             <div id="estimatePrintModal" class="estimate-modal" style="z-index: 10001; background: rgba(0,0,0,0.8);">
-                <div class="estimate-modal-content" style="max-width: 800px; width: 95%;">
-                    <div class="estimate-header no-print">
-                        <h2>알파인 가상 견적서</h2>
-                        <div style="display:flex; gap:10px;">
-                            <button class="sub-filter-btn active" onclick="window.print()" style="padding: 5px 15px;">이미지로 저장</button>
+                <div class="estimate-modal-content" style="max-width: 800px; width: 95%; background:#fff; border-radius:8px;">
+                    <div class="estimate-header no-print" style="padding: 20px; border-bottom: 1px solid #eee;">
+                        <h2 style="margin:0;">알파인 사운드 견적서 미리보기</h2>
+                        <div style="display:flex; gap:10px; align-items:center;">
+                            <button class="sub-filter-btn active" onclick="EstimateUI.downloadAsImage()" style="padding: 8px 20px; font-weight:bold;">이미지로 다운로드</button>
                             <span class="close-btn" onclick="EstimateUI.closePrintModal()">&times;</span>
                         </div>
                     </div>
-                    <div id="printableArea" class="printable-area" style="background: #fff; color: #000; padding: 40px; min-height: 800px;">
+                    <div id="printableArea" class="printable-area" style="background: #fff; color: #000; padding: 40px;">
                         <!-- 견적서 내용이 여기에 동적으로 렌더링됨 -->
                     </div>
                 </div>
@@ -86,6 +104,39 @@ const EstimateUI = {
         document.body.appendChild(modal);
         this.populateBrands();
     },
+
+    async downloadAsImage() {
+        const area = document.getElementById('printableArea');
+        if (!area) return;
+
+        const btn = document.querySelector('button[onclick="EstimateUI.downloadAsImage()"]');
+        const originalText = btn.innerText;
+        btn.innerText = "저장 중...";
+        btn.disabled = true;
+
+        try {
+            // html2canvas 옵션 설정: 스케일을 높여서 선명하게 저장
+            const canvas = await html2canvas(area, {
+                scale: 2,
+                useCORS: true,
+                logging: false,
+                backgroundColor: "#ffffff"
+            });
+
+            const link = document.createElement('a');
+            const carName = this.selectedCar ? `${this.selectedCar.brand}_${this.selectedCar.model}` : "알파인_견적서";
+            link.download = `Alpine_Estimate_${carName}_${new Date().getTime()}.png`;
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+        } catch (err) {
+            console.error("이미지 저장 실패:", err);
+            alert("이미지 저장 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+        } finally {
+            btn.innerText = originalText;
+            btn.disabled = false;
+        }
+    },
+
 
     populateBrands() {
         const brandSelect = document.getElementById('estBrand');
@@ -606,8 +657,6 @@ const EstimateUI = {
         labor = Math.round(labor);
 
         const grandTotal = productTotal + labor;
-        const vat = Math.round(grandTotal * 0.1);
-        const finalTotal = grandTotal + vat;
         const date = new Date().toLocaleDateString();
 
         printArea.innerHTML = `
@@ -643,17 +692,9 @@ const EstimateUI = {
                     </tr>
                 </tbody>
                 <tfoot>
-                    <tr style="background: #fdfdfd;">
-                        <td colspan="3" style="border: 1px solid #ddd; padding: 12px; text-align: right; font-weight: bold;">소계 (Net)</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right; font-weight: bold;">₩${grandTotal.toLocaleString()}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" style="border: 1px solid #ddd; padding: 12px; text-align: right;">부가가치세 (VAT 10%)</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${vat.toLocaleString()}</td>
-                    </tr>
                     <tr style="background: #333; color: #fff;">
                         <td colspan="3" style="border: 1px solid #ddd; padding: 12px; text-align: right; font-weight: bold; font-size: 1.1rem;">합계 금액 (Total)</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right; font-weight: bold; font-size: 1.1rem;">₩${finalTotal.toLocaleString()}</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right; font-weight: bold; font-size: 1.1rem;">₩${grandTotal.toLocaleString()}</td>
                     </tr>
                 </tfoot>
             </table>
