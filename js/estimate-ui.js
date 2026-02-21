@@ -5,10 +5,46 @@ const EstimateUI = {
     selectedCar: null,
     selections: {},
 
-    init() {
+    async init() {
+        await this.loadDataScripts();
         this.renderFloatingButton();
         this.renderModal();
         this.bindEvents();
+    },
+
+    async loadDataScripts() {
+        // 경로 보정: 현재 페이지 위치에 따라 js 경로 조정
+        const isSubPage = window.location.pathname.includes('/pages/') || window.location.pathname.includes('/support/');
+        const root = isSubPage ? '../js/' : 'js/';
+
+        // 10분 단위 캐시 버스팅 (데이터 업데이트 반영과 부하 사이의 절충)
+        const t = Math.floor(Date.now() / (1000 * 60 * 10));
+
+        const scripts = [
+            `${root}estimate-data.js?t=${t}`,
+            `${root}pnp-search-data.js?t=${t}`
+        ];
+
+        const loadScript = (src) => {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.onload = () => resolve();
+                script.onerror = () => reject(new Error(`Script load error: ${src}`));
+                document.head.appendChild(script);
+            });
+        };
+
+        try {
+            await Promise.all(scripts.map(loadScript));
+            console.log("Alpine Estimate Data Loaded (Cache-Busted)");
+        } catch (err) {
+            console.error("Failed to load Alpine Estimate data updates:", err);
+            // Fallback: If data variables are missing, show error
+            if (typeof estimateData === 'undefined') {
+                console.warn("Using fallback static script loading might be required.");
+            }
+        }
     },
 
     renderFloatingButton() {
