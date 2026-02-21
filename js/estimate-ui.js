@@ -230,15 +230,11 @@ const EstimateUI = {
                 if (!selectedDsp || selectedDsp === "DSP 선택 안함") return;
             }
             if (cat.id === 'front_door') {
-                // 견적 1(DSP)이 선택되었다면(어떤 것이든) 3-1단계를 보여줍니다.
+                // 1단계(DSP)에서 어떤 항목이든(선택 안함 포함) 선택되었다면 3-1단계를 보여줍니다.
                 if (!selectedDsp) return;
             }
-            if (cat.id === 'tweeter') {
-                // Step 3-1-1 ONLY shows if HDZ-65C or HDZ-653C is selected in 3-1
-                if (selectedFront !== "HDZ-65C" && selectedFront !== "HDZ-653C" && selectedFront !== "HDZ-653S") return;
-            }
-            if (cat.id === 'add_front') {
-                // Shows if Step 3-1 (front_door) is completed
+            if (cat.id === 'tweeter' || cat.id === 'add_front' || cat.id === 'front_baffle') {
+                // 3-1단계(전면 스피커)가 선택된 후에만 나타납니다.
                 if (!selectedFront) return;
             }
 
