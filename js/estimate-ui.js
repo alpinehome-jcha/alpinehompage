@@ -780,9 +780,15 @@ const EstimateUI = {
                         ampPrice += price;
                     }
 
-                    // 전면/후면 스피커 체크
+                    // 전면/후면 스피커 체크 (특정 모델은 장착비 제외)
+                    const excludedSpeakers = [
+                        "EV-65CF", "EV-40M-T", "EV-40MR-T", "EV-100SW 3", "EV-100SW Y",
+                        "DP2-45C-B", "DP2-45-B", "DP2-40C-B", "DP2-15TW-B", "DP2-80WF-B"
+                    ];
                     if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) {
-                        hasFrontRearSpeaker = true;
+                        if (!excludedSpeakers.includes(pName)) {
+                            hasFrontRearSpeaker = true;
+                        }
                     }
 
                     summaryHtml += `<div class="estimate-summary-item">
