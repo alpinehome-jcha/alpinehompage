@@ -230,17 +230,8 @@ const EstimateUI = {
                 if (!selectedDsp || selectedDsp === "DSP 선택 안함") return;
             }
             if (cat.id === 'front_door') {
-                // Shows if (DSP is "선택 안함") OR (Step 2 is completed)
-                // Step 2 is considered completed if: 
-                // 1. DSP is "선택 안함"
-                // 2. There are no PnPs available for this car (length 0)
-                // 3. PnP is auto-selected based on DSP
-                const isDspNone = (selectedDsp === "DSP 선택 안함");
-                const pnpList = this.selectedCar.pnp || [];
-                const isPnpStepDone = (pnpList.length === 0 || (selectedPnP && selectedPnP.length > 0));
-
-                if (!isDspNone && !isPnpStepDone) return;
-                if (!selectedDsp) return; // Must select something in Step 1 first
+                // 견적 1(DSP)이 선택되었다면(어떤 것이든) 3-1단계를 보여줍니다.
+                if (!selectedDsp) return;
             }
             if (cat.id === 'tweeter') {
                 // Step 3-1-1 ONLY shows if HDZ-65C or HDZ-653C is selected in 3-1
@@ -261,7 +252,8 @@ const EstimateUI = {
                             ${list.map(pName => {
                         const price = this.getProductPrice(pName);
                         const displayName = this.getProductWithRank(pName);
-                        const isSelected = (cat.id === 'dsp' && !selectedDsp && pName === "DSP 선택 안함") ? true : (this.selections[cat.id] === pName || (Array.isArray(this.selections[cat.id]) && this.selections[cat.id].includes(pName)));
+                        // 수정: 초기 상태에서 '선택 안함'이 기본 selected 되지 않도록 함. 사용자가 직접 클릭해야 함.
+                        const isSelected = (this.selections[cat.id] === pName || (Array.isArray(this.selections[cat.id]) && this.selections[cat.id].includes(pName)));
                         return `
                                     <div class="product-item ${isSelected ? 'selected' : ''}" onclick="EstimateUI.selectProduct('${cat.id}', '${pName}')">
                                         <span>${displayName}</span>
