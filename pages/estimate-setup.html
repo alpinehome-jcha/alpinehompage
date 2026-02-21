@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알파인(ALPINE Korea) - 견적 데이터 관리</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+
+    <link rel="icon" type="image/png" href="../assets/images/amark.png">
+    <link rel="shortcut icon" type="image/png" href="../assets/images/amark.png">
+    <style>
+        .admin-header {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .control-panel {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+        }
+
+        .data-table-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+
+        th {
+            background: #f4f4f4;
+            position: sticky;
+            top: 0;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            margin-right: 10px;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        .btn-excel {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-upload {
+            background: #2980b9;
+            color: white;
+        }
+
+        .btn-github {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-restore {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            background: #eee;
+        }
+
+        .sync-pending {
+            background: #ffeaa7;
+            color: #d35400;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/images/alpine_logo.png" alt="ALPINE Korea">
+            </a>
+            <nav id="topNav"></nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 100px; max-width: 1200px;">
+        <h2 class="section-title">Estimate Data Management</h2>
+        <p class="section-desc">가상 견적 시스템의 차량 및 구성 데이터를 엑셀로 일괄 관리합니다.</p>
+
+        <div id="adminContent">
+            <div class="control-panel">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                    <div>
+                        <button class="btn btn-excel" onclick="downloadExcel()">📊 엑셀 다운로드</button>
+                        <input type="file" id="excelInput" style="display: none;" accept=".xlsx, .xls">
+                        <button class="btn btn-upload" onclick="document.getElementById('excelInput').click()">📥 엑셀
+                            업로드</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-github" onclick="syncToGitHub()">🚀 서버(GitHub)에 저장</button>
+                        <button class="btn btn-restore" onclick="resetToInitial()">♻️ 초기화</button>
+                    </div>
+                </div>
+                <div id="syncStatus" style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+                    데이터 상태: <span id="statusText">확인 중...</span>
+                </div>
+            </div>
+
+            <div class="data-table-container">
+                <div style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                    <h3 style="margin: 0;">현재 등록된 차량 데이터 (<span id="rowCount">0</span>건)</h3>
+                    <input type="text" id="searchInput" placeholder="검색 (브랜드, 모델...)"
+                        style="padding: 5px 10px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                <table id="estimateTable">
+                    <thead>
+                        <tr>
+                            <th>브랜드</th>
+                            <th>모델</th>
+                            <th>연식</th>
+                            <th>시스템</th>
+                            <th>PnP</th>
+                            <th>DSP</th>
+                            <th>프론트 도어</th>
+                            <th>서브우퍼</th>
+                            <th>작업비</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- 데이터가 여기에 동적으로 렌더링됨 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="accessDenied" style="display:none; text-align:center; color:red; margin-top: 50px;">
+            <h3>Restricted Access</h3>
+            <p>관리자만 접근 가능한 페이지입니다.</p>
+        </div>
+    </main>
+
+    <footer id="footer-container"></footer>
+
+    <!-- Scripts -->
+    <script src="../js/auth.js"></script>
+    <script src="../js/layout.js"></script>
+    <script src="../js/pnp-search-data.js"></script>
+    <script src="../js/estimate-data.js"></script>
+    <script src="../js/github-client.js"></script>
+    <script src="../js/admin-data-manager.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Auth Check
+            if (auth.getRole() !== 'admin') {
+                document.getElementById('adminContent').style.display = 'none';
+                document.getElementById('accessDenied').style.display = 'block';
+                return;
+            }
+
+            // Render Layouts
+            const nav = document.getElementById('topNav');
+            // auth.updateUI will fix the menu, but we need a container or just let it run
+            Layout.renderFooter('footer-container', '../');
+
+            // Initialization
+            renderTable();
+            updateStatus();
+
+            // Search Filter
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                const filtered = estimateData.filter(d =>
+                    d.brand.toLowerCase().includes(term) ||
+                    d.model.toLowerCase().includes(term) ||
+                    d.system.toLowerCase().includes(term)
+                );
+                renderTable(filtered);
+            });
+
+            // File Link
+            document.getElementById('excelInput').addEventListener('change', handleExcelUpload);
+        });
+
+        function renderTable(data = estimateData) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            document.getElementById('rowCount').textContent = data.length;
+
+            data.slice(0, 100).forEach(d => { // 성능을 위해 상위 100개만 미리보기
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${d.brand}</td>
+                    <td>${d.model}</td>
+                    <td>${d.year || '-'}</td>
+                    <td><small>${d.system}</small></td>
+                    <td><small>${(d.pnp || []).join(', ')}</small></td>
+                    <td><small>${(d.dsp || []).join(', ')}</small></td>
+                    <td><small>${(d.front_door || []).join(', ')}</small></td>
+                    <td><small>${(d.subwoofer || []).join(', ')}</small></td>
+                    <td>${(d.extraLabor || 0).toLocaleString()}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            if (data.length > 100) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td colspan="9" style="text-align:center; color:#999;">... 그 외 ${data.length - 100}건이 더 있습니다. 상세 확인은 엑셀을 다운로드해 주세요.</td>`;
+                tbody.appendChild(tr);
+            }
+        }
+
+        function updateStatus() {
+            const isPending = localStorage.getItem('estimate_sync_pending') === 'true';
+            const statusBox = document.getElementById('statusText');
+            if (isPending) {
+                statusBox.innerHTML = '<span class="status-badge sync-pending">⚠️ 변경됨 (저장 필요)</span>';
+            } else {
+                statusBox.innerHTML = '<span class="status-badge">✅ 최신 상태</span>';
+            }
+        }
+
+        function downloadExcel() {
+            // Flatten arrays for Excel
+            const exportData = estimateData.map(d => {
+                const flat = { ...d };
+                Object.keys(flat).forEach(key => {
+                    if (Array.isArray(flat[key])) {
+                        flat[key] = flat[key].join(', ');
+                    }
+                });
+                return flat;
+            });
+
+            const ws = XLSX.utils.json_to_sheet(exportData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "EstimateData");
+
+            const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+            XLSX.writeFile(wb, `Alpine_Estimate_Data_${dateStr}.xlsx`);
+        }
+
+        function handleExcelUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (evt) {
+                try {
+                    const data = new Uint8Array(evt.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const json = XLSX.utils.sheet_to_json(sheet);
+
+                    if (json.length === 0) { alert('데이터가 비어있습니다.'); return; }
+
+                    if (!confirm(`총 ${json.length}개의 차량 데이터를 불러왔습니다. 기존 데이터를 덮어쓰시겠습니까?`)) {
+                        return;
+                    }
+
+                    // Restore array fields
+                    const arrayFields = ['dsp', 'pnp', 'front_door', 'tweeter', 'front_baffle', 'add_front', 'rear_door', 'rear_baffle', 'center', 'surround', 'subwoofer', 'amp_4ch', 'amp_sub', 'player'];
+
+                    const processed = json.map(row => {
+                        const newRow = { ...row };
+                        arrayFields.forEach(field => {
+                            if (newRow[field] && typeof newRow[field] === 'string') {
+                                newRow[field] = newRow[field].split(',').map(s => s.trim()).filter(s => s !== '');
+                            } else if (!newRow[field]) {
+                                newRow[field] = [];
+                            }
+                        });
+                        if (newRow.extraLabor) newRow.extraLabor = parseInt(newRow.extraLabor) || 0;
+                        return newRow;
+                    });
+
+                    estimateData = processed;
+                    localStorage.setItem('estimateData', JSON.stringify(estimateData));
+                    localStorage.setItem('estimate_sync_pending', 'true');
+
+                    renderTable();
+                    updateStatus();
+                    alert('성공적으로 로드되었습니다. "서버에 저장" 버튼을 눌러 최종 반영해 주세요.');
+
+                } catch (err) {
+                    console.error(err);
+                    alert('엑셀 파싱 중 오류가 발생했습니다: ' + err.message);
+                } finally {
+                    e.target.value = '';
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        async function syncToGitHub() {
+            if (!confirm('현재 데이터를 GitHub 서버에 저장하시겠습니까?\n이 작업은 웹사이트 전체에 반영됩니다.')) return;
+
+            try {
+                // admin-data-manager.js의 기능을 활용
+                await saveToGitHub('estimate');
+                localStorage.removeItem('estimate_sync_pending');
+                updateStatus();
+                alert('서버 저장이 완료되었습니다. 반영까지 1~2분 정도 소요됩니다.');
+            } catch (err) {
+                alert('저장 실패: ' + err.message);
+            }
+        }
+
+        function resetToInitial() {
+            if (!confirm('로컬에 저장된 모든 변경사항을 지우고 서버의 초기 데이터로 복구하시겠습니까?')) return;
+            localStorage.removeItem('estimateData');
+            localStorage.removeItem('estimateDataVersion');
+            localStorage.removeItem('estimate_sync_pending');
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>
