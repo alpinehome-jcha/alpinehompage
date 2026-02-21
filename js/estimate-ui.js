@@ -202,9 +202,9 @@ const EstimateUI = {
             { id: 'dsp', label: '1단계: DSP 선택 (견적1)' },
             { id: 'pnp', label: '2단계: PnP Cable 선택 (견적2)' },
             { id: 'front_door', label: '3단계: 전면도어 스피커 선택 (견적3-1)' },
-            { id: 'tweeter', label: '3-1-1단계: 전면 트위터 챔버 선택 (견적3-1-1)' },
-            { id: 'add_front', label: '3-2단계: 전면 스피커 추가 선택 (견적3-2)' },
-            { id: 'front_baffle', label: '3-3단계: 전면 스피커 가이드 선택 (견적3-3)' },
+            { id: 'tweeter', label: '4단계: 전면 트위터 챔버 선택 (견적3-1-1)' },
+            { id: 'add_front', label: '4단계: 전면 스피커 추가 선택 (견적3-2)' },
+            { id: 'front_baffle', label: '5단계: 전면 스피커 가이드 선택 (견적3-3)' },
             { id: 'rear_door', label: '4단계: 후면도어 스피커 선택 (견적4-1)' },
             { id: 'rear_baffle', label: '4-1단계: 후면 스피커 가이드 선택 (견적4-2)' },
             { id: 'center', label: '5단계: 센터스피커 선택 (견적5)' },
@@ -230,11 +230,16 @@ const EstimateUI = {
                 if (!selectedDsp || selectedDsp === "DSP 선택 안함") return;
             }
             if (cat.id === 'front_door') {
-                // 1단계(DSP)에서 어떤 항목이든(선택 안함 포함) 선택되었다면 3-1단계를 보여줍니다.
+                // 1단계(DSP)에서 어떤 항목이든(선택 안함 포함) 선택되었다면 3단계(3-1)를 보여줍니다.
                 if (!selectedDsp) return;
             }
-            if (cat.id === 'tweeter' || cat.id === 'add_front' || cat.id === 'front_baffle') {
-                // 3-1단계(전면 스피커)가 선택된 후에만 나타납니다.
+            if (cat.id === 'tweeter') {
+                // 4단계(3-1-1): HDZ-65C 또는 HDZ-653S/C 선택 시에만 나타납니다.
+                const isHDZ = (selectedFront === "HDZ-65C" || selectedFront === "HDZ-653S" || selectedFront === "HDZ-653C");
+                if (!isHDZ) return;
+            }
+            if (cat.id === 'add_front' || cat.id === 'front_baffle') {
+                // 4/5단계: 3단계(전면 스피커) 선택이 완료된 후에만 나타납니다.
                 if (!selectedFront) return;
             }
 
