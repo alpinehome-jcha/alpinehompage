@@ -1029,16 +1029,37 @@
             }
             estimateControls.style.display = 'block';
             estimateControls.innerHTML = `
-                <div class="form-group" style="padding: 20px; border: 1px solid #ddd; background: #f9f9f9; border-radius: 8px; display:block;">
-                    <h3 style="margin-top:0;">현재 로드된 견적 데이터: ${data.length}건</h3>
-                    <p style="color: #666; font-size:0.9rem;">로컬에서 수정한 데이터가 있다면 아래 버튼을 눌러 서버(GitHub)에 영구 저장할 수 있습니다.</p>
-                    <button class="btn btn-success" style="width:100%; padding:15px; font-size:1.1rem;" onclick="saveToGitHub('estimate')">모든 견적 데이터를 서버에 저장 (Commit to GitHub)</button>
-                    <p style="margin-top: 15px; font-size: 0.8rem; color: #888; line-height:1.4;">
-                        * 저장 시 GitHub 저장소로 파일이 전송되며 자동 배포가 시작됩니다.<br>
-                        * 배포 완료 후에는 다른 컴퓨터에서도 수정된 내용을 즉시 확인할 수 있습니다.
-                    </p>
+                <div class="form-group" style="padding: 20px; border: 1px solid #ddd; background: #fff; border-radius: 8px; display:block; border-left: 5px solid #2ecc71;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                        <h3 style="margin:0;">서버 동기화 상태: <span id="syncStatus" style="color:#2ecc71;">체크 중...</span></h3>
+                        <div class="auto-save-badge" style="background:#2ecc71; color:#fff; padding:2px 8px; border-radius:10px; font-size:0.7rem;">Auto-Save Active</div>
+                    </div>
+                    <p style="color: #666; font-size:0.9rem;">현재 로드된 견적 데이터: <strong>${data.length}건</strong></p>
+                    <button id="btnManualSync" class="btn btn-outline-success" style="width:100%; padding:10px;" onclick="saveToGitHub('estimate')">수동으로 서버에 저장 (Force Sync)</button>
                 </div>
             `;
+
+            // Auto-Sync Logic: If local version exists and we just performed an update
+            const storedVer = localStorage.getItem('estimateDataVersion');
+            const serverVer = (typeof ESTIMATE_DATA_VERSION !== 'undefined') ? ESTIMATE_DATA_VERSION : 0;
+
+            if (storedVer && parseInt(storedVer) > serverVer) {
+                document.getElementById('syncStatus').innerText = '업데이트 발견 (자동 저장 중...)';
+                document.getElementById('syncStatus').style.color = '#e67e22';
+
+                // Trigger Silent Auto Save
+                setTimeout(() => {
+                    saveToGitHub('estimate', true).then(() => {
+                        document.getElementById('syncStatus').innerText = '최신 상태 (서버 동기화 완료)';
+                        document.getElementById('syncStatus').style.color = '#2ecc71';
+                    }).catch(err => {
+                        document.getElementById('syncStatus').innerText = '자동 저장 실패';
+                        document.getElementById('syncStatus').style.color = '#e74c3c';
+                    });
+                }, 1000);
+            } else {
+                document.getElementById('syncStatus').innerText = '최신 상태 (서버와 일치)';
+            }
         }
 
         function selectItem(id) {
@@ -1704,6 +1725,17 @@
                 setMode('popup');
             } else {
                 setMode('product');
+            }
+
+            // [Auto-Sync] Check if estimate data needs priority sync to server
+            if (localStorage.getItem('estimate_sync_pending') === 'true') {
+                console.log('Detected pending estimate sync. Starting auto-commit...');
+                saveToGitHub('estimate', true).then(() => {
+                    localStorage.removeItem('estimate_sync_pending');
+                    console.log('Auto-sync completed successfully.');
+                }).catch(err => {
+                    console.error('Auto-sync failed:', err);
+                });
             }
         }
 

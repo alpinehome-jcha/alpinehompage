@@ -91,6 +91,7 @@ if (typeof localStorage !== 'undefined') {
         estimateData = JSON.parse(JSON.stringify(initialEstimateData));
         localStorage.setItem('estimateData', JSON.stringify(estimateData));
         localStorage.setItem('estimateDataVersion', ESTIMATE_DATA_VERSION.toString());
+        localStorage.setItem('estimate_sync_pending', 'true');
     } else if (stored) {
         estimateData = JSON.parse(stored);
         if (estimateData.length === 0 && initialEstimateData.length > 0) {

@@ -62,7 +62,24 @@ const EstimateUI = {
                         <span>총 합계 (부가세 별도): </span>
                         <span class="total-price" id="estTotalPrice">₩0</span>
                     </div>
-                    <button class="sub-filter-btn active" onclick="EstimateUI.saveEstimate()">견적 저장하기</button>
+                    <button class="sub-filter-btn" style="background:#333; margin-right:10px;" onclick="EstimateUI.resetSelections()">초기화</button>
+                    <button class="sub-filter-btn active" onclick="EstimateUI.showEstimateSheet()">견적서 보기</button>
+                </div>
+            </div>
+            
+            <!-- 견적서 출력용 모달 -->
+            <div id="estimatePrintModal" class="estimate-modal" style="z-index: 10001; background: rgba(0,0,0,0.8);">
+                <div class="estimate-modal-content" style="max-width: 800px; width: 95%;">
+                    <div class="estimate-header no-print">
+                        <h2>알파인 가상 견적서</h2>
+                        <div style="display:flex; gap:10px;">
+                            <button class="sub-filter-btn active" onclick="window.print()" style="padding: 5px 15px;">출력 / PDF 저장</button>
+                            <span class="close-btn" onclick="EstimateUI.closePrintModal()">&times;</span>
+                        </div>
+                    </div>
+                    <div id="printableArea" class="printable-area" style="background: #fff; color: #000; padding: 40px; min-height: 800px;">
+                        <!-- 견적서 내용이 여기에 동적으로 렌더링됨 -->
+                    </div>
                 </div>
             </div>
         `;
@@ -264,8 +281,117 @@ const EstimateUI = {
         document.getElementById('estimateModal').style.display = 'none';
     },
 
-    saveEstimate() {
-        alert('준비 중인 기능입니다. (Coming Soon)');
+    closePrintModal() {
+        document.getElementById('estimatePrintModal').style.display = 'none';
+    },
+
+    resetSelections() {
+        if (confirm('모든 선택 내역을 초기화하시겠습니까?')) {
+            this.selections = {};
+            this.updateSelectionArea();
+        }
+    },
+
+    showEstimateSheet() {
+        if (!this.selectedCar || Object.keys(this.selections).length === 0) {
+            alert('먼저 차량을 선택하고 제품을 하나 이상 선택해 주세요.');
+            return;
+        }
+
+        const printModal = document.getElementById('estimatePrintModal');
+        const printArea = document.getElementById('printableArea');
+        printModal.style.display = 'block';
+
+        let productHtml = '';
+        let productTotal = 0;
+        let dspPrice = 0;
+        let ampPrice = 0;
+
+        for (const catId in this.selections) {
+            const pName = this.selections[catId];
+            const price = this.getProductPrice(pName);
+            productTotal += price;
+            if (catId === 'dsp') dspPrice = price;
+            if (catId === 'amp_4ch' || catId === 'amp_sub') ampPrice += price;
+
+            productHtml += `
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 12px;">${pName}</td>
+                    <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">1</td>
+                    <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${price.toLocaleString()}</td>
+                    <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${price.toLocaleString()}</td>
+                </tr>
+            `;
+        }
+
+        let labor = (dspPrice * 0.3) + (ampPrice * 0.1);
+        if (this.selectedCar && this.selectedCar.extraLabor) labor += this.selectedCar.extraLabor;
+        labor = Math.round(labor);
+
+        const grandTotal = productTotal + labor;
+        const vat = Math.round(grandTotal * 0.1);
+        const finalTotal = grandTotal + vat;
+
+        const date = new Date().toLocaleDateString();
+
+        printArea.innerHTML = `
+            <div style="text-align: center; margin-bottom: 40px;">
+                <img src="assets/images/amark.png" style="height: 40px; margin-bottom: 10px;">
+                <h1 style="font-size: 28px; margin: 0; letter-spacing: 5px;">견 적 서</h1>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+                <div style="width: 45%;">
+                    <p style="margin: 5px 0;"><strong>차량정보:</strong> ${this.selectedCar.brand} ${this.selectedCar.model} (${this.selectedCar.code})</p>
+                    <p style="margin: 5px 0;"><strong>시스템명:</strong> ${this.selectedCar.system}</p>
+                    <p style="margin: 5px 0;"><strong>견적일자:</strong> ${date}</p>
+                </div>
+                <div style="width: 45%; text-align: right;">
+                    <p style="margin: 5px 0; font-size: 1.2rem;"><strong>수신:</strong> 고객님 귀하</p>
+                </div>
+            </div>
+
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+                <thead>
+                    <tr style="background: #f8f8f8;">
+                        <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">품명 및 규격</th>
+                        <th style="border: 1px solid #ddd; padding: 12px; text-align: right; width: 60px;">수량</th>
+                        <th style="border: 1px solid #ddd; padding: 12px; text-align: right; width: 120px;">단가</th>
+                        <th style="border: 1px solid #ddd; padding: 12px; text-align: right; width: 120px;">금액</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${productHtml}
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 12px;">제품 인스톨 기술료</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">1</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${labor.toLocaleString()}</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${labor.toLocaleString()}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr style="background: #fdfdfd;">
+                        <td colspan="3" style="border: 1px solid #ddd; padding: 12px; text-align: right; font-weight: bold;">소계 (Net)</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right; font-weight: bold;">₩${grandTotal.toLocaleString()}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="border: 1px solid #ddd; padding: 12px; text-align: right;">부가가치세 (VAT 10%)</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${vat.toLocaleString()}</td>
+                    </tr>
+                    <tr style="background: #333; color: #fff;">
+                        <td colspan="3" style="border: 1px solid #ddd; padding: 12px; text-align: right; font-weight: bold; font-size: 1.1rem;">합계 금액 (Total)</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right; font-weight: bold; font-size: 1.1rem;">₩${finalTotal.toLocaleString()}</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div style="margin-top: 50px; border: 1px solid #eee; padding: 20px; font-size: 0.9rem; line-height: 1.6; color: #555;">
+                <p style="margin: 0; font-weight: bold; color: #333; margin-bottom: 5px;">[ 안내사항 ]</p>
+                <p style="margin: 0;">1. 본 견적서는 알파인 카오디오 가상 견적 시뮬레이션 결과로 실제 작업 환경에 따라 차이가 있을 수 있습니다.</p>
+                <p style="margin: 0;">2. 정확한 상담은 가까운 알파인 대리점(Partner Zone)을 방문하여 주시기 바랍니다.</p>
+                <p style="margin: 0;">3. 기술료는 기본 장착 표준 공임이며, 차량 상태 및 추가 커스텀 작업 시 변동될 수 있습니다.</p>
+            </div>
+        `;
     }
 };
 
