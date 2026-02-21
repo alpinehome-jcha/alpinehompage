@@ -42,6 +42,11 @@ function downloadData(type) {
             fileName = 'support-product-data.js';
             dataObj = (typeof supportProductData !== 'undefined') ? supportProductData : null;
             break;
+        case 'estimate':
+            dataName = 'estimateData';
+            fileName = 'estimate-data.js';
+            dataObj = (typeof estimateData !== 'undefined') ? estimateData : null;
+            break;
     }
 
     // Try to get from LocalStorage first (most up to date)
@@ -187,6 +192,11 @@ async function saveToGitHub(type, silent = false) {
             fileName = 'js/support-product-data.js';
             dataObj = (typeof supportProductData !== 'undefined') ? supportProductData : null;
             break;
+        case 'estimate':
+            dataName = 'estimateData';
+            fileName = 'js/estimate-data.js';
+            dataObj = (typeof estimateData !== 'undefined') ? estimateData : null;
+            break;
     }
 
     // Try to get from LocalStorage first (most up to date)
@@ -210,7 +220,8 @@ async function saveToGitHub(type, silent = false) {
                     (type === 'resource') ? 'initialResourceData' :
                         (type === 'install') ? 'initialInstallData' :
                             (type === 'support_product') ? 'initialSupportProductData' :
-                                'initial' + type.charAt(0).toUpperCase() + type.slice(1) + 'Data';
+                                (type === 'estimate') ? 'initialEstimateData' :
+                                    'initial' + type.charAt(0).toUpperCase() + type.slice(1) + 'Data';
 
     const versionVarName = (type === 'dealer') ? 'DEALER_DATA_VERSION' :
         (type === 'product') ? 'PRODUCT_DATA_VERSION' :
@@ -219,7 +230,8 @@ async function saveToGitHub(type, silent = false) {
                     (type === 'resource') ? 'RESOURCE_DATA_VERSION' :
                         (type === 'install') ? 'INSTALL_DATA_VERSION' :
                             (type === 'support_product') ? 'SUPPORT_PRODUCT_DATA_VERSION' :
-                                'DATA_VERSION';
+                                (type === 'estimate') ? 'ESTIMATE_DATA_VERSION' :
+                                    'DATA_VERSION';
 
     let fileContent = `const ${varName} = ${jsonStr};\n`;
     fileContent += `const ${versionVarName} = ${version};\n\n`;

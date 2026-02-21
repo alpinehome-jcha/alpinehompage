@@ -373,6 +373,8 @@
                         style="flex:1; background:transparent; color:#aaa; border:none;">Dealers</button>
                     <button class="btn btn-sm" id="btnModePopup" onclick="setMode('popup')"
                         style="flex:1; background:transparent; color:#aaa; border:none;">Popup</button>
+                    <button class="btn btn-sm" id="btnModeEstimate" onclick="setMode('estimate')"
+                        style="flex:1; background:transparent; color:#aaa; border:none;">Estimate</button>
                 </div>
 
             </div>
@@ -926,6 +928,10 @@
             if (popupControls) {
                 popupControls.style.display = 'none';
             }
+            const estimateControls = document.getElementById('estimateControls');
+            if (estimateControls) {
+                estimateControls.style.display = 'none';
+            }
 
             // Show all standard form groups and buttons initially, then hide/show as needed
             const form = document.getElementById('editorForm');
@@ -979,10 +985,60 @@
                 document.getElementById('dealerFields').style.display = 'none';
 
                 renderPopupManager();
+            } else if (newMode === 'estimate') {
+                const btnModeEstimate = document.getElementById('btnModeEstimate');
+                if (btnModeEstimate) {
+                    btnModeEstimate.style.background = '#007bff';
+                    btnModeEstimate.style.color = 'white';
+                }
+                listTitle.textContent = 'Estimate Management';
+                document.getElementById('lbl_title').innerText = '';
+
+                document.getElementById('productFields').style.display = 'none';
                 document.getElementById('dealerFields').style.display = 'none';
 
-                renderPopupManager();
+                renderEstimateManager();
             }
+        }
+
+        function renderEstimateManager() {
+            const list = document.getElementById('itemList');
+            list.innerHTML = '';
+
+            const data = (typeof estimateData !== 'undefined') ? estimateData : [];
+
+            data.forEach((item, idx) => {
+                const li = document.createElement('li');
+                li.className = 'product-item';
+                li.innerHTML = `<h4>${item.brand} ${item.model}</h4><p>${item.code} (${item.system})</p>`;
+                li.onclick = () => alert('개별 수정 기능은 준비 중입니다. 전체 데이터를 서버로 동기화하려면 상단 버튼을 이용해 주세요.');
+                list.appendChild(li);
+            });
+
+            if (data.length === 0) list.innerHTML = '<li style="padding:20px; text-align:center; color:#999;">데이터가 없습니다.</li>';
+
+            domForm.style.display = 'block';
+            document.getElementById('formTitle').textContent = 'Estimate Management';
+            domForm.querySelectorAll('.form-group, .form-actions').forEach(f => f.style.display = 'none');
+
+            let estimateControls = document.getElementById('estimateControls');
+            if (!estimateControls) {
+                estimateControls = document.createElement('div');
+                estimateControls.id = 'estimateControls';
+                domForm.appendChild(estimateControls);
+            }
+            estimateControls.style.display = 'block';
+            estimateControls.innerHTML = `
+                <div class="form-group" style="padding: 20px; border: 1px solid #ddd; background: #f9f9f9; border-radius: 8px; display:block;">
+                    <h3 style="margin-top:0;">현재 로드된 견적 데이터: ${data.length}건</h3>
+                    <p style="color: #666; font-size:0.9rem;">로컬에서 수정한 데이터가 있다면 아래 버튼을 눌러 서버(GitHub)에 영구 저장할 수 있습니다.</p>
+                    <button class="btn btn-success" style="width:100%; padding:15px; font-size:1.1rem;" onclick="saveToGitHub('estimate')">모든 견적 데이터를 서버에 저장 (Commit to GitHub)</button>
+                    <p style="margin-top: 15px; font-size: 0.8rem; color: #888; line-height:1.4;">
+                        * 저장 시 GitHub 저장소로 파일이 전송되며 자동 배포가 시작됩니다.<br>
+                        * 배포 완료 후에는 다른 컴퓨터에서도 수정된 내용을 즉시 확인할 수 있습니다.
+                    </p>
+                </div>
+            `;
         }
 
         function selectItem(id) {

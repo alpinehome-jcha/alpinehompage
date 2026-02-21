@@ -1,8 +1,9 @@
 /**
  * Alpine Virtual Estimate Data
  * Full Dataset based on provided Excel sheet (80+ models)
+ * Updated: 2026-02-21
  */
-const estimateData = [
+const initialEstimateData = [
     { brand: "현대자동차", model: "캐스퍼", year: "21~", code: "AX1", system: "4채널 자출", dsp: ["PXE-M60-4", "PXE-R80-8", "PXE-R100-8", "PXE-X120-8"], pnp: ["HK-103", "HK-1A", "DS-4B", "DS-8B", "DS-81B"], front_door: ["DM-65C", "S2-S65C", "DP2-65C", "HDZ-65C"], tweeter: ["Status Tweeter Chamber"], front_baffle: ["현대/기아 6.5\" 배플", "커스텀 배플"], rear_door: ["DM-65", "S2-S65", "HDZ-65"], rear_baffle: ["현대/기아 6.5\" 배플", "커스텀 배플"], subwoofer: ["PEW-M770", "S2-W8D4(외장박스 포함)", "S2-W10D2(외장박스 포함)", "S2-W12D2(외장박스 포함)", "RS-W10D2(외장박스 포함)"], amp_4ch: ["R2-A60F", "HDA-F60"], amp_sub: ["S2-A60M", "HDA-F60"], player: ["HDS-990"], extraLabor: 0 },
     { brand: "현대자동차", model: "i30", year: "11~16", code: "GD", system: "4채널 자출", dsp: ["PXE-M60-4", "PXE-R80-8", "PXE-R100-8", "PXE-X120-8"], pnp: ["HK-102", "DS-4B", "DS-8B", "DS-81B"], front_door: ["DM-65C", "S2-S65C", "DP2-65C", "HDZ-65C"], tweeter: ["Status Tweeter Chamber"], front_baffle: ["현대/기아 6.5\" 배플", "커스텀 배플"], rear_door: ["DM-65", "S2-S65", "HDZ-65"], rear_baffle: ["현대/기아 6.5\" 배플", "커스텀 배플"], subwoofer: ["PEW-M770", "S2-W8D4(외장박스 포함)", "S2-W10D2(외장박스 포함)", "S2-W12D2(외장박스 포함)", "RS-W10D2(외장박스 포함)"], amp_4ch: ["R2-A60F", "HDA-F60"], amp_sub: ["S2-A60M", "HDA-F60"], player: ["HDS-990"], extraLabor: 0 },
     { brand: "현대자동차", model: "i30", year: "16~", code: "PD", system: "4채널 자출", dsp: ["PXE-M60-4", "PXE-R80-8", "PXE-R100-8", "PXE-X120-8"], pnp: ["HK-103", "HK-1A", "DS-4B", "DS-8B", "DS-81B"], front_door: ["DM-65C", "S2-S65C", "DP2-65C", "HDZ-65C"], tweeter: ["Status Tweeter Chamber"], front_baffle: ["현대/기아 6.5\" 배플", "커스텀 배플"], rear_door: ["DM-65", "S2-S65", "HDZ-65"], rear_baffle: ["현대/기아 6.5\" 배플", "커스텀 배플"], subwoofer: ["PEW-M770", "S2-W8D4(외장박스 포함)", "S2-W10D2(외장박스 포함)", "S2-W12D2(외장박스 포함)", "RS-W10D2(외장박스 포함)"], amp_4ch: ["R2-A60F", "HDA-F60"], amp_sub: ["S2-A60M", "HDA-F60"], player: ["HDS-990"], extraLabor: 0 },
@@ -41,4 +42,39 @@ const estimateData = [
     { brand: "BMW", model: "520 / 320 / X4 / X3 / X1 / 118D / 218D", year: "20~23", code: "-", system: "7채널(신형 Hi-Fi)", dsp: ["PXE-R100-8", "PXE-X120-8", "PXE-X120-10DP", "PXE-X121-12EV", "HDP-D90"], pnp: ["BM-402", "BM-1A", "DS-8B", "DS-81B", "DS-10B", "DS-12B", "DS-14B"], front_door: ["DP2-45C-B"], rear_door: ["DP2-45-B", "DP2-45C-B"], center: ["DP2-40C-B"], subwoofer: ["DP2-80WF-B", "RS-W10D2(외장박스 포함)"], amp_4ch: ["R2-A60F", "HDA-F60"], amp_sub: ["S2-A60M", "HDA-F60"], player: ["HDS-990"], extraLabor: 1000000 },
     { brand: "Tesla", model: "Model 3 / Model Y_롱레인지", year: "22~24", code: "M3 / MY", system: "13채널", dsp: ["PXE-X121-12EV"], pnp: ["TS-304"], front_door: ["DP2-65CF"], center: ["EV-40M-T"], surround: ["EV-40MR-T"], subwoofer: ["EV-100SW 3 or EV 100SW Y"], player: ["HDS-990"], extraLabor: 0 }
 ];
-export default estimateData;
+
+const ESTIMATE_DATA_VERSION = 20260221093500;
+
+let estimateData = [];
+if (typeof localStorage !== 'undefined') {
+    const storedVersion = localStorage.getItem('estimateDataVersion');
+    const stored = localStorage.getItem('estimateData');
+
+    if (typeof ESTIMATE_DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < ESTIMATE_DATA_VERSION)) {
+        // Server has newer version or none stored, force update
+        estimateData = JSON.parse(JSON.stringify(initialEstimateData));
+        localStorage.setItem('estimateData', JSON.stringify(estimateData));
+        localStorage.setItem('estimateDataVersion', ESTIMATE_DATA_VERSION.toString());
+    } else if (stored) {
+        estimateData = JSON.parse(stored);
+        // Safety Check for empty data
+        if (estimateData.length === 0 && initialEstimateData.length > 0) {
+            estimateData = JSON.parse(JSON.stringify(initialEstimateData));
+            localStorage.setItem('estimateData', JSON.stringify(estimateData));
+            if (typeof ESTIMATE_DATA_VERSION !== 'undefined') localStorage.setItem('estimateDataVersion', ESTIMATE_DATA_VERSION.toString());
+        }
+    } else {
+        estimateData = JSON.parse(JSON.stringify(initialEstimateData));
+        if (typeof ESTIMATE_DATA_VERSION !== 'undefined') localStorage.setItem('estimateDataVersion', ESTIMATE_DATA_VERSION.toString());
+    }
+} else {
+    estimateData = initialEstimateData;
+}
+
+if (typeof window !== 'undefined') {
+    window.estimateData = estimateData;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = estimateData;
+}
