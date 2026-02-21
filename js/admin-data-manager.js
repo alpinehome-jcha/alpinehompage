@@ -292,24 +292,27 @@ async function saveToGitHub(type, silent = false) {
         await ghClient.commitFile(fileName, fileContent, msg);
 
         if (silent) {
-            const toast = document.createElement('div');
-            toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:#2ecc71; color:white; padding:10px 20px; border-radius:4px; z-index:9999; box-shadow:0 2px 10px rgba(0,0,0,0.2); animation: fadein 0.5s, fadeout 0.5s 2.5s forwards;';
-            toast.textContent = `${type} data saved to GitHub!`;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 3000);
+            showToast(`${type} data saved to GitHub!`, '#2ecc71');
         } else {
             alert(`Successfully saved ${fileName} to GitHub!`);
         }
     } catch (err) {
         console.error(err);
         if (silent) {
-            const toast = document.createElement('div');
-            toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:#e74c3c; color:white; padding:10px 20px; border-radius:4px; z-index:9999; box-shadow:0 2px 10px rgba(0,0,0,0.2);';
-            toast.textContent = `Auto-save failed: ${err.message}`;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 5000);
+            showToast(`Auto-save failed: ${err.message}`, '#e74c3c', 8000);
         } else {
             alert(`Error saving to GitHub: ${err.message}`);
         }
     }
+}
+
+function showToast(message, color, duration = 3000) {
+    const toast = document.createElement('div');
+    toast.style.cssText = `position:fixed; bottom:20px; right:20px; background:${color}; color:white; padding:10px 20px; border-radius:4px; z-index:9999; box-shadow:0 2px 10px rgba(0,0,0,0.2); transition: opacity 0.5s;`;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 500);
+    }, duration);
 }

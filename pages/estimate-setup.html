@@ -104,6 +104,49 @@
             background: #ffeaa7;
             color: #d35400;
         }
+
+        /* GitHub Settings Panel */
+        .github-settings-panel {
+            background: #fdfdfd;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .github-settings-panel h4 {
+            margin-top: 0;
+        }
+
+        .github-input-group {
+            margin-bottom: 15px;
+        }
+
+        .github-input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .github-input-group input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .status-connected {
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        .status-disconnected {
+            color: #e74c3c;
+            font-weight: 600;
+        }
     </style>
 </head>
 
@@ -153,8 +196,33 @@
                         <button class="btn btn-restore" onclick="resetToInitial()">♻️ 서버 데이터로 복구</button>
                     </div>
                 </div>
-                <div id="syncStatus" style="margin-top: 15px; font-size: 0.9rem; color: #666;">
-                    데이터 상태: <span id="statusText">확인 중...</span>
+                <div id="syncStatus"
+                    style="margin-top: 15px; font-size: 0.9rem; color: #666; display: flex; align-items: center; gap: 20px;">
+                    <div>저장 상태: <span id="statusText">확인 중...</span></div>
+                    <div>GitHub 연결: <span id="githubStatus">확인 중...</span></div>
+                    <button class="btn btn-sm" onclick="toggleGithubSettings()"
+                        style="padding: 2px 10px; font-size: 0.75rem; background: #6c757d; color: white;">연결 설정</button>
+                    <button id="manualSyncBtn" class="btn btn-github btn-sm" onclick="syncToGitHub()"
+                        style="padding: 2px 10px; font-size: 0.75rem;">☁️ GitHub 서버에 저장</button>
+                </div>
+            </div>
+
+            <!-- GitHub Settings Panel -->
+            <div id="githubSettings" class="github-settings-panel">
+                <h4>GitHub 서버 연결 설정</h4>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">이 설정은 현재 브라우저에만 저장됩니다. 다른 기기에서 접속 시 다시
+                    설정해야 합니다.</p>
+                <div class="github-input-group">
+                    <label>GitHub Personal Access Token</label>
+                    <input type="password" id="ghToken" placeholder="ghp_...">
+                </div>
+                <div class="github-input-group">
+                    <label>GitHub Repository (owner/repo)</label>
+                    <input type="text" id="ghRepo" placeholder="username/repository">
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-primary btn-sm" onclick="saveGithubConfig()">설정 저장</button>
+                    <button class="btn btn-secondary btn-sm" onclick="toggleGithubSettings()">닫기</button>
                 </div>
             </div>
 
@@ -245,6 +313,7 @@
             // Initialization
             renderTable();
             updateStatus();
+            updateGithubStatus();
 
             // Search Filter
             document.getElementById('searchInput').addEventListener('input', (e) => {
@@ -260,6 +329,58 @@
             // File Link
             document.getElementById('excelInput').addEventListener('change', handleExcelUpload);
         });
+
+        function toggleGithubSettings() {
+            const panel = document.getElementById('githubSettings');
+            const isHidden = panel.style.display === 'none' || panel.style.display === '';
+
+            if (isHidden) {
+                document.getElementById('ghToken').value = localStorage.getItem('github_token') || '';
+                document.getElementById('ghRepo').value = localStorage.getItem('github_repo') || '';
+                panel.style.display = 'block';
+            } else {
+                panel.style.display = 'none';
+            }
+        }
+
+        function saveGithubConfig() {
+            const token = document.getElementById('ghToken').value.trim();
+            const repo = document.getElementById('ghRepo').value.trim();
+
+            if (!token || !repo) {
+                alert('토큰과 저장소 주소를 모두 입력해주세요.');
+                return;
+            }
+
+            localStorage.setItem('github_token', token);
+            localStorage.setItem('github_repo', repo);
+
+            // Re-configure client
+            if (typeof ghClient !== 'undefined') {
+                ghClient.configure(token, repo);
+            }
+
+            alert('저장되었습니다.');
+            updateGithubStatus();
+            toggleGithubSettings();
+        }
+
+        function updateGithubStatus() {
+            const token = localStorage.getItem('github_token');
+            const repo = localStorage.getItem('github_repo');
+            const statusBox = document.getElementById('githubStatus');
+            const syncBtn = document.getElementById('manualSyncBtn');
+
+            if (token && repo) {
+                statusBox.innerHTML = '<span class="status-connected">✅ 연결됨</span>';
+                syncBtn.style.opacity = '1';
+                syncBtn.title = '';
+            } else {
+                statusBox.innerHTML = '<span class="status-disconnected">❌ 연결 안됨 (설정 필요)</span>';
+                syncBtn.style.opacity = '0.5';
+                syncBtn.title = 'GitHub 설정을 먼저 완료해주세요.';
+            }
+        }
 
         function renderTable(data = estimateData) {
             const tbody = document.getElementById('tableBody');
