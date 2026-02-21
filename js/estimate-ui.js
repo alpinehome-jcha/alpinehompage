@@ -798,11 +798,12 @@ const EstimateUI = {
 
         if (counts.어나더 >= 3) {
             comment = "<strong>'최상위 하이파이의 정점'</strong>입니다. 알파인의 기술력이 집약된 F#1 Status급 구성으로, 원음 그대로의 감동을 재현할 수 있는 완벽한 시스템입니다.";
-            recommendation = "최고의 소리를 위해 전문 인스톨러의 정밀한 프로세싱 튜닝이 필수적입니다.";
+            recommendation = "최고의 소리를 위해 전문 인스톨러의 정밀한 프로세싱 튜닝이 필수적입니다. 또한 하이엔드 전용 케이블링 보강을 추천드립니다.";
             score = 99;
         } else if (counts.하이 >= 3) {
             comment = "<strong>'프리미엄 사운드의 정석'</strong>입니다. 고해상도 오디오(Hi-Res) 대응이 완벽하며, 스테이지감과 해상력이 매우 뛰어난 구성입니다.";
-            recommendation = "전면 스피커의 성능을 100% 끌어올리기 위해 '트위터 챔버' 작업을 강력 추천합니다.";
+            const hasChamber = sel.tweeter && sel.tweeter !== "선택 안함";
+            recommendation = hasChamber ? "트위터 챔버가 적용되어 지향각이 최적화되었습니다. 도어 방진 작업을 통해 미드우퍼의 타격감을 더 보완해보세요." : "전면 스피커의 성능을 100% 끌어올리기 위해 '트위터 챔버' 작업을 강력 추천합니다.";
             score = 92;
         } else if (counts.프로 >= 3) {
             comment = "<strong>'중급자를 위한 파워풀한 시스템'</strong>입니다. 충분한 출력과 단단한 베이스가 조화로워, 올라운드 음악 감상에 최적화되어 있습니다.";
@@ -814,7 +815,8 @@ const EstimateUI = {
             score = 78;
         } else {
             comment = "<strong>'깔끔한 사운드 밸런스'</strong>에 집중한 구성입니다. 답답한 순정 소리를 걷어내고 맑은 고음과 정돈된 저음을 즐기기에 충분한 입문용 최적 조합입니다.";
-            recommendation = "추후 사운드에 더 욕심이 생기신다면 '서브우퍼' 추가를 통해 공간감을 넓혀보시는 것을 추천합니다.";
+            const hasSub = sel.subwoofer && sel.subwoofer !== "선택 안함";
+            recommendation = hasSub ? "서브우퍼가 포함되어 있어 베이스가 풍부합니다. 추후 DSP 정밀 튜닝을 통해 소리의 중심(Center)을 잡는 것을 추천합니다." : "추후 사운드에 더 욕심이 생기신다면 '서브우퍼' 추가를 통해 공간감을 넓혀보시는 것을 추천합니다.";
             score = 70;
         }
 
