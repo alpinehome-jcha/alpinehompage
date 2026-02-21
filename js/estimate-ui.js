@@ -185,7 +185,18 @@ const EstimateUI = {
             "DP2-65C": "[매니아] DP2-65C",
             "HDZ-65C": "[프로] HDZ-65C",
             "HDZ-653C": "[프로] HDZ-653C",
-            "HDZ-653S": "[프로] HDZ-653S"
+            "HDZ-653S": "[프로] HDZ-653S",
+
+            // Subwoofers
+            "PWE-M770": "[가성비] PWE-M770",
+            "S2-W8D4(외장박스 포함)": "[매니아] S2-W8D4",
+            "S2-W10D2(외장박스 포함)": "[프로] S2-W10D2",
+            "RS-W10D2(외장박스 포함)": "[매니아] RS-W10D2",
+
+            // Amps
+            "R2-A60F": "[가성비] R2-A60F",
+            "HDA-F60": "[프로] HDA-F60",
+            "S2-A60M": "[가성비] S2-A60M"
         };
         return ranks[name] || name;
     },
@@ -261,6 +272,12 @@ const EstimateUI = {
             if (cat.id === 'subwoofer') {
                 // 10단계: 9단계 이후
                 if (!this.selections['rear_door']) return;
+            }
+            if (cat.id === 'amp_sub') {
+                // 12단계: 서브우퍼가 PWE-M770(앰프일체형)인 경우 앰프 선택 생략
+                const selectedSub = this.selections['subwoofer'];
+                if (selectedSub === "PWE-M770") return;
+                if (!selectedSub) return;
             }
 
             if (list.length > 0) {
