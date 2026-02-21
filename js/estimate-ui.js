@@ -147,6 +147,27 @@ const EstimateUI = {
                     .product-grid-mini {
                         grid-template-columns: 1fr !important;
                     }
+                    /* 견적서 모바일 최적화 */
+                    #estimatePrintModal .estimate-modal-content {
+                        width: 100% !important;
+                        margin: 0 !important;
+                        height: 100% !important;
+                        max-height: none !important;
+                        border-radius: 0 !important;
+                    }
+                    .printable-area {
+                        padding: 15px !important;
+                        font-size: 0.8rem !important;
+                    }
+                    .printable-area table {
+                        font-size: 0.75rem !important;
+                    }
+                    .printable-area th, .printable-area td {
+                        padding: 8px 4px !important;
+                    }
+                    .printable-area h1 {
+                        font-size: 1.2rem !important;
+                    }
                 }
             </style>
             <div class="estimate-modal-content">
@@ -1038,17 +1059,17 @@ const EstimateUI = {
                     <p style="margin: 5px 0;"><strong>사운드시스템:</strong> ${this.selectedCar.system}</p>
                     <p style="margin: 5px 0;"><strong>견적일자:</strong> ${date}</p>
                 </div>
-                <div style="width: 45%; text-align: right;">
+                <div style="width: 50%; text-align: right;">
                     <p style="margin: 5px 0; font-size: 1.2rem;"><strong>수신:</strong> 고객님 귀하</p>
                 </div>
             </div>
-            <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px; table-layout: fixed;">
                 <thead>
                     <tr style="background: #f8f8f8;">
                         <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">품명 및 규격</th>
-                        <th style="border: 1px solid #ddd; padding: 12px; text-align: right; width: 60px;">수량</th>
-                        <th style="border: 1px solid #ddd; padding: 12px; text-align: right; width: 120px;">단가</th>
-                        <th style="border: 1px solid #ddd; padding: 12px; text-align: right; width: 120px;">금액</th>
+                        <th style="border: 1px solid #ddd; padding: 12px; text-align: right; width: 12%;">수량</th>
+                        <th style="border: 1px solid #ddd; padding: 12px; text-align: right; width: 22%;">단가</th>
+                        <th style="border: 1px solid #ddd; padding: 12px; text-align: right; width: 22%;">금액</th>
                     </tr>
                 </thead>
                 <tbody>
