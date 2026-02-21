@@ -16,7 +16,7 @@ const EstimateUI = {
         btn.className = 'estimate-float-btn';
         btn.innerHTML = `
             <img src="assets/images/amark.png" alt="Alpine">
-            <span>나의 견적</span>
+            <span>나의<br>견적</span>
         `;
         btn.onclick = () => this.openModal();
         document.body.appendChild(btn);
