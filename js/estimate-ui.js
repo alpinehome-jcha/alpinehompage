@@ -73,7 +73,7 @@ const EstimateUI = {
                     <div class="estimate-header no-print">
                         <h2>알파인 가상 견적서</h2>
                         <div style="display:flex; gap:10px;">
-                            <button class="sub-filter-btn active" onclick="window.print()" style="padding: 5px 15px;">출력 / PDF 저장</button>
+                            <button class="sub-filter-btn active" onclick="window.print()" style="padding: 5px 15px;">이미지로 저장</button>
                             <span class="close-btn" onclick="EstimateUI.closePrintModal()">&times;</span>
                         </div>
                     </div>
@@ -184,6 +184,7 @@ const EstimateUI = {
             "S2-S65": "[가성비] S2-S65",
             "DP2-65C": "[프로] DP2-65C",
             "HDZ-65C": "[하이엔드] HDZ-65C",
+            "HDZ-65": "[하이엔드] HDZ-65",
             "HDZ-653C": "[어나더레벨] HDZ-653C",
             "HDZ-653S": "[어나더레벨] HDZ-653S",
 
@@ -194,7 +195,7 @@ const EstimateUI = {
             "S2-W12D2 (외장박스 포함)": "[하이엔드] S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)": "[어나더레벨] RS-W10D2 (외장박스 포함)",
             "R2-A60F": "[가성비] R2-A60F",
-            "HDA-F60": "[프로] HDA-F60",
+            "HDA-F60": "[어나더레벨] HDA-F60",
             "S2-A60M": "[가성비] S2-A60M"
         };
         return ranks[name] || name;
@@ -268,8 +269,8 @@ const EstimateUI = {
                 // 9단계: 8/7단계 이후
                 if (!this.selections['rear_door']) return;
             }
-            if (cat.id === 'subwoofer') {
-                // 10단계: 플레이어 단계(11단계)와 동일하게 후면 스피커 가이드(7단계) 성공 시 노출
+            if (cat.id === 'subwoofer' || cat.id === 'amp_4ch') {
+                // 10단계(서브우퍼), 11단계(앰프): 후면 스피커 가이드(7단계) 성공 시 동시에 노출
                 if (!this.selections['rear_baffle']) return;
             }
             if (cat.id === 'amp_sub') {
@@ -416,9 +417,18 @@ const EstimateUI = {
         if (!window.initialPriceData) return 0;
         const items = initialPriceData.filter(i => i.product === name && i.category === 'master');
         if (items.length > 0) return items[0].msrp;
-        // Fallback for names with extra spaces
+
+        // PnP Cable pattern fallback (e.g., matching HK-103 into "HK-101 / HK-102 / HK-103")
         const trimmed = name.trim();
-        const fallback = initialPriceData.find(i => i.product.trim() === trimmed && i.category === 'master');
+        const fallback = initialPriceData.find(i => {
+            if (i.category !== 'master') return false;
+            const target = i.product.trim();
+            if (target === trimmed) return true;
+            if (trimmed.startsWith('HK-') || trimmed.startsWith('BM-') || trimmed.startsWith('BZ-') || trimmed.startsWith('GE-')) {
+                return target.includes(trimmed);
+            }
+            return false;
+        });
         return fallback ? fallback.msrp : 0;
     },
 
@@ -549,11 +559,10 @@ const EstimateUI = {
         const date = new Date().toLocaleDateString();
 
         printArea.innerHTML = `
-            <div style="text-align: center; margin-bottom: 40px;">
-                <img src="assets/images/amark.png" style="height: 40px; margin-bottom: 10px;">
-                <h1 style="font-size: 28px; margin: 0; letter-spacing: 5px;">견 적 서</h1>
+            <div style="text-align: center; margin-bottom: 25px;">
+                <h1 style="font-size: 24px; margin: 0; letter-spacing: 5px;">알파인 사운드 견적서</h1>
             </div>
-            <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 0.9rem;">
                 <div style="width: 45%;">
                     <p style="margin: 5px 0;"><strong>차량정보:</strong> ${this.selectedCar.brand} ${this.selectedCar.model} (${this.selectedCar.code})</p>
                     <p style="margin: 5px 0;"><strong>사운드시스템:</strong> ${this.selectedCar.system}</p>
@@ -596,8 +605,8 @@ const EstimateUI = {
                     </tr>
                 </tfoot>
             </table>
-            <div style="margin-top: 50px; border: 1px solid #eee; padding: 20px; font-size: 0.9rem; line-height: 1.6; color: #555;">
-                <p style="margin: 0; font-weight: bold; color: #333; margin-bottom: 5px;">[ 안내사항 ]</p>
+            <div style="margin-top: 30px; border: 1px solid #eee; padding: 15px; font-size: 0.8rem; line-height: 1.4; color: #555;">
+                <p style="margin: 0; font-weight: bold; color: #333; margin-bottom: 3px;">[ 안내사항 ]</p>
                 <p style="margin: 0;">1. 본 견적서는 알파인 카오디오 가상 견적 시뮬레이션 결과로 실제 작업 환경에 따라 차이가 있을 수 있습니다.</p>
                 <p style="margin: 0;">2. 정확한 상담은 가까운 알파인 대리점(Partner Zone)을 방문하여 주시기 바랍니다.</p>
                 <p style="margin: 0;">3. 기술료는 기본 장착 표준 공임이며, 차량 상태 및 추가 커스텀 작업 시 변동될 수 있습니다.</p>
