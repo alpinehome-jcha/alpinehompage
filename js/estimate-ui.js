@@ -62,7 +62,7 @@ const EstimateUI = {
                         <span>총 합계 (부가세 별도): </span>
                         <span class="total-price" id="estTotalPrice">₩0</span>
                     </div>
-                    <button class="sub-filter-btn" style="background:#333; margin-right:10px;" onclick="EstimateUI.resetSelections()">초기화</button>
+                    <button class="sub-filter-btn" style="background:#333; color:#fff; margin-right:10px;" onclick="EstimateUI.resetSelections()">초기화</button>
                     <button class="sub-filter-btn active" onclick="EstimateUI.showEstimateSheet()">견적서 보기</button>
                 </div>
             </div>
