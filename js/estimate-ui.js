@@ -233,51 +233,103 @@ const EstimateUI = {
         const selectedPnP = this.selections['pnp'];
         const selectedFront = this.selections['front_door'];
 
-        categories.forEach(cat => {
+        // Strict Flow: 이전 단계가 선택되었는지 확인하는 헬퍼
+        const isPrevSelected = (id) => {
+            const val = this.selections[id];
+            return val !== undefined && val !== null && val !== "";
+        };
+
+        categories.forEach((cat, idx) => {
             let list = (cat.id === 'dsp') ? dspList : (this.selectedCar[cat.id] || []);
 
-            // Logic for sequential display
+            // 3단계부터 13단계까지 데이터가 있는 경우 '선택 안함' 추가
+            if (cat.id !== 'dsp' && cat.id !== 'pnp' && list.length > 0) {
+                if (!list.includes("선택 안함")) {
+                    list = ["선택 안함", ...list];
+                }
+            }
+
+            // --- 시나리오별 노출 로직 (Strict Flow) ---
+
+            // 1단계(DSP)는 항상 노출
+
+            // 2단계(PnP): DSP가 선택되어야 노출
             if (cat.id === 'pnp') {
                 if (!selectedDsp || selectedDsp === "DSP 선택 안함") return;
             }
+
+            // 3단계(전면): 1단계(DSP) 선택 완료 시 노출
             if (cat.id === 'front_door') {
-                // 1단계(DSP)에서 어떤 항목이든(선택 안함 포함) 선택되었다면 3단계(3-1)를 보여줍니다.
-                if (!selectedDsp) return;
+                if (!isPrevSelected('dsp')) return;
             }
+
+            // 4단계(트위터 챔버): 3단계(전면) 선택 완료 AND 특정 조건(HDZ)일 때만 노출
             if (cat.id === 'tweeter') {
-                // 4단계(3-1-1): HDZ-65C 또는 HDZ-653S/C 선택 시에만 나타납니다.
+                if (!isPrevSelected('front_door')) return;
                 const isHDZ = (selectedFront === "HDZ-65C" || selectedFront === "HDZ-653S" || selectedFront === "HDZ-653C");
                 if (!isHDZ) return;
             }
+
+            // 4단계(전면 스피커 추가): 3단계(전면) 선택 완료 AND 데이터 존재 시 노출
+            if (cat.id === 'add_front') {
+                if (!isPrevSelected('front_door')) return;
+            }
+
+            // 5단계(전면 가이드): 3단계(또는 4단계) 선택 완료 시 노출
             if (cat.id === 'front_baffle') {
-                // 5단계: 3단계 선택 직후 나타남 (사용자 요청)
-                if (!selectedFront) return;
+                if (!isPrevSelected('front_door')) return;
+                // 만약 4단계(추가/트위터)가 떠 있다면 그것도 선택되어야 함 (엄격한 순차)
+                const hasTweeter = (selectedFront === "HDZ-65C" || selectedFront === "HDZ-653S" || selectedFront === "HDZ-653C");
+                if (hasTweeter && !isPrevSelected('tweeter')) return;
+                if (this.selectedCar.add_front && this.selectedCar.add_front.length > 0 && !isPrevSelected('add_front')) return;
             }
+
+            // 6단계(후면): 5단계(전면 가이드) 선택 완료 시 노출
             if (cat.id === 'rear_door') {
-                // 6단계: 5단계(가이드) 완료 후 나타남
-                if (!this.selections['front_baffle']) return;
+                if (!isPrevSelected('front_baffle')) return;
             }
+
+            // 7단계(후면 가이드): 6단계 선택 완료 시 노출
             if (cat.id === 'rear_baffle') {
-                // 7단계: 6단계(후면스피커) 완료 후 나타남
-                if (!this.selections['rear_door']) return;
+                if (!isPrevSelected('rear_door')) return;
             }
+
+            // 8단계(센터): 7단계 선택 완료 시 노출
             if (cat.id === 'center') {
-                // 8단계: 7단계 완료 후 (데이터 있을때만)
-                if (!this.selections['rear_door']) return; // 후면 선택 이후 흐름 유지
+                if (!isPrevSelected('rear_baffle')) return;
             }
+
+            // 9단계(서라운드): 8단계(또는 7단계) 선택 완료 시 노출
             if (cat.id === 'surround') {
-                // 9단계: 8/7단계 이후
-                if (!this.selections['rear_door']) return;
+                if (this.selectedCar.center && this.selectedCar.center.length > 0) {
+                    if (!isPrevSelected('center')) return;
+                } else {
+                    if (!isPrevSelected('rear_baffle')) return;
+                }
             }
+
+            // 10단계(서브우퍼), 11단계(4ch 앰프): 9단계(또는 그 이전 필수단계) 선택 완료 시 노출
             if (cat.id === 'subwoofer' || cat.id === 'amp_4ch') {
-                // 10단계(서브우퍼), 11단계(앰프): 후면 스피커 가이드(7단계) 성공 시 동시에 노출
-                if (!this.selections['rear_baffle']) return;
+                // 서라운드가 있다면 서라운드 선택까지 대기
+                if (this.selectedCar.surround && this.selectedCar.surround.length > 0) {
+                    if (!isPrevSelected('surround')) return;
+                } else if (this.selectedCar.center && this.selectedCar.center.length > 0) {
+                    if (!isPrevSelected('center')) return;
+                } else {
+                    if (!isPrevSelected('rear_baffle')) return;
+                }
             }
+
+            // 12단계(서브우퍼 앰프): 10단계(서브우퍼) 선택 완료 시 노출
             if (cat.id === 'amp_sub') {
-                // 12단계: 서브우퍼가 PWE-M770(앰프일체형)인 경우 앰프 선택 생략
+                if (!isPrevSelected('subwoofer')) return;
                 const selectedSub = this.selections['subwoofer'];
-                if (selectedSub === "PWE-M770") return;
-                if (!selectedSub) return;
+                if (selectedSub === "PWE-M770" || selectedSub === "선택 안함") return;
+            }
+
+            // 13단계(플레이어): 11단계 선택 완료 시 노출 (12단계는 조건부이므로 11단계 기준)
+            if (cat.id === 'player') {
+                if (!isPrevSelected('amp_4ch')) return;
             }
 
             if (list.length > 0) {
@@ -288,15 +340,14 @@ const EstimateUI = {
                         <h4 style="margin: 20px 0 10px 0;">${cat.label}</h4>
                         <div class="product-grid-mini">
                             ${list.map(pName => {
-                        const price = this.getProductPrice(pName);
+                        const price = (pName === "선택 안함" || pName === "DSP 선택 안함") ? 0 : this.getProductPrice(pName);
                         const displayName = this.getProductWithRank(pName);
-                        // 수정: 초기 상태에서 '선택 안함'이 기본 selected 되지 않도록 함. 사용자가 직접 클릭해야 함.
                         const isSelected = (this.selections[cat.id] === pName || (Array.isArray(this.selections[cat.id]) && this.selections[cat.id].includes(pName)));
                         const escapedPName = pName.replace(/'/g, "\\'").replace(/"/g, "&quot;");
                         return `
                                     <div class="product-item ${isSelected ? 'selected' : ''}" onclick="EstimateUI.selectProduct('${cat.id}', '${escapedPName}')">
                                         <span>${displayName}</span>
-                                        <span style="color: #666;">${pName === "DSP 선택 안함" ? "" : "₩" + price.toLocaleString()}</span>
+                                        <span style="color: #666;">${(pName === "선택 안함" || pName === "DSP 선택 안함") ? "" : "₩" + price.toLocaleString()}</span>
                                     </div>
                                 `;
                     }).join('')}
@@ -308,6 +359,7 @@ const EstimateUI = {
 
         main.innerHTML = html;
         this.calculateTotal();
+
     },
 
     renderPnPSection(label, list, selectedDsp) {
@@ -452,7 +504,7 @@ const EstimateUI = {
                 const pNames = Array.isArray(selected) ? selected : [selected];
 
                 pNames.forEach(pName => {
-                    if (pName === "DSP 선택 안함") return;
+                    if (pName === "DSP 선택 안함" || pName === "선택 안함") return;
                     const price = this.getProductPrice(pName);
                     productTotal += price;
                     if (catId === 'dsp') dspPrice = price;
