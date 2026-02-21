@@ -173,23 +173,38 @@ const EstimateUI = {
         ];
 
         let html = `<h3>${this.selectedCar.model} (${this.selectedCar.code}) 제품 선택</h3>`;
+
+        // DSP List with "선택 안함"
+        const dspList = ["DSP 선택 안함", ...(this.selectedCar.dsp || [])];
+        const selectedDsp = this.selections['dsp'];
+
         categories.forEach(cat => {
-            if (this.selectedCar[cat.id] && this.selectedCar[cat.id].length > 0) {
-                html += `<div class="category-block">
-                    <h4 style="margin: 20px 0 10px 0;">${cat.label}</h4>
-                    <div class="product-grid-mini">
-                        ${this.selectedCar[cat.id].map(pName => {
-                    const price = this.getProductPrice(pName);
-                    const isSelected = this.selections[cat.id] === pName;
-                    return `
-                                <div class="product-item ${isSelected ? 'selected' : ''}" onclick="EstimateUI.selectProduct('${cat.id}', '${pName}')">
-                                    <span>${pName}</span>
-                                    <span style="color: #666;">₩${price.toLocaleString()}</span>
-                                </div>
-                            `;
-                }).join('')}
-                    </div>
-                </div>`;
+            let list = (cat.id === 'dsp') ? dspList : (this.selectedCar[cat.id] || []);
+
+            // Logic: Step 2 (pnp) only shows if DSP is selected and not "선택 안함"
+            if (cat.id === 'pnp' && (!selectedDsp || selectedDsp === "DSP 선택 안함")) return;
+
+            if (list.length > 0) {
+                // Specialized Rendering for PnP
+                if (cat.id === 'pnp') {
+                    html += this.renderPnPSection(cat.label, list, selectedDsp);
+                } else {
+                    html += `<div class="category-block">
+                        <h4 style="margin: 20px 0 10px 0;">${cat.label}</h4>
+                        <div class="product-grid-mini">
+                            ${list.map(pName => {
+                        const price = this.getProductPrice(pName);
+                        const isSelected = (cat.id === 'dsp' && !selectedDsp && pName === "DSP 선택 안함") ? true : (this.selections[cat.id] === pName || (Array.isArray(this.selections[cat.id]) && this.selections[cat.id].includes(pName)));
+                        return `
+                                    <div class="product-item ${isSelected ? 'selected' : ''}" onclick="EstimateUI.selectProduct('${cat.id}', '${pName}')">
+                                        <span>${pName}</span>
+                                        <span style="color: #666;">${pName === "DSP 선택 안함" ? "" : "₩" + price.toLocaleString()}</span>
+                                    </div>
+                                `;
+                    }).join('')}
+                        </div>
+                    </div>`;
+                }
             }
         });
 
@@ -197,9 +212,110 @@ const EstimateUI = {
         this.calculateTotal();
     },
 
+    renderPnPSection(label, list, selectedDsp) {
+        // Group PnPs
+        const integrated = list.filter(p => !p.endsWith('A') && !p.startsWith('DS-'));
+        const typeA = list.filter(p => p.endsWith('A'));
+        const typeB = list.filter(p => p.startsWith('DS-'));
+
+        // Check for matching integrated PnP based on user rules
+        const matchedIntegrated = this.getMatchedIntegrated(selectedDsp, integrated);
+
+        let html = `<div class="category-block">
+            <h4 style="margin: 20px 0 10px 0;">${label}</h4>`;
+
+        if (matchedIntegrated) {
+            // Only show integrated
+            html += `<div class="product-grid-mini">
+                <div class="product-item selected">
+                    <span>${matchedIntegrated} (통합형 자동 선택)</span>
+                    <span style="color: #666;">₩${this.getProductPrice(matchedIntegrated).toLocaleString()}</span>
+                </div>
+            </div>`;
+        } else {
+            // Show A and B types
+            html += `<p style="font-size:0.85rem; color:#888; margin-bottom:5px;">통합형 PnP가 없어 A타입과 B타입이 자동 선택됩니다.</p>
+            <div class="product-grid-mini">`;
+
+            // Render Type A (usually only one)
+            typeA.forEach(p => {
+                html += `<div class="product-item selected">
+                    <span>${p} (A타입 자동)</span>
+                    <span style="color: #666;">₩${this.getProductPrice(p).toLocaleString()}</span>
+                </div>`;
+            });
+
+            // Render matched Type B
+            const matchedB = this.getMatchedTypeB(selectedDsp, typeB);
+            if (matchedB) {
+                html += `<div class="product-item selected">
+                    <span>${matchedB} (B타입 자동)</span>
+                    <span style="color: #666;">₩${this.getProductPrice(matchedB).toLocaleString()}</span>
+                </div>`;
+            }
+            html += `</div>`;
+        }
+        html += `</div>`;
+        return html;
+    },
+
+    getMatchedIntegrated(dsp, list) {
+        if (!dsp || dsp === "DSP 선택 안함") return null;
+        const mapping = {
+            "PXE-M60-4": ["HK-101", "HK-102", "HK-103", "HK-104", "HK-106"],
+            "PXE-X120-10DP": ["HK-107", "BM-401", "BM-402", "BM-403", "BZ-503"],
+            "PXE-C80-88": ["GE-203", "BZ-501", "BZ-502"],
+            "PXE-X121-12EV": ["TS-301", "TS-302", "TS-303", "TS-304"]
+        };
+        const targets = mapping[dsp] || [];
+        return list.find(p => targets.includes(p)) || null;
+    },
+
+    getMatchedTypeB(dsp, list) {
+        if (!dsp || dsp === "DSP 선택 안함") return null;
+        const mapping = {
+            "PXE-M60-4": "DS-4B",
+            "PXE-R80-8": "DS-8B",
+            "PXE-R100-8": "DS-8B",
+            "PXE-X120-8": "DS-81B",
+            "PXE-C80-88": "DS-82B",
+            "PXE-X120-10DP": "DS-10B",
+            "PXE-X121-12EV": "DS-12B",
+            "HDP-D90": "DS-14B"
+        };
+        const target = mapping[dsp];
+        return list.find(p => p === target) || null;
+    },
+
+    selectProduct(catId, pName) {
+        if (catId === 'dsp') {
+            this.selections = { 'dsp': pName };
+            // Trigger auto-selection for PnP
+            if (pName !== "DSP 선택 안함" && this.selectedCar.pnp) {
+                const list = this.selectedCar.pnp;
+                const integrated = list.filter(p => !p.endsWith('A') && !p.startsWith('DS-'));
+                const matchedInt = this.getMatchedIntegrated(pName, integrated);
+                if (matchedInt) {
+                    this.selections['pnp'] = [matchedInt];
+                } else {
+                    const typeA = list.filter(p => p.endsWith('A'));
+                    const typeB = list.filter(p => p.startsWith('DS-'));
+                    const matchedB = this.getMatchedTypeB(pName, typeB);
+                    this.selections['pnp'] = [...typeA, matchedB].filter(Boolean);
+                }
+            }
+        } else {
+            if (this.selections[catId] === pName) {
+                delete this.selections[catId];
+            } else {
+                this.selections[catId] = pName;
+            }
+        }
+        this.updateSelectionArea();
+    },
+
     getProductPrice(name) {
-        // Find matching name in price-data.js (initialPriceData)
-        // Note: Some names might be combined like "DM-65C + DPS-25M"
+        if (name === "DSP 선택 안함") return 0;
         if (name.includes(' + ')) {
             const parts = name.split(' + ');
             let total = 0;
@@ -211,71 +327,55 @@ const EstimateUI = {
 
     getSingleProductPrice(name) {
         if (!window.initialPriceData) return 0;
-        // Search by product name (master category usually has MSRP)
         const items = initialPriceData.filter(i => i.product === name && i.category === 'master');
         if (items.length > 0) return items[0].msrp;
-
-        // Fallback for names that might not exactly match (substring)
         const fallback = initialPriceData.find(i => i.product.includes(name) && i.category === 'master');
         return fallback ? fallback.msrp : 0;
-    },
-
-    selectProduct(catId, pName) {
-        if (this.selections[catId] === pName) {
-            delete this.selections[catId];
-        } else {
-            this.selections[catId] = pName;
-        }
-        this.updateSelectionArea();
     },
 
     calculateTotal() {
         let productTotal = 0;
         let dspPrice = 0;
         let ampPrice = 0;
-
         const summary = document.getElementById('estSummary');
         const totalPriceEl = document.getElementById('estTotalPrice');
-
         let summaryHtml = '';
 
         for (const catId in this.selections) {
-            const pName = this.selections[catId];
-            const price = this.getProductPrice(pName);
-            productTotal += price;
+            const selected = this.selections[catId];
+            const pNames = Array.isArray(selected) ? selected : [selected];
 
-            if (catId === 'dsp') dspPrice = price;
-            if (catId === 'amp_4ch' || catId === 'amp_sub') ampPrice += price;
+            pNames.forEach(pName => {
+                if (pName === "DSP 선택 안함") return;
+                const price = this.getProductPrice(pName);
+                productTotal += price;
+                if (catId === 'dsp') dspPrice = price;
+                if (catId === 'amp_4ch' || catId === 'amp_sub') ampPrice += price;
 
-            summaryHtml += `<div class="estimate-summary-item">
-                <span>${pName}</span>
-                <span>₩${price.toLocaleString()}</span>
-            </div>`;
+                summaryHtml += `<div class="estimate-summary-item">
+                    <span>${pName}</span>
+                    <span>₩${price.toLocaleString()}</span>
+                </div>`;
+            });
         }
 
-        // Labor Calculation
-        // 기본: 선택된 DSP 가격의 30% + 선택된 앰프 가격의 10%
         let labor = (dspPrice * 0.3) + (ampPrice * 0.1);
-
-        // 추가 기술료(extraLabor)는 스피커를 선택했을 때만 적용 (사용자 요청)
         const speakerCats = ['front_door', 'tweeter', 'add_front', 'rear_door', 'center', 'surround', 'subwoofer'];
         const hasSpeaker = Object.keys(this.selections).some(catId => speakerCats.includes(catId));
-
-        if (hasSpeaker && this.selectedCar && this.selectedCar.extraLabor) {
-            labor += this.selectedCar.extraLabor;
-        }
+        if (hasSpeaker && this.selectedCar && this.selectedCar.extraLabor) labor += this.selectedCar.extraLabor;
+        labor = Math.round(labor);
 
         if (productTotal > 0 || labor > 0) {
             summaryHtml += `<hr><div class="estimate-summary-item">
                 <span style="font-weight: bold;">기술료</span>
-                <span>₩${Math.round(labor).toLocaleString()}</span>
+                <span>₩${labor.toLocaleString()}</span>
             </div>`;
         } else {
             summaryHtml = '선택된 항목이 없습니다.';
         }
 
         summary.innerHTML = summaryHtml;
-        totalPriceEl.textContent = `₩${Math.round(productTotal + labor).toLocaleString()}`;
+        totalPriceEl.textContent = `₩${(productTotal + labor).toLocaleString()}`;
     },
 
     openModal() {
@@ -313,25 +413,29 @@ const EstimateUI = {
         let ampPrice = 0;
 
         for (const catId in this.selections) {
-            const pName = this.selections[catId];
-            const price = this.getProductPrice(pName);
-            productTotal += price;
-            if (catId === 'dsp') dspPrice = price;
-            if (catId === 'amp_4ch' || catId === 'amp_sub') ampPrice += price;
+            const selected = this.selections[catId];
+            const pNames = Array.isArray(selected) ? selected : [selected];
 
-            productHtml += `
-                <tr>
-                    <td style="border: 1px solid #ddd; padding: 12px;">${pName}</td>
-                    <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">1</td>
-                    <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${price.toLocaleString()}</td>
-                    <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${price.toLocaleString()}</td>
-                </tr>
-            `;
+            pNames.forEach(pName => {
+                if (pName === "DSP 선택 안함") return;
+                const price = this.getProductPrice(pName);
+                productTotal += price;
+                if (catId === 'dsp') dspPrice = price;
+                if (catId === 'amp_4ch' || catId === 'amp_sub') ampPrice += price;
+
+                productHtml += `
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 12px;">${pName}</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">1</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${price.toLocaleString()}</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${price.toLocaleString()}</td>
+                    </tr>
+                `;
+            });
         }
 
         const speakerCats = ['front_door', 'tweeter', 'add_front', 'rear_door', 'center', 'surround', 'subwoofer'];
         const hasSpeaker = Object.keys(this.selections).some(catId => speakerCats.includes(catId));
-
         let labor = (dspPrice * 0.3) + (ampPrice * 0.1);
         if (hasSpeaker && this.selectedCar && this.selectedCar.extraLabor) labor += this.selectedCar.extraLabor;
         labor = Math.round(labor);
@@ -339,7 +443,6 @@ const EstimateUI = {
         const grandTotal = productTotal + labor;
         const vat = Math.round(grandTotal * 0.1);
         const finalTotal = grandTotal + vat;
-
         const date = new Date().toLocaleDateString();
 
         printArea.innerHTML = `
@@ -347,7 +450,6 @@ const EstimateUI = {
                 <img src="assets/images/amark.png" style="height: 40px; margin-bottom: 10px;">
                 <h1 style="font-size: 28px; margin: 0; letter-spacing: 5px;">견 적 서</h1>
             </div>
-
             <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
                 <div style="width: 45%;">
                     <p style="margin: 5px 0;"><strong>차량정보:</strong> ${this.selectedCar.brand} ${this.selectedCar.model} (${this.selectedCar.code})</p>
@@ -358,7 +460,6 @@ const EstimateUI = {
                     <p style="margin: 5px 0; font-size: 1.2rem;"><strong>수신:</strong> 고객님 귀하</p>
                 </div>
             </div>
-
             <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
                 <thead>
                     <tr style="background: #f8f8f8;">
@@ -392,7 +493,6 @@ const EstimateUI = {
                     </tr>
                 </tfoot>
             </table>
-
             <div style="margin-top: 50px; border: 1px solid #eee; padding: 20px; font-size: 0.9rem; line-height: 1.6; color: #555;">
                 <p style="margin: 0; font-weight: bold; color: #333; margin-bottom: 5px;">[ 안내사항 ]</p>
                 <p style="margin: 0;">1. 본 견적서는 알파인 카오디오 가상 견적 시뮬레이션 결과로 실제 작업 환경에 따라 차이가 있을 수 있습니다.</p>
