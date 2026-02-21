@@ -459,6 +459,10 @@ const EstimateUI = {
 
         // Strict Flow: 이전 단계가 선택되었는지 확인하는 헬퍼
         const isPrevSelected = (id) => {
+            // 해당 단계의 구성 데이터가 아예 없는 경우엔 넘김(이미 선택된 것으로 간주)
+            const list = (id === 'dsp') ? dspList : (this.selectedCar[id] || []);
+            if (list.length === 0) return true;
+
             const val = this.selections[id];
             return val !== undefined && val !== null && val !== "";
         };
@@ -490,7 +494,7 @@ const EstimateUI = {
             // 4단계(트위터 챔버): 3단계(전면) 선택 완료 AND 특정 조건(HDZ)일 때만 노출
             if (cat.id === 'tweeter') {
                 if (!isPrevSelected('front_door')) return;
-                const isHDZ = (selectedFront === "HDZ-65C" || selectedFront === "HDZ-653S" || selectedFront === "HDZ-653C");
+                const isHDZ = (selectedFront === "HDZ-65C" || selectedFront === "HDZ-653");
                 if (!isHDZ) return;
             }
 
@@ -503,7 +507,7 @@ const EstimateUI = {
             if (cat.id === 'front_baffle') {
                 if (!isPrevSelected('front_door')) return;
                 // 만약 4단계(추가/트위터)가 떠 있다면 그것도 선택되어야 함 (엄격한 순차)
-                const hasTweeter = (selectedFront === "HDZ-65C" || selectedFront === "HDZ-653S" || selectedFront === "HDZ-653C");
+                const hasTweeter = (selectedFront === "HDZ-65C" || selectedFront === "HDZ-653");
                 if (hasTweeter && !isPrevSelected('tweeter')) return;
                 if (this.selectedCar.add_front && this.selectedCar.add_front.length > 0 && !isPrevSelected('add_front')) return;
             }
@@ -681,8 +685,8 @@ const EstimateUI = {
 
     getProductPrice(name) {
         if (name === "DSP 선택 안함") return 0;
-        if (name.includes(' + ')) {
-            const parts = name.split(' + ');
+        if (name.includes('+')) {
+            const parts = name.split('+');
             let total = 0;
             parts.forEach(p => total += this.getSingleProductPrice(p.trim()));
             return total;
@@ -692,6 +696,7 @@ const EstimateUI = {
 
     getSingleProductPrice(name) {
         if (name === "커스텀 배플" || name === "현대/기아 6.5\" 배플") return 50000;
+        if (name === "GE-203") return 150000;
         if (!window.initialPriceData) return 0;
         const items = initialPriceData.filter(i => i.product === name && i.category === 'master');
         if (items.length > 0) return items[0].msrp;
