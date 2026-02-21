@@ -7768,8 +7768,8 @@ const initialEstimateData = [
             "EV-40MR-T"
         ],
         "subwoofer": [
-            "EV-10SW 3",
-            "EV-10SW Y"
+            "EV-100SW 3",
+            "EV-100SW Y"
         ],
         "player": [
             "HDS-990"
@@ -7806,8 +7806,8 @@ const initialEstimateData = [
             "EV-40MR-T"
         ],
         "subwoofer": [
-            "EV-10SW 3",
-            "EV-10SW Y"
+            "EV-100SW 3",
+            "EV-100SW Y"
         ],
         "player": [
             "HDS-990"
@@ -7844,8 +7844,8 @@ const initialEstimateData = [
             "EV-40MR-T"
         ],
         "subwoofer": [
-            "EV-10SW 3",
-            "EV-10SW Y"
+            "EV-100SW 3",
+            "EV-100SW Y"
         ],
         "player": [
             "HDS-990"
@@ -7882,8 +7882,8 @@ const initialEstimateData = [
             "EV-40MR-T"
         ],
         "subwoofer": [
-            "EV-10SW 3",
-            "EV-10SW Y"
+            "EV-100SW 3",
+            "EV-100SW Y"
         ],
         "player": [
             "HDS-990"
@@ -7961,7 +7961,7 @@ const initialEstimateData = [
         "surround": []
     }
 ];
-const ESTIMATE_DATA_VERSION = 1771674904810;
+const ESTIMATE_DATA_VERSION = 1771675552876;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
