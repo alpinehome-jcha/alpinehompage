@@ -46,11 +46,27 @@ const EstimateUI = {
                 }
                 /* 모바일 최적화 */
                 @media (max-width: 768px) {
+                    #estimateModal {
+                        overflow-y: auto;
+                        display: block; /* fixed 상태에서 스크롤 원활하게 */
+                    }
+                    #estimateModal .estimate-modal-content {
+                        width: 95%;
+                        height: auto;
+                        max-height: none;
+                        margin: 20px auto;
+                        padding: 15px;
+                        display: block; /* flex 해제하여 자연스러운 확장 */
+                    }
                     #estimateModal .estimate-body {
                         flex-direction: column;
+                        overflow: visible; /* 내부 스크롤 제거 */
+                        height: auto;
                     }
                     #estimateModal .estimate-sidebar {
                         width: 100%;
+                        height: auto;
+                        overflow: visible;
                         border-right: none;
                         border-bottom: 1px solid #eee;
                         padding: 0 0 20px 0;
@@ -58,10 +74,8 @@ const EstimateUI = {
                     }
                     #estimateModal .estimate-main {
                         padding-left: 0;
-                    }
-                    #estimateModal .estimate-modal-content {
-                        width: 95%;
-                        padding: 15px;
+                        height: auto;
+                        overflow: visible;
                     }
                     .estimate-footer {
                         flex-direction: column;
