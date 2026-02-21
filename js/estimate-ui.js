@@ -538,18 +538,9 @@ const EstimateUI = {
 
         const dspList = ["DSP 선택 안함", ...(this.selectedCar.dsp || [])];
         const selectedDsp = this.selections['dsp'];
-        const selectedPnP = this.selections['pnp'];
         const selectedFront = this.selections['front_door'];
 
-        // Strict Flow: 이전 단계가 선택되었는지 확인하는 헬퍼
-        const isPrevSelected = (id) => {
-            // 해당 단계의 구성 데이터가 아예 없는 경우엔 넘김(이미 선택된 것으로 간주)
-            const list = (id === 'dsp') ? dspList : (this.selectedCar[id] || []);
-            if (list.length === 0) return true;
-
-            const val = this.selections[id];
-            return val !== undefined && val !== null && val !== "";
-        };
+        let stepCompleted = true; // 컨트롤 플래그: 이전 단계가 완료되었는지 확인
 
         categories.forEach((cat, idx) => {
             let list = (cat.id === 'dsp') ? dspList : (this.selectedCar[cat.id] || []);
@@ -561,92 +552,37 @@ const EstimateUI = {
                 }
             }
 
-            // --- 시나리오별 노출 로직 (Strict Flow) ---
+            // --- 시나리오별 노출 로직 (Sequential Flow) ---
 
-            // 1단계(DSP)는 항상 노출
+            // 1. 기초 가시성 필터 (비즈니스 로직 기반)
+            let logicVisible = true;
 
-            // 2단계(PnP): DSP가 선택되어야 노출
             if (cat.id === 'pnp') {
-                if (!selectedDsp || selectedDsp === "DSP 선택 안함") return;
+                if (!selectedDsp || selectedDsp === "DSP 선택 안함") logicVisible = false;
             }
-
-            // 3단계(전면): 1단계(DSP) 선택 완료 시 노출
-            if (cat.id === 'front_door') {
-                if (!isPrevSelected('dsp')) return;
-            }
-
-            // 4단계(트위터 챔버): 3단계(전면) 선택 완료 AND 특정 조건(HDZ)일 때만 노출
             if (cat.id === 'tweeter') {
-                if (!isPrevSelected('front_door')) return;
                 const isHDZ = (selectedFront === "HDZ-65C" || selectedFront === "HDZ-653");
-                if (!isHDZ) return;
+                if (!isHDZ) logicVisible = false;
             }
-
-            // 4단계(전면 스피커 추가): 3단계(전면) 선택 완료 AND 데이터 존재 시 노출
-            if (cat.id === 'add_front') {
-                if (!isPrevSelected('front_door')) return;
-            }
-
-            // 5단계(전면 가이드): 3단계(또는 4단계) 선택 완료 시 노출
-            if (cat.id === 'front_baffle') {
-                if (!isPrevSelected('front_door')) return;
-                // 만약 4단계(추가/트위터)가 떠 있다면 그것도 선택되어야 함 (엄격한 순차)
-                const hasTweeter = (selectedFront === "HDZ-65C" || selectedFront === "HDZ-653");
-                if (hasTweeter && !isPrevSelected('tweeter')) return;
-                if (this.selectedCar.add_front && this.selectedCar.add_front.length > 0 && !isPrevSelected('add_front')) return;
-            }
-
-            // 6단계(후면): 5단계(전면 가이드) 선택 완료 시 노출
-            if (cat.id === 'rear_door') {
-                if (!isPrevSelected('front_baffle')) return;
-            }
-
-            // 7단계(후면 가이드): 6단계 선택 완료 시 노출
-            if (cat.id === 'rear_baffle') {
-                if (!isPrevSelected('rear_door')) return;
-            }
-
-            // 8단계(센터): 7단계 선택 완료 시 노출
-            if (cat.id === 'center') {
-                if (!isPrevSelected('rear_baffle')) return;
-            }
-
-            // 9단계(서라운드): 8단계(또는 7단계) 선택 완료 시 노출
-            if (cat.id === 'surround') {
-                if (this.selectedCar.center && this.selectedCar.center.length > 0) {
-                    if (!isPrevSelected('center')) return;
-                } else {
-                    if (!isPrevSelected('rear_baffle')) return;
-                }
-            }
-
-            // 10단계(서브우퍼), 11단계(4ch 앰프): 9단계(또는 그 이전 필수단계) 선택 완료 시 노출
-            if (cat.id === 'subwoofer' || cat.id === 'amp_4ch') {
-                // 서라운드가 있다면 서라운드 선택까지 대기
-                if (this.selectedCar.surround && this.selectedCar.surround.length > 0) {
-                    if (!isPrevSelected('surround')) return;
-                } else if (this.selectedCar.center && this.selectedCar.center.length > 0) {
-                    if (!isPrevSelected('center')) return;
-                } else {
-                    if (!isPrevSelected('rear_baffle')) return;
-                }
-            }
-
-            // 12단계(서브우퍼 앰프): 10단계(서브우퍼) 선택 완료 시 노출
             if (cat.id === 'amp_sub') {
-                if (!isPrevSelected('subwoofer')) return;
                 const selectedSub = this.selections['subwoofer'];
-                if (selectedSub === "PWE-M770" || selectedSub === "선택 안함") return;
+                if (!selectedSub || selectedSub === "PWE-M770" || selectedSub === "선택 안함") logicVisible = false;
+            }
+            // 그 외 카테고리는 데이터 유무(list.length)로 기본 판단함
+
+            // 2. 동적 흐름 제어 (Step-by-Step)
+            // 1단계(DSP)는 항상 노출 대상 시도
+            if (cat.id !== 'dsp') {
+                // 이전 단계에서 '입력'이 멈췄다면 이후는 출력하지 않음
+                if (!stepCompleted) return;
             }
 
-            // 13단계(플레이어): 11단계 선택 완료 시 노출 (12단계는 조건부이므로 11단계 기준)
-            if (cat.id === 'player') {
-                if (!isPrevSelected('amp_4ch')) return;
-            }
-
-            if (list.length > 0) {
+            // 3. 실제 렌더링 및 다음 단계 허용 여부 결정
+            if (logicVisible && list.length > 0) {
+                // 화면에 노출
                 if (cat.id === 'pnp') {
                     html += this.renderPnPSection(cat.label, list, selectedDsp);
+                    // PnP는 자동 선택되므로 항상 완료로 간주
                 } else {
                     html += `<div class="category-block">
                         <h4 style="margin: 20px 0 10px 0;">${cat.label}</h4>
@@ -665,7 +601,16 @@ const EstimateUI = {
                     }).join('')}
                         </div>
                     </div>`;
+
+                    // 선택 여부 확인: 선택이 안 되었으면 브레이크
+                    const val = this.selections[cat.id];
+                    if (!val || val === "") {
+                        stepCompleted = false;
+                    }
                 }
+            } else {
+                // 이 단계가 데이터가 없거나 로직상 미노출이면,
+                // 이전 stepCompleted 상태를 유지하며 다음 카테고리로 넘어감 (Skip)
             }
         });
 
