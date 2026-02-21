@@ -113,7 +113,26 @@
             <a href="../index.html" class="logo">
                 <img src="../assets/images/alpine_logo.png" alt="ALPINE Korea">
             </a>
-            <nav id="topNav"></nav>
+            <nav id="topNav">
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Main</a></li>
+                    <li><a href="admin.html" class="nav-link">Admin</a></li>
+                    <li class="social-icons">
+                        <a href="https://www.instagram.com/alpine_audio_korea/" target="_blank" class="social-link">
+                            <img src="../assets/images/instar_icon.png" alt="Instagram">
+                        </a>
+                        <a href="https://blog.naver.com/as_alpine" target="_blank" class="social-link">
+                            <img src="../assets/images/naver_icon.png" alt="Naver Blog">
+                        </a>
+                        <a href="https://www.youtube.com/@alpineaudiokorea" target="_blank" class="social-link">
+                            <img src="../assets/images/youtube_icon.png" alt="YouTube">
+                        </a>
+                    </li>
+                    <li class="auth-item">
+                        <a href="#" class="auth-link">Login</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -132,8 +151,7 @@
                             업로드</button>
                     </div>
                     <div>
-                        <button class="btn btn-github" onclick="syncToGitHub()">🚀 서버(GitHub)에 저장</button>
-                        <button class="btn btn-restore" onclick="resetToInitial()">♻️ 초기화</button>
+                        <button class="btn btn-restore" onclick="resetToInitial()">♻️ 서버 데이터로 복구</button>
                     </div>
                 </div>
                 <div id="syncStatus" style="margin-top: 15px; font-size: 0.9rem; color: #666;">
@@ -315,7 +333,9 @@
 
                     renderTable();
                     updateStatus();
-                    alert('성공적으로 로드되었습니다. "서버에 저장" 버튼을 눌러 최종 반영해 주세요.');
+
+                    // Auto-sync to server
+                    syncToGitHub(true);
 
                 } catch (err) {
                     console.error(err);
@@ -327,22 +347,22 @@
             reader.readAsArrayBuffer(file);
         }
 
-        async function syncToGitHub() {
-            if (!confirm('현재 데이터를 GitHub 서버에 저장하시겠습니까?\n이 작업은 웹사이트 전체에 반영됩니다.')) return;
+        async function syncToGitHub(silent = false) {
+            if (!silent && !confirm('현재 데이터를 GitHub 서버에 저장하시겠습니까?\n이 작업은 웹사이트 전체에 반영됩니다.')) return;
 
             try {
                 // admin-data-manager.js의 기능을 활용
-                await saveToGitHub('estimate');
+                await saveToGitHub('estimate', silent);
                 localStorage.removeItem('estimate_sync_pending');
                 updateStatus();
-                alert('서버 저장이 완료되었습니다. 반영까지 1~2분 정도 소요됩니다.');
+                if (!silent) alert('서버 저장이 완료되었습니다. 반영까지 1~2분 정도 소요됩니다.');
             } catch (err) {
-                alert('저장 실패: ' + err.message);
+                if (!silent) alert('저장 실패: ' + err.message);
             }
         }
 
         function resetToInitial() {
-            if (!confirm('로컬에 저장된 모든 변경사항을 지우고 서버의 초기 데이터로 복구하시겠습니까?')) return;
+            if (!confirm('로컬에 저장된 모든 변경사항을 지우고 서버의 최신 데이터로 복구하시겠습니까?')) return;
             localStorage.removeItem('estimateData');
             localStorage.removeItem('estimateDataVersion');
             localStorage.removeItem('estimate_sync_pending');
