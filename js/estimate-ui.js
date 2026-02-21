@@ -143,6 +143,10 @@ const EstimateUI = {
                         margin-right: 0 !important;
                         margin-bottom: 5px;
                     }
+                    /* 제품 그리드 모바일 1열 출력 */
+                    .product-grid-mini {
+                        grid-template-columns: 1fr !important;
+                    }
                 }
             </style>
             <div class="estimate-modal-content">
@@ -164,13 +168,8 @@ const EstimateUI = {
                             </select>
                         </div>
                         <hr>
-                        <hr>
                         <h3>1단계: 차량 선택</h3>
                         
-                        <div id="syncAlertBanner" style="display:none; background:#e74c3c; color:white; padding:8px; border-radius:6px; font-size:0.85rem; margin-bottom:10px; text-align:center; font-weight:bold; animation: pulse 2s infinite;">
-                            ⚠️ 최신 데이터 업데이트 필요
-                        </div>
-
                         <div class="form-group">
                             <label>제조사</label>
                             <select id="estBrand"><option value="">선택하세요</option></select>
@@ -184,21 +183,6 @@ const EstimateUI = {
                             <select id="estSystem" disabled><option value="">선택하세요</option></select>
                         </div>
                         
-                        <!-- 서버 동기화 섹션 (사이드바 하단 이동) -->
-                        <div style="margin-top:25px; padding:15px; background:#f0f7ff; border-radius:10px; border:1px solid #d0e5ff;">
-                            <div style="font-size: 0.75rem; color: #333; margin-bottom: 8px; display: flex; justify-content: space-between; font-weight:500;">
-                                <span>서버 버전: ${typeof ESTIMATE_DATA_VERSION !== 'undefined' ? ESTIMATE_DATA_VERSION : '확인불가'}</span>
-                            </div>
-                            <div style="font-size: 0.75rem; color: #666; margin-bottom: 12px; display: flex; justify-content: space-between;">
-                                <span>기기 로컬버전: ${localStorage.getItem('estimateDataVersion') || '없음'}</span>
-                            </div>
-                            <button onclick="window.location.href='?sync=true&t='+Date.now()" 
-                                    style="width:100%; background:#3498db; border:none; color:white; cursor :pointer; padding:10px; border-radius:6px; font-size:0.85rem; font-weight:bold; display:flex; align-items:center; justify-content:center; gap:8px;">
-                                🔄 서버 데이터 동기화
-                            </button>
-                            <p style="font-size:0.7rem; color:#888; margin-top:8px; text-align:center;">* 엑셀 수정 후 반영이 안 될 때 눌러주세요.</p>
-                        </div>
-
                         <hr>
                         <h3>견적 요약</h3>
                         <div id="estSummary">선택된 항목이 없습니다.</div>
@@ -209,14 +193,22 @@ const EstimateUI = {
                         </div>
                     </div>
                 </div>
-                <div class="estimate-footer">
-                    <div>
-                        <span>총 합계: </span>
-                        <span class="total-price" id="estTotalPrice">₩0</span>
+                <div class="estimate-footer" style="flex-wrap: wrap;">
+                    <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <div>
+                            <span>총 합계: </span>
+                            <span class="total-price" id="estTotalPrice">₩0</span>
+                        </div>
+                        <div style="font-size: 0.65rem; color: #aaa;">
+                            Server: ${typeof ESTIMATE_DATA_VERSION !== 'undefined' ? ESTIMATE_DATA_VERSION : 'N/A'} | 
+                            Local: ${localStorage.getItem('estimateDataVersion') || 'N/A'}
+                        </div>
                     </div>
-                    <button class="sub-filter-btn" style="background:#333; color:#fff; margin-right:10px;" onclick="EstimateUI.resetSelections()">초기화</button>
-                    <button class="sub-filter-btn" style="background:#007aff; color:#fff; margin-right:10px;" onclick="EstimateUI.showAIAssessment()">AI의 평가</button>
-                    <button class="sub-filter-btn active" onclick="EstimateUI.showEstimateSheet()">견적서 보기</button>
+                    <div style="display: flex; gap: 10px; width: 100%; justify-content: flex-end;">
+                        <button class="sub-filter-btn" style="background:#333; color:#fff;" onclick="EstimateUI.resetSelections()">초기화</button>
+                        <button class="sub-filter-btn" style="background:#007aff; color:#fff;" onclick="EstimateUI.showAIAssessment()">AI의 평가</button>
+                        <button class="sub-filter-btn active" onclick="EstimateUI.showEstimateSheet()">견적서 보기</button>
+                    </div>
                 </div>
             </div>
 
@@ -970,16 +962,8 @@ const EstimateUI = {
     },
 
     resetSelections() {
-        if (confirm('모든 선택 내역을 초기화하시겠습니까?')) {
-            this.selectedCar = null;
-            this.selections = {};
-            document.getElementById('estBrand').value = '';
-            document.getElementById('estModel').innerHTML = '<option value="">선택하세요</option>';
-            document.getElementById('estModel').disabled = true;
-            document.getElementById('estSystem').innerHTML = '<option value="">선택하세요</option>';
-            document.getElementById('estSystem').disabled = true;
-            document.getElementById('estLevel').value = 'custom';
-            this.updateSelectionArea();
+        if (confirm('모든 선택 내역을 초기화하고 서버의 최신 데이터를 동기화하시겠습니까?')) {
+            window.location.href = '?sync=true&t=' + Date.now();
         }
     },
 
