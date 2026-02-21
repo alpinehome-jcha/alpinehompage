@@ -164,7 +164,13 @@ const EstimateUI = {
                             </select>
                         </div>
                         <hr>
+                        <hr>
                         <h3>1단계: 차량 선택</h3>
+                        
+                        <div id="syncAlertBanner" style="display:none; background:#e74c3c; color:white; padding:8px; border-radius:6px; font-size:0.85rem; margin-bottom:10px; text-align:center; font-weight:bold; animation: pulse 2s infinite;">
+                            ⚠️ 최신 데이터 업데이트 필요
+                        </div>
+
                         <div class="form-group">
                             <label>제조사</label>
                             <select id="estBrand"><option value="">선택하세요</option></select>
@@ -177,6 +183,22 @@ const EstimateUI = {
                             <label>사운드시스템</label>
                             <select id="estSystem" disabled><option value="">선택하세요</option></select>
                         </div>
+                        
+                        <!-- 서버 동기화 섹션 (사이드바 하단 이동) -->
+                        <div style="margin-top:25px; padding:15px; background:#f0f7ff; border-radius:10px; border:1px solid #d0e5ff;">
+                            <div style="font-size: 0.75rem; color: #333; margin-bottom: 8px; display: flex; justify-content: space-between; font-weight:500;">
+                                <span>서버 버전: ${typeof ESTIMATE_DATA_VERSION !== 'undefined' ? ESTIMATE_DATA_VERSION : '확인불가'}</span>
+                            </div>
+                            <div style="font-size: 0.75rem; color: #666; margin-bottom: 12px; display: flex; justify-content: space-between;">
+                                <span>기기 로컬버전: ${localStorage.getItem('estimateDataVersion') || '없음'}</span>
+                            </div>
+                            <button onclick="window.location.href='?sync=true&t='+Date.now()" 
+                                    style="width:100%; background:#3498db; border:none; color:white; cursor :pointer; padding:10px; border-radius:6px; font-size:0.85rem; font-weight:bold; display:flex; align-items:center; justify-content:center; gap:8px;">
+                                🔄 서버 데이터 동기화
+                            </button>
+                            <p style="font-size:0.7rem; color:#888; margin-top:8px; text-align:center;">* 엑셀 수정 후 반영이 안 될 때 눌러주세요.</p>
+                        </div>
+
                         <hr>
                         <h3>견적 요약</h3>
                         <div id="estSummary">선택된 항목이 없습니다.</div>
@@ -939,15 +961,8 @@ const EstimateUI = {
                 ${extra}
                 <div style="margin-top:20px; padding-top:15px; border-top:1px solid #eee; display:flex; justify-content:space-between; align-items:center;">
                     <button class="btn btn-secondary" onclick="EstimateUI.closeModal()">닫기</button>
-                    <div style="font-size: 0.7rem; color: #aaa; margin-bottom: 5px; text-align: right;">
+                    <div style="font-size: 0.7rem; color: #aaa; text-align: right;">
                         Last Checked: ${new Date().toLocaleTimeString()}
-                    </div>
-                    <div style="font-size: 0.7rem; color: #999; margin-bottom: 5px; display: flex; justify-content: space-between;">
-                        <span>Server Ver: ${typeof ESTIMATE_DATA_VERSION !== 'undefined' ? ESTIMATE_DATA_VERSION : 'Error'}</span>
-                        <span>Local Ver: ${localStorage.getItem('estimateDataVersion') || 'None'}</span>
-                    </div>
-                    <div style="font-size: 0.75rem; color: #999; display:flex; justify-content:space-between; align-items:center; width:100%;">
-                        <button onclick="window.location.href='?sync=true&t='+Date.now()" style="background:#3498db; border:none; color:white; cursor:pointer; padding:5px 12px; border-radius:4px; font-size:0.75rem;">🔄 전체 데이터 강제 동기화</button>
                     </div>
                 </div>
             </div>
