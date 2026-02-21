@@ -13,12 +13,20 @@ const EstimateUI = {
     },
 
     async loadDataScripts() {
-        // 경로 보정: 현재 페이지 위치에 따라 js 경로 조정
+        // 경로 보정
         const isSubPage = window.location.pathname.includes('/pages/') || window.location.pathname.includes('/support/');
         const root = isSubPage ? '../js/' : 'js/';
 
-        // 10분 단위 캐시 버스팅 (데이터 업데이트 반영과 부하 사이의 절충)
-        const t = Math.floor(Date.now() / (1000 * 60 * 10));
+        // URL 파라미터 체크: ?sync=true 시 로컬 스토리지 초기화 (강제 동기화용)
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('sync') === 'true') {
+            console.warn("Forcing data sync - Clearing local storage");
+            localStorage.removeItem('estimateData');
+            localStorage.removeItem('estimateDataVersion');
+        }
+
+        // 1분 단위 캐시 버스팅 (더 빠른 반영을 위해 1분으로 축소)
+        const t = Math.floor(Date.now() / (1000 * 60));
 
         const scripts = [
             `${root}estimate-data.js?t=${t}`,
