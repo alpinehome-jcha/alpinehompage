@@ -7044,9 +7044,12 @@ const initialEstimateData = [
         "code": "-",
         "system": "5채널(Mbux1st)_6채널(Mbux2nd)",
         "dsp": [
-            "PXE-M60-4",
-            "PXE-R80-8",
-            "PXE-R100-8"
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
         ],
         "pnp": [
             "BZ-502",
@@ -7958,7 +7961,7 @@ const initialEstimateData = [
         "surround": []
     }
 ];
-const ESTIMATE_DATA_VERSION = 1771670348169;
+const ESTIMATE_DATA_VERSION = 1771670802946;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
