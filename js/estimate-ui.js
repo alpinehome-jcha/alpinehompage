@@ -44,7 +44,7 @@ const EstimateUI = {
                             <select id="estModel" disabled><option value="">선택하세요</option></select>
                         </div>
                         <div class="form-group">
-                            <label>시스템</label>
+                            <label>사운드시스템</label>
                             <select id="estSystem" disabled><option value="">선택하세요</option></select>
                         </div>
                         <hr>
@@ -90,7 +90,7 @@ const EstimateUI = {
     populateBrands() {
         const brandSelect = document.getElementById('estBrand');
         const brands = [...new Set(estimateData.map(item => item.brand))];
-        brands.forEach(brand => {
+        brands.sort().forEach(brand => {
             const opt = document.createElement('option');
             opt.value = brand;
             opt.textContent = brand;
@@ -111,13 +111,15 @@ const EstimateUI = {
             systemSelect.innerHTML = '<option value="">선택하세요</option>';
             if (brand) {
                 const models = [...new Set(estimateData.filter(i => i.brand === brand).map(i => i.model))];
-                models.forEach(m => {
+                models.sort().forEach(m => {
                     const opt = document.createElement('option');
                     opt.value = m;
                     opt.textContent = m;
                     modelSelect.appendChild(opt);
                 });
             }
+            this.selectedCar = null;
+            this.selections = {};
             this.updateSelectionArea();
         };
 
@@ -130,10 +132,12 @@ const EstimateUI = {
                 systems.forEach((s, idx) => {
                     const opt = document.createElement('option');
                     opt.value = idx;
-                    opt.textContent = `${s.year} ${s.system}`;
+                    opt.textContent = `${s.year} ${s.system} (${s.code})`;
                     systemSelect.appendChild(opt);
                 });
             }
+            this.selectedCar = null;
+            this.selections = {};
             this.updateSelectionArea();
         };
 
@@ -141,10 +145,37 @@ const EstimateUI = {
             const idx = e.target.value;
             if (idx !== "") {
                 this.selectedCar = estimateData.filter(i => i.brand === brandSelect.value && i.model === modelSelect.value)[idx];
-                this.selections = {}; // Reset selections
+                this.selections = {};
                 this.updateSelectionArea();
             }
         };
+    },
+
+    getProductWithRank(name) {
+        if (name === "DSP 선택 안함") return name;
+
+        const ranks = {
+            // DSPs
+            "PXE-M60-4": "[입문용] PXE-M60-4",
+            "PXE-R80-8": "[가성비] PXE-R80-8",
+            "PXE-R100-8": "[가성비] PXE-R100-8",
+            "PXE-R100-10": "[가성비] PXE-R100-10",
+            "PXE-X120-8": "[프로] PXE-X120-8",
+            "PXE-X120-10DP": "[프로] PXE-X120-10DP",
+            "PXE-X121-12EV": "[하이엔드] PXE-X121-12EV",
+            "HDP-D90": "[하이엔드] HDP-D90",
+
+            // Speakers
+            "DM-65C": "[입문용] DM-65C",
+            "DM-65": "[입문용] DM-65",
+            "S2-S65C": "[가성비] S2-S65C",
+            "S2-S65": "[가성비] S2-S65",
+            "DP2-65C": "[매니아] DP2-65C",
+            "HDZ-65C": "[프로] HDZ-65C",
+            "HDZ-653C": "[프로] HDZ-653C",
+            "HDZ-653S": "[프로] HDZ-653S"
+        };
+        return ranks[name] || name;
     },
 
     updateSelectionArea() {
@@ -159,7 +190,7 @@ const EstimateUI = {
             { id: 'dsp', label: '1단계: DSP 선택 (견적1)' },
             { id: 'pnp', label: '2단계: PnP Cable 선택 (견적2)' },
             { id: 'front_door', label: '3단계: 전면도어 스피커 선택 (견적3-1)' },
-            { id: 'tweeter', label: '3-1단계: 전면 트위터 챔버 선택 (견적3-1-1)' },
+            { id: 'tweeter', label: '3-1-1단계: 전면 트위터 챔버 선택 (견적3-1-1)' },
             { id: 'add_front', label: '3-2단계: 전면 스피커 추가 선택 (견적3-2)' },
             { id: 'front_baffle', label: '3-3단계: 전면 스피커 가이드 선택 (견적3-3)' },
             { id: 'rear_door', label: '4단계: 후면도어 스피커 선택 (견적4-1)' },
@@ -174,18 +205,34 @@ const EstimateUI = {
 
         let html = `<h3>${this.selectedCar.model} (${this.selectedCar.code}) 제품 선택</h3>`;
 
-        // DSP List with "선택 안함"
         const dspList = ["DSP 선택 안함", ...(this.selectedCar.dsp || [])];
         const selectedDsp = this.selections['dsp'];
+        const selectedPnP = this.selections['pnp'];
+        const selectedFront = this.selections['front_door'];
 
         categories.forEach(cat => {
             let list = (cat.id === 'dsp') ? dspList : (this.selectedCar[cat.id] || []);
 
-            // Logic: Step 2 (pnp) only shows if DSP is selected and not "선택 안함"
-            if (cat.id === 'pnp' && (!selectedDsp || selectedDsp === "DSP 선택 안함")) return;
+            // Logic for sequential display
+            if (cat.id === 'pnp') {
+                if (!selectedDsp || selectedDsp === "DSP 선택 안함") return;
+            }
+            if (cat.id === 'front_door') {
+                // Shows if (DSP is "선택 안함") OR (PnP is selected)
+                const isDpsNone = (selectedDsp === "DSP 선택 안함");
+                const isPnpSelected = (selectedPnP && selectedPnP.length > 0);
+                if (!isDpsNone && !isPnpSelected) return;
+            }
+            if (cat.id === 'tweeter') {
+                // Step 3-1-1 ONLY shows if HDZ-65C or HDZ-653C is selected in 3-1
+                if (selectedFront !== "HDZ-65C" && selectedFront !== "HDZ-653C" && selectedFront !== "HDZ-653S") return;
+            }
+            if (cat.id === 'add_front') {
+                // Shows if Step 3-1 (front_door) is completed
+                if (!selectedFront) return;
+            }
 
             if (list.length > 0) {
-                // Specialized Rendering for PnP
                 if (cat.id === 'pnp') {
                     html += this.renderPnPSection(cat.label, list, selectedDsp);
                 } else {
@@ -194,10 +241,11 @@ const EstimateUI = {
                         <div class="product-grid-mini">
                             ${list.map(pName => {
                         const price = this.getProductPrice(pName);
+                        const displayName = this.getProductWithRank(pName);
                         const isSelected = (cat.id === 'dsp' && !selectedDsp && pName === "DSP 선택 안함") ? true : (this.selections[cat.id] === pName || (Array.isArray(this.selections[cat.id]) && this.selections[cat.id].includes(pName)));
                         return `
                                     <div class="product-item ${isSelected ? 'selected' : ''}" onclick="EstimateUI.selectProduct('${cat.id}', '${pName}')">
-                                        <span>${pName}</span>
+                                        <span>${displayName}</span>
                                         <span style="color: #666;">${pName === "DSP 선택 안함" ? "" : "₩" + price.toLocaleString()}</span>
                                     </div>
                                 `;
@@ -213,19 +261,15 @@ const EstimateUI = {
     },
 
     renderPnPSection(label, list, selectedDsp) {
-        // Group PnPs
         const integrated = list.filter(p => !p.endsWith('A') && !p.startsWith('DS-'));
         const typeA = list.filter(p => p.endsWith('A'));
         const typeB = list.filter(p => p.startsWith('DS-'));
-
-        // Check for matching integrated PnP based on user rules
         const matchedIntegrated = this.getMatchedIntegrated(selectedDsp, integrated);
 
         let html = `<div class="category-block">
             <h4 style="margin: 20px 0 10px 0;">${label}</h4>`;
 
         if (matchedIntegrated) {
-            // Only show integrated
             html += `<div class="product-grid-mini">
                 <div class="product-item selected">
                     <span>${matchedIntegrated} (통합형 자동 선택)</span>
@@ -233,19 +277,14 @@ const EstimateUI = {
                 </div>
             </div>`;
         } else {
-            // Show A and B types
             html += `<p style="font-size:0.85rem; color:#888; margin-bottom:5px;">통합형 PnP가 없어 A타입과 B타입이 자동 선택됩니다.</p>
             <div class="product-grid-mini">`;
-
-            // Render Type A (usually only one)
             typeA.forEach(p => {
                 html += `<div class="product-item selected">
                     <span>${p} (A타입 자동)</span>
                     <span style="color: #666;">₩${this.getProductPrice(p).toLocaleString()}</span>
                 </div>`;
             });
-
-            // Render matched Type B
             const matchedB = this.getMatchedTypeB(selectedDsp, typeB);
             if (matchedB) {
                 html += `<div class="product-item selected">
@@ -290,7 +329,6 @@ const EstimateUI = {
     selectProduct(catId, pName) {
         if (catId === 'dsp') {
             this.selections = { 'dsp': pName };
-            // Trigger auto-selection for PnP
             if (pName !== "DSP 선택 안함" && this.selectedCar.pnp) {
                 const list = this.selectedCar.pnp;
                 const integrated = list.filter(p => !p.endsWith('A') && !p.startsWith('DS-'));
@@ -353,7 +391,7 @@ const EstimateUI = {
                 if (catId === 'amp_4ch' || catId === 'amp_sub') ampPrice += price;
 
                 summaryHtml += `<div class="estimate-summary-item">
-                    <span>${pName}</span>
+                    <span>${this.getProductWithRank(pName)}</span>
                     <span>₩${price.toLocaleString()}</span>
                 </div>`;
             });
@@ -425,7 +463,7 @@ const EstimateUI = {
 
                 productHtml += `
                     <tr>
-                        <td style="border: 1px solid #ddd; padding: 12px;">${pName}</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">${this.getProductWithRank(pName)}</td>
                         <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">1</td>
                         <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${price.toLocaleString()}</td>
                         <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${price.toLocaleString()}</td>
@@ -453,7 +491,7 @@ const EstimateUI = {
             <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
                 <div style="width: 45%;">
                     <p style="margin: 5px 0;"><strong>차량정보:</strong> ${this.selectedCar.brand} ${this.selectedCar.model} (${this.selectedCar.code})</p>
-                    <p style="margin: 5px 0;"><strong>시스템명:</strong> ${this.selectedCar.system}</p>
+                    <p style="margin: 5px 0;"><strong>사운드시스템:</strong> ${this.selectedCar.system}</p>
                     <p style="margin: 5px 0;"><strong>견적일자:</strong> ${date}</p>
                 </div>
                 <div style="width: 45%; text-align: right;">
