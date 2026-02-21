@@ -845,7 +845,7 @@ const initialProductData = [
     {
         "id": 1770281132274,
         "category": "DSP/AMP",
-        "title": "PXE-X121-12EX",
+        "title": "PXE-X121-12EV",
         "desc": "12CH DSP Amplifiler",
         "desc_bottom": "장착 공임 별도/20만원 부터",
         "price": 2300000,
@@ -1502,7 +1502,7 @@ const initialProductData = [
     {
         "id": 1770345538900,
         "category": "Speakers",
-        "title": "S2-A10TW",
+        "title": "S2-S10TW",
         "desc": "1\" Tweeter Set",
         "desc_bottom": "장착 공임 별도/20만원 부터",
         "price": 150000,
@@ -3390,7 +3390,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771572235292;
+const PRODUCT_DATA_VERSION = 1771659811888;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
