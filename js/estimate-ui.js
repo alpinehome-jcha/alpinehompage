@@ -254,9 +254,14 @@ const EstimateUI = {
         }
 
         // Labor Calculation
-        // 선택된 DSP 가격의 30%+ 선택된 앰프 가격의 10%
+        // 기본: 선택된 DSP 가격의 30% + 선택된 앰프 가격의 10%
         let labor = (dspPrice * 0.3) + (ampPrice * 0.1);
-        if (this.selectedCar && this.selectedCar.extraLabor) {
+
+        // 추가 기술료(extraLabor)는 스피커를 선택했을 때만 적용 (사용자 요청)
+        const speakerCats = ['front_door', 'tweeter', 'add_front', 'rear_door', 'center', 'surround', 'subwoofer'];
+        const hasSpeaker = Object.keys(this.selections).some(catId => speakerCats.includes(catId));
+
+        if (hasSpeaker && this.selectedCar && this.selectedCar.extraLabor) {
             labor += this.selectedCar.extraLabor;
         }
 
@@ -324,8 +329,11 @@ const EstimateUI = {
             `;
         }
 
+        const speakerCats = ['front_door', 'tweeter', 'add_front', 'rear_door', 'center', 'surround', 'subwoofer'];
+        const hasSpeaker = Object.keys(this.selections).some(catId => speakerCats.includes(catId));
+
         let labor = (dspPrice * 0.3) + (ampPrice * 0.1);
-        if (this.selectedCar && this.selectedCar.extraLabor) labor += this.selectedCar.extraLabor;
+        if (hasSpeaker && this.selectedCar && this.selectedCar.extraLabor) labor += this.selectedCar.extraLabor;
         labor = Math.round(labor);
 
         const grandTotal = productTotal + labor;
