@@ -220,9 +220,16 @@
                     <label>GitHub Repository (owner/repo)</label>
                     <input type="text" id="ghRepo" placeholder="username/repository">
                 </div>
-                <div style="display: flex; gap: 10px;">
+                <div class="github-input-group">
+                    <label>GitHub Branch (default: main)</label>
+                    <input type="text" id="ghBranch" placeholder="main or master">
+                </div>
+                <div style="display: flex; gap: 10px; align-items: center;">
                     <button class="btn btn-primary btn-sm" onclick="saveGithubConfig()">설정 저장</button>
+                    <button class="btn btn-success btn-sm" id="testConnBtn" onclick="testGithubConnection()">연결
+                        테스트</button>
                     <button class="btn btn-secondary btn-sm" onclick="toggleGithubSettings()">닫기</button>
+                    <span id="testResult" style="font-size: 0.85rem; margin-left: 10px;"></span>
                 </div>
             </div>
 
@@ -337,6 +344,8 @@
             if (isHidden) {
                 document.getElementById('ghToken').value = localStorage.getItem('github_token') || '';
                 document.getElementById('ghRepo').value = localStorage.getItem('github_repo') || '';
+                document.getElementById('ghBranch').value = localStorage.getItem('github_branch') || 'main';
+                document.getElementById('testResult').textContent = '';
                 panel.style.display = 'block';
             } else {
                 panel.style.display = 'none';
@@ -346,6 +355,7 @@
         function saveGithubConfig() {
             const token = document.getElementById('ghToken').value.trim();
             const repo = document.getElementById('ghRepo').value.trim();
+            const branch = document.getElementById('ghBranch').value.trim() || 'main';
 
             if (!token || !repo) {
                 alert('토큰과 저장소 주소를 모두 입력해주세요.');
@@ -354,15 +364,48 @@
 
             localStorage.setItem('github_token', token);
             localStorage.setItem('github_repo', repo);
+            localStorage.setItem('github_branch', branch);
 
             // Re-configure client
             if (typeof ghClient !== 'undefined') {
-                ghClient.configure(token, repo);
+                ghClient.configure(token, repo, branch);
             }
 
             alert('저장되었습니다.');
             updateGithubStatus();
             toggleGithubSettings();
+        }
+
+        async function testGithubConnection() {
+            const btn = document.getElementById('testConnBtn');
+            const result = document.getElementById('testResult');
+
+            btn.disabled = true;
+            result.textContent = '테스트 중...';
+            result.style.color = '#666';
+
+            try {
+                // Ensure latest config is used
+                const token = document.getElementById('ghToken').value.trim();
+                const repo = document.getElementById('ghRepo').value.trim();
+                const branch = document.getElementById('ghBranch').value.trim() || 'main';
+
+                ghClient.configure(token, repo, branch);
+
+                const res = await ghClient.testConnection();
+                if (res.success) {
+                    result.textContent = '✅ ' + res.message;
+                    result.style.color = '#27ae60';
+                } else {
+                    result.textContent = '❌ ' + res.message;
+                    result.style.color = '#e74c3c';
+                }
+            } catch (err) {
+                result.textContent = '❌ 오류: ' + err.message;
+                result.style.color = '#e74c3c';
+            } finally {
+                btn.disabled = false;
+            }
         }
 
         function updateGithubStatus() {

@@ -281,8 +281,9 @@ async function saveToGitHub(type, silent = false) {
     }
 
     // Ensure client is configured
-    if (!ghClient.isConfigured()) {
-        ghClient.configure(token, repo);
+    if (!ghClient.isConfigured() || localStorage.getItem('github_branch')) {
+        const branch = localStorage.getItem('github_branch') || 'main';
+        ghClient.configure(token, repo, branch);
     }
 
     try {

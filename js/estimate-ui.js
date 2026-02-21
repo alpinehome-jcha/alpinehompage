@@ -17,12 +17,17 @@ const EstimateUI = {
         const isSubPage = window.location.pathname.includes('/pages/') || window.location.pathname.includes('/support/');
         const root = isSubPage ? '../js/' : 'js/';
 
-        // URL 파라미터 체크: ?sync=true 시 로컬 스토리지 초기화 (강제 동기화용)
+        // URL sync parameter check
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('sync') === 'true') {
-            console.warn("Forcing data sync - Clearing local storage");
+            console.log("Forcing manual data synchronization...");
             localStorage.removeItem('estimateData');
             localStorage.removeItem('estimateDataVersion');
+            localStorage.removeItem('estimate_sync_pending');
+            localStorage.removeItem('pnpSearchData');
+            localStorage.removeItem('pnpSearchDataVersion');
+            // Clean URL after clear
+            window.history.replaceState({}, document.title, window.location.pathname);
         }
 
         // 1분 단위 캐시 버스팅 (더 빠른 반영을 위해 1분으로 축소)
@@ -930,7 +935,10 @@ const EstimateUI = {
                 ${extra}
                 <div style="margin-top:20px; padding-top:15px; border-top:1px solid #eee; display:flex; justify-content:space-between; align-items:center;">
                     <button class="btn btn-secondary" onclick="EstimateUI.closeModal()">닫기</button>
-                    <div style="font-size: 0.75rem; color: #999; display:flex; align-items:center; gap:10px;">
+                    <div style="font-size: 0.7rem; color: #aaa; margin-bottom: 5px; text-align: right;">
+                        Last Checked: ${new Date().toLocaleTimeString()}
+                    </div>
+                    <div style="font-size: 0.75rem; color: #999; display:flex; justify-content:space-between; align-items:center; width:100%;">
                         <span>Data Ver: ${typeof ESTIMATE_DATA_VERSION !== 'undefined' ? ESTIMATE_DATA_VERSION : 'Loading...'}</span>
                         <button onclick="window.location.href='?sync=true'" style="background:none; border:none; color:#3498db; cursor:pointer; padding:0; font-size:0.75rem; text-decoration:underline;">강제 동기화</button>
                     </div>
