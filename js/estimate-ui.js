@@ -44,6 +44,40 @@ const EstimateUI = {
                     .no-print { display: none !important; }
                     .printable-area { padding: 0 !important; }
                 }
+                /* 모바일 최적화 */
+                @media (max-width: 768px) {
+                    #estimateModal .estimate-body {
+                        flex-direction: column;
+                    }
+                    #estimateModal .estimate-sidebar {
+                        width: 100%;
+                        border-right: none;
+                        border-bottom: 1px solid #eee;
+                        padding: 0 0 20px 0;
+                        margin-bottom: 20px;
+                    }
+                    #estimateModal .estimate-main {
+                        padding-left: 0;
+                    }
+                    #estimateModal .estimate-modal-content {
+                        width: 95%;
+                        padding: 15px;
+                    }
+                    .estimate-footer {
+                        flex-direction: column;
+                        align-items: stretch;
+                        gap: 10px;
+                    }
+                    .estimate-footer > div {
+                        text-align: center;
+                        margin-bottom: 5px;
+                    }
+                    .estimate-footer .sub-filter-btn {
+                        width: 100%;
+                        margin-right: 0 !important;
+                        margin-bottom: 5px;
+                    }
+                }
             </style>
             <div class="estimate-modal-content">
                 <div class="estimate-header">
@@ -93,7 +127,24 @@ const EstimateUI = {
                         <span class="total-price" id="estTotalPrice">₩0</span>
                     </div>
                     <button class="sub-filter-btn" style="background:#333; color:#fff; margin-right:10px;" onclick="EstimateUI.resetSelections()">초기화</button>
+                    <button class="sub-filter-btn" style="background:#007aff; color:#fff; margin-right:10px;" onclick="EstimateUI.showAIAssessment()">AI의 평가</button>
                     <button class="sub-filter-btn active" onclick="EstimateUI.showEstimateSheet()">견적서 보기</button>
+                </div>
+            </div>
+
+            <!-- AI 가상 평가 모달 -->
+            <div id="estimateAIModal" class="estimate-modal" style="z-index: 10002; background: rgba(0,0,0,0.8);">
+                <div class="estimate-modal-content" style="max-width: 600px; width: 90%; background:#fff; border-radius:8px;">
+                    <div class="estimate-header" style="padding: 20px; border-bottom: 1px solid #eee;">
+                        <h2 style="margin:0;">🤖 알파인 AI 구성 분석</h2>
+                        <span class="close-btn" onclick="EstimateUI.closeAIModal()">&times;</span>
+                    </div>
+                    <div id="aiAssessmentArea" style="padding: 30px; line-height: 1.6; color: #333; font-size: 1rem;">
+                        <!-- AI 평가 내용이 여기에 렌더링됨 -->
+                    </div>
+                    <div style="padding: 20px; text-align: center; border-top: 1px solid #eee;">
+                        <button class="sub-filter-btn active" onclick="EstimateUI.closeAIModal()" style="padding: 8px 40px;">확인</button>
+                    </div>
                 </div>
             </div>
             
@@ -697,6 +748,96 @@ const EstimateUI = {
 
     closePrintModal() {
         document.getElementById('estimatePrintModal').style.display = 'none';
+    },
+
+    showAIAssessment() {
+        if (!this.selectedCar || Object.keys(this.selections).length === 0) {
+            alert('먼저 제품을 선택해 주세요.');
+            return;
+        }
+        const area = document.getElementById('aiAssessmentArea');
+        const modal = document.getElementById('estimateAIModal');
+
+        area.innerHTML = '<div style="text-align:center;">AI가 구성을 분석 중입니다...</div>';
+        modal.display = 'block';
+        modal.style.display = 'block';
+
+        setTimeout(() => {
+            const analysis = this.generateAIAnalysis();
+            area.innerHTML = analysis;
+        }, 800);
+    },
+
+    closeAIModal() {
+        document.getElementById('estimateAIModal').style.display = 'none';
+    },
+
+    generateAIAnalysis() {
+        const sel = this.selections;
+        const items = Object.values(sel).flat().filter(i => i !== "선택 안함" && i !== "DSP 선택 안함");
+
+        let score = 0;
+        let labels = items.map(i => this.getProductWithRank(i));
+
+        const counts = {
+            입문: labels.filter(l => l.includes('[입문용]')).length,
+            가성비: labels.filter(l => l.includes('[가성비]')).length,
+            프로: labels.filter(l => l.includes('[프로]')).length,
+            하이: labels.filter(l => l.includes('[하이엔드]')).length,
+            어나더: labels.filter(l => l.includes('[어나더레벨]')).length
+        };
+
+        let mainLevel = "커스텀";
+        const max = Math.max(...Object.values(counts));
+        if (max > 0) {
+            mainLevel = Object.keys(counts).find(k => counts[k] === max);
+        }
+
+        let comment = "";
+        let recommendation = "";
+
+        if (counts.어나더 >= 3) {
+            comment = "<strong>'최상위 하이파이의 정점'</strong>입니다. 알파인의 기술력이 집약된 F#1 Status급 구성으로, 원음 그대로의 감동을 재현할 수 있는 완벽한 시스템입니다.";
+            recommendation = "최고의 소리를 위해 전문 인스톨러의 정밀한 프로세싱 튜닝이 필수적입니다.";
+            score = 99;
+        } else if (counts.하이 >= 3) {
+            comment = "<strong>'프리미엄 사운드의 정석'</strong>입니다. 고해상도 오디오(Hi-Res) 대응이 완벽하며, 스테이지감과 해상력이 매우 뛰어난 구성입니다.";
+            recommendation = "전면 스피커의 성능을 100% 끌어올리기 위해 '트위터 챔버' 작업을 강력 추천합니다.";
+            score = 92;
+        } else if (counts.프로 >= 3) {
+            comment = "<strong>'중급자를 위한 파워풀한 시스템'</strong>입니다. 충분한 출력과 단단한 베이스가 조화로워, 올라운드 음악 감상에 최적화되어 있습니다.";
+            recommendation = "앰프 작업이 포함되어 있으니 전원 보강(캐패시터 등)을 고려하시면 더욱 안정적인 소리를 얻을 수 있습니다.";
+            score = 85;
+        } else if (counts.가성비 >= 3) {
+            comment = "<strong>'합리적인 고음질 지향'</strong> 구성입니다. 순정과는 차원이 다른 선명도를 경험할 수 있으며, 투자 대비 사운드 개선 효과가 가장 극대화된 조합입니다.";
+            recommendation = "도어 방음(알루미늄 매트) 작업을 병행하면 저역의 타격감이 훨씬 좋아집니다.";
+            score = 78;
+        } else {
+            comment = "<strong>'깔끔한 사운드 밸런스'</strong>에 집중한 구성입니다. 답답한 순정 소리를 걷어내고 맑은 고음과 정돈된 저음을 즐기기에 충분한 입문용 최적 조합입니다.";
+            recommendation = "추후 사운드에 더 욕심이 생기신다면 '서브우퍼' 추가를 통해 공간감을 넓혀보시는 것을 추천합니다.";
+            score = 70;
+        }
+
+        // 특정 제품 조합에 대한 위트 있는 코멘트
+        let extra = "";
+        if (sel.dsp && sel.subwoofer && sel.subwoofer !== "선택 안함") {
+            extra = "<br><br>💡 DSP와 서브우퍼가 모두 포함되어 있어, 운전석 중심의 정밀한 '타임 얼라이먼트' 세팅이 가능합니다. 마치 대시보드 위에 가수가 서 있는 듯한 스테이지를 경험하실 수 있습니다.";
+        }
+
+        return `
+            <div style="background: #f8f9fa; border-radius: 12px; padding: 20px; border-left: 5px solid #007aff;">
+                <p style="font-size: 1.1rem; margin-bottom: 10px;">현재 구성은 <span style="color:#007aff; font-weight:bold;">#${mainLevel} 스타일</span>입니다.</p>
+                <p style="color: #555;">${comment}</p>
+                <div style="margin-top: 20px; border-top: 1px dashed #ccc; padding-top: 15px;">
+                    <p style="font-weight: bold; color: #222;">🛡️ AI 전문가의 한마디:</p>
+                    <p style="color: #666; font-size: 0.95rem;">${recommendation}</p>
+                </div>
+                ${extra}
+                <div style="margin-top: 20px; text-align: right;">
+                    <span style="font-size: 0.8rem; color: #888;">AI 매칭 지수: ${score}%</span>
+                </div>
+            </div>
+        `;
     },
 
     resetSelections() {
