@@ -928,8 +928,12 @@ const EstimateUI = {
                     <p style="color: #666; font-size: 0.95rem;">${recommendation}</p>
                 </div>
                 ${extra}
-                <div style="margin-top: 20px; text-align: right;">
-                    <span style="font-size: 0.8rem; color: #888;">AI 매칭 지수: ${score}%</span>
+                <div style="margin-top:20px; padding-top:15px; border-top:1px solid #eee; display:flex; justify-content:space-between; align-items:center;">
+                    <button class="btn btn-secondary" onclick="EstimateUI.closeModal()">닫기</button>
+                    <div style="font-size: 0.75rem; color: #999; display:flex; align-items:center; gap:10px;">
+                        <span>Data Ver: ${typeof ESTIMATE_DATA_VERSION !== 'undefined' ? ESTIMATE_DATA_VERSION : 'Loading...'}</span>
+                        <button onclick="window.location.href='?sync=true'" style="background:none; border:none; color:#3498db; cursor:pointer; padding:0; font-size:0.75rem; text-decoration:underline;">강제 동기화</button>
+                    </div>
                 </div>
             </div>
         `;
