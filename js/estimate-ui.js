@@ -48,7 +48,6 @@ const EstimateUI = {
                 @media (max-width: 768px) {
                     #estimateModal {
                         overflow-y: auto;
-                        display: block; /* fixed 상태에서 스크롤 원활하게 */
                     }
                     #estimateModal .estimate-modal-content {
                         width: 95%;
