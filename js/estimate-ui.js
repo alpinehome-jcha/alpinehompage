@@ -89,8 +89,20 @@ const EstimateUI = {
 
     populateBrands() {
         const brandSelect = document.getElementById('estBrand');
-        const brands = [...new Set(estimateData.map(item => item.brand))];
-        brands.sort().forEach(brand => {
+        let brands = [...new Set(estimateData.map(item => item.brand))];
+
+        // Custom sort: Hyundai, Kia, Genesis first
+        const priority = ["현대자동차", "기아자동차", "제네시스"];
+        brands.sort((a, b) => {
+            const indexA = priority.indexOf(a);
+            const indexB = priority.indexOf(b);
+            if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+            if (indexA !== -1) return -1;
+            if (indexB !== -1) return 1;
+            return a.localeCompare(b);
+        });
+
+        brands.forEach(brand => {
             const opt = document.createElement('option');
             opt.value = brand;
             opt.textContent = brand;
@@ -218,10 +230,17 @@ const EstimateUI = {
                 if (!selectedDsp || selectedDsp === "DSP 선택 안함") return;
             }
             if (cat.id === 'front_door') {
-                // Shows if (DSP is "선택 안함") OR (PnP is selected)
-                const isDpsNone = (selectedDsp === "DSP 선택 안함");
-                const isPnpSelected = (selectedPnP && selectedPnP.length > 0);
-                if (!isDpsNone && !isPnpSelected) return;
+                // Shows if (DSP is "선택 안함") OR (Step 2 is completed)
+                // Step 2 is considered completed if: 
+                // 1. DSP is "선택 안함"
+                // 2. There are no PnPs available for this car (length 0)
+                // 3. PnP is auto-selected based on DSP
+                const isDspNone = (selectedDsp === "DSP 선택 안함");
+                const pnpList = this.selectedCar.pnp || [];
+                const isPnpStepDone = (pnpList.length === 0 || (selectedPnP && selectedPnP.length > 0));
+
+                if (!isDspNone && !isPnpStepDone) return;
+                if (!selectedDsp) return; // Must select something in Step 1 first
             }
             if (cat.id === 'tweeter') {
                 // Step 3-1-1 ONLY shows if HDZ-65C or HDZ-653C is selected in 3-1
