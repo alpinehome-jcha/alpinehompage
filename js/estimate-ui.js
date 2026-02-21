@@ -170,30 +170,29 @@ const EstimateUI = {
             // DSPs
             "PXE-M60-4": "[입문용] PXE-M60-4",
             "PXE-R80-8": "[가성비] PXE-R80-8",
-            "PXE-R100-8": "[가성비] PXE-R100-8",
-            "PXE-R100-10": "[가성비] PXE-R100-10",
-            "PXE-X120-8": "[프로] PXE-X120-8",
-            "PXE-X120-10DP": "[프로] PXE-X120-10DP",
-            "PXE-X121-12EV": "[하이엔드] PXE-X121-12EV",
-            "HDP-D90": "[하이엔드] HDP-D90",
+            "PXE-R100-8": "[프로] PXE-R100-8",
+            "PXE-R100-10": "[프로] PXE-R100-10",
+            "PXE-X120-8": "[하이엔드] PXE-X120-8",
+            "PXE-X120-10DP": "[하이엔드] PXE-X120-10DP",
+            "PXE-X121-12EV": "[어나더레벨] PXE-X121-12EV",
+            "HDP-D90": "[어나더레벨] HDP-D90",
 
             // Speakers
             "DM-65C": "[입문용] DM-65C",
             "DM-65": "[입문용] DM-65",
             "S2-S65C": "[가성비] S2-S65C",
             "S2-S65": "[가성비] S2-S65",
-            "DP2-65C": "[매니아] DP2-65C",
-            "HDZ-65C": "[프로] HDZ-65C",
-            "HDZ-653C": "[프로] HDZ-653C",
-            "HDZ-653S": "[프로] HDZ-653S",
+            "DP2-65C": "[프로] DP2-65C",
+            "HDZ-65C": "[하이엔드] HDZ-65C",
+            "HDZ-653C": "[어나더레벨] HDZ-653C",
+            "HDZ-653S": "[어나더레벨] HDZ-653S",
 
-            // Subwoofers
-            "PWE-M770": "[가성비] PWE-M770",
-            "S2-W8D4(외장박스 포함)": "[매니아] S2-W8D4",
-            "S2-W10D2(외장박스 포함)": "[프로] S2-W10D2",
-            "RS-W10D2(외장박스 포함)": "[매니아] RS-W10D2",
-
-            // Amps
+            // Subwoofers & Amps
+            "PWE-M770": "[입문용] PWE-M770",
+            "S2-W8D4 (외장박스 포함)": "[가성비] S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)": "[프로] S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)": "[하이엔드] S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)": "[어나더레벨] RS-W10D2 (외장박스 포함)",
             "R2-A60F": "[가성비] R2-A60F",
             "HDA-F60": "[프로] HDA-F60",
             "S2-A60M": "[가성비] S2-A60M"
@@ -270,8 +269,8 @@ const EstimateUI = {
                 if (!this.selections['rear_door']) return;
             }
             if (cat.id === 'subwoofer') {
-                // 10단계: 9단계 이후
-                if (!this.selections['rear_door']) return;
+                // 10단계: 플레이어 단계(11단계)와 동일하게 후면 스피커 가이드(7단계) 성공 시 노출
+                if (!this.selections['rear_baffle']) return;
             }
             if (cat.id === 'amp_sub') {
                 // 12단계: 서브우퍼가 PWE-M770(앰프일체형)인 경우 앰프 선택 생략
@@ -292,8 +291,9 @@ const EstimateUI = {
                         const displayName = this.getProductWithRank(pName);
                         // 수정: 초기 상태에서 '선택 안함'이 기본 selected 되지 않도록 함. 사용자가 직접 클릭해야 함.
                         const isSelected = (this.selections[cat.id] === pName || (Array.isArray(this.selections[cat.id]) && this.selections[cat.id].includes(pName)));
+                        const escapedPName = pName.replace(/'/g, "\\'").replace(/"/g, "&quot;");
                         return `
-                                    <div class="product-item ${isSelected ? 'selected' : ''}" onclick="EstimateUI.selectProduct('${cat.id}', '${pName}')">
+                                    <div class="product-item ${isSelected ? 'selected' : ''}" onclick="EstimateUI.selectProduct('${cat.id}', '${escapedPName}')">
                                         <span>${displayName}</span>
                                         <span style="color: #666;">${pName === "DSP 선택 안함" ? "" : "₩" + price.toLocaleString()}</span>
                                     </div>
@@ -359,35 +359,34 @@ const EstimateUI = {
         return list.find(p => targets.includes(p)) || null;
     },
 
-    getMatchedTypeB(dsp, list) {
+    getMatchedTypeB(dsp) {
         if (!dsp || dsp === "DSP 선택 안함") return null;
         const mapping = {
             "PXE-M60-4": "DS-4B",
             "PXE-R80-8": "DS-8B",
             "PXE-R100-8": "DS-8B",
+            "PXE-R100-10": "DS-10B",
             "PXE-X120-8": "DS-81B",
             "PXE-C80-88": "DS-82B",
             "PXE-X120-10DP": "DS-10B",
             "PXE-X121-12EV": "DS-12B",
             "HDP-D90": "DS-14B"
         };
-        const target = mapping[dsp];
-        return list.find(p => p === target) || null;
+        return mapping[dsp] || null;
     },
 
     selectProduct(catId, pName) {
         if (catId === 'dsp') {
             this.selections = { 'dsp': pName };
-            if (pName !== "DSP 선택 안함" && this.selectedCar.pnp) {
-                const list = this.selectedCar.pnp;
+            if (pName !== "DSP 선택 안함") {
+                const list = this.selectedCar.pnp || [];
                 const integrated = list.filter(p => !p.endsWith('A') && !p.startsWith('DS-'));
                 const matchedInt = this.getMatchedIntegrated(pName, integrated);
                 if (matchedInt) {
                     this.selections['pnp'] = [matchedInt];
                 } else {
                     const typeA = list.filter(p => p.endsWith('A'));
-                    const typeB = list.filter(p => p.startsWith('DS-'));
-                    const matchedB = this.getMatchedTypeB(pName, typeB);
+                    const matchedB = this.getMatchedTypeB(pName);
                     this.selections['pnp'] = [...typeA, matchedB].filter(Boolean);
                 }
             }
@@ -413,11 +412,13 @@ const EstimateUI = {
     },
 
     getSingleProductPrice(name) {
-        if (name === "커스텀 배플") return 50000;
+        if (name === "커스텀 배플" || name === "현대/기아 6.5\" 배플") return 50000;
         if (!window.initialPriceData) return 0;
         const items = initialPriceData.filter(i => i.product === name && i.category === 'master');
         if (items.length > 0) return items[0].msrp;
-        const fallback = initialPriceData.find(i => i.product.includes(name) && i.category === 'master');
+        // Fallback for names with extra spaces
+        const trimmed = name.trim();
+        const fallback = initialPriceData.find(i => i.product.trim() === trimmed && i.category === 'master');
         return fallback ? fallback.msrp : 0;
     },
 
@@ -429,23 +430,31 @@ const EstimateUI = {
         const totalPriceEl = document.getElementById('estTotalPrice');
         let summaryHtml = '';
 
-        for (const catId in this.selections) {
-            const selected = this.selections[catId];
-            const pNames = Array.isArray(selected) ? selected : [selected];
+        const stepOrder = [
+            'dsp', 'pnp', 'front_door', 'tweeter', 'add_front', 'front_baffle',
+            'rear_door', 'rear_baffle', 'center', 'surround', 'subwoofer',
+            'amp_4ch', 'amp_sub', 'player'
+        ];
 
-            pNames.forEach(pName => {
-                if (pName === "DSP 선택 안함") return;
-                const price = this.getProductPrice(pName);
-                productTotal += price;
-                if (catId === 'dsp') dspPrice = price;
-                if (catId === 'amp_4ch' || catId === 'amp_sub') ampPrice += price;
+        stepOrder.forEach(catId => {
+            if (this.selections[catId]) {
+                const selected = this.selections[catId];
+                const pNames = Array.isArray(selected) ? selected : [selected];
 
-                summaryHtml += `<div class="estimate-summary-item">
-                    <span>${this.getProductWithRank(pName)}</span>
-                    <span>₩${price.toLocaleString()}</span>
-                </div>`;
-            });
-        }
+                pNames.forEach(pName => {
+                    if (pName === "DSP 선택 안함") return;
+                    const price = this.getProductPrice(pName);
+                    productTotal += price;
+                    if (catId === 'dsp') dspPrice = price;
+                    if (catId === 'amp_4ch' || catId === 'amp_sub') ampPrice += price;
+
+                    summaryHtml += `<div class="estimate-summary-item">
+                        <span>${this.getProductWithRank(pName)}</span>
+                        <span>₩${price.toLocaleString()}</span>
+                    </div>`;
+                });
+            }
+        });
 
         let labor = (dspPrice * 0.3) + (ampPrice * 0.1);
         const speakerCats = ['front_door', 'tweeter', 'add_front', 'rear_door', 'center', 'surround', 'subwoofer'];
@@ -480,7 +489,13 @@ const EstimateUI = {
 
     resetSelections() {
         if (confirm('모든 선택 내역을 초기화하시겠습니까?')) {
+            this.selectedCar = null;
             this.selections = {};
+            document.getElementById('estBrand').value = '';
+            document.getElementById('estModel').innerHTML = '<option value="">선택하세요</option>';
+            document.getElementById('estModel').disabled = true;
+            document.getElementById('estSystem').innerHTML = '<option value="">선택하세요</option>';
+            document.getElementById('estSystem').disabled = true;
             this.updateSelectionArea();
         }
     },

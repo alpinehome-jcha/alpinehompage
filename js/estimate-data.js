@@ -1,7 +1,6 @@
 /**
  * Alpine Virtual Estimate Data
- * Massive Restored Dataset (v3) - Final Accuracy Fix
- * Fixed: Subwoofer spacing, Baffle names, Speaker Lists
+ * Massive Restored Dataset (v4) - Final Accuracy Fix
  */
 const initialEstimateData = [
     { brand: "현대자동차", model: "캐스퍼", year: "21~", code: "AX1", system: "4채널 자출", dsp: ["PXE-M60-4", "PXE-R80-8"], pnp: ["HK-103", "HK-1A"], front_door: ["DM-65C", "S2-S65C", "DP2-65C", "HDZ-65C"], tweeter: ["Status Tweeter Chamber"], front_baffle: ["현대/기아 6.5\" 배플", "커스텀 배플"], rear_door: ["DM-65", "S2-S65", "HDZ-65"], rear_baffle: ["현대/기아 6.5\" 배플", "커스텀 배플"], subwoofer: ["PWE-M770", "S2-W8D4 (외장박스 포함)", "S2-W10D2 (외장박스 포함)"], amp_4ch: ["R2-A60F"], amp_sub: ["S2-A60M"], player: ["HDS-990"], extraLabor: 0 },
@@ -46,7 +45,7 @@ if (typeof pnpSearchData !== 'undefined') {
     });
 }
 
-const ESTIMATE_DATA_VERSION = 20260221141000;
+const ESTIMATE_DATA_VERSION = 20260221142200;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
