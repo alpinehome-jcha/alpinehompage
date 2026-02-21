@@ -259,7 +259,7 @@ const EstimateUI = {
                             <span class="close-btn" onclick="EstimateUI.closePrintModal()">&times;</span>
                         </div>
                     </div>
-                    <div id="printableArea" class="printable-area" style="background: #fff; color: #000; padding: 40px; border: 1px solid #ddd; box-shadow: 0 0 10px rgba(0,0,0,0.05); margin: 0 auto;">
+                    <div id="printableArea" class="printable-area" style="background: #fff; color: #000; padding: 40px; border: 2px solid #333; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin: 0 auto;">
                         <!-- 견적서 내용이 여기에 동적으로 렌더링됨 -->
                     </div>
                 </div>
@@ -964,7 +964,7 @@ const EstimateUI = {
         }
 
         return `
-            <div style="background: #f8f9fa; border-radius: 12px; padding: 20px; border: 1px solid #007aff; border-left-width: 5px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <div style="background: #f8f9fa; border-radius: 12px; padding: 20px; border: 2px solid #0056b3; border-left-width: 6px; box-shadow: 0 6px 16px rgba(0,0,0,0.1);">
                 <p style="font-size: 1.1rem; margin-bottom: 10px;">현재 구성은 <span style="color:#007aff; font-weight:bold;">#${mainLevel} 스타일</span>입니다.</p>
                 <p style="color: #555;">${comment}</p>
                 <div style="margin-top: 20px; border-top: 1px dashed #ccc; padding-top: 15px;">
@@ -1083,8 +1083,8 @@ const EstimateUI = {
                 </tbody>
                 <tfoot>
                     <tr style="background: #333; color: #fff;">
-                        <td colspan="3" style="border: 1px solid #ddd; padding: 12px; text-align: right; font-weight: bold; font-size: 1rem;">합계 금액 (Total)</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right; font-weight: bold; font-size: 1rem;">₩${grandTotal.toLocaleString()}</td>
+                        <td colspan="3" style="border: 1px solid #ddd; padding: 12px; text-align: right; font-weight: bold;">합계 금액 (Total)</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right; font-weight: bold;">₩${grandTotal.toLocaleString()}</td>
                     </tr>
                 </tfoot>
             </table>
