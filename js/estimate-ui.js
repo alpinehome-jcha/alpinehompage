@@ -139,13 +139,20 @@ const EstimateUI = {
         }
 
         const categories = [
-            { id: 'dsp', label: 'DSP 선택 (견적1)' },
-            { id: 'pnp', label: 'PnP Cable 선택 (견적2)' },
-            { id: 'front_door', label: '전면도어 스피커 선택 (견적3-1)' },
-            { id: 'subwoofer', label: '서브우퍼 선택 (견적7)' },
-            { id: 'amp_4ch', label: '4채널 앰프 선택 (견적8)' },
-            { id: 'amp_sub', label: '서브우퍼 앰프 선택 (견적9)' },
-            { id: 'player', label: '플레이어 선택 (견적10)' }
+            { id: 'dsp', label: '1단계: DSP 선택 (견적1)' },
+            { id: 'pnp', label: '2단계: PnP Cable 선택 (견적2)' },
+            { id: 'front_door', label: '3단계: 전면도어 스피커 선택 (견적3-1)' },
+            { id: 'tweeter', label: '3-1단계: 전면 트위터 챔버 선택 (견적3-1-1)' },
+            { id: 'add_front', label: '3-2단계: 전면 스피커 추가 선택 (견적3-2)' },
+            { id: 'front_baffle', label: '3-3단계: 전면 스피커 가이드 선택 (견적3-3)' },
+            { id: 'rear_door', label: '4단계: 후면도어 스피커 선택 (견적4-1)' },
+            { id: 'rear_baffle', label: '4-1단계: 후면 스피커 가이드 선택 (견적4-2)' },
+            { id: 'center', label: '5단계: 센터스피커 선택 (견적5)' },
+            { id: 'surround', label: '6단계: 서라운드스피커 선택 (견적6)' },
+            { id: 'subwoofer', label: '7단계: 서브우퍼 선택 (견적7)' },
+            { id: 'amp_4ch', label: '8단계: 4채널 앰프 선택 (견적8)' },
+            { id: 'amp_sub', label: '9단계: 서브우퍼 앰프 선택 (견적9)' },
+            { id: 'player', label: '10단계: 플레이어 선택 (견적10)' }
         ];
 
         let html = `<h3>${this.selectedCar.model} (${this.selectedCar.code}) 제품 선택</h3>`;
