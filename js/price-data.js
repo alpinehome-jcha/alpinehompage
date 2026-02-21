@@ -650,7 +650,7 @@
     {
         "category": "master",
         "productCategory": "DSP/AMP",
-        "product": "PXE-X121-12EX",
+        "product": "PXE-X121-12EV",
         "msrp": 2300000,
         "distPrice": 920000,
         "dealerPrice": 1380000
@@ -658,7 +658,7 @@
     {
         "category": "team",
         "productCategory": "DSP/AMP",
-        "product": "PXE-X121-12EX",
+        "product": "PXE-X121-12EV",
         "msrp": 2300000,
         "distPrice": "-",
         "dealerPrice": 1380000
@@ -666,7 +666,7 @@
     {
         "category": "style",
         "productCategory": "DSP/AMP",
-        "product": "PXE-X121-12EX",
+        "product": "PXE-X121-12EV",
         "msrp": 2300000,
         "distPrice": 1150000,
         "dealerPrice": 1380000
@@ -674,7 +674,7 @@
     {
         "category": "region",
         "productCategory": "DSP/AMP",
-        "product": "PXE-X121-12EX",
+        "product": "PXE-X121-12EV",
         "msrp": 2300000,
         "distPrice": 1150000,
         "dealerPrice": 1380000
@@ -682,7 +682,7 @@
     {
         "category": "dealer",
         "productCategory": "DSP/AMP",
-        "product": "PXE-X121-12EX",
+        "product": "PXE-X121-12EV",
         "msrp": 2300000,
         "distPrice": "-",
         "dealerPrice": 1380000
