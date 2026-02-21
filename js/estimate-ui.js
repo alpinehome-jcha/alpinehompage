@@ -417,8 +417,52 @@ const EstimateUI = {
     },
 
     getProductWithRank(name) {
-        // UI 표시 시에는 등급 태그를 제거하여 이름만 반환
-        return name;
+        if (name === "선택 안함" || name === "DSP 선택 안함") return name;
+
+        const ranks = {
+            // DSPs
+            "PXE-M60-4": "[입문용] PXE-M60-4",
+            "PXE-R80-8": "[입문용] PXE-R80-8",
+            "PXE-R100-8": "[가성비] PXE-R100-8",
+            "PXE-X120-8": "[가성비] PXE-X120-8",
+            "PXE-C80-88": "[프로] PXE-C80-88",
+            "PXE-X120-10DP": "[프로] PXE-X120-10DP",
+            "PXE-X121-12EV": "[하이엔드] PXE-X121-12EV",
+            "HDP-D90": "[어나더레벨] HDP-D90",
+
+            // Speakers
+            "DM-65C": "[입문용] DM-65C",
+            "DM-65": "[입문용] DM-65",
+            "S2-S65C": "[가성비] S2-S65C",
+            "S2-S65": "[가성비] S2-S65",
+            "S2-S10TW": "[가성비] S2-S10TW",
+            "R2-S653": "[프로] R2-S653",
+            "DPS-25M": "[프로] DPS-25M",
+            "DP2-653": "[하이엔드] DP2-653",
+            "DP2-65C": "[하이엔드] DP2-65C",
+            "DP2-35M": "[하이엔드] DP2-35M",
+            "HDZ-653": "[어나더레벨] HDZ-653",
+            "HDZ-653S": "[어나더레벨] HDZ-653S",
+            "HDZ-65C": "[어나더레벨] HDZ-65C",
+            "HDZ-65CS": "[어나더레벨] HDZ-65CS",
+            "HDZ-65": "[어나더레벨] HDZ-65",
+
+            // Subwoofers & Amps
+            "PWE-M770": "[입문용] PWE-M770",
+            "S2-W8D4 (외장박스 포함)": "[가성비] S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)": "[프로] S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)": "[프로] S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)": "[하이엔드] RS-W10D2 (외장박스 포함)",
+            "HDZ-W10": "[어나더레벨] HDZ-W10",
+
+            "R2-A60F": "[하이엔드] R2-A60F",
+            "S2-A60F": "[하이엔드] S2-A60F",
+            "HDA-F60": "[어나더레벨] HDA-F60",
+
+            // Players
+            "HDS-990": "[어나더레벨] HDS-990"
+        };
+        return ranks[name] || name;
     },
 
     updateSelectionArea() {
@@ -753,7 +797,7 @@ const EstimateUI = {
                     }
 
                     summaryHtml += `<div class="estimate-summary-item">
-                        <span>${this.getProductWithRank(pName)}</span>
+                        <span>${pName}</span>
                         <span>₩${price.toLocaleString()}</span>
                     </div>`;
                 });
@@ -952,7 +996,7 @@ const EstimateUI = {
 
                 productHtml += `
                     <tr>
-                        <td style="border: 1px solid #ddd; padding: 12px;">${this.getProductWithRank(pName)}</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">${pName}</td>
                         <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">1</td>
                         <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${price.toLocaleString()}</td>
                         <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${price.toLocaleString()}</td>
