@@ -47,6 +47,11 @@ function downloadData(type) {
             fileName = 'estimate-data.js';
             dataObj = (typeof estimateData !== 'undefined') ? estimateData : null;
             break;
+        case 'pnp':
+            dataName = 'pnpSearchData';
+            fileName = 'pnp-search-data.js';
+            dataObj = (typeof pnpSearchData !== 'undefined') ? pnpSearchData : null;
+            break;
     }
 
     // Try to get from LocalStorage first (most up to date)
@@ -196,6 +201,11 @@ async function saveToGitHub(type, silent = false) {
             dataName = 'estimateData';
             fileName = 'js/estimate-data.js';
             dataObj = (typeof estimateData !== 'undefined') ? estimateData : null;
+            break;
+        case 'pnp':
+            dataName = 'pnpSearchData';
+            fileName = 'js/pnp-search-data.js';
+            dataObj = (typeof pnpSearchData !== 'undefined') ? pnpSearchData : null;
             break;
     }
 

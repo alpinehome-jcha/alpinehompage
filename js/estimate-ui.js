@@ -30,8 +30,12 @@ const EstimateUI = {
             window.history.replaceState({}, document.title, window.location.pathname);
         }
 
-        // 1분 단위 캐시 버스팅 (더 빠른 반영을 위해 1분으로 축소)
-        const t = Math.floor(Date.now() / (1000 * 60));
+        // 1분 단위 캐시 버스팅 (기본)
+        // sync=true 파라미터가 있으면 즉시(Date.now())로 강제 초기화
+        let t = Math.floor(Date.now() / (1000 * 60));
+        if (urlParams.get('sync') === 'true') {
+            t = Date.now(); // Force network fetch
+        }
 
         const scripts = [
             `${root}estimate-data.js?t=${t}`,
@@ -938,9 +942,12 @@ const EstimateUI = {
                     <div style="font-size: 0.7rem; color: #aaa; margin-bottom: 5px; text-align: right;">
                         Last Checked: ${new Date().toLocaleTimeString()}
                     </div>
+                    <div style="font-size: 0.7rem; color: #999; margin-bottom: 5px; display: flex; justify-content: space-between;">
+                        <span>Server Ver: ${typeof ESTIMATE_DATA_VERSION !== 'undefined' ? ESTIMATE_DATA_VERSION : 'Error'}</span>
+                        <span>Local Ver: ${localStorage.getItem('estimateDataVersion') || 'None'}</span>
+                    </div>
                     <div style="font-size: 0.75rem; color: #999; display:flex; justify-content:space-between; align-items:center; width:100%;">
-                        <span>Data Ver: ${typeof ESTIMATE_DATA_VERSION !== 'undefined' ? ESTIMATE_DATA_VERSION : 'Loading...'}</span>
-                        <button onclick="window.location.href='?sync=true'" style="background:none; border:none; color:#3498db; cursor:pointer; padding:0; font-size:0.75rem; text-decoration:underline;">강제 동기화</button>
+                        <button onclick="window.location.href='?sync=true&t='+Date.now()" style="background:#3498db; border:none; color:white; cursor:pointer; padding:5px 12px; border-radius:4px; font-size:0.75rem;">🔄 전체 데이터 강제 동기화</button>
                     </div>
                 </div>
             </div>

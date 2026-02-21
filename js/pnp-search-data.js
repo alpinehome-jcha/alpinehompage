@@ -1,8 +1,4 @@
-/**
- * PnP Cable Search Data
- * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- */
-const pnpSearchData = [
+const initialPnpSearchData = [
     {
         manufacturer: "현대자동차",
         models: [
@@ -525,7 +521,31 @@ const pnpSearchData = [
     }
 ];
 
-// Export for usage
+const PNP_SEARCH_DATA_VERSION = 1771677684480;
+
+let pnpSearchData = [];
+if (typeof localStorage !== 'undefined') {
+    const storedVersion = localStorage.getItem('pnpSearchDataVersion');
+    const stored = localStorage.getItem('pnpSearchData');
+
+    if (typeof PNP_SEARCH_DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < PNP_SEARCH_DATA_VERSION)) {
+        pnpSearchData = JSON.parse(JSON.stringify(initialPnpSearchData));
+        localStorage.setItem('pnpSearchData', JSON.stringify(pnpSearchData));
+        localStorage.setItem('pnpSearchDataVersion', PNP_SEARCH_DATA_VERSION.toString());
+    } else if (stored) {
+        pnpSearchData = JSON.parse(stored);
+    } else {
+        pnpSearchData = JSON.parse(JSON.stringify(initialPnpSearchData));
+        if (typeof PNP_SEARCH_DATA_VERSION !== 'undefined') localStorage.setItem('pnpSearchDataVersion', PNP_SEARCH_DATA_VERSION.toString());
+    }
+} else {
+    pnpSearchData = initialPnpSearchData;
+}
+
+if (typeof window !== 'undefined') {
+    window.pnpSearchData = pnpSearchData;
+}
+
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = pnpSearchData;
 }
