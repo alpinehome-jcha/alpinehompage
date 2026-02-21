@@ -52,6 +52,18 @@ const EstimateUI = {
                 </div>
                 <div class="estimate-body">
                     <div class="estimate-sidebar">
+                        <div class="form-group">
+                            <label>0단계: 추천 레벨</label>
+                            <select id="estLevel">
+                                <option value="custom">개별 선택 (기본)</option>
+                                <option value="입문용">입문용</option>
+                                <option value="가성비">가성비</option>
+                                <option value="프로">프로</option>
+                                <option value="하이엔드">하이엔드</option>
+                                <option value="어나더레벨">어나더레벨</option>
+                            </select>
+                        </div>
+                        <hr>
                         <h3>1단계: 차량 선택</h3>
                         <div class="form-group">
                             <label>제조사</label>
@@ -209,9 +221,94 @@ const EstimateUI = {
             if (idx !== "") {
                 this.selectedCar = estimateData.filter(i => i.brand === brandSelect.value && i.model === modelSelect.value)[idx];
                 this.selections = {};
-                this.updateSelectionArea();
+                // 차량 변경 시 추천 레벨이 설정되어 있다면 바로 적용
+                const level = document.getElementById('estLevel').value;
+                if (level !== "custom") {
+                    this.applyRecommendationLevel(level);
+                } else {
+                    this.updateSelectionArea();
+                }
             }
         };
+
+        const levelSelect = document.getElementById('estLevel');
+        levelSelect.onchange = (e) => {
+            const level = e.target.value;
+            if (this.selectedCar) {
+                this.applyRecommendationLevel(level);
+            }
+        };
+    },
+
+    applyRecommendationLevel(level) {
+        if (level === "custom") return;
+
+        this.selections = {};
+        const categories = [
+            'dsp', 'front_door', 'tweeter', 'add_front', 'front_baffle',
+            'rear_door', 'rear_baffle', 'center', 'surround', 'subwoofer',
+            'amp_4ch', 'amp_sub', 'player'
+        ];
+
+        // 1단계 DSP 선택
+        const dspList = this.selectedCar.dsp || [];
+        this.selections['dsp'] = this.findBestMatch(dspList, level);
+
+        // PnP Cable (DSP 선택에 따른 자동 선택 로직 재사용)
+        if (this.selections['dsp'] && this.selections['dsp'] !== "DSP 선택 안함") {
+            const pnpList = this.selectedCar.pnp || [];
+            const integrated = pnpList.filter(p => !p.endsWith('A') && !p.startsWith('DS-'));
+            const matchedInt = this.getMatchedIntegrated(this.selections['dsp'], integrated);
+            if (matchedInt) {
+                this.selections['pnp'] = [matchedInt];
+            } else {
+                const typeA = pnpList.filter(p => p.endsWith('A'));
+                const matchedB = this.getMatchedTypeB(this.selections['dsp']);
+                this.selections['pnp'] = [...typeA, matchedB].filter(Boolean);
+            }
+        }
+
+        // 나머지 카테고리 자동 선택
+        categories.filter(c => c !== 'dsp').forEach(cat => {
+            const list = this.selectedCar[cat] || [];
+            if (list.length > 0) {
+                // 서브우퍼 앰프는 서브우퍼가 패시브일 때만 (Logic in updateSelectionArea will handle visibility, but we select here)
+                if (cat === 'amp_sub') {
+                    const sub = this.selections['subwoofer'];
+                    if (sub === "PWE-M770" || sub === "선택 안함") return;
+                }
+                // 트위터 챔버는 특정 전면 스피커일 때만
+                if (cat === 'tweeter') {
+                    const front = this.selections['front_door'];
+                    const isHDZ = (front === "HDZ-65C" || front === "HDZ-653S" || front === "HDZ-653C");
+                    if (!isHDZ) return;
+                }
+
+                this.selections[cat] = this.findBestMatch(list, level);
+            }
+        });
+
+        this.updateSelectionArea();
+    },
+
+    findBestMatch(list, level) {
+        if (!list || list.length === 0) return null;
+        const items = list.filter(i => i !== "선택 안함" && i !== "DSP 선택 안함");
+        if (items.length === 0) return list[0];
+
+        // 1. 명시적 레벨 매칭 ([입문용] 등)
+        const rankTag = `[${level}]`;
+        const exactMatch = items.find(i => this.getProductWithRank(i).startsWith(rankTag));
+        if (exactMatch) return exactMatch;
+
+        // 2. 항목이 1개뿐인 경우 무조건 선택
+        if (items.length === 1) return items[0];
+
+        // 3. 가격 기반 자동 선택
+        const sorted = [...items].sort((a, b) => this.getProductPrice(a) - this.getProductPrice(b));
+        const isHighEnd = (level === "하이엔드" || level === "어나더레벨");
+
+        return isHighEnd ? sorted[sorted.length - 1] : sorted[0];
     },
 
     getProductWithRank(name) {
@@ -501,6 +598,8 @@ const EstimateUI = {
                 this.selections[catId] = pName;
             }
         }
+        // 사용자가 수동으로 선택을 변경하면 추천 레벨을 '개별 선택'으로 초기화
+        document.getElementById('estLevel').value = 'custom';
         this.updateSelectionArea();
     },
 
@@ -609,6 +708,7 @@ const EstimateUI = {
             document.getElementById('estModel').disabled = true;
             document.getElementById('estSystem').innerHTML = '<option value="">선택하세요</option>';
             document.getElementById('estSystem').disabled = true;
+            document.getElementById('estLevel').value = 'custom';
             this.updateSelectionArea();
         }
     },
