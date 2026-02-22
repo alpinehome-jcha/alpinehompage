@@ -808,6 +808,23 @@ const EstimateUI = {
         const totalPriceEl = document.getElementById('estTotalPrice');
         let summaryHtml = '';
 
+        const categoryLabels = {
+            'dsp': '1단계: DSP',
+            'pnp': '2단계: PnP Cable',
+            'front_door': '3단계: 전면도어 스피커',
+            'tweeter': '4단계: 전면 트위터 챔버',
+            'add_front': '4단계: 전면 스피커 추가',
+            'front_baffle': '5단계: 전면 스피커 가이드',
+            'rear_door': '6단계: 후면도어 스피커',
+            'rear_baffle': '7단계: 후면 스피커 가이드',
+            'center': '8단계: 센터스피커',
+            'surround': '9단계: 서라운드스피커',
+            'subwoofer': '10단계: 서브우퍼',
+            'amp_4ch': '11단계: 4채널 앰프',
+            'amp_sub': '12단계: 서브우퍼 앰프',
+            'player': '13단계: 플레이어'
+        };
+
         const stepOrder = [
             'dsp', 'pnp', 'front_door', 'tweeter', 'add_front', 'front_baffle',
             'rear_door', 'rear_baffle', 'center', 'surround', 'subwoofer',
@@ -822,36 +839,42 @@ const EstimateUI = {
                 const selected = this.selections[catId];
                 const pNames = Array.isArray(selected) ? selected : [selected];
 
-                pNames.forEach(pName => {
-                    if (pName === "선택 안함" || pName === "DSP 선택 안함") return;
-                    const price = this.getProductPrice(pName);
-                    if (price === 0) return; // 0원인 항목 숨기기
+                // 해당 카테고리에 유효한 제품이 있는지 먼저 확인
+                const validProducts = pNames.filter(pName => pName !== "선택 안함" && pName !== "DSP 선택 안함" && this.getProductPrice(pName) > 0);
 
-                    productTotal += price;
-                    if (catId === 'dsp') {
-                        dspPrice = price;
-                        hasDSP = true;
-                    }
-                    if (catId === 'amp_4ch' || catId === 'amp_sub') {
-                        ampPrice += price;
-                    }
+                if (validProducts.length > 0) {
+                    // 단계 헤더 추가
+                    summaryHtml += `<div class="estimate-summary-group-title" style="font-size: 0.75rem; color: #007aff; margin-top: 10px; font-weight: bold; border-bottom: 1px solid #f0f0f0; padding-bottom: 2px;">${categoryLabels[catId]}</div>`;
 
-                    // 전면/후면 스피커 체크 (특정 모델은 장착비 제외)
-                    const excludedSpeakers = [
-                        "EV-65CF", "EV-40M-T", "EV-40MR-T", "EV-100SW 3", "EV-100SW Y",
-                        "DP2-45C-B", "DP2-45-B", "DP2-40C-B", "DP2-15TW-B", "DP2-80WF-B"
-                    ];
-                    if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) {
-                        if (!excludedSpeakers.includes(pName)) {
-                            hasFrontRearSpeaker = true;
+                    validProducts.forEach(pName => {
+                        const price = this.getProductPrice(pName);
+                        productTotal += price;
+
+                        if (catId === 'dsp') {
+                            dspPrice = price;
+                            hasDSP = true;
                         }
-                    }
+                        if (catId === 'amp_4ch' || catId === 'amp_sub') {
+                            ampPrice += price;
+                        }
 
-                    summaryHtml += `<div class="estimate-summary-item">
-                        <span>${pName}</span>
-                        <span>₩${price.toLocaleString()}</span>
-                    </div>`;
-                });
+                        // 전면/후면 스피커 체크 (특정 모델은 장착비 제외)
+                        const excludedSpeakers = [
+                            "EV-65CF", "EV-40M-T", "EV-40MR-T", "EV-100SW 3", "EV-100SW Y",
+                            "DP2-45C-B", "DP2-45-B", "DP2-40C-B", "DP2-15TW-B", "DP2-80WF-B"
+                        ];
+                        if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) {
+                            if (!excludedSpeakers.includes(pName)) {
+                                hasFrontRearSpeaker = true;
+                            }
+                        }
+
+                        summaryHtml += `<div class="estimate-summary-item" style="padding-left: 5px;">
+                            <span>${pName}</span>
+                            <span>₩${price.toLocaleString()}</span>
+                        </div>`;
+                    });
+                }
             }
         });
 
@@ -1018,38 +1041,71 @@ const EstimateUI = {
         let hasDSP = false;
         let hasFrontRearSpeaker = false;
 
-        for (const catId in this.selections) {
-            const selected = this.selections[catId];
-            const pNames = Array.isArray(selected) ? selected : [selected];
+        const categoryLabels = {
+            'dsp': '1. DSP',
+            'pnp': '2. PnP Cable',
+            'front_door': '3. 전면도어 스피커',
+            'tweeter': '4. 전면 트위터 챔버',
+            'add_front': '4. 전면 스피커 추가',
+            'front_baffle': '5. 전면 스피커 가이드',
+            'rear_door': '6. 후면도어 스피커',
+            'rear_baffle': '7. 후면 스피커 가이드',
+            'center': '8. 센터스피커',
+            'surround': '9. 서라운드스피커',
+            'subwoofer': '10. 서브우퍼',
+            'amp_4ch': '11. 4채널 앰프',
+            'amp_sub': '12. 서브우퍼 앰프',
+            'player': '13. 플레이어'
+        };
 
-            pNames.forEach(pName => {
-                if (pName === "선택 안함" || pName === "DSP 선택 안함") return;
-                const price = this.getProductPrice(pName);
-                if (price === 0) return; // 0원인 항목 숨기기
+        const stepOrder = [
+            'dsp', 'pnp', 'front_door', 'tweeter', 'add_front', 'front_baffle',
+            'rear_door', 'rear_baffle', 'center', 'surround', 'subwoofer',
+            'amp_4ch', 'amp_sub', 'player'
+        ];
 
-                productTotal += price;
-                if (catId === 'dsp') {
-                    dspPrice = price;
-                    hasDSP = true;
+        stepOrder.forEach(catId => {
+            if (this.selections[catId]) {
+                const selected = this.selections[catId];
+                const pNames = Array.isArray(selected) ? selected : [selected];
+
+                const validProducts = pNames.filter(pName => pName !== "선택 안함" && pName !== "DSP 선택 안함" && this.getProductPrice(pName) > 0);
+
+                if (validProducts.length > 0) {
+                    productHtml += `
+                        <tr style="background: #f9f9f9;">
+                            <td colspan="4" style="border: 1px solid #ddd; padding: 8px 12px; font-weight: bold; color: #007aff; font-size: 0.85rem;">${categoryLabels[catId]}</td>
+                        </tr>
+                    `;
+
+                    validProducts.forEach(pName => {
+                        const price = this.getProductPrice(pName);
+                        productTotal += price;
+
+                        if (catId === 'dsp') {
+                            dspPrice = price;
+                            hasDSP = true;
+                        }
+                        if (catId === 'amp_4ch' || catId === 'amp_sub') {
+                            ampPrice += price;
+                        }
+
+                        if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) {
+                            hasFrontRearSpeaker = true;
+                        }
+
+                        productHtml += `
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 12px; padding-left: 20px;">${pName}</td>
+                                <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">1</td>
+                                <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${price.toLocaleString()}</td>
+                                <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${price.toLocaleString()}</td>
+                            </tr>
+                        `;
+                    });
                 }
-                if (catId === 'amp_4ch' || catId === 'amp_sub') {
-                    ampPrice += price;
-                }
-
-                if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) {
-                    hasFrontRearSpeaker = true;
-                }
-
-                productHtml += `
-                    <tr>
-                        <td style="border: 1px solid #ddd; padding: 12px;">${pName}</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">1</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${price.toLocaleString()}</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${price.toLocaleString()}</td>
-                    </tr>
-                `;
-            });
-        }
+            }
+        });
 
         const extraLaborTotal = (this.selectedCar && this.selectedCar.extraLabor) ? this.selectedCar.extraLabor : 0;
         let labor = 0;
