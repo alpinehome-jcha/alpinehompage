@@ -1341,27 +1341,42 @@
             localStorage.setItem(storageKey, JSON.stringify(collection));
             renderList();
 
-            // Auto Save to Server (GitHub)
-            loadingText.innerText = '서버에 동기화 중 (GitHub)...';
-            try {
-                await saveToGitHub(currentMode, true);
-
-                // Supabase 딜러 계정 동기화
-                if (!isProduct && newItem.username) {
-                    loadingText.innerText = 'Supabase 계정 동기화 중...';
-                    await syncDealerToSupabase(originalDealerUsername, newItem);
+            if (isProduct) {
+                // Auto Save to Server (GitHub)
+                loadingText.innerText = '서버에 동기화 중 (GitHub)...';
+                try {
+                    await saveToGitHub(currentMode, true);
+                    overlay.style.display = 'none';
+                    if (currentId === -1 || (collection.findIndex(i => i.id === currentId) === -1)) {
+                        alert('새 항목이 추가되고 서버에 반영되었습니다.');
+                    } else {
+                        alert('변경내용을 반영했습니다.\n(GitHub 동기화 완료)');
+                    }
+                } catch (e) {
+                    console.error(e);
+                    overlay.style.display = 'none';
+                    alert('변경내용은 저장되었으나, 서버 동기화에 실패했습니다:\n' + e.message);
                 }
-
-                overlay.style.display = 'none';
-                if (currentId === -1 || (collection.findIndex(i => i.id === currentId) === -1)) {
-                    alert('새 항목이 추가되고 서버에 반영되었습니다.');
-                } else {
-                    alert('변경내용을 반영했습니다.\n(GitHub + Supabase 동기화 완료)');
+            } else {
+                // Supabase Dealer Data sync
+                loadingText.innerText = '대리점 정보 DB 동기화 중 (Supabase)...';
+                try {
+                    const success = await upsertDealer(newItem);
+                    if (newItem.username) {
+                        loadingText.innerText = 'Supabase 보안 계정 동기화 중...';
+                        await syncDealerToSupabase(originalDealerUsername, newItem);
+                    }
+                    overlay.style.display = 'none';
+                    if (success) {
+                        alert('대리점 정보가 안전하게 DB에 반영되었습니다.');
+                    } else {
+                        alert('대리점 정보 저장 중 DB 에러가 발생했습니다.');
+                    }
+                } catch (err) {
+                    console.error(err);
+                    overlay.style.display = 'none';
+                    alert('Supabase 동기화 실패:\n' + err.message);
                 }
-            } catch (e) {
-                console.error(e);
-                overlay.style.display = 'none';
-                alert('변경내용은 저장되었으나, 서버 동기화에 실패했습니다:\n' + e.message);
             }
         }
 
@@ -1451,9 +1466,9 @@
 
                 dealers = dealers.filter(d => d.id !== currentId);
                 localStorage.setItem(storageKey, JSON.stringify(dealers));
-                saveToGitHub('dealer', true);
 
                 // Supabase에서도 삭제
+                await deleteDealer(currentId);
                 if (deletedUsername) {
                     await deleteDealerFromSupabase(deletedUsername);
                 }
@@ -1712,7 +1727,7 @@
             renderAttachments();
         }
 
-        function startAdmin() {
+        async function startAdmin() {
             // Check Role
             currentUserRole = sessionStorage.getItem('userRole');
 
@@ -1728,7 +1743,11 @@
 
             // Initialize Data from Global Variables (loaded by scripts)
             products = (typeof productData !== 'undefined') ? [...productData] : [];
-            dealers = (typeof dealerData !== 'undefined') ? [...dealerData] : [];
+            if (typeof fetchDealerList === 'function') {
+                dealers = await fetchDealerList();
+            } else {
+                dealers = (typeof dealerData !== 'undefined') ? [...dealerData] : [];
+            }
 
             console.log('Admin Debug: Products:', products.length, 'Dealers:', dealers.length);
             // Debug Panel update will happen in renderList
@@ -2175,6 +2194,8 @@
         <div id="loadingText">Processing...</div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-client.js?v=20260223"></script>
     <script src="../js/github-client.js?v=202602162250"></script>
     <script src="../js/i18n.js"></script>
 </body>

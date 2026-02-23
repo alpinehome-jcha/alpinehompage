@@ -18,9 +18,8 @@
 
 
 
-    <script>
-        document.write('<script src="../js/dealer-data.js?v=' + Date.now() + '"><\/script>');
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-client.js?v=20260223"></script>
     <style>
         .dealer-list {
             display: flex;
@@ -230,7 +229,7 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             // Render Dealers
             const containers = {
                 'Alpine Sound Master': document.getElementById('list_sound_master'),
@@ -240,7 +239,14 @@
                 'Alpine Dealer': document.getElementById('list_dealer')
             };
 
-            if (typeof dealerData !== 'undefined') {
+            let dealerList = [];
+            if (typeof fetchDealerList === 'function') {
+                dealerList = await fetchDealerList();
+            } else if (typeof dealerData !== 'undefined') {
+                dealerList = dealerData;
+            }
+
+            if (dealerList && dealerList.length > 0) {
                 // Region Order
                 const REGION_ORDER = [
                     '서울',
@@ -294,7 +300,7 @@
                 }
 
                 // Data Correction Loop (Fix Bad Data on Load)
-                dealerData.forEach(d => {
+                dealerList.forEach(d => {
                     // Fix: Auto Gallery (Oto Gallery) location
                     if (d.name && (d.name.includes('오토갤러리') || d.name.includes('Auto Gall') || d.name.includes('Autogallery'))) {
                         d.region = '서울'; // Force region correction
@@ -307,7 +313,7 @@
                 });
 
                 // Sort by Region Order
-                dealerData.sort((a, b) => {
+                dealerList.sort((a, b) => {
                     const rA = getRegion(a);
                     const rB = getRegion(b);
                     let idxA = REGION_ORDER.indexOf(rA);
@@ -401,7 +407,7 @@
                         return { lat: newLat, lng: newLng };
                     }
 
-                    dealerData.forEach(d => {
+                    dealerList.forEach(d => {
                         let lat, lng;
 
                         // STRICT REGION MODE: Always use Region Center
@@ -455,7 +461,7 @@
                     }
                 };
 
-                dealerData.forEach(dealer => {
+                dealerList.forEach(dealer => {
                     const container = containers[dealer.category];
                     if (container) {
                         const card = document.createElement('div');

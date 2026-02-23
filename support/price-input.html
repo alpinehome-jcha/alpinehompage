@@ -221,13 +221,13 @@
         });
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/i18n.js"></script>
-    <script src="../js/price-data.js?v=20260213"></script>
-    <script src="../js/github-client.js?v=202602162250"></script>
+    <script src="../js/supabase-client.js"></script>
     <script>
-        // Global var for Price Data (loaded from price-data.js)
-        // Helper Functions (Must be global for onclick events)
+        let priceData = [];
+        let editingId = null;
 
         function getCategoryLabel(code) {
             const categoryMap = {
@@ -240,223 +240,173 @@
             return categoryMap[code] || code;
         }
 
-        function handleFormSubmit() {
-            const idx = parseInt(document.getElementById('reg-index').value);
+        // Helper to fetch data from Supabase with sorting
+        async function fetchPriceList() {
+            const categoryOrder = { 'master': 1, 'team': 2, 'style': 3, 'region': 4, 'dealer': 5 };
+            const productOrder = {
+                'F#1 Status': 1, 'Alpine Status': 2, 'DSP/AMP': 3, 'Speakers': 4,
+                'PnP Cable': 5, '기타상품': 6, 'Alpine OEM Fit': 7, 'ALPINESTYLE': 8
+            };
+
+            const { data, error } = await window.supabase
+                .from('price_list')
+                .select('*');
+
+            if (error) {
+                console.error('Error fetching price list:', error);
+                return [];
+            }
+
+            // Client-side sorting for now, as Supabase `order` on multiple columns with custom logic is complex.
+            // Ideally, `sort_order` column would be used for primary sorting.
+            const sortedData = data.sort((a, b) => {
+                const catA = categoryOrder[a.category] || 99;
+                const catB = categoryOrder[b.category] || 99;
+                if (catA !== catB) return catA - catB;
+
+                const pCatA = productOrder[a.product_category] || 99;
+                const pCatB = productOrder[b.product_category] || 99;
+                if (pCatA !== pCatB) return pCatA - pCatB;
+
+                // Fallback to product name or sort_order if available
+                if (a.sort_order !== undefined && b.sort_order !== undefined) {
+                    return a.sort_order - b.sort_order;
+                }
+                return a.product.localeCompare(b.product);
+            });
+
+            return sortedData;
+        }
+
+        async function handleFormSubmit() {
             const category = document.getElementById('reg-category').value;
             const productCategory = document.getElementById('reg-product-category').value;
             const product = document.getElementById('reg-product').value;
 
-            // Allow empty or '-' for prices
+            if (!product) {
+                alert('제품명을 입력해주세요.');
+                return;
+            }
+
             const parsePriceInput = (id) => {
                 const val = document.getElementById(id).value;
                 if (!val || val.trim() === '') return 0;
-                return parseInt(val.replace(/,/g, '')) || 0;
+                // If it's a number, return as number. If it has '-' or non-numeric, return as string clean.
+                const clean = val.replace(/,/g, '').trim();
+                const num = parseInt(clean);
+                return isNaN(num) ? clean : num;
             };
 
             const msrp = parsePriceInput('reg-msrp');
             const dealerPrice = parsePriceInput('reg-dealer-price');
-            const distPrice = document.getElementById('reg-dist-price').value; // Keep as string if needed, or int
+            const distPrice = parsePriceInput('reg-dist-price');
 
-            const newData = {
-                category, productCategory, product, msrp, dealerPrice, distPrice
+            const payload = {
+                category,
+                product_category: productCategory,
+                product,
+                msrp,
+                dealer_price: dealerPrice,
+                dist_price: distPrice
             };
 
-            if (idx === -1) {
-                priceData.push(newData);
+            if (editingId) {
+                payload.id = editingId;
             } else {
-                priceData[idx] = newData;
+                // New item: find max sort_order
+                const maxSort = priceData.length > 0 ? Math.max(...priceData.map(d => d.sort_order || 0)) : 0;
+                payload.sort_order = maxSort + 1;
             }
 
-            savePriceData();
-            renderTable();
-            resetForm();
-            alert('저장되었습니다.');
-            saveToGitHub(true);
+            const { data, error } = await window.supabase
+                .from('price_list')
+                .upsert(payload)
+                .select();
+
+            if (error) {
+                console.error('Save error:', error);
+                alert('저장 중 오류가 발생했습니다: ' + error.message);
+            } else {
+                alert('성공적으로 저장되었습니다.');
+                resetForm();
+                loadAndRender();
+            }
         }
 
         function resetForm() {
             document.getElementById('priceForm').reset();
-            document.getElementById('reg-index').value = -1;
+            editingId = null;
+            document.getElementById('reg-index').value = -1; // This is no longer used for Supabase ID, but kept for consistency
             document.getElementById('btn-submit').textContent = '가격표 등록 / 업데이트';
             document.getElementById('btn-cancel').style.display = 'none';
         }
 
-        function editItem(index) {
-            const item = priceData[index];
-            document.getElementById('reg-index').value = index;
+        function editItem(id) {
+            const item = priceData.find(d => d.id === id);
+            if (!item) return;
+
+            editingId = id;
             document.getElementById('reg-category').value = item.category;
-            if (item.productCategory) document.getElementById('reg-product-category').value = item.productCategory;
+            document.getElementById('reg-product-category').value = item.product_category;
             document.getElementById('reg-product').value = item.product;
 
-            const setVal = (id, val) => {
-                document.getElementById(id).value = (val === undefined || val === null || val === '-') ? '' : val;
-            };
-
-            setVal('reg-msrp', item.msrp);
-            setVal('reg-dist-price', item.distPrice);
-            setVal('reg-dealer-price', item.dealerPrice);
+            // Set values directly, handling 0 or '-' as empty string for input fields
+            document.getElementById('reg-msrp').value = (item.msrp === 0 || item.msrp === '-') ? '' : item.msrp;
+            document.getElementById('reg-dist-price').value = (item.dist_price === 0 || item.dist_price === '-') ? '' : item.dist_price;
+            document.getElementById('reg-dealer-price').value = (item.dealer_price === 0 || item.dealer_price === '-') ? '' : item.dealer_price;
 
             document.getElementById('btn-submit').textContent = '수정 완료';
             document.getElementById('btn-cancel').style.display = 'inline-block';
             window.scrollTo(0, 0);
         }
 
-        function deleteItem(index) {
+        async function deleteItem(id) {
             if (confirm('정말 삭제하시겠습니까?')) {
-                priceData.splice(index, 1);
-                savePriceData();
-                renderTable();
-                saveToGitHub(true);
+                const { error } = await window.supabase
+                    .from('price_list')
+                    .delete()
+                    .eq('id', id);
+
+                if (error) {
+                    alert('삭제 실패: ' + error.message);
+                } else {
+                    loadAndRender();
+                }
             }
+        }
+
+        async function loadAndRender() {
+            priceData = await fetchPriceList();
+            renderTable();
         }
 
         function renderTable() {
             const tbody = document.getElementById('priceListBody');
             tbody.innerHTML = '';
 
-            if (typeof priceData !== 'undefined' && Array.isArray(priceData)) {
-                const categoryOrder = { 'master': 1, 'team': 2, 'style': 3, 'region': 4, 'dealer': 5 };
-                const productOrder = {
-                    'F#1 Status': 1, 'Alpine Status': 2, 'DSP/AMP': 3, 'Speakers': 4,
-                    'PnP Cable': 5, '기타상품': 6, 'Alpine OEM Fit': 7, 'ALPINESTYLE': 8
-                };
-
-                const sortedData = priceData.map((item, index) => ({ item, index }));
-
-                sortedData.sort((a, b) => {
-                    const catA = categoryOrder[a.item.category] || 99;
-                    const catB = categoryOrder[b.item.category] || 99;
-                    if (catA !== catB) return catA - catB;
-
-                    const pCatA = productOrder[a.item.productCategory] || 99;
-                    const pCatB = productOrder[b.item.productCategory] || 99;
-                    if (pCatA !== pCatB) return pCatA - pCatB;
-
-                    return a.index - b.index;
-                });
-
-                sortedData.forEach((entry) => {
-                    const item = entry.item;
-                    const originalIndex = entry.index;
-                    const tr = document.createElement('tr');
-                    tr.style.borderBottom = '1px solid #eee';
-
-                    const fmt = (val) => {
-                        if (typeof val === 'number') return val.toLocaleString();
-                        return val || '-';
-                    }
-
-                    tr.innerHTML = `
-                        <td style="padding: 12px;">${getCategoryLabel(item.category)}</td>
-                        <td style="padding: 12px;">${item.productCategory || '-'}</td>
-                        <td style="padding: 12px; font-weight: 500;">${item.product}</td>
-                        <td style="padding: 12px; text-align: right; color: #2980b9; font-weight: 600;">${fmt(item.distPrice)}</td>
-                        <td style="padding: 12px; text-align: right; color: #e74c3c; font-weight: 600;">${fmt(item.dealerPrice)}</td>
-                        <td style="padding: 12px; text-align: right; color: #888;">${fmt(item.msrp)}</td>
-                        <td style="padding: 12px; text-align: center;">
-                            <button onclick="editItem(${originalIndex})" style="padding: 4px 8px; background: #3498db; color: white; border: none; border-radius: 4px; font-size: 0.8rem; cursor: pointer; margin-right: 5px;">수정</button>
-                            <button onclick="deleteItem(${originalIndex})" style="padding: 4px 8px; background: #e74c3c; color: white; border: none; border-radius: 4px; font-size: 0.8rem; cursor: pointer;">삭제</button>
-                        </td>
-                    `;
-                    tbody.appendChild(tr);
-                });
-            }
-        }
-
-        function savePriceData() {
-            localStorage.setItem('priceData', JSON.stringify(priceData));
-        }
-
-        async function saveToGitHub(silent = false) {
-            if (!priceData || priceData.length === 0) {
-                if (!silent) alert('저장할 데이터가 없습니다.');
-                return;
+            const fmt = (val) => {
+                if (typeof val === 'number') return val.toLocaleString();
+                return val || '-';
             }
 
-            const token = localStorage.getItem('github_token');
-            const repo = localStorage.getItem('github_repo');
+            priceData.forEach((item) => {
+                const tr = document.createElement('tr');
+                tr.style.borderBottom = '1px solid #eee';
 
-            if (!token || !repo) {
-                if (!silent) alert('GitHub 설정이 필요합니다.');
-                return;
-            }
-
-            if (!silent) {
-                if (!confirm('현재 가격표 데이터를 서버(GitHub)에 저장하시겠습니까?\\n저장 후 사이트 반영까지 약 1~2분이 소요됩니다.')) return;
-            }
-
-            const client = new GitHubClient();
-            client.configure(token, repo);
-
-            const jsonStr = JSON.stringify(priceData, null, 4);
-            const version = Date.now();
-
-            let fileContent = `const initialPriceData = ${jsonStr};\\n`;
-            fileContent += `const DATA_VERSION = ${version};\\n\\n`;
-
-            // Re-inject helper functions into the saved file so it is self-contained
-            fileContent += `function getCategoryLabel(cat) {\\n`;
-            fileContent += `    const labels = {\\n`;
-            fileContent += `        'master': '알파인사운드마스터',\\n`;
-            fileContent += `        'team': '팀알파인',\\n`;
-            fileContent += `        'style': '알파인스타일총판',\\n`;
-            fileContent += `        'region': '알파인 지역총판',\\n`;
-            fileContent += `        'dealer': '알파인 대리점'\\n`;
-            fileContent += `    };\\n`;
-            fileContent += `    return labels[cat] || cat;\\n`;
-            fileContent += `}\\n\\n`;
-
-            fileContent += `let priceData = [];\\n`;
-            fileContent += `const FORCE_RESTORE_KEY = 'priceDataRestored_v2_calculated';\\n`;
-            fileContent += `const VERSION_KEY = 'priceDataVersion';\\n\\n`;
-
-            fileContent += `try {\\n`;
-            fileContent += `    const storedVersion = localStorage.getItem(VERSION_KEY);\\n`;
-            fileContent += `    const storedData = localStorage.getItem('priceData');\\n`;
-            fileContent += `    const hasRestored = localStorage.getItem(FORCE_RESTORE_KEY);\\n\\n`;
-
-            fileContent += `    if (typeof DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < DATA_VERSION)) {\\n`;
-            fileContent += `        console.log('Newer data version found on server. Updating local storage...');\\n`;
-            fileContent += `        priceData = JSON.parse(JSON.stringify(initialPriceData));\\n`;
-            fileContent += `        localStorage.setItem('priceData', JSON.stringify(priceData));\\n`;
-            fileContent += `        localStorage.setItem(VERSION_KEY, DATA_VERSION.toString());\\n`;
-            fileContent += `        localStorage.setItem(FORCE_RESTORE_KEY, new Date().toISOString());\\n`;
-            fileContent += `    } else if (storedData && hasRestored) {\\n`;
-            fileContent += `        console.log('Loading price data from local storage...');\\n`;
-            fileContent += `        priceData = JSON.parse(storedData);\\n`;
-            fileContent += `    } else {\\n`;
-            fileContent += `        console.log('Initializing price data (First run)...');\\n`;
-            fileContent += `        priceData = JSON.parse(JSON.stringify(initialPriceData));\\n`;
-            fileContent += `        localStorage.setItem('priceData', JSON.stringify(priceData));\\n`;
-            fileContent += `        if (typeof DATA_VERSION !== 'undefined') localStorage.setItem(VERSION_KEY, DATA_VERSION.toString());\\n`;
-            fileContent += `        localStorage.setItem(FORCE_RESTORE_KEY, new Date().toISOString());\\n`;
-            fileContent += `    }\\n\\n`;
-            fileContent += `} catch (e) {\\n`;
-            fileContent += `    console.error('Local Storage Error:', e);\\n`;
-            fileContent += `    priceData = initialPriceData;\\n`;
-            fileContent += `}\\n\\n`;
-
-            fileContent += `let isUpdated = false;\\n`;
-            fileContent += `function savePriceData() {\\n`;
-            fileContent += `    localStorage.setItem('priceData', JSON.stringify(priceData));\\n`;
-            fileContent += `}\\n`;
-
-            try {
-                const msg = silent ? 'Auto-save Price List' : 'Update Price List from Admin Panel';
-                await client.commitFile('js/price-data.js', fileContent, msg);
-                if (silent) {
-                    const toast = document.createElement('div');
-                    toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:#2ecc71; color:white; padding:10px 20px; border-radius:4px; z-index:9999; box-shadow:0 2px 10px rgba(0,0,0,0.2); animation: fadein 0.5s, fadeout 0.5s 2.5s forwards;';
-                    toast.textContent = 'Data saved to GitHub!';
-                    document.body.appendChild(toast);
-                    setTimeout(() => toast.remove(), 3000);
-                } else {
-                    alert('성공적으로 저장되었습니다!');
-                }
-            } catch (err) {
-                console.error(err);
-                if (!silent) alert(`저장 실패: ${err.message}`);
-            }
+                tr.innerHTML = `
+                    <td style="padding: 12px;">${getCategoryLabel(item.category)}</td>
+                    <td style="padding: 12px;">${item.product_category || '-'}</td>
+                    <td style="padding: 12px; font-weight: 500;">${item.product}</td>
+                    <td style="padding: 12px; text-align: right; color: #2980b9; font-weight: 600;">${fmt(item.dist_price)}</td>
+                    <td style="padding: 12px; text-align: right; color: #e74c3c; font-weight: 600;">${fmt(item.dealer_price)}</td>
+                    <td style="padding: 12px; text-align: right; color: #888;">${fmt(item.msrp)}</td>
+                    <td style="padding: 12px; text-align: center;">
+                        <button onclick="editItem(${item.id})" style="padding: 4px 8px; background: #3498db; color: white; border: none; border-radius: 4px; font-size: 0.8rem; cursor: pointer; margin-right: 5px;">수정</button>
+                        <button onclick="deleteItem(${item.id})" style="padding: 4px 8px; background: #e74c3c; color: white; border: none; border-radius: 4px; font-size: 0.8rem; cursor: pointer;">삭제</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
         }
 
         function downloadExcel() {
@@ -466,10 +416,10 @@
             }
             const exportData = priceData.map(item => ({
                 '분류': getCategoryLabel(item.category),
-                '제품 분류': item.productCategory,
+                '제품 분류': item.product_category,
                 '제품명': item.product,
-                '유통가': item.distPrice,
-                '대리점가': item.dealerPrice,
+                '유통가': item.dist_price,
+                '대리점가': item.dealer_price,
                 '소비자가': item.msrp
             }));
             const ws = XLSX.utils.json_to_sheet(exportData);
@@ -481,12 +431,12 @@
             XLSX.writeFile(wb, `PriceList_${dateStr}.xlsx`);
         }
 
-        function uploadExcel(e) {
+        async function uploadExcel(e) {
             const file = e.target.files[0];
             if (!file) return;
 
             const reader = new FileReader();
-            reader.onload = function (e) {
+            reader.onload = async function (e) {
                 try {
                     const data = new Uint8Array(e.target.result);
                     const workbook = XLSX.read(data, { type: 'array' });
@@ -499,7 +449,7 @@
                         return;
                     }
 
-                    if (!confirm(`총 ${jsonData.length}개의 데이터를 불러왔습니다.\\n덮어쓰시겠습니까?`)) {
+                    if (!confirm(`총 ${jsonData.length}개의 데이터를 서버로 전송하시겠습니까? (기존 데이터는 유지되며, 제품명과 분류가 일치하면 업데이트됩니다.)`)) {
                         document.getElementById('excelInput').value = '';
                         return;
                     }
@@ -513,40 +463,49 @@
                     };
                     const reverseCategoryMap = Object.fromEntries(Object.entries(categoryMap).map(([k, v]) => [v, k]));
 
-                    const newPriceData = jsonData.map(row => {
+                    const parseExcelPrice = (val) => {
+                        if (val === undefined || val === null || val === '-') return '-';
+                        if (typeof val === 'number') return val;
+                        if (typeof val === 'string') {
+                            const clean = val.replace(/[, ]/g, '');
+                            if (clean === '' || clean === '-') return '-';
+                            const num = Number(clean);
+                            return isNaN(num) ? val : num;
+                        }
+                        return val;
+                    };
+
+                    const batchData = jsonData.map((row, idx) => {
                         let catCode = reverseCategoryMap[row['분류']];
                         if (!catCode) {
                             if (categoryMap[row['분류']]) catCode = row['분류'];
-                            else catCode = 'dealer';
+                            else catCode = 'dealer'; // Default to 'dealer' if category not found
                         }
-
-                        const parseExcelPrice = (val) => {
-                            if (val === undefined || val === null || val === '-') return '-';
-                            if (typeof val === 'number') return val;
-                            if (typeof val === 'string') {
-                                const clean = val.replace(/[, ]/g, '');
-                                if (clean === '' || clean === '-') return '-';
-                                const num = Number(clean);
-                                return isNaN(num) ? val : num;
-                            }
-                            return val;
-                        };
 
                         return {
                             category: catCode,
-                            productCategory: row['제품 분류'] || '',
+                            product_category: row['제품 분류'] || '',
                             product: row['제품명'] || '',
                             msrp: parseExcelPrice(row['소비자가']),
-                            distPrice: parseExcelPrice(row['유통가']),
-                            dealerPrice: parseExcelPrice(row['대리점가'])
+                            dist_price: parseExcelPrice(row['유통가']),
+                            dealer_price: parseExcelPrice(row['대리점가']),
+                            sort_order: idx + 1 // Assign a sort order based on Excel row
                         };
                     });
 
-                    priceData = newPriceData;
-                    savePriceData();
-                    renderTable();
-                    saveToGitHub(true);
-                    alert('업데이트 완료.');
+                    // Upsert in batches for stability
+                    const batchSize = 100;
+                    for (let i = 0; i < batchData.length; i += batchSize) {
+                        const batch = batchData.slice(i, i + batchSize);
+                        const { error } = await window.supabase
+                            .from('price_list')
+                            .upsert(batch, { onConflict: 'category,product_category,product' }); // Conflict resolution for updates
+
+                        if (error) throw error;
+                    }
+
+                    alert('성공적으로 업로드되었습니다.');
+                    loadAndRender();
 
                 } catch (err) {
                     console.error(err);
@@ -558,8 +517,7 @@
             reader.readAsArrayBuffer(file);
         }
 
-        // DOMContentLoaded: Initialization & Event Listeners
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             // 1. Auth Check
             const role = auth.getRole();
             if (role !== 'admin') {
@@ -568,112 +526,34 @@
                 return;
             }
 
-            // 2. Safe Data Check
-            if (typeof window.priceData === 'undefined') {
-                console.error('Price Data is missing!');
-                window.priceData = [];
-                const msg = document.createElement('div');
-                msg.style.cssText = 'padding:20px; text-align:center; color:red; background:#fff0f0; border:1px solid red; margin:20px; border-radius:8px;';
-                msg.innerHTML = '<h3>⚠️ 데이터 로드 실패</h3><p>서버 파일이 로드되지 않았습니다. 복구 버튼을 사용하세요.</p>';
-                document.getElementById('adminContent').prepend(msg);
-            }
+            // 2. Load Data
+            await loadAndRender();
 
-            // 3. Render
-            renderTable();
+            // 3. Form Handling
+            document.getElementById('priceForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                handleFormSubmit();
+            });
+            document.getElementById('btn-cancel').addEventListener('click', resetForm);
 
-            // 4. Recovery Buttons
-            const btnUploadJs = document.getElementById('btn-upload-js');
-            const jsFileInput = document.getElementById('jsFileInput');
-            if (btnUploadJs && jsFileInput) {
-                btnUploadJs.addEventListener('click', () => jsFileInput.click());
-                jsFileInput.addEventListener('change', (e) => {
-                    const file = e.target.files[0];
-                    if (!file) return;
-                    const reader = new FileReader();
-                    reader.onload = function (evt) {
-                        try {
-                            const content = evt.target.result;
-                            const startMatch = content.match(/const initialPriceData\s*=\s*(\[)/);
-                            if (startMatch) {
-                                const startIndex = startMatch.index + startMatch[0].length - 1;
-                                const versionMatch = content.match(/const DATA_VERSION/);
-                                const endIndex = versionMatch ? versionMatch.index : content.length;
-                                let jsonPart = content.substring(startIndex, endIndex).trim();
-                                if (jsonPart.endsWith(';')) jsonPart = jsonPart.slice(0, -1);
+            // 4. Excel Buttons
+            document.getElementById('btn-download-excel').addEventListener('click', downloadExcel);
+            document.getElementById('btn-upload-excel').addEventListener('click', () => document.getElementById('excelInput').click());
+            document.getElementById('excelInput').addEventListener('change', uploadExcel);
 
-                                const parsed = JSON.parse(jsonPart);
-                                if (Array.isArray(parsed) && parsed.length > 0) {
-                                    if (confirm(`파일에서 ${parsed.length}개의 데이터를 복구하시겠습니까?`)) {
-                                        window.priceData = parsed;
-                                        savePriceData();
-                                        renderTable();
-                                        saveToGitHub(true);
-                                        alert('복구 성공! 새로고침하세요.');
-                                        location.reload();
-                                    }
-                                }
-                            } else { alert('형식이 올바르지 않습니다.'); }
-                        } catch (err) { alert('파싱 실패: ' + err.message); }
-                    };
-                    reader.readAsText(file);
-                });
-            }
+            // 5. Recovery Buttons (Supabase로 인해 거의 필요 없으나 남겨둠)
+            document.getElementById('btn-restore-data').addEventListener('click', () => {
+                if (confirm('서버의 최신 데이터를 다시 불러오겠습니까?')) {
+                    loadAndRender();
+                    alert('데이터를 새로고침했습니다.');
+                }
+            });
 
-            const btnForceInit = document.getElementById('btn-force-init');
-            if (btnForceInit) {
-                btnForceInit.addEventListener('click', () => {
-                    if (typeof initialPriceData === 'undefined') {
-                        alert('초기 데이터를 로드할 수 없습니다.');
-                        return;
-                    }
-                    if (confirm('초기 데이터로 강제 복구하시겠습니까?')) {
-                        window.priceData = JSON.parse(JSON.stringify(initialPriceData));
-                        savePriceData();
-                        renderTable();
-                        saveToGitHub(true);
-                        alert('복구 완료. 새로고침합니다.');
-                        location.reload();
-                    }
-                });
-            }
-
-            const btnRestore = document.getElementById('btn-restore-data');
-            if (btnRestore) {
-                btnRestore.addEventListener('click', () => {
-                    if (confirm('로컬 저장소를 초기화하시겠습니까?')) {
-                        localStorage.removeItem('priceData');
-                        localStorage.removeItem('priceDataVersion');
-                        localStorage.removeItem('priceDataRestored_v2_calculated');
-                        alert('초기화 완료. 새로고침합니다.');
-                        location.reload();
-                    }
-                });
-            }
-
-            // 5. Form Handling
-            const form = document.getElementById('priceForm');
-            const cancelBtn = document.getElementById('btn-cancel');
-            if (form) {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    handleFormSubmit();
-                });
-            }
-            if (cancelBtn) {
-                cancelBtn.addEventListener('click', resetForm);
-            }
-
-            // 6. Excel Buttons
-            const btnDownload = document.getElementById('btn-download-excel');
-            const btnUpload = document.getElementById('btn-upload-excel');
-            const excelInput = document.getElementById('excelInput');
-
-            if (btnDownload) btnDownload.addEventListener('click', downloadExcel);
-            if (btnUpload) btnUpload.addEventListener('click', () => excelInput.click());
-            if (excelInput) excelInput.addEventListener('change', uploadExcel);
+            // Force Init and Local price-data.js upload are hidden/removed for now as we have a stable DB
         });
 
     </script>
 </body>
 
 </html>
+```

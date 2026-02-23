@@ -11,11 +11,7 @@ function downloadData(type) {
             fileName = 'product-data.js';
             dataObj = (typeof productData !== 'undefined') ? productData : null;
             break;
-        case 'dealer':
-            dataName = 'dealerData';
-            fileName = 'dealer-data.js';
-            dataObj = (typeof dealerData !== 'undefined') ? dealerData : null;
-            break;
+
         case 'popup':
             dataName = 'popupData';
             fileName = 'popup-data.js';
@@ -165,11 +161,7 @@ async function saveToGitHub(type, silent = false) {
             fileName = 'js/product-data.js';
             dataObj = (typeof productData !== 'undefined') ? productData : null;
             break;
-        case 'dealer':
-            dataName = 'dealerData';
-            fileName = 'js/dealer-data.js';
-            dataObj = (typeof dealerData !== 'undefined') ? dealerData : null;
-            break;
+
         case 'popup':
             dataName = 'popupData';
             fileName = 'js/popup-data.js';

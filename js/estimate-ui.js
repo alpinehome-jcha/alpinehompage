@@ -4,6 +4,7 @@
 const EstimateUI = {
     selectedCar: null,
     selections: {},
+    priceData: [],
 
     async init() {
         await this.loadDataScripts();
@@ -54,6 +55,12 @@ const EstimateUI = {
 
         try {
             await Promise.all(scripts.map(loadScript));
+            if (typeof fetchPriceList === 'function') {
+                this.priceData = await fetchPriceList();
+            } else {
+                console.warn("fetchPriceList not available, using fallback if any");
+                this.priceData = typeof initialPriceData !== 'undefined' ? initialPriceData : [];
+            }
             console.log("Alpine Estimate Data Loaded (Cache-Busted)");
         } catch (err) {
             console.error("Failed to load Alpine Estimate data updates:", err);
@@ -61,6 +68,7 @@ const EstimateUI = {
             if (typeof estimateData === 'undefined') {
                 console.warn("Using fallback static script loading might be required.");
             }
+            this.priceData = typeof initialPriceData !== 'undefined' ? initialPriceData : [];
         }
     },
 
@@ -790,13 +798,13 @@ const EstimateUI = {
     getSingleProductPrice(name) {
         if (name === "커스텀 배플" || name === "현대/기아 6.5\" 배플") return 50000;
         if (name === "GE-203") return 150000;
-        if (typeof initialPriceData === 'undefined') return 0;
-        const items = initialPriceData.filter(i => i.product === name && i.category === 'master');
+        if (!this.priceData || this.priceData.length === 0) return 0;
+        const items = this.priceData.filter(i => i.product === name && i.category === 'master');
         if (items.length > 0) return items[0].msrp;
 
         // PnP Cable pattern fallback (e.g., matching HK-103 into "HK-101 / HK-102 / HK-103")
         const trimmed = name.trim();
-        const fallback = initialPriceData.find(i => {
+        const fallback = this.priceData.find(i => {
             if (i.category !== 'master') return false;
             const target = i.product.trim();
             if (target === trimmed) return true;
