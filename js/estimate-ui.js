@@ -243,6 +243,9 @@ const EstimateUI = {
                     <div id="aiAssessmentArea" style="padding: 30px; line-height: 1.6; color: #333; font-size: 1rem;">
                         <!-- AI 평가 내용이 여기에 렌더링됨 -->
                     </div>
+                    <div style="padding: 20px; text-align: center; border-top: 1px solid #eee;">
+                        <button class="sub-filter-btn active" onclick="EstimateUI.closeAIModal()" style="padding: 8px 40px;">확인</button>
+                    </div>
                 </div>
             </div>
             
@@ -1004,8 +1007,7 @@ const EstimateUI = {
                     <p style="color: #666; font-size: 0.95rem;">${recommendation}</p>
                 </div>
                 ${extra}
-                <div style="margin-top:20px; padding-top:15px; border-top:1px solid #eee; display:flex; justify-content:space-between; align-items:center;">
-                    <button class="btn btn-secondary" onclick="EstimateUI.closeModal()">닫기</button>
+                <div style="margin-top:20px; padding-top:15px; border-top:1px solid #eee; display:flex; justify-content:flex-end; align-items:center;">
                     <div style="font-size: 0.7rem; color: #aaa; text-align: right;">
                         Last Checked: ${new Date().toLocaleTimeString()}
                     </div>

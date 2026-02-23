@@ -166,7 +166,7 @@ const translations = {
 function applyLanguage(newLang) {
     const langText = document.querySelector('.curr-lang');
     if (langText) langText.textContent = newLang.toUpperCase();
-    sessionStorage.setItem('lang', newLang);
+    localStorage.setItem('lang', newLang);
 
     // Switch Footer Logo
     const footerLogo = document.getElementById('footer-logo-img');
@@ -205,19 +205,18 @@ function applyLanguage(newLang) {
 
 // Global Initialization
 document.addEventListener('DOMContentLoaded', () => {
-    const langToggle = document.querySelector('.lang-toggle');
-    const langText = document.querySelector('.curr-lang');
-
-    if (langToggle && langText) {
-        langToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            const currentLang = langText.textContent.toLowerCase();
-            const newLang = currentLang === 'ko' ? 'en' : 'ko';
-            applyLanguage(newLang);
-        });
-    }
-
     // Init Language from Storage
-    const savedLang = sessionStorage.getItem('lang') || 'ko';
+    const savedLang = localStorage.getItem('lang') || 'ko';
     applyLanguage(savedLang);
+});
+
+// 이벤트 위임: layout.js가 헤더를 동적으로 렌더링한 후에도 클릭이 잡힘
+document.addEventListener('click', (e) => {
+    const toggle = e.target.closest('.lang-toggle');
+    if (!toggle) return;
+    e.preventDefault();
+    const langText = document.querySelector('.curr-lang');
+    const currentLang = langText ? langText.textContent.trim().toLowerCase() : 'ko';
+    const newLang = currentLang === 'ko' ? 'en' : 'ko';
+    applyLanguage(newLang);
 });
