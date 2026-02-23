@@ -76,43 +76,61 @@ const auth = {
     },
 
     login: async (username, password) => {
-        // ── Supabase RPC 로그인 (서버측 bcrypt 검증) ──────────────────
+        // ── 1순위: Supabase RPC 로그인 ──────────────────────────────
         try {
             const client = await loadSupabase();
             const { data, error } = await client.rpc('verify_login', {
                 p_username: username,
                 p_password: password
             });
-            if (error) throw error;
 
-            // DB에 계정이 있지만 비밀번호 틀림
-            if (data && data.error === 'wrong_password') {
-                return false;
+            if (!error) {
+                // DB에 계정이 있지만 비밀번호 틀림 → 즉시 실패 (폴백 없음)
+                if (data && data.error === 'wrong_password') {
+                    return false;
+                }
+                // 로그인 성공
+                if (data && !data.error) {
+                    const role = data.role || 'dealer';
+                    const dealerName = data.dealer_name || username;
+
+                    sessionStorage.setItem(AUTH_KEY, 'true');
+                    sessionStorage.setItem(ROLE_KEY, role);
+                    sessionStorage.setItem('dealerName', dealerName);
+                    sessionStorage.setItem('currentUser', username);
+
+                    await saveVisitLog({
+                        date: new Date().toLocaleString('ko-KR'),
+                        username: username,
+                        name: dealerName,
+                        role: role
+                    });
+                    return true;
+                }
+                // data === null: DB에 없는 계정 → USERS 폴백 시도
             }
-            // 로그인 성공
-            if (data && !data.error) {
-                const role = data.role || 'dealer';
-                const dealerName = data.dealer_name || username;
-
-                sessionStorage.setItem(AUTH_KEY, 'true');
-                sessionStorage.setItem(ROLE_KEY, role);
-                sessionStorage.setItem('dealerName', dealerName);
-                sessionStorage.setItem('currentUser', username);
-
-                await saveVisitLog({
-                    date: new Date().toLocaleString('ko-KR'),
-                    username: username,
-                    name: dealerName,
-                    role: role
-                });
-                return true;
-            }
-            // data === null: Supabase DB에 없는 계정
-            return false;
+            // error가 있을 때도 USERS 폴백 허용
         } catch (e) {
-            console.error('[Auth] 로그인 오류:', e.message);
-            return false;
+            console.warn('[Auth] Supabase 연결 실패, 비상 폴백 시도:', e.message);
         }
+
+        // ── 2순위: 하드코딩 관리자 계정만 (비상용 fallback) ──────────
+        const user = USERS[username];
+        if (user && user.pass === password) {
+            sessionStorage.setItem(AUTH_KEY, 'true');
+            sessionStorage.setItem(ROLE_KEY, user.role);
+            sessionStorage.setItem('dealerName', FRIENDLY_NAMES[username] || username);
+            sessionStorage.setItem('currentUser', username);
+            await saveVisitLog({
+                date: new Date().toLocaleString('ko-KR'),
+                username: username,
+                name: FRIENDLY_NAMES[username] || username,
+                role: user.role
+            });
+            return true;
+        }
+
+        return false;
     },
     changePassword: async (currentPass, newPass) => {
         const username = sessionStorage.getItem('currentUser');
@@ -127,7 +145,24 @@ const auth = {
                 p_new_password: newPass
             });
             if (error) throw error;
-            if (changed === true) return { success: true, message: '비밀번호가 변경되었습니다.' };
+            if (changed === true) {
+                // 관리자 패널 표시와 동기화 (localStorage 딜러 데이터 password 업데이트)
+                try {
+                    const storedDealers = localStorage.getItem('dealerData');
+                    if (storedDealers) {
+                        const dealers = JSON.parse(storedDealers);
+                        const idx = dealers.findIndex(d => d.username === username);
+                        if (idx !== -1) {
+                            dealers[idx].password = newPass;
+                            localStorage.setItem('dealerData', JSON.stringify(dealers));
+                        }
+                    }
+                } catch (syncErr) {
+                    console.warn('[Auth] localStorage 동기화 실패:', syncErr);
+                }
+                return { success: true, message: '비밀번호가 변경되었습니다.' };
+            }
+
             return { success: false, message: '현재 비밀번호가 일치하지 않습니다.' };
         } catch (e) {
             console.error('[Auth] 비밀번호 변경 오류:', e.message);
