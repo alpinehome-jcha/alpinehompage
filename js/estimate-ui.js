@@ -800,7 +800,7 @@ const EstimateUI = {
         if (name === "GE-203") return 150000;
         if (!this.priceData || this.priceData.length === 0) return 0;
         const items = this.priceData.filter(i => i.product === name && i.category === 'master');
-        if (items.length > 0) return items[0].msrp;
+        if (items.length > 0) return Number(items[0].msrp) || 0;
 
         // PnP Cable pattern fallback (e.g., matching HK-103 into "HK-101 / HK-102 / HK-103")
         const trimmed = name.trim();
@@ -813,7 +813,7 @@ const EstimateUI = {
             }
             return false;
         });
-        return fallback ? fallback.msrp : 0;
+        return fallback ? (Number(fallback.msrp) || 0) : 0;
     },
 
     calculateTotal() {
