@@ -8,7 +8,7 @@ const initialDealerData = [
         "phone": "010-8545-5311",
         "desc": "F#1 Status 및 알파인 모든 사운드 시스템을 취급합니다.",
         "username": "gain",
-        "password": "1235",
+        "password": "2345",
         "role": "dealer",
         "lat": 37.3887,
         "lng": 126.9238,
@@ -568,7 +568,7 @@ const initialDealerData = [
         "region": "경남"
     }
 ];
-const DEALER_DATA_VERSION = 1770957436186;
+const DEALER_DATA_VERSION = 1771825011625;
 
 let dealerData = [];
 if (typeof localStorage !== 'undefined') {
