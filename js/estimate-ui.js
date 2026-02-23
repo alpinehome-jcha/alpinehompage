@@ -458,20 +458,28 @@ const EstimateUI = {
         const items = list.filter(i => i !== "선택 안함" && i !== "DSP 선택 안함");
         if (items.length === 0) return list[0];
 
-        // 1. 명시적 레벨 매칭 (ranks 맵 활용)
-        const exactMatch = items.find(i => {
-            const rank = this.getProductRank(i);
-            return rank === level;
-        });
-        if (exactMatch) return exactMatch;
-
-        // 2. 항목이 1개뿐인 경우 무조건 선택
+        // 항목이 1개뿐인 경우 무조건 선택
         if (items.length === 1) return items[0];
 
-        // 3. 가격 기반 자동 선택
+        // 레벨 순서: 입문용(0) → 가성비(1) → 프로(2) → 하이엔드(3) → 어나더레벨(4)
+        const levels = ['입문용', '가성비', '프로', '하이엔드', '어나더레벨'];
+        const targetIdx = levels.indexOf(level);
+
+        // 탐색 순서: 목표 → 한단계 아래 → 한단계 위 → 두단계 아래 → 두단계 위 ...
+        const searchOrder = [targetIdx];
+        for (let step = 1; step < levels.length; step++) {
+            if (targetIdx - step >= 0) searchOrder.push(targetIdx - step);
+            if (targetIdx + step < levels.length) searchOrder.push(targetIdx + step);
+        }
+
+        for (const idx of searchOrder) {
+            const match = items.find(i => this.getProductRank(i) === levels[idx]);
+            if (match) return match;
+        }
+
+        // 레벨 매핑이 없는 항목은 가격 기반으로 선택 (최후 수단)
         const sorted = [...items].sort((a, b) => this.getProductPrice(a) - this.getProductPrice(b));
         const isHighEnd = (level === "하이엔드" || level === "어나더레벨");
-
         return isHighEnd ? sorted[sorted.length - 1] : sorted[0];
     },
 
