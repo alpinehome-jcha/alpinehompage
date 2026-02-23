@@ -782,7 +782,7 @@ const EstimateUI = {
     getSingleProductPrice(name) {
         if (name === "커스텀 배플" || name === "현대/기아 6.5\" 배플") return 50000;
         if (name === "GE-203") return 150000;
-        if (!window.initialPriceData) return 0;
+        if (typeof initialPriceData === 'undefined') return 0;
         const items = initialPriceData.filter(i => i.product === name && i.category === 'master');
         if (items.length > 0) return items[0].msrp;
 
