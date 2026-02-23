@@ -243,9 +243,6 @@ const EstimateUI = {
                     <div id="aiAssessmentArea" style="padding: 30px; line-height: 1.6; color: #333; font-size: 1rem;">
                         <!-- AI 평가 내용이 여기에 렌더링됨 -->
                     </div>
-                    <div style="padding: 20px; text-align: center; border-top: 1px solid #eee;">
-                        <button class="sub-filter-btn active" onclick="EstimateUI.closeAIModal()" style="padding: 8px 40px;">확인</button>
-                    </div>
                 </div>
             </div>
             
