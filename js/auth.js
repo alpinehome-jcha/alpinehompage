@@ -357,12 +357,21 @@ const auth = {
         if (!document.getElementById('pwChangeModal')) {
             const modalHTML = `
                 <div id="pwChangeModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.4);">
-                    <div style="background-color:#fefefe; margin:15% auto; padding:20px; border:1px solid #888; width:300px; border-radius:8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                    <div style="background-color:#fefefe; margin:15% auto; padding:20px; border:1px solid #888; width:320px; border-radius:8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
                         <h3 style="margin-top:0;">비밀번호 변경</h3>
                         <div style="margin-bottom:10px;">
-                            <input type="password" id="modalCurrentPass" placeholder="현재 비밀번호" style="width:100%; padding:8px; margin-bottom:5px; box-sizing:border-box;">
-                            <input type="password" id="modalNewPass" placeholder="새 비밀번호" style="width:100%; padding:8px; margin-bottom:5px; box-sizing:border-box;">
-                            <input type="password" id="modalConfirmPass" placeholder="새 비밀번호 확인" style="width:100%; padding:8px; margin-bottom:5px; box-sizing:border-box;">
+                            <div style="position:relative; margin-bottom:8px;">
+                                <input type="password" id="modalCurrentPass" placeholder="현재 비밀번호" style="width:100%; padding:8px 36px 8px 8px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;">
+                                <button type="button" onclick="(function(b){var i=document.getElementById('modalCurrentPass');i.type=i.type==='password'?'text':'password';b.textContent=i.type==='password'?'👁':'🙈';})(this)" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;padding:0;line-height:1;">👁</button>
+                            </div>
+                            <div style="position:relative; margin-bottom:8px;">
+                                <input type="password" id="modalNewPass" placeholder="새 비밀번호" style="width:100%; padding:8px 36px 8px 8px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;">
+                                <button type="button" onclick="(function(b){var i=document.getElementById('modalNewPass');i.type=i.type==='password'?'text':'password';b.textContent=i.type==='password'?'👁':'🙈';})(this)" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;padding:0;line-height:1;">👁</button>
+                            </div>
+                            <div style="position:relative; margin-bottom:8px;">
+                                <input type="password" id="modalConfirmPass" placeholder="새 비밀번호 확인" style="width:100%; padding:8px 36px 8px 8px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;">
+                                <button type="button" onclick="(function(b){var i=document.getElementById('modalConfirmPass');i.type=i.type==='password'?'text':'password';b.textContent=i.type==='password'?'👁':'🙈';})(this)" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;padding:0;line-height:1;">👁</button>
+                            </div>
                         </div>
                         <div style="text-align:right;">
                             <button id="btnCancelPw" style="padding:5px 10px; cursor:pointer; background:#ccc; border:none; border-radius:4px;">취소</button>
