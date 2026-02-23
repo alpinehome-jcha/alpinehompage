@@ -3182,7 +3182,7 @@ const initialProductData = [
         "desc_bottom": ".",
         "price": 25000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/M60 유니버셜.jpg",
         "detailBlocks": [],
         "attachments": []
     },
@@ -3390,7 +3390,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771823108099;
+const PRODUCT_DATA_VERSION = 1771830318954;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
