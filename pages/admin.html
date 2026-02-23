@@ -2100,13 +2100,13 @@
         // --- GitHub Settings Logic ---
 
         // ── Supabase 클라이언트 (딜러 계정 동기화용) ──────────────
-        const SUPABASE_URL = 'https://tlgjgworselvkaatdftz.supabase.co';
-        const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us';
+        const _ADMIN_SUPA_URL = 'https://tlgjgworselvkaatdftz.supabase.co';
+        const _ADMIN_SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us';
         let _supaAdmin = null;
         async function getSupaAdmin() {
             if (_supaAdmin) return _supaAdmin;
             const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-            _supaAdmin = createClient(SUPABASE_URL, SUPABASE_ANON);
+            _supaAdmin = createClient(_ADMIN_SUPA_URL, _ADMIN_SUPA_KEY);
             return _supaAdmin;
         }
 
