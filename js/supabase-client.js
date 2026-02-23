@@ -1,8 +1,8 @@
 // Supabase Client 초기화
 // 이 파일은 모든 Supabase를 이용하는 페이지에서 공통으로 로드합니다.
 
-const SUPABASE_URL = "https://tlgjgworselvkaatdftz.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_BU3f4Oon_hKsgWO-9h7Haw_pbXJGgyO";
+const CLIENT_SUPABASE_URL = "https://tlgjgworselvkaatdftz.supabase.co";
+const CLIENT_SUPABASE_ANON_KEY = "sb_publishable_BU3f4Oon_hKsgWO-9h7Haw_pbXJGgyO";
 
 // CDN 방식으로 Supabase JS를 사용하는 경우 (별도 로드 필요)
 if (typeof supabase === 'undefined') {
@@ -10,7 +10,7 @@ if (typeof supabase === 'undefined') {
 }
 
 const supabaseClient = (typeof supabase !== 'undefined')
-    ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+    ? supabase.createClient(CLIENT_SUPABASE_URL, CLIENT_SUPABASE_ANON_KEY)
     : null;
 
 // 공유를 위해 전역 변수로 설정 (기존 소스 호환성)
