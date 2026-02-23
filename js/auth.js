@@ -442,11 +442,8 @@ const auth = {
                     document.getElementById('pwChangeModal').style.display = 'block';
                 };
 
-                // Insert AFTER the Logout link
-                // authItem contains: [Name] [LogoutLink]
-                if (role === 'admin') {
-                    authItem.appendChild(pwBtn);
-                }
+                // 모든 로그인 사용자에게 비밀번호 변경 버튼 표시
+                authItem.appendChild(pwBtn);
 
 
                 addPartnerMenu(role);
