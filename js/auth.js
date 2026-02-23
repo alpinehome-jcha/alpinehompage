@@ -84,22 +84,30 @@ const auth = {
                 p_password: password
             });
 
-            if (!error && data) {
-                const role = data.role || 'dealer';
-                const dealerName = data.dealer_name || username;
+            if (!error) {
+                // DB에 계정이 있지만 비밀번호 틀림 → fallback 없이 즉시 실패
+                if (data && data.error === 'wrong_password') {
+                    return false;
+                }
+                // 로그인 성공
+                if (data && !data.error) {
+                    const role = data.role || 'dealer';
+                    const dealerName = data.dealer_name || username;
 
-                sessionStorage.setItem(AUTH_KEY, 'true');
-                sessionStorage.setItem(ROLE_KEY, role);
-                sessionStorage.setItem('dealerName', dealerName);
-                sessionStorage.setItem('currentUser', username);
+                    sessionStorage.setItem(AUTH_KEY, 'true');
+                    sessionStorage.setItem(ROLE_KEY, role);
+                    sessionStorage.setItem('dealerName', dealerName);
+                    sessionStorage.setItem('currentUser', username);
 
-                await saveVisitLog({
-                    date: new Date().toLocaleString('ko-KR'),
-                    username: username,
-                    name: dealerName,
-                    role: role
-                });
-                return true;
+                    await saveVisitLog({
+                        date: new Date().toLocaleString('ko-KR'),
+                        username: username,
+                        name: dealerName,
+                        role: role
+                    });
+                    return true;
+                }
+                // data === null: DB에 없는 계정 → fallback 허용
             }
         } catch (e) {
             console.warn('[Auth] Supabase RPC 로그인 실패, 폴백 시도:', e.message);
