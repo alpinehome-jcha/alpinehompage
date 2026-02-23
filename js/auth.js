@@ -1,11 +1,32 @@
-// Role-Based Auth Logic
+// Role-Based Auth Logic - Supabase Edition
 const AUTH_KEY = 'isLoggedIn';
 const ROLE_KEY = 'userRole';
 
-// Shared GitHub Configuration REVERTED due to authentication issues.
-// Visit logs will be stored in localStorage only for now.
+// ============================================================
+// Supabase Configuration
+// ============================================================
+const SUPABASE_URL = 'https://tlgjgworselvkaatdftz.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us';
 
-// Credentials Database (Demo)
+// Load Supabase SDK dynamically (CDN)
+async function loadSupabase() {
+    if (window._supabaseClient) return window._supabaseClient;
+    if (typeof supabase === 'undefined') {
+        await new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+            script.onload = resolve;
+            script.onerror = () => reject(new Error('Supabase CDN 로드 실패'));
+            document.head.appendChild(script);
+        });
+    }
+    window._supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    return window._supabaseClient;
+}
+
+// ============================================================
+// Fallback Credentials (하드코딩 - 비상용 / Supabase 불가 시)
+// ============================================================
 const USERS = {
     'alpineaudio': { pass: '6198107276aa!!', role: 'admin' },
     'master': { pass: 'master123', role: 'master' },
@@ -13,6 +34,15 @@ const USERS = {
     'style': { pass: 'style123', role: 'style' },
     'region': { pass: 'region123', role: 'region' },
     'dealer': { pass: 'dealer123', role: 'dealer' }
+};
+
+const FRIENDLY_NAMES = {
+    'alpineaudio': '관리자',
+    'master': 'Sound Master',
+    'team': 'Team Alpine',
+    'style': 'Alpine Style',
+    'region': 'Regional Dist',
+    'dealer': 'Dealer'
 };
 
 const auth = {
@@ -46,42 +76,58 @@ const auth = {
     },
 
     login: async (username, password) => {
-        // 1. Check Hardcoded Users (Admin / Special Roles)
+        // ── 1순위: Supabase RPC 로그인 (서버측 bcrypt 검증) ──────────
+        try {
+            const client = await loadSupabase();
+            const { data, error } = await client.rpc('verify_login', {
+                p_username: username,
+                p_password: password
+            });
+
+            if (!error && data) {
+                const role = data.role || 'dealer';
+                const dealerName = data.dealer_name || username;
+
+                sessionStorage.setItem(AUTH_KEY, 'true');
+                sessionStorage.setItem(ROLE_KEY, role);
+                sessionStorage.setItem('dealerName', dealerName);
+                sessionStorage.setItem('currentUser', username);
+
+                await saveVisitLog({
+                    date: new Date().toLocaleString('ko-KR'),
+                    username: username,
+                    name: dealerName,
+                    role: role
+                });
+                return true;
+            }
+        } catch (e) {
+            console.warn('[Auth] Supabase RPC 로그인 실패, 폴백 시도:', e.message);
+        }
+
+        // ── 2순위: 하드코딩 계정 (비상용 fallback) ─────────
         const user = USERS[username];
         if (user && user.pass === password) {
             sessionStorage.setItem(AUTH_KEY, 'true');
             sessionStorage.setItem(ROLE_KEY, user.role);
-            // Set friendly name for legacy/static users
-            const names = {
-                'alpineaudio': '관리자',
-                'master': 'Sound Master',
-                'team': 'Team Alpine',
-                'style': 'Alpine Style',
-                'region': 'Regional Dist',
-                'dealer': 'Dealer'
-            };
-            sessionStorage.setItem('dealerName', names[username] || username);
+            sessionStorage.setItem('dealerName', FRIENDLY_NAMES[username] || username);
             sessionStorage.setItem('currentUser', username);
-            // Record Visit Log
-            const logEntry = {
+            await saveVisitLog({
                 date: new Date().toLocaleString('ko-KR'),
                 username: username,
-                name: names[username] || username,
+                name: FRIENDLY_NAMES[username] || username,
                 role: user.role
-            };
-            await saveVisitLog(logEntry);
-
+            });
             return true;
         }
 
-        // 2. Check Dynamic Dealer Data
+        // ── 3순위: localStorage 딜러 데이터 (legacy fallback) ──────
         try {
             const storedDealers = localStorage.getItem('dealerData');
             if (storedDealers) {
                 const dealers = JSON.parse(storedDealers);
                 const matchedDealer = dealers.find(d => d.username === username && d.password === password);
                 if (matchedDealer) {
-                    // Map Category to Role Key
                     const catMap = {
                         'Alpine Sound Master': 'master',
                         'Team Alpine': 'team',
@@ -90,77 +136,81 @@ const auth = {
                         'Alpine Dealer': 'dealer'
                     };
                     const role = catMap[matchedDealer.category] || 'dealer';
-
                     sessionStorage.setItem(AUTH_KEY, 'true');
                     sessionStorage.setItem(ROLE_KEY, role);
                     sessionStorage.setItem('dealerName', matchedDealer.name);
                     sessionStorage.setItem('currentUser', username);
-                    // Record Visit Log
-                    const logEntry = {
+                    await saveVisitLog({
                         date: new Date().toLocaleString('ko-KR'),
                         username: username,
                         name: matchedDealer.name,
                         role: role
-                    };
-                    await saveVisitLog(logEntry);
-
+                    });
                     return true;
                 }
             }
         } catch (e) {
-            console.error('Login Error:', e);
+            console.error('[Auth] 딜러 로그인 오류:', e);
         }
 
         return false;
     },
-    changePassword: (currentPass, newPass) => {
+    changePassword: async (currentPass, newPass) => {
         const username = sessionStorage.getItem('currentUser');
         if (!username) return { success: false, message: '로그인이 필요합니다.' };
 
-        // Check Dynamic Dealer Data
+        // ── 1순위: Supabase RPC 비밀번호 변경 ──────────────────
+        try {
+            const client = await loadSupabase();
+            const { data: changed, error } = await client.rpc('update_password', {
+                p_username: username,
+                p_current_password: currentPass,
+                p_new_password: newPass
+            });
+            if (error) throw error;
+            if (changed === true) return { success: true, message: '비밀번호가 변경되었습니다.' };
+            if (changed === false) return { success: false, message: '현재 비밀번호가 일치하지 않습니다.' };
+        } catch (e) {
+            console.warn('[Auth] Supabase 비밀번호 변경 실패, 폴백 시도:', e.message);
+        }
+
+        // ── 2순위: localStorage 딜러 데이터 ───────────────────
         try {
             const storedDealers = localStorage.getItem('dealerData');
             if (storedDealers) {
                 let dealers = JSON.parse(storedDealers);
                 const dealerIndex = dealers.findIndex(d => d.username === username);
-
                 if (dealerIndex !== -1) {
-                    // Verify Current Password
                     if (dealers[dealerIndex].password !== currentPass) {
                         return { success: false, message: '현재 비밀번호가 일치하지 않습니다.' };
                     }
-
-                    // Update Password
                     dealers[dealerIndex].password = newPass;
                     localStorage.setItem('dealerData', JSON.stringify(dealers));
                     return { success: true, message: '비밀번호가 변경되었습니다.' };
-                } else {
-                    // Check if it is a hardcoded user
-                    if (USERS[username]) {
-                        return { success: false, message: '시스템 관리자 계정은 여기서 변경할 수 없습니다.' };
-                    }
+                } else if (USERS[username]) {
+                    return { success: false, message: '관리자 계정은 DB에서 비밀번호를 변경하세요.' };
                 }
             }
         } catch (e) {
-            console.error('Change Password Error:', e);
+            console.error('[Auth] 비밀번호 변경 오류:', e);
             return { success: false, message: '오류가 발생했습니다.' };
         }
         return { success: false, message: '사용자 정보를 찾을 수 없습니다.' };
     },
     logout: () => {
+        // Supabase DB 방식은 별도 서버 세션 없음 → sessionStorage 제거만 하면 됨
         sessionStorage.removeItem(AUTH_KEY);
         sessionStorage.removeItem(ROLE_KEY);
         sessionStorage.removeItem('dealerName');
         sessionStorage.removeItem('currentUser');
 
         const path = window.location.pathname;
-        let redirectPath = 'index.html'; // Default for root
+        let redirectPath = 'index.html';
 
         if (path.includes('/pages/')) {
             redirectPath = '../index.html';
         } else if (path.includes('/support/')) {
             const parts = path.split('/support/')[1].split('/');
-            // If deep (e.g. install/123/index.html -> len 3), go up 3 levels to root
             if (parts.length > 2) redirectPath = '../../../index.html';
             else redirectPath = '../index.html';
         }
@@ -327,7 +377,7 @@ const auth = {
             document.getElementById('btnCancelPw').onclick = () => {
                 document.getElementById('pwChangeModal').style.display = 'none';
             };
-            document.getElementById('btnSavePw').onclick = () => {
+            document.getElementById('btnSavePw').onclick = async () => {
                 const current = document.getElementById('modalCurrentPass').value;
                 const newP = document.getElementById('modalNewPass').value;
                 const confirmP = document.getElementById('modalConfirmPass').value;
@@ -335,7 +385,7 @@ const auth = {
                 if (!current || !newP || !confirmP) { alert('모든 필드를 입력하세요.'); return; }
                 if (newP !== confirmP) { alert('새 비밀번호가 일치하지 않습니다.'); return; }
 
-                const result = auth.changePassword(current, newP);
+                const result = await auth.changePassword(current, newP);
                 alert(result.message);
                 if (result.success) {
                     document.getElementById('pwChangeModal').style.display = 'none';
@@ -373,9 +423,9 @@ const auth = {
 
                 authLink.textContent = 'Logout';
                 authLink.href = '#';
-                authLink.onclick = (e) => {
+                authLink.onclick = async (e) => {
                     e.preventDefault();
-                    auth.logout();
+                    await auth.logout();
                 };
 
                 // Create Password Change Link (Right of Logout)
@@ -513,6 +563,7 @@ function addPartnerMenu(role) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Supabase DB 방식은 별도 Auth 세션 없음 → sessionStorage 기준으로 로그인 케크
     auth.updateUI();
 });
 
