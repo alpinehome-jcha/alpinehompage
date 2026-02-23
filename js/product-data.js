@@ -1963,7 +1963,7 @@ const initialProductData = [
         "title": "EV-65CF",
         "desc": "Tesla 6.5\" 2-Way Speaker Set",
         "desc_bottom": ".",
-        "price": 380000,
+        "price": 480000,
         "soldOut": false,
         "image": "assets/images/EV-65CF.jpg",
         "detailBlocks": [
@@ -1993,7 +1993,7 @@ const initialProductData = [
         "title": "EV-40M-T",
         "desc": "Tesla 4\" Front Dashboard Midrange Speaker Set",
         "desc_bottom": ".",
-        "price": 560000,
+        "price": 590000,
         "soldOut": false,
         "image": "assets/images/EV-40MT.jpg",
         "detailBlocks": [
@@ -3390,7 +3390,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771659811888;
+const PRODUCT_DATA_VERSION = 1771823108099;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
