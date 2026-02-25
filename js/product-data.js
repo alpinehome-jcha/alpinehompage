@@ -2241,7 +2241,7 @@ const initialProductData = [
         "desc_bottom": ".",
         "price": 50000,
         "soldOut": false,
-        "image": "assets/images/현대 배플.jpg",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/현대_기아 6.5 배플.jpg",
         "detailBlocks": [],
         "attachments": []
     },
@@ -3431,7 +3431,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772007266316;
+const PRODUCT_DATA_VERSION = 1772007537072;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
