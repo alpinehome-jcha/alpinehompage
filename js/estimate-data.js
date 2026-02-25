@@ -6,6 +6,8 @@ const initialEstimateData = [
         "code": "AX1",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -44,7 +46,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -69,6 +72,8 @@ const initialEstimateData = [
         "code": "GD",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -106,7 +111,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -131,6 +137,8 @@ const initialEstimateData = [
         "code": "PD",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -169,7 +177,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -194,6 +203,8 @@ const initialEstimateData = [
         "code": "FS",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -231,7 +242,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -256,6 +268,8 @@ const initialEstimateData = [
         "code": "JS",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -294,7 +308,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -319,6 +334,8 @@ const initialEstimateData = [
         "code": "MD",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -356,7 +373,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -381,6 +399,8 @@ const initialEstimateData = [
         "code": "AD",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -419,7 +439,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -444,6 +465,8 @@ const initialEstimateData = [
         "code": "CN7",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -482,7 +505,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -540,11 +564,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -569,6 +591,8 @@ const initialEstimateData = [
         "code": "AE",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -607,7 +631,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -632,6 +657,8 @@ const initialEstimateData = [
         "code": "VF",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -669,7 +696,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -694,6 +722,8 @@ const initialEstimateData = [
         "code": "YF",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -731,7 +761,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -756,6 +787,8 @@ const initialEstimateData = [
         "code": "LF",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -794,7 +827,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -819,6 +853,8 @@ const initialEstimateData = [
         "code": "DN8",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -857,7 +893,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -882,6 +919,8 @@ const initialEstimateData = [
         "code": "DN8",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -920,7 +959,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -973,11 +1013,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -1007,6 +1045,8 @@ const initialEstimateData = [
         "code": "NE EV",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -1045,7 +1085,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -1070,6 +1111,8 @@ const initialEstimateData = [
         "code": "NE EV",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -1108,7 +1151,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -1166,11 +1210,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -1195,6 +1237,8 @@ const initialEstimateData = [
         "code": "CE",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -1233,7 +1277,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -1258,6 +1303,8 @@ const initialEstimateData = [
         "code": "CE",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -1296,7 +1343,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -1354,11 +1402,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -1383,6 +1429,8 @@ const initialEstimateData = [
         "code": "ME EV",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -1421,7 +1469,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -1474,11 +1523,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -1508,6 +1555,8 @@ const initialEstimateData = [
         "code": "HG",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -1545,7 +1594,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -1570,6 +1620,8 @@ const initialEstimateData = [
         "code": "IG",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -1608,7 +1660,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -1661,11 +1714,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -1695,6 +1746,8 @@ const initialEstimateData = [
         "code": "GN7",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -1733,7 +1786,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -1787,11 +1841,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -1821,6 +1873,8 @@ const initialEstimateData = [
         "code": "AG",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -1858,7 +1912,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -1883,6 +1938,8 @@ const initialEstimateData = [
         "code": "DH",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -1920,7 +1977,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -1945,6 +2003,8 @@ const initialEstimateData = [
         "code": "QX",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -1983,7 +2043,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -2008,6 +2069,8 @@ const initialEstimateData = [
         "code": "OS",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -2046,7 +2109,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -2071,6 +2135,8 @@ const initialEstimateData = [
         "code": "SX2",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -2109,7 +2175,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -2167,11 +2234,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -2196,6 +2261,8 @@ const initialEstimateData = [
         "code": "TL",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -2234,7 +2301,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -2259,6 +2327,8 @@ const initialEstimateData = [
         "code": "NX4",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -2297,7 +2367,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -2322,6 +2393,8 @@ const initialEstimateData = [
         "code": "NX4",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -2360,7 +2433,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -2418,11 +2492,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -2447,6 +2519,8 @@ const initialEstimateData = [
         "code": "TM",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -2485,7 +2559,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -2510,6 +2585,8 @@ const initialEstimateData = [
         "code": "MX5",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -2548,7 +2625,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -2601,11 +2679,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -2635,6 +2711,8 @@ const initialEstimateData = [
         "code": "LX2",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -2673,7 +2751,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -2731,11 +2810,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -2764,6 +2841,8 @@ const initialEstimateData = [
         "code": "LX3",
         "system": "6채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -2798,11 +2877,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -2855,11 +2932,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -2889,6 +2964,8 @@ const initialEstimateData = [
         "code": "HR",
         "system": "2채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -2927,7 +3004,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -2952,6 +3030,8 @@ const initialEstimateData = [
         "code": "US4",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -2990,7 +3070,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -3015,6 +3096,8 @@ const initialEstimateData = [
         "code": "ST1",
         "system": "2채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -3053,7 +3136,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -3111,11 +3195,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -3168,11 +3250,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -3235,11 +3315,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -3292,11 +3370,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -3360,11 +3436,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -3422,11 +3496,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -3480,11 +3552,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -3537,11 +3607,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -3599,11 +3667,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -3661,11 +3727,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -3721,11 +3785,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -3786,11 +3848,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -3843,11 +3903,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -3908,11 +3966,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -3965,11 +4021,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -4030,11 +4084,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -4087,11 +4139,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -4119,6 +4169,8 @@ const initialEstimateData = [
         "code": "TA",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -4156,7 +4208,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -4181,6 +4234,8 @@ const initialEstimateData = [
         "code": "JA",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -4219,7 +4274,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -4244,6 +4300,8 @@ const initialEstimateData = [
         "code": "UB",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -4281,7 +4339,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -4306,6 +4365,8 @@ const initialEstimateData = [
         "code": "YD",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -4343,7 +4404,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -4368,6 +4430,8 @@ const initialEstimateData = [
         "code": "BD",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -4406,7 +4470,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -4431,6 +4496,8 @@ const initialEstimateData = [
         "code": "JF",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -4468,7 +4535,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -4493,6 +4561,8 @@ const initialEstimateData = [
         "code": "DL3",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -4531,7 +4601,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -4556,6 +4627,8 @@ const initialEstimateData = [
         "code": "DL3",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -4594,7 +4667,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -4647,11 +4721,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -4714,11 +4786,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -4771,11 +4841,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -4843,7 +4911,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -4896,11 +4965,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -4968,7 +5035,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5021,11 +5089,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5083,11 +5149,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5145,11 +5209,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5179,6 +5241,8 @@ const initialEstimateData = [
         "code": "TAM",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -5216,7 +5280,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5241,6 +5306,8 @@ const initialEstimateData = [
         "code": "SK3",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -5279,7 +5346,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5304,6 +5372,8 @@ const initialEstimateData = [
         "code": "SP3",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -5342,7 +5412,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5400,11 +5471,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5429,6 +5498,8 @@ const initialEstimateData = [
         "code": "OV1",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -5467,7 +5538,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5525,11 +5597,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5554,6 +5624,8 @@ const initialEstimateData = [
         "code": "CV",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -5592,7 +5664,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5646,11 +5719,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5680,6 +5751,8 @@ const initialEstimateData = [
         "code": "MV1",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -5718,7 +5791,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5772,11 +5846,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5806,6 +5878,8 @@ const initialEstimateData = [
         "code": "YB CUV",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -5844,7 +5918,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5869,6 +5944,8 @@ const initialEstimateData = [
         "code": "DE",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -5907,7 +5984,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5932,6 +6010,8 @@ const initialEstimateData = [
         "code": "SG2",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -5970,7 +6050,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -5995,6 +6076,8 @@ const initialEstimateData = [
         "code": "SP2",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -6033,7 +6116,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -6058,6 +6142,8 @@ const initialEstimateData = [
         "code": "SP3",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -6096,7 +6182,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -6121,6 +6208,8 @@ const initialEstimateData = [
         "code": "QL",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -6159,7 +6248,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -6184,6 +6274,8 @@ const initialEstimateData = [
         "code": "NQ5",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -6222,7 +6314,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -6280,11 +6373,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -6338,11 +6429,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -6372,6 +6461,8 @@ const initialEstimateData = [
         "code": "UM",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -6410,7 +6501,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -6435,6 +6527,8 @@ const initialEstimateData = [
         "code": "MQ4",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -6473,7 +6567,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -6527,11 +6622,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -6561,6 +6654,8 @@ const initialEstimateData = [
         "code": "HM",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -6598,7 +6693,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -6652,11 +6748,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -6686,6 +6780,8 @@ const initialEstimateData = [
         "code": "YP",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -6724,7 +6820,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -6787,7 +6884,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -6846,11 +6944,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -6904,11 +7000,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -6967,11 +7061,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -7001,6 +7093,8 @@ const initialEstimateData = [
         "code": "TK1",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -7039,7 +7133,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -7097,11 +7192,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -7126,6 +7219,8 @@ const initialEstimateData = [
         "code": "PU",
         "system": "2채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -7164,7 +7259,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -7189,6 +7285,8 @@ const initialEstimateData = [
         "code": "SW1",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -7227,7 +7325,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -7252,6 +7351,8 @@ const initialEstimateData = [
         "code": "-",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -7273,7 +7374,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -7315,11 +7417,9 @@ const initialEstimateData = [
         "rear_door": [],
         "rear_baffle": [],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -7361,11 +7461,9 @@ const initialEstimateData = [
         "rear_door": [],
         "rear_baffle": [],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -7665,11 +7763,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -7694,6 +7790,8 @@ const initialEstimateData = [
         "code": "-",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -7729,7 +7827,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -7754,6 +7853,8 @@ const initialEstimateData = [
         "code": "-",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -7789,7 +7890,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -7845,11 +7947,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -7904,11 +8004,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -7964,11 +8062,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -8149,6 +8245,8 @@ const initialEstimateData = [
         "code": "-",
         "system": "4채널 자출",
         "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
             "PXE-R100-8",
             "PXE-X120-8",
             "PXE-C80-88",
@@ -8177,6 +8275,7 @@ const initialEstimateData = [
             "HDZ-65"
         ],
         "rear_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
         "subwoofer": [
@@ -8184,7 +8283,8 @@ const initialEstimateData = [
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)"
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
         ],
         "amp_4ch": [
             "R2-A60F",
@@ -8200,9 +8300,642 @@ const initialEstimateData = [
         "center": [],
         "surround": [],
         "add_front": []
+    },
+    {
+        "brand": "KGM",
+        "model": "액티언",
+        "year": "25년 이후",
+        "code": "-",
+        "system": "4채널 자출",
+        "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "add_front": [],
+        "center": [],
+        "surround": []
+    },
+    {
+        "brand": "KGM",
+        "model": "액티언",
+        "year": "25년 이후",
+        "code": "-",
+        "system": "알파인오디오",
+        "dsp": [
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "pnp": [
+            "KG-1A"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "add_front": [],
+        "center": [],
+        "surround": []
+    },
+    {
+        "brand": "KGM",
+        "model": "무쏘EV",
+        "year": "25년 이후",
+        "code": "-",
+        "system": "4채널 자출",
+        "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "add_front": [],
+        "center": [],
+        "surround": []
+    },
+    {
+        "brand": "KGM",
+        "model": "무쏘EV",
+        "year": "25년 이후",
+        "code": "-",
+        "system": "알파인오디오",
+        "dsp": [
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "pnp": [
+            "KG-1A"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "add_front": [],
+        "center": [],
+        "surround": []
+    },
+    {
+        "brand": "KGM",
+        "model": "토레스",
+        "year": "25년 이후",
+        "code": "-",
+        "system": "4채널 자출",
+        "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "add_front": [],
+        "center": [],
+        "surround": []
+    },
+    {
+        "brand": "KGM",
+        "model": "토레스",
+        "year": "25년 이후",
+        "code": "-",
+        "system": "알파인오디오",
+        "dsp": [
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "pnp": [
+            "KG-1A"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "add_front": [],
+        "center": [],
+        "surround": []
+    },
+    {
+        "brand": "KGM",
+        "model": "칸",
+        "year": "~25년 이전",
+        "code": "Q200",
+        "system": "4채널 자출",
+        "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "add_front": [],
+        "center": [],
+        "surround": []
+    },
+    {
+        "brand": "KGM",
+        "model": "무쏘",
+        "year": "26년 이후",
+        "code": "Q300",
+        "system": "4채널 자출",
+        "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "add_front": [],
+        "center": [],
+        "surround": []
+    },
+    {
+        "brand": "KGM",
+        "model": "렉스턴",
+        "year": "25년 이후",
+        "code": "-",
+        "system": "4채널 자출",
+        "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "add_front": [],
+        "center": [],
+        "surround": []
+    },
+    {
+        "brand": "KGM",
+        "model": "티볼리",
+        "year": "25년 이후",
+        "code": "-",
+        "system": "4채널 자출",
+        "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "add_front": [],
+        "center": [],
+        "surround": []
     }
 ];
-const ESTIMATE_DATA_VERSION = 1771980892265;
+const ESTIMATE_DATA_VERSION = 1771982772135;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
