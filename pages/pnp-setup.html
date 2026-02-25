@@ -208,8 +208,55 @@
             </a>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="admin.html" class="nav-link">Admin Home</a></li>
-                    <li class="auth-item"><a href="#" class="auth-link">Logout</a></li>
+                    <li><a href="about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="../index.html" class="nav-link" data-i18n="nav_products">제품소개</a>
+                    </li>
+                    <li>
+                        <a href="dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
+                        <ul class="dropdown-content">
+                            <li><a href="../support/product.html" class="dropdown-item"
+                                    data-i18n="nav_support_product">제품
+                                    자료실</a>
+                            </li>
+                            <li><a href="../support/install.html" class="dropdown-item"
+                                    data-i18n="nav_support_install">시공자료실</a>
+                            </li>
+                            <li><a href="../support/promo.html" class="dropdown-item"
+                                    data-i18n="nav_support_promo">홍보자료실</a></li>
+                        </ul>
+                    </li>
+                    <li class="social-icons">
+                        <a href="https://blog.naver.com/alpineaudio" target="_blank"><img
+                                src="../assets/images/icon-blog.png" alt="Naver Blog"></a>
+                        <a href="https://www.facebook.com/alpine.korea.2024/about" target="_blank"><img
+                                src="../assets/images/icon-facebook.png" alt="Facebook"></a>
+                        <a href="https://www.youtube.com/playlist?list=PLtdgCQUazuWKIcARYW_4QoysChyGhwivO"
+                            target="_blank"><img src="../assets/images/icon-youtube.png" alt="YouTube"></a>
+                        <a href="#" target="_blank"><img src="../assets/images/icon-instagram.png" alt="Instagram"></a>
+                    </li>
+
+                    <li class="lang-item">
+                        <a href="#" class="lang-toggle" aria-label="Change Language">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-globe">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                            <span class="curr-lang">KO</span>
+                        </a>
+                    </li>
+                    <li class="auth-item">
+                        <a href="login.html" class="auth-link"
+                            style="margin-left: 15px; font-size: 0.9rem; color: #333; text-decoration: none;">Login</a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -308,6 +355,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="../js/i18n.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/pnp-search-data.js?v=1"></script>
     <!-- Use dynamic loading for Client in auth.js, but here we enforce check -->
@@ -491,6 +539,7 @@
         }
 
         function editDetail(idx) {
+            showDetailForm();
             curDetailIndex = idx;
             const d = appData[curManufIndex].models[curModelIndex].details[idx];
 
@@ -499,8 +548,6 @@
             document.getElementById('editSound').value = d.sound;
             document.getElementById('editIntegrated').value = d.integrated;
             document.getElementById('editTypeA').value = d.typeA;
-
-            showDetailForm();
         }
 
         function saveDetail() {
