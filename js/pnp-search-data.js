@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 2. 25. 오후 1:04:30
+ * Updated: 2026. 2. 25. 오후 1:33:04
  */
 const pnpSearchData = [
     {
@@ -1390,7 +1390,7 @@ const pnpSearchData = [
                 "model": "액티언",
                 "details": [
                     {
-                        "year": "25년 이후",
+                        "year": "24년 이후",
                         "code": "-",
                         "sound": "4채널 자출",
                         "integrated": "HK-103",
