@@ -3388,9 +3388,21 @@ const initialProductData = [
         "image": "assets/images/product_placeholder.png",
         "detailBlocks": [],
         "attachments": []
+    },
+    {
+        "id": 1771985617838,
+        "category": "PnP Cable - 국산차 (Domestic)",
+        "title": "KG-1A",
+        "desc": "KGM 차량의 알파인 오디오 옵션 차량",
+        "desc_bottom": "A타입 / 차측용 케이블",
+        "price": 50000,
+        "soldOut": false,
+        "image": "assets/images/product_placeholder.png",
+        "detailBlocks": [],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771830318954;
+const PRODUCT_DATA_VERSION = 1771985617840;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
