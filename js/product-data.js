@@ -3198,7 +3198,7 @@ const initialProductData = [
         "desc": "A타입과 B타입 중간을 3.5M연장하는 케이블",
         "desc_bottom": ".",
         "price": 50000,
-        "soldOut": false,
+        "soldOut": true,
         "image": "assets/images/product_placeholder.png",
         "detailBlocks": [],
         "attachments": []
@@ -3431,7 +3431,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772007537072;
+const PRODUCT_DATA_VERSION = 1772007617434;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
