@@ -8304,8 +8304,8 @@ const initialEstimateData = [
     {
         "brand": "KGM",
         "model": "액티언",
-        "year": "25년 이후",
-        "code": "-",
+        "year": "24년 이후",
+        "code": "J120",
         "system": "4채널 자출",
         "dsp": [
             "PXE-M60-4",
@@ -8370,7 +8370,7 @@ const initialEstimateData = [
         "brand": "KGM",
         "model": "액티언",
         "year": "25년 이후",
-        "code": "-",
+        "code": "J120",
         "system": "알파인오디오",
         "dsp": [
             "PXE-R100-8",
@@ -8432,7 +8432,7 @@ const initialEstimateData = [
         "brand": "KGM",
         "model": "무쏘EV",
         "year": "25년 이후",
-        "code": "-",
+        "code": "O100",
         "system": "4채널 자출",
         "dsp": [
             "PXE-M60-4",
@@ -8497,7 +8497,7 @@ const initialEstimateData = [
         "brand": "KGM",
         "model": "무쏘EV",
         "year": "25년 이후",
-        "code": "-",
+        "code": "O100",
         "system": "알파인오디오",
         "dsp": [
             "PXE-R100-8",
@@ -8558,8 +8558,65 @@ const initialEstimateData = [
     {
         "brand": "KGM",
         "model": "토레스",
-        "year": "25년 이후",
-        "code": "-",
+        "year": "~24년 이전",
+        "code": "J100",
+        "system": "4채널 자출",
+        "dsp": [
+            "PXE-M60-4"
+        ],
+        "pnp": [
+            "HK-102"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "add_front": [],
+        "center": [],
+        "surround": []
+    },
+    {
+        "brand": "KGM",
+        "model": "토레스",
+        "year": "24년 이후",
+        "code": "J100",
         "system": "4채널 자출",
         "dsp": [
             "PXE-M60-4",
@@ -8624,7 +8681,7 @@ const initialEstimateData = [
         "brand": "KGM",
         "model": "토레스",
         "year": "25년 이후",
-        "code": "-",
+        "code": "J100",
         "system": "알파인오디오",
         "dsp": [
             "PXE-R100-8",
@@ -8684,9 +8741,191 @@ const initialEstimateData = [
     },
     {
         "brand": "KGM",
-        "model": "칸",
-        "year": "~25년 이전",
-        "code": "Q200",
+        "model": "토레스EVX",
+        "year": "23년 이후",
+        "code": "U100",
+        "system": "4채널 자출",
+        "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "add_front": [],
+        "center": [],
+        "surround": []
+    },
+    {
+        "brand": "KGM",
+        "model": "토레스EVX",
+        "year": "25년 이후",
+        "code": "U100",
+        "system": "알파인오디오",
+        "dsp": [
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "pnp": [
+            "KG-1A"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "KGM 5.5\" to 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "add_front": [],
+        "center": [],
+        "surround": []
+    },
+    {
+        "brand": "KGM",
+        "model": "렉스턴 스포츠/무쏘 스포츠",
+        "year": "~23년 이전",
+        "code": "Q200 / Q250",
+        "system": "4채널 자출",
+        "dsp": [
+            "PXE-M60-4"
+        ],
+        "pnp": [
+            "HK-102"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "add_front": [],
+        "center": [],
+        "surround": []
+    },
+    {
+        "brand": "KGM",
+        "model": "렉스턴 스포츠/무쏘 스포츠",
+        "year": "24~25년",
+        "code": "Q200 / Q250",
         "system": "4채널 자출",
         "dsp": [
             "PXE-M60-4",
@@ -8811,8 +9050,63 @@ const initialEstimateData = [
     {
         "brand": "KGM",
         "model": "렉스턴",
+        "year": "17~24년",
+        "code": "Y400 / Y450 / Y461",
+        "system": "4채널 자출",
+        "dsp": [
+            "PXE-M60-4"
+        ],
+        "pnp": [
+            "HK-102"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "add_front": [],
+        "center": [],
+        "surround": []
+    },
+    {
+        "brand": "KGM",
+        "model": "렉스턴",
         "year": "25년 이후",
-        "code": "-",
+        "code": "Y400 / Y450 / Y461",
         "system": "4채널 자출",
         "dsp": [
             "PXE-M60-4",
@@ -8874,22 +9168,14 @@ const initialEstimateData = [
     {
         "brand": "KGM",
         "model": "티볼리",
-        "year": "25년 이후",
-        "code": "-",
+        "year": "19년 이후",
+        "code": "X150 / X170 / X173",
         "system": "4채널 자출",
         "dsp": [
-            "PXE-M60-4",
-            "PXE-R80-8",
-            "PXE-R100-8",
-            "PXE-X120-8",
-            "PXE-C80-88",
-            "PXE-X120-10DP",
-            "PXE-X121-12EV",
-            "HDP-D90"
+            "PXE-M60-4"
         ],
         "pnp": [
-            "HK-103",
-            "HK-1A"
+            "HK-102"
         ],
         "front_door": [
             "DM-65C",
@@ -8935,7 +9221,7 @@ const initialEstimateData = [
         "surround": []
     }
 ];
-const ESTIMATE_DATA_VERSION = 1771982777487;
+const ESTIMATE_DATA_VERSION = 1771995070540;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
