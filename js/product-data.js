@@ -3294,7 +3294,7 @@ const initialProductData = [
         "desc_bottom": ".",
         "price": 60000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/M770%20EX.jpg",
         "detailBlocks": [],
         "attachments": []
     },
@@ -3431,7 +3431,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772006740145;
+const PRODUCT_DATA_VERSION = 1772006903861;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
