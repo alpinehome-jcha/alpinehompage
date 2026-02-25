@@ -2854,12 +2854,17 @@ const initialProductData = [
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 300000,
         "soldOut": false,
-        "image": "assets/images/BY-2A.jpg",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BY-2A-c.jpg",
         "detailBlocks": [
             {
                 "id": 1771042496645.0986,
                 "type": "text",
                 "value": "25년 이후 : 6채널 : Seal / Sealion7\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
+            },
+            {
+                "id": 1772002323584.3276,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BY-2A.jpg"
             }
         ],
         "attachments": []
@@ -3426,7 +3431,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771995611999;
+const PRODUCT_DATA_VERSION = 1772002768320;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
