@@ -502,7 +502,7 @@ const initialProductData = [
         "desc": "3-Way OEM-fit Component Speaker Set",
         "desc_bottom": "장착공임 별도",
         "price": 1980000,
-        "soldOut": true,
+        "soldOut": false,
         "image": "assets/images/AST-653S.jpg",
         "detailBlocks": [
             {
@@ -3431,7 +3431,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772007617434;
+const PRODUCT_DATA_VERSION = 1772007725001;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
