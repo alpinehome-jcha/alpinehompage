@@ -3400,7 +3400,7 @@ const initialProductData = [
         "title": "KG-1A",
         "desc": "KGM 차량의 알파인 오디오 옵션 차량",
         "desc_bottom": "A타입 / 차측용 케이블",
-        "price": 50000,
+        "price": 70000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/KG-1A.jpg",
         "detailBlocks": [],
@@ -3431,7 +3431,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772002768320;
+const PRODUCT_DATA_VERSION = 1772004515597;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
