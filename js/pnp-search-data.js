@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 2. 25. 오후 1:37:58
+ * Updated: 2026. 2. 25. 오후 1:38:47
  */
 const pnpSearchData = [
     {
@@ -1482,6 +1482,18 @@ const pnpSearchData = [
                     {
                         "year": "24~25년",
                         "code": "Q200 / Q250",
+                        "sound": "4채널 자출",
+                        "integrated": "HK-103",
+                        "typeA": "HK-1A"
+                    }
+                ]
+            },
+            {
+                "model": "무쏘",
+                "details": [
+                    {
+                        "year": "26년 이후",
+                        "code": "Q300",
                         "sound": "4채널 자출",
                         "integrated": "HK-103",
                         "typeA": "HK-1A"
