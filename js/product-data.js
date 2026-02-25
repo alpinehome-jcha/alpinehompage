@@ -2273,7 +2273,7 @@ const initialProductData = [
             {
                 "id": 1770959385482.1953,
                 "type": "text",
-                "value": "HK-102\n현대/기아 42P / 12년~18년 자출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결"
+                "value": "HK-102\n현대/기아 42P / 12년~18년 자출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결\n\nKGM 42P"
             },
             {
                 "id": 1770959403618.736,
@@ -2283,7 +2283,7 @@ const initialProductData = [
             {
                 "id": 1770959404226.675,
                 "type": "text",
-                "value": "HK-103\n현대/기아 73P / 17년~23년 차출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결"
+                "value": "HK-103\n현대/기아 73P / 17년~23년 차출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결\n\nKGM 73P"
             }
         ],
         "attachments": []
@@ -3388,9 +3388,33 @@ const initialProductData = [
         "image": "assets/images/product_placeholder.png",
         "detailBlocks": [],
         "attachments": []
+    },
+    {
+        "id": 1771985617838,
+        "category": "PnP Cable - 국산차 (Domestic)",
+        "title": "KG-1A",
+        "desc": "KGM 차량의 알파인 오디오 옵션 차량",
+        "desc_bottom": "A타입 / 차측용 케이블",
+        "price": 50000,
+        "soldOut": false,
+        "image": "assets/images/product_placeholder.png",
+        "detailBlocks": [],
+        "attachments": []
+    },
+    {
+        "id": 1771985839541,
+        "category": "Others",
+        "title": "KGM 5.5\" to 6.5\" 배플",
+        "desc": "KGM 5.5\"스피커를 6.5\"로 변경하는 스피커 가이드\n(무쏘EV,액티언, 토레스)",
+        "desc_bottom": "",
+        "price": 20000,
+        "soldOut": false,
+        "image": "assets/images/product_placeholder.png",
+        "detailBlocks": [],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771830318954;
+const PRODUCT_DATA_VERSION = 1771985839543;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
