@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 2. 25. 오후 1:36:58
+ * Updated: 2026. 2. 25. 오후 1:37:58
  */
 const pnpSearchData = [
     {
@@ -1466,6 +1466,25 @@ const pnpSearchData = [
                         "sound": "알파인오디오",
                         "integrated": "X",
                         "typeA": "KG-1A"
+                    }
+                ]
+            },
+            {
+                "model": "렉스턴 스포츠/무쏘 스포츠",
+                "details": [
+                    {
+                        "year": "~23년 이전",
+                        "code": "Q200 / Q250",
+                        "sound": "4채널 자출",
+                        "integrated": "HK-102",
+                        "typeA": "X"
+                    },
+                    {
+                        "year": "24~25년",
+                        "code": "Q200 / Q250",
+                        "sound": "4채널 자출",
+                        "integrated": "HK-103",
+                        "typeA": "HK-1A"
                     }
                 ]
             }
