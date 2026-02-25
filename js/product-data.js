@@ -2249,7 +2249,7 @@ const initialProductData = [
         "id": 1770361138902,
         "category": "PnP Cable - 국산차 (Domestic)",
         "title": "HK-101 / HK-102 / HK-103",
-        "desc": "현대/기아 05년~23년 차출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결",
+        "desc": "현대/기아 05년~23년 차출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결\nKGM 24년 이후 자출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결 ",
         "desc_bottom": "AB타입",
         "price": 90000,
         "soldOut": false,
@@ -2273,7 +2273,7 @@ const initialProductData = [
             {
                 "id": 1770959385482.1953,
                 "type": "text",
-                "value": "HK-102\n현대/기아 42P / 12년~18년 자출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결\n\nKGM 42P"
+                "value": "HK-102\n현대/기아 42P / 12년~18년 자출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결\n"
             },
             {
                 "id": 1770959403618.736,
@@ -3426,7 +3426,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771986826767;
+const PRODUCT_DATA_VERSION = 1771993510723;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
