@@ -161,18 +161,27 @@ if (typeof GitHubClient === 'undefined') {
         async uploadFile(path, file, message = 'Upload file via Web Client') {
             if (!this.isConfigured()) throw new Error('GitHub Settings not configured.');
 
-            // Optimized Base64 conversion using FileReader
-            const contentBase64 = await new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = () => {
-                    const result = reader.result;
-                    // Remove data URL prefix (e.g., "data:image/png;base64,")
-                    const base64 = result.split(',')[1];
-                    resolve(base64);
-                };
-                reader.onerror = error => reject(new Error('File reading failed: ' + error));
-                reader.readAsDataURL(file);
-            });
+            let contentBase64;
+
+            // Handle both File objects and plain strings
+            if (typeof file === 'string') {
+                const utf8Bytes = new TextEncoder().encode(file);
+                let binaryString = '';
+                utf8Bytes.forEach(byte => binaryString += String.fromCharCode(byte));
+                contentBase64 = btoa(binaryString);
+            } else {
+                contentBase64 = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        const result = reader.result;
+                        // Remove data URL prefix (e.g., "data:image/png;base64,")
+                        const base64 = result.split(',')[1];
+                        resolve(base64);
+                    };
+                    reader.onerror = error => reject(new Error('File reading failed: ' + error));
+                    reader.readAsDataURL(file);
+                });
+            }
 
             // 3. Get SHA if exists (to update)
             const sha = await this.getFileSha(path);

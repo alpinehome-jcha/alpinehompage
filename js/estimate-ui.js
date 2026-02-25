@@ -796,7 +796,7 @@ const EstimateUI = {
     },
 
     getSingleProductPrice(name) {
-        if (name === "커스텀 배플" || name === "현대/기아 6.5\" 배플") return 50000;
+        if (name === "커스텀 배플" || name === "현대/기아 6.5\" 배플" || name === "KGM 5.5\" to 6.5\" 배플") return 50000;
         if (name === "GE-203") return 150000;
         if (!this.priceData || this.priceData.length === 0) return 0;
         const items = this.priceData.filter(i => i.product === name && i.category === 'master');
@@ -808,7 +808,7 @@ const EstimateUI = {
             if (i.category !== 'master') return false;
             const target = i.product.trim();
             if (target === trimmed) return true;
-            if (trimmed.startsWith('HK-') || trimmed.startsWith('BM-') || trimmed.startsWith('BZ-') || trimmed.startsWith('GE-')) {
+            if (trimmed.startsWith('HK-') || trimmed.startsWith('BM-') || trimmed.startsWith('BZ-') || trimmed.startsWith('GE-') || trimmed.startsWith('KG-')) {
                 return target.includes(trimmed);
             }
             return false;
