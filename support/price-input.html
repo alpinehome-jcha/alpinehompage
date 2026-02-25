@@ -230,40 +230,16 @@
 
         // Helper to fetch data from Supabase with sorting
         async function fetchPriceList() {
-            const categoryOrder = { 'master': 1, 'team': 2, 'style': 3, 'region': 4, 'dealer': 5 };
-            const productOrder = {
-                'F#1 Status': 1, 'Alpine Status': 2, 'DSP/AMP': 3, 'Speakers': 4,
-                'PnP Cable': 5, '기타상품': 6, 'Alpine OEM Fit': 7, 'ALPINESTYLE': 8
-            };
-
             const { data, error } = await window.supabase
                 .from('price_list')
-                .select('*');
+                .select('*')
+                .order('sort_order', { ascending: true });
 
             if (error) {
                 console.error('Error fetching price list:', error);
                 return [];
             }
-
-            // Client-side sorting for now, as Supabase `order` on multiple columns with custom logic is complex.
-            // Ideally, `sort_order` column would be used for primary sorting.
-            const sortedData = data.sort((a, b) => {
-                const catA = categoryOrder[a.category] || 99;
-                const catB = categoryOrder[b.category] || 99;
-                if (catA !== catB) return catA - catB;
-
-                const pCatA = productOrder[a.product_category] || 99;
-                const pCatB = productOrder[b.product_category] || 99;
-                if (pCatA !== pCatB) return pCatA - pCatB;
-
-                // Fallback to product name or sort_order if available
-                if (a.sort_order !== undefined && b.sort_order !== undefined) {
-                    return a.sort_order - b.sort_order;
-                }
-                return a.product.localeCompare(b.product);
-            });
-
-            return sortedData;
+            return data;
         }
 
         async function handleFormSubmit() {
@@ -301,9 +277,28 @@
             if (editingId) {
                 payload.id = editingId;
             } else {
-                // New item: find max sort_order
-                const maxSort = priceData.length > 0 ? Math.max(...priceData.map(d => d.sort_order || 0)) : 0;
-                payload.sort_order = maxSort + 1;
+                // New item: find max sort_order within the same category and product_category
+                const sameGroup = priceData.filter(d => d.category === category && d.product_category === productCategory);
+                if (sameGroup.length > 0) {
+                    const maxInGroup = Math.max(...sameGroup.map(d => d.sort_order || 0));
+                    // Insert immediately after the last item in this group
+                    payload.sort_order = maxInGroup + 1;
+
+                    // We also need to increment sort_order for all items that come after this globally
+                    // but since the DB handles sorting, decimals can be used, or we just rely on the manual sorting feature if built later.
+                    // For now, simple decimal addition ensures it stays within the group without disrupting others.
+                    payload.sort_order = maxInGroup + 0.1;
+                } else {
+                    // If no items in this group, find the highest sort order in the same category
+                    const sameCat = priceData.filter(d => d.category === category);
+                    if (sameCat.length > 0) {
+                        const maxInCat = Math.max(...sameCat.map(d => d.sort_order || 0));
+                        payload.sort_order = maxInCat + 1;
+                    } else {
+                        const maxSort = priceData.length > 0 ? Math.max(...priceData.map(d => d.sort_order || 0)) : 0;
+                        payload.sort_order = maxSort + 1;
+                    }
+                }
             }
 
             const { data, error } = await window.supabase
@@ -373,8 +368,10 @@
             tbody.innerHTML = '';
 
             const fmt = (val) => {
-                if (typeof val === 'number') return val.toLocaleString();
-                return val || '-';
+                if (val === undefined || val === null || val === '-' || val === '') return '-';
+                const num = Number(val);
+                if (!isNaN(num)) return num.toLocaleString();
+                return val;
             }
 
             priceData.forEach((item) => {

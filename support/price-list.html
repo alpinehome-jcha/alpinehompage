@@ -204,8 +204,10 @@
 
                 items.forEach(item => {
                     const fmt = (val) => {
-                        if (typeof val === 'number') return val.toLocaleString() + '원';
-                        return val || '-';
+                        if (val === undefined || val === null || val === '-' || val === '') return '-';
+                        const num = Number(val);
+                        if (!isNaN(num)) return num.toLocaleString() + '원';
+                        return val;
                     }
 
                     const tr = document.createElement('tr');
