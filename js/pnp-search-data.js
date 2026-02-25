@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 2. 25. 오후 1:38:47
+ * Updated: 2026. 2. 25. 오후 1:39:54
  */
 const pnpSearchData = [
     {
@@ -1494,6 +1494,25 @@ const pnpSearchData = [
                     {
                         "year": "26년 이후",
                         "code": "Q300",
+                        "sound": "4채널 자출",
+                        "integrated": "HK-103",
+                        "typeA": "HK-1A"
+                    }
+                ]
+            },
+            {
+                "model": "렉스턴",
+                "details": [
+                    {
+                        "year": "17~24년",
+                        "code": "Y400 / Y450 / Y461",
+                        "sound": "4채널 자출",
+                        "integrated": "HK-102",
+                        "typeA": "X"
+                    },
+                    {
+                        "year": "25년 이후",
+                        "code": "Y400 / Y450 / Y461",
                         "sound": "4채널 자출",
                         "integrated": "HK-103",
                         "typeA": "HK-1A"
