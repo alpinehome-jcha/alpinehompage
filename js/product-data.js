@@ -3400,9 +3400,21 @@ const initialProductData = [
         "image": "assets/images/product_placeholder.png",
         "detailBlocks": [],
         "attachments": []
+    },
+    {
+        "id": 1771985839541,
+        "category": "Others",
+        "title": "KGM 5.5\" to 6.5\" 배플",
+        "desc": "KGM 5.5\"스피커를 6.5\"로 변경하는 스피커 가이드\n(무쏘EV,액티언, 토레스)",
+        "desc_bottom": "",
+        "price": 20000,
+        "soldOut": false,
+        "image": "assets/images/product_placeholder.png",
+        "detailBlocks": [],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771985722157;
+const PRODUCT_DATA_VERSION = 1771985839543;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
