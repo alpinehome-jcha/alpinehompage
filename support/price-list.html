@@ -206,7 +206,7 @@
                     const fmt = (val) => {
                         if (val === undefined || val === null || val === '-' || val === '') return '-';
                         const num = Number(val);
-                        if (!isNaN(num)) return num.toLocaleString() + '원';
+                        if (!isNaN(num)) return num.toLocaleString();
                         return val;
                     }
 
@@ -215,9 +215,9 @@
                         <td>${getCategoryLabel(item.category)}</td>
                         <td>${item.product_category || '-'}</td>
                         <td>${item.product}</td>
-                        <td style="font-weight:bold; color:#e74c3c;">${fmt(item.dist_price)}</td>
-                        <td style="font-weight:bold; color:#2980b9;">${fmt(item.dealer_price)}</td>
-                        <td>${fmt(item.msrp)}</td>
+                        <td style="font-weight:bold; color:#e74c3c; text-align:right;">${fmt(item.dist_price)}${item.dist_price && item.dist_price !== '-' ? '원' : ''}</td>
+                        <td style="font-weight:bold; color:#2980b9; text-align:right;">${fmt(item.dealer_price)}${item.dealer_price && item.dealer_price !== '-' ? '원' : ''}</td>
+                        <td style="text-align:right;">${fmt(item.msrp)}${item.msrp && item.msrp !== '-' ? '원' : ''}</td>
                     `;
                     table.appendChild(tr);
                 });
