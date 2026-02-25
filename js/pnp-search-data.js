@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 2. 25. 오후 1:39:54
+ * Updated: 2026. 2. 25. 오후 1:40:29
  */
 const pnpSearchData = [
     {
@@ -1516,6 +1516,18 @@ const pnpSearchData = [
                         "sound": "4채널 자출",
                         "integrated": "HK-103",
                         "typeA": "HK-1A"
+                    }
+                ]
+            },
+            {
+                "model": "티볼리",
+                "details": [
+                    {
+                        "year": "19년 이후",
+                        "code": "X150 / X170 / X173",
+                        "sound": "4채널 자출",
+                        "integrated": "HK-102",
+                        "typeA": "X"
                     }
                 ]
             }
