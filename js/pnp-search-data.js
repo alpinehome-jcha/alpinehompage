@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 2. 25. 오후 12:56:03
+ * Updated: 2026. 2. 25. 오후 1:00:51
  */
 const pnpSearchData = [
     {
@@ -445,7 +445,22 @@ const pnpSearchData = [
             },
             {
                 "model": "아이오닉9",
-                "details": []
+                "details": [
+                    {
+                        "year": "25년 이후",
+                        "code": "ME EV",
+                        "sound": "4채널 자출",
+                        "integrated": "HK-104",
+                        "typeA": "HK-2A"
+                    },
+                    {
+                        "year": "25년 이후",
+                        "code": "ME EV",
+                        "sound": "10채널",
+                        "integrated": "X",
+                        "typeA": "HK-12A"
+                    }
+                ]
             }
         ]
     },
