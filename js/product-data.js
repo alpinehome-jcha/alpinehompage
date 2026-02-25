@@ -3412,9 +3412,21 @@ const initialProductData = [
         "image": "assets/images/product_placeholder.png",
         "detailBlocks": [],
         "attachments": []
+    },
+    {
+        "id": 1771986826764,
+        "category": "PnP Cable - 기타 (Other)",
+        "title": "Universal Speaker Wire(2P)",
+        "desc": "차량의 스피커 컨넥터에 꽂아서 사용하는 범용 스피커 컨넥터",
+        "desc_bottom": "",
+        "price": 5000,
+        "soldOut": false,
+        "image": "assets/images/product_placeholder.png",
+        "detailBlocks": [],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771985839543;
+const PRODUCT_DATA_VERSION = 1771986826767;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
