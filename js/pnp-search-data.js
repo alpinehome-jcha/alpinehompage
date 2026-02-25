@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 2. 25. 오후 1:33:04
+ * Updated: 2026. 2. 25. 오후 1:33:40
  */
 const pnpSearchData = [
     {
@@ -1391,14 +1391,14 @@ const pnpSearchData = [
                 "details": [
                     {
                         "year": "24년 이후",
-                        "code": "-",
+                        "code": "J120",
                         "sound": "4채널 자출",
                         "integrated": "HK-103",
                         "typeA": "HK-1A"
                     },
                     {
                         "year": "25년 이후",
-                        "code": "-",
+                        "code": "J120",
                         "sound": "알파인오디오",
                         "integrated": "X",
                         "typeA": "KG-1A"
