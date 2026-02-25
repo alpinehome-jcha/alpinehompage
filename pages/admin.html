@@ -1272,6 +1272,8 @@
                 newItem.phone = inputs.phone.value;
                 newItem.desc = inputs.dealer_desc.value;
                 newItem.username = inputs.dealer_id.value;
+                // password and role are not in dealers table. Only used for Authentication and handled by syncDealerToSupabase.
+                // We keep them in the object briefly for syncDealerToSupabase but we need to delete them before upserting 
                 newItem.password = inputs.dealer_pass.value;
                 newItem.role = 'dealer';
                 newItem.region = inputs.region.value;
@@ -1362,7 +1364,11 @@
                 // Supabase Dealer Data sync
                 loadingText.innerText = '대리점 정보 DB 동기화 중 (Supabase)...';
                 try {
-                    const success = await upsertDealer(newItem);
+                    const dbItem = { ...newItem };
+                    delete dbItem.password;
+                    delete dbItem.role;
+
+                    const success = await upsertDealer(dbItem);
                     if (newItem.username) {
                         loadingText.innerText = 'Supabase 보안 계정 동기화 중...';
                         await syncDealerToSupabase(originalDealerUsername, newItem);
