@@ -3426,12 +3426,12 @@ const initialProductData = [
         "desc_bottom": "",
         "price": 5000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/Universal%20Speaker%20Wire(2P).jpg",
         "detailBlocks": [],
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772004515597;
+const PRODUCT_DATA_VERSION = 1772006740145;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
