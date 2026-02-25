@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 2. 25. 오후 12:52:34
+ * Updated: 2026. 2. 25. 오후 12:54:15
  */
 const pnpSearchData = [
     {
@@ -442,6 +442,10 @@ const pnpSearchData = [
                         "typeA": "HK-2A"
                     }
                 ]
+            },
+            {
+                "model": "아이오닉9",
+                "details": []
             }
         ]
     },
@@ -1361,15 +1365,6 @@ const pnpSearchData = [
                         "typeA": "CH-1A"
                     }
                 ]
-            }
-        ]
-    },
-    {
-        "manufacturer": "KGM",
-        "models": [
-            {
-                "model": "액티언",
-                "details": []
             }
         ]
     }
