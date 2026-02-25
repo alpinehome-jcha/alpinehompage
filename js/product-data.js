@@ -3397,7 +3397,7 @@ const initialProductData = [
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 50000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/KG-1A.jpg",
         "detailBlocks": [],
         "attachments": []
     },
@@ -3426,7 +3426,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771994965050;
+const PRODUCT_DATA_VERSION = 1771995611999;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
