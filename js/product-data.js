@@ -3414,7 +3414,7 @@ const initialProductData = [
         "desc_bottom": "",
         "price": 20000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/KGM 5.5 to 6.5 배플.jpg",
         "detailBlocks": [],
         "attachments": []
     },
@@ -3431,7 +3431,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772006903861;
+const PRODUCT_DATA_VERSION = 1772007266316;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
