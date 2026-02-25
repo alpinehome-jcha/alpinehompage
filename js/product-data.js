@@ -2273,7 +2273,7 @@ const initialProductData = [
             {
                 "id": 1770959385482.1953,
                 "type": "text",
-                "value": "HK-102\n현대/기아 42P / 12년~18년 자출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결"
+                "value": "HK-102\n현대/기아 42P / 12년~18년 자출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결\n\nKGM 42P"
             },
             {
                 "id": 1770959403618.736,
@@ -2283,7 +2283,7 @@ const initialProductData = [
             {
                 "id": 1770959404226.675,
                 "type": "text",
-                "value": "HK-103\n현대/기아 73P / 17년~23년 차출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결"
+                "value": "HK-103\n현대/기아 73P / 17년~23년 차출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결\n\nKGM 73P"
             }
         ],
         "attachments": []
@@ -3402,7 +3402,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1771985617840;
+const PRODUCT_DATA_VERSION = 1771985722157;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
