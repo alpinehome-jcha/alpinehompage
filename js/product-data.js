@@ -3008,8 +3008,8 @@ const initialProductData = [
     {
         "id": 1770598191236,
         "category": "PnP Cable - DSP",
-        "title": "DS-81B",
-        "desc": " X120-8 전용 PnP (8채널) / 케이블길이 1.5M",
+        "title": "DS-X12-4B",
+        "desc": " X120-8 전용 PnP (8채널) /전면4채널+후면2채널+서브우퍼2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이",
         "price": 130000,
         "soldOut": false,
@@ -3018,7 +3018,7 @@ const initialProductData = [
             {
                 "id": 1771337189520.0796,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X120-8.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-X12-4B.jpg"
             }
         ],
         "attachments": []
@@ -3431,7 +3431,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772429575577;
+const PRODUCT_DATA_VERSION = 1772429936852;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
