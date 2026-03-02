@@ -3072,8 +3072,8 @@ const initialProductData = [
     {
         "id": 1770598432164,
         "category": "PnP Cable - DSP",
-        "title": "DS-10B",
-        "desc": "X120-10DP 전용 PnP (8채널+2서브우퍼) / 케이블길이 1.5M",
+        "title": "DS-10DP-6B",
+        "desc": "X120-10DP 전용 PnP /전방 6채널 + 후방 2채널 + 서브우퍼 2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 180000,
         "soldOut": false,
@@ -3082,7 +3082,7 @@ const initialProductData = [
             {
                 "id": 1771337254397.9119,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X120-10DP.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-10DP-6B.jpg"
             }
         ],
         "attachments": []
@@ -3459,7 +3459,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772431121066;
+const PRODUCT_DATA_VERSION = 1772431511021;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
