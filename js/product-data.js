@@ -2946,7 +2946,7 @@ const initialProductData = [
             {
                 "id": 1771337050613.0498,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-M60-2B.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-M60-4B.jpg"
             }
         ],
         "attachments": []
@@ -3423,7 +3423,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772439216889;
+const PRODUCT_DATA_VERSION = 1772439257071;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
