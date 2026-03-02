@@ -2936,8 +2936,8 @@ const initialProductData = [
     {
         "id": 1770597875990,
         "category": "PnP Cable - DSP",
-        "title": "DS-4B",
-        "desc": "[DS-4B] M60-4전용 PnP (4채널) / 케이블길이1.5M",
+        "title": "DS-M60-2B",
+        "desc": "[DS-M60-2B] M60-4전용 PnP (4채널) / 전면 4채널용 / 케이블길이1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 95000,
         "soldOut": false,
@@ -2946,7 +2946,7 @@ const initialProductData = [
             {
                 "id": 1771337050613.0498,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-M60-4-C.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-M60-2B.jpg"
             }
         ],
         "attachments": []
@@ -2954,8 +2954,8 @@ const initialProductData = [
     {
         "id": 1770597986370,
         "category": "PnP Cable - DSP",
-        "title": "DS-4B(S)",
-        "desc": "[DS-4B(S)] M60-4전용 PnP (4채널) / 케이블길이 30cm (시트하단 장착용 케이블)",
+        "title": "DS-M60-4B",
+        "desc": "[DS-M60-4B] M60-4전용 PnP (4채널) / 전면 2채널, 후면 2채널용 / 케이블길이1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 95000,
         "soldOut": true,
@@ -2972,8 +2972,8 @@ const initialProductData = [
     {
         "id": 1770598056914,
         "category": "PnP Cable - DSP",
-        "title": "DS-8B",
-        "desc": "R80-8/R100-8 전용 PnP (8채널) / 케이블길이 1.5M",
+        "title": "DS_R80-4B",
+        "desc": "R80-8/R100-8 전용 PnP (8채널) / 전면4채널+후면2채널+맥스 서브우퍼2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 130000,
         "soldOut": false,
@@ -2982,7 +2982,12 @@ const initialProductData = [
             {
                 "id": 1771337107793.574,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-R80-8.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-R80-4B.jpg"
+            },
+            {
+                "id": 1772429950028.4207,
+                "type": "text",
+                "value": "출력 7번과 8번은 서브우퍼와 연결되어 있으므로 믹스설정에서 입력 1번과 2번을 출력 7번과 8번으로 연결시켜야함."
             }
         ],
         "attachments": []
@@ -2990,8 +2995,8 @@ const initialProductData = [
     {
         "id": 1770598139412,
         "category": "PnP Cable - DSP",
-        "title": "DS-8B(S)",
-        "desc": "R80-8/R100-8 전용 PnP (8채널) / 케이블길이 30cm (시트하단 장착용 케이블)",
+        "title": "DS-R80-6B",
+        "desc": "R80-8/R100-8 전용 PnP (8채널) / 전면6채널+맥스 서브우퍼2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 130000,
         "soldOut": true,
@@ -3000,7 +3005,12 @@ const initialProductData = [
             {
                 "id": 1771337128417.741,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-R80-8.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-R80-6B.jpg"
+            },
+            {
+                "id": 1772430016335.395,
+                "type": "text",
+                "value": "출력 7번과 8번은 서브우퍼와 연결되어 있으므로 믹스설정에서 입력 1번과 2번을 출력 7번과 8번으로 연결시켜야함."
             }
         ],
         "attachments": []
@@ -3008,9 +3018,9 @@ const initialProductData = [
     {
         "id": 1770598191236,
         "category": "PnP Cable - DSP",
-        "title": "DS-81B",
-        "desc": " X120-8 전용 PnP (8채널) / 케이블길이 1.5M",
-        "desc_bottom": "B타입 / DSP측 케이",
+        "title": "DS-X12-4B",
+        "desc": " X120-8 전용 PnP (8채널) /전면4채널+후면2채널+서브우퍼2채널용 / 케이블길이 1.5M",
+        "desc_bottom": "B타입 / DSP측 케이블",
         "price": 130000,
         "soldOut": false,
         "image": "assets/images/DS-81B.jpg",
@@ -3018,7 +3028,7 @@ const initialProductData = [
             {
                 "id": 1771337189520.0796,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X120-8.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-X12-4B-1.jpg"
             }
         ],
         "attachments": []
@@ -3026,9 +3036,9 @@ const initialProductData = [
     {
         "id": 1770598255334,
         "category": "PnP Cable - DSP",
-        "title": "DS-81B(S)",
-        "desc": " X120-8 전용 PnP (8채널) / 케이블길이 30cm (시트하단 장착용 케이블)",
-        "desc_bottom": "B타입 / DSP",
+        "title": "DS-X12-6B",
+        "desc": " X120-8 전용 PnP (8채널) / 전면6채널+서브우퍼2채널용 / 케이블길이 1.5M",
+        "desc_bottom": "B타입 / DSP측 케이블",
         "price": 130000,
         "soldOut": true,
         "image": "assets/images/DS-81B.jpg",
@@ -3036,7 +3046,7 @@ const initialProductData = [
             {
                 "id": 1771337207287.8074,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X120-8.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-X12-6B.jpg"
             }
         ],
         "attachments": []
@@ -3044,8 +3054,8 @@ const initialProductData = [
     {
         "id": 1770598306432,
         "category": "PnP Cable - DSP",
-        "title": "DS-82B",
-        "desc": "C80-88 전용 PnP (6채널 + 2서브우퍼) / 케이블길이 1.5M",
+        "title": "DS-C80-4B",
+        "desc": "C80-88 전용 PnP / 전면4채널+후면2채널+서브우퍼2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 180000,
         "soldOut": false,
@@ -3054,7 +3064,7 @@ const initialProductData = [
             {
                 "id": 1771337235774.3003,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-C80-88.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-C80-4B.jpg"
             }
         ],
         "attachments": []
@@ -3062,8 +3072,8 @@ const initialProductData = [
     {
         "id": 1770598432164,
         "category": "PnP Cable - DSP",
-        "title": "DS-10B",
-        "desc": "X120-10DP 전용 PnP (8채널+2서브우퍼) / 케이블길이 1.5M",
+        "title": "DS-10DP-6B",
+        "desc": "X120-10DP 전용 PnP /전방 6채널 + 후방 2채널 + 서브우퍼 2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 180000,
         "soldOut": false,
@@ -3072,7 +3082,7 @@ const initialProductData = [
             {
                 "id": 1771337254397.9119,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X120-10DP.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-10DP-6B.jpg"
             }
         ],
         "attachments": []
@@ -3080,8 +3090,8 @@ const initialProductData = [
     {
         "id": 1770598482182,
         "category": "PnP Cable - DSP",
-        "title": "DS-10B(S)",
-        "desc": "X120-10DP 전용 PnP (8채널+2서브우퍼) 케이블길이 30cm (시트하단 장착용 케이블)",
+        "title": "DS-10DP-8B",
+        "desc": "X120-10DP 전용 PnP /전방 8채널 + 서브우퍼 2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 180000,
         "soldOut": true,
@@ -3090,7 +3100,7 @@ const initialProductData = [
             {
                 "id": 1771337271863.7468,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X120-10DP.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-10DP-8B.jpg"
             }
         ],
         "attachments": []
@@ -3098,8 +3108,8 @@ const initialProductData = [
     {
         "id": 1770598547088,
         "category": "PnP Cable - DSP",
-        "title": "DS-12B",
-        "desc": " X121-12EV 전용 PnP (10채널+2서브우퍼) / 케이블길이 1.5M",
+        "title": "DS-12EV-B",
+        "desc": " X121-12EV 전용 PnP / 전방8채널+후방2채널+서브우퍼2채널 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 130000,
         "soldOut": false,
@@ -3108,25 +3118,7 @@ const initialProductData = [
             {
                 "id": 1771337292448.3403,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X121-12EV.jpg"
-            }
-        ],
-        "attachments": []
-    },
-    {
-        "id": 1770598605108,
-        "category": "PnP Cable - DSP",
-        "title": "DS-12B(S)",
-        "desc": "X121-12EV 전용 PnP (10채널+2서브우퍼) / 케이블길이 30cm (시트하단 장착용 케이블)",
-        "desc_bottom": "B타입 / DSP측 케이블",
-        "price": 180000,
-        "soldOut": true,
-        "image": "assets/images/DS-12B.jpg",
-        "detailBlocks": [
-            {
-                "id": 1771337309994.5417,
-                "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X121-12EV.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-12EV-B.jpg"
             }
         ],
         "attachments": []
@@ -3134,8 +3126,8 @@ const initialProductData = [
     {
         "id": 1770598652512,
         "category": "PnP Cable - DSP",
-        "title": "DS-14B",
-        "desc": "D90 전용 PnP (10채널+2서브우퍼) / 케이블길이 1.5M",
+        "title": "DS-D90-B",
+        "desc": "D90 전용 PnP / 전방8채널+후방2채널+서브우퍼2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 130000,
         "soldOut": false,
@@ -3144,25 +3136,7 @@ const initialProductData = [
             {
                 "id": 1771337330175.7275,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HDP-D90-C.jpg"
-            }
-        ],
-        "attachments": []
-    },
-    {
-        "id": 1770598701240,
-        "category": "PnP Cable - DSP",
-        "title": "DS-14B(S)",
-        "desc": "D90 전용 PnP (10채널+2서브우퍼) / 케이블길이 30cm (시트하단 장착용 케이블)",
-        "desc_bottom": "B타입 / DSP측 케이블",
-        "price": 180000,
-        "soldOut": true,
-        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-14B-2.jpg",
-        "detailBlocks": [
-            {
-                "id": 1771337356905.3525,
-                "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HDP-D90-C.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-D90-B.jpg"
             }
         ],
         "attachments": []
@@ -3429,9 +3403,27 @@ const initialProductData = [
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/Universal%20Speaker%20Wire(2P).jpg",
         "detailBlocks": [],
         "attachments": []
+    },
+    {
+        "id": 1772431121062,
+        "category": "PnP Cable - DSP",
+        "title": "DS-C80-6B",
+        "desc": "C80-88 전용 PnP / 전면6채널+서브우퍼2채널용 / 케이블길이 1.5M",
+        "desc_bottom": "B타입 / DSP측 케이블",
+        "price": 180000,
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-82B-2.jpg",
+        "detailBlocks": [
+            {
+                "id": 1772431021599.1846,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-C80-6B.jpg"
+            }
+        ],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772007725001;
+const PRODUCT_DATA_VERSION = 1772432021437;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
