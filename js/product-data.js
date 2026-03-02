@@ -3142,24 +3142,6 @@ const initialProductData = [
         "attachments": []
     },
     {
-        "id": 1770598701240,
-        "category": "PnP Cable - DSP",
-        "title": "DS-14B(S)",
-        "desc": "D90 전용 PnP (10채널+2서브우퍼) / 케이블길이 30cm (시트하단 장착용 케이블)",
-        "desc_bottom": "B타입 / DSP측 케이블",
-        "price": 180000,
-        "soldOut": true,
-        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-14B-2.jpg",
-        "detailBlocks": [
-            {
-                "id": 1771337356905.3525,
-                "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HDP-D90-C.jpg"
-            }
-        ],
-        "attachments": []
-    },
-    {
         "id": 1770598808144,
         "category": "PnP Cable - 기타 (Other)",
         "title": "M60 3M 연장케이블",
@@ -3441,7 +3423,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772431955019;
+const PRODUCT_DATA_VERSION = 1772431960444;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
