@@ -850,6 +850,7 @@ const EstimateUI = {
 
         let hasDSP = false;
         let hasFrontRearSpeaker = false;
+        let hasPWEM770Package = false;
 
         stepOrder.forEach(catId => {
             if (this.selections[catId]) {
@@ -886,6 +887,10 @@ const EstimateUI = {
                             }
                         }
 
+                        if (pName === "PWE-M770+PWE-770-RCU") {
+                            hasPWEM770Package = true;
+                        }
+
                         summaryHtml += `<div class="estimate-summary-item" style="padding-left: 5px;">
                             <span>${pName}</span>
                             <span>₩${price.toLocaleString()}</span>
@@ -911,6 +916,11 @@ const EstimateUI = {
 
         // 3. 일반 앰프 선택: (10%)
         labor += (ampPrice * 0.1);
+
+        // 4. PWE-M770 패키지 선택 + DSP 미선택 시 20만원 추가
+        if (hasPWEM770Package && !hasDSP) {
+            labor += 200000;
+        }
 
         labor = Math.round(labor);
 
@@ -1056,6 +1066,7 @@ const EstimateUI = {
 
         let hasDSP = false;
         let hasFrontRearSpeaker = false;
+        let hasPWEM770Package = false;
 
         const categoryLabels = {
             'dsp': '1. DSP',
@@ -1110,6 +1121,10 @@ const EstimateUI = {
                             hasFrontRearSpeaker = true;
                         }
 
+                        if (pName === "PWE-M770+PWE-770-RCU") {
+                            hasPWEM770Package = true;
+                        }
+
                         productHtml += `
                             <tr>
                                 <td style="border: 1px solid #ddd; padding: 12px; padding-left: 20px;">${pName}</td>
@@ -1128,6 +1143,7 @@ const EstimateUI = {
         if (hasDSP) labor += (dspPrice * 0.3) + (extraLaborTotal * 0.5);
         if (hasFrontRearSpeaker) labor += 200000 + (extraLaborTotal * 0.5);
         labor += (ampPrice * 0.1);
+        if (hasPWEM770Package && !hasDSP) labor += 200000;
         labor = Math.round(labor);
 
         const grandTotal = productTotal + labor;
