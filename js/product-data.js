@@ -2937,7 +2937,7 @@ const initialProductData = [
         "id": 1770597875990,
         "category": "PnP Cable - DSP",
         "title": "DS-M60-2B",
-        "desc": "[DS-M60-2B] M60-4전용 PnP (4채널) / 전면 4채널용 / 케이블길이1.5M",
+        "desc": "[DS-M60-2B] M60-4전용 PnP (4채널) / 전면 2채널+후면 2채널용 / 케이블길이1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 95000,
         "soldOut": true,
@@ -3423,7 +3423,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772435979106;
+const PRODUCT_DATA_VERSION = 1772438790664;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
