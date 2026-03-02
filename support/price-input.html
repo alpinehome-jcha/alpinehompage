@@ -493,14 +493,23 @@
                         }
                     });
 
-                    // Upsert in batches for stability
-                    const batchSize = 100;
-                    for (let i = 0; i < batchData.length; i += batchSize) {
-                        const batch = batchData.slice(i, i + batchSize);
-                        const { error } = await window.supabase
-                            .from('price_list')
-                            .upsert(batch); // Removed onConflict since we supply IDs for existing
+                    // Upsert existing items and Insert new items separately to avoid null ID constraints
+                    const itemsToUpdate = batchData.filter(item => item.id);
+                    const itemsToInsert = batchData.filter(item => !item.id);
 
+                    const batchSize = 100;
+
+                    // 1. Process Updates
+                    for (let i = 0; i < itemsToUpdate.length; i += batchSize) {
+                        const batch = itemsToUpdate.slice(i, i + batchSize);
+                        const { error } = await window.supabase.from('price_list').upsert(batch);
+                        if (error) throw error;
+                    }
+
+                    // 2. Process Inserts
+                    for (let i = 0; i < itemsToInsert.length; i += batchSize) {
+                        const batch = itemsToInsert.slice(i, i + batchSize);
+                        const { error } = await window.supabase.from('price_list').insert(batch);
                         if (error) throw error;
                     }
 
