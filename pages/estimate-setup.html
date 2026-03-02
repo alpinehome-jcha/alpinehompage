@@ -246,8 +246,9 @@
                             <th>모델</th>
                             <th>연식</th>
                             <th>시스템</th>
-                            <th>PnP</th>
+                            <th>차측 PnP</th>
                             <th>DSP</th>
+                            <th>DSP PnP</th>
                             <th>프론트 도어</th>
                             <th>서브우퍼</th>
                             <th>작업비</th>
@@ -437,8 +438,9 @@
                     <td>${d.model}</td>
                     <td>${d.year || '-'}</td>
                     <td><small>${d.system}</small></td>
-                    <td><small>${(d.pnp || []).join(', ')}</small></td>
+                    <td><small>${(d.pnp || []).filter(p => !p.startsWith('DS-')).join(', ')}</small></td>
                     <td><small>${(d.dsp || []).join(', ')}</small></td>
+                    <td><small>${(d.pnp || []).filter(p => p.startsWith('DS-')).join(', ')}</small></td>
                     <td><small>${(d.front_door || []).join(', ')}</small></td>
                     <td><small>${(d.subwoofer || []).join(', ')}</small></td>
                     <td>${(d.extraLabor || 0).toLocaleString()}</td>
@@ -474,8 +476,9 @@
                 flat['year'] = d.year || '';
                 flat['code'] = d.code || '';
                 flat['system'] = d.system || '';
-                flat['DSP PnP'] = Array.isArray(d.pnp) ? d.pnp.join(', ') : (d.pnp || '');
+                flat['차측 PnP'] = Array.isArray(d.pnp) ? d.pnp.filter(p => !p.startsWith('DS-')).join(', ') : '';
                 flat['dsp'] = Array.isArray(d.dsp) ? d.dsp.join(', ') : (d.dsp || '');
+                flat['DSP PnP'] = Array.isArray(d.pnp) ? d.pnp.filter(p => p.startsWith('DS-')).join(', ') : '';
                 flat['front_door'] = Array.isArray(d.front_door) ? d.front_door.join(', ') : (d.front_door || '');
                 flat['tweeter'] = Array.isArray(d.tweeter) ? d.tweeter.join(', ') : (d.tweeter || '');
                 flat['front_baffle'] = Array.isArray(d.front_baffle) ? d.front_baffle.join(', ') : (d.front_baffle || '');
@@ -525,10 +528,29 @@
                     const processed = json.map(row => {
                         const newRow = { ...row };
 
+                        let combinedPnP = [];
+
+                        // 차측 PnP 맵핑 복원
+                        if (newRow['차측 PnP'] !== undefined) {
+                            if (typeof newRow['차측 PnP'] === 'string') {
+                                combinedPnP.push(...newRow['차측 PnP'].split(',').map(s => s.trim()).filter(s => s !== ''));
+                            }
+                            delete newRow['차측 PnP'];
+                        }
+
                         // DSP PnP 맵핑 복원
                         if (newRow['DSP PnP'] !== undefined) {
-                            newRow.pnp = newRow['DSP PnP'];
+                            if (typeof newRow['DSP PnP'] === 'string') {
+                                combinedPnP.push(...newRow['DSP PnP'].split(',').map(s => s.trim()).filter(s => s !== ''));
+                            }
                             delete newRow['DSP PnP'];
+                        }
+
+                        // 병합된 PnP 배열 할당
+                        if (combinedPnP.length > 0) {
+                            newRow.pnp = combinedPnP;
+                        } else if (!newRow.pnp) {
+                            newRow.pnp = [];
                         }
 
                         arrayFields.forEach(field => {
