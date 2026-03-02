@@ -2955,7 +2955,7 @@ const initialProductData = [
         "id": 1770597986370,
         "category": "PnP Cable - DSP",
         "title": "DS-M60-4B",
-        "desc": "[DS-M60-4B] M60-4전용 PnP (4채널) / 전면 2채널, 후면 2채널용 / 케이블길이1.5M",
+        "desc": "[DS-M60-4B] M60-4전용 PnP (4채널) / 전면 4채널용 / 케이블길이1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 95000,
         "soldOut": false,
@@ -2964,7 +2964,7 @@ const initialProductData = [
             {
                 "id": 1771337072303.7183,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-M60-4-C.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-R80-4B.jpg"
             }
         ],
         "attachments": []
@@ -3423,7 +3423,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772438790664;
+const PRODUCT_DATA_VERSION = 1772438859944;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
