@@ -48,6 +48,11 @@ function downloadData(type) {
             fileName = 'pnp-search-data.js';
             dataObj = (typeof pnpSearchData !== 'undefined') ? pnpSearchData : null;
             break;
+        case 'pnpRule':
+            dataName = 'pnpRuleData';
+            fileName = 'pnp-rule-data.js';
+            dataObj = (typeof pnpRuleData !== 'undefined') ? pnpRuleData : null;
+            break;
     }
 
     // Try to get from LocalStorage first (most up to date)
@@ -83,7 +88,8 @@ function downloadData(type) {
                     (type === 'resource') ? 'RESOURCE_DATA_VERSION' :
                         (type === 'install') ? 'INSTALL_DATA_VERSION' :
                             (type === 'support_product') ? 'SUPPORT_PRODUCT_DATA_VERSION' :
-                                'DATA_VERSION';
+                                (type === 'pnpRule') ? 'PNP_RULE_DATA_VERSION' :
+                                    'DATA_VERSION';
 
     fileContent += `const ${versionVarName} = ${version};\n\n`;
 
@@ -199,6 +205,11 @@ async function saveToGitHub(type, silent = false) {
             fileName = 'js/pnp-search-data.js';
             dataObj = (typeof pnpSearchData !== 'undefined') ? pnpSearchData : null;
             break;
+        case 'pnpRule':
+            dataName = 'pnpRuleData';
+            fileName = 'js/pnp-rule-data.js';
+            dataObj = (typeof pnpRuleData !== 'undefined') ? pnpRuleData : null;
+            break;
     }
 
     // Try to get from LocalStorage first (most up to date)
@@ -223,7 +234,8 @@ async function saveToGitHub(type, silent = false) {
                         (type === 'install') ? 'initialInstallData' :
                             (type === 'support_product') ? 'initialSupportProductData' :
                                 (type === 'estimate') ? 'initialEstimateData' :
-                                    'initial' + type.charAt(0).toUpperCase() + type.slice(1) + 'Data';
+                                    (type === 'pnpRule') ? 'initialPnpRuleData' :
+                                        'initial' + type.charAt(0).toUpperCase() + type.slice(1) + 'Data';
 
     const versionVarName = (type === 'dealer') ? 'DEALER_DATA_VERSION' :
         (type === 'product') ? 'PRODUCT_DATA_VERSION' :
@@ -233,7 +245,8 @@ async function saveToGitHub(type, silent = false) {
                         (type === 'install') ? 'INSTALL_DATA_VERSION' :
                             (type === 'support_product') ? 'SUPPORT_PRODUCT_DATA_VERSION' :
                                 (type === 'estimate') ? 'ESTIMATE_DATA_VERSION' :
-                                    'DATA_VERSION';
+                                    (type === 'pnpRule') ? 'PNP_RULE_DATA_VERSION' :
+                                        'DATA_VERSION';
 
     let fileContent = `const ${varName} = ${jsonStr};\n`;
     fileContent += `const ${versionVarName} = ${version};\n\n`;

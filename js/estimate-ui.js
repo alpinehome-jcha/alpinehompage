@@ -731,30 +731,29 @@ const EstimateUI = {
 
     getMatchedIntegrated(dsp, list) {
         if (!dsp || dsp === "DSP 선택 안함") return null;
-        const mapping = {
-            "PXE-M60-4": ["HK-101", "HK-102", "HK-103", "HK-104", "HK-106"],
-            "PXE-X120-10DP": ["HK-107", "BM-401", "BM-402", "BM-403", "BZ-503"],
-            "PXE-C80-88": ["GE-203", "BZ-501", "BZ-502"],
-            "PXE-X121-12EV": ["TS-301", "TS-302", "TS-303", "TS-304"]
-        };
-        const targets = mapping[dsp] || [];
-        return list.find(p => targets.includes(p)) || null;
+        if (typeof pnpRuleData === 'undefined' || !pnpRuleData) return null;
+
+        const rule = pnpRuleData.find(r => r.dsp === dsp);
+        if (!rule || !rule.integrated || rule.integrated.length === 0) return null;
+
+        // Return the first match found in both the rule list AND the car's supported list
+        return list.find(p => rule.integrated.includes(p)) || null;
     },
 
-    getMatchedTypeB(dsp) {
+    getMatchedTypeB(dsp, carDspPnpList = []) {
         if (!dsp || dsp === "DSP 선택 안함") return null;
-        const mapping = {
-            "PXE-M60-4": "DS-4B",
-            "PXE-R80-8": "DS-8B",
-            "PXE-R100-8": "DS-8B",
-            "PXE-R100-10": "DS-10B",
-            "PXE-X120-8": "DS-81B",
-            "PXE-C80-88": "DS-82B",
-            "PXE-X120-10DP": "DS-10B",
-            "PXE-X121-12EV": "DS-12B",
-            "HDP-D90": "DS-14B"
-        };
-        return mapping[dsp] || null;
+        if (typeof pnpRuleData === 'undefined' || !pnpRuleData) return null;
+
+        const rule = pnpRuleData.find(r => r.dsp === dsp);
+        if (!rule || !rule.typeB || rule.typeB.length === 0) return null;
+
+        // If carDspPnpList is provided, find the intersection
+        if (carDspPnpList && carDspPnpList.length > 0) {
+            return carDspPnpList.find(p => rule.typeB.includes(p)) || null;
+        }
+
+        // Fallback: If no car list is provided (though it should be), just return the first rule matched
+        return rule.typeB[0] || null;
     },
 
     selectProduct(catId, pName) {
@@ -762,13 +761,19 @@ const EstimateUI = {
             this.selections = { 'dsp': pName };
             if (pName !== "DSP 선택 안함") {
                 const list = this.selectedCar.pnp || [];
-                const integrated = list.filter(p => !p.endsWith('A') && !p.startsWith('DS-'));
+                // 차측 PnP (Integrated, Type A) 리스트
+                const carSideList = list.filter(p => !p.startsWith('DS-'));
+                // DSP PnP (Type B) 리스트
+                const dspSideList = list.filter(p => p.startsWith('DS-'));
+
+                const integrated = carSideList.filter(p => !p.endsWith('A'));
                 const matchedInt = this.getMatchedIntegrated(pName, integrated);
+
                 if (matchedInt) {
                     this.selections['pnp'] = [matchedInt];
                 } else {
-                    const typeA = list.filter(p => p.endsWith('A'));
-                    const matchedB = this.getMatchedTypeB(pName);
+                    const typeA = carSideList.filter(p => p.endsWith('A'));
+                    const matchedB = this.getMatchedTypeB(pName, dspSideList);
                     this.selections['pnp'] = [...typeA, matchedB].filter(Boolean);
                 }
             }
