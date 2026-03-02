@@ -42,7 +42,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -107,7 +107,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -173,7 +173,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -238,7 +238,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -304,7 +304,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -369,7 +369,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -388,9 +388,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -435,7 +435,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -454,9 +454,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -501,7 +501,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -520,9 +520,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -580,9 +580,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -627,7 +627,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -646,9 +646,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -692,7 +692,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -711,9 +711,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -757,7 +757,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -776,9 +776,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -823,7 +823,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -842,9 +842,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -889,7 +889,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -908,9 +908,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -955,7 +955,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -974,9 +974,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -999,6 +999,7 @@ const initialEstimateData = [
             "DP2-65C+DPS-25M",
             "S2-S65C+DPS-25M"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -1029,14 +1030,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "현대자동차",
@@ -1081,7 +1081,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1100,9 +1100,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -1147,7 +1147,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1166,9 +1166,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -1226,9 +1226,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -1273,7 +1273,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1292,9 +1292,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -1339,7 +1339,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1358,9 +1358,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -1418,9 +1418,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -1465,7 +1465,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1484,8 +1484,8 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "center": [],
         "add_front": [],
+        "center": [],
         "surround": []
     },
     {
@@ -1509,6 +1509,7 @@ const initialEstimateData = [
             "DP2-65C+DPS-25M",
             "S2-S65C+DPS-25M"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -1539,14 +1540,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "현대자동차",
@@ -1590,7 +1590,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1609,9 +1609,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -1656,7 +1656,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1675,9 +1675,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -1700,6 +1700,7 @@ const initialEstimateData = [
             "DP2-65C+DPS-25M",
             "S2-S65C+DPS-25M"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -1730,14 +1731,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "현대자동차",
@@ -1782,7 +1782,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1801,9 +1801,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -1827,6 +1827,7 @@ const initialEstimateData = [
             "DP2-65C+DPS-25M",
             "S2-S65C+DPS-25M"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -1857,14 +1858,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "현대자동차",
@@ -1908,7 +1908,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1927,9 +1927,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -1973,7 +1973,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1992,9 +1992,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -2039,7 +2039,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2058,9 +2058,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -2105,7 +2105,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2124,9 +2124,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -2171,7 +2171,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2190,9 +2190,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -2250,9 +2250,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -2297,7 +2297,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2316,9 +2316,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -2363,7 +2363,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2382,9 +2382,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -2429,7 +2429,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2448,9 +2448,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -2508,9 +2508,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -2555,7 +2555,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2574,9 +2574,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -2621,7 +2621,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2640,9 +2640,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -2665,6 +2665,7 @@ const initialEstimateData = [
             "DP2-65C+DPS-25M",
             "S2-S65C+DPS-25M"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -2695,14 +2696,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "현대자동차",
@@ -2747,7 +2747,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2766,9 +2766,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -2826,13 +2826,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "add_front": []
+        ]
     },
     {
         "brand": "현대자동차",
@@ -2893,9 +2893,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -2918,6 +2918,7 @@ const initialEstimateData = [
             "DP2-65C+DPS-25M",
             "S2-S65C+DPS-25M"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -2948,14 +2949,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "현대자동차",
@@ -3000,7 +3000,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -3019,9 +3019,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -3066,7 +3066,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -3085,9 +3085,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -3132,7 +3132,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -3151,9 +3151,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "제네시스",
@@ -3211,9 +3211,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "제네시스",
@@ -3237,6 +3237,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -3266,14 +3267,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "제네시스",
@@ -3331,9 +3331,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "제네시스",
@@ -3357,6 +3357,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -3386,14 +3387,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "제네시스",
@@ -3452,9 +3452,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "제네시스",
@@ -3512,9 +3512,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "제네시스",
@@ -3568,9 +3568,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 1000000,
-        "surround": [],
         "add_front": [],
-        "center": []
+        "center": [],
+        "surround": []
     },
     {
         "brand": "제네시스",
@@ -3594,6 +3594,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -3623,14 +3624,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "제네시스",
@@ -3654,6 +3654,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -3683,14 +3684,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "제네시스",
@@ -3714,6 +3714,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -3743,12 +3744,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
+        "center": [],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": [],
-        "center": []
+        ]
     },
     {
         "brand": "제네시스",
@@ -3772,6 +3772,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -3801,12 +3802,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
+        "center": [],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": [],
-        "center": []
+        ]
     },
     {
         "brand": "제네시스",
@@ -3864,9 +3864,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "제네시스",
@@ -3890,6 +3890,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -3919,12 +3920,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
+        "center": [],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": [],
-        "center": []
+        ]
     },
     {
         "brand": "제네시스",
@@ -3982,9 +3982,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "제네시스",
@@ -4008,6 +4008,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -4037,12 +4038,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
+        "center": [],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": [],
-        "center": []
+        ]
     },
     {
         "brand": "제네시스",
@@ -4100,9 +4100,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "제네시스",
@@ -4126,6 +4126,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -4155,12 +4156,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
+        "center": [],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": [],
-        "center": []
+        ]
     },
     {
         "brand": "기아자동차",
@@ -4204,7 +4204,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -4223,9 +4223,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -4270,7 +4270,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -4289,9 +4289,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -4335,7 +4335,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -4354,9 +4354,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -4400,7 +4400,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -4419,9 +4419,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -4466,7 +4466,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -4485,9 +4485,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -4531,7 +4531,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -4550,9 +4550,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -4597,7 +4597,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -4616,9 +4616,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -4663,7 +4663,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -4682,9 +4682,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -4707,6 +4707,7 @@ const initialEstimateData = [
             "DP2-65C+DPS-25M",
             "S2-S65C+DPS-25M"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -4737,14 +4738,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "기아자동차",
@@ -4802,9 +4802,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -4827,6 +4827,7 @@ const initialEstimateData = [
             "DP2-65C+DPS-25M",
             "S2-S65C+DPS-25M"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -4857,14 +4858,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "기아자동차",
@@ -4907,7 +4907,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -4926,9 +4926,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -4951,6 +4951,7 @@ const initialEstimateData = [
             "DP2-65C+DPS-25M",
             "S2-S65C+DPS-25M"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -4981,14 +4982,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "기아자동차",
@@ -5031,7 +5031,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -5050,9 +5050,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -5075,6 +5075,7 @@ const initialEstimateData = [
             "DP2-65C+DPS-25M",
             "S2-S65C+DPS-25M"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -5105,14 +5106,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "기아자동차",
@@ -5135,6 +5135,7 @@ const initialEstimateData = [
             "DP2-65C+DPS-25M",
             "S2-S65C+DPS-25M"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -5165,14 +5166,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "기아자동차",
@@ -5195,6 +5195,7 @@ const initialEstimateData = [
             "DP2-65C+DPS-25M",
             "S2-S65C+DPS-25M"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -5225,14 +5226,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "기아자동차",
@@ -5276,7 +5276,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -5295,9 +5295,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -5342,7 +5342,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -5361,9 +5361,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -5408,7 +5408,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -5427,9 +5427,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -5487,9 +5487,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -5534,7 +5534,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -5553,9 +5553,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -5613,9 +5613,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -5660,7 +5660,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -5679,9 +5679,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -5705,6 +5705,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -5735,14 +5736,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "기아자동차",
@@ -5787,7 +5787,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -5806,9 +5806,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -5832,6 +5832,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -5862,14 +5863,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "기아자동차",
@@ -5914,7 +5914,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -5933,9 +5933,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -5980,7 +5980,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -5999,9 +5999,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -6046,7 +6046,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6065,9 +6065,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -6112,7 +6112,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6131,9 +6131,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -6178,7 +6178,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6197,9 +6197,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -6244,7 +6244,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6263,9 +6263,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -6310,7 +6310,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6329,9 +6329,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -6389,9 +6389,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -6415,6 +6415,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -6445,14 +6446,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "기아자동차",
@@ -6497,7 +6497,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6516,9 +6516,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -6563,7 +6563,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6582,9 +6582,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -6608,6 +6608,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -6638,14 +6639,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "기아자동차",
@@ -6689,7 +6689,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6708,9 +6708,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -6734,6 +6734,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -6764,14 +6765,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "기아자동차",
@@ -6816,7 +6816,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6835,9 +6835,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -6880,7 +6880,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6899,9 +6899,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -6960,9 +6960,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -6986,6 +6986,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -7016,14 +7017,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "기아자동차",
@@ -7047,6 +7047,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
@@ -7077,14 +7078,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M"
         ],
         "surround": [
             "DPS-25M"
-        ],
-        "tweeter": [],
-        "add_front": []
+        ]
     },
     {
         "brand": "기아자동차",
@@ -7129,7 +7129,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -7148,9 +7148,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -7208,9 +7208,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -7255,7 +7255,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -7274,9 +7274,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "기아자동차",
@@ -7321,7 +7321,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -7340,9 +7340,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "BENZ",
@@ -7370,7 +7370,7 @@ const initialEstimateData = [
         "rear_door": [],
         "rear_baffle": [],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -7389,9 +7389,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "BENZ",
@@ -7433,9 +7433,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "BENZ",
@@ -7477,9 +7477,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 1000000,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "BMW",
@@ -7523,11 +7523,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 1000000,
+        "add_front": [],
         "center": [
             "DP2-40C-B"
         ],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "BMW",
@@ -7572,11 +7572,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 1000000,
+        "add_front": [],
         "center": [
             "DP2-40C-B"
         ],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "BMW",
@@ -7621,11 +7621,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 1000000,
+        "add_front": [],
         "center": [
             "DP2-40C-B"
         ],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "BMW",
@@ -7670,11 +7670,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 1500000,
+        "add_front": [],
         "center": [
             "DP2-40C-B"
         ],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "BMW",
@@ -7719,11 +7719,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 1500000,
+        "add_front": [],
         "center": [
             "DP2-40C-B"
         ],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "Audi",
@@ -7779,9 +7779,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "Volkswagen",
@@ -7823,7 +7823,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -7842,9 +7842,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "BYD",
@@ -7886,7 +7886,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -7905,9 +7905,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "BYD",
@@ -7963,12 +7963,12 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "add_front": [],
         "center": [
             "DPS-25M",
             "DP2-35M"
         ],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "LandRover",
@@ -7992,6 +7992,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "커스텀 배플"
         ],
@@ -8020,12 +8021,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M",
             "DP2-35M"
         ],
-        "tweeter": [],
-        "add_front": [],
         "surround": []
     },
     {
@@ -8050,6 +8050,7 @@ const initialEstimateData = [
             "DP2-653",
             "R2-S653"
         ],
+        "tweeter": [],
         "front_baffle": [
             "커스텀 배플"
         ],
@@ -8078,12 +8079,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "add_front": [],
         "center": [
             "DPS-25M",
             "DP2-35M"
         ],
-        "tweeter": [],
-        "add_front": [],
         "surround": []
     },
     {
@@ -8116,13 +8116,13 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
+        "add_front": [],
         "center": [
             "EV-40M-T"
         ],
         "surround": [
             "EV-40MR-T"
-        ],
-        "add_front": []
+        ]
     },
     {
         "brand": "Tesla",
@@ -8154,13 +8154,13 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
+        "add_front": [],
         "center": [
             "EV-40M-T"
         ],
         "surround": [
             "EV-40MR-T"
-        ],
-        "add_front": []
+        ]
     },
     {
         "brand": "Tesla",
@@ -8192,13 +8192,13 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
+        "add_front": [],
         "center": [
             "EV-40M-T"
         ],
         "surround": [
             "EV-40MR-T"
-        ],
-        "add_front": []
+        ]
     },
     {
         "brand": "Tesla",
@@ -8230,13 +8230,13 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
+        "add_front": [],
         "center": [
             "EV-40M-T"
         ],
         "surround": [
             "EV-40MR-T"
-        ],
-        "add_front": []
+        ]
     },
     {
         "brand": "CHEVROLET",
@@ -8279,7 +8279,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -8297,9 +8297,9 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
+        "add_front": [],
         "center": [],
-        "surround": [],
-        "add_front": []
+        "surround": []
     },
     {
         "brand": "KGM",
@@ -8344,7 +8344,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -8406,7 +8406,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -8471,7 +8471,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -8533,7 +8533,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -8590,7 +8590,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -8655,7 +8655,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -8717,7 +8717,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -8782,7 +8782,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -8844,7 +8844,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -8899,7 +8899,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -8962,7 +8962,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9025,7 +9025,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9080,7 +9080,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9143,7 +9143,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9198,7 +9198,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "subwoofer": [
-            "PWE-M770",
+            "PWE-M770+PWE-770-RCU",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9221,7 +9221,7 @@ const initialEstimateData = [
         "surround": []
     }
 ];
-const ESTIMATE_DATA_VERSION = 1771995079564;
+const ESTIMATE_DATA_VERSION = 1772416373900;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
