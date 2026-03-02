@@ -3028,7 +3028,7 @@ const initialProductData = [
             {
                 "id": 1771337189520.0796,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-X12-4B.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-X12-4B-1.jpg"
             }
         ],
         "attachments": []
@@ -3441,7 +3441,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772430337763;
+const PRODUCT_DATA_VERSION = 1772430474882;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
