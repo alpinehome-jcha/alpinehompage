@@ -466,12 +466,30 @@
         function downloadExcel() {
             // Flatten arrays for Excel
             const exportData = estimateData.map(d => {
-                const flat = { ...d };
-                Object.keys(flat).forEach(key => {
-                    if (Array.isArray(flat[key])) {
-                        flat[key] = flat[key].join(', ');
-                    }
-                });
+                const flat = {};
+
+                // 순서 및 명칭 지정
+                flat['brand'] = d.brand || '';
+                flat['model'] = d.model || '';
+                flat['year'] = d.year || '';
+                flat['code'] = d.code || '';
+                flat['system'] = d.system || '';
+                flat['DSP PnP'] = Array.isArray(d.pnp) ? d.pnp.join(', ') : (d.pnp || '');
+                flat['dsp'] = Array.isArray(d.dsp) ? d.dsp.join(', ') : (d.dsp || '');
+                flat['front_door'] = Array.isArray(d.front_door) ? d.front_door.join(', ') : (d.front_door || '');
+                flat['tweeter'] = Array.isArray(d.tweeter) ? d.tweeter.join(', ') : (d.tweeter || '');
+                flat['front_baffle'] = Array.isArray(d.front_baffle) ? d.front_baffle.join(', ') : (d.front_baffle || '');
+                flat['add_front'] = Array.isArray(d.add_front) ? d.add_front.join(', ') : (d.add_front || '');
+                flat['rear_door'] = Array.isArray(d.rear_door) ? d.rear_door.join(', ') : (d.rear_door || '');
+                flat['rear_baffle'] = Array.isArray(d.rear_baffle) ? d.rear_baffle.join(', ') : (d.rear_baffle || '');
+                flat['center'] = Array.isArray(d.center) ? d.center.join(', ') : (d.center || '');
+                flat['surround'] = Array.isArray(d.surround) ? d.surround.join(', ') : (d.surround || '');
+                flat['subwoofer'] = Array.isArray(d.subwoofer) ? d.subwoofer.join(', ') : (d.subwoofer || '');
+                flat['amp_4ch'] = Array.isArray(d.amp_4ch) ? d.amp_4ch.join(', ') : (d.amp_4ch || '');
+                flat['amp_sub'] = Array.isArray(d.amp_sub) ? d.amp_sub.join(', ') : (d.amp_sub || '');
+                flat['player'] = Array.isArray(d.player) ? d.player.join(', ') : (d.player || '');
+                flat['extraLabor'] = d.extraLabor || 0;
+
                 return flat;
             });
 
@@ -506,6 +524,13 @@
 
                     const processed = json.map(row => {
                         const newRow = { ...row };
+
+                        // DSP PnP 맵핑 복원
+                        if (newRow['DSP PnP'] !== undefined) {
+                            newRow.pnp = newRow['DSP PnP'];
+                            delete newRow['DSP PnP'];
+                        }
+
                         arrayFields.forEach(field => {
                             if (newRow[field] && typeof newRow[field] === 'string') {
                                 newRow[field] = newRow[field].split(',').map(s => s.trim()).filter(s => s !== '');
