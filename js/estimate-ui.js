@@ -417,13 +417,18 @@ const EstimateUI = {
         // PnP Cable (DSP 선택에 따른 자동 선택 로직 재사용)
         if (this.selections['dsp'] && this.selections['dsp'] !== "DSP 선택 안함") {
             const pnpList = this.selectedCar.pnp || [];
-            const integrated = pnpList.filter(p => !p.endsWith('A') && !p.startsWith('DS-'));
+
+            const carSideList = pnpList.filter(p => !p.startsWith('DS-'));
+            const dspSideList = pnpList.filter(p => p.startsWith('DS-'));
+
+            const integrated = carSideList.filter(p => !p.endsWith('A'));
             const matchedInt = this.getMatchedIntegrated(this.selections['dsp'], integrated);
+
             if (matchedInt) {
                 this.selections['pnp'] = [matchedInt];
             } else {
-                const typeA = pnpList.filter(p => p.endsWith('A'));
-                const matchedB = this.getMatchedTypeB(this.selections['dsp']);
+                const typeA = carSideList.filter(p => p.endsWith('A'));
+                const matchedB = this.getMatchedTypeB(this.selections['dsp'], dspSideList);
                 this.selections['pnp'] = [...typeA, matchedB].filter(Boolean);
             }
         }
@@ -692,9 +697,11 @@ const EstimateUI = {
     },
 
     renderPnPSection(label, list, selectedDsp) {
+        // 'list' contains all PnP cables assigned to the selected car.
         const integrated = list.filter(p => !p.endsWith('A') && !p.startsWith('DS-'));
         const typeA = list.filter(p => p.endsWith('A'));
-        const typeB = list.filter(p => p.startsWith('DS-'));
+        const typeBLineup = list.filter(p => p.startsWith('DS-'));
+
         const matchedIntegrated = this.getMatchedIntegrated(selectedDsp, integrated);
 
         let html = `<div class="category-block">
@@ -716,7 +723,9 @@ const EstimateUI = {
                     <span style="color: #666;">₩${this.getProductPrice(p).toLocaleString()}</span>
                 </div>`;
             });
-            const matchedB = this.getMatchedTypeB(selectedDsp, typeB);
+
+            // Fix: pass the typeBLineup (DSP PnP lists assigned to car) to find the intersection
+            const matchedB = this.getMatchedTypeB(selectedDsp, typeBLineup);
             if (matchedB) {
                 html += `<div class="product-item selected">
                     <span>${matchedB} (B타입 자동)</span>
