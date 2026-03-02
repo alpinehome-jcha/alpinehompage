@@ -3054,8 +3054,8 @@ const initialProductData = [
     {
         "id": 1770598306432,
         "category": "PnP Cable - DSP",
-        "title": "DS-82B",
-        "desc": "C80-88 전용 PnP (6채널 + 2서브우퍼) / 케이블길이 1.5M",
+        "title": "DS-C80-4B",
+        "desc": "C80-88 전용 PnP / 전면4채널+후면2채널+서브우퍼2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 180000,
         "soldOut": false,
@@ -3064,7 +3064,7 @@ const initialProductData = [
             {
                 "id": 1771337235774.3003,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-C80-88.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-C80-4B.jpg"
             }
         ],
         "attachments": []
@@ -3441,7 +3441,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772430616531;
+const PRODUCT_DATA_VERSION = 1772430842153;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
