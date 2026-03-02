@@ -478,13 +478,28 @@
                         };
                     });
 
+                    // Fetch existing data so we can update by ID instead of relying on onConflict composite keys
+                    // which might not be set up in Supabase
+                    const { data: existingData } = await window.supabase.from('price_list').select('id, category, product_category, product');
+
+                    batchData.forEach(item => {
+                        const match = existingData && existingData.find(e =>
+                            e.category === item.category &&
+                            e.product_category === item.product_category &&
+                            e.product === item.product
+                        );
+                        if (match) {
+                            item.id = match.id; // Assign ID for update
+                        }
+                    });
+
                     // Upsert in batches for stability
                     const batchSize = 100;
                     for (let i = 0; i < batchData.length; i += batchSize) {
                         const batch = batchData.slice(i, i + batchSize);
                         const { error } = await window.supabase
                             .from('price_list')
-                            .upsert(batch, { onConflict: 'category,product_category,product' }); // Conflict resolution for updates
+                            .upsert(batch); // Removed onConflict since we supply IDs for existing
 
                         if (error) throw error;
                     }
