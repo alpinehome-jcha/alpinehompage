@@ -2990,8 +2990,8 @@ const initialProductData = [
     {
         "id": 1770598139412,
         "category": "PnP Cable - DSP",
-        "title": "DS-8B(S)",
-        "desc": "R80-8/R100-8 전용 PnP (8채널) / 케이블길이 30cm (시트하단 장착용 케이블)",
+        "title": "DS-R80-6B",
+        "desc": "R80-8/R100-8 전용 PnP (8채널) / 전면6채널+맥스 서브우퍼2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 130000,
         "soldOut": true,
@@ -3000,7 +3000,7 @@ const initialProductData = [
             {
                 "id": 1771337128417.741,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-R80-8.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-R80-6B.jpg"
             }
         ],
         "attachments": []
@@ -3431,7 +3431,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772429358609;
+const PRODUCT_DATA_VERSION = 1772429575577;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
