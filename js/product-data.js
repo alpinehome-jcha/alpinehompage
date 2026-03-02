@@ -3038,7 +3038,7 @@ const initialProductData = [
         "category": "PnP Cable - DSP",
         "title": "DS-X12-6B",
         "desc": " X120-8 전용 PnP (8채널) / 전면6채널+서브우퍼2채널용 / 케이블길이 1.5M",
-        "desc_bottom": "B타입 / DSP",
+        "desc_bottom": "B타입 / DSP측 케이블",
         "price": 130000,
         "soldOut": true,
         "image": "assets/images/DS-81B.jpg",
@@ -3441,7 +3441,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772430554485;
+const PRODUCT_DATA_VERSION = 1772430616531;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
