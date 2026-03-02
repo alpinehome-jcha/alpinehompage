@@ -3124,24 +3124,6 @@ const initialProductData = [
         "attachments": []
     },
     {
-        "id": 1770598605108,
-        "category": "PnP Cable - DSP",
-        "title": "DS-12B(S)",
-        "desc": "X121-12EV 전용 PnP (10채널+2서브우퍼) / 케이블길이 30cm (시트하단 장착용 케이블)",
-        "desc_bottom": "B타입 / DSP측 케이블",
-        "price": 180000,
-        "soldOut": true,
-        "image": "assets/images/DS-12B.jpg",
-        "detailBlocks": [
-            {
-                "id": 1771337309994.5417,
-                "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X121-12EV.jpg"
-            }
-        ],
-        "attachments": []
-    },
-    {
         "id": 1770598652512,
         "category": "PnP Cable - DSP",
         "title": "DS-14B",
@@ -3459,7 +3441,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772431946250;
+const PRODUCT_DATA_VERSION = 1772431955019;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
