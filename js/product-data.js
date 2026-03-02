@@ -2983,6 +2983,11 @@ const initialProductData = [
                 "id": 1771337107793.574,
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-R80-4B.jpg"
+            },
+            {
+                "id": 1772429950028.4207,
+                "type": "text",
+                "value": "출력 7번과 8번은 서브우퍼와 연결되어 있으므로 믹스설정에서 입력 1번과 2번을 출력 7번과 8번으로 연결시켜야함."
             }
         ],
         "attachments": []
@@ -3431,7 +3436,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772429936852;
+const PRODUCT_DATA_VERSION = 1772430009422;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
