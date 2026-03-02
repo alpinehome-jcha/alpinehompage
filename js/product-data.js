@@ -3108,8 +3108,8 @@ const initialProductData = [
     {
         "id": 1770598547088,
         "category": "PnP Cable - DSP",
-        "title": "DS-12B",
-        "desc": " X121-12EV 전용 PnP (10채널+2서브우퍼) / 케이블길이 1.5M",
+        "title": "DS-12EV-B",
+        "desc": " X121-12EV 전용 PnP / 전방8채널+후방2채널+서브우퍼2채널 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 130000,
         "soldOut": false,
@@ -3118,7 +3118,7 @@ const initialProductData = [
             {
                 "id": 1771337292448.3403,
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PXE-X121-12EV.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-12EV-B.jpg"
             }
         ],
         "attachments": []
@@ -3459,7 +3459,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772431580470;
+const PRODUCT_DATA_VERSION = 1772431946250;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
