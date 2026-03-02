@@ -3439,9 +3439,27 @@ const initialProductData = [
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/Universal%20Speaker%20Wire(2P).jpg",
         "detailBlocks": [],
         "attachments": []
+    },
+    {
+        "id": 1772431121062,
+        "category": "PnP Cable - DSP",
+        "title": "DS-C80-6B",
+        "desc": "C80-88 전용 PnP / 전면6채널+서브우퍼2채널용 / 케이블길이 1.5M",
+        "desc_bottom": "B타입 / DSP측 케이블",
+        "price": 180000,
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-82B-2.jpg",
+        "detailBlocks": [
+            {
+                "id": 1772431021599.1846,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-C80-6B.jpg"
+            }
+        ],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772430842153;
+const PRODUCT_DATA_VERSION = 1772431121066;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
