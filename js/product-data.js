@@ -2850,7 +2850,7 @@ const initialProductData = [
         "id": 1770597414437,
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "BY-2A",
-        "desc": "BYD Seal / Sealion7 앰프 / 케이블길이 1.5M",
+        "desc": "BYD Seal / Sealion7 9채널 앰프 / 케이블길이 1.5M",
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 300000,
         "soldOut": false,
@@ -2859,7 +2859,7 @@ const initialProductData = [
             {
                 "id": 1771042496645.0986,
                 "type": "text",
-                "value": "25년 이후 : 6채널 : Seal / Sealion7\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
+                "value": "25년 이후 : 9채널 : Seal / Sealion7\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
             },
             {
                 "id": 1772002323584.3276,
@@ -2940,7 +2940,7 @@ const initialProductData = [
         "desc": "[DS-M60-2B] M60-4전용 PnP (4채널) / 전면 4채널용 / 케이블길이1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 95000,
-        "soldOut": false,
+        "soldOut": true,
         "image": "assets/images/DS-4B.jpg",
         "detailBlocks": [
             {
@@ -2958,7 +2958,7 @@ const initialProductData = [
         "desc": "[DS-M60-4B] M60-4전용 PnP (4채널) / 전면 2채널, 후면 2채널용 / 케이블길이1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 95000,
-        "soldOut": true,
+        "soldOut": false,
         "image": "assets/images/DS-4B.jpg",
         "detailBlocks": [
             {
@@ -2976,7 +2976,7 @@ const initialProductData = [
         "desc": "R80-8/R100-8 전용 PnP (8채널) / 전면4채널+후면2채널+맥스 서브우퍼2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 130000,
-        "soldOut": false,
+        "soldOut": true,
         "image": "assets/images/DS-8B.jpg",
         "detailBlocks": [
             {
@@ -2999,7 +2999,7 @@ const initialProductData = [
         "desc": "R80-8/R100-8 전용 PnP (8채널) / 전면6채널+맥스 서브우퍼2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 130000,
-        "soldOut": true,
+        "soldOut": false,
         "image": "assets/images/DS-8B.jpg",
         "detailBlocks": [
             {
@@ -3022,7 +3022,7 @@ const initialProductData = [
         "desc": " X120-8 전용 PnP (8채널) /전면4채널+후면2채널+서브우퍼2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 130000,
-        "soldOut": false,
+        "soldOut": true,
         "image": "assets/images/DS-81B.jpg",
         "detailBlocks": [
             {
@@ -3040,7 +3040,7 @@ const initialProductData = [
         "desc": " X120-8 전용 PnP (8채널) / 전면6채널+서브우퍼2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 130000,
-        "soldOut": true,
+        "soldOut": false,
         "image": "assets/images/DS-81B.jpg",
         "detailBlocks": [
             {
@@ -3058,7 +3058,7 @@ const initialProductData = [
         "desc": "C80-88 전용 PnP / 전면4채널+후면2채널+서브우퍼2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 180000,
-        "soldOut": false,
+        "soldOut": true,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-82B-2.jpg",
         "detailBlocks": [
             {
@@ -3076,7 +3076,7 @@ const initialProductData = [
         "desc": "X120-10DP 전용 PnP /전방 6채널 + 후방 2채널 + 서브우퍼 2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 180000,
-        "soldOut": false,
+        "soldOut": true,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-10B-2.jpg",
         "detailBlocks": [
             {
@@ -3094,7 +3094,7 @@ const initialProductData = [
         "desc": "X120-10DP 전용 PnP /전방 8채널 + 서브우퍼 2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 180000,
-        "soldOut": true,
+        "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-10B-2.jpg",
         "detailBlocks": [
             {
@@ -3423,7 +3423,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772432021437;
+const PRODUCT_DATA_VERSION = 1772435979106;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
