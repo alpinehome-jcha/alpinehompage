@@ -494,6 +494,7 @@ function addPartnerMenu(role) {
     partnerLi.className = 'dropdown partner-item';
     let menuItems = `
             <li><a href="${prefix}price-list.html" class="dropdown-item">가격표</a></li>
+            <li><a href="${prefix}partner-board.html" class="dropdown-item">전용 게시판</a></li>
             <li><a href="${prefix}dealer-only.html" class="dropdown-item">전용 자료실</a></li>
     `;
 

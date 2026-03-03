@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알파인(ALPINE Korea)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* Board Styles */
+        .board-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .board-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #c0392b;
+            color: white;
+        }
+
+        .btn-warning {
+            background: #f1c40f;
+            color: #333;
+        }
+
+        /* Table */
+        .board-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .board-table th,
+        .board-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+
+        .board-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .board-table tr:hover {
+            background: #fcfcfc;
+        }
+
+        .board-title {
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .board-title:hover {
+            color: #e74c3c;
+        }
+
+        /* Write Form */
+        .write-form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* View */
+        .view-post {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .view-header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .view-title {
+            font-size: 1.5rem;
+            margin: 0 0 10px;
+        }
+
+        .view-meta {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .view-content {
+            min-height: 200px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            /* Preserve line breaks */
+        }
+    </style>
+    <link rel="icon" type="image/png" href="../assets/images/amark.png">
+    <link rel="shortcut icon" type="image/png" href="../assets/images/amark.png">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/images/alpine_logo.png" alt="ALPINE Korea">
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../pages/about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="../index.html" class="nav-link" data-i18n="nav_products">제품소개</a>
+                    </li>
+                    <li>
+                        <a href="../pages/dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link active" data-i18n="nav_support">고객지원</a>
+                        <ul class="dropdown-content">
+                            <li><a href="product.html" class="dropdown-item" data-i18n="nav_support_product">제품 자료실</a>
+                            </li>
+                            <li><a href="install.html" class="dropdown-item" data-i18n="nav_support_install">시공자료실</a>
+                            </li>
+                            <li><a href="promo.html" class="dropdown-item" data-i18n="nav_support_promo">홍보자료실</a></li>
+                        </ul>
+                    </li>
+                    <li class="social-icons">
+                        <a href="https://blog.naver.com/alpineaudio" target="_blank"><img
+                                src="../assets/images/icon-blog.png" alt="Naver Blog"></a>
+                        <a href="https://www.facebook.com/alpine.korea.2024/about" target="_blank"><img
+                                src="../assets/images/icon-facebook.png" alt="Facebook"></a>
+                        <a href="https://www.youtube.com/playlist?list=PLtdgCQUazuWKIcARYW_4QoysChyGhwivO"
+                            target="_blank"><img src="../assets/images/icon-youtube.png" alt="YouTube"></a>
+                        <a href="https://www.instagram.com/alpine_korea01/" target="_blank"><img
+                                src="../assets/images/icon-instagram.png" alt="Instagram"></a>
+                    </li>
+
+                    <li class="lang-item">
+                        <a href="#" class="lang-toggle" aria-label="Change Language">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-globe">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                            <span class="curr-lang">KO</span>
+                        </a>
+                    </li>
+                    <li class="auth-item">
+                        <a href="../pages/login.html" class="auth-link"
+                            style="margin-left: 15px; font-size: 0.9rem; color: #333; text-decoration: none;">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 100px;">
+        <h2 class="section-title">전용 게시판 (Partner Board)</h2>
+        <p class="section-desc">Exclusive board for authorized partners.</p>
+
+        <div id="accessDenied" style="display:none; text-align:center; color:red; margin-top:50px;">
+            <h3>Restricted Access</h3>
+            <p>Please login to view this content.</p>
+        </div>
+
+        <div id="contentArea" style="display:none;">
+            <!-- List View -->
+            <div id="boardListSection" class="board-container">
+                <div class="board-header">
+                    <h3>게시글 목록 (Recent Posts)</h3>
+                    <button id="btnWrite" class="btn btn-primary" onclick="openWrite()" style="display:none;">글쓰기
+                        (Write)</button>
+                </div>
+                <table class="board-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 60px;">No.</th>
+                            <th>Title</th>
+                            <th style="width: 120px;">Date</th>
+                            <th style="width: 100px;">Author</th>
+                        </tr>
+                    </thead>
+                    <tbody id="boardTableBody">
+                        <!-- Items rendered here -->
+                        <tr>
+                            <td colspan="4" style="text-align:center;">로딩 중...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Write View -->
+            <div id="boardWrite" class="board-container write-form">
+                <h3 id="writeTitle">새 글 작성 (New Post)</h3>
+                <input type="hidden" id="postId">
+                <div class="form-group">
+                    <label>제목 (Title)</label>
+                    <input type="text" id="postTitle" class="form-control" placeholder="Enter title">
+                </div>
+                <div class="form-group">
+                    <label>내용 (Content)</label>
+                    <textarea id="postContent" class="form-control" rows="15" placeholder="Enter content"></textarea>
+                </div>
+                <div style="text-align: right; margin-top:20px;">
+                    <button class="btn btn-secondary" onclick="cancelWrite()">취소</button>
+                    <button class="btn btn-primary" id="btnSavePost" onclick="savePost()">등록</button>
+                </div>
+            </div>
+
+            <!-- Detail View -->
+            <div id="boardView" class="board-container view-post">
+                <div class="view-header">
+                    <h2 id="viewTitle" class="view-title">Title</h2>
+                    <div class="view-meta">
+                        <span id="viewDate">Date</span> | Posted by <span id="viewAuthor">Admin</span>
+                    </div>
+                </div>
+                <div id="viewContent" class="view-content">Content</div>
+
+                <div style="text-align: right; margin-top:30px; border-top:1px solid #eee; padding-top:20px;">
+                    <button id="btnEdit" class="btn btn-warning" onclick="editPost()" style="display:none;">수정</button>
+                    <button id="btnDelete" class="btn btn-danger" onclick="deleteCurrentPost()"
+                        style="display:none;">삭제</button>
+                    <button class="btn btn-secondary" onclick="closeView()">목록으로</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="footer-container"></div>
+    <script src="../js/layout.js?v=20260212"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Layout.renderFooter('footer-container', '../');
+        });
+    </script>
+
+    <!-- Supabase SDK & Client Initialization -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-client.js"></script>
+
+    <script src="../js/auth.js?v=20260211"></script>
+    <script src="../js/i18n.js?v=20260211"></script>
+
+    <script>
+        const BOARD_ITEMS_PER_PAGE = 20;
+        let currentBoardPage = 1;
+        let posts = [];
+        let currentPostId = null;
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Check Auth First (Ensures auth.isLoggedIn flag works properly)
+            // Sometimes sessionStorage isn't fully ready immediately, but auth check should be.
+            if (!sessionStorage.getItem('isLoggedIn') || sessionStorage.getItem('isLoggedIn') !== 'true') {
+                document.getElementById('accessDenied').style.display = 'block';
+                // Try delaying redirect to avoid flash
+                setTimeout(() => auth.checkAuthAndRedirect(), 1000);
+                return;
+            }
+            document.getElementById('contentArea').style.display = 'block';
+
+            // Admin Only Buttons
+            const role = sessionStorage.getItem('userRole');
+            if (role === 'admin') {
+                document.getElementById('btnWrite').style.display = 'block';
+            }
+
+            // Load Data from Supabase
+            await fetchPosts();
+
+            // Initial Routing
+            handleRouting();
+
+            // Handle Hash Change
+            window.addEventListener('hashchange', handleRouting);
+        });
+
+        async function fetchPosts() {
+            if (!window.supabase) {
+                console.error("Supabase client not found.");
+                return;
+            }
+
+            const { data, error } = await window.supabase
+                .from('partner_board')
+                .select('*')
+                .order('created_at', { ascending: false });
+
+            if (error) {
+                console.error('Error fetching partner board posts:', error);
+                alert("게시글을 불러오는데 실패했습니다.");
+                posts = [];
+            } else {
+                posts = data || [];
+            }
+            renderBoard(currentBoardPage);
+        }
+
+        function handleRouting() {
+            const hash = window.location.hash;
+
+            // View Post Mode
+            if (hash.startsWith('#view-')) {
+                const id = parseInt(hash.replace('#view-', ''));
+                if (!isNaN(id)) {
+                    viewPost(id, false); // false = don't set hash again
+                    return;
+                }
+            }
+
+            // Default (List Mode)
+            document.getElementById('boardListSection').style.display = 'block';
+            document.getElementById('boardView').style.display = 'none';
+            document.getElementById('boardWrite').style.display = 'none';
+        }
+
+        // --- Render ---
+        function renderBoard(page = 1) {
+            currentBoardPage = page;
+            const tbody = document.getElementById('boardTableBody');
+            tbody.innerHTML = '';
+
+            const totalItems = posts.length;
+
+            if (totalItems === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">등록된 게시글이 없습니다.</td></tr>';
+                return;
+            }
+
+            const totalPages = Math.ceil(totalItems / BOARD_ITEMS_PER_PAGE);
+            const start = (page - 1) * BOARD_ITEMS_PER_PAGE;
+            const end = start + BOARD_ITEMS_PER_PAGE;
+            const paginatedPosts = posts.slice(start, end);
+
+            paginatedPosts.forEach((post, index) => {
+                const tr = document.createElement('tr');
+                const displayNum = totalItems - ((page - 1) * BOARD_ITEMS_PER_PAGE) - index;
+                const d = new Date(post.created_at);
+                const dateStr = d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                tr.innerHTML = `
+                    <td>${displayNum}</td>
+                    <td><span class="board-title" onclick="viewPost(${post.id})">${post.title}</span></td>
+                    <td>${dateStr}</td>
+                    <td>${post.author}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Render Pagination
+            let pDiv = document.getElementById('boardPagination');
+            if (!pDiv) {
+                pDiv = document.createElement('div');
+                pDiv.id = 'boardPagination';
+                pDiv.style.textAlign = 'center';
+                pDiv.style.marginTop = '20px';
+                document.getElementById('boardListSection').appendChild(pDiv);
+            }
+
+            if (totalPages > 1) {
+                let pHtml = '';
+                // Prev
+                if (page > 1) pHtml += `<button class="btn btn-secondary btn-sm" onclick="renderBoard(${page - 1})" style="margin-right:5px;">&lt;</button>`;
+
+                // Numbers
+                for (let i = 1; i <= totalPages; i++) {
+                    const activeStyle = (i === page) ? 'background:#e74c3c; color:white; border:none;' : 'background:#fff; border:1px solid #ddd; color:#333;';
+                    pHtml += `<button onclick="renderBoard(${i})" style="padding:5px 10px; margin:0 2px; border-radius:4px; cursor:pointer; ${activeStyle}">${i}</button>`;
+                }
+
+                // Next
+                if (page < totalPages) pHtml += `<button class="btn btn-secondary btn-sm" onclick="renderBoard(${page + 1})" style="margin-left:5px;">&gt;</button>`;
+
+                pDiv.innerHTML = pHtml;
+            } else {
+                pDiv.innerHTML = '';
+            }
+        }
+
+        // --- Write ---
+        let isEditMode = false;
+
+        function openWrite() {
+            isEditMode = false;
+            currentPostId = null;
+            document.getElementById('writeTitle').innerText = "새 글 작성 (New Post)";
+
+            document.getElementById('boardListSection').style.display = 'none';
+            document.getElementById('boardView').style.display = 'none';
+            document.getElementById('boardWrite').style.display = 'block';
+
+            // Reset Form
+            document.getElementById('postId').value = '';
+            document.getElementById('postTitle').value = '';
+            document.getElementById('postContent').value = '';
+            document.getElementById('btnSavePost').innerText = "등록";
+
+            const btnSave = document.getElementById('btnSavePost');
+            btnSave.disabled = false;
+        }
+
+        function editPost() {
+            if (sessionStorage.getItem('userRole') !== 'admin') return;
+            const post = posts.find(p => p.id === currentPostId);
+            if (!post) return;
+
+            isEditMode = true;
+            document.getElementById('writeTitle').innerText = "글 수정 (Edit Post)";
+
+            // Fill Form
+            document.getElementById('postId').value = post.id;
+            document.getElementById('postTitle').value = post.title;
+            document.getElementById('postContent').value = post.content;
+            document.getElementById('btnSavePost').innerText = "수정";
+
+            document.getElementById('boardView').style.display = 'none';
+            document.getElementById('boardWrite').style.display = 'block';
+
+            const btnSave = document.getElementById('btnSavePost');
+            btnSave.disabled = false;
+        }
+
+        function cancelWrite() {
+            document.getElementById('boardWrite').style.display = 'none';
+            if (isEditMode && currentPostId) {
+                document.getElementById('boardView').style.display = 'block';
+            } else {
+                document.getElementById('boardListSection').style.display = 'block';
+            }
+        }
+
+        async function savePost() {
+            if (sessionStorage.getItem('userRole') !== 'admin') {
+                alert('관리자만 작성할 수 있습니다. (Access Denied)');
+                return;
+            }
+
+            const title = document.getElementById('postTitle').value.trim();
+            const content = document.getElementById('postContent').value.trim();
+            const pId = document.getElementById('postId').value;
+            const author = sessionStorage.getItem('dealerName') || '관리자';
+
+            if (!title) { alert('제목을 입력하세요.'); return; }
+            if (!content) { alert('내용을 입력하세요.'); return; }
+
+            const btnSave = document.getElementById('btnSavePost');
+            btnSave.disabled = true;
+            btnSave.innerText = "저장 중...";
+
+            try {
+                if (isEditMode && pId) {
+                    // Update
+                    const { error } = await window.supabase
+                        .from('partner_board')
+                        .update({
+                            title: title,
+                            content: content,
+                            updated_at: new Date().toISOString()
+                        })
+                        .eq('id', pId);
+
+                    if (error) throw error;
+                    alert('수정되었습니다.');
+                } else {
+                    // Insert
+                    const { error } = await window.supabase
+                        .from('partner_board')
+                        .insert([{
+                            title: title,
+                            content: content,
+                            author: author
+                        }]);
+
+                    if (error) throw error;
+                    alert('등록되었습니다.');
+                }
+
+                await fetchPosts();
+                cancelWrite();
+
+            } catch (err) {
+                console.error("Save error:", err);
+                alert("저장 중 오류가 발생했습니다: " + err.message);
+                btnSave.disabled = false;
+                btnSave.innerText = isEditMode ? "수정" : "등록";
+            }
+        }
+
+        // --- View ---
+        function viewPost(id, updateHash = true) {
+            const post = posts.find(p => p.id === id);
+            if (!post) {
+                if (!updateHash) handleRouting();
+                return;
+            }
+            currentPostId = id;
+
+            if (updateHash) {
+                window.location.hash = 'view-' + id;
+                return;
+            }
+
+            document.getElementById('boardListSection').style.display = 'none';
+            document.getElementById('boardWrite').style.display = 'none';
+            const view = document.getElementById('boardView');
+            view.style.display = 'block';
+
+            document.getElementById('viewTitle').textContent = post.title;
+            const d = new Date(post.created_at);
+            document.getElementById('viewDate').textContent = d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('viewAuthor').textContent = post.author;
+            // set textContent to prevent XSS but allow pre-wrap to show newlines
+            document.getElementById('viewContent').textContent = post.content;
+
+            // Admin Buttons
+            if (sessionStorage.getItem('userRole') === 'admin') {
+                document.getElementById('btnEdit').style.display = 'inline-block';
+                document.getElementById('btnDelete').style.display = 'inline-block';
+            } else {
+                document.getElementById('btnEdit').style.display = 'none';
+                document.getElementById('btnDelete').style.display = 'none';
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function closeView() {
+            window.location.hash = '';
+        }
+
+        async function deleteCurrentPost() {
+            if (!confirm('정말 삭제하시겠습니까?')) return;
+
+            try {
+                const { error } = await window.supabase
+                    .from('partner_board')
+                    .delete()
+                    .eq('id', currentPostId);
+
+                if (error) throw error;
+
+                alert('삭제되었습니다.');
+                await fetchPosts();
+                closeView();
+            } catch (err) {
+                console.error("Delete error:", err);
+                alert("삭제 중 오류가 발생했습니다: " + err.message);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
