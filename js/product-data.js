@@ -1946,7 +1946,7 @@ const initialProductData = [
         "desc": "2.5\" Midrange Speaker Set (테두리 68mm * 두께 40mm)",
         "desc_bottom": "장착 공임 별도/20만원 부터",
         "price": 250000,
-        "soldOut": true,
+        "soldOut": false,
         "image": "assets/images/DPS-25.jpg",
         "detailBlocks": [
             {
@@ -3423,7 +3423,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772439257071;
+const PRODUCT_DATA_VERSION = 1772613252621;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
