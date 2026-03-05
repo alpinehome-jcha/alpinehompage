@@ -2662,7 +2662,7 @@ const initialEstimateData = [
             "HK-12A"
         ],
         "front_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "front_baffle": [
@@ -2915,7 +2915,7 @@ const initialEstimateData = [
             "HK-12A"
         ],
         "front_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "front_baffle": [
@@ -3242,7 +3242,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "rear_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
@@ -3362,7 +3362,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "rear_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
@@ -3544,7 +3544,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "rear_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
@@ -3599,7 +3599,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "rear_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
@@ -3659,7 +3659,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "rear_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
@@ -3719,7 +3719,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "rear_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
@@ -3777,7 +3777,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "rear_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
@@ -3895,7 +3895,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "rear_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
@@ -4013,7 +4013,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "rear_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
@@ -4131,7 +4131,7 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "rear_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
@@ -4704,7 +4704,7 @@ const initialEstimateData = [
             "HK-23A"
         ],
         "front_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "front_baffle": [
@@ -4824,7 +4824,7 @@ const initialEstimateData = [
             "HK-24A"
         ],
         "front_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "front_baffle": [
@@ -4948,7 +4948,7 @@ const initialEstimateData = [
             "HK-21A"
         ],
         "front_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "front_baffle": [
@@ -5072,7 +5072,7 @@ const initialEstimateData = [
             "HK-21A"
         ],
         "front_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "front_baffle": [
@@ -5132,7 +5132,7 @@ const initialEstimateData = [
             "HK-19A"
         ],
         "front_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "front_baffle": [
@@ -5192,7 +5192,7 @@ const initialEstimateData = [
             "HK-20A"
         ],
         "front_door": [
-            "DP2-65C+DPS-25M",
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
             "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "front_baffle": [
@@ -9221,7 +9221,7 @@ const initialEstimateData = [
         "surround": []
     }
 ];
-const ESTIMATE_DATA_VERSION = 1772684276054;
+const ESTIMATE_DATA_VERSION = 1772684561006;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
