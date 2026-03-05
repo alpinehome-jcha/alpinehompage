@@ -15,6 +15,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -28,7 +32,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -38,10 +41,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -60,17 +61,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -88,6 +81,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -101,7 +97,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -111,10 +106,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -133,16 +126,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -160,6 +146,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -173,7 +163,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -183,10 +172,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -205,17 +192,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -233,6 +212,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -246,7 +228,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -256,10 +237,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -278,16 +257,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -305,6 +277,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -318,7 +294,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -328,10 +303,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -350,17 +323,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -378,6 +343,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -391,7 +359,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -401,10 +368,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -423,16 +388,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -450,6 +408,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -463,7 +425,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -473,10 +434,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -495,17 +454,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -523,6 +474,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -536,7 +491,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -546,10 +500,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -568,17 +520,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -594,6 +538,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-16A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -607,7 +554,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -617,8 +563,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -636,16 +580,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-16A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -663,6 +600,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -676,7 +617,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -686,10 +626,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -708,17 +646,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -736,6 +666,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -749,7 +682,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -759,10 +691,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -781,16 +711,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -808,6 +731,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -821,7 +747,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -831,10 +756,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -853,16 +776,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -880,6 +796,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -893,7 +813,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -903,10 +822,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -925,17 +842,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -953,6 +862,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-104",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -966,7 +879,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -976,10 +888,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -998,17 +908,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -1026,6 +928,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -1039,7 +945,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -1049,10 +954,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1071,17 +974,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -1097,16 +992,17 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-12A"
+        ],
         "front_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -1115,12 +1011,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -1139,16 +1029,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-12A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -1166,6 +1054,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -1179,7 +1071,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -1189,10 +1080,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1211,17 +1100,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -1239,6 +1120,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-104",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -1252,7 +1137,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -1262,10 +1146,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1284,17 +1166,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -1310,6 +1184,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-16A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -1323,7 +1200,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -1333,8 +1209,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -1352,16 +1226,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-16A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -1379,6 +1246,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -1392,7 +1263,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -1402,10 +1272,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1424,17 +1292,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -1452,6 +1312,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-104",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -1465,7 +1329,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -1475,10 +1338,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1497,17 +1358,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -1523,6 +1376,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-16A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -1536,7 +1392,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -1546,8 +1401,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -1565,16 +1418,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-16A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -1592,6 +1438,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-104",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -1605,7 +1455,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -1615,10 +1464,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1637,17 +1484,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "add_front": [],
+        "surround": []
     },
     {
         "brand": "현대자동차",
@@ -1663,16 +1502,17 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-12A"
+        ],
         "front_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -1681,12 +1521,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -1705,16 +1539,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-12A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -1732,6 +1564,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -1745,7 +1580,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -1755,10 +1589,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1777,16 +1609,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -1804,6 +1629,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -1817,7 +1646,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -1827,10 +1655,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1849,17 +1675,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -1875,16 +1693,17 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-13A"
+        ],
         "front_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -1893,12 +1712,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -1917,16 +1730,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-13A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -1944,6 +1755,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-106",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -1957,7 +1772,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -1967,10 +1781,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -1989,17 +1801,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-106",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -2015,16 +1819,18 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-107",
+            "HK-12A"
+        ],
         "front_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -2033,12 +1839,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -2057,17 +1857,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-107",
-            "HK-12A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -2085,6 +1882,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -2098,7 +1898,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -2108,10 +1907,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2130,16 +1927,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -2157,6 +1947,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -2170,7 +1963,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -2180,10 +1972,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2202,16 +1992,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -2229,6 +2012,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -2242,7 +2029,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -2252,10 +2038,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2274,17 +2058,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -2302,6 +2078,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -2315,7 +2095,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -2325,10 +2104,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2347,17 +2124,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -2375,6 +2144,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-104",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -2388,7 +2161,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -2398,10 +2170,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2420,17 +2190,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -2446,6 +2208,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-16A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -2459,7 +2224,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -2469,8 +2233,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -2488,16 +2250,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-16A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -2515,6 +2270,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -2528,7 +2287,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -2538,10 +2296,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2560,17 +2316,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -2588,6 +2336,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -2601,7 +2353,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -2611,10 +2362,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2633,17 +2382,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -2661,6 +2402,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-104",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -2674,7 +2419,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -2684,10 +2428,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2706,17 +2448,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -2732,6 +2466,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-16A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -2745,7 +2482,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -2755,8 +2491,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -2774,16 +2508,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-16A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -2801,6 +2528,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -2814,7 +2545,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -2824,10 +2554,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2846,17 +2574,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -2874,6 +2594,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-104",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -2887,7 +2611,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -2897,10 +2620,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -2919,17 +2640,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -2945,16 +2658,17 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-12A"
+        ],
         "front_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -2963,12 +2677,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -2987,16 +2695,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-12A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -3014,6 +2720,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -3027,7 +2737,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -3037,10 +2746,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -3059,17 +2766,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -3085,6 +2784,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-15"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -3098,7 +2800,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -3107,12 +2808,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -3131,16 +2826,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-15",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -3158,6 +2850,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-104",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -3171,7 +2867,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -3181,8 +2876,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -3200,17 +2893,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -3226,16 +2911,17 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-12A"
+        ],
         "front_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -3244,12 +2930,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -3268,16 +2948,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-12A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -3295,6 +2973,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -3308,7 +2990,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -3318,10 +2999,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -3340,17 +3019,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -3368,6 +3039,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -3381,7 +3056,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -3391,10 +3065,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -3413,17 +3085,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "현대자동차",
@@ -3441,6 +3105,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-104",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -3454,7 +3122,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -3464,10 +3131,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -3486,17 +3151,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "제네시스",
@@ -3512,6 +3169,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -3525,7 +3185,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -3535,8 +3194,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -3554,16 +3211,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "GE-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "제네시스",
@@ -3579,30 +3229,25 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE-3A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -3621,16 +3266,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "GE-3A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "제네시스",
@@ -3646,6 +3289,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE-7A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -3659,7 +3305,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -3669,8 +3314,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -3688,16 +3331,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "GE-7A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "제네시스",
@@ -3713,30 +3349,25 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE-8A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -3755,16 +3386,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "GE-8A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "제네시스",
@@ -3780,6 +3409,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE-203",
+            "GE-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -3793,7 +3426,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -3803,8 +3435,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -3822,17 +3452,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "GE-203",
-            "GE-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "제네시스",
@@ -3848,6 +3470,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -3861,7 +3486,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -3871,8 +3495,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -3890,16 +3512,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "GE-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "제네시스",
@@ -3915,6 +3530,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE-6A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
@@ -3925,17 +3543,14 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -3953,16 +3568,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 1000000,
-        "pnp": [
-            "GE-6A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "surround": [],
+        "add_front": [],
+        "center": []
     },
     {
         "brand": "제네시스",
@@ -3978,30 +3586,25 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE11A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -4020,16 +3623,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "GE11A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "제네시스",
@@ -4045,30 +3646,25 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE11A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -4087,16 +3683,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "GE11A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "제네시스",
@@ -4112,28 +3706,25 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE-9A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -4152,16 +3743,12 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "GE-9A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": [],
+        "center": []
     },
     {
         "brand": "제네시스",
@@ -4177,28 +3764,25 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE-10A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -4217,16 +3801,12 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "GE-10A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": [],
+        "center": []
     },
     {
         "brand": "제네시스",
@@ -4242,6 +3822,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -4255,7 +3838,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -4265,8 +3847,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -4284,16 +3864,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "GE-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "제네시스",
@@ -4309,28 +3882,25 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE-6A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -4349,16 +3919,12 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "GE-6A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": [],
+        "center": []
     },
     {
         "brand": "제네시스",
@@ -4374,6 +3940,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -4387,7 +3956,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -4397,8 +3965,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -4416,16 +3982,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "GE-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "제네시스",
@@ -4441,28 +4000,25 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE-6A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -4481,16 +4037,12 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "GE-6A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": [],
+        "center": []
     },
     {
         "brand": "제네시스",
@@ -4506,6 +4058,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -4519,7 +4074,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -4529,8 +4083,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -4548,16 +4100,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "GE-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "제네시스",
@@ -4573,28 +4118,25 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "GE-6A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -4613,16 +4155,12 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "GE-6A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": [],
+        "center": []
     },
     {
         "brand": "기아자동차",
@@ -4640,6 +4178,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -4653,7 +4194,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -4663,10 +4203,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -4685,16 +4223,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -4712,6 +4243,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -4725,7 +4260,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -4735,10 +4269,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -4757,17 +4289,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -4785,6 +4309,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -4798,7 +4325,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -4808,10 +4334,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -4830,16 +4354,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -4857,6 +4374,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -4870,7 +4390,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -4880,10 +4399,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -4902,16 +4419,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -4929,6 +4439,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -4942,7 +4456,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -4952,10 +4465,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -4974,17 +4485,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -5002,6 +4505,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -5015,7 +4521,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -5025,10 +4530,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -5047,16 +4550,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -5074,6 +4570,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -5087,7 +4587,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -5097,10 +4596,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -5119,17 +4616,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -5147,6 +4636,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-104",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -5160,7 +4653,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -5170,10 +4662,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -5192,17 +4682,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -5218,16 +4700,17 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-23A"
+        ],
         "front_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -5236,12 +4719,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -5260,16 +4737,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-23A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -5285,6 +4760,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-23A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -5298,7 +4776,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -5308,8 +4785,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -5327,16 +4802,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-23A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -5352,16 +4820,17 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-24A"
+        ],
         "front_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -5370,12 +4839,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -5394,16 +4857,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-24A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -5419,6 +4880,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -5432,7 +4897,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -5442,10 +4906,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -5464,17 +4926,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -5490,16 +4944,17 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-21A"
+        ],
         "front_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -5508,12 +4963,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -5532,16 +4981,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-21A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -5557,6 +5004,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -5570,7 +5021,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -5580,10 +5030,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -5602,17 +5050,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -5628,16 +5068,17 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-21A"
+        ],
         "front_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -5646,12 +5087,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -5670,16 +5105,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-21A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -5695,16 +5128,17 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-19A"
+        ],
         "front_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -5713,12 +5147,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -5737,16 +5165,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-19A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -5762,16 +5188,17 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-20A"
+        ],
         "front_door": [
             "DP2-65C+DPS-25M",
-            "S2-S65C+DPS-25M"
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -5780,12 +5207,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -5804,16 +5225,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-20A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -5831,6 +5250,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -5844,7 +5266,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -5854,10 +5275,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -5876,16 +5295,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -5903,78 +5315,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
-        "front_door": [
-            "DM-65C",
-            "S2-S65C",
-            "DP2-65C",
-            "HDZ-65C"
-        ],
-        "tweeter": [
-            "Status Tweeter Chamber"
-        ],
-        "front_baffle": [
-            "현대/기아 6.5\" 배플",
-            "커스텀 배플"
-        ],
-        "add_front": [],
-        "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
-        ],
-        "rear_baffle": [
-            "현대/기아 6.5\" 배플",
-            "커스텀 배플"
-        ],
-        "center": [],
-        "surround": [],
-        "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
-            "S2-W8D4 (외장박스 포함)",
-            "S2-W10D2 (외장박스 포함)",
-            "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)",
-            "HDZ-W10"
-        ],
-        "amp_4ch": [
-            "R2-A60F",
-            "HDA-F60"
-        ],
-        "amp_sub": [
-            "S2-A60M",
-            "HDA-F60"
-        ],
-        "player": [
-            "HDS-990"
-        ],
-        "extraLabor": 0,
         "pnp": [
             "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
-    },
-    {
-        "brand": "기아자동차",
-        "model": "EV3",
-        "year": "24년 이후",
-        "code": "SP3",
-        "system": "4채널 자출",
-        "dsp": [
-            "PXE-M60-4",
-            "PXE-R80-8",
-            "PXE-R100-8",
-            "PXE-X120-8",
-            "PXE-C80-88",
-            "PXE-X120-10DP",
-            "PXE-X121-12EV",
-            "HDP-D90"
+            "HK-1A"
         ],
         "front_door": [
             "DM-65C",
@@ -5989,7 +5332,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -5999,10 +5341,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6021,90 +5361,15 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
         "model": "EV3",
         "year": "24년 이후",
         "code": "SP3",
-        "system": "7채널(스탠다드)",
-        "dsp": [
-            "PXE-R100-8",
-            "PXE-X120-8",
-            "PXE-C80-88",
-            "PXE-X120-10DP",
-            "PXE-X121-12EV",
-            "HDP-D90"
-        ],
-        "front_door": [
-            "DM-65C",
-            "S2-S65C",
-            "DP2-65C",
-            "HDZ-65C"
-        ],
-        "tweeter": [
-            "Status Tweeter Chamber"
-        ],
-        "front_baffle": [
-            "현대/기아 6.5\" 배플",
-            "커스텀 배플"
-        ],
-        "add_front": [],
-        "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
-        ],
-        "rear_baffle": [
-            "현대/기아 6.5\" 배플",
-            "커스텀 배플"
-        ],
-        "center": [],
-        "surround": [],
-        "subwoofer": [
-            "S2-W12D2 (외장박스 포함)",
-            "RS-W10D2 (외장박스 포함)",
-            "HDZ-W10"
-        ],
-        "amp_4ch": [
-            "R2-A60F",
-            "HDA-F60"
-        ],
-        "amp_sub": [
-            "S2-A60M",
-            "HDA-F60"
-        ],
-        "player": [
-            "HDS-990"
-        ],
-        "extraLabor": 0,
-        "pnp": [
-            "HK-28A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
-    },
-    {
-        "brand": "기아자동차",
-        "model": "EV5",
-        "year": "25년 이후",
-        "code": "OV1",
         "system": "4채널 자출",
         "dsp": [
             "PXE-M60-4",
@@ -6116,6 +5381,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-104",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -6129,7 +5398,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -6139,10 +5407,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6161,23 +5427,15 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
-        "model": "EV5",
-        "year": "25년 이후",
-        "code": "OV1",
+        "model": "EV3",
+        "year": "24년 이후",
+        "code": "SP3",
         "system": "7채널(스탠다드)",
         "dsp": [
             "PXE-R100-8",
@@ -6186,6 +5444,9 @@ const initialEstimateData = [
             "PXE-X120-10DP",
             "PXE-X121-12EV",
             "HDP-D90"
+        ],
+        "pnp": [
+            "HK-28A"
         ],
         "front_door": [
             "DM-65C",
@@ -6200,7 +5461,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -6210,8 +5470,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -6229,16 +5487,135 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "center": [],
+        "surround": [],
+        "add_front": []
+    },
+    {
+        "brand": "기아자동차",
+        "model": "EV5",
+        "year": "25년 이후",
+        "code": "OV1",
+        "system": "4채널 자출",
+        "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
         "pnp": [
-            "HK-28A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+            "HK-104",
+            "HK-2A"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "현대/기아 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "현대/기아 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "extraLabor": 0,
+        "center": [],
+        "surround": [],
+        "add_front": []
+    },
+    {
+        "brand": "기아자동차",
+        "model": "EV5",
+        "year": "25년 이후",
+        "code": "OV1",
+        "system": "7채널(스탠다드)",
+        "dsp": [
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "pnp": [
+            "HK-28A"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "현대/기아 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "현대/기아 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "subwoofer": [
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "extraLabor": 0,
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -6256,6 +5633,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -6269,7 +5650,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -6279,10 +5659,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6301,17 +5679,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -6327,17 +5697,18 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-28A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -6346,12 +5717,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -6370,16 +5735,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-28A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -6397,6 +5760,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-104",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -6410,7 +5777,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -6420,10 +5786,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6442,17 +5806,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -6468,17 +5824,18 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-28A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -6487,12 +5844,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -6511,16 +5862,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-28A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -6538,6 +5887,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -6551,7 +5904,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -6561,10 +5913,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6583,17 +5933,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -6611,6 +5953,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -6624,7 +5970,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -6634,10 +5979,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6656,17 +5999,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -6684,6 +6019,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -6697,7 +6036,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -6707,10 +6045,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6729,17 +6065,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -6757,6 +6085,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -6770,7 +6102,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -6780,10 +6111,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6802,17 +6131,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -6830,6 +6151,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-104",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -6843,7 +6168,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -6853,10 +6177,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6875,17 +6197,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -6903,6 +6217,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -6916,7 +6234,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -6926,10 +6243,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -6948,17 +6263,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -6976,6 +6283,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -6989,7 +6300,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -6999,10 +6309,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -7021,17 +6329,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -7047,6 +6347,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-26A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -7060,7 +6363,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -7070,8 +6372,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -7089,16 +6389,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-26A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -7114,17 +6407,18 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-23A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -7133,12 +6427,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -7157,16 +6445,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-23A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -7184,6 +6470,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -7197,7 +6487,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -7207,10 +6496,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -7229,17 +6516,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -7257,6 +6536,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -7270,7 +6553,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -7280,10 +6562,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -7302,17 +6582,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -7328,17 +6600,18 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-23A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -7347,12 +6620,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -7371,16 +6638,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-23A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -7398,6 +6663,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -7411,7 +6679,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -7421,10 +6688,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -7443,16 +6708,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -7468,17 +6726,18 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-24A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -7487,12 +6746,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -7511,16 +6764,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-24A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -7538,6 +6789,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -7551,7 +6806,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -7561,10 +6815,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -7583,17 +6835,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -7609,6 +6853,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -7622,7 +6870,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -7632,10 +6879,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -7654,17 +6899,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -7680,6 +6917,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-104",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -7693,7 +6934,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -7703,8 +6943,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -7722,17 +6960,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -7748,17 +6978,18 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-23A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -7767,12 +6998,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -7791,16 +7016,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-23A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -7816,17 +7039,18 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-14A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -7835,12 +7059,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
-        ],
-        "center": [
-            "DPS-25M"
-        ],
-        "surround": [
-            "DPS-25M"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -7859,16 +7077,14 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "HK-14A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -7886,6 +7102,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-104",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -7899,7 +7119,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -7909,10 +7128,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -7931,17 +7148,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -7957,6 +7166,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-28A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -7970,7 +7182,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -7980,8 +7191,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -7999,16 +7208,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-28A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -8026,6 +7228,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -8039,7 +7245,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -8049,10 +7254,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -8071,17 +7274,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "기아자동차",
@@ -8099,6 +7294,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-104",
+            "HK-2A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -8112,7 +7311,6 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -8122,10 +7320,8 @@ const initialEstimateData = [
             "현대/기아 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -8144,17 +7340,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "BENZ",
@@ -8172,16 +7360,17 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "BZ-501",
+            "BZ-1A"
+        ],
         "front_door": [],
         "tweeter": [],
         "front_baffle": [],
-        "add_front": [],
         "rear_door": [],
         "rear_baffle": [],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -8200,17 +7389,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "BZ-501",
-            "BZ-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "BENZ",
@@ -8226,14 +7407,15 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "BZ-502",
+            "BZ-2A"
+        ],
         "front_door": [],
         "tweeter": [],
         "front_baffle": [],
-        "add_front": [],
         "rear_door": [],
         "rear_baffle": [],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -8251,17 +7433,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "BZ-502",
-            "BZ-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "BENZ",
@@ -8277,14 +7451,15 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "BZ-503",
+            "BZ-3A"
+        ],
         "front_door": [],
         "tweeter": [],
         "front_baffle": [],
-        "add_front": [],
         "rear_door": [],
         "rear_baffle": [],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -8302,17 +7477,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 1000000,
-        "pnp": [
-            "BZ-503",
-            "BZ-3A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "BMW",
@@ -8328,21 +7495,19 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "BM-401"
+        ],
         "front_door": [
             "DP2-45C-B"
         ],
         "tweeter": [],
         "front_baffle": [],
-        "add_front": [],
         "rear_door": [
             "DP2-45C-B",
             "DP2-45-B"
         ],
         "rear_baffle": [],
-        "center": [
-            "DP2-40C-B"
-        ],
-        "surround": [],
         "subwoofer": [
             "DP2-80WF-B"
         ],
@@ -8358,16 +7523,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 1000000,
-        "pnp": [
-            "BM-401",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DP2-40C-B"
+        ],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "BMW",
@@ -8383,21 +7543,20 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "BM-402",
+            "BM-1A"
+        ],
         "front_door": [
             "DP2-45C-B"
         ],
         "tweeter": [],
         "front_baffle": [],
-        "add_front": [],
         "rear_door": [
             "DP2-45C-B",
             "DP2-45-B"
         ],
         "rear_baffle": [],
-        "center": [
-            "DP2-40C-B"
-        ],
-        "surround": [],
         "subwoofer": [
             "DP2-80WF-B"
         ],
@@ -8413,17 +7572,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 1000000,
-        "pnp": [
-            "BM-402",
-            "BM-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DP2-40C-B"
+        ],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "BMW",
@@ -8439,21 +7592,20 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "BM-402",
+            "BM-1A"
+        ],
         "front_door": [
             "DP2-45C-B"
         ],
         "tweeter": [],
         "front_baffle": [],
-        "add_front": [],
         "rear_door": [
             "DP2-45C-B",
             "DP2-45-B"
         ],
         "rear_baffle": [],
-        "center": [
-            "DP2-40C-B"
-        ],
-        "surround": [],
         "subwoofer": [
             "DP2-80WF-B"
         ],
@@ -8469,17 +7621,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 1000000,
-        "pnp": [
-            "BM-402",
-            "BM-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DP2-40C-B"
+        ],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "BMW",
@@ -8495,21 +7641,20 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "BM-403",
+            "BM-2A"
+        ],
         "front_door": [
             "DP2-45C-B"
         ],
         "tweeter": [],
         "front_baffle": [],
-        "add_front": [],
         "rear_door": [
             "DP2-45C-B",
             "DP2-45-B"
         ],
         "rear_baffle": [],
-        "center": [
-            "DP2-40C-B"
-        ],
-        "surround": [],
         "subwoofer": [
             "DP2-80WF-B"
         ],
@@ -8525,17 +7670,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 1500000,
-        "pnp": [
-            "BM-403",
-            "BM-2A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DP2-40C-B"
+        ],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "BMW",
@@ -8551,21 +7690,20 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "BM-403",
+            "BM-2A"
+        ],
         "front_door": [
             "DP2-45C-B"
         ],
         "tweeter": [],
         "front_baffle": [],
-        "add_front": [],
         "rear_door": [
             "DP2-45C-B",
             "DP2-45-B"
         ],
         "rear_baffle": [],
-        "center": [
-            "DP2-40C-B"
-        ],
-        "surround": [],
         "subwoofer": [
             "DP2-80WF-B"
         ],
@@ -8581,17 +7719,11 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 1500000,
-        "pnp": [
-            "BM-403",
-            "BM-2A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DP2-40C-B"
+        ],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "Audi",
@@ -8607,6 +7739,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "AU-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -8619,7 +7754,6 @@ const initialEstimateData = [
         "front_baffle": [
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -8628,8 +7762,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -8647,16 +7779,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "AU-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "Volkswagen",
@@ -8674,6 +7799,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "VW-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -8686,7 +7814,6 @@ const initialEstimateData = [
         "front_baffle": [
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -8695,10 +7822,8 @@ const initialEstimateData = [
         "rear_baffle": [
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -8717,16 +7842,9 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "VW-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "BYD",
@@ -8744,6 +7862,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "BY-101"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -8756,7 +7877,6 @@ const initialEstimateData = [
         "front_baffle": [
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -8765,10 +7885,8 @@ const initialEstimateData = [
         "rear_baffle": [
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -8787,23 +7905,16 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "BY-101",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "BYD",
         "model": "Seal / Sealion7",
         "year": "25년 이후",
         "code": "-",
-        "system": "9채널",
+        "system": "6채널",
         "dsp": [
             "PXE-R100-8",
             "PXE-X120-8",
@@ -8811,6 +7922,9 @@ const initialEstimateData = [
             "PXE-X120-10DP",
             "PXE-X121-12EV",
             "HDP-D90"
+        ],
+        "pnp": [
+            "BY-2A"
         ],
         "front_door": [
             "DM-65C",
@@ -8824,7 +7938,6 @@ const initialEstimateData = [
         "front_baffle": [
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -8833,11 +7946,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "커스텀 배플"
         ],
-        "center": [
-            "DPS-25M",
-            "DP2-35M"
-        ],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -8855,16 +7963,12 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "BY-2A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle",
+            "DP2-35M"
+        ],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "LandRover",
@@ -8880,16 +7984,17 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "RR-1A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "HDZ-653S",
             "DP2-653",
@@ -8898,11 +8003,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "커스텀 배플"
         ],
-        "center": [
-            "DPS-25M",
-            "DP2-35M"
-        ],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -8920,16 +8020,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "RR-1A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle",
+            "DP2-35M"
+        ],
+        "tweeter": [],
+        "add_front": [],
+        "surround": []
     },
     {
         "brand": "LandRover",
@@ -8945,16 +8042,17 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "RR-2A"
+        ],
         "front_door": [
             "HDZ-653S",
             "DP2-653",
             "R2-S653"
         ],
-        "tweeter": [],
         "front_baffle": [
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "HDZ-653S",
             "DP2-653",
@@ -8963,11 +8061,6 @@ const initialEstimateData = [
         "rear_baffle": [
             "커스텀 배플"
         ],
-        "center": [
-            "DPS-25M",
-            "DP2-35M"
-        ],
-        "surround": [],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -8985,16 +8078,13 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "RR-2A",
-            "DS-M60-2B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle",
+            "DP2-35M"
+        ],
+        "tweeter": [],
+        "add_front": [],
+        "surround": []
     },
     {
         "brand": "Tesla",
@@ -9005,22 +8095,18 @@ const initialEstimateData = [
         "dsp": [
             "PXE-X121-12EV"
         ],
+        "pnp": [
+            "TS-301"
+        ],
         "front_door": [
             "EV-65CF"
         ],
         "tweeter": [],
         "front_baffle": [],
-        "add_front": [],
         "rear_door": [
             "EV-40MR-T"
         ],
         "rear_baffle": [],
-        "center": [
-            "EV-40M-T"
-        ],
-        "surround": [
-            "EV-40MR-T"
-        ],
         "subwoofer": [
             "EV-100SW 3",
             "EV-100SW Y"
@@ -9030,10 +8116,13 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "TS-301"
-        ]
+        "center": [
+            "EV-40M-T"
+        ],
+        "surround": [
+            "EV-40MR-T"
+        ],
+        "add_front": []
     },
     {
         "brand": "Tesla",
@@ -9044,22 +8133,18 @@ const initialEstimateData = [
         "dsp": [
             "PXE-X121-12EV"
         ],
+        "pnp": [
+            "TS-302"
+        ],
         "front_door": [
             "EV-65CF"
         ],
         "tweeter": [],
         "front_baffle": [],
-        "add_front": [],
         "rear_door": [
             "EV-40MR-T"
         ],
         "rear_baffle": [],
-        "center": [
-            "EV-40M-T"
-        ],
-        "surround": [
-            "EV-40MR-T"
-        ],
         "subwoofer": [
             "EV-100SW 3",
             "EV-100SW Y"
@@ -9069,10 +8154,13 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "TS-302"
-        ]
+        "center": [
+            "EV-40M-T"
+        ],
+        "surround": [
+            "EV-40MR-T"
+        ],
+        "add_front": []
     },
     {
         "brand": "Tesla",
@@ -9083,22 +8171,18 @@ const initialEstimateData = [
         "dsp": [
             "PXE-X121-12EV"
         ],
+        "pnp": [
+            "TS-303"
+        ],
         "front_door": [
             "EV-65CF"
         ],
         "tweeter": [],
         "front_baffle": [],
-        "add_front": [],
         "rear_door": [
             "EV-40MR-T"
         ],
         "rear_baffle": [],
-        "center": [
-            "EV-40M-T"
-        ],
-        "surround": [
-            "EV-40MR-T"
-        ],
         "subwoofer": [
             "EV-100SW 3",
             "EV-100SW Y"
@@ -9108,10 +8192,13 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "TS-303"
-        ]
+        "center": [
+            "EV-40M-T"
+        ],
+        "surround": [
+            "EV-40MR-T"
+        ],
+        "add_front": []
     },
     {
         "brand": "Tesla",
@@ -9122,22 +8209,18 @@ const initialEstimateData = [
         "dsp": [
             "PXE-X121-12EV"
         ],
+        "pnp": [
+            "TS-304"
+        ],
         "front_door": [
             "EV-65CF"
         ],
         "tweeter": [],
         "front_baffle": [],
-        "add_front": [],
         "rear_door": [
             "EV-40MR-T"
         ],
         "rear_baffle": [],
-        "center": [
-            "EV-40M-T"
-        ],
-        "surround": [
-            "EV-40MR-T"
-        ],
         "subwoofer": [
             "EV-100SW 3",
             "EV-100SW Y"
@@ -9147,10 +8230,13 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "TS-304"
-        ]
+        "center": [
+            "EV-40M-T"
+        ],
+        "surround": [
+            "EV-40MR-T"
+        ],
+        "add_front": []
     },
     {
         "brand": "CHEVROLET",
@@ -9168,6 +8254,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "CH-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -9180,7 +8269,6 @@ const initialEstimateData = [
         "front_baffle": [
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -9190,10 +8278,8 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9211,17 +8297,9 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "CH-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "center": [],
+        "surround": [],
+        "add_front": []
     },
     {
         "brand": "KGM",
@@ -9239,6 +8317,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -9252,7 +8334,6 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -9262,10 +8343,8 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9283,18 +8362,9 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "KGM",
@@ -9310,6 +8380,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "KG-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -9323,7 +8396,6 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -9333,10 +8405,8 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9354,17 +8424,9 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "KG-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "KGM",
@@ -9382,6 +8444,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -9395,7 +8461,6 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -9405,10 +8470,8 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9426,18 +8489,9 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "KGM",
@@ -9453,6 +8507,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "KG-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -9466,7 +8523,6 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -9476,10 +8532,8 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9497,17 +8551,9 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "KG-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "KGM",
@@ -9518,6 +8564,9 @@ const initialEstimateData = [
         "dsp": [
             "PXE-M60-4"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -9531,7 +8580,6 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -9541,10 +8589,8 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9562,17 +8608,9 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "KGM",
@@ -9590,6 +8628,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -9603,7 +8645,6 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -9613,10 +8654,8 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9634,18 +8673,9 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "KGM",
@@ -9661,6 +8691,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "KG-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -9674,7 +8707,6 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -9684,10 +8716,8 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9705,17 +8735,9 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "KG-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "KGM",
@@ -9733,6 +8755,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -9746,7 +8772,6 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -9756,10 +8781,8 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9777,18 +8800,9 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "KGM",
@@ -9804,6 +8818,9 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "KG-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -9817,7 +8834,6 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -9827,10 +8843,8 @@ const initialEstimateData = [
             "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9848,17 +8862,9 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "KG-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "KGM",
@@ -9869,6 +8875,9 @@ const initialEstimateData = [
         "dsp": [
             "PXE-M60-4"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -9881,7 +8890,6 @@ const initialEstimateData = [
         "front_baffle": [
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -9890,10 +8898,8 @@ const initialEstimateData = [
         "rear_baffle": [
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9911,17 +8917,9 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "KGM",
@@ -9939,6 +8937,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -9951,7 +8953,6 @@ const initialEstimateData = [
         "front_baffle": [
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -9960,10 +8961,8 @@ const initialEstimateData = [
         "rear_baffle": [
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -9981,18 +8980,9 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "KGM",
@@ -10010,6 +9000,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -10022,7 +9016,6 @@ const initialEstimateData = [
         "front_baffle": [
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -10031,10 +9024,8 @@ const initialEstimateData = [
         "rear_baffle": [
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -10052,18 +9043,9 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "KGM",
@@ -10074,6 +9056,9 @@ const initialEstimateData = [
         "dsp": [
             "PXE-M60-4"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -10086,7 +9071,6 @@ const initialEstimateData = [
         "front_baffle": [
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -10095,10 +9079,8 @@ const initialEstimateData = [
         "rear_baffle": [
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -10116,17 +9098,9 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "KGM",
@@ -10144,6 +9118,10 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "pnp": [
+            "HK-103",
+            "HK-1A"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -10156,7 +9134,6 @@ const initialEstimateData = [
         "front_baffle": [
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -10165,10 +9142,8 @@ const initialEstimateData = [
         "rear_baffle": [
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -10186,18 +9161,9 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     },
     {
         "brand": "KGM",
@@ -10208,6 +9174,9 @@ const initialEstimateData = [
         "dsp": [
             "PXE-M60-4"
         ],
+        "pnp": [
+            "HK-102"
+        ],
         "front_door": [
             "DM-65C",
             "S2-S65C",
@@ -10220,7 +9189,6 @@ const initialEstimateData = [
         "front_baffle": [
             "커스텀 배플"
         ],
-        "add_front": [],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -10229,10 +9197,8 @@ const initialEstimateData = [
         "rear_baffle": [
             "커스텀 배플"
         ],
-        "center": [],
-        "surround": [],
         "subwoofer": [
-            "PWE-M770+PWE-770-RCU",
+            "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
             "S2-W10D2 (외장박스 포함)",
             "S2-W12D2 (외장박스 포함)",
@@ -10250,20 +9216,12 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ]
+        "add_front": [],
+        "center": [],
+        "surround": []
     }
 ];
-const ESTIMATE_DATA_VERSION = 1772436533032;
+const ESTIMATE_DATA_VERSION = 1772684269446;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
