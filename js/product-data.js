@@ -1962,7 +1962,7 @@ const initialProductData = [
             {
                 "id": 1772682331720.4426,
                 "type": "text",
-                "value": "DPS-25M의 수입명은 DSP-65C-SIEN이지만 한국출시 명칭은 DPS-25M 입니다.\n\n2.5\" 미드레인지 스피커로, 작은사이즈의 OEM 미드레인지를 교체할때 유용합니다.\n\n카니발/스포티지/싼타페그랜저/K8/쏘나타/K5의 센터 스피커와 미드레인지 스피커, 서라운드 스피커 교체용.\n\n제네시스 렉시콘/B&O의 후면 미드레인지 스피커와 서라운드 스피커 교체용.\n\nDPS-25M-Uni Baffle을 함께 사용하면 편리하게 장착할 수 있습니다.\n\n"
+                "value": "DPS-25M의 수입명은 DSP-65C-SIEN이지만 한국출시 명칭은 DPS-25M 입니다.\n\n2.5\" 미드레인지 스피커로, 작은사이즈의 OEM 미드레인지를 교체할때 유용합니다.\n\n카니발/스포티지/싼타페/그랜저/K8/쏘나타/K5의 센터 스피커와 미드레인지 스피커, 서라운드 스피커 교체용.\n\n제네시스 렉시콘/B&O의 후면 미드레인지 스피커와 서라운드 스피커 교체용.\n\nDPS-25M-Uni Baffle을 함께 사용하면 편리하게 장착할 수 있습니다.\n\n"
             }
         ],
         "attachments": []
@@ -3433,7 +3433,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772682633447;
+const PRODUCT_DATA_VERSION = 1772682689109;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
