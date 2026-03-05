@@ -3431,9 +3431,42 @@ const initialProductData = [
             }
         ],
         "attachments": []
+    },
+    {
+        "id": 1772683222883,
+        "category": "Others",
+        "title": "DPS-25M-Uni Baffle",
+        "desc": "DPS-25M을 장착하기 위한 범용 스피커 가이드",
+        "desc_bottom": "",
+        "price": 20000,
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DPS-25M-Uni%20Baffle-01.jpg",
+        "detailBlocks": [
+            {
+                "id": 1772682878156.417,
+                "type": "text",
+                "value": "별도의 부자재나 공구 없이 DPS-25M과 결합되며, 스크류홀 가이드는 최대 30도까지 회전됩니다."
+            },
+            {
+                "id": 1772683044685.372,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DPS-25M-Uni%20Baffle-02.jpg"
+            },
+            {
+                "id": 1772683064566.309,
+                "type": "text",
+                "value": "스크류 홀 가이드의 길이는 필요에 따라 홈을 쉽게 잘라낼 수 있습니다."
+            },
+            {
+                "id": 1772683109623.2285,
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DPS-25M-Uni%20Baffle-03.jpg"
+            }
+        ],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1772682689109;
+const PRODUCT_DATA_VERSION = 1772683222886;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
