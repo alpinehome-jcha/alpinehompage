@@ -49,6 +49,7 @@ async function loadData() {
         const { data, error } = await supabaseClient
             .from('service_management')
             .select('*')
+            .order('receive_date', { ascending: false })
             .order('id', { ascending: false });
 
         if (error) throw error;
@@ -60,6 +61,17 @@ async function loadData() {
         const local = localStorage.getItem('serviceData');
         if (local) serviceData = JSON.parse(local);
         alert('서버에서 데이터를 불러오지 못했습니다. (오류: ' + e.message + ')');
+    }
+
+    // 접수일(receive_date) 기준으로 최신 항목이 먼저 오도록 정렬 (내림차순)
+    if (serviceData && serviceData.length > 0) {
+        serviceData.sort((a, b) => {
+            const dateA = a.receive_date || '';
+            const dateB = b.receive_date || '';
+            if (dateA > dateB) return -1;
+            if (dateA < dateB) return 1;
+            return (b.id || 0) - (a.id || 0);
+        });
     }
     hideLoading();
     renderTable(1);
