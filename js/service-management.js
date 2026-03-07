@@ -1,5 +1,5 @@
 let serviceData = [];
-const GITHUB_DATA_PATH = 'assets/data/service-data.json';
+let supabaseClient = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Check if admin
@@ -19,10 +19,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('search_end').value = today.toISOString().split('T')[0];
     document.getElementById('f_receive_date').value = today.toISOString().split('T')[0];
 
-    // Load GitHub client
+    // Load Supabase and Data
     try {
-        await auth.loadGitHubClient();
-        await loadData();
+        if (typeof loadSupabase === 'function') {
+            supabaseClient = await loadSupabase();
+            await loadData();
+        } else {
+            alert('Supabase 클라이언트를 초기화할 수 없습니다. (auth.js 오류)');
+        }
     } catch (e) {
         console.error('Initial load failed', e);
         alert('데이터 로드에 실패했습니다: ' + e.message);
@@ -34,122 +38,82 @@ document.addEventListener('DOMContentLoaded', async () => {
     chks.forEach(c => c.addEventListener('change', () => {
         const allChecked = Array.from(chks).every(x => x.checked);
         if (chkAll) chkAll.checked = allChecked;
-        renderTable();
+        renderTable(1);
     }));
 });
 
 async function loadData() {
     showLoading('데이터를 불러오는 중입니다...');
-    try {
-        if (!ghClient.globalConfigured) {
-            const t = localStorage.getItem('github_token');
-            const r = localStorage.getItem('github_repo');
-            const b = localStorage.getItem('github_branch');
-            if (t && r) {
-                ghClient.configure(t, r, b || 'main');
-            } else {
-                alert('GitHub 설정이 필요합니다. 상단 메뉴에서 GitHub 설정을 진행해주세요.');
-                hideLoading();
-                return;
-            }
-        }
 
-        const url = `https://raw.githubusercontent.com/${ghClient.repo}/${ghClient.branch}/${GITHUB_DATA_PATH}?t=${Date.now()}`;
-        const response = await fetch(url);
-        if (response.ok) {
-            serviceData = await response.json();
-            // Assign IDs if missing
-            serviceData.forEach((item, idx) => {
-                if (!item.id) item.id = Date.now() + idx;
-            });
-        } else if (response.status === 404) {
-            // File not found, start fresh
-            serviceData = [];
-        } else {
-            throw new Error(`HTTP Error: ${response.status}`);
-        }
+    try {
+        const { data, error } = await supabaseClient
+            .from('service_management')
+            .select('*')
+            .order('id', { ascending: false });
+
+        if (error) throw error;
+
+        serviceData = data || [];
     } catch (e) {
-        console.warn('Network error loading service data, checking local storage', e);
+        console.error('Supabase 데이터 로드 중 오류 발생', e);
+        // Fallback to local storage if DB fails temporarily
         const local = localStorage.getItem('serviceData');
         if (local) serviceData = JSON.parse(local);
+        alert('서버에서 데이터를 불러오지 못했습니다. (오류: ' + e.message + ')');
     }
     hideLoading();
-
-    // Sort descending by id
-    serviceData.sort((a, b) => (b.id || 0) - (a.id || 0));
-    renderTable();
+    renderTable(1);
 }
 
-async function saveDataToGH() {
-    showLoading('데이터를 저장하는 중입니다...');
-    try {
-        localStorage.setItem('serviceData', JSON.stringify(serviceData)); // Backup local
-
-        const content = JSON.stringify(serviceData, null, 2);
-        const file = new File([content], 'service-data.json', { type: 'application/json' });
-
-        const res = await ghClient.uploadFile(GITHUB_DATA_PATH, file, `Update service data: ${new Date().toISOString()}`);
-        if (res.success) {
-            alert('저장되었습니다.');
-        } else {
-            alert('저장 실패: ' + res.message);
-        }
-    } catch (e) {
-        alert('GitHub 저장 중 오류 발생: ' + e.message);
-    }
-    hideLoading();
-}
-
-function saveService() {
+async function saveService() {
     const idField = document.getElementById('service_id').value;
-    const f_receive_date = document.getElementById('f_receive_date').value;
-    const f_status = document.getElementById('f_status').value;
-    const f_customer_name = document.getElementById('f_customer_name').value;
-    const f_address = document.getElementById('f_address').value;
-    const f_vehicle_info = document.getElementById('f_vehicle_info').value;
-    const f_reserve_date = document.getElementById('f_reserve_date').value;
-    const f_car_model = document.getElementById('f_car_model').value;
-    const f_phone = document.getElementById('f_phone').value;
-    const f_symptom = document.getElementById('f_symptom').value;
-    const f_method = document.getElementById('f_method').value;
-    const f_complete_date = document.getElementById('f_complete_date').value;
-    const f_manager = document.getElementById('f_manager').value;
-    const f_cost = document.getElementById('f_cost').value;
-    const f_details = document.getElementById('f_details').value;
 
     const item = {
-        id: idField ? parseInt(idField) : Date.now(),
-        receive_date: f_receive_date,
-        status: f_status,
-        customer_name: f_customer_name,
-        address: f_address,
-        vehicle_info: f_vehicle_info,
-        reserve_date: f_reserve_date,
-        car_model: f_car_model,
-        phone: f_phone,
-        symptom: f_symptom,
-        method: f_method,
-        complete_date: f_complete_date,
-        manager: f_manager,
-        cost: f_cost,
-        details: f_details,
-        created_at: idField ? undefined : new Date().toISOString()
+        receive_date: document.getElementById('f_receive_date').value || null,
+        status: document.getElementById('f_status').value || null,
+        customer_name: document.getElementById('f_customer_name').value || null,
+        address: document.getElementById('f_address').value || null,
+        vehicle_info: document.getElementById('f_vehicle_info').value || null,
+        reserve_date: document.getElementById('f_reserve_date').value || null,
+        car_model: document.getElementById('f_car_model').value || null,
+        phone: document.getElementById('f_phone').value || null,
+        symptom: document.getElementById('f_symptom').value || null,
+        method: document.getElementById('f_method').value || null,
+        complete_date: document.getElementById('f_complete_date').value || null,
+        manager: document.getElementById('f_manager').value || null,
+        cost: document.getElementById('f_cost').value || null,
+        details: document.getElementById('f_details').value || null
     };
 
-    if (idField) {
-        // Edit
-        const index = serviceData.findIndex(s => s.id == idField);
-        if (index > -1) {
-            serviceData[index] = { ...serviceData[index], ...item };
-        }
-    } else {
-        // Add
-        serviceData.unshift(item); // Add to top
-    }
+    showLoading('데이터를 저장하는 중입니다...');
 
-    resetForm();
-    renderTable();
-    saveDataToGH();
+    try {
+        if (idField) {
+            // Edit Existing Record
+            const { error } = await supabaseClient
+                .from('service_management')
+                .update(item)
+                .eq('id', parseInt(idField));
+
+            if (error) throw error;
+        } else {
+            // Add New Record
+            const { error } = await supabaseClient
+                .from('service_management')
+                .insert([item]);
+
+            if (error) throw error;
+        }
+
+        alert('저장되었습니다.');
+        resetForm();
+        await loadData(); // Reload table from DB
+
+    } catch (e) {
+        console.error('Supabase DB 저장 에러:', e);
+        alert('저장에 실패했습니다. 관리자에게 문의하세요.\n\n오류: ' + e.message);
+    }
+    hideLoading();
 }
 
 function editService(id) {
@@ -176,16 +140,25 @@ function editService(id) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function deleteService(id) {
-    if (!confirm('정말 삭제하시겠습니까?')) return;
+async function deleteService(id) {
+    if (!confirm('정말 이 기록을 삭제하시겠습니까? (삭제 후 복구 불가능합니다)')) return;
 
-    const index = serviceData.findIndex(s => s.id == id);
-    if (index > -1) {
-        serviceData.splice(index, 1);
+    showLoading('데이터를 삭제하는 중입니다...');
+    try {
+        const { error } = await supabaseClient
+            .from('service_management')
+            .delete()
+            .eq('id', parseInt(id));
+
+        if (error) throw error;
+
         resetForm();
-        renderTable();
-        saveDataToGH();
+        await loadData();
+    } catch (e) {
+        console.error('Supabase DB 삭제 에러:', e);
+        alert('삭제에 실패했습니다. 관리자에게 문의하세요.\n\n오류: ' + e.message);
     }
+    hideLoading();
 }
 
 function resetForm() {
@@ -210,10 +183,15 @@ function resetForm() {
 function toggleAllStatus(checkbox) {
     const chks = document.querySelectorAll('.chk-status');
     chks.forEach(c => c.checked = checkbox.checked);
-    renderTable();
+    renderTable(1); // Reset to page 1 on filter change
 }
 
-function renderTable() {
+let currentPage = 1;
+const ITEMS_PER_PAGE = 15;
+
+function renderTable(page) {
+    if (page) currentPage = page;
+
     const tbody = document.getElementById('serviceTbody');
     tbody.innerHTML = '';
 
@@ -242,9 +220,19 @@ function renderTable() {
         return true;
     });
 
-    let displayId = filtered.length;
+    const totalItems = filtered.length;
+    const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE) || 1;
 
-    filtered.forEach(item => {
+    // Safety check if current page exceeds total pages
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    const paginatedItems = filtered.slice(startIndex, endIndex);
+
+    let displayId = totalItems - startIndex;
+
+    paginatedItems.forEach(item => {
         const tr = document.createElement('tr');
 
         tr.innerHTML = `
@@ -271,6 +259,24 @@ function renderTable() {
 
     if (filtered.length === 0) {
         tbody.innerHTML = `<tr><td colspan="17" style="padding: 20px; text-align: center; color: #999;">검색된 데이터가 없습니다.</td></tr>`;
+    }
+
+    renderPagination(totalPages);
+}
+
+function renderPagination(totalPages) {
+    const container = document.getElementById('paginationContainer');
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (totalPages <= 1) return;
+
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = i;
+        if (i === currentPage) btn.classList.add('active');
+        btn.onclick = () => renderTable(i);
+        container.appendChild(btn);
     }
 }
 

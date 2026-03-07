@@ -73,7 +73,8 @@
         }
 
         .form-group input,
-        .form-group select {
+        .form-group select,
+        .form-group textarea {
             flex: 1;
             padding: 8px 10px;
             border: none;
@@ -81,6 +82,12 @@
             box-sizing: border-box;
             font-size: 0.85rem;
             outline: none;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 40px;
         }
 
         .form-actions {
@@ -181,23 +188,45 @@
             border-collapse: collapse;
             background: #fff;
             font-size: 0.8rem;
-            min-width: 1400px;
             border: 1px solid #555;
+            table-layout: fixed;
+            /* prevent infinite scrolling */
         }
 
         table.service-table th {
             background: #e9ecef;
             border: 1px solid #aaa;
-            padding: 8px 5px;
+            padding: 8px 2px;
             text-align: center;
             font-weight: normal;
         }
 
         table.service-table td {
             border: 1px solid #ccc;
-            padding: 8px 5px;
+            padding: 8px 2px;
             text-align: center;
-            word-break: keep-all;
+            word-wrap: break-word;
+        }
+
+        /* Pagination Styles */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .pagination button.active {
+            background: #007bff;
+            color: #fff;
+            border-color: #007bff;
         }
 
         /* Loading Overlay */
@@ -287,16 +316,21 @@
                     </select>
                 </div>
                 <div class="form-group"><label>고객명</label><input type="text" id="f_customer_name"></div>
-                <div class="form-group"><label>주소</label><input type="text" id="f_address"></div>
-                <div class="form-group double-width"><label>차량번호/차대번호/<br>주행거리</label><input type="text"
-                        id="f_vehicle_info"></div>
+                <div class="form-group double-width"><label>주소</label><textarea id="f_address" rows="1"
+                        style="overflow-wrap: break-word; word-break: break-all; white-space: pre-wrap;"></textarea>
+                </div>
+                <div class="form-group"><label>차량번호/차대번호/<br>주행거리</label><input type="text" id="f_vehicle_info"></div>
             </div>
             <div class="form-row">
                 <div class="form-group"><label>서비스 예약일</label><input type="date" id="f_reserve_date"></div>
                 <div class="form-group"><label>차종</label><input type="text" id="f_car_model"></div>
                 <div class="form-group"><label>전화번호</label><input type="text" id="f_phone"></div>
-                <div class="form-group"><label>증상</label><input type="text" id="f_symptom"></div>
-                <div class="form-group double-width"><label>서비스방법 및 지시</label><input type="text" id="f_method"></div>
+                <div class="form-group double-width"><label>증상</label><textarea id="f_symptom" rows="2"
+                        style="overflow-wrap: break-word; word-break: break-all; white-space: pre-wrap;"></textarea>
+                </div>
+                <div class="form-group double-width"><label>서비스방법 및 지시</label><textarea id="f_method" rows="2"
+                        style="overflow-wrap: break-word; word-break: break-all; white-space: pre-wrap;"></textarea>
+                </div>
             </div>
             <div class="form-row">
                 <div class="form-group"><label>서비스 완료일</label><input type="date" id="f_complete_date"></div>
@@ -304,7 +338,9 @@
                 <div class="form-group"><label>서비스 비용</label><input type="text" id="f_cost"
                         onkeyup="this.value=this.value.replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ',');">
                 </div>
-                <div class="form-group double-width"><label>처리내용</label><input type="text" id="f_details"></div>
+                <div class="form-group double-width"><label>처리내용</label><textarea id="f_details" rows="2"
+                        style="overflow-wrap: break-word; word-break: break-all; white-space: pre-wrap;"></textarea>
+                </div>
             </div>
             <div class="form-actions">
                 <button class="btn btn-save" onclick="saveService()">저장</button>
@@ -340,23 +376,23 @@
             <table class="service-table" id="serviceTable">
                 <thead>
                     <tr>
-                        <th style="width: 40px;">번호</th>
-                        <th style="width: 80px;">진행사항</th>
-                        <th style="width: 100px;">접수일</th>
-                        <th style="width: 100px;">서비스예약일</th>
-                        <th style="width: 80px;">고객명</th>
-                        <th style="width: 150px;">고객 주소</th>
-                        <th style="width: 100px;">전화번호</th>
+                        <th style="width: 30px;">번호</th>
+                        <th style="width: 60px;">진행사항</th>
+                        <th style="width: 70px;">접수일</th>
+                        <th style="width: 70px;">예약일</th>
+                        <th style="width: 60px;">고객명</th>
+                        <th style="width: 100px;">고객 주소</th>
+                        <th style="width: 90px;">전화번호</th>
                         <th style="width: 80px;">차종</th>
-                        <th style="width: 150px;">차량번호/차대번호/<br>주행거리</th>
-                        <th style="width: 200px;">증상</th>
+                        <th style="width: 80px;">차량번호/<br>차대번호/<br>주행거리</th>
+                        <th style="width: 150px;">증상</th>
                         <th style="width: 150px;">서비스방법 및 지시</th>
-                        <th style="width: 100px;">서비스 담당자</th>
-                        <th style="width: 150px;">처리내용</th>
-                        <th style="width: 80px;">서비스비용</th>
-                        <th style="width: 100px;">서비스완료일</th>
-                        <th style="width: 90px; border-right: none;"></th>
-                        <th style="width: 90px; border-left: none;"></th>
+                        <th style="width: 70px;">담당자</th>
+                        <th style="width: 120px;">처리내용</th>
+                        <th style="width: 60px;">서비스<br>비용</th>
+                        <th style="width: 70px;">완료일</th>
+                        <th style="width: 40px; border-right: none;"></th>
+                        <th style="width: 40px; border-left: none;"></th>
                     </tr>
                 </thead>
                 <tbody id="serviceTbody">
@@ -364,6 +400,8 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="pagination" id="paginationContainer"></div>
     </div>
 
     <!-- loading overlay -->
