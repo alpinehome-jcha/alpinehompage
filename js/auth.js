@@ -11,6 +11,19 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 // Load Supabase SDK dynamically (CDN)
 async function loadSupabase() {
     if (window._supabaseClient) return window._supabaseClient;
+
+    // Check if the global supabase object from CDN exists
+    if (window.supabase && typeof window.supabase.createClient === 'function') {
+        window._supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        return window._supabaseClient;
+    }
+
+    // Check if window.supabase is already a client (from supabase-client.js)
+    if (window.supabase && typeof window.supabase.from === 'function') {
+        window._supabaseClient = window.supabase;
+        return window._supabaseClient;
+    }
+
     if (typeof supabase === 'undefined') {
         await new Promise((resolve, reject) => {
             const script = document.createElement('script');
@@ -20,7 +33,7 @@ async function loadSupabase() {
             document.head.appendChild(script);
         });
     }
-    window._supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    window._supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     return window._supabaseClient;
 }
 
