@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Set default dates
     const today = new Date();
-    const threeMonthsAgo = new Date();
-    threeMonthsAgo.setMonth(today.getMonth() - 3);
+    const twoYearsAgo = new Date();
+    twoYearsAgo.setFullYear(today.getFullYear() - 2);
 
-    document.getElementById('search_start').value = threeMonthsAgo.toISOString().split('T')[0];
+    document.getElementById('search_start').value = twoYearsAgo.toISOString().split('T')[0];
     document.getElementById('search_end').value = today.toISOString().split('T')[0];
     document.getElementById('f_receive_date').value = today.toISOString().split('T')[0];
 
