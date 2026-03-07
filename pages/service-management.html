@@ -305,26 +305,27 @@
                 margin-top: 5px;
             }
 
-            /* Enable shrinking for total view, remove scroll */
+            /* Enable horizontal scroll for table and remove fixed layout constraint */
             .table-responsive {
-                overflow-x: hidden;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                /* Smooth scroll on iOS */
             }
 
             table.service-table {
-                table-layout: fixed;
-                width: 100%;
-                min-width: unset;
-                font-size: 0.5rem;
-                /* Shrink text significantly */
+                table-layout: auto;
+                min-width: 1200px;
+                /* Force minimum width to allow scrolling instead of squishing */
+                font-size: 0.8rem;
             }
 
             table.service-table th {
-                font-size: 0.5rem;
-                padding: 4px 1px;
+                font-size: 0.8rem;
+                padding: 8px 2px;
             }
 
             table.service-table td {
-                padding: 4px 1px;
+                padding: 8px 2px;
             }
         }
     </style>

@@ -235,9 +235,14 @@ function renderTable(page) {
     paginatedItems.forEach(item => {
         const tr = document.createElement('tr');
 
+        let statusColor = '#000'; // 기본 검정색
+        if (item.status === '서비스접수') statusColor = '#27ae60'; // 초록색
+        else if (item.status === '서비스예약') statusColor = '#e67e22'; // 주황색
+        else if (item.status === '서비스보류') statusColor = '#7f8c8d'; // 회색
+
         tr.innerHTML = `
             <td>${displayId--}</td>
-            <td>${item.status || ''}</td>
+            <td style="color:${statusColor}; font-weight:bold;">${item.status || ''}</td>
             <td>${item.receive_date || ''}</td>
             <td>${item.reserve_date || ''}</td>
             <td>${item.customer_name || ''}</td>
