@@ -453,14 +453,39 @@
                 logSection.style.display = 'none';
             }
 
-            // Fetch from LocalStorage (Reverted to local only)
+            // Fetch from Supabase (Fallback to LocalStorage)
             let logs = [];
-            const storedLogs = localStorage.getItem('visitLog');
-            if (storedLogs) {
-                try {
-                    logs = JSON.parse(storedLogs);
-                } catch (e) {
-                    console.error('Local Log Parse Error:', e);
+            try {
+                if (typeof loadSupabase !== 'undefined') {
+                    const client = await loadSupabase();
+                    const { data, error } = await client
+                        .from('visitor_logs')
+                        .select('*')
+                        .order('created_at', { ascending: false });
+
+                    if (data && !error) {
+                        logs = data.map(d => ({
+                            date: d.visit_date || new Date(d.created_at).toLocaleString('ko-KR'),
+                            name: d.name || '',
+                            username: d.username || '',
+                            role: d.role || 'dealer'
+                        }));
+                    } else if (error) {
+                        console.error('[Supabase] Fetch Visit Logs Error:', error.message);
+                        throw new Error(error.message); // trigger fallback
+                    }
+                } else {
+                    throw new Error('Supabase client not loaded');
+                }
+            } catch (e) {
+                console.warn('[Supabase] Falling back to LocalStorage:', e.message);
+                const storedLogs = localStorage.getItem('visitLog');
+                if (storedLogs) {
+                    try {
+                        logs = JSON.parse(storedLogs);
+                    } catch (err) {
+                        console.error('Local Log Parse Error:', err);
+                    }
                 }
             }
             // Pagination Logic
@@ -523,23 +548,43 @@
         async function clearVisitLog() {
             if (!confirm('방문 기록을 정말 초기화하시겠습니까? (서버 데이터 삭제)')) return;
 
-            // Clear Server Data
+            // Clear Supabase Data
+            try {
+                if (typeof loadSupabase !== 'undefined') {
+                    const client = await loadSupabase();
+                    const { error } = await client
+                        .from('visitor_logs')
+                        .delete()
+                        .neq('id', 0); // Delete all rows
+
+                    if (error) {
+                        throw new Error(error.message);
+                    }
+                    console.log('[Supabase] Visit Logs Cleared');
+                }
+            } catch (e) {
+                console.error('[Supabase] Clear Error:', e.message);
+                alert('DB 초기화 실패 (Supabase): ' + e.message + '\\n\\n로컬 데이터만 초기화합니다.');
+            }
+
+            // Fallback clear local storage
+            localStorage.removeItem('visitLog');
+
+            // Also attempt GitHub clear if configured just in case legacy data is there
             const token = localStorage.getItem('github_token');
             const repo = localStorage.getItem('github_repo');
             const branch = localStorage.getItem('github_branch') || 'main';
-
             if (token && repo && typeof ghClient !== 'undefined') {
                 ghClient.configure(token, repo, branch);
                 try {
                     await ghClient.uploadFile('data/visit-log.json', new Blob(['[]'], { type: 'application/json' }), 'Clear Visit Log');
-                    renderVisitLog();
                 } catch (e) {
-                    alert('초기화 실패: ' + e.message);
+                    console.warn('GitHub legacy clear failed (ignored)');
                 }
-            } else {
-                localStorage.removeItem('visitLog');
-                renderVisitLog();
             }
+
+            renderVisitLog(1);
+            alert('방문 기록이 초기화되었습니다.');
         }
 
         const BOARD_ITEMS_PER_PAGE = 20;

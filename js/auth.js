@@ -567,4 +567,20 @@ async function saveVisitLog(entry) {
     } catch (e) {
         console.error('Local Visit Log Error:', e);
     }
+
+    // Save to Supabase
+    try {
+        if (typeof loadSupabase === 'function') {
+            const client = await loadSupabase();
+            const { error } = await client.from('visitor_logs').insert([{
+                visit_date: entry.date,
+                username: entry.username || '',
+                name: entry.name || '',
+                role: entry.role || 'dealer'
+            }]);
+            if (error) console.error('[Supabase] Visit Log Insert Error:', error.message);
+        }
+    } catch (e) {
+        console.warn('[Supabase] Visit Log Exception:', e.message);
+    }
 }
