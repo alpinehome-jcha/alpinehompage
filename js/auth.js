@@ -492,20 +492,27 @@ function addPartnerMenu(role) {
 
     const partnerLi = document.createElement('li');
     partnerLi.className = 'dropdown partner-item';
+    let adminPrefix = 'pages/';
+    if (isInPages) adminPrefix = '';
+    else if (isInSupport) {
+        if (depth > 2) adminPrefix = '../../../pages/';
+        else adminPrefix = '../pages/';
+    }
+
     let menuItems = `
             <li><a href="${prefix}price-list.html" class="dropdown-item">가격표</a></li>
+    `;
+
+    if (role === 'admin') {
+        menuItems += `<li><a href="${adminPrefix}service-management.html" class="dropdown-item">서비스 관리</a></li>`;
+    }
+
+    menuItems += `
             <li><a href="${prefix}partner-board.html" class="dropdown-item">전용 게시판</a></li>
             <li><a href="${prefix}dealer-only.html" class="dropdown-item">전용 자료실</a></li>
     `;
 
     if (role === 'admin') {
-        let adminPrefix = 'pages/';
-        if (isInPages) adminPrefix = '';
-        else if (isInSupport) {
-            if (depth > 2) adminPrefix = '../../../pages/';
-            else adminPrefix = '../pages/';
-        }
-
         menuItems += `<li><a href="${prefix}price-input.html" class="dropdown-item">가격표 입력</a></li>`;
         menuItems += `<li><a href="${adminPrefix}admin.html?mode=product" class="dropdown-item">제품 관리</a></li>`;
         menuItems += `<li><a href="${adminPrefix}admin.html?mode=dealer" class="dropdown-item">대리점 관리</a></li>`;
