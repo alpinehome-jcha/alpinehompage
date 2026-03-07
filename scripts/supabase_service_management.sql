@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS public.service_management (
     complete_date DATE,
     manager VARCHAR(100),
     cost VARCHAR(50),      -- Storing as string to keep comma formatting, or can be numeric
+    recovery_status VARCHAR(50), -- 고품회수여부
     details TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
