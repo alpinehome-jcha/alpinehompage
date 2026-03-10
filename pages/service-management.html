@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서비스 관리 - 알파인(ALPINE Korea)</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../assets/images/amark.png">
+    <link rel="shortcut icon" type="image/png" href="../assets/images/amark.png">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding-top: 80px;
+            background: #eef5fb;
+            /* Light blue background as in image */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1550px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h2.page-title {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .service-form {
+            background: transparent;
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: stretch;
+            flex-wrap: wrap;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: stretch;
+            flex: 1;
+            min-width: 250px;
+            background: #fff;
+            border: 1px solid #aaa;
+        }
+
+        .form-group.double-width {
+            flex: 2;
+        }
+
+        .form-group label {
+            width: 130px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            border-right: 1px solid #aaa;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            flex: 1;
+            padding: 8px 10px;
+            border: none;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 0.85rem;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 40px;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 20px;
+            border-bottom: 1px solid #aaa;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            border: 1px solid #888;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .btn-save {
+            background: #bbb;
+            color: #333;
+            width: 200px;
+        }
+
+        .btn-search {
+            background: #bbb;
+            color: #333;
+            margin-left: 10px;
+            border: 1px solid #888;
+        }
+
+        .btn-excel {
+            background: #aaa;
+            color: #333;
+            margin-left: auto;
+            border: 1px solid #888;
+        }
+
+        .btn-edit {
+            background: #d9534f;
+            color: #fff;
+            border: 1px solid #c9302c;
+        }
+
+        .btn-delete {
+            background: #0275d8;
+            color: #fff;
+            border: 1px solid #025aa5;
+        }
+
+        .filter-section {
+            background: transparent;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 0.85rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .date-filter,
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .date-filter input,
+        .search-box input {
+            padding: 6px;
+            border: 1px solid #aaa;
+            box-sizing: border-box;
+        }
+
+        .search-box input {
+            width: 200px;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table.service-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            font-size: 0.8rem;
+            border: 1px solid #555;
+            table-layout: fixed;
+            /* prevent infinite scrolling */
+        }
+
+        table.service-table th {
+            background: #e9ecef;
+            border: 1px solid #aaa;
+            padding: 8px 2px;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        table.service-table td {
+            border: 1px solid #ccc;
+            padding: 8px 2px;
+            text-align: center;
+            word-wrap: break-word;
+        }
+
+        /* Pagination Styles */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .pagination button.active {
+            background: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+            color: #fff;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Mobile specific styles */
+        @media screen and (max-width: 768px) {
+            .form-row {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .form-group {
+                flex: 1 1 calc(50% - 10px);
+                /* 2 columns on mobile */
+                min-width: unset;
+                flex-direction: column;
+                /* Stack label and input inside group */
+                border: none;
+            }
+
+            .form-group.double-width {
+                flex: 1 1 100%;
+                /* Full width for double-width inputs on mobile */
+            }
+
+            .form-group label {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #aaa;
+                justify-content: flex-start;
+                padding: 5px 0;
+                background: transparent;
+                font-weight: bold;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                width: 100%;
+                border: 1px solid #aaa;
+                margin-top: 5px;
+            }
+
+            /* Enable horizontal scroll for table and remove fixed layout constraint */
+            .table-responsive {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                /* Smooth scroll on iOS */
+            }
+
+            table.service-table {
+                table-layout: auto;
+                min-width: 1200px;
+                /* Force minimum width to allow scrolling instead of squishing */
+                font-size: 0.8rem;
+            }
+
+            table.service-table th {
+                font-size: 0.8rem;
+                padding: 8px 2px;
+            }
+
+            table.service-table td {
+                padding: 8px 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/images/alpine_logo.png" alt="ALPINE Korea">
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="../index.html" class="nav-link" data-i18n="nav_products">제품소개</a>
+                    </li>
+                    <li>
+                        <a href="dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
+                        <ul class="dropdown-content">
+                            <li><a href="../support/product.html" class="dropdown-item"
+                                    data-i18n="nav_support_product">제품
+                                    자료실</a>
+                            </li>
+                            <li><a href="../support/install.html" class="dropdown-item"
+                                    data-i18n="nav_support_install">시공자료실</a>
+                            </li>
+                            <li><a href="../support/promo.html" class="dropdown-item"
+                                    data-i18n="nav_support_promo">홍보자료실</a></li>
+                        </ul>
+                    </li>
+                    <li class="social-icons">
+                        <a href="https://blog.naver.com/alpineaudio" target="_blank"><img
+                                src="../assets/images/icon-blog.png" alt="Naver Blog"></a>
+                        <a href="https://www.facebook.com/alpine.korea.2024/about" target="_blank"><img
+                                src="../assets/images/icon-facebook.png" alt="Facebook"></a>
+                        <a href="https://www.youtube.com/playlist?list=PLtdgCQUazuWKIcARYW_4QoysChyGhwivO"
+                            target="_blank"><img src="../assets/images/icon-youtube.png" alt="YouTube"></a>
+                        <a href="#" target="_blank"><img src="../assets/images/icon-instagram.png" alt="Instagram"></a>
+                    </li>
+
+                    <li class="lang-item">
+                        <a href="#" class="lang-toggle" aria-label="Change Language">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-globe">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                            <span class="curr-lang">KO</span>
+                        </a>
+                    </li>
+                    <li class="auth-item">
+                        <a href="login.html" class="auth-link"
+                            style="margin-left: 15px; font-size: 0.9rem; color: #333; text-decoration: none;">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="page-title">서비스 관리</h2>
+
+        <div class="service-form">
+            <input type="hidden" id="service_id">
+            <div class="form-row">
+                <div class="form-group"><label>접수일</label><input type="date" id="f_receive_date"></div>
+                <div class="form-group">
+                    <label>진행사항</label>
+                    <select id="f_status">
+                        <option value="">= 선택 =</option>
+                        <option value="서비스접수">서비스접수</option>
+                        <option value="서비스예약">서비스예약</option>
+                        <option value="서비스보류">서비스보류</option>
+                        <option value="서비스완료">서비스완료</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>고객명</label><input type="text" id="f_customer_name"></div>
+                <div class="form-group double-width"><label>주소</label><textarea id="f_address" rows="1"
+                        style="overflow-wrap: break-word; word-break: break-all; white-space: pre-wrap;"></textarea>
+                </div>
+                <div class="form-group"><label>차량번호/차대번호/<br>주행거리</label><input type="text" id="f_vehicle_info"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>서비스 예약일</label><input type="date" id="f_reserve_date"></div>
+                <div class="form-group"><label>차종</label><input type="text" id="f_car_model"></div>
+                <div class="form-group"><label>전화번호</label><input type="text" id="f_phone"></div>
+                <div class="form-group double-width"><label>증상</label><textarea id="f_symptom" rows="2"
+                        style="overflow-wrap: break-word; word-break: break-all; white-space: pre-wrap;"></textarea>
+                </div>
+                <div class="form-group double-width"><label>서비스방법 및 지시</label><textarea id="f_method" rows="2"
+                        style="overflow-wrap: break-word; word-break: break-all; white-space: pre-wrap;"></textarea>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>서비스 완료일</label><input type="date" id="f_complete_date"></div>
+                <div class="form-group"><label>서비스 담당자</label><input type="text" id="f_manager"></div>
+                <div class="form-group"><label>서비스 비용</label><input type="text" id="f_cost"
+                        onkeyup="this.value=this.value.replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ',');">
+                </div>
+                <div class="form-group"><label>고품회수여부</label><input type="text" id="f_recovery_status"></div>
+                <div class="form-group double-width"><label>처리내용</label><textarea id="f_details" rows="2"
+                        style="overflow-wrap: break-word; word-break: break-all; white-space: pre-wrap;"></textarea>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-save" onclick="saveService()">저장</button>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <div class="checkbox-group">
+                <label>전체 <input type="checkbox" id="chk_all" checked onchange="toggleAllStatus(this)"></label>
+                <label style="margin-left:10px;">서비스 접수 <input type="checkbox" class="chk-status" value="서비스접수"
+                        checked></label>
+                <label>서비스 예약 <input type="checkbox" class="chk-status" value="서비스예약" checked></label>
+                <label>서비스 보류 <input type="checkbox" class="chk-status" value="서비스보류" checked></label>
+                <label>서비스 완료 <input type="checkbox" class="chk-status" value="서비스완료" checked></label>
+            </div>
+
+            <div class="date-filter" style="margin-left: 20px;">
+                검색 시작일 <input type="date" id="search_start">
+            </div>
+            <div class="date-filter">
+                검색 종료일 <input type="date" id="search_end">
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="search_keyword" autocomplete="off" placeholder="검색어 입력">
+                <button class="btn btn-search" onclick="renderTable()">검색</button>
+            </div>
+
+            <button class="btn btn-excel" onclick="downloadExcel()">검색결과 엑셀 다운로드</button>
+        </div>
+
+        <div class="table-responsive">
+            <table class="service-table" id="serviceTable">
+                <thead>
+                    <tr>
+                        <th style="width: 30px;">번호</th>
+                        <th style="width: 60px;">진행사항</th>
+                        <th style="width: 70px;">접수일</th>
+                        <th style="width: 70px;">예약일</th>
+                        <th style="width: 60px;">고객명</th>
+                        <th style="width: 100px;">고객 주소</th>
+                        <th style="width: 90px;">전화번호</th>
+                        <th style="width: 80px;">차종</th>
+                        <th style="width: 80px;">차량번호/<br>차대번호/<br>주행거리</th>
+                        <th style="width: 150px;">증상</th>
+                        <th style="width: 150px;">서비스방법 및 지시</th>
+                        <th style="width: 70px;">담당자</th>
+                        <th style="width: 120px;">처리내용</th>
+                        <th style="width: 90px;">고품회수여부</th>
+                        <th style="width: 60px;">서비스<br>비용</th>
+                        <th style="width: 70px;">완료일</th>
+                        <th style="width: 40px; border-right: none;"></th>
+                        <th style="width: 40px; border-left: none;"></th>
+                    </tr>
+                </thead>
+                <tbody id="serviceTbody">
+                    <!-- dynamically injected -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination" id="paginationContainer"></div>
+    </div>
+
+    <!-- loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <div id="loadingText" style="margin-top:20px; font-weight:bold;">데이터를 불러오는 중입니다...</div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/layout.js?v=20260212"></script>
+    <script src="../js/auth.js?v=20260216"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+    <script src="../js/service-management.js?v=20260216"></script>
+</body>
+
+</html>

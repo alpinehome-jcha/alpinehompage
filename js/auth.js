@@ -11,6 +11,19 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 // Load Supabase SDK dynamically (CDN)
 async function loadSupabase() {
     if (window._supabaseClient) return window._supabaseClient;
+
+    // Check if the global supabase object from CDN exists
+    if (window.supabase && typeof window.supabase.createClient === 'function') {
+        window._supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        return window._supabaseClient;
+    }
+
+    // Check if window.supabase is already a client (from supabase-client.js)
+    if (window.supabase && typeof window.supabase.from === 'function') {
+        window._supabaseClient = window.supabase;
+        return window._supabaseClient;
+    }
+
     if (typeof supabase === 'undefined') {
         await new Promise((resolve, reject) => {
             const script = document.createElement('script');
@@ -20,7 +33,7 @@ async function loadSupabase() {
             document.head.appendChild(script);
         });
     }
-    window._supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    window._supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     return window._supabaseClient;
 }
 
@@ -492,20 +505,27 @@ function addPartnerMenu(role) {
 
     const partnerLi = document.createElement('li');
     partnerLi.className = 'dropdown partner-item';
+    let adminPrefix = 'pages/';
+    if (isInPages) adminPrefix = '';
+    else if (isInSupport) {
+        if (depth > 2) adminPrefix = '../../../pages/';
+        else adminPrefix = '../pages/';
+    }
+
     let menuItems = `
             <li><a href="${prefix}price-list.html" class="dropdown-item">가격표</a></li>
+    `;
+
+    if (role === 'admin') {
+        menuItems += `<li><a href="${adminPrefix}service-management.html" class="dropdown-item">서비스 관리</a></li>`;
+    }
+
+    menuItems += `
             <li><a href="${prefix}partner-board.html" class="dropdown-item">전용 게시판</a></li>
             <li><a href="${prefix}dealer-only.html" class="dropdown-item">전용 자료실</a></li>
     `;
 
     if (role === 'admin') {
-        let adminPrefix = 'pages/';
-        if (isInPages) adminPrefix = '';
-        else if (isInSupport) {
-            if (depth > 2) adminPrefix = '../../../pages/';
-            else adminPrefix = '../pages/';
-        }
-
         menuItems += `<li><a href="${prefix}price-input.html" class="dropdown-item">가격표 입력</a></li>`;
         menuItems += `<li><a href="${adminPrefix}admin.html?mode=product" class="dropdown-item">제품 관리</a></li>`;
         menuItems += `<li><a href="${adminPrefix}admin.html?mode=dealer" class="dropdown-item">대리점 관리</a></li>`;
@@ -559,5 +579,21 @@ async function saveVisitLog(entry) {
         localStorage.setItem('visitLog', JSON.stringify(logs));
     } catch (e) {
         console.error('Local Visit Log Error:', e);
+    }
+
+    // Save to Supabase
+    try {
+        if (typeof loadSupabase === 'function') {
+            const client = await loadSupabase();
+            const { error } = await client.from('visitor_logs').insert([{
+                visit_date: entry.date,
+                username: entry.username || '',
+                name: entry.name || '',
+                role: entry.role || 'dealer'
+            }]);
+            if (error) console.error('[Supabase] Visit Log Insert Error:', error.message);
+        }
+    } catch (e) {
+        console.warn('[Supabase] Visit Log Exception:', e.message);
     }
 }
