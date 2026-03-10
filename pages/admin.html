@@ -426,7 +426,8 @@
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="text" id="conn_dealer_pass" placeholder="Enter Password">
+                        <input type="text" id="conn_dealer_pass"
+                            placeholder="Enter Password (Leave blank to keep current)">
                     </div>
                 </div>
 
@@ -1112,7 +1113,8 @@
                 inputs.phone.value = item.phone || '';
                 inputs.dealer_desc.value = item.desc || '';
                 inputs.dealer_id.value = item.username || '';
-                inputs.dealer_pass.value = item.password || '';
+                // 비밀번호는 단방향 암호화되어 반환되지 않으므로, 수정 시 항상 빈칸으로 표시하고 placeholder로 안내합니다
+                inputs.dealer_pass.value = '';
                 inputs.region.value = item.region || '서울';
             }
             renderList();
@@ -1274,7 +1276,10 @@
                 newItem.username = inputs.dealer_id.value;
                 // password and role are not in dealers table. Only used for Authentication and handled by syncDealerToSupabase.
                 // We keep them in the object briefly for syncDealerToSupabase but we need to delete them before upserting 
-                newItem.password = inputs.dealer_pass.value;
+
+                // 만약 기존 대리점을 수정하는데 비밀번호가 비워져 있다면, 비밀번호를 변경하지 않습니다 (null 전송).
+                // 새 대리점인데 비워져 있다면, 서버 트리거가 기본 비밀번호를 설정할 것입니다.
+                newItem.password = inputs.dealer_pass.value ? inputs.dealer_pass.value : null;
                 newItem.role = 'dealer';
                 newItem.region = inputs.region.value;
             }
