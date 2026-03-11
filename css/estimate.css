@@ -228,3 +228,20 @@
     color: #888;
     font-size: 1.1rem;
 }
+
+/* PC-specific styles for floating button (2x larger, top position) */
+@media screen and (min-width: 769px) {
+    .estimate-float-btn {
+        top: 100px;
+        bottom: auto;
+        width: 120px;
+        height: 170px;
+        font-size: 26px;
+    }
+
+    .estimate-float-btn img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+}
