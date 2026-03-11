@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS public.service_management (
     manager VARCHAR(100),
     cost VARCHAR(50),      -- Storing as string to keep comma formatting, or can be numeric
     recovery_status VARCHAR(50), -- 고품회수여부
+    failure_cause VARCHAR(255),  -- 고장원인
     details TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
@@ -34,5 +35,8 @@ CREATE POLICY "Allow anonymous read access" ON public.service_management FOR SEL
 CREATE POLICY "Allow anonymous insert access" ON public.service_management FOR INSERT WITH CHECK (true);
 CREATE POLICY "Allow anonymous update access" ON public.service_management FOR UPDATE USING (true);
 CREATE POLICY "Allow anonymous delete access" ON public.service_management FOR DELETE USING (true);
+
+-- If the table already exists, you can add the new column by running this directly:
+-- ALTER TABLE public.service_management ADD COLUMN failure_cause VARCHAR(255);
 
 -- End of script

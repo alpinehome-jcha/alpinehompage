@@ -95,7 +95,8 @@ async function saveService() {
         manager: document.getElementById('f_manager').value || null,
         cost: document.getElementById('f_cost').value || null,
         details: document.getElementById('f_details').value || null,
-        recovery_status: document.getElementById('f_recovery_status').value || null
+        recovery_status: document.getElementById('f_recovery_status').value || null,
+        failure_cause: document.getElementById('f_failure_cause').value || null
     };
 
     showLoading('데이터를 저장하는 중입니다...');
@@ -149,6 +150,7 @@ function editService(id) {
     document.getElementById('f_cost').value = item.cost || '';
     document.getElementById('f_details').value = item.details || '';
     document.getElementById('f_recovery_status').value = item.recovery_status || '';
+    document.getElementById('f_failure_cause').value = item.failure_cause || '';
 
     // Smooth scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -193,6 +195,7 @@ function resetForm() {
     document.getElementById('f_cost').value = '';
     document.getElementById('f_details').value = '';
     document.getElementById('f_recovery_status').value = '';
+    document.getElementById('f_failure_cause').value = '';
 }
 
 function toggleAllStatus(checkbox) {
@@ -270,6 +273,7 @@ function renderTable(page) {
             <td>${item.manager || ''}</td>
             <td style="text-align:left;">${item.details || ''}</td>
             <td style="text-align:center;">${item.recovery_status || ''}</td>
+            <td style="text-align:center;">${item.failure_cause || ''}</td>
             <td style="text-align:right;">${item.cost || ''}</td>
             <td>${item.complete_date || ''}</td>
             <td style="padding:4px;"><button class="btn btn-edit" style="width:100%; padding: 4px; font-size: 0.8rem;" onclick="editService(${item.id})">수정</button></td>
@@ -279,7 +283,7 @@ function renderTable(page) {
     });
 
     if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="18" style="padding: 20px; text-align: center; color: #999;">검색된 데이터가 없습니다.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="19" style="padding: 20px; text-align: center; color: #999;">검색된 데이터가 없습니다.</td></tr>`;
     }
 
     renderPagination(totalPages);
@@ -338,6 +342,7 @@ function downloadExcel() {
         '서비스 담당자': item.manager || '',
         '처리내용': item.details || '',
         '고품회수여부': item.recovery_status || '',
+        '고장원인': item.failure_cause || '',
         '서비스비용': item.cost || '',
         '서비스완료일': item.complete_date || ''
     }));
@@ -347,7 +352,7 @@ function downloadExcel() {
     const collW = [
         { wch: 5 }, { wch: 10 }, { wch: 12 }, { wch: 12 }, { wch: 10 },
         { wch: 20 }, { wch: 15 }, { wch: 10 }, { wch: 15 }, { wch: 30 },
-        { wch: 30 }, { wch: 10 }, { wch: 20 }, { wch: 15 }, { wch: 10 }, { wch: 12 }
+        { wch: 30 }, { wch: 10 }, { wch: 20 }, { wch: 15 }, { wch: 15 }, { wch: 10 }, { wch: 12 }
     ];
     ws['!cols'] = collW;
 
