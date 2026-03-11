@@ -2,7 +2,7 @@
 .estimate-float-btn {
     position: fixed;
     right: 30px;
-    bottom: 30px;
+    top: 100px;
     width: 60px;
     height: 85px;
     background: #007bff;
@@ -232,16 +232,14 @@
 /* PC-specific styles for floating button (2x larger, top position) */
 @media screen and (min-width: 769px) {
     .estimate-float-btn {
-        top: 100px;
-        bottom: auto;
-        width: 120px;
-        height: 170px;
-        font-size: 26px;
+        width: 84px;
+        height: 119px;
+        font-size: 18px;
     }
 
     .estimate-float-btn img {
-        width: 60px;
-        height: 60px;
+        width: 42px;
+        height: 42px;
         margin-bottom: 15px;
     }
 }
