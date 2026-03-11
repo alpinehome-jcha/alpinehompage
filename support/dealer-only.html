@@ -289,7 +289,7 @@
                         <input type="file" onchange="handleFile(this, 'file4')"><input type="hidden" id="fileData4">
                         <input type="file" onchange="handleFile(this, 'file5')"><input type="hidden" id="fileData5">
                     </div>
-                    <small style="color:#e74c3c;">* 실제 파일은 assets/files/ 폴더에 직접 업로드해야 합니다.</small>
+                    <small style="color:#2ecc71;">* 파일은 자동으로 서버에 업로드됩니다.</small>
                 </div>
                 <div style="text-align: right; margin-top:20px;">
                     <button class="btn btn-secondary" onclick="cancelWrite()">취소</button>
@@ -336,6 +336,8 @@
 
     <script src="../js/auth.js?v=20260211"></script>
     <script src="../js/i18n.js?v=20260211"></script>
+    <script src="../js/github-client.js?v=20260213"></script>
+    <script src="../js/admin-data-manager.js?v=20260213"></script>
     <script>
         document.write('<script src="../js/resource-data.js?v=' + Date.now() + '"><\/script>');
     </script>
@@ -498,20 +500,23 @@
             }
         }
 
+        let selectedFiles = {}; // To store actual File objects
+
         function handleFile(input, targetId) {
             if (input.files && input.files[0]) {
                 const file = input.files[0];
+                selectedFiles[targetId] = file;
                 if (targetId.startsWith('postImage')) {
                     document.getElementById(targetId).value = 'assets/images/' + file.name;
                 } else {
                     // Start with fileData
                     const hiddenInput = input.nextElementSibling;
-                    if (hiddenInput) hiddenInput.value = file.name; // Just name for mock
+                    if (hiddenInput) hiddenInput.value = file.name;
                 }
             }
         }
 
-        function savePost() {
+        async function savePost() {
             if (auth.getRole() !== 'admin') {
                 alert('관리자만 작성할 수 있습니다. (Access Denied)');
                 return;
@@ -519,56 +524,98 @@
 
             const title = document.getElementById('postTitle').value;
             const content = document.getElementById('postContent').value;
-            const image = document.getElementById('postImage').value;
+            let image = document.getElementById('postImage').value;
 
             if (!title) { alert('제목을 입력하세요.'); return; }
 
-            // Collect Files
-            let files = [];
-            let hasNewFiles = false;
-            for (let i = 1; i <= 5; i++) {
-                const fname = document.getElementById('fileData' + i).value;
-                if (fname) {
-                    files.push({ name: fname, path: 'assets/files/' + fname });
-                    hasNewFiles = true;
-                }
-            }
+            // Loading state
+            const submitBtn = document.querySelector('#boardWrite .btn-primary');
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = '업로드 중... (Uploading...)';
+            submitBtn.disabled = true;
 
-            if (isEditMode) {
-                // Update Existing
-                const index = posts.findIndex(p => p.id === currentPostId);
-                if (index !== -1) {
-                    // Keep existing files if no new ones (Simple logic)
-                    if (!hasNewFiles && posts[index].files) {
-                        files = posts[index].files;
+            try {
+                // Upload Image
+                if (selectedFiles['postImage']) {
+                    const file = selectedFiles['postImage'];
+                    try {
+                        await window.ghClient.uploadFile('assets/images/' + file.name, file, 'Upload image for Partner Resources');
+                    } catch (err) {
+                        console.error("Image upload failed:", err);
+                        alert("이미지 업로드에 실패했습니다: " + err.message);
+                        throw err;
                     }
-
-                    posts[index].title = title;
-                    posts[index].content = content;
-                    posts[index].image = image;
-                    posts[index].files = files;
-                    // posts[index].date = new Date().toISOString().split('T')[0]; // Optional: update date
-
-                    alert('수정되었습니다.');
                 }
-            } else {
-                // Create New
-                const newPost = {
-                    id: Date.now(),
-                    date: new Date().toISOString().split('T')[0],
-                    title: title,
-                    content: content,
-                    image: image,
-                    files: files,
-                    author: 'Admin'
-                };
-                posts.unshift(newPost);
-                alert('등록되었습니다.');
-            }
 
-            localStorage.setItem('resourceData', JSON.stringify(posts));
-            cancelWrite();
-            renderBoard();
+                // Collect & Upload Files
+                let files = [];
+                let hasNewFiles = false;
+                for (let i = 1; i <= 5; i++) {
+                    const fname = document.getElementById('fileData' + i).value;
+                    const fileObj = selectedFiles['file' + i];
+                    if (fname) {
+                        if (fileObj) {
+                            try {
+                                await window.ghClient.uploadFile('assets/files/' + fname, fileObj, 'Upload attachment for Partner Resources');
+                            } catch (err) {
+                                console.error("File upload failed:", err);
+                                alert("파일 업로드에 실패했습니다: " + err.message);
+                                throw err;
+                            }
+                        }
+                        files.push({ name: fname, path: 'assets/files/' + fname });
+                        hasNewFiles = true;
+                    }
+                }
+
+                if (isEditMode) {
+                    // Update Existing
+                    const index = posts.findIndex(p => p.id === currentPostId);
+                    if (index !== -1) {
+                        // Keep existing files if no new ones (Simple logic)
+                        if (!hasNewFiles && posts[index].files) {
+                            files = posts[index].files;
+                        }
+
+                        posts[index].title = title;
+                        posts[index].content = content;
+                        posts[index].image = image;
+                        posts[index].files = files;
+                        // posts[index].date = new Date().toISOString().split('T')[0]; // Optional: update date
+
+                        alert('수정되었습니다.');
+                    }
+                } else {
+                    // Create New
+                    const newPost = {
+                        id: Date.now(),
+                        date: new Date().toISOString().split('T')[0],
+                        title: title,
+                        content: content,
+                        image: image,
+                        files: files,
+                        author: 'Admin'
+                    };
+                    posts.unshift(newPost);
+                    alert('등록되었습니다.');
+                }
+
+                localStorage.setItem('resourceData', JSON.stringify(posts));
+
+                // Auto-save data to GitHub
+                if (typeof saveToGitHub === 'function') {
+                    await saveToGitHub('resource', true); // Silent save
+                }
+
+                selectedFiles = {}; // Clear selected files
+                cancelWrite();
+                renderBoard();
+            } catch (err) {
+                // Handled above
+            } finally {
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            }
         }
 
         // --- View ---
