@@ -554,16 +554,24 @@
                     const fname = document.getElementById('fileData' + i).value;
                     const fileObj = selectedFiles['file' + i];
                     if (fname) {
+                        let downloadUrl = null;
                         if (fileObj) {
                             try {
-                                await window.ghClient.uploadFile('assets/files/' + fname, fileObj, 'Upload attachment for Partner Resources');
+                                const result = await window.ghClient.uploadFile('assets/files/' + fname, fileObj, 'Upload attachment for Partner Resources');
+                                if (result && result.content && result.content.download_url) {
+                                    downloadUrl = result.content.download_url;
+                                }
                             } catch (err) {
                                 console.error("File upload failed:", err);
                                 alert("파일 업로드에 실패했습니다: " + err.message);
                                 throw err;
                             }
                         }
-                        files.push({ name: fname, path: 'assets/files/' + fname });
+                        files.push({
+                            name: fname,
+                            path: 'assets/files/' + fname,
+                            url: downloadUrl // Save the direct raw URL for immediate access
+                        });
                         hasNewFiles = true;
                     }
                 }
@@ -658,9 +666,10 @@
             if (post.files && post.files.length > 0) {
                 post.files.forEach(f => {
                     const a = document.createElement('a');
-                    a.href = '../' + f.path;
+                    a.href = f.url ? f.url : ('../' + f.path);
                     a.textContent = `💾 ${f.name}`;
                     a.className = 'file-link';
+                    a.target = '_blank'; // Add target blank to avoid navigation if download attribute fails
                     a.download = f.name;
                     fileLinks.appendChild(a);
                 });
