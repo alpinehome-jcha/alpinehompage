@@ -259,6 +259,24 @@
                     <label>내용 (Content)</label>
                     <textarea id="postContent" class="form-control" rows="15" placeholder="Enter content"></textarea>
                 </div>
+                <div class="form-group">
+                    <label>대표 이미지 (Main Image)</label>
+                    <input type="file" onchange="handleFile(this, 'postImage')">
+                    <input type="text" id="postImage" class="form-control" readonly placeholder="assets/images/..."
+                        style="margin-top:5px; background:#f9f9f9;">
+                </div>
+                <div class="form-group">
+                    <label>첨부파일 (Attachments - Max 5)</label>
+                    <div class="file-list">
+                        <input type="file" onchange="handleFile(this, 'file1')"><input type="hidden" id="fileData1">
+                        <input type="file" onchange="handleFile(this, 'file2')"><input type="hidden" id="fileData2">
+                        <input type="file" onchange="handleFile(this, 'file3')"><input type="hidden" id="fileData3">
+                        <input type="file" onchange="handleFile(this, 'file4')"><input type="hidden" id="fileData4">
+                        <input type="file" onchange="handleFile(this, 'file5')"><input type="hidden" id="fileData5">
+                    </div>
+                    <small style="color:#2ecc71;">* 파일은 자동으로 사이트 저장소에 업로드됩니다.</small>
+                </div>
+
                 <div style="text-align: right; margin-top:20px;">
                     <button class="btn btn-secondary" onclick="cancelWrite()">취소</button>
                     <button class="btn btn-primary" id="btnSavePost" onclick="savePost()">등록</button>
@@ -273,7 +291,15 @@
                         <span id="viewDate">Date</span> | Posted by <span id="viewAuthor">Admin</span>
                     </div>
                 </div>
+                <div id="viewImageContainer" style="margin-bottom:20px; display:none;">
+                    <img id="viewImage" src="" style="max-width:100%; border-radius:4px;">
+                </div>
                 <div id="viewContent" class="view-content">Content</div>
+
+                <div id="viewFiles" class="view-files" style="display:none;">
+                    <h4>첨부파일</h4>
+                    <div id="fileLinks"></div>
+                </div>
 
                 <div style="text-align: right; margin-top:30px; border-top:1px solid #eee; padding-top:20px;">
                     <button id="btnEdit" class="btn btn-warning" onclick="editPost()" style="display:none;">수정</button>
@@ -300,6 +326,7 @@
 
     <script src="../js/auth.js?v=20260211"></script>
     <script src="../js/i18n.js?v=20260211"></script>
+    <script src="../js/github-client.js?v=20260213"></script>
 
     <script>
         const BOARD_ITEMS_PER_PAGE = 20;
@@ -452,6 +479,8 @@
             document.getElementById('postId').value = '';
             document.getElementById('postTitle').value = '';
             document.getElementById('postContent').value = '';
+            document.getElementById('postImage').value = '';
+            for (let i = 1; i <= 5; i++) { if (document.getElementById('fileData' + i)) document.getElementById('fileData' + i).value = ''; }
             document.getElementById('btnSavePost').innerText = "등록";
 
             const btnSave = document.getElementById('btnSavePost');
@@ -470,6 +499,7 @@
             document.getElementById('postId').value = post.id;
             document.getElementById('postTitle').value = post.title;
             document.getElementById('postContent').value = post.content;
+            document.getElementById('postImage').value = post.image || '';
             document.getElementById('btnSavePost').innerText = "수정";
 
             document.getElementById('boardView').style.display = 'none';
@@ -488,6 +518,21 @@
             }
         }
 
+        let selectedFiles = {};
+
+        function handleFile(input, targetId) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                selectedFiles[targetId] = file;
+                if (targetId.startsWith('postImage')) {
+                    document.getElementById(targetId).value = 'assets/images/' + file.name;
+                } else {
+                    const hiddenInput = input.nextElementSibling;
+                    if (hiddenInput) hiddenInput.value = file.name;
+                }
+            }
+        }
+
         async function savePost() {
             if (sessionStorage.getItem('userRole') !== 'admin') {
                 alert('관리자만 작성할 수 있습니다. (Access Denied)');
@@ -496,6 +541,7 @@
 
             const title = document.getElementById('postTitle').value.trim();
             const content = document.getElementById('postContent').value.trim();
+            let image = document.getElementById('postImage').value;
             const pId = document.getElementById('postId').value;
             const author = sessionStorage.getItem('dealerName') || '관리자';
 
@@ -503,17 +549,67 @@
             if (!content) { alert('내용을 입력하세요.'); return; }
 
             const btnSave = document.getElementById('btnSavePost');
+            const originalBtnText = btnSave.innerText;
             btnSave.disabled = true;
-            btnSave.innerText = "저장 중...";
+            btnSave.innerText = "업로드 및 저장 중...";
 
             try {
+                // Upload Image
+                if (selectedFiles['postImage']) {
+                    const file = selectedFiles['postImage'];
+                    try {
+                        await window.ghClient.uploadFile('assets/images/' + file.name, file, 'Upload image for Partner Board');
+                    } catch (err) {
+                        console.error("Image upload failed:", err);
+                        alert("이미지 업로드에 실패했습니다: " + err.message);
+                        throw err;
+                    }
+                }
+
+                // Collect & Upload Files
+                let files = [];
+                let hasNewFiles = false;
+                for (let i = 1; i <= 5; i++) {
+                    const fname = document.getElementById('fileData' + i).value;
+                    const fileObj = selectedFiles['file' + i];
+                    if (fname) {
+                        let downloadUrl = null;
+                        if (fileObj) {
+                            try {
+                                const result = await window.ghClient.uploadFile('assets/files/' + fname, fileObj, 'Upload attachment for Partner Board');
+                                if (result && result.content && result.content.download_url) {
+                                    downloadUrl = result.content.download_url;
+                                }
+                            } catch (err) {
+                                console.error("File upload failed:", err);
+                                alert("파일 업로드에 실패했습니다: " + err.message);
+                                throw err;
+                            }
+                        }
+                        files.push({
+                            name: fname,
+                            path: 'assets/files/' + fname,
+                            url: downloadUrl
+                        });
+                        hasNewFiles = true;
+                    }
+                }
+
                 if (isEditMode && pId) {
+                    // Retain existing files if no new ones
+                    const existingPost = posts.find(p => p.id == pId);
+                    if (!hasNewFiles && existingPost && existingPost.files) {
+                        files = existingPost.files;
+                    }
+
                     // Update
                     const { error } = await window.supabase
                         .from('partner_board')
                         .update({
                             title: title,
                             content: content,
+                            image: image,
+                            files: files,
                             updated_at: new Date().toISOString()
                         })
                         .eq('id', pId);
@@ -527,6 +623,8 @@
                         .insert([{
                             title: title,
                             content: content,
+                            image: image,
+                            files: files,
                             author: author
                         }]);
 
@@ -535,13 +633,15 @@
                 }
 
                 await fetchPosts();
+                selectedFiles = {};
                 cancelWrite();
 
             } catch (err) {
+                // Handled above in try blocks
                 console.error("Save error:", err);
-                alert("저장 중 오류가 발생했습니다: " + err.message);
+            } finally {
                 btnSave.disabled = false;
-                btnSave.innerText = isEditMode ? "수정" : "등록";
+                btnSave.innerText = originalBtnText;
             }
         }
 
@@ -570,6 +670,43 @@
             document.getElementById('viewAuthor').textContent = post.author;
             // set textContent to prevent XSS but allow pre-wrap to show newlines
             document.getElementById('viewContent').textContent = post.content;
+
+            // Image
+            const imgEl = document.getElementById('viewImage');
+            if (post.image) {
+                imgEl.src = post.image.includes('/') ? '../' + post.image : '../assets/images/' + post.image;
+                if (post.image.startsWith('http')) imgEl.src = post.image;
+                document.getElementById('viewImageContainer').style.display = 'block';
+            } else {
+                document.getElementById('viewImageContainer').style.display = 'none';
+            }
+
+            // Files
+            const fileContainer = document.getElementById('viewFiles');
+            const fileLinks = document.getElementById('fileLinks');
+            fileLinks.innerHTML = '';
+            let fileArray = [];
+            // Handle parsing if supabase returns JSON string instead of object
+            if (typeof post.files === 'string') {
+                try { fileArray = JSON.parse(post.files); } catch (e) { }
+            } else {
+                fileArray = post.files || [];
+            }
+
+            if (fileArray && fileArray.length > 0) {
+                fileArray.forEach(f => {
+                    const a = document.createElement('a');
+                    a.href = f.url ? f.url : ('../' + f.path);
+                    a.textContent = `💾 ${f.name}`;
+                    a.className = 'file-link';
+                    a.target = '_blank';
+                    a.download = f.name;
+                    fileLinks.appendChild(a);
+                });
+                fileContainer.style.display = 'block';
+            } else {
+                fileContainer.style.display = 'none';
+            }
 
             // Admin Buttons
             if (sessionStorage.getItem('userRole') === 'admin') {
