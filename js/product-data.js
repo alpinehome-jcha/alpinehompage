@@ -3287,6 +3287,41 @@ const initialProductData = [
                 "id": "1773287927804552282",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/spk-s65.jpg"
+            },
+            {
+                "id": "1773288186907805901",
+                "type": "text",
+                "value": "2. 리어의 조화: Alpine S2-S65 (Coaxial Performance)\n\"뒷좌석 승객까지 배려한 균형 잡힌 공간감\"\n\nG80은 뒷좌석의 품격 또한 중요한 차량입니다. 리어 도어에 장착되는 S2-S65는 프론트와 동일한 소재를 사용한 코액셜(일체형) 스피커로 차량 전체의 음색 통일성을 완성합니다.\n\n- Seamless Balance: 프론트와 동일한 CFRP 소재를 사용하여 앞뒤 좌석 간의 음색 이질감을 없애고 전체적인 서라운드 효과를 극대화합니다.\n\n- Integrated Design: 트위터와 우퍼가 일체형으로 설계되어 별도의 가공 없이도 순정 위치에 완벽하게 안착되며, 뒷좌석 공간에 풍부한 잔향과 입체감을 더합니다."
+            },
+            {
+                "id": "1773288215327802192",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DSP-X120-10DP.jpg"
+            },
+            {
+                "id": "1773288227457421327",
+                "type": "text",
+                "value": "3. 사운드의 두뇌: PXE-X120-10DP (10-Ch DSP Amp)\n\"G80 액튠 시스템을 완전히 재지휘하는 지휘자\"\n\n이번 패키지의 가장 중요한 핵심은 바로 PXE-X120-10DP DSP 앰프입니다. 단순히 소리를 크게 키우는 것이 아니라, G80 실내 구조에 최적화된 소리를 '설계'합니다.\n\n- 7채널 완벽 통합 및 확장: 순정 액튠의 7채널 출력을 정밀하게 분석하여, 각 스피커로 최적의 주파수를 분배합니다. 10채널 출력을 지원하여 시스템 확장성이 매우 뛰어납니다.\n\n- 정밀 튜닝(31-Band EQ & Time Alignment): 운전석 위치에 맞춰 각 스피커의 소리가 도달하는 시간을 밀리초(ms) 단위로 조정합니다. 이제 가수의 목소리는 대시보드 정중앙에서 들리고, 악기들은 좌우로 넓게 펼쳐지는 마법 같은 '사운드 스테이징'이 구현됩니다.\n\n- 고출력 앰프 내장: 순정 앰프의 빈약한 출력을 보강하여, 낮은 볼륨에서도 단단한 타격감과 풍성한 정보량을 경험할 수 있습니다.\n\n\n\n\n4. 왜 G80에는 이 패키지여야 하는가?\n완벽한 순정 지향성: G80의 세련된 인테리어를 해치지 않는 '순정형 인스톨'이 가능합니다. 모든 작업은 보이지 않는 곳에서 정교하게 이루어집니다.\n\n전기차 수준의 정숙함 + 하이엔드 사운드: G80 특유의 낮은 로드 노이즈와 알파인의 선명한 해상력이 결합되어, 이동하는 시간이 즐거운 휴식의 시간이 됩니다.\n\n전문가의 맞춤형 세팅: 알파인만의 정밀 튜닝을 통해 고객님의 음악적 취향(클래식, 재즈, 가요 등)에 최적화된 사운드 프로필을 제공합니다.\n\n눈으로 보는 고급스러움은 제네시스가, 귀로 느끼는 프리미엄은 알파인이 완성합니다. 지금 알파인으로 당신의 G80을 진정한 프리미엄 리스닝 룸으로 업그레이드하십시오."
+            },
+            {
+                "id": "1773288353319722700",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-2A.jpg"
+            },
+            {
+                "id": "1773288501683403994",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-10B-2.jpg"
+            },
+            {
+                "id": "1773288525111492459",
+                "type": "text",
+                "value": "[Genesis G80 Alpine Special Edition: Non-Destructive Solution]\n\"차량 손상 0%, 사운드 만족도 100% — PnP 커넥터로 완성하는 순정 지향형 튜닝\"\n\nG80의 가치를 그대로 유지하면서 소리만 압도적으로 진화시킬 수는 없을까? JCH Auto는 고객님의 소중한 차량에 단 하나의 배선 손상도 허용하지 않는 '전용 PnP(Plug & Play) 케이블' 방식을 채택했습니다.\n\n1. 배선 절단 없는 'Jack by Jack' 인스톨\n\"순정 배선을 자르는 시대는 끝났습니다.\"\n\n과거의 카오디오 튜닝은 순정 배선을 피복하고 새로 연결하는 방식이 필수적이었습니다. 하지만 이번 패키지는 G80 액튠 시스템 전용으로 제작된 **전용 하네스(Harness)**를 사용합니다.\n\n무결성 유지: 차량의 메인 배선을 건드리지 않고 '잭'과 '잭'을 맞물려 연결하는 방식으로, 전기적 오류나 접촉 불량의 위험을 원천 차단합니다.\n\n순정 앰프와의 완벽 호환: 순정 액튠 앰프 신호를 그대로 DSP로 전달하여 시스템의 안정성을 극대화합니다.\n\n2. 제조사 워런티(AS) 걱정 제로\n\"공식 서비스 센터 방문도 당당하게\"\n\n많은 오너분들이 튜닝 후 제조사의 보증 수리 거부를 걱정하십니다.\n\nNon-Destructive: 차량 내부 배선 구조를 변경하지 않으므로, 추후 차량 점검이나 AS 발생 시에도 배선 개조로 인한 불이익이 없습니다.\n\n완벽한 복구 능력: 차량을 판매하거나 리스 반납을 해야 할 경우, 언제든지 잭만 분리하면 100% 출고 당시의 순정 상태로 되돌릴 수 있습니다.\n\n3. 노이즈 프리(Noise-Free) 설계\n\"안정적인 신호 전달이 고음질의 시작입니다.\"\n\n수작업으로 배선을 연결할 때 발생할 수 있는 노이즈 유입을 방지합니다.\n\n전용 쉴드 케이블: 알파인 PXE-X120-10DP와 G80 사이의 신호 손실을 최소화하기 위해 고품질 쉴드 처리가 된 전용 케이블을 사용하여, 화이트 노이즈 없는 깨끗한 배경음을 보장합니다."
+            },
+            {
+                "id": "1773288690842455959",
+                "type": "text",
+                "value": "장착 대리점 안내\n\n아래 링크를 클릭 하시면 전국의 알파인 대리점을 확인 할 수 있습니다.\n\n전화로 문의 해보세요\nhttps://www.alpine-korea.co.kr/pages/dealers.html"
             }
         ],
         "attachments": []
@@ -3487,7 +3522,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773287946031;
+const PRODUCT_DATA_VERSION = 1773288744302;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
