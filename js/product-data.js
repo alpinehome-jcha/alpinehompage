@@ -3032,11 +3032,11 @@ const initialProductData = [
         "desc": " X120-8 전용 PnP (8채널) /전면4채널+후면2채널+서브우퍼2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 130000,
-        "soldOut": true,
+        "soldOut": false,
         "image": "assets/images/DS-81B.jpg",
         "detailBlocks": [
             {
-                "id": 1771337189520.0796,
+                "id": "1771337189520.0796",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-X12-4B-1.jpg"
             }
@@ -3532,7 +3532,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773359184653;
+const PRODUCT_DATA_VERSION = 1773359199916;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
