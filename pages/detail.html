@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -472,6 +472,12 @@
             return path;
         }
 
+        // Converts URLs in plain text to clickable <a> links
+        function linkify(text) {
+            const urlRegex = /(https?:\/\/[^\s\n<>"]+)/g;
+            return text.replace(urlRegex, url => `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color:#007bff; word-break:break-all;">${url}</a>`);
+        }
+
         function renderDetailContent(lang = 'ko') {
             if (!product) {
                 container.innerHTML = `<div style="text-align: center; padding: 100px;">Product not found.</div>`;
@@ -490,7 +496,7 @@
                     if (block.type === 'text') {
                         blocksHTML += `
                             <div class="detail-content-item">
-                                <p class="detail-content-text">${block.value}</p>
+                                <p class="detail-content-text">${linkify(block.value)}</p>
                             </div>
                         `;
                     } else if (block.type === 'image') {
