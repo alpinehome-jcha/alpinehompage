@@ -1343,11 +1343,12 @@
                     newItem.lat = 37.5665;
                     newItem.lng = 126.9780;
                 }
-                collection.push(newItem);
+                collection.push(JSON.parse(JSON.stringify(newItem)));
                 currentId = newItem.id;
             } else {
                 if (existingIdx !== -1) {
-                    collection[existingIdx] = { ...collection[existingIdx], ...newItem };
+                    // Deep clone to break reference sharing with currentBlocks
+                    collection[existingIdx] = JSON.parse(JSON.stringify({ ...collection[existingIdx], ...newItem }));
                 }
             }
 
