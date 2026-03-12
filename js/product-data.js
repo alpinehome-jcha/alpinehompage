@@ -2986,16 +2986,16 @@ const initialProductData = [
         "desc": "R80-8/R100-8 전용 PnP (8채널) / 전면4채널+후면2채널+맥스 서브우퍼2채널용 / 케이블길이 1.5M",
         "desc_bottom": "B타입 / DSP측 케이블",
         "price": 130000,
-        "soldOut": true,
+        "soldOut": false,
         "image": "assets/images/DS-8B.jpg",
         "detailBlocks": [
             {
-                "id": 1771337107793.574,
+                "id": "1771337107793.574",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-R80-4B.jpg"
             },
             {
-                "id": 1772429950028.4207,
+                "id": "1772429950028.4207",
                 "type": "text",
                 "value": "출력 7번과 8번은 서브우퍼와 연결되어 있으므로 믹스설정에서 입력 1번과 2번을 출력 7번과 8번으로 연결시켜야함."
             }
@@ -3532,7 +3532,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773359171875;
+const PRODUCT_DATA_VERSION = 1773359184653;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
