@@ -3292,6 +3292,16 @@ const initialProductData = [
                 "id": "1773288186907805901",
                 "type": "text",
                 "value": "2. 리어의 조화: Alpine S2-S65 (Coaxial Performance)\n\"뒷좌석 승객까지 배려한 균형 잡힌 공간감\"\n\nG80은 뒷좌석의 품격 또한 중요한 차량입니다. 리어 도어에 장착되는 S2-S65는 프론트와 동일한 소재를 사용한 코액셜(일체형) 스피커로 차량 전체의 음색 통일성을 완성합니다.\n\n- Seamless Balance: 프론트와 동일한 CFRP 소재를 사용하여 앞뒤 좌석 간의 음색 이질감을 없애고 전체적인 서라운드 효과를 극대화합니다.\n\n- Integrated Design: 트위터와 우퍼가 일체형으로 설계되어 별도의 가공 없이도 순정 위치에 완벽하게 안착되며, 뒷좌석 공간에 풍부한 잔향과 입체감을 더합니다."
+            },
+            {
+                "id": "1773288215327802192",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DSP-X120-10DP.jpg"
+            },
+            {
+                "id": "1773288227457421327",
+                "type": "text",
+                "value": "3. 사운드의 두뇌: PXE-X120-10DP (10-Ch DSP Amp)\n\"G80 액튠 시스템을 완전히 재지휘하는 지휘자\"\n\n이번 패키지의 가장 중요한 핵심은 바로 PXE-X120-10DP DSP 앰프입니다. 단순히 소리를 크게 키우는 것이 아니라, G80 실내 구조에 최적화된 소리를 '설계'합니다.\n\n- 7채널 완벽 통합 및 확장: 순정 액튠의 7채널 출력을 정밀하게 분석하여, 각 스피커로 최적의 주파수를 분배합니다. 10채널 출력을 지원하여 시스템 확장성이 매우 뛰어납니다.\n\n- 정밀 튜닝(31-Band EQ & Time Alignment): 운전석 위치에 맞춰 각 스피커의 소리가 도달하는 시간을 밀리초(ms) 단위로 조정합니다. 이제 가수의 목소리는 대시보드 정중앙에서 들리고, 악기들은 좌우로 넓게 펼쳐지는 마법 같은 '사운드 스테이징'이 구현됩니다.\n\n- 고출력 앰프 내장: 순정 앰프의 빈약한 출력을 보강하여, 낮은 볼륨에서도 단단한 타격감과 풍성한 정보량을 경험할 수 있습니다."
             }
         ],
         "attachments": []
@@ -3492,7 +3502,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773288208477;
+const PRODUCT_DATA_VERSION = 1773288245972;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
