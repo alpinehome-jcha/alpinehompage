@@ -934,21 +934,21 @@ const initialProductData = [
         "desc": "OPTIM8 8CH DSP Amplifier_컨트롤러 포함",
         "desc_bottom": "장착 공임 별도/20만원 부터",
         "price": 1800000,
-        "soldOut": true,
+        "soldOut": false,
         "image": "assets/images/DSP-C80.jpg",
         "detailBlocks": [
             {
-                "id": 1770335301938.6367,
+                "id": "1770335301938.6367",
                 "type": "text",
                 "value": "8-Channel Hi-Res (96kHz/24Bit) Digital Sound Processor with Built-in Internal Amplifier\nRemove the Complexities of Sound Tuning with Simple, Self-Guided Auto-EQ Software via iOS App (iPhone / iPad) or PC App with External Mic Kit (sold seperately)\nAnti-EQ for OEM Systems (Eliminates Factory EQ Curve)\n8-Channel High-Level / 6-Channel RCA Audio Signal / Bluetooth® Audio Input\nOutputs: 8-Channel 4V RCA\n31 Band Parametric & Graphic EQ, Time Correction on all 8 Channels\nDigital Inputs: Coaxail, USB(DAC)\nSpeaker Input: Up to 30V (26Vpp)\nBuilt-in 8-Channel Amplifier: \n50W x 6@ 4Ω + 150W x 2 @ 4Ω or 50W x 6 @ 2Ω + 300W x 2 @ 2Ω\nDimensions: 23.4cm(W) x 24.2cm(H) x 5.1cm(D)"
             },
             {
-                "id": 1770335532967.8804,
+                "id": "1770335532967.8804",
                 "type": "image",
                 "value": "assets/images/DSP-C80-02.jpg"
             },
             {
-                "id": 1771572087949.2058,
+                "id": "1771572087949.2058",
                 "type": "text",
                 "value": "알파인(Alpine)의 **PXE-C80-88 (OPTIM8™)**은 복잡한 카오디오 튜닝 과정을 혁신적으로 단순화하면서도 하이엔드급 음질을 제공하는 8채널 DSP 일체형 앰프입니다.\n\n1. 올인원 솔루션 (8채널 DSP + 앰프): 별도의 프로세서와 앰프를 복잡하게 연결할 필요 없이, 단일 기기로 8채널의 스피커 출력을 제어합니다. (정격 출력: 50W x 6채널 + 150W x 2채널 @ 4Ω)\n\n\n2. Hi-Res Audio 인증: 96kHz/24bit의 고해상도 오디오 재생을 지원하여, 스튜디오 급의 선명한 사운드를 재현합니다.\n\n\n3. 강력한 순정 통합 기능 (Anti-EQ): 최신 차량의 순정 오디오에 걸려 있는 복잡한 EQ 값을 초기화(Flatten)하는 Anti-EQ 기능이 있어, 순정 헤드유닛을 그대로 사용하면서도 왜곡 없는 소리를 만들어냅니다\n\n\n4. PXE-C80-88은 특히 다음과 같은 상황에서 최고의 효율을 보여줍니다.\n\n  - 순정 인포테인먼트 시스템을 유지해야 하는 최신 차량\n최근 차량들은 내비게이션, 차량 설정 등이 헤드유닛에 통합되어 있어 오디오 교체가 거의 불가능합니다. PXE-C80-88은 순정 신호를 그대로 받아 하이엔드 사운드로 업그레이드하려는 차주분들에게 최적입니다.\n\n추천 차종: 국산 프리미엄 세단(제네시스 등), SUV(팰리세이드, 쏘렌토 등), 최신 수입차 라인업.\n\n  - 공간 활용이 중요한 소형/중형 차량\n별도의 앰프 랙을 짜기 부담스러운 소형 SUV나 해치백 차량에 적합합니다. 본체 하나로 전방 3-Way 스피커와 서브우퍼까지 구동할 수 있어 공간 손실을 최소화할 수 있습니다.\n\n  - 멀티 스피커 시스템(3-Way + Sub) 구성 시\n전면 트위터, 미드레인지, 미드우퍼를 각각 독립적으로 제어하는 프론트 3-Way 구성과 서브우퍼를 동시에 운용하고 싶을 때, 8개의 채널은 매우 여유로운 옵션이 됩니다. (7, 8번 채널의 높은 출력을 미드우퍼나 서브우퍼용으로 활용 가능)\n\n"
             }
@@ -3532,7 +3532,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773289788465;
+const PRODUCT_DATA_VERSION = 1773359102788;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
