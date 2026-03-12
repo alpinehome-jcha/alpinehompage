@@ -3282,6 +3282,11 @@ const initialProductData = [
                 "id": "1773287759954807802",
                 "type": "text",
                 "value": "1. 프론트의 완성: Alpine S2-S65C (High-Resolution Component)\n\"보컬의 숨소리까지 담아내는 초고해상도 사운드\"\n\n프론트 도어에 장착될 S2-S65C는 알파인의 최신 기술력이 집약된 S-시리즈의 핵심 모델입니다.\n\n- Hi-Res Audio 인증: 단순한 소리 재생을 넘어, 40kHz 이상의 초고역대까지 재생 가능한 하이레스 인증 제품으로 음원의 미세한 디테일을 놓치지 않습니다.\n\n- CFRP(탄소 섬유 강화 플라스틱) 다이어프램: 가벼우면서도 강성이 뛰어난 CFRP 진동판은 G80의 정숙한 실내에서 더욱 빛을 발하며, 왜곡 없이 빠르고 정확한 중저음을 구현합니다.\n\n- HAMR(High Amplitude Multi-Roll) 서라운드: 알파인만의 독자적인 엣지 기술로, 스피커의 수직 운동 범위를 극대화하여 깊고 탄력 있는 베이스를 제공합니다."
+            },
+            {
+                "id": "1773287927804552282",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/spk-s65.jpg"
             }
         ],
         "attachments": []
@@ -3482,7 +3487,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773287788312;
+const PRODUCT_DATA_VERSION = 1773287946031;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
