@@ -3306,7 +3306,17 @@ const initialProductData = [
             {
                 "id": "1773288353319722700",
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-2A%20(1).jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-2A.jpg"
+            },
+            {
+                "id": "1773288501683403994",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-10B-2.jpg"
+            },
+            {
+                "id": "1773288525111492459",
+                "type": "text",
+                "value": "[Genesis G80 Alpine Special Edition: Non-Destructive Solution]\n\"차량 손상 0%, 사운드 만족도 100% — PnP 커넥터로 완성하는 순정 지향형 튜닝\"\n\nG80의 가치를 그대로 유지하면서 소리만 압도적으로 진화시킬 수는 없을까? JCH Auto는 고객님의 소중한 차량에 단 하나의 배선 손상도 허용하지 않는 '전용 PnP(Plug & Play) 케이블' 방식을 채택했습니다.\n\n1. 배선 절단 없는 'Jack by Jack' 인스톨\n\"순정 배선을 자르는 시대는 끝났습니다.\"\n\n과거의 카오디오 튜닝은 순정 배선을 피복하고 새로 연결하는 방식이 필수적이었습니다. 하지만 이번 패키지는 G80 액튠 시스템 전용으로 제작된 **전용 하네스(Harness)**를 사용합니다.\n\n무결성 유지: 차량의 메인 배선을 건드리지 않고 '잭'과 '잭'을 맞물려 연결하는 방식으로, 전기적 오류나 접촉 불량의 위험을 원천 차단합니다.\n\n순정 앰프와의 완벽 호환: 순정 액튠 앰프 신호를 그대로 DSP로 전달하여 시스템의 안정성을 극대화합니다.\n\n2. 제조사 워런티(AS) 걱정 제로\n\"공식 서비스 센터 방문도 당당하게\"\n\n많은 오너분들이 튜닝 후 제조사의 보증 수리 거부를 걱정하십니다.\n\nNon-Destructive: 차량 내부 배선 구조를 변경하지 않으므로, 추후 차량 점검이나 AS 발생 시에도 배선 개조로 인한 불이익이 없습니다.\n\n완벽한 복구 능력: 차량을 판매하거나 리스 반납을 해야 할 경우, 언제든지 잭만 분리하면 100% 출고 당시의 순정 상태로 되돌릴 수 있습니다.\n\n3. 노이즈 프리(Noise-Free) 설계\n\"안정적인 신호 전달이 고음질의 시작입니다.\"\n\n수작업으로 배선을 연결할 때 발생할 수 있는 노이즈 유입을 방지합니다.\n\n전용 쉴드 케이블: 알파인 PXE-X120-10DP와 G80 사이의 신호 손실을 최소화하기 위해 고품질 쉴드 처리가 된 전용 케이블을 사용하여, 화이트 노이즈 없는 깨끗한 배경음을 보장합니다."
             }
         ],
         "attachments": []
@@ -3507,7 +3517,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773288461592;
+const PRODUCT_DATA_VERSION = 1773288622077;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
