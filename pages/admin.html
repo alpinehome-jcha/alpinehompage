@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!-- Updated: Force Raw URL (2026-02-13) -->
 <html lang="ko">
 
@@ -1086,9 +1086,13 @@
                 // Blocks
                 if (item.detailBlocks) {
                     currentBlocks = JSON.parse(JSON.stringify(item.detailBlocks));
+                    // Ensure IDs are strings to avoid precision loss in HTML
+                    currentBlocks.forEach(b => {
+                        if (typeof b.id !== 'string') b.id = b.id.toString();
+                    });
                 } else {
                     currentBlocks = [];
-                    if (item.detailImage) currentBlocks.push({ id: Date.now(), type: 'image', value: item.detailImage });
+                    if (item.detailImage) currentBlocks.push({ id: Date.now().toString(), type: 'image', value: item.detailImage });
                 }
                 renderBlocks();
 
@@ -1304,12 +1308,14 @@
                     for (const key of keys) {
                         const newVal = JSON.stringify(newItem[key]);
                         const oldVal = JSON.stringify(existing[key]);
-                        // console.log(`Field ${key}: ${newVal} vs ${oldVal}`); // Verbose Debug
-
+                        
+                        // Detailed debug for developers
                         if (newVal !== oldVal) {
-                            console.log(`Change detected in ${key}:`, newVal, oldVal);
+                            console.log(`%cChange detected in [${key}]:`, 'color: orange; font-weight: bold;');
+                            console.log('Old:', existing[key]);
+                            console.log('New:', newItem[key]);
                             hasChanges = true;
-                            break;
+                            break; 
                         }
                     }
                 } else {
@@ -1492,11 +1498,13 @@
 
         // --- Block Logic (Product Only) ---
         function addBlock(type, initialValue = '') {
-            currentBlocks.push({ id: Date.now() + Math.random(), type, value: initialValue });
+            const newId = Date.now().toString() + Math.random().toString().slice(2, 8);
+            currentBlocks.push({ id: newId, type: type, value: initialValue });
             renderBlocks();
         }
         function removeBlock(id) {
-            currentBlocks = currentBlocks.filter(b => b.id !== id);
+            const sid = id.toString();
+            currentBlocks = currentBlocks.filter(b => b.id.toString() !== sid);
             renderBlocks();
         }
         function renderBlocks() {
@@ -1510,7 +1518,7 @@
                 if (block.type === 'text') {
                     contentHTML = `
                         <div class="block-type-label">Text Section</div>
-                        <textarea rows="4" placeholder="Enter details..." oninput="updateBlockValue(${block.id}, this.value)">${block.value}</textarea>
+                        <textarea rows="4" placeholder="Enter details..." oninput="updateBlockValue('${block.id}', this.value)">${block.value}</textarea>
                     `;
                 } else if (block.type === 'image') {
                     const imgSrc = block.value && block.value.startsWith('assets/') ? '../' + block.value : block.value;
@@ -1527,7 +1535,7 @@
 
                     contentHTML = `
                         <div class="block-type-label">Image Section</div>
-                        <input type="file" id="block_file_${block.id}" accept="image/*" onchange="handleBlockFile(${block.id}, this)">
+                        <input type="file" id="block_file_${block.id}" accept="image/*" onchange="handleBlockFile('${block.id}', this)">
                         <input type="text" id="block_text_${block.id}" placeholder="assets/images/..." readonly value="${block.value}" style="background:#f9f9f9; margin-top:5px;">
                         ${imgHTML}
                     `;
@@ -1535,7 +1543,7 @@
                     contentHTML = `
                         <div class="block-type-label" style="color:#28a745;">Excel / HTML Table Section</div>
                         <p style="font-size:0.8rem; color:#666; margin-bottom:5px;">Paste Excel data below to convert to table:</p>
-                        <textarea rows="3" placeholder="Paste Excel cells here..." oninput="handleExcelPaste(${block.id}, this)"></textarea>
+                        <textarea rows="3" placeholder="Paste Excel cells here..." oninput="handleExcelPaste('${block.id}', this)"></textarea>
                         <div style="margin-top:10px; border:1px solid #eee; padding:5px; background:#fff; max-height:200px; overflow:auto;">
                             ${block.value || '<span style="color:#ccc;">Table Preview...</span>'}
                         </div>
@@ -1543,11 +1551,15 @@
                     `;
                 }
 
-                item.innerHTML = `<button class="btn btn-danger btn-sm remove-btn" onclick="removeBlock(${block.id})">Delete</button>${contentHTML}`;
+                item.innerHTML = `<button class="btn btn-danger btn-sm remove-btn" onclick="removeBlock('${block.id}')">Delete</button>${contentHTML}`;
                 container.appendChild(item);
             });
         }
-        function updateBlockValue(id, val) { const b = currentBlocks.find(x => x.id === id); if (b) b.value = val; }
+        function updateBlockValue(id, val) { 
+            const sid = id.toString();
+            const b = currentBlocks.find(x => x.id.toString() === sid); 
+            if (b) b.value = val; 
+        }
         function handleBlockFile(id, input) {
             const file = input.files[0];
             if (!file) return;
@@ -1566,7 +1578,8 @@
                 ghClient.uploadFile(path, file, `Upload Detail Block Image: ${file.name}`)
                     .then((res) => {
                         console.log('Upload Response:', res); // Debug Log
-                        const b = currentBlocks.find(x => x.id === id);
+                        const sid = id.toString();
+                        const b = currentBlocks.find(x => x.id.toString() === sid);
                         if (b) {
                             let finalUrl = null;
 
@@ -1639,7 +1652,8 @@
             tableHTML += '</table>';
 
             // Update Block Value
-            const b = currentBlocks.find(x => x.id === id);
+            const sid = id.toString();
+            const b = currentBlocks.find(x => x.id.toString() === sid);
             if (b) {
                 b.value = tableHTML;
                 // We re-render to update the preview, but we want to keep the textarea value if user wants to re-paste? 
