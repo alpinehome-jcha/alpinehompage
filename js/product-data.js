@@ -3267,7 +3267,13 @@ const initialProductData = [
         "price": 3550000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/G80%20actune.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": 1773282359673.2278,
+                "type": "text",
+                "value": "\"순정의 고요함 위에 피어나는 압도적 해상력, G80 전용 알파인 하이엔드 솔루션\"\n제네시스 G80은 국내 최고의 정숙성을 자랑하는 세단입니다. 하지만 기본 탑재된 7채널 액튠(Actune) 사운드 시스템은 소리의 명료도나 저음의 단단함 면에서 음악 애호가들에게 다소 아쉬움을 남기곤 합니다.\n\n알파인이 제안하는 이번 패키지는 G80의 완벽한 실내 정숙성을 배경 삼아, 마치 공연장 VIP석에 앉아 있는 듯한 입체적인 무대감을 선사하기 위해 설계되었습니다."
+            }
+        ],
         "attachments": []
     },
     {
@@ -3466,7 +3472,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773278505991;
+const PRODUCT_DATA_VERSION = 1773282397229;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
