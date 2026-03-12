@@ -3269,14 +3269,19 @@ const initialProductData = [
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/G80%20actune.jpg",
         "detailBlocks": [
             {
-                "id": 1773282359673.2278,
+                "id": "1773282359673.2278",
                 "type": "text",
                 "value": "\"순정의 고요함 위에 피어나는 압도적 해상력, G80 전용 알파인 하이엔드 솔루션\"\n제네시스 G80은 국내 최고의 정숙성을 자랑하는 세단입니다. 하지만 기본 탑재된 7채널 액튠(Actune) 사운드 시스템은 소리의 명료도나 저음의 단단함 면에서 음악 애호가들에게 다소 아쉬움을 남기곤 합니다.\n\n알파인이 제안하는 이번 패키지는 G80의 완벽한 실내 정숙성을 배경 삼아, 마치 공연장 VIP석에 앉아 있는 듯한 입체적인 무대감을 선사하기 위해 설계되었습니다."
             },
             {
-                "id": 1773282599803.7563,
+                "id": "1773282599803.7563",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/spk-s65.jpg"
+            },
+            {
+                "id": "1773287759954807802",
+                "type": "text",
+                "value": "1. 프론트의 완성: Alpine S2-S65C (High-Resolution Component)\n\"보컬의 숨소리까지 담아내는 초고해상도 사운드\"\n\n프론트 도어에 장착될 S2-S65C는 알파인의 최신 기술력이 집약된 S-시리즈의 핵심 모델입니다.\n\n- Hi-Res Audio 인증: 단순한 소리 재생을 넘어, 40kHz 이상의 초고역대까지 재생 가능한 하이레스 인증 제품으로 음원의 미세한 디테일을 놓치지 않습니다.\n\n- CFRP(탄소 섬유 강화 플라스틱) 다이어프램: 가벼우면서도 강성이 뛰어난 CFRP 진동판은 G80의 정숙한 실내에서 더욱 빛을 발하며, 왜곡 없이 빠르고 정확한 중저음을 구현합니다.\n\n- HAMR(High Amplitude Multi-Roll) 서라운드: 알파인만의 독자적인 엣지 기술로, 스피커의 수직 운동 범위를 극대화하여 깊고 탄력 있는 베이스를 제공합니다."
             }
         ],
         "attachments": []
@@ -3477,7 +3482,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773282611263;
+const PRODUCT_DATA_VERSION = 1773287788312;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
