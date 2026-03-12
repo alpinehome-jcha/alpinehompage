@@ -3264,7 +3264,7 @@ const initialProductData = [
         "title": "G80 7채널 액튠_알파인 사운드 패키지(무손상 OEM Fit)",
         "desc": "당신의 G80을 위한 단 하나의 '사운드 큐레이션'",
         "desc_bottom": "액튠의 한계를 넘어, 알파인 S-시리즈의 섬세한 디테일과 10채널 DSP의 정밀함이 만났습니다.",
-        "price": 3550000,
+        "price": 3630000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/G80%20actune.jpg",
         "detailBlocks": [
@@ -3532,7 +3532,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773289726566;
+const PRODUCT_DATA_VERSION = 1773289788465;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
