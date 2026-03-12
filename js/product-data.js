@@ -3287,6 +3287,11 @@ const initialProductData = [
                 "id": "1773287927804552282",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/spk-s65.jpg"
+            },
+            {
+                "id": "1773288186907805901",
+                "type": "text",
+                "value": "2. 리어의 조화: Alpine S2-S65 (Coaxial Performance)\n\"뒷좌석 승객까지 배려한 균형 잡힌 공간감\"\n\nG80은 뒷좌석의 품격 또한 중요한 차량입니다. 리어 도어에 장착되는 S2-S65는 프론트와 동일한 소재를 사용한 코액셜(일체형) 스피커로 차량 전체의 음색 통일성을 완성합니다.\n\n- Seamless Balance: 프론트와 동일한 CFRP 소재를 사용하여 앞뒤 좌석 간의 음색 이질감을 없애고 전체적인 서라운드 효과를 극대화합니다.\n\n- Integrated Design: 트위터와 우퍼가 일체형으로 설계되어 별도의 가공 없이도 순정 위치에 완벽하게 안착되며, 뒷좌석 공간에 풍부한 잔향과 입체감을 더합니다."
             }
         ],
         "attachments": []
@@ -3487,7 +3492,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773287946031;
+const PRODUCT_DATA_VERSION = 1773288208477;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
