@@ -3276,7 +3276,7 @@ const initialProductData = [
             {
                 "id": "1773282599803.7563",
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/spk-s65.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/spk-s65c.jpg"
             },
             {
                 "id": "1773287759954807802",
@@ -3652,7 +3652,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773368104955;
+const PRODUCT_DATA_VERSION = 1773370053637;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
