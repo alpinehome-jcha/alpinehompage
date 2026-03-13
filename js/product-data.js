@@ -3545,6 +3545,16 @@ const initialProductData = [
                 "id": "1773363594097773388",
                 "type": "text",
                 "value": "크렐/렉시콘/BOSE/JBL은 약간 다를 수 있습니다. 차량 컨넥터의 돌기를 제거하고 사용하면 됩니다."
+            },
+            {
+                "id": "1773366659684604120",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/Speaker%20Connector%20A-01.jpg"
+            },
+            {
+                "id": "1773366669904969540",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/Speaker%20Connector%20A-02.jpg"
             }
         ],
         "attachments": []
@@ -3598,7 +3608,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773366035592;
+const PRODUCT_DATA_VERSION = 1773366680348;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
