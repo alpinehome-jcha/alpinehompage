@@ -3655,9 +3655,21 @@ const initialProductData = [
             }
         ],
         "attachments": []
+    },
+    {
+        "id": 1773388000237,
+        "category": "Speakers",
+        "title": "S2-W8D그릴 (KTE-8G.3)",
+        "desc": ".",
+        "desc_bottom": ".",
+        "price": 50000,
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/KTE-8G.3 (S2-W8D그릴).jpg",
+        "detailBlocks": [],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773374471583;
+const PRODUCT_DATA_VERSION = 1773388000239;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
