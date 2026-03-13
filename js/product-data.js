@@ -3537,7 +3537,7 @@ const initialProductData = [
         "title": "Speaker Connector A",
         "desc": "현대 기아 제네시스 미드우퍼 스피커 컨넥터",
         "desc_bottom": ".",
-        "price": 80000,
+        "price": 8000,
         "soldOut": false,
         "image": "assets/images/product_placeholder.png",
         "detailBlocks": [
@@ -3598,7 +3598,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773363956075;
+const PRODUCT_DATA_VERSION = 1773364002767;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
