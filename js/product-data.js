@@ -3534,8 +3534,8 @@ const initialProductData = [
     {
         "id": 1773363359421,
         "category": "Others",
-        "title": "Speaker Connector C",
-        "desc": "현대/기아/제네시스 트위터 스피커 / 미드레인지 스피커 컨넥터",
+        "title": "Speaker Connector D",
+        "desc": "KGM 신형 스피커 컨넥터 / 현대/기아 구형 스피커 컨넥터",
         "desc_bottom": ".",
         "price": 80000,
         "soldOut": false,
@@ -3544,7 +3544,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773363433533;
+const PRODUCT_DATA_VERSION = 1773363474433;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
