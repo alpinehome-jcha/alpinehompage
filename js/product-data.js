@@ -3584,9 +3584,21 @@ const initialProductData = [
         "image": "assets/images/product_placeholder.png",
         "detailBlocks": [],
         "attachments": []
+    },
+    {
+        "id": 1773363956072,
+        "category": "Others",
+        "title": "Speaker Connector E",
+        "desc": "KGM 렉스턴/칸/무쏘 미드우퍼 컨넥터",
+        "desc_bottom": ".",
+        "price": 8000,
+        "soldOut": false,
+        "image": "assets/images/product_placeholder.png",
+        "detailBlocks": [],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773363904939;
+const PRODUCT_DATA_VERSION = 1773363956075;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
