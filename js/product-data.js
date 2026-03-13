@@ -3568,7 +3568,18 @@ const initialProductData = [
         "price": 8000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/Speaker%20Connector%20B.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": "1773366834332364874",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/Speaker%20Connector%20B-01.jpg"
+            },
+            {
+                "id": "1773366844288389257",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/Speaker%20Connector%20B-02.jpg"
+            }
+        ],
         "attachments": []
     },
     {
@@ -3608,7 +3619,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773366680348;
+const PRODUCT_DATA_VERSION = 1773366854372;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
