@@ -3534,17 +3534,23 @@ const initialProductData = [
     {
         "id": 1773363359421,
         "category": "Others",
-        "title": "Speaker Connector E",
-        "desc": "KGM 렉스턴/칸/무쏘 미드우퍼 컨넥터",
+        "title": "Speaker Connector A",
+        "desc": "현대 기아 제네시스 미드우퍼 스피커 컨넥터",
         "desc_bottom": ".",
         "price": 80000,
         "soldOut": false,
         "image": "assets/images/product_placeholder.png",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": "1773363594097773388",
+                "type": "text",
+                "value": "크렐/렉시콘/BOSE/JBL은 약간 다를 수 있습니다. 차량 컨넥터의 돌기를 제거하고 사용하면 됩니다."
+            }
+        ],
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773363519005;
+const PRODUCT_DATA_VERSION = 1773363654143;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
