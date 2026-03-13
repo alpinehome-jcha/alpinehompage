@@ -3572,9 +3572,21 @@ const initialProductData = [
         "image": "assets/images/product_placeholder.png",
         "detailBlocks": [],
         "attachments": []
+    },
+    {
+        "id": 1773363904936,
+        "category": "Others",
+        "title": "Speaker Connector D",
+        "desc": "KGM 신형 스피커 컨넥터 / 현대 기아 구형 스피커 컨넥터",
+        "desc_bottom": ".",
+        "price": 8000,
+        "soldOut": false,
+        "image": "assets/images/product_placeholder.png",
+        "detailBlocks": [],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773363790943;
+const PRODUCT_DATA_VERSION = 1773363904939;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
