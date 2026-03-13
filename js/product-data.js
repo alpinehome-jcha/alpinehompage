@@ -2179,7 +2179,7 @@ const initialProductData = [
     },
     {
         "id": 1770357623545,
-        "category": "Speakers",
+        "category": "ALPINESTYLE",
         "title": "RAV4 Lift Up Speaker",
         "desc": "Toyota RAV4 Standard 4채널 시스템 전용",
         "desc_bottom": "장착 공임 별도/20만원 부터",
@@ -2188,7 +2188,7 @@ const initialProductData = [
         "image": "assets/images/rav4.jpg",
         "detailBlocks": [
             {
-                "id": 1770357546003.6963,
+                "id": "1770357546003.6963",
                 "type": "image",
                 "value": "assets/images/Rav4-01.jpg"
             }
@@ -3532,7 +3532,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773360926494;
+const PRODUCT_DATA_VERSION = 1773361023152;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
