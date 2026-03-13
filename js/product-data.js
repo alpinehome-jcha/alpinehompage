@@ -3667,9 +3667,21 @@ const initialProductData = [
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/KTE-8G.3 (S2-W8D그릴).jpg",
         "detailBlocks": [],
         "attachments": []
+    },
+    {
+        "id": 1773388147415,
+        "category": "Speakers",
+        "title": "S2-W10D그릴 (KTE-10G.3)",
+        "desc": ".",
+        "desc_bottom": ".",
+        "price": 50000,
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/KTE-10G.3 (S2-W10D그릴).jpg",
+        "detailBlocks": [],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773388000239;
+const PRODUCT_DATA_VERSION = 1773388147418;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
