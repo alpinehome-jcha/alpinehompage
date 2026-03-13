@@ -2233,7 +2233,7 @@ const initialProductData = [
     },
     {
         "id": 1770360102037,
-        "category": "Others",
+        "category": "Alpine Status",
         "title": "Status Tweeter Chamber",
         "desc": "F#1 Status Tweeter 호환 / HDZ-653 Tweeter 호환\n",
         "desc_bottom": ".",
@@ -3532,7 +3532,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773360836241;
+const PRODUCT_DATA_VERSION = 1773360926494;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
