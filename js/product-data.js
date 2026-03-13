@@ -3560,9 +3560,21 @@ const initialProductData = [
         "image": "assets/images/product_placeholder.png",
         "detailBlocks": [],
         "attachments": []
+    },
+    {
+        "id": 1773363790940,
+        "category": "Others",
+        "title": "Speaker Connector C",
+        "desc": "현대 기아 제네시스 트위터/미드레인지/센터 스피커 컨넥터",
+        "desc_bottom": ".",
+        "price": 8000,
+        "soldOut": false,
+        "image": "assets/images/product_placeholder.png",
+        "detailBlocks": [],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773363728268;
+const PRODUCT_DATA_VERSION = 1773363790943;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
