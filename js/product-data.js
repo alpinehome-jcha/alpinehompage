@@ -3530,9 +3530,21 @@ const initialProductData = [
             }
         ],
         "attachments": []
+    },
+    {
+        "id": 1773363359421,
+        "category": "Others",
+        "title": "Speaker Connector A",
+        "desc": "현대/기아/제네시스 미드우퍼 컨넥터",
+        "desc_bottom": ".",
+        "price": 80000,
+        "soldOut": false,
+        "image": "assets/images/product_placeholder.png",
+        "detailBlocks": [],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773361023152;
+const PRODUCT_DATA_VERSION = 1773363359423;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
