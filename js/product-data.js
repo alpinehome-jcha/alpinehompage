@@ -2862,7 +2862,7 @@ const initialProductData = [
         "title": "BY-2A",
         "desc": "Sealion7 9채널 앰프 / 케이블길이 1.5M",
         "desc_bottom": "A타입 / 차측용 케이블",
-        "price": 300000,
+        "price": 150000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BY-2A-c.jpg",
         "detailBlocks": [
@@ -3723,7 +3723,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773820282558;
+const PRODUCT_DATA_VERSION = 1773820298118;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
