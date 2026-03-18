@@ -9358,6 +9358,12 @@ const initialEstimateData = [
             "Toyota 6.9\" 배플",
             "커스텀 배플"
         ],
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
         "subwoofer": [
             "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
@@ -9381,12 +9387,10 @@ const initialEstimateData = [
             "TY-1A"
         ],
         "tweeter": [],
-        "add_front": [],
-        "center": [],
-        "surround": []
+        "add_front": []
     }
 ];
-const ESTIMATE_DATA_VERSION = 1773819396683;
+const ESTIMATE_DATA_VERSION = 1773819626697;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
