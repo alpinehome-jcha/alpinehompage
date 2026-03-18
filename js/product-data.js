@@ -2844,12 +2844,12 @@ const initialProductData = [
         "title": "BY-101",
         "desc": "BYD Atto3 / Dolphin 4CH 자출 /케이블길이 1.5M/ PXE-M60-4와 연결",
         "desc_bottom": "AB타입",
-        "price": 200000,
+        "price": 120000,
         "soldOut": false,
         "image": "assets/images/BY-101.jpg",
         "detailBlocks": [
             {
-                "id": 1771042392827.5042,
+                "id": "1771042392827.5042",
                 "type": "text",
                 "value": "25년 이후 : ATTO3 / Dolphin / 4채널\n\nDSP : PXE-M60-4와 연결되는 케이블입니다."
             }
@@ -3723,7 +3723,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773820255363;
+const PRODUCT_DATA_VERSION = 1773820282558;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
