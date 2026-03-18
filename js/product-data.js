@@ -3716,14 +3716,14 @@ const initialProductData = [
         "title": "Toyota 6.9\" 배플",
         "desc": "",
         "desc_bottom": ".",
-        "price": 0,
+        "price": 50000,
         "soldOut": false,
         "image": "assets/images/product_placeholder.png",
         "detailBlocks": [],
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773819135554;
+const PRODUCT_DATA_VERSION = 1773820003647;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
