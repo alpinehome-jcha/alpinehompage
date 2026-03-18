@@ -2844,12 +2844,12 @@ const initialProductData = [
         "title": "BY-101",
         "desc": "BYD Atto3 / Dolphin 4CH 자출 /케이블길이 1.5M/ PXE-M60-4와 연결",
         "desc_bottom": "AB타입",
-        "price": 200000,
+        "price": 120000,
         "soldOut": false,
         "image": "assets/images/BY-101.jpg",
         "detailBlocks": [
             {
-                "id": 1771042392827.5042,
+                "id": "1771042392827.5042",
                 "type": "text",
                 "value": "25년 이후 : ATTO3 / Dolphin / 4채널\n\nDSP : PXE-M60-4와 연결되는 케이블입니다."
             }
@@ -2862,7 +2862,7 @@ const initialProductData = [
         "title": "BY-2A",
         "desc": "Sealion7 9채널 앰프 / 케이블길이 1.5M",
         "desc_bottom": "A타입 / 차측용 케이블",
-        "price": 300000,
+        "price": 150000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BY-2A-c.jpg",
         "detailBlocks": [
@@ -3698,7 +3698,7 @@ const initialProductData = [
         "title": "TY-1A",
         "desc": "토요타 크라운(S230) 23년 이후 JBL 8CH",
         "desc_bottom": ".",
-        "price": 0,
+        "price": 150000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/TY-1A.jpg",
         "detailBlocks": [
@@ -3709,9 +3709,21 @@ const initialProductData = [
             }
         ],
         "attachments": []
+    },
+    {
+        "id": 1773819135551,
+        "category": "Others",
+        "title": "Toyota 6.9\" 배플",
+        "desc": "",
+        "desc_bottom": ".",
+        "price": 50000,
+        "soldOut": false,
+        "image": "assets/images/product_placeholder.png",
+        "detailBlocks": [],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773818630595;
+const PRODUCT_DATA_VERSION = 1773820298118;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
