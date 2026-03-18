@@ -3696,17 +3696,12 @@ const initialProductData = [
         "id": 1773796225598,
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "TY-1A",
-        "desc": "토요타 렉서스 JBL 8CH",
+        "desc": "토요타 크라운(S230) 23년 이후 JBL 8CH",
         "desc_bottom": ".",
         "price": 0,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/TY-1A.jpg",
         "detailBlocks": [
-            {
-                "id": "1773796158725003741",
-                "type": "text",
-                "value": "차종 리스트는 다음과 같습니다.\n\n## 1. 토요타 (Toyota) 모델\n대부분 2018~2019년 이후 출시된 JBL 프리미엄 사운드 옵션 차량들입니다.\n\n캠리 (Camry): 2018년형 ~ 현재 (XV70, XV80)\nRAV4: 2019년형 ~ 현재 (XA50)\n아발론 (Avalon): 2019년형 ~ 현재\n하이랜더 (Highlander): 2020년형 ~ 현재 (XU70)\n시에나 (Sienna): 2021년형 ~ 현재 (XL40)\n코롤라 (Corolla): 2019년형 ~ 현재 (E210)\n툰드라 (Tundra) / 세쿼이아 (Sequoia): 2022년형 ~ 현재\n프리우스 (Prius): 2023년형 ~ 현재 (XW60)\n\n## 2. 렉서스 (Lexus) 모델\n마크 레빈슨(Mark Levinson) 또는 렉서스 프리미엄 사운드 시스템이 적용된 최신 모델들과 공용입니다.\n\nES 시리즈 (ES300h/350): 2019년형 ~ 현재 (XZ10)\nNX 시리즈 (NX250/350/450h+): 2022년형 ~ 현재 (AZ20)\nRX 시리즈 (RX350/450h+/500h): 2023년형 ~ 현재 (ALA10)\nUX 시리즈 (UX200/250h): 2019년형 ~ 현재 (ZA10)\nIS 시리즈: 2021년형 ~ 현재 (XE30 2차 페이스리프트 모델)\nLS 시리즈: 2018년형 ~ 현재 (XF50)"
-            },
             {
                 "id": "1773797145548623665",
                 "type": "image",
@@ -3716,7 +3711,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773797171867;
+const PRODUCT_DATA_VERSION = 1773818522973;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
