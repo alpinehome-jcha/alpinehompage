@@ -9390,7 +9390,7 @@ const initialEstimateData = [
         "add_front": []
     }
 ];
-const ESTIMATE_DATA_VERSION = 1773819626697;
+const ESTIMATE_DATA_VERSION = 1773819630268;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
