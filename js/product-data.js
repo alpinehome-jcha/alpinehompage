@@ -2860,19 +2860,19 @@ const initialProductData = [
         "id": 1770597414437,
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "BY-2A",
-        "desc": "BYD Seal / Sealion7 9채널 앰프 / 케이블길이 1.5M",
+        "desc": "Sealion7 9채널 앰프 / 케이블길이 1.5M",
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 300000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BY-2A-c.jpg",
         "detailBlocks": [
             {
-                "id": 1771042496645.0986,
+                "id": "1771042496645.0986",
                 "type": "text",
-                "value": "25년 이후 : 9채널 : Seal / Sealion7\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
+                "value": "25년 이후 : 9채널 : Sealion7\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
             },
             {
-                "id": 1772002323584.3276,
+                "id": "1772002323584.3276",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BY-2A.jpg"
             }
@@ -3711,7 +3711,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773818522973;
+const PRODUCT_DATA_VERSION = 1773818630595;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
