@@ -3709,9 +3709,21 @@ const initialProductData = [
             }
         ],
         "attachments": []
+    },
+    {
+        "id": 1773819135551,
+        "category": "Others",
+        "title": "Toyota 6.9\" 배플",
+        "desc": "",
+        "desc_bottom": ".",
+        "price": 0,
+        "soldOut": false,
+        "image": "assets/images/product_placeholder.png",
+        "detailBlocks": [],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773818630595;
+const PRODUCT_DATA_VERSION = 1773819135554;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
