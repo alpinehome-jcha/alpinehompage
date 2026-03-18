@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -429,12 +429,15 @@
                     const worksheet = workbook.Sheets[firstSheetName];
                     const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-                    if (jsonData.length === 0) {
-                        alert('엑셀 파일에 데이터가 없습니다.');
+                    // 빈 줄(빈 제품명) 걸러내기 (엑셀 하단의 빈 셀 방지)
+                    const validData = jsonData.filter(row => row['제품명'] && row['제품명'].toString().trim() !== '');
+
+                    if (validData.length === 0) {
+                        alert('엑셀 파일에 유효한 데이터가 없습니다. (제품명이 비어있는 줄은 무시됩니다)');
                         return;
                     }
 
-                    if (!confirm(`총 ${jsonData.length}개의 데이터를 서버로 전송하시겠습니까? (기존 데이터는 유지되며, 제품명과 분류가 일치하면 업데이트됩니다.)`)) {
+                    if (!confirm(`총 ${validData.length}개의 데이터를 서버로 전송하시겠습니까? (기존 데이터는 유지되며, 제품명과 분류가 일치하면 업데이트됩니다.)`)) {
                         document.getElementById('excelInput').value = '';
                         return;
                     }
@@ -460,7 +463,7 @@
                         return val;
                     };
 
-                    const batchData = jsonData.map((row, idx) => {
+                    const batchData = validData.map((row, idx) => {
                         let catCode = reverseCategoryMap[row['분류']];
                         if (!catCode) {
                             if (categoryMap[row['분류']]) catCode = row['분류'];
