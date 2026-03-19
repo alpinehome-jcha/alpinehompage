@@ -3714,16 +3714,27 @@ const initialProductData = [
         "id": 1773819135551,
         "category": "Others",
         "title": "Toyota 6.9\" 배플",
-        "desc": "",
+        "desc": "6.5\" 스피커를 토요타 렉서스 차량에 부착할 수 있는 6.9\" 배플",
         "desc_bottom": ".",
         "price": 50000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
-        "detailBlocks": [],
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/6.9 배플.jpg",
+        "detailBlocks": [
+            {
+                "id": "1773878579079997406",
+                "type": "text",
+                "value": "알파인 스피커 DM시리즈,S2시리즈 R2시리즈에 알맞습니다.\n\nHDZ스피커 시리즈(알파인 스테이터스),F#1 스피커, DP2시리즈 스피커는 호환되지 않습니다."
+            },
+            {
+                "id": "1773878680471877692",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/6.9 배플-01.jpg"
+            }
+        ],
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773820298118;
+const PRODUCT_DATA_VERSION = 1773878691062;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
