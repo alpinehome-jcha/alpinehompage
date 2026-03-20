@@ -3843,13 +3843,13 @@ const initialProductData = [
             {
                 "id": "1773973974109196295",
                 "type": "text",
-                "value": "차원이 다른 알파인 사운드와 완벽한 무손상 인스톨의 결합!\n\nJCH 오토가 자신 있게 선보이는 차별화된 오디오 솔루션으로, BYD 씰리온7과 함께하는 드라이빙의 즐거움을 한 차원 더 높여보세요.\n\n\n장착 문의\n알파인 사운드 마스터\n가인 오디오\n경기도 안양시 만안구 안양로 21\n010-8545-5311"
+                "value": "차원이 다른 알파인 사운드와 완벽한 무손상 인스톨의 결합!\n\n알파인이 자신 있게 선보이는 차별화된 오디오 솔루션으로, BYD 씰리온7과 함께하는 드라이빙의 즐거움을 한 차원 더 높여보세요.\n\n\n장착 문의\n알파인 사운드 마스터\n가인 오디오\n경기도 안양시 만안구 안양로 21\n010-8545-5311"
             }
         ],
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773980418611;
+const PRODUCT_DATA_VERSION = 1774012135864;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
