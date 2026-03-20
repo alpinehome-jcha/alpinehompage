@@ -3190,13 +3190,49 @@ const initialProductData = [
     {
         "id": 1770599144668,
         "category": "Alpine OEM Fit",
-        "title": "테슬라 프론트 스피커 패키지",
-        "desc": "",
-        "desc_bottom": "",
-        "price": 0,
+        "title": "테슬라 프론트 알파인 스피커 패키지 (무손상 OEM Fit)",
+        "desc": "테슬라의 고요함 속, 알파인(ALPINE)의 프리미엄 사운드를 채우다",
+        "desc_bottom": "전기차 특유의 조용한 실내, 이제 그 공간을 완벽한 감동으로 채울 시간입니다.",
+        "price": 1070000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
-        "detailBlocks": [],
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/oem%20fit%20Tesla.jpg",
+        "detailBlocks": [
+            {
+                "id": "1773978677632102940",
+                "type": "text",
+                "value": "테슬라 모델 3, 모델 Y 오너 여러분!\n\n전기차 특유의 조용한 실내, 이제 그 공간을 완벽한 감동으로 채울 시간입니다.\n세계적인 카오디오 명가 **알파인(ALPINE)**이 오직 테슬라만을 위해 완성한 프리미엄 스피커 업그레이드 솔루션을 만나보세요."
+            },
+            {
+                "id": "1773978706314543735",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/EV-65CF.jpg"
+            },
+            {
+                "id": "1773978861473725382",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/EV-65CF-01.jpg"
+            },
+            {
+                "id": "1773978905045775993",
+                "type": "text",
+                "value": "완벽한 타격감과 선명함, 프론트 도어 스피커 [EV-65CF]\n\n혁신적인 하이브리드 파이버 소재: 카본 파이버의 강력한 강성으로 뿜어내는 '다이내믹한 저음'과, 방탄 파이버의 탄성이 빚어내는 '달콤하고 투명한 보컬'을 동시에 구현합니다.\n\n맑은 고음의 완성: 티테론 돔 트위터 적용으로 답답했던 순정 사운드를 벗어나 왜곡 없이 맑고 청아한 고음을 선사합니다."
+            },
+            {
+                "id": "1773978918471059219",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/EV-40MT.jpg"
+            },
+            {
+                "id": "1773979010517364387",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/EV-40MT-01.jpg"
+            },
+            {
+                "id": "1773979063925882480",
+                "type": "text",
+                "value": "눈앞에서 부르는 듯한 생생함, 대시보드 미드레인지 [EV-40MT]\n\n테슬라 실내 음향의 밸런스를 잡아주는 4인치 미드레인지 스피커입니다.\n\n운전석 정면에서 또렷하게 맺히는 보컬의 숨결과 풍성하고 입체적인 서라운드 스테이지를 경험해 보세요.\n\n\n\"매일 타는 테슬라, 이제 사운드도 혁신할 때입니다.\"\n\n단순한 음악 감상을 넘어 차 안을 나만의 프라이빗 콘서트홀로 만들어줄 알파인 EV-65CF & EV-40MT 시스템!\n지금 바로 예약하고 가슴 뛰는 하이엔드 오디오의 차이를 직접 경험해 보세요.\n\n\n바이지츠아우토\n경기도 하남시 대성로169번길 34\n010-9126-9223"
+            }
+        ],
         "attachments": []
     },
     {
@@ -3787,7 +3823,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773974125938;
+const PRODUCT_DATA_VERSION = 1773979115377;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
