@@ -3261,13 +3261,39 @@ const initialProductData = [
     {
         "id": 1770599246780,
         "category": "Alpine OEM Fit",
-        "title": "BMW 스피커 패키지",
-        "desc": "",
-        "desc_bottom": "",
-        "price": 0,
+        "title": "BMW 스피커 패키지 (무손상 OEM Fit)",
+        "desc": "진정한 드라이빙의 완성! BMW 오너를 위한 알파인(ALPINE) 프리미엄 스피커 업그레이드",
+        "desc_bottom": "BMW 전용 알파인 스피커 세트",
+        "price": 2160000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
-        "detailBlocks": [],
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/OEM%20fit%20BMW.jpg",
+        "detailBlocks": [
+            {
+                "id": "1773980204930262326",
+                "type": "text",
+                "value": "BMW의 다이내믹한 퍼포먼스에 걸맞은 완벽한 사운드를 찾고 계신가요?\n순정 오디오의 아쉬움을 단번에 채워줄 세계적인 카오디오 명가 **알파인(ALPINE)**의 BMW 전용 스피커 솔루션을 소개합니다!\n\n이번에 제안 드리는 세팅은 프론트와 리어를 책임질 DP2-45-B와 사운드의 중심을 잡아줄 센터 스피커 DP2-40C-B의 환상적인 조합으로, 차 안을 나만의 프라이빗 콘서트홀로 만들어줍니다."
+            },
+            {
+                "id": "1773980306884349584",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DP245Cb.jpg"
+            },
+            {
+                "id": "1773980339379814767",
+                "type": "text",
+                "value": "프론트 & 리어의 압도적인 타격감 [DP2-45-B]\n\n4.5인치 2-Way 코엑셜 스피커: 전면과 후면을 꽉 채우는 풍성하고 입체적인 사운드를 제공합니다.\n\n혁신적인 하이브리드 파이버 소재: 카본 파이버와 방탄 파이버(Bulletproof Fiber)를 결합한 콘이 단단하고 다이내믹한 베이스를 뿜어냅니다.\n\nH.A.M.R 서라운드 기술 적용: 높은 볼륨에서도 베이스의 일그러짐 없이 파워풀하고 정교한 소리를 전달합니다."
+            },
+            {
+                "id": "1773980353054902530",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DP240Cb.jpg"
+            },
+            {
+                "id": "1773980370485801625",
+                "type": "text",
+                "value": "선명한 보컬과 완벽한 밸런스, 센터 스피커 [DP2-40C-B]\n\n4인치 2-Way 컴포넌트 스피커: 실내 사운드의 중심을 단단하게 잡아주어, 대시보드 위에 진짜 무대가 펼쳐진 듯한 탁월한 공간감을 선사합니다.\n\n테트론(Tetoron) 소프트 돔 트위터: 답답했던 순정의 고음을 벗어나 왜곡 없이 맑고 청아한 해상력으로 보컬의 숨결까지 생생하게 재생합니다.\n\n\"BMW의 품격, 이제 사운드로 증명할 때입니다.\"\n\n매일 엑셀을 밟는 순간이 감동으로 채워집니다. 믿고 듣는 알파인(ALPINE)의 디지털 프리시전(DP) 시리즈로 하이엔드 오디오의 확연한 차이를 직접 경험해 보세요!\n\n장착 대리점 안내\n\n아래 링크를 클릭 하시면 전국의 알파인 대리점을 확인 할 수 있습니다.\n\n전화로 문의 해보세요\nhttps://www.alpine-korea.co.kr/pages/dealers.html\n"
+            }
+        ],
         "attachments": []
     },
     {
@@ -3823,7 +3849,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773979115377;
+const PRODUCT_DATA_VERSION = 1773980418611;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
