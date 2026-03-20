@@ -3732,9 +3732,62 @@ const initialProductData = [
             }
         ],
         "attachments": []
+    },
+    {
+        "id": 1773974028877,
+        "category": "Alpine OEM Fit",
+        "title": "BYD Sealino7 알파인 사드 패키지",
+        "desc": "알파인 프리미엄 무손상 PnP 오디오 업그레이드 패키지",
+        "desc_bottom": "혁신적인 BYD 씰리온7, 사운드의 품격을 완벽하게 높이다!",
+        "price": 2190000,
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/oem%20fit%20Sealion7.jpg",
+        "detailBlocks": [
+            {
+                "id": "1773973769635226865",
+                "type": "text",
+                "value": "미래지향적인 첨단 전기차 BYD 씰리온7의 정숙한 실내 공간, 그에 걸맞은 하이파이(Hi-Fi) 사운드를 찾고 계신가요?\n\n신차의 순정 배선 훼손 걱정 없이, 가장 안전하고 확실하게 사운드를 업그레이드할 수 있는 알파인의 프리미엄 솔루션을 소개합니다."
+            },
+            {
+                "id": "1773973821772715914",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DSP-R80.jpg"
+            },
+            {
+                "id": "1773973863305156704",
+                "type": "text",
+                "value": "1. 압도적인 사운드 제어력, 알파인 PXE-R80-8 DSP 앰프\n\n순정 시스템의 답답한 출력과 뭉개지는 해상력을 단번에 해결합니다. 강력한 앰프 출력과 알파인만의 정밀한 DSP 프로세싱 사운드 튜닝 기술이 만나, 씰리온7의 실내 구조에 최적화된 넓고 입체적인 무대감을 완성해 줍니다."
+            },
+            {
+                "id": "1773973887533863009",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/spk-s65c.jpg"
+            },
+            {
+                "id": "1773973903471748350",
+                "type": "text",
+                "value": "2. 맑고 다이내믹한 프론트 스테이지, 알파인 S2-S65C 컴포넌트 스피커\n\n검증된 성능을 자랑하는 알파인 S2 시리즈 스피커를 전면에 배치했습니다. 선명하고 섬세한 고음역대와 왜곡 없이 단단하게 울려 퍼지는 미드베이스가 결합되어, 주행 중에도 마치 프라이빗 콘서트홀에 있는 듯한 생생한 원음을 재생합니다."
+            },
+            {
+                "id": "1773973924477100243",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BY-2A-c.jpg"
+            },
+            {
+                "id": "1773973950465896531",
+                "type": "text",
+                "value": "3. 차량 보증 걱정 제로! 전용 PnP 케이블을 통한 '100% 무손상' 인스톨\n\n복잡하게 전선 가닥을 자르거나 이어 붙이는 위험한 개조 작업은 전혀 필요 없습니다. BYD 씰리온7 시스템에 정확히 호환되는 잭-바이-잭(Plug & Play) 전용 케이블을 적용하여 순정 커넥터에 꽂기만 하면 장착이 완료됩니다. 차량 시스템에 어떠한 데미지도 주지 않는 완벽한 무손상 튜닝으로, 신차 무상 보증(Warranty) 혜택까지 안전하게 유지할 수 있습니다."
+            },
+            {
+                "id": "1773973974109196295",
+                "type": "text",
+                "value": "차원이 다른 알파인 사운드와 완벽한 무손상 인스톨의 결합!\n\nJCH 오토가 자신 있게 선보이는 차별화된 오디오 솔루션으로, BYD 씰리온7과 함께하는 드라이빙의 즐거움을 한 차원 더 높여보세요.\n\n\n장착 문의\n알파인 사운드 마스터\n가인 오디오\n경기도 안양시 만안구 안양로 21\n010-8545-5311"
+            }
+        ],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1773878691062;
+const PRODUCT_DATA_VERSION = 1773974028880;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
