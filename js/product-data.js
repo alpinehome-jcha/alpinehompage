@@ -3292,6 +3292,11 @@ const initialProductData = [
                 "id": "1773980370485801625",
                 "type": "text",
                 "value": "선명한 보컬과 완벽한 밸런스, 센터 스피커 [DP2-40C-B]\n\n4인치 2-Way 컴포넌트 스피커: 실내 사운드의 중심을 단단하게 잡아주어, 대시보드 위에 진짜 무대가 펼쳐진 듯한 탁월한 공간감을 선사합니다.\n\n테트론(Tetoron) 소프트 돔 트위터: 답답했던 순정의 고음을 벗어나 왜곡 없이 맑고 청아한 해상력으로 보컬의 숨결까지 생생하게 재생합니다.\n\n\"BMW의 품격, 이제 사운드로 증명할 때입니다.\"\n\n매일 엑셀을 밟는 순간이 감동으로 채워집니다. 믿고 듣는 알파인(ALPINE)의 디지털 프리시전(DP) 시리즈로 하이엔드 오디오의 확연한 차이를 직접 경험해 보세요!\n\n장착 대리점 안내\n\n아래 링크를 클릭 하시면 전국의 알파인 대리점을 확인 할 수 있습니다.\n\n전화로 문의 해보세요\nhttps://www.alpine-korea.co.kr/pages/dealers.html\n"
+            },
+            {
+                "id": "1774013031382914448",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/OEM%20Fit%20BMW-02.jpg"
             }
         ],
         "attachments": []
@@ -3849,7 +3854,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1774012135864;
+const PRODUCT_DATA_VERSION = 1774013046044;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
