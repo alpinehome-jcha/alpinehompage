@@ -7772,9 +7772,8 @@ const initialEstimateData = [
             "HDP-D90"
         ],
         "front_door": [
-            "HDZ-653S",
-            "DP2-653",
-            "R2-S653"
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "tweeter": [],
         "front_baffle": [
@@ -7840,9 +7839,8 @@ const initialEstimateData = [
             "HDP-D90"
         ],
         "front_door": [
-            "HDZ-653S",
-            "DP2-653",
-            "R2-S653"
+            "DP2-65C+DPS-25M+DPS-25M-Uni Baffle",
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
         ],
         "tweeter": [],
         "front_baffle": [
@@ -10404,7 +10402,7 @@ const initialEstimateData = [
         ]
     }
 ];
-const ESTIMATE_DATA_VERSION = 1773837133628;
+const ESTIMATE_DATA_VERSION = 1774308606848;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
