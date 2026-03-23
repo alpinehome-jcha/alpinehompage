@@ -10402,7 +10402,7 @@ const initialEstimateData = [
         ]
     }
 ];
-const ESTIMATE_DATA_VERSION = 1774308606848;
+const ESTIMATE_DATA_VERSION = 1774308613119;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
