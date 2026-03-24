@@ -3852,9 +3852,77 @@ const initialProductData = [
             }
         ],
         "attachments": []
+    },
+    {
+        "id": 1774339147421,
+        "category": "Alpine OEM Fit",
+        "title": "G80 렉시콘/뱅앤울룹슨_알파인 프리미엄 사운드 알파인 스테이터스 패키지 (무손상 OEM Fit",
+        "desc": "프리미엄 하이엔드 오디오의 완성! 알파인(ALPINE) 사운드 업그레이드 패키지",
+        "desc_bottom": "Alpine Status Set",
+        "price": 10240000,
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/OEM%20fit%20G80%20Lexi.jpg",
+        "detailBlocks": [
+            {
+                "id": "1774338759631571999",
+                "type": "text",
+                "value": "\"G80의 품격에 걸맞은 사운드를 경험하고 계신가요?\"\n\n제네시스 G80의 순정 렉시콘 오디오, 훌륭하지만 어딘가 아쉬움을 느끼셨나요?\n더 선명한 해상력, 깊고 풍부한 베이스, 눈앞에 펼쳐지는 듯한 라이브 스테이지를 원하시는 오너님들을 위해 준비했습니다.\n\n차량 손상 없이 완벽하게 인스톨되는 알파인(ALPINE) 하이엔드 사운드 패키지로 G80의 실내를 나만의 프리미엄 콘서트홀로 만들어보세요!"
+            },
+            {
+                "id": "1774338776807742563",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AST-D90.jpg"
+            },
+            {
+                "id": "1774338807905210555",
+                "type": "text",
+                "value": "1. HDP-D90 | 시스템의 심장, 최고급 14채널 DSP 앰프\n\n알파인 Status(스테이터스) 라인업의 압도적인 기술력이 집약된 하이엔드 DSP 앰프입니다. 렉시콘 시스템의 다채널 스피커를 완벽하게 제어하여 숨겨져 있던 미세한 소리까지 살려내며, 강력한 출력과 정밀한 사운드 튜닝(DSP)으로 운전석에 최적화된 완벽한 사운드 밸런스를 제공합니다."
+            },
+            {
+                "id": "1774338827592088966",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/시공자료실 AST-653S.jpg"
+            },
+            {
+                "id": "1774338882279012161",
+                "type": "text",
+                "value": "2. HDZ-653S | 프론트 스피커의 혁명, 하이레졸루션 3WAY 스피커\n\n차원이 다른 고해상도(Hi-Res) 오디오를 지원하는 Alpine Status 3WAY 컴포넌트 스피커!\n청명하고 맑은 고음부터 단단하고 타격감 있는 미드베이스까지, 악기 하나하나의 위치와 숨결까지 느껴지는 놀라운 해상력을 선사합니다."
+            },
+            {
+                "id": "1774338895353386446",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/spk-dp265c.jpg"
+            },
+            {
+                "id": "1774338960347953202",
+                "type": "text",
+                "value": "3. DP2-65C | 공간감을 완성하는 리어 2WAY 스피커\n\n프론트 스피커와 완벽한 음색 조화를 이루는 고품질 2WAY 스피커 세트입니다. 뒷좌석 탑승객은 물론, 실내 전체의 서라운드 입체감과 사운드 스테이지를 한층 더 넓고 깊게 만들어줍니다."
+            },
+            {
+                "id": "1774338992946271442",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DPS-25M-001.jpg"
+            },
+            {
+                "id": "1774339008253032028",
+                "type": "text",
+                "value": "4. DPS-25M | 보컬의 밀도를 높이는 센터 스피커\n\n사운드의 중심을 꽉 잡아주는 알파인의 고성능 미드레인지입니다. 리어 시트에서 흘러나오는 또렷하고 밀도 있는 사운드로, 눈앞에서 가수가 직접 노래하는 듯한 생생한 센터 이미징을 완성해 줍니다."
+            },
+            {
+                "id": "1774339049729264277",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/GE-2A%20(1).jpg"
+            },
+            {
+                "id": "1774339106966621677",
+                "type": "text",
+                "value": "5. 100% 무손상 플러그 앤 플레이(PnP) 케이블 적용\n\n\"순정 배선을 잘라야 하나요?\" 절대 아닙니다!\n차량의 순정 배선을 단 1가닥도 자르거나 훼손하지 않는 G80 렉시콘 전용 잭바이잭(PnP) 케이블을 사용합니다. 차량의 제조사 워런티(A/S)에 전혀 지장을 주지 않으며, 언제든 순정 상태로 완벽한 원상복구가 가능합니다.\n\n\n\n🎵 이런 G80 오너님들께 강력 추천합니다!\n✔️ 순정 렉시콘 오디오의 먹먹함과 답답함을 시원하게 해소하고 싶으신 분\n✔️ 차량 디자인과 배선을 100% 유지하면서 사운드만 완벽하게 업그레이드하고 싶으신 분\n✔️ 고음질 음원(Hi-Res)의 디테일과 다이나믹한 감동을 차 안에서 느끼고 싶으신 분\n\n제네시스 G80의 가치를 높이는 가장 확실한 방법.\n세계적인 카오디오 명가, 알파인 프리미엄 오디오 패키지로 당신의 드라이빙에 감동을 더하세요!"
+            }
+        ],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1774013046044;
+const PRODUCT_DATA_VERSION = 1774339147424;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
