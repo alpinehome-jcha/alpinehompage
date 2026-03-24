@@ -3931,13 +3931,23 @@ const initialProductData = [
             {
                 "id": "1774396106633139920",
                 "type": "text",
-                "value": "좌측 OEM 전면 트위터            우측 알파인 전면 트위터 패키지\n  - OEM Fit으로 설계된 전면 트위터 배플(스피커 가이드)\n  - HDZ-653S 트위터 스피커\n  - 트위터 라인 패시브 (트위터를 보호하는 장치입니다.)\n  - 유니버셜 스피커 컨넥터 (OEM 스피커 케이블을 절단하거나 탈피하지 않도록 합니다.)"
+                "value": "좌측 OEM 전면 트위터            \n\n우측 알파인 전면 트위터 패키지\n  - OEM Fit으로 설계된 전면 트위터 배플(스피커 가이드)\n  - HDZ-653S 트위터 스피커\n  - 트위터 라인 패시브 (트위터를 보호하는 장치입니다.)\n  - 유니버셜 스피커 컨넥터 (OEM 스피커 케이블을 절단하거나 탈피하지 않도록 합니다.)"
+            },
+            {
+                "id": "1774396474639987118",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/OEM%20fit%20G80%20Lexi-02.jpg"
+            },
+            {
+                "id": "1774396515245123799",
+                "type": "text",
+                "value": "전면 트위터 스피커, 좌측 OEM 스피커, 우측 알파인 HDZ-653C"
             }
         ],
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1774396419267;
+const PRODUCT_DATA_VERSION = 1774396557915;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
