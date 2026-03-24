@@ -3921,7 +3921,7 @@ const initialProductData = [
             {
                 "id": "1774339190280631899",
                 "type": "text",
-                "value": "G80 렉시콘/뱅앤울룹슨_알파인 스테이터스 패키지 (무손상 OEM Fit)의 특별 혜택\n\n혜택1 스피커는 커스텀으로 제작되는 나무 배플(아대)가 아니라 차량에 알맞게 설계된 OEM Fit 배플을 제공해드립니다."
+                "value": "G80 렉시콘/뱅앤울룹슨_알파인 스테이터스 패키지 (무손상 OEM Fit)의 특별 혜택\n\n혜택1) OEM Fit 스피커 패키지 제공"
             },
             {
                 "id": "1774396057199635495",
@@ -3931,13 +3931,13 @@ const initialProductData = [
             {
                 "id": "1774396106633139920",
                 "type": "text",
-                "value": "좌측 OEM 전면 트위터\n우측 알파인 전면 트위터 패키지\n  - OEM Fit으로 설계된 전면 트위터 배플(스피커 가이드)\n  - HDZ-653S 트위터 스피커\n  - 트위터 라인 패시브 (트위터를 보호하는 장치입니다.)\n  - 유니버셜 스피커 컨넥터 (OEM 스피커 케이블을 절단하거나 탈피하지 않도록 합니다.)"
+                "value": "좌측 OEM 전면 트위터            우측 알파인 전면 트위터 패키지\n  - OEM Fit으로 설계된 전면 트위터 배플(스피커 가이드)\n  - HDZ-653S 트위터 스피커\n  - 트위터 라인 패시브 (트위터를 보호하는 장치입니다.)\n  - 유니버셜 스피커 컨넥터 (OEM 스피커 케이블을 절단하거나 탈피하지 않도록 합니다.)"
             }
         ],
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1774396265003;
+const PRODUCT_DATA_VERSION = 1774396419267;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
