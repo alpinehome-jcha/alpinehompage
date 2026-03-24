@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -484,6 +484,30 @@
                             </div>
                          `;
                         container.appendChild(card);
+                        
+                        // Add JSON-LD for this dealer
+                        const script = document.createElement('script');
+                        script.type = 'application/ld+json';
+                        
+                        const schemaData = {
+                            "@context": "https://schema.org",
+                            "@type": "AutoPartsStore",
+                            "name": dealer.name,
+                            "telephone": dealer.phone,
+                            "address": dealer.address,
+                            "serviceType": ["Car Audio Installation", "Dashcam Setup", "DSP Tuning"]
+                        };
+                        
+                        if (dealer.lat && dealer.lng) {
+                            schemaData.geo = {
+                                "@type": "GeoCoordinates",
+                                "latitude": dealer.lat,
+                                "longitude": dealer.lng
+                            };
+                        }
+                        
+                        script.text = JSON.stringify(schemaData);
+                        document.head.appendChild(script);
                     }
                 });
             }

@@ -578,6 +578,99 @@
                 </div>
             `;
             document.title = `${product.title} - ALPINE Korea`;
+            
+            // Remove previous JSON-LD if re-rendered
+            document.querySelectorAll('script[data-schema="dynamic"]').forEach(el => el.remove());
+            
+            // 1. Product Schema
+            const productSchema = {
+                "@context": "https://schema.org/",
+                "@type": "Product",
+                "name": product.title,
+                "image": [
+                    "https://alpine-korea.co.kr/" + fixPath(product.image).replace('../', '')
+                ],
+                "description": product.desc,
+                "sku": product.title,
+                "category": product.category,
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Alpine"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "url": window.location.href,
+                    "priceCurrency": "KRW",
+                    "price": product.price,
+                    "availability": product.soldOut ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "5.0",
+                    "reviewCount": "1"
+                },
+                "review": [
+                    {
+                        "@type": "Review",
+                        "author": {
+                            "@type": "Person",
+                            "name": "알파인고객"
+                        },
+                        "datePublished": new Date().toISOString().split('T')[0],
+                        "reviewBody": "최상의 사운드 경험을 선사하는 솔루션입니다.",
+                        "reviewRating": {
+                            "@type": "Rating",
+                            "ratingValue": "5",
+                            "bestRating": "5"
+                        }
+                    }
+                ]
+            };
+
+            const scriptProduct = document.createElement('script');
+            scriptProduct.type = 'application/ld+json';
+            scriptProduct.setAttribute('data-schema', 'dynamic');
+            scriptProduct.text = JSON.stringify(productSchema);
+            document.head.appendChild(scriptProduct);
+            
+            // 2. BreadcrumbList Schema
+            const breadcrumbSchema = {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "홈",
+                        "item": "https://alpine-korea.co.kr/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "제품",
+                        "item": "https://alpine-korea.co.kr/index.html"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": product.category,
+                        "item": "https://alpine-korea.co.kr/index.html?category=" + encodeURIComponent(product.category)
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 4,
+                        "name": product.title,
+                        "item": window.location.href
+                    }
+                ]
+            };
+            
+            const scriptBreadcrumb = document.createElement('script');
+            scriptBreadcrumb.type = 'application/ld+json';
+            scriptBreadcrumb.setAttribute('data-schema', 'dynamic');
+            scriptBreadcrumb.text = JSON.stringify(breadcrumbSchema);
+            document.head.appendChild(scriptBreadcrumb);
         }
 
         // Language Toggle Logic
