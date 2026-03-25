@@ -3941,13 +3941,33 @@ const initialProductData = [
             {
                 "id": "1774396515245123799",
                 "type": "text",
-                "value": "전면 트위터 스피커, 좌측 OEM 스피커, 우측 알파인 HDZ-653C"
+                "value": "전면 트위터 스피커\n좌측 OEM 스피커\n우측 알파인 HDZ-653C"
+            },
+            {
+                "id": "1774396633660822889",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/OEM%20fit%20G80%20Lexi-03.jpg"
+            },
+            {
+                "id": "1774396672250023572",
+                "type": "text",
+                "value": "좌측 OEM 전면 미드레인지 스피커\n\n우측 알파인 전면 미드레인지 스피커 패키지\n  - OEM Fit으로 설계된 전면 미드레인지 배플(스피커 가이드)\n  - HDZ-653S 미드레인지 스피커\n  - - 유니버셜 스피커 컨넥터 (OEM 스피커 케이블을 절단하거나 탈피하지 않도록 합니다.)\n"
+            },
+            {
+                "id": "1774396777738094875",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/OEM%20fit%20G80%20Lexi-04.jpg"
+            },
+            {
+                "id": "1774396841612168204",
+                "type": "text",
+                "value": "전면 미드레인지 스피커\n좌측 OEM 미드레인지 스피커\n중앙 OEM Fit 배플\n우측 알파인 HDZ-653C"
             }
         ],
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1774396557915;
+const PRODUCT_DATA_VERSION = 1774396908641;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
