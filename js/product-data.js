@@ -3951,7 +3951,7 @@ const initialProductData = [
             {
                 "id": "1774396672250023572",
                 "type": "text",
-                "value": "좌측 OEM 전면 미드레인지 스피커\n\n우측 알파인 전면 미드레인지 스피커 패키지\n  - OEM Fit으로 설계된 전면 미드레인지 배플(스피커 가이드)\n  - HDZ-653S 미드레인지 스피커\n  - - 유니버셜 스피커 컨넥터 (OEM 스피커 케이블을 절단하거나 탈피하지 않도록 합니다.)\n"
+                "value": "좌측 OEM 전면 미드레인지 스피커\n\n우측 알파인 전면 미드레인지 스피커 패키지\n  - OEM Fit으로 설계된 전면 미드레인지 배플(스피커 가이드)\n  - HDZ-653S 미드레인지 스피커\n  - 유니버셜 스피커 컨넥터 (OEM 스피커 케이블을 절단하거나 탈피하지 않도록 합니다.)\n"
             },
             {
                 "id": "1774396777738094875",
@@ -3982,12 +3982,32 @@ const initialProductData = [
                 "id": "1774397064237810654",
                 "type": "text",
                 "value": "후면 트위터 스피커\n좌측 OEM 스피커\n우측 알파인 DP2-65C"
+            },
+            {
+                "id": "1774397116494859209",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/OEM%20fit%20G80%20Lexi-07.jpg"
+            },
+            {
+                "id": "1774397156043919800",
+                "type": "text",
+                "value": "좌측 OEM 후면 미드레인지 스피커\n\n우측 알파인 후면 미드레인지 스피커 패키지\n- OEM Fit으로 설계된 전면 미드레인지 배플(스피커 가이드)\n- DPS-25M 미드레인지 스피커\n- 유니버셜 스피커 컨넥터 (OEM 스피커 케이블을 절단하거나 탈피하지 않도록 합니다.)\n\n"
+            },
+            {
+                "id": "1774397235229871492",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/OEM%20fit%20G80%20Lexi-08.jpg"
+            },
+            {
+                "id": "1774397257763679114",
+                "type": "text",
+                "value": "후면 미드레인지 스피커\n좌측 OEM 미드레인지 스피커\n중앙 OEM Fit 배플\n우측 알파인 DPS-25M"
             }
         ],
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1774397103878;
+const PRODUCT_DATA_VERSION = 1774397308374;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
