@@ -4002,12 +4002,32 @@ const initialProductData = [
                 "id": "1774397257763679114",
                 "type": "text",
                 "value": "후면 미드레인지 스피커\n좌측 OEM 미드레인지 스피커\n중앙 OEM Fit 배플\n우측 알파인 DPS-25M"
+            },
+            {
+                "id": "1774398857637329069",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/OEM%20fit%20G80%20Lexi-09.jpg"
+            },
+            {
+                "id": "1774398872373883182",
+                "type": "text",
+                "value": "좌측 전면 OEM 미드우퍼\n우측 알파인 HDZ-653S 미드우퍼"
+            },
+            {
+                "id": "1774398909237175285",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/OEM%20fit%20G80%20Lexi-10.jpg"
+            },
+            {
+                "id": "1774398933321745075",
+                "type": "text",
+                "value": "좌측 후면 OEM 미드우퍼\n우측 알파인 DP2-65C 미드우퍼"
             }
         ],
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1774397308374;
+const PRODUCT_DATA_VERSION = 1774398964894;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
