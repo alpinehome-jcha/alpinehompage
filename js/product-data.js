@@ -4022,12 +4022,27 @@ const initialProductData = [
                 "id": "1774398933321745075",
                 "type": "text",
                 "value": "좌측 후면 OEM 미드우퍼\n우측 알파인 DP2-65C 미드우퍼"
+            },
+            {
+                "id": "1774399025471772353",
+                "type": "text",
+                "value": "혜택2) 알파인 룸미러 블랙박스 무상 제공"
+            },
+            {
+                "id": "1774399099692634449",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DVR-01.jpg"
+            },
+            {
+                "id": "1774399116517677797",
+                "type": "text",
+                "value": "알파인 2채널 룸미러 블랙박스\nDVR-DM1000KO-IC\n\n- LCD : 10인치 터치\n- 전면카메라 : Full HD\n- 후면카메라 : Full HD\n- 저장 메모리 : Micro SD\n\n** 제품만 제공해 드리고 장착은 별도의 공임으로 하셔야 합니다."
             }
         ],
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1774398964894;
+const PRODUCT_DATA_VERSION = 1774399284809;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
