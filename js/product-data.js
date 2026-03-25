@@ -4042,12 +4042,17 @@ const initialProductData = [
                 "id": "1774399302326726835",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/G80 렉시콘 OEM Fit.jpg"
+            },
+            {
+                "id": "1774400843027220945",
+                "type": "text",
+                "value": "장착 대리점 안내\n\n아래 링크를 클릭 하시면 전국의 알파인 대리점을 확인 할 수 있습니다.\n\n전화로 문의 해보세요\nhttps://www.alpine-korea.co.kr/pages/dealers.html"
             }
         ],
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1774400498367;
+const PRODUCT_DATA_VERSION = 1774400849740;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
