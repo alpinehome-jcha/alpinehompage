@@ -4055,16 +4055,67 @@ const initialProductData = [
         "id": 1775014737605,
         "category": "Alpine OEM Fit",
         "title": "PV5 알파인 메티오 사운드 패키지(OEM Fit)",
-        "desc": "PV5 전용 스피커 패키",
-        "desc_bottom": "쏟아지는 사운드, 울려 펴지는 중저",
+        "desc": "PV5 전용 스피커 패키지",
+        "desc_bottom": "쏟아지는 사운드, 울려 펴지는 중저음",
         "price": 900000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PV5 복사.jpg",
-        "detailBlocks": [],
+        "detailBlocks": [
+            {
+                "id": "1775014875556575014",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/pv5%20oem%20fit%20-01.jpg"
+            },
+            {
+                "id": "1775014891605631989",
+                "type": "text",
+                "value": "쏟아지는 사운드, 울려 퍼지는 중저음\n\n박력있는 음악 공간\n\n\n고정 개념을 덮습니다.\n\n시판 최초 루프 스피커 & 도어 우퍼의 조화\n\nPV5 실내를 감싸는 압도적인 사운"
+            },
+            {
+                "id": "1775014993413802785",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/pv5%20oem%20fit%20-02.jpg"
+            },
+            {
+                "id": "1775015014292316227",
+                "type": "text",
+                "value": "천장에 설치하는 루프 스피커로 부터의 중역, 고역의 사운드\nPV5 실내에 울려 퍼지는 도어 우퍼로 부터 깊이가 있는 저역에 의해\n완전히 새로운 사운드를 체감하세요."
+            },
+            {
+                "id": "1775015071905184153",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PV5 복사.jpg"
+            },
+            {
+                "id": "1775015193089201392",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/pv5%20oem%20fit%20-03.jpg"
+            },
+            {
+                "id": "1775015193857254285",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/pv5%20oem%20fit%20-04.jpg"
+            },
+            {
+                "id": "1775015194353563120",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/pv5%20oem%20fit%20-05.jpg"
+            },
+            {
+                "id": "1775015194745872205",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/현대_기아 6.5 배플.jpg"
+            },
+            {
+                "id": "1775015266966584437",
+                "type": "text",
+                "value": "현대/기아용 도어 스피커 가이드 제공"
+            }
+        ],
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1775014737608;
+const PRODUCT_DATA_VERSION = 1775015287735;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
