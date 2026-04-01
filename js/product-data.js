@@ -4050,9 +4050,21 @@ const initialProductData = [
             }
         ],
         "attachments": []
+    },
+    {
+        "id": 1775014737605,
+        "category": "Alpine OEM Fit",
+        "title": "PV5 알파인 메티오 사운드 패키지(OEM Fit)",
+        "desc": "PV5 전용 스피커 패키",
+        "desc_bottom": "쏟아지는 사운드, 울려 펴지는 중저",
+        "price": 900000,
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PV5 복사.jpg",
+        "detailBlocks": [],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1774400849740;
+const PRODUCT_DATA_VERSION = 1775014737608;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
