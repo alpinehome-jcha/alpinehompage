@@ -1001,7 +1001,7 @@ const initialEstimateData = [
         ],
         "extraLabor": 0,
         "pnp": [
-            "HK-104",
+            "HK-103",
             "HK-2A",
             "DS-M60-2B",
             "DS-R80-4B",
@@ -1074,7 +1074,7 @@ const initialEstimateData = [
         ],
         "extraLabor": 0,
         "pnp": [
-            "HK-103",
+            "HK-104",
             "HK-1A",
             "DS-M60-2B",
             "DS-R80-4B",
@@ -10402,7 +10402,7 @@ const initialEstimateData = [
         ]
     }
 ];
-const ESTIMATE_DATA_VERSION = 1774308613119;
+const ESTIMATE_DATA_VERSION = 1775024212855;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
