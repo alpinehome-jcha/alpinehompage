@@ -1141,7 +1141,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
+        "extraLabor": 300000,
         "pnp": [
             "HK-12A",
             "DS-R80-6B",
@@ -1710,7 +1710,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
+        "extraLabor": 300000,
         "pnp": [
             "HK-12A",
             "DS-R80-6B",
@@ -1921,7 +1921,6 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
         "pnp": [
             "HK-13A",
             "DS-R80-6B",
@@ -2061,7 +2060,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
+        "extraLabor": 300000,
         "pnp": [
             "HK-107",
             "HK-12A",
@@ -2993,7 +2992,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
+        "extraLabor": 300000,
         "pnp": [
             "HK-12A",
             "DS-R80-6B",
@@ -3137,7 +3136,6 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
         "pnp": [
             "HK-15",
             "DS-R80-6B",
@@ -3274,7 +3272,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
+        "extraLabor": 300000,
         "pnp": [
             "HK-12A",
             "DS-R80-6B",
@@ -3695,7 +3693,6 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
         "pnp": [
             "GE-7A",
             "DS-M60-4B",
@@ -3763,7 +3760,6 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
         "pnp": [
             "GE-8A",
             "DS-R80-6B",
@@ -3830,7 +3826,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
+        "extraLabor": 300000,
         "pnp": [
             "GE-203",
             "GE-2A",
@@ -3899,7 +3895,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
+        "extraLabor": 300000,
         "pnp": [
             "GE-2A",
             "DS-M60-4B",
@@ -3963,7 +3959,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 1000000,
+        "extraLabor": 500000,
         "pnp": [
             "GE-6A",
             "DS-R80-6B",
@@ -4294,7 +4290,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
+        "extraLabor": 300000,
         "pnp": [
             "GE-2A",
             "DS-M60-4B",
@@ -4427,7 +4423,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
+        "extraLabor": 300000,
         "pnp": [
             "GE-2A",
             "DS-M60-4B",
@@ -4560,7 +4556,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 0,
+        "extraLabor": 300000,
         "pnp": [
             "GE-2A",
             "DS-M60-4B",
@@ -5273,7 +5269,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
+        "extraLabor": 300000,
         "pnp": [
             "HK-23A",
             "DS-R80-6B",
@@ -5408,7 +5404,6 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
         "pnp": [
             "HK-24A",
             "DS-R80-6B",
@@ -5547,7 +5542,6 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
         "pnp": [
             "HK-21A",
             "DS-R80-6B",
@@ -5758,7 +5752,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
+        "extraLabor": 300000,
         "pnp": [
             "HK-21A",
             "DS-R80-6B",
@@ -6533,7 +6527,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
+        "extraLabor": 300000,
         "pnp": [
             "HK-28A",
             "DS-R80-6B",
@@ -6674,7 +6668,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
+        "extraLabor": 300000,
         "pnp": [
             "HK-28A",
             "DS-R80-6B",
@@ -7394,7 +7388,6 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
         "pnp": [
             "HK-23A",
             "DS-M60-4B",
@@ -7682,7 +7675,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
+        "extraLabor": 300000,
         "pnp": [
             "HK-23A",
             "DS-R80-6B",
@@ -7822,7 +7815,6 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
         "pnp": [
             "HK-24A",
             "DS-R80-6B",
@@ -8103,7 +8095,6 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
         "pnp": [
             "HK-23A",
             "DS-R80-6B",
@@ -8170,7 +8161,7 @@ const initialEstimateData = [
         "player": [
             "HDS-990"
         ],
-        "extraLabor": 500000,
+        "extraLabor": 300000,
         "pnp": [
             "HK-14A",
             "DS-R80-6B",
@@ -10693,7 +10684,7 @@ const initialEstimateData = [
         ]
     }
 ];
-const ESTIMATE_DATA_VERSION = 1775108552331;
+const ESTIMATE_DATA_VERSION = 1775110536839;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
