@@ -934,6 +934,7 @@ const EstimateUI = {
         let dspDiscountRatio = 0;
         let speakerLabor = 0;
         let speakerCount = 0;
+        let minorItemLabor = 0; // For Subwoofer, ETC, Player
         
         // laborRuleData 가 제대로 로드되었는지 확인
         const rules = (typeof laborRuleData !== 'undefined') ? laborRuleData : [];
@@ -956,19 +957,20 @@ const EstimateUI = {
                         const percentRatio = parseFloat(rule.percentPrice) || 0;
                         let itemLabor = base + (price * (percentRatio / 100));
                         
-                        // 동시 작업 할인 체크를 위해 유형 분류 (DSP vs 스피커)
-                        if (catId === 'dsp') {
+                        const ruleCat = (rule.category || '').toUpperCase().trim();
+
+                        // 판단 우선순위: 엑셀에 명시된 카테고리 -> 시스템 catId
+                        if (ruleCat === 'DSP' || (!ruleCat && catId === 'dsp')) {
                             dspLabor += itemLabor;
-                            // 할인은 가장 높은 비율로 기억하거나, 각 항목의 공임 자체를 할인. 여기선 각 제품 공임에서 바로 할인액 누적으로 계산
-                            // 하지만 DSP의 공임과 Speaker의 공임 각각에 할인비율이 정의되어 있을 수 있으므로.
-                            itemLabor = itemLabor; // 임시 할당, 구체적 속성은 전체 합산 뒤 차감
-                            dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0); // DSP 쪽에 적힌 할인비율
+                            dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0);
                             labor += itemLabor;
-                        } else if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) {
+                        } else if (ruleCat === 'SPEAKER' || (!ruleCat && ['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId))) {
                             speakerLabor += itemLabor;
                             speakerCount++;
-                            // 스피커 쪽에 적힌 할인 비율이 있을 수 있음
                             dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0);
+                            labor += itemLabor;
+                        } else if (ruleCat === 'SUBWOOFER' || ruleCat === 'ETC' || ruleCat === 'PLAYER') {
+                            minorItemLabor += itemLabor;
                             labor += itemLabor;
                         } else {
                             labor += itemLabor;
@@ -1004,11 +1006,17 @@ const EstimateUI = {
 
         // 2. DSP & 스피커 동시 작업 시, 할인 적용 (DSP 공임 및 스피커 공임에서 설정된 %만큼 할인)
         // 엑셀 규격에 'DSP 스피커 동시작업 공임 할인비율(%)'이 있으므로
-        if (hasDSP && speakerCount > 0 && dspDiscountRatio > 0) {
+        if ((hasDSP || dspLabor > 0) && speakerCount > 0 && dspDiscountRatio > 0) {
             // DSP 공임과 스피커 공임 합산 금액에서 할인율 적용
             const applicableLabor = dspLabor + speakerLabor;
             const discountAmount = applicableLabor * (dspDiscountRatio / 100);
             labor -= discountAmount;
+        }
+
+        // 3. Subwoofer, ETC, Player는 DSP나 Speaker가 하나라도 추가되면 기술료 적용 제외
+        const hasAnyDspOrSpeaker = (hasDSP || dspLabor > 0 || speakerCount > 0);
+        if (hasAnyDspOrSpeaker && minorItemLabor > 0) {
+            labor -= minorItemLabor;
         }
         
         // (선택) 하위호환: 엑셀 데이터를 쓰지 않고 순수하게 extraLaborTotal 이 남았다면 (Fallack), 

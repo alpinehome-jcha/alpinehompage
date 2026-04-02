@@ -234,6 +234,13 @@
                         <button class="btn btn-excel" onclick="downloadLaborRuleExcel()">📊 제품별 기술료 다운로드</button>
                         <input type="file" id="laborRuleExcelInput" style="display: none;" accept=".xlsx, .xls">
                         <button class="btn btn-upload" onclick="document.getElementById('laborRuleExcelInput').click()">📥 제품별 기술료 업로드</button>
+                        
+                        <div style="margin-top: 10px; font-size: 0.85em; color: #555; background: #f9f9f9; padding: 10px; border-left: 3px solid #007aff; line-height: 1.5;">
+                            <strong>[ 제품별 기술료 적용 규칙 ]</strong><br>
+                            1. 단일 품목만 선택된 경우 설정된 기본 장착비 혹은 제품가 반영 비율에 따라 기술료가 적용됩니다.<br>
+                            2. <strong>Speaker와 DSP가 함께 섞여있을 경우</strong> 엑셀에 설정된 'DSP 스피커 동시작업 공임 할인비율(%)'에 따라 할인됩니다.<br>
+                            3. <strong>Subwoofer, ETC, Player</strong>는 단일 품목일 경우 온전히 부과되지만, <strong>분류가 DSP나 Speaker인 제품이 하나라도 시스템에 추가되면 기술료 부과에서 제외(0원)</strong> 됩니다.
+                        </div>
                     </div>
                     <div>
                         <button class="btn btn-restore" onclick="resetToInitial()">♻️ 서버 데이터로 복구</button>
