@@ -3859,7 +3859,7 @@ const initialProductData = [
         "title": "G80 렉시콘/뱅앤울룹슨_알파인 스테이터스 패키지 (무손상 OEM Fit)",
         "desc": "프리미엄 하이엔드 오디오의 완성! 알파인(ALPINE) 사운드 업그레이드 패키지",
         "desc_bottom": "2채널 룸미러 블랙박스 무상 제공",
-        "price": 10240000,
+        "price": 9144000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/OEM%20fit%20G80%20Lexi.jpg",
         "detailBlocks": [
@@ -4120,7 +4120,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1775110652129;
+const PRODUCT_DATA_VERSION = 1775110748133;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
