@@ -3806,7 +3806,7 @@ const initialProductData = [
         "title": "BYD Sealion7 알파인 사운드 패키지 (무손상 OEM Fit)",
         "desc": "알파인 프리미엄 무손상 PnP 오디오 업그레이드 패키지",
         "desc_bottom": "혁신적인 BYD 씰리온7, 사운드의 품격을 완벽하게 높이다!",
-        "price": 2190000,
+        "price": 2018000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/oem%20fit%20Sealion7.jpg",
         "detailBlocks": [
@@ -4120,7 +4120,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1775107363432;
+const PRODUCT_DATA_VERSION = 1775107593757;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
