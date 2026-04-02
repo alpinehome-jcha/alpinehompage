@@ -45,7 +45,9 @@ const EstimateUI = {
 
         const scripts = [
             `${root}estimate-data.js?t=${t}`,
-            `${root}pnp-search-data.js?t=${t}`
+            `${root}pnp-search-data.js?t=${t}`,
+            `${root}pnp-rule-data.js?t=${t}`,
+            `${root}labor-rule-data.js?t=${t}`
         ];
 
         const loadScript = (src) => {
@@ -924,27 +926,94 @@ const EstimateUI = {
             }
         });
 
-        // 기술료 계산 공식 업데이트
+        // --- 제품별 기술료 계산 공식 개편안 ---
         let labor = 0;
         const extraLaborTotal = (this.selectedCar && this.selectedCar.extraLabor) ? this.selectedCar.extraLabor : 0;
+        
+        let dspLabor = 0;
+        let dspDiscountRatio = 0;
+        let speakerLabor = 0;
+        let speakerCount = 0;
+        
+        // laborRuleData 가 제대로 로드되었는지 확인
+        const rules = (typeof laborRuleData !== 'undefined') ? laborRuleData : [];
 
-        // 1. DSP 선택: (30%) + (extraLabor 50%)
-        if (hasDSP) {
-            labor += (dspPrice * 0.3) + (extraLaborTotal * 0.5);
+        stepOrder.forEach(catId => {
+            if (this.selections[catId]) {
+                const selected = this.selections[catId];
+                const pNames = Array.isArray(selected) ? selected : [selected];
+                const validProducts = pNames.filter(pName => pName !== "선택 안함" && pName !== "DSP 선택 안함" && this.getProductPrice(pName) > 0);
+
+                validProducts.forEach(pName => {
+                    const price = this.getProductPrice(pName);
+                    
+                    // 1. 제품 규칙 찾기 (Trim & 대소문자 무시 매칭 등 고려)
+                    const rule = rules.find(r => r.name && r.name.trim() === pName.trim());
+                    
+                    if (rule) {
+                        // 엑셀 룰 기반 계산
+                        const base = parseFloat(rule.basePrice) || 0;
+                        const percentRatio = parseFloat(rule.percentPrice) || 0;
+                        let itemLabor = base + (price * (percentRatio / 100));
+                        
+                        // 동시 작업 할인 체크를 위해 유형 분류 (DSP vs 스피커)
+                        if (catId === 'dsp') {
+                            dspLabor += itemLabor;
+                            // 할인은 가장 높은 비율로 기억하거나, 각 항목의 공임 자체를 할인. 여기선 각 제품 공임에서 바로 할인액 누적으로 계산
+                            // 하지만 DSP의 공임과 Speaker의 공임 각각에 할인비율이 정의되어 있을 수 있으므로.
+                            itemLabor = itemLabor; // 임시 할당, 구체적 속성은 전체 합산 뒤 차감
+                            dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0); // DSP 쪽에 적힌 할인비율
+                            labor += itemLabor;
+                        } else if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) {
+                            speakerLabor += itemLabor;
+                            speakerCount++;
+                            // 스피커 쪽에 적힌 할인 비율이 있을 수 있음
+                            dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0);
+                            labor += itemLabor;
+                        } else {
+                            labor += itemLabor;
+                        }
+
+                    } else {
+                        // 엑셀에 없는 제품은 기본 하드코딩 Fallback 로직 적용 (안전망)
+                        if (catId === 'dsp') {
+                            const itemLabor = (price * 0.3) + (extraLaborTotal * 0.5);
+                            dspLabor += itemLabor;
+                            labor += itemLabor;
+                        } else if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) {
+                            const excludedSpeakers = ["EV-65CF", "EV-40M-T", "EV-40MR-T", "EV-100SW 3", "EV-100SW Y", "DP2-45C-B", "DP2-45-B", "DP2-40C-B", "DP2-15TW-B", "DP2-80WF-B"];
+                            if (!excludedSpeakers.includes(pName)) {
+                                speakerCount++;
+                                if (speakerCount === 1) {
+                                    // 기존 로직: 스피커 전체 합쳐서 1번만 20만+50% 부과
+                                    const itemLabor = 200000 + (extraLaborTotal * 0.5);
+                                    speakerLabor = itemLabor;
+                                    labor += itemLabor;
+                                    dspDiscountRatio = Math.max(dspDiscountRatio, 50); // 기본 로직의 절반 개념을 동시작업 할인 50%로 치환
+                                }
+                            }
+                        } else if (catId === 'amp_4ch' || catId === 'amp_sub') {
+                            labor += (price * 0.1);
+                        } else if (pName === "PWE-M770+PWE-770-RCU" && !hasDSP) {
+                            labor += 200000;
+                        }
+                    }
+                });
+            }
+        });
+
+        // 2. DSP & 스피커 동시 작업 시, 할인 적용 (DSP 공임 및 스피커 공임에서 설정된 %만큼 할인)
+        // 엑셀 규격에 'DSP 스피커 동시작업 공임 할인비율(%)'이 있으므로
+        if (hasDSP && speakerCount > 0 && dspDiscountRatio > 0) {
+            // DSP 공임과 스피커 공임 합산 금액에서 할인율 적용
+            const applicableLabor = dspLabor + speakerLabor;
+            const discountAmount = applicableLabor * (dspDiscountRatio / 100);
+            labor -= discountAmount;
         }
-
-        // 2. 전면/후면 스피커 선택: 200,000 + (extraLabor 50%)
-        if (hasFrontRearSpeaker) {
-            labor += 200000 + (extraLaborTotal * 0.5);
-        }
-
-        // 3. 일반 앰프 선택: (10%)
-        labor += (ampPrice * 0.1);
-
-        // 4. PWE-M770 패키지 선택 + DSP 미선택 시 20만원 추가
-        if (hasPWEM770Package && !hasDSP) {
-            labor += 200000;
-        }
+        
+        // (선택) 하위호환: 엑셀 데이터를 쓰지 않고 순수하게 extraLaborTotal 이 남았다면 (Fallack), 
+        // 엑셀 파일이 비어있는 상태로 완전히 동작하면 extraLabor가 무시됨.
+        // 현재 로직은 엑셀 규칙을 1순위로 하되 찾지 못한 항목만 Fallback 진행하므로 정상.
 
         labor = Math.round(labor);
 

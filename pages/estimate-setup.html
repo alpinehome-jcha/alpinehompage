@@ -230,6 +230,11 @@
                         <button class="btn btn-upload" onclick="document.getElementById('pnpRuleExcelInput').click()">📥
                             PnP 규칙 업로드</button>
                     </div>
+                    <div style="margin-top: 10px;">
+                        <button class="btn btn-excel" onclick="downloadLaborRuleExcel()">📊 제품별 기술료 다운로드</button>
+                        <input type="file" id="laborRuleExcelInput" style="display: none;" accept=".xlsx, .xls">
+                        <button class="btn btn-upload" onclick="document.getElementById('laborRuleExcelInput').click()">📥 제품별 기술료 업로드</button>
+                    </div>
                     <div>
                         <button class="btn btn-restore" onclick="resetToInitial()">♻️ 서버 데이터로 복구</button>
                     </div>
@@ -320,7 +325,8 @@
             const scripts = [
                 `../js/estimate-data.js?t=${t}`,
                 `../js/pnp-search-data.js?t=${t}`,
-                `../js/pnp-rule-data.js?t=${t}`
+                `../js/pnp-rule-data.js?t=${t}`,
+                `../js/labor-rule-data.js?t=${t}`
             ];
 
             const loadScript = (src) => {
@@ -376,6 +382,7 @@
             // File Link
             document.getElementById('excelInput').addEventListener('change', handleExcelUpload);
             document.getElementById('pnpRuleExcelInput').addEventListener('change', handlePnpRuleUpload);
+            document.getElementById('laborRuleExcelInput').addEventListener('change', handleLaborRuleUpload);
         });
 
         function toggleGithubSettings() {
@@ -698,6 +705,72 @@
             reader.readAsArrayBuffer(file);
         }
 
+        function downloadLaborRuleExcel() {
+            // Flatten logic for Labor Rule
+            // Fallback to empty array if undefined
+            const currentData = (typeof laborRuleData !== 'undefined') ? laborRuleData : [];
+            const exportData = currentData.map(d => {
+                return {
+                    '제품명': d.name || '',
+                    '설명': d.desc || '',
+                    '기본 장착비(원)': d.basePrice || 0,
+                    '제품가 반영 비율(%)': d.percentPrice || 0,
+                    'DSP 스피커 동시작업 공임 할인비율(%)': d.discountRatio || 0
+                };
+            });
+
+            const ws = XLSX.utils.json_to_sheet(exportData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "LaborRuleData");
+
+            const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+            XLSX.writeFile(wb, `Alpine_Labor_Rule_Data_${dateStr}.xlsx`);
+        }
+
+        function handleLaborRuleUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (evt) {
+                try {
+                    const data = new Uint8Array(evt.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const json = XLSX.utils.sheet_to_json(sheet);
+
+                    if (json.length === 0) { alert('데이터가 비어있습니다.'); return; }
+
+                    if (!confirm(`총 ${json.length}개의 기술료 규칙 데이터를 불러왔습니다. 기존 규칙을 덮어쓰시겠습니까?`)) {
+                        return;
+                    }
+
+                    const processed = json.map(row => {
+                        return { 
+                            name: row['제품명'] || '',
+                            desc: row['설명'] || '',
+                            basePrice: parseInt(row['기본 장착비(원)']) || 0,
+                            percentPrice: parseFloat(row['제품가 반영 비율(%)']) || 0,
+                            discountRatio: parseFloat(row['DSP 스피커 동시작업 공임 할인비율(%)']) || 0
+                        };
+                    });
+
+                    laborRuleData = processed.filter(r => r.name !== ''); // 제품명이 없는 행은 무시
+                    localStorage.setItem('laborRuleData', JSON.stringify(laborRuleData));
+
+                    // Trigger sync to GitHub for rules
+                    syncLaborRuleToGitHub(true);
+
+                } catch (err) {
+                    console.error(err);
+                    alert('엑셀 파싱 중 오류가 발생했습니다: ' + err.message);
+                } finally {
+                    e.target.value = '';
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
         async function syncToGitHub(silent = false) {
             if (!silent && !confirm('현재 데이터를 GitHub 서버에 저장하시겠습니까?\n이 작업은 웹사이트 전체에 반영됩니다.')) return;
 
@@ -721,12 +794,23 @@
             }
         }
 
+        async function syncLaborRuleToGitHub(silent = false) {
+            try {
+                await saveToGitHub('laborRule', silent);
+                if (!silent) alert('제품별 기술료 규칙 서버 저장이 완료되었습니다.');
+            } catch (err) {
+                if (!silent) alert('저장 실패: ' + err.message);
+            }
+        }
+
         function resetToInitial() {
             if (!confirm('로컬에 저장된 모든 변경사항을 지우고 서버의 최신 데이터로 복구하시겠습니까?')) return;
             localStorage.removeItem('estimateData');
             localStorage.removeItem('estimateDataVersion');
             localStorage.removeItem('pnpRuleData');
             localStorage.removeItem('pnpRuleDataVersion');
+            localStorage.removeItem('laborRuleData');
+            localStorage.removeItem('laborRuleDataVersion');
             localStorage.removeItem('estimate_sync_pending');
             location.reload();
         }

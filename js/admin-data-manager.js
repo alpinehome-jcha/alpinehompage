@@ -53,6 +53,11 @@ function downloadData(type) {
             fileName = 'pnp-rule-data.js';
             dataObj = (typeof pnpRuleData !== 'undefined') ? pnpRuleData : null;
             break;
+        case 'laborRule':
+            dataName = 'laborRuleData';
+            fileName = 'labor-rule-data.js';
+            dataObj = (typeof laborRuleData !== 'undefined') ? laborRuleData : null;
+            break;
     }
 
     // Try to get from LocalStorage first (most up to date)
@@ -89,7 +94,8 @@ function downloadData(type) {
                         (type === 'install') ? 'INSTALL_DATA_VERSION' :
                             (type === 'support_product') ? 'SUPPORT_PRODUCT_DATA_VERSION' :
                                 (type === 'pnpRule') ? 'PNP_RULE_DATA_VERSION' :
-                                    'DATA_VERSION';
+                                    (type === 'laborRule') ? 'LABOR_RULE_DATA_VERSION' :
+                                        'DATA_VERSION';
 
     fileContent += `const ${versionVarName} = ${version};\n\n`;
 
@@ -210,6 +216,11 @@ async function saveToGitHub(type, silent = false) {
             fileName = 'js/pnp-rule-data.js';
             dataObj = (typeof pnpRuleData !== 'undefined') ? pnpRuleData : null;
             break;
+        case 'laborRule':
+            dataName = 'laborRuleData';
+            fileName = 'js/labor-rule-data.js';
+            dataObj = (typeof laborRuleData !== 'undefined') ? laborRuleData : null;
+            break;
     }
 
     // Try to get from LocalStorage first (most up to date)
@@ -235,7 +246,8 @@ async function saveToGitHub(type, silent = false) {
                             (type === 'support_product') ? 'initialSupportProductData' :
                                 (type === 'estimate') ? 'initialEstimateData' :
                                     (type === 'pnpRule') ? 'initialPnpRuleData' :
-                                        'initial' + type.charAt(0).toUpperCase() + type.slice(1) + 'Data';
+                                        (type === 'laborRule') ? 'initialLaborRuleData' :
+                                            'initial' + type.charAt(0).toUpperCase() + type.slice(1) + 'Data';
 
     const versionVarName = (type === 'dealer') ? 'DEALER_DATA_VERSION' :
         (type === 'product') ? 'PRODUCT_DATA_VERSION' :
@@ -246,7 +258,8 @@ async function saveToGitHub(type, silent = false) {
                             (type === 'support_product') ? 'SUPPORT_PRODUCT_DATA_VERSION' :
                                 (type === 'estimate') ? 'ESTIMATE_DATA_VERSION' :
                                     (type === 'pnpRule') ? 'PNP_RULE_DATA_VERSION' :
-                                        'DATA_VERSION';
+                                        (type === 'laborRule') ? 'LABOR_RULE_DATA_VERSION' :
+                                            'DATA_VERSION';
 
     let fileContent = `const ${varName} = ${jsonStr};\n`;
     fileContent += `const ${versionVarName} = ${version};\n\n`;
