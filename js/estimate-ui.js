@@ -957,14 +957,19 @@ const EstimateUI = {
         let labor = 0;
         const extraLaborTotal = (this.selectedCar && this.selectedCar.extraLabor) ? this.selectedCar.extraLabor : 0;
         
-        let dspLabor = 0;
-        let dspDiscountRatio = 0;
-        let speakerLabor = 0;
-        let speakerCount = 0;
-        let minorItemLabor = 0; // For Subwoofer, ETC, Player
+        // 카테고리별 기술료 합산
+        let catLabor = {
+            'DSP': 0,
+            'Speaker': 0,
+            'AMP': 0,
+            'Subwoofer': 0,
+            'Player': 0,
+            'ETC': 0,
+            'PnP': 0
+        };
 
-        // 상세 기술료 내역을 보여주기 위한 배열
-        let laborBreakdown = []; 
+        let dspDiscountRatio = 0;
+        let speakerCount = 0;
         
         // laborRuleData 가 제대로 로드되었는지 확인
         const rules = (typeof laborRuleData !== 'undefined') ? laborRuleData : [];
@@ -978,59 +983,71 @@ const EstimateUI = {
                 validProducts.forEach(pName => {
                     const price = this.getProductPrice(pName);
                     
-                    // 1. 제품 규칙 찾기 (Trim & 대소문자 무시 매칭 등 고려)
+                    // 1. 제품 규칙 찾기 
                     const rule = rules.find(r => r.name && r.name.trim() === pName.trim());
                     
                     if (rule) {
-                        // 엑셀 룰 기반 계산
                         const base = parseFloat(rule.basePrice) || 0;
                         const percentRatio = parseFloat(rule.percentPrice) || 0;
                         let itemLabor = base + (price * (percentRatio / 100));
                         
-                        const ruleCat = (rule.category || '').toUpperCase().trim();
-
-                        // 판단 우선순위: 엑셀에 명시된 카테고리 -> 시스템 catId
-                        if (ruleCat === 'DSP' || (!ruleCat && catId === 'dsp')) {
-                            dspLabor += itemLabor;
-                            dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0);
-                            labor += itemLabor;
-                            if (itemLabor > 0) laborBreakdown.push({ name: `${pName} 기술료`, amount: itemLabor });
-                        } else if (ruleCat === 'SPEAKER' || (!ruleCat && ['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId))) {
-                            speakerLabor += itemLabor;
-                            speakerCount++;
-                            dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0);
-                            labor += itemLabor;
-                            if (itemLabor > 0) laborBreakdown.push({ name: `${pName} 기술료`, amount: itemLabor });
-                        } else if (ruleCat === 'SUBWOOFER' || ruleCat === 'ETC' || ruleCat === 'PLAYER') {
-                            minorItemLabor += itemLabor;
-                            labor += itemLabor;
-                            if (itemLabor > 0) laborBreakdown.push({ name: `${pName} 기술료`, amount: itemLabor });
-                        } else {
-                            labor += itemLabor;
-                            if (itemLabor > 0) laborBreakdown.push({ name: `${pName} 기술료`, amount: itemLabor });
+                        let ruleCat = (rule.category || '').toUpperCase().trim();
+                        // 빈 카테고리시 매핑 보정
+                        if (!ruleCat) {
+                             if (catId === 'dsp') ruleCat = 'DSP';
+                             else if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) ruleCat = 'SPEAKER';
+                             else if (catId === 'amp_4ch' || catId === 'amp_sub') ruleCat = 'AMP';
+                             else if (catId === 'subwoofer') ruleCat = 'SUBWOOFER';
+                             else if (catId === 'player') ruleCat = 'PLAYER';
+                             else if (catId === 'pnp') ruleCat = 'PNP';
                         }
 
+                        if (ruleCat === 'DSP') {
+                            catLabor['DSP'] += itemLabor;
+                            dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0);
+                        } else if (ruleCat === 'SPEAKER') {
+                            catLabor['Speaker'] += itemLabor;
+                            speakerCount++;
+                            dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0);
+                        } else if (ruleCat === 'SUBWOOFER') {
+                            catLabor['Subwoofer'] += itemLabor;
+                        } else if (ruleCat === 'PLAYER') {
+                            catLabor['Player'] += itemLabor;
+                        } else if (ruleCat === 'ETC') {
+                            catLabor['ETC'] += itemLabor;
+                        } else if (ruleCat === 'AMP') {
+                            catLabor['AMP'] += itemLabor;
+                        } else if (ruleCat === 'PNP') {
+                            catLabor['PnP'] += itemLabor;
+                        } else {
+                            catLabor['ETC'] += itemLabor;
+                        }
+
+                        labor += itemLabor;
+
                     } else {
-                        // 엑셀에 없는 제품은 기본 하드코딩 Fallback 로직 적용 (안전망)
+                        // 엑셀 룰에 없는 Fallback
                         if (catId === 'dsp') {
                             const itemLabor = (price * 0.3) + (extraLaborTotal * 0.5);
-                            dspLabor += itemLabor;
+                            catLabor['DSP'] += itemLabor;
                             labor += itemLabor;
                         } else if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) {
                             const excludedSpeakers = ["EV-65CF", "EV-40M-T", "EV-40MR-T", "EV-100SW 3", "EV-100SW Y", "DP2-45C-B", "DP2-45-B", "DP2-40C-B", "DP2-15TW-B", "DP2-80WF-B"];
                             if (!excludedSpeakers.includes(pName)) {
                                 speakerCount++;
                                 if (speakerCount === 1) {
-                                    // 기존 로직: 스피커 전체 합쳐서 1번만 20만+50% 부과
                                     const itemLabor = 200000 + (extraLaborTotal * 0.5);
-                                    speakerLabor = itemLabor;
+                                    catLabor['Speaker'] += itemLabor;
                                     labor += itemLabor;
-                                    dspDiscountRatio = Math.max(dspDiscountRatio, 50); // 기본 로직의 절반 개념을 동시작업 할인 50%로 치환
+                                    dspDiscountRatio = Math.max(dspDiscountRatio, 50); 
                                 }
                             }
                         } else if (catId === 'amp_4ch' || catId === 'amp_sub') {
-                            labor += (price * 0.1);
+                            const itemLabor = price * 0.1;
+                            catLabor['AMP'] += itemLabor;
+                            labor += itemLabor;
                         } else if (pName === "PWE-M770+PWE-770-RCU" && !hasDSP) {
+                            catLabor['Subwoofer'] += 200000;
                             labor += 200000;
                         }
                     }
@@ -1038,31 +1055,61 @@ const EstimateUI = {
             }
         });
 
-        // 2. DSP & 스피커 동시 작업 시, 할인 적용 (DSP 공임 및 스피커 공임에서 설정된 %만큼 할인)
-        // 엑셀 규격에 'DSP 스피커 동시작업 공임 할인비율(%)'이 있으므로
-        if ((hasDSP || dspLabor > 0) && speakerCount > 0 && dspDiscountRatio > 0) {
-            // DSP 공임과 스피커 공임 합산 금액에서 할인율 적용
-            const applicableLabor = dspLabor + speakerLabor;
+        // 2. DSP & 스피커 동시 작업 시, 할인 적용 
+        if ((hasDSP || catLabor['DSP'] > 0) && speakerCount > 0 && dspDiscountRatio > 0) {
+            const applicableLabor = catLabor['DSP'] + catLabor['Speaker'];
             const discountAmount = applicableLabor * (dspDiscountRatio / 100);
             labor -= discountAmount;
+            
+            // 할인액을 각 카테고리 비용에서 비율로 차감 반영 (표기를 위해)
+            catLabor['DSP'] = catLabor['DSP'] - (catLabor['DSP'] * (dspDiscountRatio / 100));
+            catLabor['Speaker'] = catLabor['Speaker'] - (catLabor['Speaker'] * (dspDiscountRatio / 100));
         }
 
-        // 3. Subwoofer, ETC, Player는 DSP나 Speaker가 하나라도 추가되면 기술료 적용 제외
-        const hasAnyDspOrSpeaker = (hasDSP || dspLabor > 0 || speakerCount > 0);
+        // 3. Subwoofer, ETC, Player는 DSP나 Speaker 존재 시 기술료 제외
+        const minorItemLabor = catLabor['Subwoofer'] + catLabor['Player'] + catLabor['ETC'];
+        const hasAnyDspOrSpeaker = (hasDSP || catLabor['DSP'] > 0 || speakerCount > 0);
         if (hasAnyDspOrSpeaker && minorItemLabor > 0) {
             labor -= minorItemLabor;
+            catLabor['Subwoofer'] = 0;
+            catLabor['Player'] = 0;
+            catLabor['ETC'] = 0;
         }
-        
-        // (선택) 하위호환: 엑셀 데이터를 쓰지 않고 순수하게 extraLaborTotal 이 남았다면 (Fallack), 
-        // 엑셀 파일이 비어있는 상태로 완전히 동작하면 extraLabor가 무시됨.
-        // 현재 로직은 엑셀 규칙을 1순위로 하되 찾지 못한 항목만 Fallback 진행하므로 정상.
 
         labor = Math.round(labor);
 
         if (productTotal > 0 || labor > 0) {
-            summaryHtml += `<hr><div class="estimate-summary-item">
-                <span style="font-weight: bold;">기술료</span>
-                <span>₩${labor.toLocaleString()}</span>
+            // 표기 순서 제어용
+            const renderOrder = [
+                { key: 'DSP', label: 'DSP 장착 기술료' },
+                { key: 'Speaker', label: 'Speaker 장착 기술료' },
+                { key: 'AMP', label: 'AMP 장착 기술료' },
+                { key: 'Subwoofer', label: 'Subwoofer 장착 기술료' },
+                { key: 'Player', label: 'Player 장착 기술료' },
+                { key: 'ETC', label: 'ETC 장착 기술료' },
+                { key: 'PnP', label: 'PnP 장착 기술료' }
+            ];
+
+            let laborHtml = '';
+            renderOrder.forEach(item => {
+                const amount = Math.round(catLabor[item.key] || 0);
+                if (amount > 0) {
+                    laborHtml += `<div class="estimate-summary-item" style="padding-left: 5px; color: #555;">
+                        <span style="font-size: 0.85em;">- ${item.label}</span>
+                        <span style="font-size: 0.85em;">₩${amount.toLocaleString()}</span>
+                    </div>`;
+                }
+            });
+
+            if (laborHtml) {
+                summaryHtml += `<div class="estimate-summary-group-title" style="font-size: 0.75rem; color: #007aff; margin-top: 15px; font-weight: bold; border-bottom: 1px solid #f0f0f0; padding-bottom: 2px;">기술료 내역</div>`;
+                summaryHtml += laborHtml;
+            }
+
+            summaryHtml += `<hr style="margin: 10px 0; border: 0; border-top: 1px solid #ddd;">
+            <div class="estimate-summary-item" style="padding-bottom: 15px;">
+                <span style="font-weight: bold;">기술료 합산</span>
+                <span style="font-weight: bold; color: #007aff;">₩${labor.toLocaleString()}</span>
             </div>`;
         } else {
             summaryHtml = '선택된 항목이 없습니다.';
