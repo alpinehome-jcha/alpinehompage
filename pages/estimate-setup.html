@@ -323,6 +323,7 @@
         async function loadAdminData() {
             const t = Math.floor(Date.now() / (1000 * 60)); // 1 min cache-bust
             const scripts = [
+                `../js/product-data.js?t=${t}`,
                 `../js/estimate-data.js?t=${t}`,
                 `../js/pnp-search-data.js?t=${t}`,
                 `../js/pnp-rule-data.js?t=${t}`,
@@ -706,12 +707,25 @@
         }
 
         function downloadLaborRuleExcel() {
-            let currentData = (typeof laborRuleData !== 'undefined' && laborRuleData.length > 0) ? laborRuleData : [
-                { name: 'PXE-M60-4', desc: '(예시) DSP 제품', basePrice: 0, percentPrice: 30, discountRatio: 0 },
-                { name: 'S2-S65C', desc: '(예시) 프론트 스피커', basePrice: 200000, percentPrice: 0, discountRatio: 50 },
-                { name: 'PWE-M770', desc: '(예시) 서브우퍼 단독', basePrice: 200000, percentPrice: 10, discountRatio: 0 },
-                { name: 'EV-65CF', desc: '(예시) 기술료 면제 스피커', basePrice: 0, percentPrice: 0, discountRatio: 0 }
-            ];
+            let currentData = (typeof laborRuleData !== 'undefined' && laborRuleData.length > 0) ? laborRuleData : [];
+            
+            // 데이터가 아예 없을 경우 (초기 진입 시), 시스템의 전체 제품 데이터를 끌어와서 템플릿 생성
+            if (currentData.length === 0 && typeof productData !== 'undefined') {
+                currentData = productData.map(p => {
+                    return {
+                        name: p.title || '',
+                        desc: p.category || '전체 제품',
+                        basePrice: 0,
+                        percentPrice: 0,
+                        discountRatio: 0
+                    };
+                });
+            } else if (currentData.length === 0) {
+                 // productData 마저 로드가 안된 경우의 최후 보루 안전망
+                 currentData = [
+                    { name: 'PXE-M60-4', desc: '(예시) DSP 제품', basePrice: 0, percentPrice: 30, discountRatio: 0 }
+                 ];
+            }
 
             const exportData = currentData.map(d => {
                 return {
