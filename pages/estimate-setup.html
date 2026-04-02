@@ -706,9 +706,13 @@
         }
 
         function downloadLaborRuleExcel() {
-            // Flatten logic for Labor Rule
-            // Fallback to empty array if undefined
-            const currentData = (typeof laborRuleData !== 'undefined') ? laborRuleData : [];
+            let currentData = (typeof laborRuleData !== 'undefined' && laborRuleData.length > 0) ? laborRuleData : [
+                { name: 'PXE-M60-4', desc: '(예시) DSP 제품', basePrice: 0, percentPrice: 30, discountRatio: 0 },
+                { name: 'S2-S65C', desc: '(예시) 프론트 스피커', basePrice: 200000, percentPrice: 0, discountRatio: 50 },
+                { name: 'PWE-M770', desc: '(예시) 서브우퍼 단독', basePrice: 200000, percentPrice: 10, discountRatio: 0 },
+                { name: 'EV-65CF', desc: '(예시) 기술료 면제 스피커', basePrice: 0, percentPrice: 0, discountRatio: 0 }
+            ];
+
             const exportData = currentData.map(d => {
                 return {
                     '제품명': d.name || '',
