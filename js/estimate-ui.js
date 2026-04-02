@@ -1243,12 +1243,16 @@ const EstimateUI = {
 
         let productHtml = '';
         let productTotal = 0;
-        let dspPrice = 0;
-        let ampPrice = 0;
 
+        let labor = 0;
+        const extraLaborTotal = (this.selectedCar && this.selectedCar.extraLabor) ? this.selectedCar.extraLabor : 0;
+        
+        let catLabor = {
+            'DSP': 0, 'Speaker': 0, 'AMP': 0, 'Subwoofer': 0, 'Player': 0, 'ETC': 0, 'PnP': 0
+        };
+        let dspDiscountRatio = 0;
+        let speakerCount = 0;
         let hasDSP = false;
-        let hasFrontRearSpeaker = false;
-        let hasPWEM770Package = false;
 
         const categoryLabels = {
             'dsp': '1. DSP',
@@ -1273,6 +1277,8 @@ const EstimateUI = {
             'amp_4ch', 'amp_sub', 'player'
         ];
 
+        const rules = (typeof laborRuleData !== 'undefined') ? laborRuleData : [];
+
         stepOrder.forEach(catId => {
             if (this.selections[catId]) {
                 const selected = this.selections[catId];
@@ -1291,20 +1297,56 @@ const EstimateUI = {
                         const price = this.getProductPrice(pName);
                         productTotal += price;
 
-                        if (catId === 'dsp') {
-                            dspPrice = price;
-                            hasDSP = true;
-                        }
-                        if (catId === 'amp_4ch' || catId === 'amp_sub') {
-                            ampPrice += price;
-                        }
+                        if (catId === 'dsp') hasDSP = true;
 
-                        if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) {
-                            hasFrontRearSpeaker = true;
-                        }
+                        // 1. 제품 규칙 찾기 및 기술료 계산
+                        const rule = rules.find(r => r.name && r.name.trim() === pName.trim());
+                        if (rule) {
+                            const base = parseFloat(rule.basePrice) || 0;
+                            const percentRatio = parseFloat(rule.percentPrice) || 0;
+                            let itemLabor = base + (price * (percentRatio / 100));
+                            
+                            let ruleCat = (rule.category || '').toUpperCase().trim();
+                            if (!ruleCat) {
+                                 if (catId === 'dsp') ruleCat = 'DSP';
+                                 else if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) ruleCat = 'SPEAKER';
+                                 else if (catId === 'amp_4ch' || catId === 'amp_sub') ruleCat = 'AMP';
+                                 else if (catId === 'subwoofer') ruleCat = 'SUBWOOFER';
+                                 else if (catId === 'player') ruleCat = 'PLAYER';
+                                 else if (catId === 'pnp') ruleCat = 'PNP';
+                            }
 
-                        if (pName === "PWE-M770+PWE-770-RCU") {
-                            hasPWEM770Package = true;
+                            if (ruleCat === 'DSP') { catLabor['DSP'] += itemLabor; dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0); }
+                            else if (ruleCat === 'SPEAKER') { catLabor['Speaker'] += itemLabor; speakerCount++; dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0); }
+                            else if (ruleCat === 'SUBWOOFER') catLabor['Subwoofer'] += itemLabor;
+                            else if (ruleCat === 'PLAYER') catLabor['Player'] += itemLabor;
+                            else if (ruleCat === 'ETC') catLabor['ETC'] += itemLabor;
+                            else if (ruleCat === 'AMP') catLabor['AMP'] += itemLabor;
+                            else if (ruleCat === 'PNP') catLabor['PnP'] += itemLabor;
+                            else catLabor['ETC'] += itemLabor;
+
+                            labor += itemLabor;
+                        } else {
+                            // Fallback
+                            if (catId === 'dsp') {
+                                const itemLabor = (price * 0.3) + (extraLaborTotal * 0.5);
+                                catLabor['DSP'] += itemLabor; labor += itemLabor;
+                            } else if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) {
+                                const excludedSpeakers = ["EV-65CF", "EV-40M-T", "EV-40MR-T", "EV-100SW 3", "EV-100SW Y", "DP2-45C-B", "DP2-45-B", "DP2-40C-B", "DP2-15TW-B", "DP2-80WF-B"];
+                                if (!excludedSpeakers.includes(pName)) {
+                                    speakerCount++;
+                                    if (speakerCount === 1) {
+                                        const itemLabor = 200000 + (extraLaborTotal * 0.5);
+                                        catLabor['Speaker'] += itemLabor; labor += itemLabor;
+                                        dspDiscountRatio = Math.max(dspDiscountRatio, 50); 
+                                    }
+                                }
+                            } else if (catId === 'amp_4ch' || catId === 'amp_sub') {
+                                const itemLabor = price * 0.1;
+                                catLabor['AMP'] += itemLabor; labor += itemLabor;
+                            } else if (pName === "PWE-M770+PWE-770-RCU" && !hasDSP) {
+                                catLabor['Subwoofer'] += 200000; labor += 200000;
+                            }
                         }
 
                         productHtml += `
@@ -1320,13 +1362,59 @@ const EstimateUI = {
             }
         });
 
-        const extraLaborTotal = (this.selectedCar && this.selectedCar.extraLabor) ? this.selectedCar.extraLabor : 0;
-        let labor = 0;
-        if (hasDSP) labor += (dspPrice * 0.3) + (extraLaborTotal * 0.5);
-        if (hasFrontRearSpeaker) labor += 200000 + (extraLaborTotal * 0.5);
-        labor += (ampPrice * 0.1);
-        if (hasPWEM770Package && !hasDSP) labor += 200000;
+        // 2. 동시작업 할인
+        if ((hasDSP || catLabor['DSP'] > 0) && speakerCount > 0 && dspDiscountRatio > 0) {
+            const applicableLabor = catLabor['DSP'] + catLabor['Speaker'];
+            const discountAmount = applicableLabor * (dspDiscountRatio / 100);
+            labor -= discountAmount;
+            catLabor['DSP'] = catLabor['DSP'] - (catLabor['DSP'] * (dspDiscountRatio / 100));
+            catLabor['Speaker'] = catLabor['Speaker'] - (catLabor['Speaker'] * (dspDiscountRatio / 100));
+        }
+
+        // 3. 서브우퍼/기타 기술료 제외
+        const minorItemLabor = catLabor['Subwoofer'] + catLabor['Player'] + catLabor['ETC'];
+        const hasAnyDspOrSpeaker = (hasDSP || catLabor['DSP'] > 0 || speakerCount > 0);
+        if (hasAnyDspOrSpeaker && minorItemLabor > 0) {
+            labor -= minorItemLabor;
+            catLabor['Subwoofer'] = 0; catLabor['Player'] = 0; catLabor['ETC'] = 0;
+        }
+
         labor = Math.round(labor);
+
+        const renderOrder = [
+            { key: 'DSP', label: 'DSP 장착 기술료' },
+            { key: 'Speaker', label: 'Speaker 장착 기술료' },
+            { key: 'AMP', label: 'AMP 장착 기술료' },
+            { key: 'Subwoofer', label: 'Subwoofer 장착 기술료' },
+            { key: 'Player', label: 'Player 장착 기술료' },
+            { key: 'ETC', label: 'ETC 장착 기술료' },
+            { key: 'PnP', label: 'PnP 장착 기술료' }
+        ];
+
+        let laborRowsHtml = '';
+        renderOrder.forEach(item => {
+            const amount = Math.round(catLabor[item.key] || 0);
+            if (amount > 0) {
+                laborRowsHtml += `
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 12px; color: #555;">[기술료] ${item.label}</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right; color: #555;">1</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right; color: #555;">₩${amount.toLocaleString()}</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right; color: #555;">₩${amount.toLocaleString()}</td>
+                    </tr>
+                `;
+            }
+        });
+
+        // Add a category header for labor items if any exist
+        if (laborRowsHtml) {
+            laborRowsHtml = `
+                <tr style="background: #f9f9f9;">
+                    <td colspan="4" style="border: 1px solid #ddd; padding: 8px 12px; font-weight: bold; color: #007aff; font-size: 0.85rem;">[ 옵션 ] 기술료 산출 내역</td>
+                </tr>
+                ${laborRowsHtml}
+            `;
+        }
 
         const grandTotal = productTotal + labor;
         const date = new Date().toLocaleDateString();
@@ -1356,12 +1444,13 @@ const EstimateUI = {
                 </thead>
                 <tbody>
                     ${productHtml}
-                    <tr>
-                        <td style="border: 1px solid #ddd; padding: 12px;">제품 인스톨 기술료</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">1</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${labor.toLocaleString()}</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${labor.toLocaleString()}</td>
+                    ${laborRowsHtml}
+                    ${labor > 0 ? `
+                    <tr style="background: #fdfdfd; font-weight: bold;">
+                        <td colspan="3" style="border: 1px solid #ddd; padding: 12px; text-align: right; color: #007aff;">기술료 합산</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: right; color: #007aff;">₩${labor.toLocaleString()}</td>
                     </tr>
+                    ` : ''}
                 </tbody>
                 <tfoot>
                     <tr style="background: #333; color: #fff;">
