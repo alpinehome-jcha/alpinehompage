@@ -2206,9 +2206,9 @@ const initialProductData = [
         "image": "assets/images/DVR.jpg",
         "detailBlocks": [
             {
-                "id": 1770359512023.266,
+                "id": "1770359512023.266",
                 "type": "image",
-                "value": "assets/images/dvr-01.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DVR-DM1000KO-IC.jpg"
             }
         ],
         "attachments": []
@@ -4115,7 +4115,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1775015287735;
+const PRODUCT_DATA_VERSION = 1775089673697;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
