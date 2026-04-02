@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 4. 2. 오후 2:40:33
+ * Updated: 2026. 4. 2. 오후 2:41:22
  */
 const pnpSearchData = [
     {
