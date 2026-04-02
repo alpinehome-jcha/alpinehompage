@@ -4054,7 +4054,7 @@ const initialProductData = [
     {
         "id": 1775014737605,
         "category": "Alpine OEM Fit",
-        "title": "PV5 알파인 메티오 사운드 패키지(OEM Fit)",
+        "title": "기아 PV5 전용 사운드 튜닝 알파인 메티오 사운드 패키지 (OEM Fit)",
         "desc": "PV5 전용 스피커 패키지",
         "desc_bottom": "쏟아지는 사운드, 울려 펴지는 중저음",
         "price": 900000,
@@ -4115,7 +4115,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1775089673697;
+const PRODUCT_DATA_VERSION = 1775089673698;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
