@@ -830,9 +830,9 @@ const EstimateUI = {
 
             // 마지막 단계까지 모두 선택했다면 targetBlock은 null이 되며 이동하지 않음
             if (targetBlock) {
-                // 상단 고정 헤더 영역(약 120px) 여유를 두고 스크롤 이동
-                const offsetTop = targetBlock.getBoundingClientRect().top + window.scrollY - 120;
-                window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                // 모달 내부 영역의 스크롤을 올바르게 제어하고, 고정 헤더나 하단부에 가려지는 현상을
+                // 막기 위해 요소를 뷰포트의 정중앙(center)에 부드럽게 가져다 둡니다.
+                targetBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }, 50);
     },
