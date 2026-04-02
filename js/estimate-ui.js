@@ -965,7 +965,8 @@ const EstimateUI = {
             'Subwoofer': 0,
             'Player': 0,
             'ETC': 0,
-            'PnP': 0
+            'PnP': 0,
+            'Premium': 0
         };
 
         let dspDiscountRatio = 0;
@@ -1005,11 +1006,21 @@ const EstimateUI = {
                         if (ruleCat === 'DSP') {
                             catLabor['DSP'] += itemLabor;
                             let r = parseFloat(rule.discountRatio);
+                            let premiumRatio = !isNaN(r) ? r : 50;
+                            let prem = extraLaborTotal * (premiumRatio / 100);
+                            catLabor['Premium'] += prem;
+                            labor += prem;
                             if (!isNaN(r) && r > 0) dspDiscountRatio = r;
                         } else if (ruleCat === 'SPEAKER') {
                             catLabor['Speaker'] += itemLabor;
-                            speakerCount++;
                             let r = parseFloat(rule.discountRatio);
+                            if (speakerCount === 0) {
+                                let premiumRatio = !isNaN(r) ? r : 50;
+                                let prem = extraLaborTotal * (premiumRatio / 100);
+                                catLabor['Premium'] += prem;
+                                labor += prem;
+                            }
+                            speakerCount++;
                             if (!isNaN(r) && r > 0 && dspDiscountRatio === 0) dspDiscountRatio = r;
                         } else if (ruleCat === 'SUBWOOFER') {
                             catLabor['Subwoofer'] += itemLabor;
@@ -1030,18 +1041,24 @@ const EstimateUI = {
                     } else {
                         // 엑셀 룰에 없는 Fallback
                         if (catId === 'dsp') {
-                            const itemLabor = (price * 0.3) + (extraLaborTotal * 0.5);
+                            const itemLabor = (price * 0.3);
                             catLabor['DSP'] += itemLabor;
                             labor += itemLabor;
+                            let prem = extraLaborTotal * 0.5;
+                            catLabor['Premium'] += prem;
+                            labor += prem;
                         } else if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) {
                             const excludedSpeakers = ["EV-65CF", "EV-40M-T", "EV-40MR-T", "EV-100SW 3", "EV-100SW Y", "DP2-45C-B", "DP2-45-B", "DP2-40C-B", "DP2-15TW-B", "DP2-80WF-B"];
                             if (!excludedSpeakers.includes(pName)) {
                                 speakerCount++;
                                 if (speakerCount === 1) {
-                                    const itemLabor = 200000 + (extraLaborTotal * 0.5);
+                                    const itemLabor = 200000;
                                     catLabor['Speaker'] += itemLabor;
                                     labor += itemLabor;
                                     dspDiscountRatio = Math.max(dspDiscountRatio, 50); 
+                                    let prem = extraLaborTotal * 0.5;
+                                    catLabor['Premium'] += prem;
+                                    labor += prem;
                                 }
                             }
                         } else if (catId === 'amp_4ch' || catId === 'amp_sub') {
@@ -1089,7 +1106,8 @@ const EstimateUI = {
                 { key: 'Subwoofer', label: 'Subwoofer 장착 기술료' },
                 { key: 'Player', label: 'Player 장착 기술료' },
                 { key: 'ETC', label: 'ETC 장착 기술료' },
-                { key: 'PnP', label: 'PnP 장착 기술료' }
+                { key: 'PnP', label: 'PnP 장착 기술료' },
+                { key: 'Premium', label: '고급차 시공 할증비' }
             ];
 
             let laborHtml = '';
@@ -1250,7 +1268,7 @@ const EstimateUI = {
         const extraLaborTotal = (this.selectedCar && this.selectedCar.extraLabor) ? this.selectedCar.extraLabor : 0;
         
         let catLabor = {
-            'DSP': 0, 'Speaker': 0, 'AMP': 0, 'Subwoofer': 0, 'Player': 0, 'ETC': 0, 'PnP': 0
+            'DSP': 0, 'Speaker': 0, 'AMP': 0, 'Subwoofer': 0, 'Player': 0, 'ETC': 0, 'PnP': 0, 'Premium': 0
         };
         let dspDiscountRatio = 0;
         let speakerCount = 0;
@@ -1321,12 +1339,22 @@ const EstimateUI = {
                             if (ruleCat === 'DSP') { 
                                 catLabor['DSP'] += itemLabor; 
                                 let r = parseFloat(rule.discountRatio);
+                                let premiumRatio = !isNaN(r) ? r : 50;
+                                let prem = extraLaborTotal * (premiumRatio / 100);
+                                catLabor['Premium'] += prem;
+                                labor += prem;
                                 if (!isNaN(r) && r > 0) dspDiscountRatio = r; 
                             }
                             else if (ruleCat === 'SPEAKER') { 
                                 catLabor['Speaker'] += itemLabor; 
-                                speakerCount++; 
                                 let r = parseFloat(rule.discountRatio);
+                                if (speakerCount === 0) {
+                                    let premiumRatio = !isNaN(r) ? r : 50;
+                                    let prem = extraLaborTotal * (premiumRatio / 100);
+                                    catLabor['Premium'] += prem;
+                                    labor += prem;
+                                }
+                                speakerCount++; 
                                 if (!isNaN(r) && r > 0 && dspDiscountRatio === 0) dspDiscountRatio = r; 
                             }
                             else if (ruleCat === 'SUBWOOFER') catLabor['Subwoofer'] += itemLabor;
@@ -1340,16 +1368,22 @@ const EstimateUI = {
                         } else {
                             // Fallback
                             if (catId === 'dsp') {
-                                const itemLabor = (price * 0.3) + (extraLaborTotal * 0.5);
+                                const itemLabor = (price * 0.3);
                                 catLabor['DSP'] += itemLabor; labor += itemLabor;
+                                let prem = extraLaborTotal * 0.5;
+                                catLabor['Premium'] += prem;
+                                labor += prem;
                             } else if (['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId)) {
                                 const excludedSpeakers = ["EV-65CF", "EV-40M-T", "EV-40MR-T", "EV-100SW 3", "EV-100SW Y", "DP2-45C-B", "DP2-45-B", "DP2-40C-B", "DP2-15TW-B", "DP2-80WF-B"];
                                 if (!excludedSpeakers.includes(pName)) {
                                     speakerCount++;
                                     if (speakerCount === 1) {
-                                        const itemLabor = 200000 + (extraLaborTotal * 0.5);
+                                        const itemLabor = 200000;
                                         catLabor['Speaker'] += itemLabor; labor += itemLabor;
                                         dspDiscountRatio = Math.max(dspDiscountRatio, 50); 
+                                        let prem = extraLaborTotal * 0.5;
+                                        catLabor['Premium'] += prem;
+                                        labor += prem;
                                     }
                                 }
                             } else if (catId === 'amp_4ch' || catId === 'amp_sub') {
@@ -1399,7 +1433,8 @@ const EstimateUI = {
             { key: 'Subwoofer', label: 'Subwoofer 장착 기술료' },
             { key: 'Player', label: 'Player 장착 기술료' },
             { key: 'ETC', label: 'ETC 장착 기술료' },
-            { key: 'PnP', label: 'PnP 장착 기술료' }
+            { key: 'PnP', label: 'PnP 장착 기술료' },
+            { key: 'Premium', label: '고급차 시공 할증비' }
         ];
 
         let laborRowsHtml = '';
