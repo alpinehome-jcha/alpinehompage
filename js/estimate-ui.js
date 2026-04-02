@@ -1419,6 +1419,24 @@ const EstimateUI = {
         const grandTotal = productTotal + labor;
         const date = new Date().toLocaleDateString();
 
+        let dealerInfoHtml = '';
+        if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('isLoggedIn') === 'true') {
+            const username = sessionStorage.getItem('currentUser');
+            const dealerList = (typeof window !== 'undefined' && window.dealerData) ? window.dealerData : 
+                               (typeof dealerData !== 'undefined' ? dealerData : JSON.parse(localStorage.getItem('dealerData') || '[]'));
+            const dealer = dealerList.find(d => d.username === username);
+            if (dealer) {
+                dealerInfoHtml = `
+                    <div style="margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 15px;">
+                        <p style="margin: 0; font-weight: bold; color: #007aff; margin-bottom: 5px;">[ 견적 상담 대리점 ]</p>
+                        <p style="margin: 0;"><strong>상호명:</strong> ${dealer.name}</p>
+                        <p style="margin: 0;"><strong>연락처:</strong> ${dealer.phone}</p>
+                        <p style="margin: 0;"><strong>주소:</strong> ${dealer.address}</p>
+                    </div>
+                `;
+            }
+        }
+
         printArea.innerHTML = `
             <div style="text-align: center; margin-bottom: 25px;">
                 <h1 style="font-size: 24px; margin: 0; letter-spacing: 5px;">알파인 사운드 견적서</h1>
@@ -1464,6 +1482,7 @@ const EstimateUI = {
                 <p style="margin: 0;">1. 본 견적서는 알파인 카오디오 가상 견적 시뮬레이션 결과로 실제 작업 환경에 따라 차이가 있을 수 있습니다.</p>
                 <p style="margin: 0;">2. 정확한 상담은 가까운 알파인 대리점(Partner Zone)을 방문하여 주시기 바랍니다.</p>
                 <p style="margin: 0;">3. 기술료는 기본 장착 표준 공임이며, 차량 상태 및 추가 커스텀 작업 시 변동될 수 있습니다.</p>
+                ${dealerInfoHtml}
             </div>
         `;
     }
