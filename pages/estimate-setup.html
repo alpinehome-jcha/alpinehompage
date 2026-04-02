@@ -711,34 +711,46 @@
             
             // 데이터가 아예 없을 경우 (초기 진입 시), 시스템의 전체 제품 데이터를 끌어와서 템플릿 생성
             if (currentData.length === 0 && typeof productData !== 'undefined') {
-                currentData = productData.map(p => {
+                currentData = productData
+                    .filter(p => {
+                        const t = p.title || '';
+                        return !t.toUpperCase().includes('F#1'); // F#1 Status 계열 모두 삭제
+                    })
+                    .map(p => {
                     let defaultBase = 0;
                     let defaultPercent = 0;
                     let defaultDiscount = 0;
                     
                     const cat = p.category || '';
                     const title = p.title || '';
+                    let finalCategory = '';
 
                     if (cat.includes('DSP') || title.includes('DSP')) {
+                        finalCategory = 'DSP';
                         defaultPercent = 30; // DSP: 30% 제품가 반영
                         defaultDiscount = 0;
-                    } else if (cat.includes('스피커') || cat.includes('트위터')) {
+                    } else if (cat.includes('스피커') || cat.includes('트위터') || title.includes('Speaker')) {
+                        finalCategory = 'Speaker';
                         const excludedSpeakers = ["EV-65CF", "EV-40M-T", "EV-40MR-T", "EV-100SW 3", "EV-100SW Y", "DP2-45C-B", "DP2-45-B", "DP2-40C-B", "DP2-15TW-B", "DP2-80WF-B"];
                         if (!excludedSpeakers.includes(title)) {
                             defaultBase = 200000;
                             defaultDiscount = 50; // DSP/스피커 동시작업 시 50% 할인 (기존 절반 부과 로직)
                         }
-                    } else if (cat.includes('앰프') || cat.includes('우퍼')) {
-                         if (title.includes('PWE')) {
+                    } else if (cat.includes('우퍼') || title.includes('PWE') || title.includes('Subwoofer') || cat.includes('서브우퍼')) {
+                        finalCategory = 'Subwoofer';
+                        if (title.includes('PWE')) {
                              defaultBase = 200000; // PWE 서브우퍼
-                         } else {
-                             defaultPercent = 10; // 일반앰프
-                         }
+                        } else {
+                             defaultPercent = 10;
+                        }
+                    } else {
+                        finalCategory = 'AMP';
+                        defaultPercent = 10; // 일반앰프
                     }
 
                     return {
                         name: title,
-                        category: cat,
+                        category: finalCategory,
                         desc: '',
                         basePrice: defaultBase,
                         percentPrice: defaultPercent,
