@@ -875,7 +875,7 @@ const initialLaborRuleData = [
         "category": "Subwoofer",
         "name": "PWE-M770",
         "desc": "",
-        "basePrice": 300000,
+        "basePrice": 200000,
         "percentPrice": 0,
         "discountRatio": 0
     },
@@ -915,7 +915,7 @@ const initialLaborRuleData = [
         "category": "Subwoofer",
         "name": "RS-W10D2 (외장박스 포함)",
         "desc": "",
-        "basePrice": 200000,
+        "basePrice": 150000,
         "percentPrice": 0,
         "discountRatio": 0
     },
@@ -923,7 +923,7 @@ const initialLaborRuleData = [
         "category": "Subwoofer",
         "name": "S2-W12D2 (외장박스 포함)",
         "desc": "",
-        "basePrice": 200000,
+        "basePrice": 150000,
         "percentPrice": 0,
         "discountRatio": 0
     },
@@ -931,7 +931,7 @@ const initialLaborRuleData = [
         "category": "Subwoofer",
         "name": "S2-W10D2 (외장박스 포함)",
         "desc": "",
-        "basePrice": 200000,
+        "basePrice": 150000,
         "percentPrice": 0,
         "discountRatio": 0
     },
@@ -939,7 +939,7 @@ const initialLaborRuleData = [
         "category": "Subwoofer",
         "name": "S2-W8D4 (외장박스 포함)",
         "desc": "",
-        "basePrice": 200000,
+        "basePrice": 150000,
         "percentPrice": 0,
         "discountRatio": 0
     },
@@ -968,7 +968,7 @@ const initialLaborRuleData = [
         "discountRatio": 0
     }
 ];
-const LABOR_RULE_DATA_VERSION = 1775102552589;
+const LABOR_RULE_DATA_VERSION = 1775103261259;
 
 let laborRuleData = [];
 if (typeof localStorage !== 'undefined') {
