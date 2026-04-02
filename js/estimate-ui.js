@@ -1004,11 +1004,13 @@ const EstimateUI = {
 
                         if (ruleCat === 'DSP') {
                             catLabor['DSP'] += itemLabor;
-                            dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0);
+                            let r = parseFloat(rule.discountRatio);
+                            if (!isNaN(r) && r > 0) dspDiscountRatio = r;
                         } else if (ruleCat === 'SPEAKER') {
                             catLabor['Speaker'] += itemLabor;
                             speakerCount++;
-                            dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0);
+                            let r = parseFloat(rule.discountRatio);
+                            if (!isNaN(r) && r > 0 && dspDiscountRatio === 0) dspDiscountRatio = r;
                         } else if (ruleCat === 'SUBWOOFER') {
                             catLabor['Subwoofer'] += itemLabor;
                         } else if (ruleCat === 'PLAYER') {
@@ -1316,8 +1318,17 @@ const EstimateUI = {
                                  else if (catId === 'pnp') ruleCat = 'PNP';
                             }
 
-                            if (ruleCat === 'DSP') { catLabor['DSP'] += itemLabor; dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0); }
-                            else if (ruleCat === 'SPEAKER') { catLabor['Speaker'] += itemLabor; speakerCount++; dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0); }
+                            if (ruleCat === 'DSP') { 
+                                catLabor['DSP'] += itemLabor; 
+                                let r = parseFloat(rule.discountRatio);
+                                if (!isNaN(r) && r > 0) dspDiscountRatio = r; 
+                            }
+                            else if (ruleCat === 'SPEAKER') { 
+                                catLabor['Speaker'] += itemLabor; 
+                                speakerCount++; 
+                                let r = parseFloat(rule.discountRatio);
+                                if (!isNaN(r) && r > 0 && dspDiscountRatio === 0) dspDiscountRatio = r; 
+                            }
                             else if (ruleCat === 'SUBWOOFER') catLabor['Subwoofer'] += itemLabor;
                             else if (ruleCat === 'PLAYER') catLabor['Player'] += itemLabor;
                             else if (ruleCat === 'ETC') catLabor['ETC'] += itemLabor;
