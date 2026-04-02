@@ -673,7 +673,7 @@ const EstimateUI = {
                     html += this.renderPnPSection(cat.label, list, selectedDsp);
                     // PnP는 자동 선택되므로 항상 완료로 간주
                 } else {
-                    html += `<div class="category-block">
+                    html += `<div class="category-block" data-step="${cat.id}">
                         <h4 style="margin: 20px 0 10px 0;">${cat.label}</h4>
                         <div class="product-grid-mini">
                             ${list.map(pName => {
@@ -716,7 +716,7 @@ const EstimateUI = {
 
         const matchedIntegrated = this.getMatchedIntegrated(selectedDsp, integrated);
 
-        let html = `<div class="category-block">
+        let html = `<div class="category-block" data-step="pnp">
             <h4 style="margin: 20px 0 10px 0;">${label}</h4>`;
 
         if (matchedIntegrated) {
@@ -808,6 +808,33 @@ const EstimateUI = {
         // 사용자가 수동으로 선택을 변경하면 추천 레벨을 '개별 선택'으로 초기화
         document.getElementById('estLevel').value = 'custom';
         this.updateSelectionArea();
+
+        // [스크롤 이동 로직 추가] 다음 미선택 단계로 부드럽게 이동
+        setTimeout(() => {
+            const blocks = document.querySelectorAll('#estSelectionArea .category-block');
+            let targetBlock = null;
+
+            for (let block of blocks) {
+                // 해당 단계 블록 안에서 사용자가 항목(상품, 선택 안함 등)을 선택했는지 확인
+                const hasSelection = block.querySelector('.product-item.selected');
+                
+                if (!hasSelection) {
+                    // PnP 타입이면서 매칭된 데이터가 없어 product-item 자체가 없는 예외 방어
+                    if (block.getAttribute('data-step') === 'pnp' && !block.querySelector('.product-item')) {
+                        continue; 
+                    }
+                    targetBlock = block;
+                    break;
+                }
+            }
+
+            // 마지막 단계까지 모두 선택했다면 targetBlock은 null이 되며 이동하지 않음
+            if (targetBlock) {
+                // 상단 고정 헤더 영역(약 120px) 여유를 두고 스크롤 이동
+                const offsetTop = targetBlock.getBoundingClientRect().top + window.scrollY - 120;
+                window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+            }
+        }, 50);
     },
 
     getProductPrice(name) {
