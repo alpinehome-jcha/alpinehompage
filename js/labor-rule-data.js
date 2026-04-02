@@ -37,7 +37,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 0,
         "percentPrice": 30,
-        "discountRatio": 50
+        "discountRatio": 40
     },
     {
         "category": "DSP",
@@ -45,7 +45,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 0,
         "percentPrice": 30,
-        "discountRatio": 50
+        "discountRatio": 40
     },
     {
         "category": "DSP",
@@ -53,7 +53,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 0,
         "percentPrice": 30,
-        "discountRatio": 50
+        "discountRatio": 40
     },
     {
         "category": "DSP",
@@ -61,7 +61,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 0,
         "percentPrice": 30,
-        "discountRatio": 50
+        "discountRatio": 40
     },
     {
         "category": "DSP",
@@ -69,7 +69,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 0,
         "percentPrice": 30,
-        "discountRatio": 50
+        "discountRatio": 40
     },
     {
         "category": "DSP",
@@ -77,7 +77,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 0,
         "percentPrice": 30,
-        "discountRatio": 50
+        "discountRatio": 40
     },
     {
         "category": "DSP",
@@ -85,7 +85,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 0,
         "percentPrice": 30,
-        "discountRatio": 50
+        "discountRatio": 40
     },
     {
         "category": "DSP",
@@ -93,7 +93,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 0,
         "percentPrice": 30,
-        "discountRatio": 50
+        "discountRatio": 40
     },
     {
         "category": "DSP",
@@ -101,7 +101,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 0,
         "percentPrice": 30,
-        "discountRatio": 50
+        "discountRatio": 40
     },
     {
         "category": "ETC",
@@ -685,7 +685,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 200000,
         "percentPrice": 0,
-        "discountRatio": 50
+        "discountRatio": 60
     },
     {
         "category": "Speaker",
@@ -693,7 +693,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 200000,
         "percentPrice": 0,
-        "discountRatio": 50
+        "discountRatio": 60
     },
     {
         "category": "Speaker",
@@ -701,7 +701,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 200000,
         "percentPrice": 0,
-        "discountRatio": 50
+        "discountRatio": 60
     },
     {
         "category": "Speaker",
@@ -709,7 +709,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 200000,
         "percentPrice": 0,
-        "discountRatio": 50
+        "discountRatio": 60
     },
     {
         "category": "Speaker",
@@ -717,7 +717,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 200000,
         "percentPrice": 0,
-        "discountRatio": 50
+        "discountRatio": 60
     },
     {
         "category": "Speaker",
@@ -725,7 +725,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 200000,
         "percentPrice": 0,
-        "discountRatio": 50
+        "discountRatio": 60
     },
     {
         "category": "Speaker",
@@ -733,7 +733,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 200000,
         "percentPrice": 0,
-        "discountRatio": 50
+        "discountRatio": 60
     },
     {
         "category": "Speaker",
@@ -741,7 +741,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 200000,
         "percentPrice": 0,
-        "discountRatio": 50
+        "discountRatio": 60
     },
     {
         "category": "Speaker",
@@ -749,7 +749,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 200000,
         "percentPrice": 0,
-        "discountRatio": 50
+        "discountRatio": 60
     },
     {
         "category": "Speaker",
@@ -757,7 +757,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 200000,
         "percentPrice": 0,
-        "discountRatio": 50
+        "discountRatio": 60
     },
     {
         "category": "Speaker",
@@ -765,7 +765,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 200000,
         "percentPrice": 0,
-        "discountRatio": 50
+        "discountRatio": 60
     },
     {
         "category": "Speaker",
@@ -773,7 +773,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 200000,
         "percentPrice": 0,
-        "discountRatio": 50
+        "discountRatio": 60
     },
     {
         "category": "Speaker",
@@ -781,7 +781,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 200000,
         "percentPrice": 0,
-        "discountRatio": 50
+        "discountRatio": 60
     },
     {
         "category": "Speaker",
@@ -789,7 +789,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 200000,
         "percentPrice": 0,
-        "discountRatio": 50
+        "discountRatio": 60
     },
     {
         "category": "Speaker",
@@ -797,7 +797,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 200000,
         "percentPrice": 0,
-        "discountRatio": 50
+        "discountRatio": 60
     },
     {
         "category": "Speaker",
@@ -861,7 +861,7 @@ const initialLaborRuleData = [
         "desc": "",
         "basePrice": 200000,
         "percentPrice": 0,
-        "discountRatio": 50
+        "discountRatio": 0
     },
     {
         "category": "Subwoofer",
@@ -968,7 +968,7 @@ const initialLaborRuleData = [
         "discountRatio": 0
     }
 ];
-const LABOR_RULE_DATA_VERSION = 1775103261259;
+const LABOR_RULE_DATA_VERSION = 1775106425248;
 
 let laborRuleData = [];
 if (typeof localStorage !== 'undefined') {
