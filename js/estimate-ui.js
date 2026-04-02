@@ -15,8 +15,13 @@ const EstimateUI = {
 
     async loadDataScripts() {
         // 경로 보정
-        const isSubPage = window.location.pathname.includes('/pages/') || window.location.pathname.includes('/support/');
-        const root = isSubPage ? '../js/' : 'js/';
+        let root = 'js/';
+        const pathname = window.location.pathname;
+        if (pathname.includes('/pages/products/')) {
+            root = '../../js/';
+        } else if (pathname.includes('/pages/') || pathname.includes('/support/')) {
+            root = '../js/';
+        }
 
         // URL sync parameter check
         const urlParams = new URLSearchParams(window.location.search);
@@ -74,8 +79,13 @@ const EstimateUI = {
 
     renderFloatingButton() {
         // 경로 보정: 현재 페이지 위치에 따라 assets 경로 조정
-        const isSubPage = window.location.pathname.includes('/pages/') || window.location.pathname.includes('/support/');
-        const root = isSubPage ? '../' : './';
+        let root = './';
+        const pathname = window.location.pathname;
+        if (pathname.includes('/pages/products/')) {
+            root = '../../';
+        } else if (pathname.includes('/pages/') || pathname.includes('/support/')) {
+            root = '../';
+        }
 
         const btn = document.createElement('div');
         btn.className = 'estimate-float-btn';
