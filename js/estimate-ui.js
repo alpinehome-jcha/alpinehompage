@@ -962,6 +962,9 @@ const EstimateUI = {
         let speakerLabor = 0;
         let speakerCount = 0;
         let minorItemLabor = 0; // For Subwoofer, ETC, Player
+
+        // 상세 기술료 내역을 보여주기 위한 배열
+        let laborBreakdown = []; 
         
         // laborRuleData 가 제대로 로드되었는지 확인
         const rules = (typeof laborRuleData !== 'undefined') ? laborRuleData : [];
@@ -991,16 +994,20 @@ const EstimateUI = {
                             dspLabor += itemLabor;
                             dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0);
                             labor += itemLabor;
+                            if (itemLabor > 0) laborBreakdown.push({ name: `${pName} 기술료`, amount: itemLabor });
                         } else if (ruleCat === 'SPEAKER' || (!ruleCat && ['front_door', 'tweeter', 'add_front', 'rear_door'].includes(catId))) {
                             speakerLabor += itemLabor;
                             speakerCount++;
                             dspDiscountRatio = Math.max(dspDiscountRatio, parseFloat(rule.discountRatio) || 0);
                             labor += itemLabor;
+                            if (itemLabor > 0) laborBreakdown.push({ name: `${pName} 기술료`, amount: itemLabor });
                         } else if (ruleCat === 'SUBWOOFER' || ruleCat === 'ETC' || ruleCat === 'PLAYER') {
                             minorItemLabor += itemLabor;
                             labor += itemLabor;
+                            if (itemLabor > 0) laborBreakdown.push({ name: `${pName} 기술료`, amount: itemLabor });
                         } else {
                             labor += itemLabor;
+                            if (itemLabor > 0) laborBreakdown.push({ name: `${pName} 기술료`, amount: itemLabor });
                         }
 
                     } else {
