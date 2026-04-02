@@ -712,23 +712,49 @@
             // 데이터가 아예 없을 경우 (초기 진입 시), 시스템의 전체 제품 데이터를 끌어와서 템플릿 생성
             if (currentData.length === 0 && typeof productData !== 'undefined') {
                 currentData = productData.map(p => {
+                    let defaultBase = 0;
+                    let defaultPercent = 0;
+                    let defaultDiscount = 0;
+                    
+                    const cat = p.category || '';
+                    const title = p.title || '';
+
+                    if (cat.includes('DSP') || title.includes('DSP')) {
+                        defaultPercent = 30; // DSP: 30% 제품가 반영
+                        defaultDiscount = 0;
+                    } else if (cat.includes('스피커') || cat.includes('트위터')) {
+                        const excludedSpeakers = ["EV-65CF", "EV-40M-T", "EV-40MR-T", "EV-100SW 3", "EV-100SW Y", "DP2-45C-B", "DP2-45-B", "DP2-40C-B", "DP2-15TW-B", "DP2-80WF-B"];
+                        if (!excludedSpeakers.includes(title)) {
+                            defaultBase = 200000;
+                            defaultDiscount = 50; // DSP/스피커 동시작업 시 50% 할인 (기존 절반 부과 로직)
+                        }
+                    } else if (cat.includes('앰프') || cat.includes('우퍼')) {
+                         if (title.includes('PWE')) {
+                             defaultBase = 200000; // PWE 서브우퍼
+                         } else {
+                             defaultPercent = 10; // 일반앰프
+                         }
+                    }
+
                     return {
-                        name: p.title || '',
-                        desc: p.category || '전체 제품',
-                        basePrice: 0,
-                        percentPrice: 0,
-                        discountRatio: 0
+                        name: title,
+                        category: cat,
+                        desc: '',
+                        basePrice: defaultBase,
+                        percentPrice: defaultPercent,
+                        discountRatio: defaultDiscount
                     };
                 });
             } else if (currentData.length === 0) {
                  // productData 마저 로드가 안된 경우의 최후 보루 안전망
                  currentData = [
-                    { name: 'PXE-M60-4', desc: '(예시) DSP 제품', basePrice: 0, percentPrice: 30, discountRatio: 0 }
+                    { name: 'PXE-M60-4', category: 'DSP', desc: '(예시) DSP 제품', basePrice: 0, percentPrice: 30, discountRatio: 0 }
                  ];
             }
 
             const exportData = currentData.map(d => {
                 return {
+                    '카테고리': d.category || '',
                     '제품명': d.name || '',
                     '설명': d.desc || '',
                     '기본 장착비(원)': d.basePrice || 0,
@@ -765,6 +791,7 @@
 
                     const processed = json.map(row => {
                         return { 
+                            category: row['카테고리'] || '',
                             name: row['제품명'] || '',
                             desc: row['설명'] || '',
                             basePrice: parseInt(row['기본 장착비(원)']) || 0,
