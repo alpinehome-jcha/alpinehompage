@@ -5633,6 +5633,78 @@ const initialEstimateData = [
     {
         "brand": "기아자동차",
         "model": "K8",
+        "year": "25년 이후",
+        "code": "GL3",
+        "system": "4채널 자출",
+        "dsp": [
+            "PXE-R80-8",
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "현대/기아 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "add_front": [],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "현대/기아 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "center": [],
+        "surround": [],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "extraLabor": 0,
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
+    },
+    {
+        "brand": "기아자동차",
+        "model": "K8",
         "year": "21년 이후",
         "code": "GL3",
         "system": "11채널(메리디안)",
@@ -6322,6 +6394,79 @@ const initialEstimateData = [
         "pnp": [
             "HK-103",
             "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
+    },
+    {
+        "brand": "기아자동차",
+        "model": "EV6",
+        "year": "25년 이후",
+        "code": "CV",
+        "system": "4채널 자출",
+        "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "현대/기아 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "add_front": [],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "현대/기아 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "center": [],
+        "surround": [],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "extraLabor": 0,
+        "pnp": [
+            "HK-104",
+            "HK-2A",
             "DS-M60-2B",
             "DS-R80-4B",
             "DS-X12-4B",
@@ -7054,6 +7199,79 @@ const initialEstimateData = [
     {
         "brand": "기아자동차",
         "model": "스포티지",
+        "year": "25년 이후",
+        "code": "NQ5",
+        "system": "4채널 자출",
+        "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "현대/기아 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "add_front": [],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "현대/기아 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "center": [],
+        "surround": [],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "extraLabor": 0,
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
+    },
+    {
+        "brand": "기아자동차",
+        "model": "스포티지",
         "year": "21~24년",
         "code": "NQ5",
         "system": "8채널",
@@ -7325,6 +7543,79 @@ const initialEstimateData = [
         "pnp": [
             "HK-103",
             "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
+    },
+    {
+        "brand": "기아자동차",
+        "model": "쏘렌토",
+        "year": "24년 이후",
+        "code": "MQ4",
+        "system": "4채널 자출",
+        "dsp": [
+            "PXE-M60-4",
+            "PXE-R80-8",
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "현대/기아 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "add_front": [],
+        "rear_door": [
+            "DM-65",
+            "S2-S65",
+            "HDZ-65"
+        ],
+        "rear_baffle": [
+            "현대/기아 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "center": [],
+        "surround": [],
+        "subwoofer": [
+            "PWE-M770",
+            "S2-W8D4 (외장박스 포함)",
+            "S2-W10D2 (외장박스 포함)",
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "extraLabor": 0,
+        "pnp": [
+            "HK-104",
+            "HK-2A",
             "DS-M60-2B",
             "DS-R80-4B",
             "DS-X12-4B",
@@ -10402,7 +10693,7 @@ const initialEstimateData = [
         ]
     }
 ];
-const ESTIMATE_DATA_VERSION = 1775106431510;
+const ESTIMATE_DATA_VERSION = 1775108552331;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
