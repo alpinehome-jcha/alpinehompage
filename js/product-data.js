@@ -3473,7 +3473,7 @@ const initialProductData = [
         "category": "PnP Cable - 독일차 (German Cars)",
         "title": "VW-1A",
         "desc": "폭스바겐 4CH 14년 이후 자출",
-        "desc_bottom": "A타입 / 차측용 케이블",
+        "desc_bottom": "A타입 / 차측용 케이블 2M",
         "price": 230000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/VW-1A.jpg",
@@ -4120,7 +4120,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1775456624608;
+const PRODUCT_DATA_VERSION = 1775456670716;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
