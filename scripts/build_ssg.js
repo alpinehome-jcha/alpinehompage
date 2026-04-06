@@ -40,7 +40,8 @@ function generateProductHtml(product) {
     const slug = slugify(product.title) || product.id.toString();
     const cleanDesc = (product.desc || '').replace(/"/g, '&quot;').replace(/\n/g, ' ');
     const ogImage = product.image ? `https://alpine-korea.co.kr/${product.image.replace('../', '').replace(/^\//, '')}` : '';
-    const pageUrl = `https://alpine-korea.co.kr/pages/products/${slug}.html`;
+    const encodedSlug = encodeURIComponent(slug);
+    const pageUrl = `https://alpine-korea.co.kr/pages/products/${encodedSlug}.html`;
 
     const seoTags = `
     <!-- SEO_META_TAGS -->
@@ -64,7 +65,10 @@ function generateProductHtml(product) {
     // We only replace exact strings for safety.
     html = html.replace(/href="\.\.\//g, 'href="../../');
     html = html.replace(/src="\.\.\//g, 'src="../../');
-    html = html.replace(/href="([a-zA-Z0-9]+)\.html"/g, 'href="../$1.html"'); // local pages like about.html -> ../about.html
+    
+    // Updated regex to include dots, underscores, dashes, and Korean characters (가-힣)
+    // Matches local links like about.html and converts them to ../about.html
+    html = html.replace(/href="([a-zA-Z0-9_\-\.\/가-힣]+)\.html"/g, 'href="../$1.html"');
 
     const priceDisplay = '₩' + product.price.toLocaleString();
 
@@ -193,6 +197,7 @@ if (fs.existsSync(sitemapPath)) {
     // Simple parser: check if URL already exists, if not, append before </urlset>
     let added = 0;
     for (const url of generatedUrls) {
+        // Ensure the URL comparison is robust
         if (!sitemap.includes(url)) {
             const urlEntry = `
   <url>

@@ -4136,9 +4136,27 @@ const initialProductData = [
             }
         ],
         "attachments": []
+    },
+    {
+        "id": 1775458000000,
+        "category": "Others",
+        "title": "트위터 라인 패시브",
+        "desc": "알파인 트위터 보호용 하이패스 필터 (패시브 크로스오버)",
+        "desc_bottom": "트위터를 안전하게 보호하는 전용 보호 장치입니다. 순정 배선 손상 없이 장착 가능합니다.",
+        "price": 40000,
+        "soldOut": false,
+        "image": "assets/images/amark.png",
+        "detailBlocks": [
+            {
+                "id": "1775458000001",
+                "type": "text",
+                "value": "트위터 라인 패시브 (트위터를 보호하는 장치입니다.)\n\n알파인 트위터 전용으로 설계된 하이패스 필터로, 원치 않는 저역대 주파수를 차단하여 트위터 스피커의 소손을 방지하고 맑고 깨끗한 고음을 재생할 수 있도록 도와줍니다."
+            }
+        ],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1775457031780;
+const PRODUCT_DATA_VERSION = 1775458000000;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
