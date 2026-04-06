@@ -4118,9 +4118,27 @@ const initialProductData = [
             }
         ],
         "attachments": []
+    },
+    {
+        "id": 1775457031776,
+        "category": "PnP Cable - 독일차 (German Cars)",
+        "title": "BM-404",
+        "desc": "BMW 구형 자출 4채널",
+        "desc_bottom": "A 타입 차측용 / 1.5M",
+        "price": 230000,
+        "soldOut": false,
+        "image": "assets/images/product_placeholder.png",
+        "detailBlocks": [
+            {
+                "id": "1775457019006827690",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BM-404-C.jpg"
+            }
+        ],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1775456670716;
+const PRODUCT_DATA_VERSION = 1775457031780;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
