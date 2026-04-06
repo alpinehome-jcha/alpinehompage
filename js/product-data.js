@@ -4150,7 +4150,7 @@ const initialProductData = [
             {
                 "id": "1775457767810341445",
                 "type": "text",
-                "value": "트위터 보호를 위한 하이패스 필터입니다.\n\n4Ω 기준 8.4hHz 컷오프 입니다.\n\n제네시스나 현대 기아차의 트위터가 미드레인지나 미드우퍼에 패시브로 연결되었을 경우 Alpine Status 653S나 DP2-653의 트위터 보호를 위해 장착합니다."
+                "value": "트위터 보호를 위한 하이패스 필터입니다.\n\n4Ω 기준 8.4hHz 컷오프 입니다.\n\n제네시스나 현대 기아차의 트위터가 미드레인지나 미드우퍼에 패시브로 연결되었을 경우 Alpine Status 653S나 DP2-653의 트위터 보호를 위해 장착합니다.\n\n\n사이즈 : 두께 2CM, 길이 3.5CM"
             }
         ],
         "attachments": []
@@ -4174,7 +4174,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1775458959971;
+const PRODUCT_DATA_VERSION = 1775459566482;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
