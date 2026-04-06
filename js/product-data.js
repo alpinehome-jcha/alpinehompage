@@ -4127,7 +4127,7 @@ const initialProductData = [
         "desc_bottom": "A 타입 차측용 / 1.5M",
         "price": 230000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BM-404.jpg",
         "detailBlocks": [
             {
                 "id": "1775457019006827690",
@@ -4138,7 +4138,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1775457031780;
+const PRODUCT_DATA_VERSION = 1775457559742;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
