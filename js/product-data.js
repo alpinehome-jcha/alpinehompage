@@ -2929,14 +2929,14 @@ const initialProductData = [
         "id": 1770597639317,
         "category": "PnP Cable - 독일차 (German Cars)",
         "title": "AU-1A",
-        "desc": "Audio 자출 6CH / 케이블길이 1.5M",
+        "desc": "Audio 자출 6CH / 케이블길이 2M",
         "desc_bottom": "A타입 / 차측용 케이블",
-        "price": 400000,
+        "price": 230000,
         "soldOut": false,
-        "image": "assets/images/AU-1A.jpg",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AU-1A.jpg",
         "detailBlocks": [
             {
-                "id": 1771326898810.0393,
+                "id": "1771326898810.0393",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AU-1A-C.jpg"
             }
@@ -4120,7 +4120,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1775456520057;
+const PRODUCT_DATA_VERSION = 1775456624608;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
