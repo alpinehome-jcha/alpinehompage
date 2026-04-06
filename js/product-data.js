@@ -4127,7 +4127,7 @@ const initialProductData = [
         "desc_bottom": "A 타입 차측용 / 1.5M",
         "price": 230000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BM-404.jpg",
         "detailBlocks": [
             {
                 "id": "1775457019006827690",
@@ -4138,25 +4138,43 @@ const initialProductData = [
         "attachments": []
     },
     {
-        "id": 1775458000000,
+        "id": 1775457981007,
         "category": "Others",
         "title": "트위터 라인 패시브",
-        "desc": "알파인 트위터 보호용 하이패스 필터 (패시브 크로스오버)",
-        "desc_bottom": "트위터를 안전하게 보호하는 전용 보호 장치입니다. 순정 배선 손상 없이 장착 가능합니다.",
-        "price": 40000,
+        "desc": "400V 4.7uf",
+        "desc_bottom": "",
+        "price": 8000,
         "soldOut": false,
-        "image": "assets/images/amark.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/트위터 라인패시브.jpg",
         "detailBlocks": [
             {
-                "id": "1775458000001",
+                "id": "1775457767810341445",
                 "type": "text",
-                "value": "트위터 라인 패시브 (트위터를 보호하는 장치입니다.)\n\n알파인 트위터 전용으로 설계된 하이패스 필터로, 원치 않는 저역대 주파수를 차단하여 트위터 스피커의 소손을 방지하고 맑고 깨끗한 고음을 재생할 수 있도록 도와줍니다."
+                "value": "트위터 보호를 위한 하이패스 필터입니다.\n\n4Ω 기준 8.4hHz 컷오프 입니다.\n\n제네시스나 현대 기아차의 트위터가 미드레인지나 미드우퍼에 패시브로 연결되었을 경우 Alpine Status 653S나 DP2-653의 트위터 보호를 위해 장착합니다.\n\n\n사이즈 : 두께 2CM, 길이 3.5CM"
+            }
+        ],
+        "attachments": []
+    },
+    {
+        "id": 1775458959969,
+        "category": "Others",
+        "title": "미드레인지 라인 패시브",
+        "desc": "400V 47uf",
+        "desc_bottom": "",
+        "price": 25000,
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/미드레인지 라인 패시브.jpg",
+        "detailBlocks": [
+            {
+                "id": "1775458293574544624",
+                "type": "text",
+                "value": "미드레인지 보호를 위한 하이패스 필터 입니다.\n\n4Ω기준 846Hz 컷오프\n\nK8과 같이 미드레인지와 미드우퍼가 패시브 상태일경우 HDZ-653S나 DP2-653의 미드레인지 스피커를 보할때 사용합니다.\n\n\n사이즈 : 두께 3.3CM  길이 5.5CM"
             }
         ],
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1775458000000;
+const PRODUCT_DATA_VERSION = 1775459606576;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
