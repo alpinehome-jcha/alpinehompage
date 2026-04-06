@@ -4136,9 +4136,27 @@ const initialProductData = [
             }
         ],
         "attachments": []
+    },
+    {
+        "id": 1775457981007,
+        "category": "Others",
+        "title": "트위터 라인 패시브",
+        "desc": "400V 4.7uf",
+        "desc_bottom": "",
+        "price": 8000,
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/트위터 라인패시브.jpg",
+        "detailBlocks": [
+            {
+                "id": "1775457767810341445",
+                "type": "text",
+                "value": "트위터 보호를 위한 하이패스 필터입니다.\n\n4Ω 기준 8.4hHz 컷오프 입니다.\n\n제네시스나 현대 기아차의 트위터가 미드레인지나 미드우퍼에 패시브로 연결되었을 경우 Alpine Status 653S나 DP2-653의 트위터 보호를 위해 장착합니다."
+            }
+        ],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1775457559742;
+const PRODUCT_DATA_VERSION = 1775457981010;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
