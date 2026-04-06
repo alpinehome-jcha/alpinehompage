@@ -3479,7 +3479,7 @@ const initialProductData = [
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/VW-1A.jpg",
         "detailBlocks": [
             {
-                "id": 1771329034194.1387,
+                "id": "1771329034194.1387",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/VW-1A-C.jpg"
             }
@@ -4120,7 +4120,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1775110748133;
+const PRODUCT_DATA_VERSION = 1775456520057;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
