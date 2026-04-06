@@ -4154,9 +4154,27 @@ const initialProductData = [
             }
         ],
         "attachments": []
+    },
+    {
+        "id": 1775458959969,
+        "category": "Others",
+        "title": "미드레인지 라인 패시브",
+        "desc": "400V 47uf",
+        "desc_bottom": "",
+        "price": 25000,
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/미드레인지 라인 패시브.jpg",
+        "detailBlocks": [
+            {
+                "id": "1775458293574544624",
+                "type": "text",
+                "value": "미드레인지 보호를 위한 하이패스 필터 입니다.\n\n4Ω기준 846Hz 컷오프\n\nK8과 같이 미드레인지와 미드우퍼가 패시브 상태일경우 HDZ-653S나 DP2-653의 미드레인지 스피커를 보할때 사용합니다."
+            }
+        ],
+        "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1775457981010;
+const PRODUCT_DATA_VERSION = 1775458959971;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
