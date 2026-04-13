@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>페이지를 찾을 수 없습니다 | 알파인 코리아</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 { font-size: 5rem; margin: 0; color: #eee; }
+        h2 { font-size: 1.5rem; margin: 10px 0 20px; }
+        p { color: #666; margin-bottom: 30px; line-height: 1.6; }
+        .loader {
+            display: none;
+            margin: 20px auto;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #333;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: background 0.3s;
+        }
+        .btn:hover { background: #000; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <div id="status">
+            <h2>페이지를 찾을 수 없습니다</h2>
+            <p>요청하신 페이지가 존재하지 않거나 현재 생성 중일 수 있습니다.</p>
+            <div class="loader" id="loader"></div>
+            <a href="/" class="btn">홈으로 돌아가기</a>
+        </div>
+    </div>
+
+    <!-- Load product data to check for missing static pages -->
+    <script src="/js/product-data.js"></script>
+    <script>
+        function slugify(text) {
+            return text.toString().toLowerCase()
+                .replace(/\s+/g, '-')
+                .replace(/[^\w\-가-힣]+/g, '')
+                .replace(/\-\-+/g, '-')
+                .replace(/^-+/, '')
+                .replace(/-+$/, '');
+        }
+
+        const path = window.location.pathname;
+        const productsMatch = path.match(/\/pages\/products\/(.+)\.html/);
+
+        if (productsMatch && typeof initialProductData !== 'undefined') {
+            const slug = decodeURIComponent(productsMatch[1]);
+            const statusEl = document.getElementById('status');
+            const loader = document.getElementById('loader');
+            
+            statusEl.querySelector('h2').textContent = "제품 페이지를 확인하고 있습니다...";
+            statusEl.querySelector('p').textContent = "잠시만 기다려 주세요. 상세 페이지로 이동합니다.";
+            loader.style.display = 'block';
+
+            // Find product by slug
+            const product = initialProductData.find(p => slugify(p.title) === slug || p.id.toString() === slug);
+            
+            if (product) {
+                // Redirect to dynamic detail page
+                setTimeout(() => {
+                    window.location.href = '/pages/detail.html?id=' + product.id;
+                }, 1000);
+            } else {
+                // Not a product, show normal 404
+                loader.style.display = 'none';
+                statusEl.querySelector('h2').textContent = "페이지를 찾을 수 없습니다";
+                statusEl.querySelector('p').textContent = "입력하신 주소가 정확한지 확인해 주세요.";
+            }
+        }
+    </script>
+</body>
+</html>

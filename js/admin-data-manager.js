@@ -321,9 +321,13 @@ async function saveToGitHub(type, silent = false) {
         await ghClient.commitFile(fileName, fileContent, msg);
 
         if (silent) {
-            showToast(`${type} data saved to GitHub!`, '#2ecc71');
+            let toastMsg = `${type} data saved to GitHub!`;
+            if (type === 'product') toastMsg += " (Site build started...)";
+            showToast(toastMsg, '#2ecc71');
         } else {
-            alert(`Successfully saved ${fileName} to GitHub!`);
+            let alertMsg = `Successfully saved ${fileName} to GitHub!`;
+            if (type === 'product') alertMsg += "\n\n제품 페이지 자동 빌드가 시작되었습니다. 약 1~2분 후 사이트에 반영됩니다.";
+            alert(alertMsg);
         }
     } catch (err) {
         console.error(err);
