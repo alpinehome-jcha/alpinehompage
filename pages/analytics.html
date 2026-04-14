@@ -65,6 +65,38 @@
             border-color: #2673E2;
         }
 
+        .date-picker-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+
+        .date-picker-group input {
+            padding: 6px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .btn-search {
+            padding: 8px 16px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .btn-search:hover {
+            background: #000;
+        }
+
         .card-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -235,6 +267,17 @@
             </div>
         </div>
 
+        <!-- Date Range Picker -->
+        <div class="card" style="margin-bottom: 20px; padding: 15px;">
+            <div class="date-picker-group">
+                <span style="font-size: 0.9rem; font-weight: bold; color: #555;">조회 기간 설정:</span>
+                <input type="date" id="startDate">
+                <span>~</span>
+                <input type="date" id="endDate">
+                <button class="btn-search" onclick="fetchByCustomDate()">조회</button>
+            </div>
+        </div>
+
         <div class="card-grid">
             <!-- Traffic Chart -->
             <div class="card card-full">
@@ -305,6 +348,24 @@
                     day: '일간', week: '주간', month: '월간', year: '연간'
                 }[period]));
             });
+
+            // Update Date Inputs
+            const now = new Date();
+            let gteDate = new Date();
+            if (period === 'day') gteDate.setDate(now.getDate() - 30);
+            else if (period === 'week') gteDate.setDate(now.getDate() - 90);
+            else if (period === 'month') gteDate.setFullYear(now.getFullYear() - 1);
+            else if (period === 'year') gteDate.setFullYear(now.getFullYear() - 5);
+
+            document.getElementById('startDate').value = gteDate.toISOString().split('T')[0];
+            document.getElementById('endDate').value = now.toISOString().split('T')[0];
+
+            await fetchData();
+        }
+
+        async function fetchByCustomDate() {
+            // Remove active status from quick filters
+            document.querySelectorAll('.btn-filter').forEach(btn => btn.classList.remove('active'));
             await fetchData();
         }
 
@@ -315,18 +376,26 @@
                 const client = await auth.loadSupabase().then(() => window._supabaseClient);
                 if (!client) throw new Error('Supabase client not loaded');
 
-                // Calculate date range
-                const now = new Date();
-                let gteDate = new Date();
-                if (currentPeriod === 'day') gteDate.setDate(now.getDate() - 30); // Show last 30 days
-                else if (currentPeriod === 'week') gteDate.setDate(now.getDate() - 90); // Last 90 days for weekly grouping
-                else if (currentPeriod === 'month') gteDate.setFullYear(now.getFullYear() - 1); // Last 12 months
-                else if (currentPeriod === 'year') gteDate.setFullYear(now.getFullYear() - 5); // Last 5 years
+                // Use dates from inputs
+                const startDateStr = document.getElementById('startDate').value;
+                const endDateStr = document.getElementById('endDate').value;
+
+                if (!startDateStr || !endDateStr) {
+                    // Fallback to initial defaults if inputs are empty
+                    setPeriod('day');
+                    return;
+                }
+
+                // Add time to end date to include the entire day
+                const gteDate = new Date(startDateStr);
+                const lteDate = new Date(endDateStr);
+                lteDate.setHours(23, 59, 59, 999);
 
                 const { data, error } = await client
                     .from('inbound_analytics')
                     .select('*')
                     .gte('created_at', gteDate.toISOString())
+                    .lte('created_at', lteDate.toISOString())
                     .order('created_at', { ascending: true });
 
                 if (error) throw error;
