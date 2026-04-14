@@ -59,6 +59,7 @@ const FRIENDLY_NAMES = {
 };
 
 const auth = {
+    loadSupabase: loadSupabase,
     // Expose Shared Config removed.
     // sharedConfig: {},
 
