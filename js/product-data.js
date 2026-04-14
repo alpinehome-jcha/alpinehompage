@@ -4191,7 +4191,7 @@ const initialProductData = [
             {
                 "id": "1776135151208458602",
                 "type": "image",
-                "value": ""
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DSP-M60.jpg"
             },
             {
                 "id": "1776135152080900601",
@@ -4201,7 +4201,7 @@ const initialProductData = [
             {
                 "id": "1776135186784017312",
                 "type": "image",
-                "value": ""
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/spk-dm65c.jpg"
             },
             {
                 "id": "1776135187408504929",
@@ -4211,7 +4211,7 @@ const initialProductData = [
             {
                 "id": "1776135200450153841",
                 "type": "image",
-                "value": ""
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/amp-m770-0.jpg"
             },
             {
                 "id": "1776135200970911337",
@@ -4221,7 +4221,7 @@ const initialProductData = [
             {
                 "id": "1776135217330369929",
                 "type": "image",
-                "value": ""
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-104.jpg"
             },
             {
                 "id": "1776135217778312615",
@@ -4229,15 +4229,20 @@ const initialProductData = [
                 "value": "[PV5 전용 무손상 솔루션: Non-Destructive Solution]\n\"차량 손상 0%, 사운드 만족도 100% — 전용 PnP 케이블로 완성하는 완벽한 핏\"\n\n고객님의 소중한 신차 PV5에 단 하나의 배선 손상도 허용하지 않습니다. JCH Auto는 전용 PnP(Plug & Play) 케이블 방식을 사용하여 순정 가치를 그대로 유지합니다.\n\n1. 배선 절단 없는 'Jack by Jack' 인스톨\n순정 배선을 자르거나 피복을 벗기지 않습니다. PV5 전용 하네스를 사용하여 잭을 맞물려 연결하는 방식으로, 전기적 오류를 방지하고 순정 시스템과 완벽하게 동기화됩니다.\n\n2. 제조사 워런티 걱정 제로\n차량 내부의 배선 구조를 전혀 변경하지 않으므로, 공식 서비스 센터 방문 시 배선 개조로 인한 보증 수리 거부 우려가 없습니다. 필요 시 언제든 100% 순정 상태로 복구가 가능합니다.\n\n3. 노이즈 프리(Noise-Free) 설계\n수작업 배선 연결에서 발생할 수 있는 접촉 불량이나 노이즈 유입을 차단합니다. 전용 쉴드 케이블을 통해 깨끗하고 안정적인 신호 전달을 보장합니다."
             },
             {
-                "id": "1776135245150498234",
+                "id": "1776140288542307344",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/현대_기아 6.5 배플.jpg"
+            },
+            {
+                "id": "1776140309012417533",
                 "type": "text",
-                "value": "알파인이 감동의 사운드를 완성합니다.\n지금 전국 알파인 공식 대리점에서 PV5 전용 패키지를 만나보십시오.\n\n[장착 대리점 안내 링크]\nhttps://www.alpine-korea.co.kr/pages/dealers.html"
+                "value": "전용 스피커 가이드를 사용합니다.\n\n\n\n알파인이 감동의 사운드를 완성합니다.\n지금 전국 알파인 공식 대리점에서 PV5 전용 패키지를 만나보십시오.\n\n[장착 대리점 안내 링크]\nhttps://www.alpine-korea.co.kr/pages/dealers.html"
             }
         ],
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1776135277970;
+const PRODUCT_DATA_VERSION = 1776140339113;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
