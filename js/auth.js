@@ -537,6 +537,9 @@ function addPartnerMenu(role) {
         const visitLogLink = window.location.pathname.includes('product.html') ? '#visitLogSection' : `${prefix}product.html#visitLogSection`;
         menuItems += `<li><a href="${visitLogLink}" class="dropdown-item" style="border-top:1px solid #eee;">방문 기록</a></li>`;
 
+        // Inbound Analysis Link
+        menuItems += `<li><a href="${adminPrefix}analytics.html" class="dropdown-item">유입 경로</a></li>`;
+
         // GitHub Settings Link
         menuItems += `<li><a href="#" class="dropdown-item" onclick="auth.openGitHubSettings(event)">GitHub 설정</a></li>`;
     }

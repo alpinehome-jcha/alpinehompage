@@ -112,6 +112,34 @@ const Layout = {
             const currentLang = localStorage.getItem('language') || 'ko';
             i18n.applyTranslations(currentLang);
         }
+
+        // Load Analytics Script
+        this.loadAnalytics();
+    },
+
+    /**
+     * Dynamically loads the analytics tracking script
+     */
+    loadAnalytics: function() {
+        if (document.getElementById('alpine-analytics')) return;
+        
+        const script = document.createElement('script');
+        script.id = 'alpine-analytics';
+        
+        // Determine root path
+        const path = window.location.pathname;
+        let scriptPath = 'js/analytics.js';
+        if (path.includes('/pages/') || path.includes('/support/')) {
+            scriptPath = '../js/analytics.js';
+        }
+        // Handle deep support paths (e.g., support/install/123/index.html)
+        if (path.includes('/support/') && path.split('/support/')[1].split('/').length > 2) {
+            scriptPath = '../../../js/analytics.js';
+        }
+
+        script.src = scriptPath + '?v=' + Date.now();
+        script.async = true;
+        document.head.appendChild(script);
     }
 };
 

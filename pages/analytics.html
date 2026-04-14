@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유입 경로 분석 - 알파인(ALPINE Korea)</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../assets/images/amark.png">
+    <link rel="shortcut icon" type="image/png" href="../assets/images/amark.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding-top: 80px;
+            background: #f4f7f9;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .dashboard-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-filter {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            background: #fff;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .btn-filter.active {
+            background: #2673E2;
+            color: #fff;
+            border-color: #2673E2;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-full {
+            grid-column: span 2;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: #555;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        td {
+            font-size: 0.85rem;
+        }
+
+        .keyword-tag {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+            color: #495057;
+        }
+
+        .count-badge {
+            background: #e74c3c;
+            color: #fff;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            margin-left: 5px;
+        }
+
+        #loadingOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .card-full {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header-container"></header>
+
+    <div id="loadingOverlay">
+        <div class="spinner"></div>
+        <p style="margin-top: 15px;">데이터 분석 중...</p>
+    </div>
+
+    <div class="container">
+        <div class="dashboard-header">
+            <h2>📊 유입 경로 분석 (Inbound Traffic Analytics)</h2>
+            <div class="filter-group">
+                <button class="btn-filter active" onclick="setPeriod('day')">일간</button>
+                <button class="btn-filter" onclick="setPeriod('week')">주간</button>
+                <button class="btn-filter" onclick="setPeriod('month')">월간</button>
+                <button class="btn-filter" onclick="setPeriod('year')">연간</button>
+            </div>
+        </div>
+
+        <div class="card-grid">
+            <!-- Traffic Chart -->
+            <div class="card card-full">
+                <h3>방문 트렌드 (Traffic Trends)</h3>
+                <div style="height: 300px; position: relative;">
+                    <canvas id="trafficChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Top Inbound Paths -->
+            <div class="card">
+                <h3>🏆 주요 유입 경로 (Top Referral Sources)</h3>
+                <div id="topPaths">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>유입 출처 (Host)</th>
+                                <th style="width: 80px; text-align: center;">방문 수</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pathTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Top Keywords -->
+            <div class="card">
+                <h3>🔍 주요 유입 키워드 (Top 50 Keywords)</h3>
+                <div id="topKeywords" style="max-height: 400px; overflow-y: auto;">
+                    <!-- Keywords will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/auth.js?v=20260307"></script>
+    <script>
+        let currentPeriod = 'day';
+        let mainChart = null;
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Check Auth
+            if (!auth.isLoggedIn() || auth.getRole() !== 'admin') {
+                alert('관리자만 접근 가능합니다.');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            auth.updateUI();
+            await fetchData();
+        });
+
+        async function setPeriod(period) {
+            currentPeriod = period;
+            document.querySelectorAll('.btn-filter').forEach(btn => {
+                btn.classList.toggle('active', btn.innerText.includes({
+                    day: '일간', week: '주간', month: '월간', year: '연간'
+                }[period]));
+            });
+            await fetchData();
+        }
+
+        async function fetchData() {
+            document.getElementById('loadingOverlay').style.display = 'flex';
+            
+            try {
+                const client = await auth.loadSupabase().then(() => window._supabaseClient);
+                if (!client) throw new Error('Supabase client not loaded');
+
+                // Calculate date range
+                const now = new Date();
+                let gteDate = new Date();
+                if (currentPeriod === 'day') gteDate.setDate(now.getDate() - 30); // Show last 30 days
+                else if (currentPeriod === 'week') gteDate.setDate(now.getDate() - 90); // Last 90 days for weekly grouping
+                else if (currentPeriod === 'month') gteDate.setFullYear(now.getFullYear() - 1); // Last 12 months
+                else if (currentPeriod === 'year') gteDate.setFullYear(now.getFullYear() - 5); // Last 5 years
+
+                const { data, error } = await client
+                    .from('inbound_analytics')
+                    .select('*')
+                    .gte('created_at', gteDate.toISOString())
+                    .order('created_at', { ascending: true });
+
+                if (error) throw error;
+
+                processData(data);
+            } catch (e) {
+                console.error('Fetch Error:', e);
+                alert('데이터를 불러오는데 실패했습니다: ' + e.message);
+            } finally {
+                document.getElementById('loadingOverlay').style.display = 'none';
+            }
+        }
+
+        function processData(data) {
+            // 1. Process Chart Data
+            const groups = groupDataByTime(data, currentPeriod);
+            renderChart(groups);
+
+            // 2. Process Top Paths
+            const hosts = {};
+            data.forEach(d => {
+                const host = d.referrer_host || 'Direct';
+                hosts[host] = (hosts[host] || 0) + 1;
+            });
+            const sortedHosts = Object.entries(hosts).sort((a, b) => b[1] - a[1]);
+            renderPaths(sortedHosts);
+
+            // 3. Process Keywords
+            const keywords = {};
+            data.forEach(d => {
+                if (d.keyword) {
+                    keywords[d.keyword] = (keywords[d.keyword] || 0) + 1;
+                }
+            });
+            const sortedKeywords = Object.entries(keywords).sort((a, b) => b[1] - a[1]).slice(0, 50);
+            renderKeywords(sortedKeywords);
+        }
+
+        function groupDataByTime(data, period) {
+            const groups = {};
+            data.forEach(d => {
+                const date = new Date(d.created_at);
+                let key;
+                if (period === 'day' || period === 'week') {
+                    key = date.toISOString().split('T')[0];
+                } else if (period === 'month') {
+                    key = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0');
+                } else if (period === 'year') {
+                    key = date.getFullYear().toString();
+                }
+                groups[key] = (groups[key] || 0) + 1;
+            });
+            return groups;
+        }
+
+        function renderChart(groups) {
+            const ctx = document.getElementById('trafficChart').getContext('2d');
+            const labels = Object.keys(groups);
+            const values = Object.values(groups);
+
+            if (mainChart) mainChart.destroy();
+
+            mainChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '방문 수 (Sessions)',
+                        data: values,
+                        borderColor: '#2673E2',
+                        backgroundColor: 'rgba(38, 115, 226, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#2673E2'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#f0f0f0' } },
+                        x: { grid: { display: false } }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        function renderPaths(sortedHosts) {
+            const tbody = document.getElementById('pathTableBody');
+            tbody.innerHTML = '';
+            
+            if (sortedHosts.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="2" style="text-align:center;">데이터가 없습니다.</td></tr>';
+                return;
+            }
+
+            sortedHosts.forEach(([host, count]) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${host}</td>
+                    <td style="text-align:center; font-weight:bold; color:#2673E2;">${count.toLocaleString()}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderKeywords(sortedKeywords) {
+            const container = document.getElementById('topKeywords');
+            container.innerHTML = '';
+
+            if (sortedKeywords.length === 0) {
+                container.innerHTML = '<p style="text-align:center; color:#888; margin-top:20px;">검색 키워드 데이터가 없습니다.</p>';
+                return;
+            }
+
+            sortedKeywords.forEach(([word, count]) => {
+                const tag = document.createElement('span');
+                tag.className = 'keyword-tag';
+                tag.innerHTML = `${word} <span class="count-badge">${count}</span>`;
+                container.appendChild(tag);
+            });
+        }
+    </script>
+</body>
+
+</html>
