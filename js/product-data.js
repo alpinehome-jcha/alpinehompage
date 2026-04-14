@@ -4181,7 +4181,7 @@ const initialProductData = [
         "desc_bottom": "이동의 순간이 즐거움이 되는 시간, PV5 with Alpine",
         "price": 1700000,
         "soldOut": false,
-        "image": "assets/images/product_placeholder.png",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PV5 알파인 패키지 복사.jpg",
         "detailBlocks": [
             {
                 "id": "1776135124972278336",
@@ -4242,7 +4242,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1776140339113;
+const PRODUCT_DATA_VERSION = 1776145619047;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
