@@ -1919,14 +1919,14 @@ const initialProductData = [
         "id": 1770350520053,
         "category": "Speakers",
         "title": "S2-W8D4 (외장박스 포함)",
-        "desc": "8\" Subwoofer with Dual 4 Ohm",
+        "desc": "8\" Subwoofer with Dual 4 Ohm Size(W:50cm, L:36cm, H:19CM)",
         "desc_bottom": "장착 공임 별도/20만원 부터",
         "price": 670000,
-        "soldOut": true,
-        "image": "assets/images/product_placeholder.png",
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/spk-S2w8(외장박스).jpg",
         "detailBlocks": [
             {
-                "id": 1770350510536.9482,
+                "id": "1770350510536.9482",
                 "type": "text",
                 "value": "FEATURES\nDual Voice Coil Subwoofers with Configuration Jumpers\nCarbon Fiber / Poly Propylene Cone\nPoly Propylene / Ceramic Dust Cap\nHigh-Grade Strontium Ferrite Magnets\nTwist-Lock Grille Mount System\nHigh-Amplitude Multi-Roll (H.A.M.R.) Surround\nPush-Type Speaker Terminals (Up to 8AWG Wire Size)\n\nTECH SPECS\nPower Handling: 900W Peak\nNominal Impedance: 4 Ohm\nFrequency Response: 23Hz - 215Hz\nSensitivity (1W/1M): 82.7dB\nVoice Coil: 1.4\"\nX-Max (1-Way): 13mm\n\nMagnet Weight: 34oz"
             }
@@ -4242,7 +4242,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1776217713601;
+const PRODUCT_DATA_VERSION = 1776217816905;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
