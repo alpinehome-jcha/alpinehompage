@@ -1866,19 +1866,19 @@ const initialProductData = [
         "id": 1770350377190,
         "category": "Speakers",
         "title": "S2-W12D2 (외장박스 포함)",
-        "desc": "12\" Subwoofer with Dual 2 Ohm",
+        "desc": "12\" Subwoofer with Dual 2 Ohm Size(W:56cm, L:40cm, H:22CM)",
         "desc_bottom": "장착 공임 별도/20만원 부터",
         "price": 850000,
         "soldOut": false,
         "image": "assets/images/spk-S2W12(외장박스).jpg",
         "detailBlocks": [
             {
-                "id": 1770350374848.3484,
+                "id": "1770350374848.3484",
                 "type": "text",
                 "value": "FEATURES\nDual Voice Coil Subwoofers with Configuration Jumpers\nCarbon Fiber / Poly Propylene Cone\nPoly Propylene / Ceramic Dust Cap\nHigh-Grade Strontium Ferrite Magnets\nTwist-Lock Grille Mount System\nHigh-Amplitude Multi-Roll (H.A.M.R.) Surround\nPush-Type Speaker Terminals (Up to 8AWG Wire Size)\n\nTECH SPECS\nPower Handling: RMS 600W / 1800W Peak\nNominal Impedance: 2 Ohm\nFrequency Response: 23Hz - 215Hz\nSensitivity (1W/1M): 82.7dB\nVoice Coil: 1.4\"\nX-Max (1-Way): 13mm\n\nMagnet Weight: 34oz"
             },
             {
-                "id": 1770353785974.2847,
+                "id": "1770353785974.2847",
                 "type": "image",
                 "value": "assets/images/spk-(외장박스).jpg"
             }
@@ -4242,7 +4242,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1776217676290;
+const PRODUCT_DATA_VERSION = 1776217713601;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
