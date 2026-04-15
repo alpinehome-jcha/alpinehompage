@@ -1837,19 +1837,19 @@ const initialProductData = [
         "id": 1770350274959,
         "category": "Speakers",
         "title": "RS-W10D2 (외장박스 포함)",
-        "desc": "10\" Subwoofer Shallow with Dual 2 Ohm",
+        "desc": "10\" Subwoofer Shallow with Dual 2 Ohm Size(W:50cm, L:38cm, H:17CM)",
         "desc_bottom": "장착 공임 별도/20만원 부터",
         "price": 1820000,
         "soldOut": false,
         "image": "assets/images/spk-RSw10(외장박스).jpg",
         "detailBlocks": [
             {
-                "id": 1770350265962.689,
+                "id": "1770350265962.689",
                 "type": "text",
                 "value": "High-Performance Shallow Bass Driver\nAlpine Gen2 DD Linear Magnetic Circuit\nCast Aluminum Frame\nAluminum Dust Cap\nNeodymium Magnet\nMounting Depth: 3.25”\nX-Max: 20mm\nVoice Coil: 4” (102mm)\nFrequency Response: 25Hz-100Hz\nSensitivity: 79 dB\nNominal Impedance: 2 Ohm for RS-W10D4\nPower Handling: 600W RMS / 1800W Peak"
             },
             {
-                "id": 1770353452552.035,
+                "id": "1770353452552.035",
                 "type": "image",
                 "value": "assets/images/spk-(외장박스).jpg"
             }
@@ -4242,7 +4242,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1776145619047;
+const PRODUCT_DATA_VERSION = 1776217676290;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
