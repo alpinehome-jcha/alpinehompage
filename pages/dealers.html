@@ -245,6 +245,28 @@
                 font-weight: 600;
                 width: fit-content;
                 margin-bottom: 5px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            /* Shining Animation for linked dealers */
+            .badge-certified.shining::after {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -60%;
+                width: 20%;
+                height: 200%;
+                background: rgba(255, 255, 255, 0.4);
+                transform: rotate(30deg);
+                transition: none;
+                animation: shine 3s infinite;
+            }
+
+            @keyframes shine {
+                0% { left: -60%; }
+                20% { left: 120%; }
+                100% { left: 120%; }
             }
 
             .dealer-name {
@@ -536,7 +558,8 @@
                         // const dist = Math.sqrt(getDistSq(dealer)).toFixed(0); 
 
                         // Badge HTML if exists
-                        const badgeHtml = dealer.badge ? `<span class="badge-certified">${dealer.badge}</span>` : '';
+                        const shiningClass = dealer.homepage ? 'shining' : '';
+                        const badgeHtml = dealer.badge ? `<span class="badge-certified ${shiningClass}">${dealer.badge}</span>` : '';
 
                         card.innerHTML = `
                             ${badgeHtml}
