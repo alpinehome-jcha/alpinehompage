@@ -10,6 +10,7 @@ const initialDealerData = [
         "username": "gain",
         "password": "2345",
         "role": "dealer",
+        "homepage": "",
         "lat": 37.3887,
         "lng": 126.9238,
         "region": "경기중앙(성남,안양,용인,과천)"
@@ -25,6 +26,7 @@ const initialDealerData = [
         "username": "Frog",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "lat": 35.1796,
         "lng": 129.0756,
         "region": "경기중앙(성남,안양,용인,과천)"
@@ -40,6 +42,7 @@ const initialDealerData = [
         "username": "caraudiofactory",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "lat": 35.8714,
         "lng": 128.6014,
         "region": "경기남부(수원,화성,평택,안성)"
@@ -55,6 +58,7 @@ const initialDealerData = [
         "username": "luxury",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "lat": 37.4563,
         "lng": 126.7052,
         "region": "경기북부(고양,파주,의정부,양주)"
@@ -70,6 +74,7 @@ const initialDealerData = [
         "username": "autogallery",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "lat": 35.1595,
         "lng": 126.8526,
         "region": "서울"
@@ -85,6 +90,7 @@ const initialDealerData = [
         "username": "catooaudio",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "lat": 36.3504,
         "lng": 127.3845,
         "region": "경기중앙(성남,안양,용인,과천)"
@@ -100,6 +106,7 @@ const initialDealerData = [
         "username": "suncarfactory",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "인천"
     },
     {
@@ -113,6 +120,7 @@ const initialDealerData = [
         "username": "soundtechnic",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "경기서부(김포,부천,광명,안산)"
     },
     {
@@ -126,6 +134,7 @@ const initialDealerData = [
         "username": "gwangju",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "광주"
     },
     {
@@ -139,6 +148,7 @@ const initialDealerData = [
         "username": "soundjazz",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "제주"
     },
     {
@@ -152,6 +162,7 @@ const initialDealerData = [
         "username": "funnysound",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "전북"
     },
     {
@@ -165,6 +176,7 @@ const initialDealerData = [
         "username": "retrocaraudio",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "강원"
     },
     {
@@ -178,6 +190,7 @@ const initialDealerData = [
         "username": "soundraw",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "서울"
     },
     {
@@ -191,6 +204,7 @@ const initialDealerData = [
         "username": "beisitauto01",
         "password": "1235",
         "role": "dealer",
+        "homepage": "",
         "region": "경기동부(남양주,하남,이천,양평)"
     },
     {
@@ -204,6 +218,7 @@ const initialDealerData = [
         "username": "sounddoctor",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "부산"
     },
     {
@@ -217,6 +232,7 @@ const initialDealerData = [
         "username": "southtowncaraudio",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "광주"
     },
     {
@@ -230,6 +246,7 @@ const initialDealerData = [
         "username": "maxcaraudio",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "광주"
     },
     {
@@ -243,6 +260,7 @@ const initialDealerData = [
         "username": "beautifulsound",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "경기중앙(성남,안양,용인,과천)"
     },
     {
@@ -256,6 +274,7 @@ const initialDealerData = [
         "username": "illusionsound",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "경기남부(수원,화성,평택,안성)"
     },
     {
@@ -269,6 +288,7 @@ const initialDealerData = [
         "username": "soundforum",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "충북"
     },
     {
@@ -281,7 +301,8 @@ const initialDealerData = [
         "desc": "알파인 모든 사운드 시스템을 취급합니다.",
         "username": "autosound21",
         "password": "1234",
-        "role": "dealer"
+        "role": "dealer",
+        "homepage": ""
     },
     {
         "id": 1770251639994,
@@ -294,6 +315,7 @@ const initialDealerData = [
         "username": "procarsound",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "경기중앙(성남,안양,용인,과천)"
     },
     {
@@ -307,6 +329,7 @@ const initialDealerData = [
         "username": "carsoundpark",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "경기남부(수원,화성,평택,안성)"
     },
     {
@@ -320,6 +343,7 @@ const initialDealerData = [
         "username": "carsoundmaker",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "전북"
     },
     {
@@ -333,6 +357,7 @@ const initialDealerData = [
         "username": "qualityhouse",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "충남"
     },
     {
@@ -346,6 +371,7 @@ const initialDealerData = [
         "username": "hyundaicaraudio",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "경기동부(남양주,하남,이천,양평)"
     },
     {
@@ -359,6 +385,7 @@ const initialDealerData = [
         "username": "jhsound",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "경남"
     },
     {
@@ -371,7 +398,8 @@ const initialDealerData = [
         "desc": "알파인 모든 사운드 시스템을 취급합니다.",
         "username": "hcodecaraudio",
         "password": "1234",
-        "role": "dealer"
+        "role": "dealer",
+        "homepage": ""
     },
     {
         "id": 1770252184174,
@@ -383,7 +411,8 @@ const initialDealerData = [
         "desc": "알파인 모든 사운드 시스템을 취급합니다.",
         "username": "carsoundmaker01",
         "password": "1234",
-        "role": "dealer"
+        "role": "dealer",
+        "homepage": ""
     },
     {
         "id": 1770252250504,
@@ -396,6 +425,7 @@ const initialDealerData = [
         "username": "powerbankhouse",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "대전"
     },
     {
@@ -409,6 +439,7 @@ const initialDealerData = [
         "username": "acecarplaza",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "대전"
     },
     {
@@ -421,7 +452,8 @@ const initialDealerData = [
         "desc": "알파인 모든 사운드 시스템을 취급합니다.",
         "username": "tropicalsound",
         "password": "1234",
-        "role": "dealer"
+        "role": "dealer",
+        "homepage": ""
     },
     {
         "id": 1770252423184,
@@ -434,6 +466,7 @@ const initialDealerData = [
         "username": "customsound",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "부산"
     },
     {
@@ -447,6 +480,7 @@ const initialDealerData = [
         "username": "einsauto",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "울산"
     },
     {
@@ -460,6 +494,7 @@ const initialDealerData = [
         "username": "loudersound",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "경남"
     },
     {
@@ -473,6 +508,7 @@ const initialDealerData = [
         "username": "handscaraudio",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "대구"
     },
     {
@@ -486,6 +522,7 @@ const initialDealerData = [
         "username": "jazzcaraudio",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "대구"
     },
     {
@@ -499,6 +536,7 @@ const initialDealerData = [
         "username": "soundpro",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "대구"
     },
     {
@@ -512,6 +550,7 @@ const initialDealerData = [
         "username": "772caraudio",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "대구"
     },
     {
@@ -524,7 +563,8 @@ const initialDealerData = [
         "desc": "Jimny 전용 메티오사운드",
         "username": "roadmine",
         "password": "1234",
-        "role": "dealer"
+        "role": "dealer",
+        "homepage": ""
     },
     {
         "id": 1770253046567,
@@ -537,6 +577,7 @@ const initialDealerData = [
         "username": "ohsungcaraudio",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "부산"
     },
     {
@@ -550,6 +591,7 @@ const initialDealerData = [
         "username": "phasecaraudio",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "lat": 35.2690732,
         "lng": 129.0900833,
         "region": "부산"
@@ -565,10 +607,11 @@ const initialDealerData = [
         "username": "mistralcaraudio",
         "password": "1234",
         "role": "dealer",
+        "homepage": "",
         "region": "경남"
     }
 ];
-const DEALER_DATA_VERSION = 1771825011625;
+const DEALER_DATA_VERSION = 1771825011626;
 
 let dealerData = [];
 if (typeof localStorage !== 'undefined') {

@@ -202,7 +202,71 @@
                 border-color: #ba5d0f;
             }
 
-            /* Add a little arrow/tail if we want, but dots are fine for high density */
+            /* Dealer Card Styles */
+            .dealer-card {
+                background: #fff;
+                border: 1px solid #eee;
+                border-radius: 12px;
+                padding: 1.5rem;
+                position: relative;
+                transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .dealer-card.clickable {
+                cursor: pointer;
+            }
+
+            .dealer-card.clickable:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+                border-color: var(--primary-color);
+            }
+
+            .dealer-card.clickable:active {
+                transform: translateY(-2px);
+            }
+
+            .dealer-card.highlight {
+                background-color: #f0f7ff;
+                border-color: var(--primary-color);
+                box-shadow: 0 0 0 2px var(--primary-color);
+            }
+
+            .badge-certified {
+                display: inline-block;
+                background: linear-gradient(45deg, #2673E2, #1a4f9b);
+                color: #fff;
+                padding: 4px 10px;
+                border-radius: 20px;
+                font-size: 0.75rem;
+                font-weight: 600;
+                width: fit-content;
+                margin-bottom: 5px;
+            }
+
+            .dealer-name {
+                margin: 0;
+                font-size: 1.25rem;
+                color: #1a1a1a;
+            }
+
+            .dealer-info {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                font-size: 0.9rem;
+                color: #666;
+            }
+
+            .dealer-desc {
+                margin-top: 5px;
+                font-style: italic;
+                color: #888;
+                font-size: 0.85rem;
+            }
         </style>
 
         <!-- Category 1: Alpine Sound Master -->
@@ -483,6 +547,13 @@
                                 <span class="dealer-desc">${dealer.desc}</span>
                             </div>
                          `;
+
+                        if (dealer.homepage) {
+                            card.classList.add('clickable');
+                            card.title = 'Click to visit website';
+                            card.onclick = () => window.open(dealer.homepage, '_blank');
+                        }
+
                         container.appendChild(card);
                         
                         // Add JSON-LD for this dealer

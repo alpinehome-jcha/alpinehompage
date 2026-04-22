@@ -429,6 +429,10 @@
                         <input type="text" id="conn_dealer_pass"
                             placeholder="Enter Password (Leave blank to keep current)">
                     </div>
+                    <div class="form-group">
+                        <label>Homepage URL</label>
+                        <input type="text" id="conn_homepage" placeholder="https://...">
+                    </div>
                 </div>
 
                 <div id="productFields">
@@ -633,7 +637,8 @@
             dealer_desc: document.getElementById('conn_dealer_desc'),
             dealer_id: document.getElementById('conn_dealer_id'),
             dealer_pass: document.getElementById('conn_dealer_pass'),
-            region: document.getElementById('conn_region')
+            region: document.getElementById('conn_region'),
+            homepage: document.getElementById('conn_homepage')
         };
 
         // ... (existing code)
@@ -1120,6 +1125,7 @@
                 // 비밀번호는 단방향 암호화되어 반환되지 않으므로, 수정 시 항상 빈칸으로 표시하고 placeholder로 안내합니다
                 inputs.dealer_pass.value = '';
                 inputs.region.value = item.region || '서울';
+                inputs.homepage.value = item.homepage || '';
             }
             renderList();
         }
@@ -1160,6 +1166,7 @@
                 inputs.dealer_id.value = '';
                 inputs.dealer_pass.value = '';
                 inputs.region.value = '서울';
+                inputs.homepage.value = '';
             }
             renderList();
         }
@@ -1286,6 +1293,7 @@
                 newItem.password = inputs.dealer_pass.value ? inputs.dealer_pass.value : null;
                 newItem.role = 'dealer';
                 newItem.region = inputs.region.value;
+                newItem.homepage = inputs.homepage.value;
             }
 
             // [Change Detection]

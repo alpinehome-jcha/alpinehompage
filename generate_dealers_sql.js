@@ -4,9 +4,12 @@ const fs = require('fs');
 const fileContent = fs.readFileSync('js/dealer-data.js', 'utf-8');
 
 // Extract the initialDealerData array
-const match = fileContent.match(/const initialDealerData = (\[[\s\S]*?\]);\nconst DEALER_DATA_VERSION/);
+const match = fileContent.match(/const initialDealerData = (\[[\s\S]*?\]);\r?\nconst DEALER_DATA_VERSION/);
 if (!match) {
     console.error("Could not find initialDealerData in js/dealer-data.js");
+    // Show first 100 and last 100 chars to debug
+    console.log("File content start:", fileContent.substring(0, 50));
+    console.log("File content sample near end:", fileContent.substring(fileContent.length - 200));
     process.exit(1);
 }
 
@@ -30,6 +33,7 @@ CREATE TABLE IF NOT EXISTS public.dealers (
     lat DOUBLE PRECISION,
     lng DOUBLE PRECISION,
     region TEXT,
+    homepage TEXT,
     created_at TIMESTAMPTZ DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -52,7 +56,7 @@ USING (true)
 WITH CHECK (true);
 
 -- 3. 데이터 삽입
-INSERT INTO public.dealers (id, category, name, badge, address, phone, "desc", username, lat, lng, region) VALUES
+INSERT INTO public.dealers (id, category, name, badge, address, phone, "desc", username, lat, lng, region, homepage) VALUES
 `;
 
 const values = dealerData.map(d => {
@@ -65,8 +69,9 @@ const values = dealerData.map(d => {
     const phone = d.phone ? `'${d.phone.replace(/'/g, "''")}'` : 'NULL';
     const addr = d.address ? `'${d.address.replace(/'/g, "''")}'` : 'NULL';
     const name = d.name ? `'${d.name.replace(/'/g, "''")}'` : 'NULL';
+    const homepage = d.homepage ? `'${d.homepage.replace(/'/g, "''")}'` : 'NULL';
 
-    return `(${d.id}, '${d.category}', ${name}, ${badge}, ${addr}, ${phone}, ${desc}, ${username}, ${lat}, ${lng}, ${region})`;
+    return `(${d.id}, '${d.category}', ${name}, ${badge}, ${addr}, ${phone}, ${desc}, ${username}, ${lat}, ${lng}, ${region}, ${homepage})`;
 });
 
 sql += values.join(',\n') + '\nON CONFLICT (id) DO UPDATE SET\n' +
@@ -80,6 +85,7 @@ sql += values.join(',\n') + '\nON CONFLICT (id) DO UPDATE SET\n' +
     'lat = EXCLUDED.lat,\n' +
     'lng = EXCLUDED.lng,\n' +
     'region = EXCLUDED.region,\n' +
+    'homepage = EXCLUDED.homepage,\n' +
     'updated_at = NOW();\n';
 
 fs.writeFileSync('dealers_migration.sql', sql, 'utf-8');
