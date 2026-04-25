@@ -5,8 +5,8 @@ const ROLE_KEY = 'userRole';
 // ============================================================
 // Supabase Configuration
 // ============================================================
-const SUPABASE_URL = 'https://tlgjgworselvkaatdftz.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us';
+const SUPABASE_URL = window.CONFIG?.current.URL || 'https://tlgjgworselvkaatdftz.supabase.co';
+const SUPABASE_ANON_KEY = window.CONFIG?.current.ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us';
 
 // Load Supabase SDK dynamically (CDN)
 async function loadSupabase() {
@@ -214,7 +214,9 @@ const auth = {
             const path = window.location.pathname;
             let loginPath = 'pages/login.html'; // Default for root
 
-            if (path.includes('/pages/')) {
+            if (path.includes('/pages/products/')) {
+                loginPath = '../login.html';
+            } else if (path.includes('/pages/')) {
                 loginPath = 'login.html';
             } else if (path.includes('/support/')) {
                 const parts = path.split('/support/')[1].split('/');
@@ -448,6 +450,8 @@ const auth = {
                 authLink.onclick = null; // Remove logout handler
                 if (window.location.pathname.includes('/support/')) {
                     authLink.href = '../pages/login.html';
+                } else if (window.location.pathname.includes('/pages/products/')) {
+                    authLink.href = '../login.html';
                 } else if (window.location.pathname.includes('/pages/')) {
                     authLink.href = 'login.html';
                 } else {

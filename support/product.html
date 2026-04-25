@@ -363,13 +363,17 @@
         let isEditMode = false;
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Load Data
-            // Prioritize LocalStorage for immediate updates
+            // Load Data: localStorage 버전이 JS 파일과 일치할 때만 사용
             const stored = localStorage.getItem('supportProductData');
-            if (stored) {
+            const _freshId = (typeof initialSupportProductData !== 'undefined' && initialSupportProductData.length)
+                ? String(initialSupportProductData[0].id) : null;
+            const _storedId = localStorage.getItem('supportProductData_version');
+            if (stored && _freshId && _storedId === _freshId) {
                 posts = JSON.parse(stored);
-            } else if (typeof supportProductData !== 'undefined') {
-                posts = supportProductData;
+            } else {
+                localStorage.removeItem('supportProductData');
+                localStorage.removeItem('supportProductData_version');
+                if (typeof supportProductData !== 'undefined') posts = supportProductData;
             }
 
             renderBoard();
@@ -891,6 +895,7 @@
                 }
 
                 localStorage.setItem('supportProductData', JSON.stringify(posts));
+                localStorage.setItem('supportProductData_version', posts.length ? String(posts[0].id) : '');
 
                 // Auto Save Data
                 if (typeof saveToGitHub === 'function') {
@@ -915,6 +920,7 @@
             if (!confirm('Delete this post?')) return;
             posts = posts.filter(p => p.id !== currentPostId);
             localStorage.setItem('supportProductData', JSON.stringify(posts));
+            localStorage.setItem('supportProductData_version', posts.length ? String(posts[0].id) : '');
             closeView();
             renderBoard();
         }
@@ -962,6 +968,7 @@
     </script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
     <script src="../js/supabase-client.js?v=20260223"></script>
     <script src="../js/pnp-rule-data.js?v=20260302_v1"></script>
     <script src="../js/estimate-ui.js?v=20260221_v4"></script>

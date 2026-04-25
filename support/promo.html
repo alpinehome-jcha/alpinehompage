@@ -391,12 +391,17 @@
         let currentBoardPage = 1;
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Load Data
+            // Load Data: localStorage 버전이 JS 파일과 일치할 때만 사용
             const stored = localStorage.getItem('promoData');
-            if (stored) {
+            const _freshId = (typeof initialPromoData !== 'undefined' && initialPromoData.length)
+                ? String(initialPromoData[0].id) : null;
+            const _storedId = localStorage.getItem('promoData_version');
+            if (stored && _freshId && _storedId === _freshId) {
                 posts = JSON.parse(stored);
-            } else if (typeof promoData !== 'undefined') {
-                posts = promoData;
+            } else {
+                localStorage.removeItem('promoData');
+                localStorage.removeItem('promoData_version');
+                if (typeof promoData !== 'undefined') posts = promoData;
             }
 
             renderBoard();
@@ -802,6 +807,7 @@
                 }
 
                 localStorage.setItem('promoData', JSON.stringify(posts));
+                localStorage.setItem('promoData_version', posts.length ? String(posts[0].id) : '');
 
                 // 3. Auto Save Data
                 if (typeof saveToGitHub === 'function') {
@@ -825,6 +831,7 @@
             if (!confirm('Delete this post?')) return;
             posts = posts.filter(p => p.id !== currentPostId);
             localStorage.setItem('promoData', JSON.stringify(posts));
+            localStorage.setItem('promoData_version', posts.length ? String(posts[0].id) : '');
             closeView();
             renderBoard();
         }
@@ -848,6 +855,7 @@
     </script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
     <script src="../js/supabase-client.js?v=20260223"></script>
     <script src="../js/pnp-rule-data.js?v=20260302_v1"></script>
     <script src="../js/estimate-ui.js?v=20260221_v4"></script>
