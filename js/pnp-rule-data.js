@@ -1,4 +1,4 @@
-const initialPnpRuleData = [
+var initialPnpRuleData = [
     {
         "dsp": "PXE-M60-4",
         "integrated": [
@@ -83,9 +83,9 @@ const initialPnpRuleData = [
         ]
     }
 ];
-const PNP_RULE_DATA_VERSION = 1772434801568;
+var PNP_RULE_DATA_VERSION = 1772434801568;
 
-let pnpRuleData = [];
+var pnpRuleData = [];
 if (typeof localStorage !== 'undefined') {
     const storedVersion = localStorage.getItem('pnpRuleDataVersion');
     const stored = localStorage.getItem('pnpRuleData');

@@ -3,7 +3,7 @@
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
  * Updated: 2026. 4. 2. 오후 2:41:22
  */
-const pnpSearchData = [
+var pnpSearchData = [
     {
         "manufacturer": "현대자동차",
         "models": [
