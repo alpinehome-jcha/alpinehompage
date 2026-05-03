@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!-- Updated: Force Raw URL (2026-02-13) -->
 <html lang="ko">
 
@@ -575,7 +575,10 @@
                         blockDiv.innerHTML = linkify(block.value);
                     } else if (block.type === 'image') {
                         blockDiv.className = 'view-block-image';
-                        const imgSrc = block.value.startsWith('asset') ? '../' + block.value : block.value;
+                        let imgSrc = block.value;
+                        if (!imgSrc.startsWith('/') && !imgSrc.startsWith('http')) {
+                            imgSrc = '../' + imgSrc;
+                        }
                         blockDiv.innerHTML = `<img src="${imgSrc}" alt="Image">`;
                     }
                     contentArea.appendChild(blockDiv);
@@ -592,7 +595,11 @@
             if (post.files && post.files.length > 0) {
                 post.files.forEach(f => {
                     const a = document.createElement('a');
-                    a.href = f.path.startsWith('http') ? f.path : '../' + f.path;
+                    let filePath = f.path;
+                    if (!filePath.startsWith('/') && !filePath.startsWith('http')) {
+                        filePath = '../' + filePath;
+                    }
+                    a.href = filePath;
                     a.textContent = `💾 ${f.name}`;
                     a.className = 'file-link';
                     a.setAttribute('target', '_blank');
