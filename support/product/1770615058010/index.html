@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!-- Updated: Force Raw URL (2026-02-13) -->
 <html lang="ko">
 
@@ -622,7 +622,12 @@
 
             const imgEl = document.getElementById('viewImage');
             if (post.image) {
-                imgEl.src = post.image.startsWith('asset') ? '../' + post.image : post.image;
+                // Fix path: if it starts with / or http, use as is. Otherwise prepend correct relative path.
+                let imgSrc = post.image;
+                if (!imgSrc.startsWith('/') && !imgSrc.startsWith('http')) {
+                    imgSrc = '../../../' + imgSrc; // Go up 3 levels from /support/product/ID/ to root
+                }
+                imgEl.src = imgSrc;
                 document.getElementById('viewImageContainer').style.display = 'block';
             } else {
                 document.getElementById('viewImageContainer').style.display = 'none';
@@ -634,7 +639,11 @@
             if (post.files && post.files.length > 0) {
                 post.files.forEach(f => {
                     const a = document.createElement('a');
-                    a.href = f.path.startsWith('http') ? f.path : '../' + f.path;
+                    let filePath = f.path;
+                    if (!filePath.startsWith('/') && !filePath.startsWith('http')) {
+                        filePath = '../../../' + filePath;
+                    }
+                    a.href = filePath;
                     a.textContent = `💾 ${f.name}`;
                     a.className = 'file-link';
                     a.setAttribute('target', '_blank');
