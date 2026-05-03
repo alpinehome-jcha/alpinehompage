@@ -493,6 +493,11 @@
                         <div id="attachmentList" style="display: flex; flex-direction: column; gap: 5px;"></div>
                     </div>
                     <div class="form-group">
+                        <label>Interactive Manual URL</label>
+                        <input type="text" id="conn_manual_url" placeholder="https://...">
+                        <small style="color: #666; display: block; margin-top: 5px;">* 이 URL은 로그인한 사용자에게만 버튼으로 표시됩니다.</small>
+                    </div>
+                    <div class="form-group">
                         <label>Detail Sections</label>
                         <div class="block-controls">
                             <button class="btn btn-secondary btn-sm" onclick="addBlock('text')">+ Add Text</button>
@@ -638,7 +643,8 @@
             dealer_id: document.getElementById('conn_dealer_id'),
             dealer_pass: document.getElementById('conn_dealer_pass'),
             region: document.getElementById('conn_region'),
-            homepage: document.getElementById('conn_homepage')
+            homepage: document.getElementById('conn_homepage'),
+            manual_url: document.getElementById('conn_manual_url')
         };
 
         // ... (existing code)
@@ -1087,6 +1093,7 @@
                 inputs.price.value = item.price;
                 inputs.sold_out.checked = !!item.soldOut;
                 inputs.image.value = item.image;
+                inputs.manual_url.value = item.manualUrl || '';
 
                 // Blocks
                 if (item.detailBlocks) {
@@ -1151,6 +1158,7 @@
                 inputs.price.value = 0;
                 inputs.sold_out.checked = false;
                 inputs.image.value = 'assets/images/product_placeholder.png';
+                inputs.manual_url.value = '';
                 currentBlocks = [];
                 currentAttachments = []; // reset attachments
                 renderBlocks();
@@ -1278,6 +1286,7 @@
                 newItem.image = inputs.image.value;
                 newItem.detailBlocks = currentBlocks;
                 newItem.attachments = currentAttachments;
+                newItem.manualUrl = inputs.manual_url.value;
             } else {
                 newItem.name = inputs.title.value;
                 newItem.badge = inputs.badge.value;
