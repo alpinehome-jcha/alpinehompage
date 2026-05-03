@@ -563,8 +563,8 @@
                 });
                 attachmentsHTML += `</div>`;
 
-                // Interactive Manual Button (Visible to everyone if URL exists)
-                if (true) { // Always show if manualUrl exists
+                // Interactive Manual Button (Only for Logged-in Users)
+                if (typeof auth !== 'undefined' && auth.isLoggedIn()) {
                     if (product.manualUrl) {
                         attachmentsHTML += `
                             <div style="margin-top: 20px;">
@@ -589,8 +589,8 @@
                 }
 
                 attachmentsHTML += `</div>`;
-            } else if (product.manualUrl) {
-                // If no attachments but URL exists
+            } else if (typeof auth !== 'undefined' && auth.isLoggedIn() && product.manualUrl) {
+                // If no attachments but logged in and URL exists
                 attachmentsHTML += `<div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed #ddd;">`;
                 attachmentsHTML += `
                     <a href="${product.manualUrl}" target="_blank" class="interactive-manual-btn" style="display: inline-flex; align-items: center; padding: 12px 24px; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.9rem; transition: background 0.3s;">
