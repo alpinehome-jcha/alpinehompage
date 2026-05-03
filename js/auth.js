@@ -471,7 +471,7 @@ const auth = {
         if (!isProductPage) return;
 
         // Wait for productData to be available
-        if (typeof productData === 'undefined' || !auth.isLoggedIn()) return;
+        if (typeof productData === 'undefined') return;
 
         // Find current product ID
         let productId = null;
