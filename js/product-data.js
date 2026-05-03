@@ -393,42 +393,42 @@ const initialProductData = [
         "image": "assets/images/AST-D90.jpg",
         "detailBlocks": [
             {
-                "id": 1770272029179.5251,
+                "id": "1770272029179.5251",
                 "type": "text",
                 "value": "Hi-Res Audio Certified (192kHz / 24Bit)\nPC Tuning Application with Selectable Preloaded Sound System Configurations\nEmbedded RTA Signals for Sound Tuning\nBluetooth ® Audio Streaming with included External Module\n31 Band Parametric or Graphic EQ\nHi Pass / Low Pass Crossover per Channel\nMatrix Input Summing\nSampling Rate = Internal: 192kHz / 32Bit\nS/N: >110dB, THD: <0.001%\nInputs: 12-Ch Hi-Level, 2-Ch RCA/Optical (SPDIF) / Coaxial (Digital)\nInput Votage : High level : 26Vpp\nOutputs: 10-Ch RCA Output / 12-Ch Hi-Level Amplified Outputs (50W x 1ch~8ch @ 4Ω + 80W x 9ch~12ch @ 4Ω)"
             },
             {
-                "id": 1770272302653.2773,
+                "id": "1770272302653.2773",
                 "type": "text",
                 "value": "특별한 사운드\n\n50년 이상 프리미엄 자동차 오디오 제품을 제작해 온 전문 지식과 Ultra Hi-Res Alpine F#1Status 시스템 기술로부터 얻은 엔지니어링 및 디자인을 활용한 Alpine Status 시스템은 탁월한 튜닝과 최상의 사운드 재생을 위한 풍부한 빌드 품질을 특징으로 합니다. 각 구성 요소는 동급 최고의 오디오 성능을 위해 최고 품질의 재료를 수작업으로 선택하여 완성된 시스템으로 사용할 경우 192kHz/24bit 재생을 달성할 수 있습니다."
             },
             {
-                "id": 1770272330865.9805,
+                "id": "1770272330865.9805",
                 "type": "image",
                 "value": "assets/images/AST-D90-01.jpg"
             },
             {
-                "id": 1770272338429.3518,
+                "id": "1770272338429.3518",
                 "type": "text",
                 "value": "SYSTEM POWERHOUSE\n\n차량 내부 환경의 음향 문제를 극복하면서 사운드 시스템을 구축하는 것은 쉬운 일이 아니지만, HDP-D90 14채널 하이레스 디지털 사운드 프로세서 앰프는 유연한 시스템 구축 및 최대 192kHz/24Bit의 하이레스 처리 능력을 제공하여 완벽한 청취 경험을 제공합니다."
             },
             {
-                "id": 1770272443181.9373,
+                "id": "1770272443181.9373",
                 "type": "image",
                 "value": "assets/images/AST-D90-02.jpg"
             },
             {
-                "id": 1770272451825.3542,
+                "id": "1770272451825.3542",
                 "type": "text",
                 "value": "울트라 프로세싱 파워 \n\n고해상도 재생용으로 맞춤 개발된 HDP-D90은 192kHz/64Bit 내부 샘플링 속도와 스튜디오 수준의 사운드 녹음을 위한 10Hz~110kHz의 매우 넓은 오디오 대역폭을 제공합니다. 구리 도금 섀시와 같은 의도적인 디자인은 신호 대 잡음비를 최대 110dB까지 높이고 재생 중 잡음과 왜곡을 최소화하여 원본소스에 충실한 완전한 음악 충실도를 제공 합니다."
             },
             {
-                "id": 1770272587841.8164,
+                "id": "1770272587841.8164",
                 "type": "image",
                 "value": "assets/images/AST-D90-03.jpg"
             },
             {
-                "id": 1770272595271.48,
+                "id": "1770272595271.48",
                 "type": "text",
                 "value": "시스템 유연성\n\nHDP-D90에는 OEM헤드 유닛이나 애프터마켓 헤드유닛 또는 HDS-990 디지털 미디어 컨트롤러 옵션을 위한 유연한 시스템 구축을 위한 다중 소스 입력이 포함 되어 있습니다. 소스 플레이어가 없는 구형 차량의 경우 HDP-D90은 독립형 음악 소스로도 작동할 수 있으며 블루투스 무선 스트리밍을 통해 스마트폰에서 직접 전송된 음악을 수신할 수 있습니다."
             }
@@ -439,7 +439,9 @@ const initialProductData = [
                 "name": "HDP-D90-Manual",
                 "url": "assets/files/HDP-D90-Manual.pdf"
             }
-        ]
+        ],
+        "soldOut": false,
+        "manualUrl": "https://d90-pc.vercel.app/"
     },
     {
         "id": 1770272801679,
@@ -4242,7 +4244,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1776217816905;
+const PRODUCT_DATA_VERSION = 1777790821045;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
