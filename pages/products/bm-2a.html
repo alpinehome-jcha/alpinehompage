@@ -609,16 +609,21 @@ DSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다
                 attachmentsHTML += `</div>`;
 
                 // Interactive Manual Button (Only for Logged-in Users)
-                if (typeof auth !== 'undefined' && auth.isLoggedIn() && product.manualUrl) {
+                if (typeof auth !== 'undefined' && auth.isLoggedIn()) {
+                    if (product.manualUrl) {
+                        attachmentsHTML += `
+                            <div style="margin-top: 20px;">
+                                <a href="${product.manualUrl}" target="_blank" class="interactive-manual-btn" style="display: inline-flex; align-items: center; padding: 12px 24px; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.9rem; transition: background 0.3s;">
+                                    <span style="margin-right: 8px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                                    </span>
+                                    인터렉티브 매뉴얼
+                                </a>
+                            </div>
+                        `;
+                    }
+                    
                     attachmentsHTML += `
-                        <div style="margin-top: 20px;">
-                            <a href="${product.manualUrl}" target="_blank" class="interactive-manual-btn" style="display: inline-flex; align-items: center; padding: 12px 24px; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.9rem; transition: background 0.3s;">
-                                <span style="margin-right: 8px;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                                </span>
-                                인터렉티브 매뉴얼
-                            </a>
-                        </div>
                         <style>
                             .interactive-manual-btn:hover {
                                 background: #34495e !important;
@@ -630,7 +635,7 @@ DSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다
 
                 attachmentsHTML += `</div>`;
             } else if (typeof auth !== 'undefined' && auth.isLoggedIn() && product.manualUrl) {
-                // If no attachments but manualUrl exists
+                // If no attachments but logged in and URL exists
                 attachmentsHTML += `<div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed #ddd;">`;
                 attachmentsHTML += `
                     <a href="${product.manualUrl}" target="_blank" class="interactive-manual-btn" style="display: inline-flex; align-items: center; padding: 12px 24px; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.9rem; transition: background 0.3s;">
