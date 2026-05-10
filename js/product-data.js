@@ -3259,7 +3259,7 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": "https://kgm-m770-pc-v2-v2.vercel.app/#page3"
+        "manualUrl": "https://kgm-m770-pc-v2-v2.vercel.app/"
     },
     {
         "id": 1770599246780,
@@ -4245,7 +4245,7 @@ const initialProductData = [
         "attachments": []
     }
 ];
-const PRODUCT_DATA_VERSION = 1778421334266;
+const PRODUCT_DATA_VERSION = 1778421674234;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
