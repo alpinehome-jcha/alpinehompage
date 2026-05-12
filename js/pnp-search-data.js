@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 5. 12. 오후 3:41:38
+ * Updated: 2026. 5. 12. 오후 3:45:30
  */
 const pnpSearchData = [
     {
@@ -1564,7 +1564,7 @@ const pnpSearchData = [
                 "model": "XM3",
                 "details": [
                     {
-                        "year": "22년 이후",
+                        "year": "22년 이전",
                         "code": "LJL",
                         "sound": "4채널 자출",
                         "integrated": "",
