@@ -680,9 +680,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -753,9 +753,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -825,9 +825,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -897,9 +897,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -970,9 +970,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -1043,9 +1043,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -1111,9 +1111,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -1183,9 +1183,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -1256,9 +1256,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -1329,9 +1329,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -1398,9 +1398,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -1471,9 +1471,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -1543,9 +1543,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -1612,9 +1612,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -1680,9 +1680,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -1752,9 +1752,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -1824,9 +1824,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -1891,9 +1891,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -1963,9 +1963,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -2031,9 +2031,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -2104,9 +2104,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -2176,9 +2176,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -2822,9 +2822,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -2895,9 +2895,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -2963,9 +2963,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -3035,9 +3035,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -3107,9 +3107,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -3179,9 +3179,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -3244,9 +3244,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -3315,15 +3315,6 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "add_front": [],
-        "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
-        ],
-        "rear_baffle": [
-            "현대/기아 6.5\" 배플",
-            "커스텀 배플"
-        ],
         "center": [],
         "surround": [],
         "subwoofer": [
@@ -3356,7 +3347,9 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ]
+        ],
+        "rear_door": [],
+        "rear_baffle": []
     },
     {
         "brand": "현대자동차",
@@ -3461,15 +3454,6 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "add_front": [],
-        "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
-        ],
-        "rear_baffle": [
-            "현대/기아 6.5\" 배플",
-            "커스텀 배플"
-        ],
         "center": [],
         "surround": [],
         "subwoofer": [
@@ -3502,7 +3486,9 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ]
+        ],
+        "rear_door": [],
+        "rear_baffle": []
     },
     {
         "brand": "제네시스",
@@ -5030,9 +5016,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -5102,9 +5088,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -5175,9 +5161,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -5243,9 +5229,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -5314,9 +5300,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -5378,9 +5364,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -5449,9 +5435,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -5517,9 +5503,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -5588,9 +5574,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -5660,9 +5646,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -5728,9 +5714,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -5795,9 +5781,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -5862,9 +5848,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -6220,9 +6206,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -6292,9 +6278,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -6361,9 +6347,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -6434,9 +6420,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -6503,9 +6489,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -6575,9 +6561,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -6644,9 +6630,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -7437,9 +7423,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -7510,9 +7496,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -7583,9 +7569,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -7652,9 +7638,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -7724,9 +7710,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -7792,9 +7778,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -8212,9 +8198,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -8284,9 +8270,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "현대/기아 6.5\" 배플",
@@ -8352,15 +8338,6 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "add_front": [],
-        "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
-        ],
-        "rear_baffle": [
-            "현대/기아 6.5\" 배플",
-            "커스텀 배플"
-        ],
         "center": [],
         "surround": [],
         "subwoofer": [
@@ -8393,7 +8370,9 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ]
+        ],
+        "rear_door": [],
+        "rear_baffle": []
     },
     {
         "brand": "기아자동차",
@@ -8424,15 +8403,6 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "add_front": [],
-        "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "HDZ-65"
-        ],
-        "rear_baffle": [
-            "현대/기아 6.5\" 배플",
-            "커스텀 배플"
-        ],
         "center": [],
         "surround": [],
         "subwoofer": [
@@ -8465,7 +8435,9 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ]
+        ],
+        "rear_door": [],
+        "rear_baffle": []
     },
     {
         "brand": "BENZ",
@@ -8948,10 +8920,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "DP2-65C",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "커스텀 배플"
@@ -9016,10 +8987,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "DP2-65C",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "커스텀 배플"
@@ -9087,10 +9057,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "DP2-65C",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "커스텀 배플"
@@ -9158,10 +9127,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "DP2-65C",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "커스텀 배플"
@@ -9519,13 +9487,11 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "DP2-65C",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
-            "KGM 5.5\" to 6.5\" 배플",
             "커스텀 배플"
         ],
         "center": [],
@@ -10673,10 +10639,9 @@ const initialEstimateData = [
         ],
         "add_front": [],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "DP2-65C",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "Toyota 6.9\" 배플",
@@ -10748,10 +10713,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "DP2-65C",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "커스텀 배플"
@@ -10819,10 +10783,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "DP2-65C",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "커스텀 배플"
@@ -10890,10 +10853,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "rear_door": [
-            "DM-65",
-            "S2-S65",
-            "DP2-65C",
-            "HDZ-65"
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
         ],
         "rear_baffle": [
             "커스텀 배플"
@@ -10933,7 +10895,7 @@ const initialEstimateData = [
         "surround": []
     }
 ];
-const ESTIMATE_DATA_VERSION = 1778568775954;
+const ESTIMATE_DATA_VERSION = 1778569462906;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
