@@ -4243,9 +4243,33 @@ const initialProductData = [
             }
         ],
         "attachments": []
+    },
+    {
+        "id": 1778554814702,
+        "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "title": "RN-1A",
+        "desc": "르노 4채널 / XM3,SM6,QM6 / 케이블길이 2M",
+        "desc_bottom": "A타입 / 차측용 케이블",
+        "price": 150000,
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/RN-1A.jpg",
+        "detailBlocks": [
+            {
+                "id": "1778554681564388814",
+                "type": "text",
+                "value": "르노 : 4채널 자출\n2022년 이전 : XM3/QM6\n2020년 이후 : SM6\n\nDSP : 차측 케이블이므로 DSP 케이블을 추가 구매해야합니다."
+            },
+            {
+                "id": "1778554801948392287",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/RN-1A-01.jpg"
+            }
+        ],
+        "attachments": [],
+        "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1778421674234;
+const PRODUCT_DATA_VERSION = 1778554814705;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
