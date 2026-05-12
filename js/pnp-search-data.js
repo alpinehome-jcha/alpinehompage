@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 5. 12. 오후 3:45:30
+ * Updated: 2026. 5. 12. 오후 3:46:34
  */
 const pnpSearchData = [
     {
@@ -1580,7 +1580,7 @@ const pnpSearchData = [
                         "code": "LFD",
                         "sound": "4채널 자출",
                         "integrated": "",
-                        "typeA": "TY-1A"
+                        "typeA": "RN-1A"
                     }
                 ]
             },
@@ -1592,7 +1592,7 @@ const pnpSearchData = [
                         "code": "HZG",
                         "sound": "4채널 자출",
                         "integrated": "",
-                        "typeA": "TY-1A"
+                        "typeA": "RN-1A"
                     }
                 ]
             }
