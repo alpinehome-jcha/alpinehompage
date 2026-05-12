@@ -4185,7 +4185,7 @@ const initialProductData = [
         "desc_bottom": "이동의 순간이 즐거움이 되는 시간, PV5 with Alpine",
         "price": 1700000,
         "soldOut": false,
-        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PV5 알파인 패키지 복사.jpg",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PV5 알파인 패키지 복사-01.jpg",
         "detailBlocks": [
             {
                 "id": "1776135124972278336",
@@ -4235,15 +4235,16 @@ const initialProductData = [
             {
                 "id": "1776140288542307344",
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/현대_기아 6.5 배플.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PV5%20Baffle.jpg"
             },
             {
                 "id": "1776140309012417533",
                 "type": "text",
-                "value": "전용 스피커 가이드를 사용합니다.\n\n\n\n알파인이 감동의 사운드를 완성합니다.\n지금 전국 알파인 공식 대리점에서 PV5 전용 패키지를 만나보십시오.\n\n[장착 대리점 안내 링크]\nhttps://www.alpine-korea.co.kr/pages/dealers.html"
+                "value": "PV5는 5.25\" OEM 스피커로 구성되어 있어서 6.5\" 스피커로 교체하려면 커스텀 가이드를 사용해야 합니다.\n\n\n\n알파인이 감동의 사운드를 완성합니다.\n지금 전국 알파인 공식 대리점에서 PV5 전용 패키지를 만나보십시오.\n\n[장착 대리점 안내 링크]\nhttps://www.alpine-korea.co.kr/pages/dealers.html"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1778554814702,
@@ -4270,7 +4271,7 @@ const initialProductData = [
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1778554907079;
+const PRODUCT_DATA_VERSION = 1778567375821;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
