@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 5. 12. 오후 3:40:24
+ * Updated: 2026. 5. 12. 오후 3:41:38
  */
 const pnpSearchData = [
     {
@@ -1576,7 +1576,7 @@ const pnpSearchData = [
                 "model": "SM6",
                 "details": [
                     {
-                        "year": "20년 이",
+                        "year": "20년 이후",
                         "code": "LFD",
                         "sound": "4채널 자출",
                         "integrated": "",
