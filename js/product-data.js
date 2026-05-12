@@ -4108,12 +4108,12 @@ const initialProductData = [
             {
                 "id": "1775015194745872205",
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/현대_기아 6.5 배플.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PV5%20Baffle.jpg"
             },
             {
                 "id": "1775015266966584437",
                 "type": "text",
-                "value": "현대/기아용 도어 스피커 가이드 제공"
+                "value": "PV5는 5.25\" OEM 스피커로 구성되어 있어서 6.5\" 스피커로 교체하려면 커스텀 가이드를 사용해야 합니다."
             },
             {
                 "id": "1775093341688908358",
@@ -4121,7 +4121,8 @@ const initialProductData = [
                 "value": "Q. 기아 PV5 오디오 튜닝, 왜 알파인 메티오 사운드 패키지여야 할까요?\n\n실내 공간이 넓은 PBV(목적 기반 모빌리티) 차량의 특성상, 일반적인 스피커 교체만으로는 소리가 비어 보이거나 흩어지기 쉽습니다. 알파인 메티오 사운드 패키지는 PV5의 실내 구조를 완벽히 분석하여 설계된 전용 맞춤형(OEM-Fit) 카오디오 시스템입니다.\n\n✓ 시판 최초 루프 & 도어 스피커 분리 설계\n천장에 설치되는 루프 스피커에서 맑고 선명한 중고역대(보컬) 사운드가 쏟아지고, 도어 우퍼에서 깊고 탄탄한 저음이 베이스를 잡아주어 실내 전체를 감싸는 압도적인 3D 입체 음향을 완성합니다.\n\n✓ 완벽한 OEM-Fit, 차량 손상 ZERO\n기아 PV5 전용 스피커 배플(가이드)을 기본 제공하여, 순정 배선이나 도어 프레임의 훼손 없이 깔끔하고 완벽한 인스톨이 가능합니다."
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1775457031776,
@@ -4271,7 +4272,7 @@ const initialProductData = [
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1778567375821;
+const PRODUCT_DATA_VERSION = 1778567504712;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
