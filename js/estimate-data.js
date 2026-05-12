@@ -10735,6 +10735,18 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "커스텀 배플"
+        ],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -10774,9 +10786,6 @@ const initialEstimateData = [
             "DS-12EV-B",
             "DS-D90-B"
         ],
-        "front_door": [],
-        "tweeter": [],
-        "front_baffle": [],
         "add_front": [],
         "center": [],
         "surround": []
@@ -10797,6 +10806,18 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "커스텀 배플"
+        ],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -10836,9 +10857,6 @@ const initialEstimateData = [
             "DS-12EV-B",
             "DS-D90-B"
         ],
-        "front_door": [],
-        "tweeter": [],
-        "front_baffle": [],
         "add_front": [],
         "center": [],
         "surround": []
@@ -10859,6 +10877,18 @@ const initialEstimateData = [
             "PXE-X121-12EV",
             "HDP-D90"
         ],
+        "front_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C",
+            "HDZ-65C"
+        ],
+        "tweeter": [
+            "Status Tweeter Chamber"
+        ],
+        "front_baffle": [
+            "커스텀 배플"
+        ],
         "rear_door": [
             "DM-65",
             "S2-S65",
@@ -10898,15 +10928,12 @@ const initialEstimateData = [
             "DS-12EV-B",
             "DS-D90-B"
         ],
-        "front_door": [],
-        "tweeter": [],
-        "front_baffle": [],
         "add_front": [],
         "center": [],
         "surround": []
     }
 ];
-const ESTIMATE_DATA_VERSION = 1778568620042;
+const ESTIMATE_DATA_VERSION = 1778568769275;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
