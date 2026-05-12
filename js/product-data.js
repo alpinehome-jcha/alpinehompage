@@ -3767,7 +3767,7 @@ const initialProductData = [
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "TY-1A",
         "desc": "토요타 크라운(S230) 23년 이후 JBL 8CH",
-        "desc_bottom": ".",
+        "desc_bottom": "A타입 / 차측용 케이블",
         "price": 150000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/TY-1A.jpg",
@@ -3778,7 +3778,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/TY-1A-C.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1773819135551,
@@ -4269,7 +4270,7 @@ const initialProductData = [
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1778554814705;
+const PRODUCT_DATA_VERSION = 1778554907079;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
