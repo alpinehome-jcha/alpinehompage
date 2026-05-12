@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 5. 12. 오후 3:34:19
+ * Updated: 2026. 5. 12. 오후 3:40:24
  */
 const pnpSearchData = [
     {
@@ -1550,8 +1550,49 @@ const pnpSearchData = [
                         "year": "23년 이후",
                         "code": "S230",
                         "sound": "JBL 8CH",
-                        "integrated": "TY-1A",
-                        "typeA": ""
+                        "integrated": "",
+                        "typeA": "TY-1A"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "manufacturer": "Renault",
+        "models": [
+            {
+                "model": "XM3",
+                "details": [
+                    {
+                        "year": "22년 이후",
+                        "code": "LJL",
+                        "sound": "4채널 자출",
+                        "integrated": "",
+                        "typeA": "RN-1A"
+                    }
+                ]
+            },
+            {
+                "model": "SM6",
+                "details": [
+                    {
+                        "year": "20년 이",
+                        "code": "LFD",
+                        "sound": "4채널 자출",
+                        "integrated": "",
+                        "typeA": "TY-1A"
+                    }
+                ]
+            },
+            {
+                "model": "QM6",
+                "details": [
+                    {
+                        "year": "22년 이전",
+                        "code": "HZG",
+                        "sound": "4채널 자출",
+                        "integrated": "",
+                        "typeA": "TY-1A"
                     }
                 ]
             }
