@@ -2862,7 +2862,7 @@ const initialProductData = [
         "id": 1770597414437,
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "BY-2A",
-        "desc": "Sealion7 9채널 앰프 / 케이블길이 1.5M",
+        "desc": "Sealion7 9채널 앰프 / 케이블길이 15cm",
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 150000,
         "soldOut": false,
@@ -2879,7 +2879,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BY-2A.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1770597493775,
@@ -4272,7 +4273,7 @@ const initialProductData = [
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1778730892069;
+const PRODUCT_DATA_VERSION = 1778731021634;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
