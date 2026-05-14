@@ -3766,7 +3766,7 @@ const initialProductData = [
         "id": 1773796225598,
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "TY-1A",
-        "desc": "토요타 크라운(S230) 23년 이후 JBL 8CH",
+        "desc": "토요타 크라운(S230) 23년 이후 JBL 8CH / 케이블길이 15cm",
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 150000,
         "soldOut": false,
@@ -4272,7 +4272,7 @@ const initialProductData = [
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1778567504712;
+const PRODUCT_DATA_VERSION = 1778730892069;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
