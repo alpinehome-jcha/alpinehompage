@@ -2910,24 +2910,25 @@ const initialProductData = [
         "id": 1770597598438,
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "RR-2A",
-        "desc": "RandRover 14CH [메리디안 서라운드] / 케이블길이 1.5M",
+        "desc": "RandRover 14CH [메리디안 서라운드] / 케이블길이 15cm",
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 370000,
         "soldOut": false,
         "image": "assets/images/RR-2A.jpg",
         "detailBlocks": [
             {
-                "id": 1771042628051.5857,
+                "id": "1771042628051.5857",
                 "type": "text",
                 "value": "디스커버리 : 14채널(메리디안 서라운드)\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
             },
             {
-                "id": 1771329427402.6135,
+                "id": "1771329427402.6135",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/RR-2A-C.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1770597639317,
@@ -4274,7 +4275,7 @@ const initialProductData = [
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1778731039464;
+const PRODUCT_DATA_VERSION = 1778731053699;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
