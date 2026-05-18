@@ -415,11 +415,11 @@ PV5 실내를 감싸는 압도적인 사운</p>
                             </div>
                 
                             <div class="detail-content-item">
-                                <img src="https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/현대_기아 6.5 배플.jpg" alt="Product Detail" onerror="this.style.display='none'">
+                                <img src="https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PV5%20Baffle.jpg" alt="Product Detail" onerror="this.style.display='none'">
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">현대/기아용 도어 스피커 가이드 제공</p>
+                                <p class="detail-content-text">PV5는 5.25" OEM 스피커로 구성되어 있어서 6.5" 스피커로 교체하려면 커스텀 가이드를 사용해야 합니다.</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -662,7 +662,51 @@ PV5 실내를 감싸는 압도적인 사운</p>
                         </a>
                     `;
                 });
-                attachmentsHTML += `</div></div>`;
+                attachmentsHTML += `</div>`;
+
+                // Interactive Manual Button (Only for Logged-in Users)
+                if (typeof auth !== 'undefined' && auth.isLoggedIn()) {
+                    if (product.manualUrl) {
+                        attachmentsHTML += `
+                            <div style="margin-top: 20px;">
+                                <a href="${product.manualUrl}" target="_blank" class="interactive-manual-btn" style="display: inline-flex; align-items: center; padding: 12px 24px; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.9rem; transition: background 0.3s;">
+                                    <span style="margin-right: 8px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                                    </span>
+                                    인터렉티브 매뉴얼
+                                </a>
+                            </div>
+                        `;
+                    }
+                    
+                    attachmentsHTML += `
+                        <style>
+                            .interactive-manual-btn:hover {
+                                background: #34495e !important;
+                                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                            }
+                        </style>
+                    `;
+                }
+
+                attachmentsHTML += `</div>`;
+            } else if (typeof auth !== 'undefined' && auth.isLoggedIn() && product.manualUrl) {
+                // If no attachments but logged in and URL exists
+                attachmentsHTML += `<div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed #ddd;">`;
+                attachmentsHTML += `
+                    <a href="${product.manualUrl}" target="_blank" class="interactive-manual-btn" style="display: inline-flex; align-items: center; padding: 12px 24px; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.9rem; transition: background 0.3s;">
+                        <span style="margin-right: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                        </span>
+                        인터렉티브 매뉴얼
+                    </a>
+                    <style>
+                        .interactive-manual-btn:hover {
+                            background: #34495e !important;
+                            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                        }
+                    </style>
+                </div>`;
             }
 
             container.innerHTML = `

@@ -464,6 +464,84 @@ const auth = {
     }
 };
 
+// Global Injection Logic for Interactive Manual Button
+(function() {
+    function injectManualButton() {
+        const isProductPage = window.location.pathname.includes('/pages/products/');
+        if (!isProductPage) return;
+
+        // Wait for productData to be available
+        if (typeof productData === 'undefined' || !auth.isLoggedIn()) return;
+
+        // Find current product ID
+        let productId = null;
+        if (typeof window.STATIC_PRODUCT_ID !== 'undefined') {
+            productId = window.STATIC_PRODUCT_ID;
+        } else {
+            const urlParams = new URLSearchParams(window.location.search);
+            productId = urlParams.get('id');
+            if (productId && !isNaN(productId)) productId = parseInt(productId);
+        }
+
+        if (!productId) return;
+
+        const product = productData.find(p => p.id === productId);
+        if (!product || !product.manualUrl) return;
+
+        // Check if button already exists
+        if (document.querySelector('.interactive-manual-btn')) return;
+
+        // Find insertion point (Downloads section)
+        const downloadLinks = document.querySelectorAll('a[download]');
+        let insertionPoint = null;
+        
+        if (downloadLinks.length > 0) {
+            // Find the container of the last download link
+            insertionPoint = downloadLinks[downloadLinks.length - 1].parentElement;
+        }
+
+        if (!insertionPoint) {
+            // Fallback to detail-info
+            insertionPoint = document.querySelector('.detail-info');
+        } else if (typeof auth !== 'undefined' && auth.isLoggedIn()) {
+            // If no attachments but logged in
+            attachmentsHTML += `<div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed #ddd;">`;
+            const btnHtml = `
+                <div style="margin-top: 20px;" class="injected-manual-btn-container">
+                    <a href="${product.manualUrl}" target="_blank" class="interactive-manual-btn" style="display: inline-flex; align-items: center; padding: 12px 24px; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.9rem; transition: background 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <span style="margin-right: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                        </span>
+                        인터렉티브 매뉴얼
+                    </a>
+                </div>
+                <style>
+                    // Interactive Manual Button (Only for Logged-in Users)
+                    .interactive-manual-btn:hover {
+                        background: #34495e !important;
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    }
+                </style>
+            `;
+            
+            // If insertionPoint is the download container, append after it. 
+            // If it's the detail-info, append to it.
+            if (insertionPoint.classList.contains('detail-info')) {
+                insertionPoint.insertAdjacentHTML('beforeend', btnHtml);
+            } else {
+                insertionPoint.insertAdjacentHTML('afterend', btnHtml);
+            }
+        }
+    }
+
+    // Run on load and also periodically to catch late rendering
+    window.addEventListener('DOMContentLoaded', injectManualButton);
+    window.addEventListener('load', injectManualButton);
+    // Periodic check because of dynamic rendering in some pages
+    setTimeout(injectManualButton, 500);
+    setTimeout(injectManualButton, 2000);
+})();
+
 function addPartnerMenu(role) {
     const navMenu = document.querySelector('.nav-menu');
     // Check if duplicate exists
@@ -601,3 +679,74 @@ async function saveVisitLog(entry) {
         console.warn('[Supabase] Visit Log Exception:', e.message);
     }
 }
+
+// Global Injection Logic for Interactive Manual Button
+(function() {
+    function injectManualButton() {
+        const isProductPage = window.location.pathname.includes('/pages/products/');
+        if (!isProductPage) return;
+
+        // Wait for productData and check login
+        if (typeof productData === 'undefined' || typeof auth === 'undefined' || !auth.isLoggedIn()) return;
+
+        // Find current product ID
+        let productId = null;
+        if (typeof window.STATIC_PRODUCT_ID !== 'undefined') {
+            productId = window.STATIC_PRODUCT_ID;
+        } else {
+            const urlParams = new URLSearchParams(window.location.search);
+            productId = urlParams.get('id');
+            if (productId && !isNaN(productId)) productId = parseInt(productId);
+        }
+
+        if (!productId) return;
+
+        const product = productData.find(p => p.id === productId);
+        if (!product || !product.manualUrl) return;
+
+        // Check if button already exists
+        if (document.querySelector('.interactive-manual-btn')) return;
+
+        // Find insertion point (Downloads section)
+        const downloadLinks = document.querySelectorAll('a[download]');
+        let insertionPoint = null;
+        
+        if (downloadLinks.length > 0) {
+            insertionPoint = downloadLinks[downloadLinks.length - 1].parentElement;
+        }
+
+        if (!insertionPoint) {
+            insertionPoint = document.querySelector('.detail-info');
+        }
+
+        if (insertionPoint) {
+            const btnHtml = `
+                <div style="margin-top: 20px;" class="injected-manual-btn-container">
+                    <a href="${product.manualUrl}" target="_blank" class="interactive-manual-btn" style="display: inline-flex; align-items: center; padding: 12px 24px; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.9rem; transition: background 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <span style="margin-right: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                        </span>
+                        인터렉티브 매뉴얼
+                    </a>
+                </div>
+                <style>
+                    .interactive-manual-btn:hover {
+                        background: #34495e !important;
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    }
+                </style>
+            `;
+            
+            if (insertionPoint.classList.contains('detail-info')) {
+                insertionPoint.insertAdjacentHTML('beforeend', btnHtml);
+            } else {
+                insertionPoint.insertAdjacentHTML('afterend', btnHtml);
+            }
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', injectManualButton);
+    window.addEventListener('load', injectManualButton);
+    setTimeout(injectManualButton, 500);
+    setTimeout(injectManualButton, 2000);
+})();

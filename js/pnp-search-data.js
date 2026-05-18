@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 4. 2. 오후 2:41:22
+ * Updated: 2026. 5. 12. 오후 3:46:34
  */
 const pnpSearchData = [
     {
@@ -1535,6 +1535,64 @@ const pnpSearchData = [
                         "sound": "4채널 자출",
                         "integrated": "HK-102",
                         "typeA": "X"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "manufacturer": "TOYOTA",
+        "models": [
+            {
+                "model": "크라운",
+                "details": [
+                    {
+                        "year": "23년 이후",
+                        "code": "S230",
+                        "sound": "JBL 8CH",
+                        "integrated": "",
+                        "typeA": "TY-1A"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "manufacturer": "Renault",
+        "models": [
+            {
+                "model": "XM3",
+                "details": [
+                    {
+                        "year": "22년 이전",
+                        "code": "LJL",
+                        "sound": "4채널 자출",
+                        "integrated": "",
+                        "typeA": "RN-1A"
+                    }
+                ]
+            },
+            {
+                "model": "SM6",
+                "details": [
+                    {
+                        "year": "20년 이후",
+                        "code": "LFD",
+                        "sound": "4채널 자출",
+                        "integrated": "",
+                        "typeA": "RN-1A"
+                    }
+                ]
+            },
+            {
+                "model": "QM6",
+                "details": [
+                    {
+                        "year": "22년 이전",
+                        "code": "HZG",
+                        "sound": "4채널 자출",
+                        "integrated": "",
+                        "typeA": "RN-1A"
                     }
                 ]
             }

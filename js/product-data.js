@@ -393,42 +393,42 @@ const initialProductData = [
         "image": "assets/images/AST-D90.jpg",
         "detailBlocks": [
             {
-                "id": 1770272029179.5251,
+                "id": "1770272029179.5251",
                 "type": "text",
                 "value": "Hi-Res Audio Certified (192kHz / 24Bit)\nPC Tuning Application with Selectable Preloaded Sound System Configurations\nEmbedded RTA Signals for Sound Tuning\nBluetooth ® Audio Streaming with included External Module\n31 Band Parametric or Graphic EQ\nHi Pass / Low Pass Crossover per Channel\nMatrix Input Summing\nSampling Rate = Internal: 192kHz / 32Bit\nS/N: >110dB, THD: <0.001%\nInputs: 12-Ch Hi-Level, 2-Ch RCA/Optical (SPDIF) / Coaxial (Digital)\nInput Votage : High level : 26Vpp\nOutputs: 10-Ch RCA Output / 12-Ch Hi-Level Amplified Outputs (50W x 1ch~8ch @ 4Ω + 80W x 9ch~12ch @ 4Ω)"
             },
             {
-                "id": 1770272302653.2773,
+                "id": "1770272302653.2773",
                 "type": "text",
                 "value": "특별한 사운드\n\n50년 이상 프리미엄 자동차 오디오 제품을 제작해 온 전문 지식과 Ultra Hi-Res Alpine F#1Status 시스템 기술로부터 얻은 엔지니어링 및 디자인을 활용한 Alpine Status 시스템은 탁월한 튜닝과 최상의 사운드 재생을 위한 풍부한 빌드 품질을 특징으로 합니다. 각 구성 요소는 동급 최고의 오디오 성능을 위해 최고 품질의 재료를 수작업으로 선택하여 완성된 시스템으로 사용할 경우 192kHz/24bit 재생을 달성할 수 있습니다."
             },
             {
-                "id": 1770272330865.9805,
+                "id": "1770272330865.9805",
                 "type": "image",
                 "value": "assets/images/AST-D90-01.jpg"
             },
             {
-                "id": 1770272338429.3518,
+                "id": "1770272338429.3518",
                 "type": "text",
                 "value": "SYSTEM POWERHOUSE\n\n차량 내부 환경의 음향 문제를 극복하면서 사운드 시스템을 구축하는 것은 쉬운 일이 아니지만, HDP-D90 14채널 하이레스 디지털 사운드 프로세서 앰프는 유연한 시스템 구축 및 최대 192kHz/24Bit의 하이레스 처리 능력을 제공하여 완벽한 청취 경험을 제공합니다."
             },
             {
-                "id": 1770272443181.9373,
+                "id": "1770272443181.9373",
                 "type": "image",
                 "value": "assets/images/AST-D90-02.jpg"
             },
             {
-                "id": 1770272451825.3542,
+                "id": "1770272451825.3542",
                 "type": "text",
                 "value": "울트라 프로세싱 파워 \n\n고해상도 재생용으로 맞춤 개발된 HDP-D90은 192kHz/64Bit 내부 샘플링 속도와 스튜디오 수준의 사운드 녹음을 위한 10Hz~110kHz의 매우 넓은 오디오 대역폭을 제공합니다. 구리 도금 섀시와 같은 의도적인 디자인은 신호 대 잡음비를 최대 110dB까지 높이고 재생 중 잡음과 왜곡을 최소화하여 원본소스에 충실한 완전한 음악 충실도를 제공 합니다."
             },
             {
-                "id": 1770272587841.8164,
+                "id": "1770272587841.8164",
                 "type": "image",
                 "value": "assets/images/AST-D90-03.jpg"
             },
             {
-                "id": 1770272595271.48,
+                "id": "1770272595271.48",
                 "type": "text",
                 "value": "시스템 유연성\n\nHDP-D90에는 OEM헤드 유닛이나 애프터마켓 헤드유닛 또는 HDS-990 디지털 미디어 컨트롤러 옵션을 위한 유연한 시스템 구축을 위한 다중 소스 입력이 포함 되어 있습니다. 소스 플레이어가 없는 구형 차량의 경우 HDP-D90은 독립형 음악 소스로도 작동할 수 있으며 블루투스 무선 스트리밍을 통해 스마트폰에서 직접 전송된 음악을 수신할 수 있습니다."
             }
@@ -439,7 +439,9 @@ const initialProductData = [
                 "name": "HDP-D90-Manual",
                 "url": "assets/files/HDP-D90-Manual.pdf"
             }
-        ]
+        ],
+        "soldOut": false,
+        "manualUrl": "https://d90-pc.vercel.app/"
     },
     {
         "id": 1770272801679,
@@ -2362,24 +2364,25 @@ const initialProductData = [
         "id": 1770362107471,
         "category": "PnP Cable - 국산차 (Domestic)",
         "title": "HK-2A",
-        "desc": "현대/기아 74P / 24년 이후 자출 차량 / 케이블길이 3M",
+        "desc": "현대/기아 74P / 24년 이후 자출 차량 / 케이블길이 1.5M",
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 120000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-2A.jpg",
         "detailBlocks": [
             {
-                "id": 1770362305243.9382,
+                "id": "1770362305243.9382",
                 "type": "html",
                 "value": "<table class=\"product-detail-table\" style=\"width:100%; border-collapse: collapse; margin: 1rem 0;\"><tr><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">차종</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">연식</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">채널</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">커넥터 타입</th></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">그랜저(GN7)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2023~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">그랜저(IG)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2016~22</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">소나타(DN8)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2024~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">소나타(DN8)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2020~23</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">아반떼(CN7)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2021~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">팰리세이드(LX2)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2019~24</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">팰리세이드(LX3)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2025~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">6CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">싼타페(MX5)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2024~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">투싼(NX4)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2021~23</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">투싼(NX4)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2024~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">코나(SX2)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2023~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">K8(GL3)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2021~24</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">K8(GL3)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2025~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">K7(YG)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2016~21</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">K5(DL3)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2020~24</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">K5(DL3)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2025~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">모하비(HM)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2020~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">쏘렌토(MQ4)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2020~24</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">쏘렌토(MQ4)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2025~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">스포티지(NQ5)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2021~24</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">스포티지(NQ5)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2025~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">스팅어(CK)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2028~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">카니발(KA4)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2020~23</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">카니발(KA4)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2024~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">6CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr></table>"
             },
             {
-                "id": 1771045750917.5786,
+                "id": "1771045750917.5786",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-2A-C.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1770362701723,
@@ -2860,7 +2863,7 @@ const initialProductData = [
         "id": 1770597414437,
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "BY-2A",
-        "desc": "Sealion7 9채널 앰프 / 케이블길이 1.5M",
+        "desc": "Sealion7 9채널 앰프 / 케이블길이 15cm",
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 150000,
         "soldOut": false,
@@ -2877,53 +2880,56 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BY-2A.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1770597493775,
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "RR-1A",
-        "desc": "RandRover / 레인지로 18CH [메리디안 3D 서라운드] / 케이블길이 1.5M",
+        "desc": "RandRover / 레인지로 18CH [메리디안 3D 서라운드] / 케이블길이 15cm",
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 400000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/RR-1A.jpg",
         "detailBlocks": [
             {
-                "id": 1771042547411.9358,
+                "id": "1771042547411.9358",
                 "type": "text",
                 "value": "레인지로버 : 18채널(메리디안 3D 서라운드)\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
             },
             {
-                "id": 1771329228089.6304,
+                "id": "1771329228089.6304",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/RR-1A-C.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1770597598438,
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "RR-2A",
-        "desc": "RandRover 14CH [메리디안 서라운드] / 케이블길이 1.5M",
+        "desc": "RandRover 14CH [메리디안 서라운드] / 케이블길이 15cm",
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 370000,
         "soldOut": false,
         "image": "assets/images/RR-2A.jpg",
         "detailBlocks": [
             {
-                "id": 1771042628051.5857,
+                "id": "1771042628051.5857",
                 "type": "text",
                 "value": "디스커버리 : 14채널(메리디안 서라운드)\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
             },
             {
-                "id": 1771329427402.6135,
+                "id": "1771329427402.6135",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/RR-2A-C.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1770597639317,
@@ -3246,17 +3252,18 @@ const initialProductData = [
         "image": "assets/images/KGM 서브우퍼 메인.jpg",
         "detailBlocks": [
             {
-                "id": 1770619100789.7793,
+                "id": "1770619100789.7793",
                 "type": "image",
                 "value": "assets/images/KGM서브우퍼패키지.jpg"
             },
             {
-                "id": 1770619112639.6072,
+                "id": "1770619112639.6072",
                 "type": "text",
                 "value": "서울/송파 오토갤러리 010-5220-8034 서울시 송파구 새말로 176 트윈팰리스 101동 102호\n\n인천/서구 썬카펙토리 010-9773-9882 인천 서구 봉수대로 166 2동 101호\n\n인천/미추홀구 에이스카오디오 010-2562-9956 인천 미추홀구 한나루 540-1\n\n강원/속초 레트로카오디오 010-6879-9255 강원 속초시 청호로 40\n\n경기/분당 개구리카오디오 010-5283-6277 경기 성남시 분당구 대왕판교로 255\n\n경기/성남 카투오디오 010-3597-1735 경기 성남시 중원구 둔촌대로64번길 4-16(101호)\n\n경기/광명 사운드테크닉 010-4764-7777 경기 광명시 금오로 745\n\n경기/양주 럭셔리카클럽 010-9956-3618 경기 양주시 부흥로 1324\n\n경기/화성 카오디오팩토리 010-6580-1975 경기 화성시 동탄반송2길 41-7\n\n전북/전주 퍼니사운드 010-5123-9255 전북 전주시 덕진구 쪽구름2길 34 1층 101\n\n광주/남구 광주카오디오 010-3627-9072 광주 남구 독립로 163\n\n제주/제주시 사운드째즈 010-3693-9499 제주 제주시 연삼로 124\n\n​\n\n[알파인 대리점]\n\n서울/서초 바이지츠아우토 010-3656-6276 서울 서초구 명달로 52-7 미양빌딩\n\n서울/강남 카사운드메이커 010-2618-2455 서울특별시 서초구 강남대로 101안길 36\n\n경기/구리 현대카오디오 010-3795-4826 경기도 구리시 수택동 430\n\n경기/하남 바이지츠아우토 010-9092-2692 경기 하남시 대성로169번길 34\n\n충남/아산 퀄리티 하우스 010-4816-9221 충남 아산시 삼동로 70\n\n대전/서구 파워뱅크하우스 010-5407-4999 대전 서구 도산로 465\n\n대구/남구 핸즈카오디오 010-9077-6658 대구 남구 효성로 15 미리내맨션 상가\n\n전북/익산 카사운드메이커 010-2618-2455 전북 익산시 익산대로 68\n\n강원/속초 레트로카오디오 010-6879-9255 강원특별자치도 속초시 청호로 40\n\n부산/강서 사운드닥터 010-4855-8949 부산 강서구 대저중앙로 139"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": "https://kgm-m770-pc-v2-v2.vercel.app/"
     },
     {
         "id": 1770599246780,
@@ -3763,8 +3770,8 @@ const initialProductData = [
         "id": 1773796225598,
         "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
         "title": "TY-1A",
-        "desc": "토요타 크라운(S230) 23년 이후 JBL 8CH",
-        "desc_bottom": ".",
+        "desc": "토요타 크라운(S230) 23년 이후 JBL 8CH / 케이블길이 15cm",
+        "desc_bottom": "A타입 / 차측용 케이블",
         "price": 150000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/TY-1A.jpg",
@@ -3775,7 +3782,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/TY-1A-C.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1773819135551,
@@ -4104,12 +4112,12 @@ const initialProductData = [
             {
                 "id": "1775015194745872205",
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/현대_기아 6.5 배플.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PV5%20Baffle.jpg"
             },
             {
                 "id": "1775015266966584437",
                 "type": "text",
-                "value": "현대/기아용 도어 스피커 가이드 제공"
+                "value": "PV5는 5.25\" OEM 스피커로 구성되어 있어서 6.5\" 스피커로 교체하려면 커스텀 가이드를 사용해야 합니다."
             },
             {
                 "id": "1775093341688908358",
@@ -4117,7 +4125,8 @@ const initialProductData = [
                 "value": "Q. 기아 PV5 오디오 튜닝, 왜 알파인 메티오 사운드 패키지여야 할까요?\n\n실내 공간이 넓은 PBV(목적 기반 모빌리티) 차량의 특성상, 일반적인 스피커 교체만으로는 소리가 비어 보이거나 흩어지기 쉽습니다. 알파인 메티오 사운드 패키지는 PV5의 실내 구조를 완벽히 분석하여 설계된 전용 맞춤형(OEM-Fit) 카오디오 시스템입니다.\n\n✓ 시판 최초 루프 & 도어 스피커 분리 설계\n천장에 설치되는 루프 스피커에서 맑고 선명한 중고역대(보컬) 사운드가 쏟아지고, 도어 우퍼에서 깊고 탄탄한 저음이 베이스를 잡아주어 실내 전체를 감싸는 압도적인 3D 입체 음향을 완성합니다.\n\n✓ 완벽한 OEM-Fit, 차량 손상 ZERO\n기아 PV5 전용 스피커 배플(가이드)을 기본 제공하여, 순정 배선이나 도어 프레임의 훼손 없이 깔끔하고 완벽한 인스톨이 가능합니다."
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1775457031776,
@@ -4181,7 +4190,7 @@ const initialProductData = [
         "desc_bottom": "이동의 순간이 즐거움이 되는 시간, PV5 with Alpine",
         "price": 1700000,
         "soldOut": false,
-        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PV5 알파인 패키지 복사.jpg",
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PV5 알파인 패키지 복사-01.jpg",
         "detailBlocks": [
             {
                 "id": "1776135124972278336",
@@ -4231,18 +4240,43 @@ const initialProductData = [
             {
                 "id": "1776140288542307344",
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/현대_기아 6.5 배플.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/PV5%20Baffle.jpg"
             },
             {
                 "id": "1776140309012417533",
                 "type": "text",
-                "value": "전용 스피커 가이드를 사용합니다.\n\n\n\n알파인이 감동의 사운드를 완성합니다.\n지금 전국 알파인 공식 대리점에서 PV5 전용 패키지를 만나보십시오.\n\n[장착 대리점 안내 링크]\nhttps://www.alpine-korea.co.kr/pages/dealers.html"
+                "value": "PV5는 5.25\" OEM 스피커로 구성되어 있어서 6.5\" 스피커로 교체하려면 커스텀 가이드를 사용해야 합니다.\n\n\n\n알파인이 감동의 사운드를 완성합니다.\n지금 전국 알파인 공식 대리점에서 PV5 전용 패키지를 만나보십시오.\n\n[장착 대리점 안내 링크]\nhttps://www.alpine-korea.co.kr/pages/dealers.html"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
+    },
+    {
+        "id": 1778554814702,
+        "category": "PnP Cable - 기타수입차 (Other Imported Cars)",
+        "title": "RN-1A",
+        "desc": "르노 4채널 / XM3,SM6,QM6 / 케이블길이 2M",
+        "desc_bottom": "A타입 / 차측용 케이블",
+        "price": 150000,
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/RN-1A.jpg",
+        "detailBlocks": [
+            {
+                "id": "1778554681564388814",
+                "type": "text",
+                "value": "르노 : 4채널 자출\n2022년 이전 : XM3/QM6\n2020년 이후 : SM6\n\nDSP : 차측 케이블이므로 DSP 케이블을 추가 구매해야합니다."
+            },
+            {
+                "id": "1778554801948392287",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/RN-1A-01.jpg"
+            }
+        ],
+        "attachments": [],
+        "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1776217816905;
+const PRODUCT_DATA_VERSION = 1779075447472;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
