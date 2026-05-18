@@ -10895,7 +10895,7 @@ const initialEstimateData = [
         "surround": []
     }
 ];
-const ESTIMATE_DATA_VERSION = 1778569471240;
+const ESTIMATE_DATA_VERSION = 1779148195622;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
