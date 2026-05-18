@@ -140,12 +140,120 @@ const Layout = {
         script.src = scriptPath + '?v=' + Date.now();
         script.async = true;
         document.head.appendChild(script);
+        script.onload = () => {
+            // Initialize Interactive Guide after analytics/auth are potentially ready
+            this.initInteractiveGuide();
+        };
+    },
+
+    /**
+     * Initializes the Interactive Guide integration
+     */
+    initInteractiveGuide: function() {
+        // 1. Check Login Status
+        const isLoggedIn = (typeof auth !== 'undefined' && typeof auth.isLoggedIn === 'function') 
+            ? auth.isLoggedIn() 
+            : (sessionStorage.getItem('isLoggedIn') === 'true');
+
+        if (!isLoggedIn) return;
+
+        // 2. Load CSS
+        this.loadGuideCSS();
+
+        // 3. Check if we are on HDP-D90 product page
+        const path = window.location.pathname;
+        if (path.includes('hdp-d90.html')) {
+            this.injectGuideButton();
+        }
+
+        // 4. Create Modal Structure (shared)
+        this.createGuideModal();
+    },
+
+    loadGuideCSS: function() {
+        if (document.getElementById('guide-css')) return;
+        const link = document.createElement('link');
+        link.id = 'guide-css';
+        link.rel = 'stylesheet';
+        
+        const path = window.location.pathname;
+        let cssPath = 'css/interactive-guide.css';
+        if (path.includes('/pages/') || path.includes('/support/')) cssPath = '../../css/interactive-guide.css';
+        
+        link.href = cssPath;
+        document.head.appendChild(link);
+    },
+
+    injectGuideButton: function() {
+        if (document.querySelector('.interactive-guide-btn')) return;
+
+        const infoSection = document.querySelector('.detail-info');
+        if (!infoSection) return;
+
+        const btn = document.createElement('button');
+        btn.className = 'interactive-guide-btn';
+        btn.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            인터렉티브 가이드 (Interactive Guide)
+        `;
+
+        btn.onclick = () => this.openGuideModal('https://alpine-d90-guide.vercel.app');
+
+        // Insert after price or attachments
+        const price = infoSection.querySelector('.detail-price');
+        if (price) {
+            price.after(btn);
+        } else {
+            infoSection.appendChild(btn);
+        }
+    },
+
+    createGuideModal: function() {
+        if (document.getElementById('guide-modal')) return;
+
+        const modalHTML = `
+            <div id="guide-modal" class="guide-modal-overlay">
+                <div class="guide-modal-container">
+                    <button class="guide-close-btn">&times;</button>
+                    <iframe id="guide-iframe" class="guide-iframe" src="about:blank"></iframe>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+        const modal = document.getElementById('guide-modal');
+        const closeBtn = modal.querySelector('.guide-close-btn');
+        
+        closeBtn.onclick = () => {
+            modal.classList.remove('active');
+            document.getElementById('guide-iframe').src = 'about:blank';
+            document.body.style.overflow = '';
+        };
+
+        modal.onclick = (e) => {
+            if (e.target === modal) closeBtn.click();
+        };
+    },
+
+    openGuideModal: function(url) {
+        const modal = document.getElementById('guide-modal');
+        const iframe = document.getElementById('guide-iframe');
+        
+        iframe.src = url;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
 };
 
 // Check if document is already loaded or wait for it
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', Layout.initMobileMenu);
+    document.addEventListener('DOMContentLoaded', () => {
+        Layout.initMobileMenu();
+    });
 } else {
     Layout.initMobileMenu();
 }
