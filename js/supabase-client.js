@@ -105,3 +105,29 @@ async function deleteDealer(dealerId) {
     }
     return true;
 }
+
+// DOMContentLoaded 시점에 로딩 오버레이 동적 삽입
+document.addEventListener('DOMContentLoaded', () => {
+    if (!document.getElementById('loadingOverlay')) {
+        const overlay = document.createElement('div');
+        overlay.id = 'loadingOverlay';
+        overlay.className = 'loading-overlay';
+        overlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); display: none; justify-content: center; align-items: center; z-index: 9999; flex-direction: column; color: #fff;';
+        
+        const spinner = document.createElement('div');
+        spinner.className = 'spinner';
+        spinner.style.cssText = 'border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin-bottom: 10px;';
+        
+        const style = document.createElement('style');
+        style.textContent = '@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }';
+        document.head.appendChild(style);
+
+        const text = document.createElement('div');
+        text.id = 'loadingText';
+        text.innerText = 'Processing...';
+
+        overlay.appendChild(spinner);
+        overlay.appendChild(text);
+        document.body.appendChild(overlay);
+    }
+});

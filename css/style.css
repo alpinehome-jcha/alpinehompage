@@ -76,6 +76,27 @@ header {
     /* Align items vertically */
 }
 
+/* Vertical Separators between first 5 main menu items */
+.nav-menu > li:nth-child(-n+4) {
+    position: relative;
+    padding-right: 1rem;
+}
+
+.nav-menu > li:nth-child(-n+4)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 12px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.nav-menu > li:nth-child(n+2):nth-child(-n+5) {
+    margin-left: -1rem;
+}
+
 .nav-link {
     font-size: 1rem;
     font-weight: 500;

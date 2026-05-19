@@ -254,10 +254,9 @@
         <script>
             // Helper to navigate and save state
             function goToCategory(category) {
-                // If sub-category (starts with PnP Cable - ), we want to go to index with that filter
-                // existing logic in index.html handles 'PnP Cable - ...' active state? 
-                // We need to pass the specific sub-category if it's a sub-filter click.
-                window.location.href = '../index.html?category=' + encodeURIComponent(category);
+                const isProductPage = window.location.pathname.includes('/products/');
+                const rootPath = isProductPage ? '../../' : '../';
+                window.location.href = rootPath + 'index.html?category=' + encodeURIComponent(category);
             }
 
             // Highlight logic based on product.category

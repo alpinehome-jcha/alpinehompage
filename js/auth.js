@@ -2,6 +2,37 @@
 const AUTH_KEY = 'isLoggedIn';
 const ROLE_KEY = 'userRole';
 
+// Centralized relative root path calculation to prevent 404 pathing errors in deep directories
+const getRelativeRoot = () => {
+    const pathname = window.location.pathname.toLowerCase();
+    
+    // Normalize path to directory path (remove filename if present)
+    let dirPath = pathname;
+    if (!pathname.endsWith('/')) {
+        const parts = pathname.split('/');
+        const lastPart = parts[parts.length - 1];
+        if (lastPart.includes('.')) {
+            parts.pop(); // Remove filename
+            dirPath = parts.join('/') + '/';
+        } else {
+            dirPath = pathname + '/';
+        }
+    }
+    
+    if (dirPath.includes('/pages/products/')) {
+        return '../../';
+    }
+    if (dirPath.includes('/pages/')) {
+        return '../';
+    }
+    if (dirPath.includes('/support/')) {
+        const afterSupport = dirPath.split('/support/')[1];
+        const subDirs = afterSupport.split('/').filter(p => p.length > 0);
+        return '../' + '../'.repeat(subDirs.length);
+    }
+    return '';
+};
+
 // ============================================================
 // Supabase Configuration
 // ============================================================
@@ -73,14 +104,7 @@ const auth = {
             }
 
             const script = document.createElement('script');
-            // Determine path based on location
-            const isInPages = window.location.pathname.includes('/pages/');
-            const isInSupport = window.location.pathname.includes('/support/');
-            let scriptPath = 'js/github-client.js';
-            if (isInPages) scriptPath = '../js/github-client.js';
-            else if (isInSupport) scriptPath = '../js/github-client.js';
-            else if (window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html')) scriptPath = 'js/github-client.js';
-            else scriptPath = 'js/github-client.js'; // Fallback
+            const scriptPath = getRelativeRoot() + 'js/github-client.js';
 
             script.src = scriptPath + '?v=202602162250';
             script.onload = () => resolve();
@@ -190,18 +214,7 @@ const auth = {
         sessionStorage.removeItem('dealerName');
         sessionStorage.removeItem('currentUser');
 
-        const path = window.location.pathname;
-        let redirectPath = 'index.html';
-
-        if (path.includes('/pages/')) {
-            redirectPath = '../index.html';
-        } else if (path.includes('/support/')) {
-            const parts = path.split('/support/')[1].split('/');
-            if (parts.length > 2) redirectPath = '../../../index.html';
-            else redirectPath = '../index.html';
-        }
-
-        window.location.href = redirectPath;
+        window.location.href = getRelativeRoot() + 'index.html';
     },
     isLoggedIn: () => {
         return sessionStorage.getItem(AUTH_KEY) === 'true';
@@ -211,19 +224,7 @@ const auth = {
     },
     checkAuthAndRedirect: () => {
         if (!auth.isLoggedIn()) {
-            const path = window.location.pathname;
-            let loginPath = 'pages/login.html'; // Default for root
-
-            if (path.includes('/pages/')) {
-                loginPath = 'login.html';
-            } else if (path.includes('/support/')) {
-                const parts = path.split('/support/')[1].split('/');
-                // If deep (e.g. install/123/index.html -> len 3), go up 3 levels then to pages/
-                if (parts.length > 2) loginPath = '../../../pages/login.html';
-                else loginPath = '../pages/login.html';
-            }
-
-            window.location.href = loginPath;
+            window.location.href = getRelativeRoot() + 'pages/login.html';
         }
     },
     openGitHubSettings: (e) => {
@@ -548,48 +549,12 @@ function addPartnerMenu(role) {
     if (document.querySelector('.partner-item')) return;
     if (!navMenu) return;
 
-    // Determine paths based on current location
-    const path = window.location.pathname.toLowerCase();
-    const isInPages = path.includes('/pages/');
-    const isInSupport = path.includes('/support/');
-
-    // Calculate depth from root for relative paths
-    // root: /index.html (depth 1)
-    // support/index.html (depth 2)
-    // support/install/123/index.html (depth 4)
-    // But we need relative path to 'support/' for prefix.
-
-    let prefix = 'support/';
-    let depth = 0;
-
-    if (path.includes('/support/')) {
-        // Check if we are in deeper structure like support/install/ID/
-        // Simple heuristic: count slashes after support
-        const parts = path.split('/support/')[1].split('/');
-        // parts = ['install.html'] -> length 1
-        // parts = ['install', '123', 'index.html'] -> length 3
-
-        if (parts.length > 2) {
-            // We are deep. e.g. support/install/123/
-            prefix = '../../';
-            depth = 3; // roughly
-        } else {
-            prefix = '';
-            depth = 2;
-        }
-    } else if (isInPages) {
-        prefix = '../support/';
-        depth = 2;
-    }
+    const relRoot = getRelativeRoot();
+    const prefix = relRoot + 'support/';
+    const adminPrefix = relRoot + 'pages/';
 
     const partnerLi = document.createElement('li');
     partnerLi.className = 'dropdown partner-item';
-    let adminPrefix = 'pages/';
-    if (isInPages) adminPrefix = '';
-    else if (isInSupport) {
-        if (depth > 2) adminPrefix = '../../../pages/';
-        else adminPrefix = '../pages/';
-    }
 
     let menuItems = '';
 

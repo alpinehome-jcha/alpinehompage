@@ -1147,9 +1147,7 @@
                 wrapper.id = 'popup-' + p.id;
                 wrapper.className = 'popup-overlay';
                 wrapper.style.zIndex = zIndex;
-                wrapper.style.display = 'flex'; // Force display
-
-                // Allow clicking background to close? Maybe not for now to be safe/explicit.
+                wrapper.style.display = 'none'; // Keep hidden during load to prevent black FOUC
 
                 const linkHtml = (p.linkUrl && p.linkUrl !== '#')
                     ? `<a href="${p.linkUrl}" style="cursor:pointer;" target="_blank"><img src="${p.imagePath}" alt="${p.title}"></a>`
@@ -1167,6 +1165,19 @@
                     </div>
                 `;
                 container.appendChild(wrapper);
+
+                // Show only after image loads to avoid black box FOUC
+                const img = wrapper.querySelector('img');
+                if (img) {
+                    if (img.complete) {
+                        wrapper.style.display = 'flex';
+                    } else {
+                        img.onload = () => { wrapper.style.display = 'flex'; };
+                        img.onerror = () => { wrapper.style.display = 'flex'; }; // fallback
+                    }
+                } else {
+                    wrapper.style.display = 'flex';
+                }
             });
         }
 
