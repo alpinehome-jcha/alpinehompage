@@ -591,36 +591,43 @@ function addPartnerMenu(role) {
         else adminPrefix = '../pages/';
     }
 
-    let menuItems = `
-            <li><a href="${prefix}price-list.html" class="dropdown-item">가격표</a></li>
-    `;
+    let menuItems = '';
 
-    if (role === 'admin') {
-        menuItems += `<li><a href="${adminPrefix}service-management.html" class="dropdown-item">서비스 관리</a></li>`;
-    }
+    if (role === 'service_admin') {
+        menuItems = `<li><a href="${adminPrefix}service-management.html" class="dropdown-item">서비스 관리</a></li>`;
+    } else {
+        menuItems = `
+                <li><a href="${prefix}price-list.html" class="dropdown-item">가격표</a></li>
+        `;
 
-    menuItems += `
-            <li><a href="${prefix}partner-board.html" class="dropdown-item">전용 게시판</a></li>
-            <li><a href="${prefix}dealer-only.html" class="dropdown-item">전용 자료실</a></li>
-    `;
+        if (role === 'admin') {
+            menuItems += `<li><a href="${adminPrefix}service-management.html" class="dropdown-item">서비스 관리</a></li>`;
+        }
 
-    if (role === 'admin') {
-        menuItems += `<li><a href="${prefix}price-input.html" class="dropdown-item">가격표 입력</a></li>`;
-        menuItems += `<li><a href="${adminPrefix}admin.html?mode=product" class="dropdown-item">제품 관리</a></li>`;
-        menuItems += `<li><a href="${adminPrefix}admin.html?mode=dealer" class="dropdown-item">대리점 관리</a></li>`;
-        menuItems += `<li><a href="${adminPrefix}admin.html?mode=popup" class="dropdown-item">팝업 관리</a></li>`;
-        menuItems += `<li><a href="${adminPrefix}pnp-setup.html" class="dropdown-item">PnP 찾기 설정</a></li>`;
-        menuItems += `<li><a href="${adminPrefix}estimate-setup.html" class="dropdown-item">견적 설정</a></li>`;
+        menuItems += `
+                <li><a href="${prefix}partner-board.html" class="dropdown-item">전용 게시판</a></li>
+                <li><a href="${prefix}dealer-only.html" class="dropdown-item">전용 자료실</a></li>
+        `;
 
-        // Visit Log Link
-        const visitLogLink = window.location.pathname.includes('product.html') ? '#visitLogSection' : `${prefix}product.html#visitLogSection`;
-        menuItems += `<li><a href="${visitLogLink}" class="dropdown-item" style="border-top:1px solid #eee;">방문 기록</a></li>`;
+        if (role === 'admin') {
+            menuItems += `<li><a href="${prefix}price-input.html" class="dropdown-item">가격표 입력</a></li>`;
+            menuItems += `<li><a href="${adminPrefix}admin.html?mode=product" class="dropdown-item">제품 관리</a></li>`;
+            menuItems += `<li><a href="${adminPrefix}admin.html?mode=dealer" class="dropdown-item">대리점 관리</a></li>`;
+            menuItems += `<li><a href="${adminPrefix}admin.html?mode=popup" class="dropdown-item">팝업 관리</a></li>`;
+            menuItems += `<li><a href="${adminPrefix}admin.html?mode=service_admin" class="dropdown-item">서비스관리자 관리</a></li>`;
+            menuItems += `<li><a href="${adminPrefix}pnp-setup.html" class="dropdown-item">PnP 찾기 설정</a></li>`;
+            menuItems += `<li><a href="${adminPrefix}estimate-setup.html" class="dropdown-item">견적 설정</a></li>`;
 
-        // Inbound Analysis Link
-        menuItems += `<li><a href="${adminPrefix}analytics.html" class="dropdown-item">유입 경로</a></li>`;
+            // Visit Log Link
+            const visitLogLink = window.location.pathname.includes('product.html') ? '#visitLogSection' : `${prefix}product.html#visitLogSection`;
+            menuItems += `<li><a href="${visitLogLink}" class="dropdown-item" style="border-top:1px solid #eee;">방문 기록</a></li>`;
 
-        // GitHub Settings Link
-        menuItems += `<li><a href="#" class="dropdown-item" onclick="auth.openGitHubSettings(event)">GitHub 설정</a></li>`;
+            // Inbound Analysis Link
+            menuItems += `<li><a href="${adminPrefix}analytics.html" class="dropdown-item">유입 경로</a></li>`;
+
+            // GitHub Settings Link
+            menuItems += `<li><a href="#" class="dropdown-item" onclick="auth.openGitHubSettings(event)">GitHub 설정</a></li>`;
+        }
     }
 
     partnerLi.innerHTML = `

@@ -2,10 +2,11 @@ let serviceData = [];
 let supabaseClient = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Check if admin
+    // Check if admin or service_admin
     auth.checkAuthAndRedirect();
-    if (auth.getRole() !== 'admin') {
-        alert('관리자만 접근 가능한 페이지입니다.');
+    const role = auth.getRole();
+    if (role !== 'admin' && role !== 'service_admin') {
+        alert('관리자 또는 서비스 관리자만 접근 가능한 페이지입니다.');
         window.location.href = '../index.html';
         return;
     }

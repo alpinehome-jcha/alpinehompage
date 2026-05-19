@@ -366,15 +366,17 @@
                     <button class="btn btn-success btn-sm" onclick="createNew()">+ New</button>
                 </div>
                 <!-- Mode Switcher -->
-                <div style="display: flex; background: #444; padding: 3px; border-radius: 4px;">
+                <div style="display: flex; background: #444; padding: 3px; border-radius: 4px; gap: 2px;">
                     <button class="btn btn-sm" id="btnModeProduct" onclick="setMode('product')"
-                        style="flex:1; background:#007bff; color:white; border:none;">Products</button>
+                        style="flex:1; background:#007bff; color:white; border:none; padding: 5px 2px; font-size: 0.8rem;">Products</button>
                     <button class="btn btn-sm" id="btnModeDealer" onclick="setMode('dealer')"
-                        style="flex:1; background:transparent; color:#aaa; border:none;">Dealers</button>
+                        style="flex:1; background:transparent; color:#aaa; border:none; padding: 5px 2px; font-size: 0.8rem;">Dealers</button>
                     <button class="btn btn-sm" id="btnModePopup" onclick="setMode('popup')"
-                        style="flex:1; background:transparent; color:#aaa; border:none;">Popup</button>
+                        style="flex:1; background:transparent; color:#aaa; border:none; padding: 5px 2px; font-size: 0.8rem;">Popup</button>
                     <button class="btn btn-sm" id="btnModeEstimate" onclick="setMode('estimate')"
-                        style="flex:1; background:transparent; color:#aaa; border:none;">Estimate</button>
+                        style="flex:1; background:transparent; color:#aaa; border:none; padding: 5px 2px; font-size: 0.8rem;">Estimate</button>
+                    <button class="btn btn-sm" id="btnModeServiceAdmin" onclick="setMode('service_admin')"
+                        style="flex:1; background:transparent; color:#aaa; border:none; padding: 5px 2px; font-size: 0.8rem;">ServiceAdmin</button>
                 </div>
 
             </div>
@@ -432,6 +434,18 @@
                     <div class="form-group">
                         <label>Homepage URL</label>
                         <input type="text" id="conn_homepage" placeholder="https://...">
+                    </div>
+                </div>
+
+                <div id="serviceAdminFields" style="display:none;">
+                    <div class="form-group">
+                        <label>Login ID (Username)</label>
+                        <input type="text" id="conn_service_admin_id" placeholder="Enter Login ID">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="text" id="conn_service_admin_pass"
+                            placeholder="Enter Password (Leave blank to keep current)">
                     </div>
                 </div>
 
@@ -610,6 +624,7 @@
 
         let products = [];
         let dealers = [];
+        let serviceAdmins = [];
         let currentUserRole = null;
         let currentMode = 'product';
         let currentId = null;
@@ -644,7 +659,10 @@
             dealer_pass: document.getElementById('conn_dealer_pass'),
             region: document.getElementById('conn_region'),
             homepage: document.getElementById('conn_homepage'),
-            manual_url: document.getElementById('conn_manual_url')
+            manual_url: document.getElementById('conn_manual_url'),
+            // Service Admin Specific
+            service_admin_id: document.getElementById('conn_service_admin_id'),
+            service_admin_pass: document.getElementById('conn_service_admin_pass')
         };
 
         // ... (existing code)
@@ -925,10 +943,26 @@
                 btnModePopup.style.background = 'transparent';
                 btnModePopup.style.color = '#aaa';
             }
+            const btnModeEstimate = document.getElementById('btnModeEstimate');
+            if (btnModeEstimate) {
+                btnModeEstimate.style.background = 'transparent';
+                btnModeEstimate.style.color = '#aaa';
+            }
+            const btnModeServiceAdmin = document.getElementById('btnModeServiceAdmin');
+            if (btnModeServiceAdmin) {
+                btnModeServiceAdmin.style.background = 'transparent';
+                btnModeServiceAdmin.style.color = '#aaa';
+            }
             const btnModeData = document.getElementById('btnModeData');
             if (btnModeData) {
                 btnModeData.style.background = 'transparent';
                 btnModeData.style.color = '#aaa';
+            }
+
+            // Hide serviceAdminFields if exists
+            const serviceAdminFields = document.getElementById('serviceAdminFields');
+            if (serviceAdminFields) {
+                serviceAdminFields.style.display = 'none';
             }
 
             // Hide Data Manager if exists
@@ -1010,6 +1044,43 @@
                 document.getElementById('dealerFields').style.display = 'none';
 
                 renderEstimateManager();
+            } else if (newMode === 'service_admin') {
+                if (currentUserRole !== 'admin' && currentUserRole !== 'master') {
+                    alert('Access Denied');
+                    return;
+                }
+                const btnModeServiceAdmin = document.getElementById('btnModeServiceAdmin');
+                if (btnModeServiceAdmin) {
+                    btnModeServiceAdmin.style.background = '#007bff';
+                    btnModeServiceAdmin.style.color = 'white';
+                }
+                listTitle.textContent = 'Service Admins';
+                document.getElementById('lbl_title').innerText = 'Service Admin Name';
+
+                document.getElementById('productFields').style.display = 'none';
+                document.getElementById('dealerFields').style.display = 'none';
+
+                if (inputs.category && inputs.category.parentElement) {
+                    inputs.category.parentElement.style.display = 'none';
+                }
+
+                const serviceAdminFields = document.getElementById('serviceAdminFields');
+                if (serviceAdminFields) {
+                    serviceAdminFields.style.display = 'block';
+                }
+
+                const overlay = document.getElementById('loadingOverlay');
+                const loadingText = document.getElementById('loadingText');
+                if (overlay) overlay.style.display = 'flex';
+                if (loadingText) loadingText.innerText = 'Loading Service Admins...';
+
+                fetchServiceAdmins().then(res => {
+                    serviceAdmins = res;
+                    if (overlay) overlay.style.display = 'none';
+                    renderList();
+                }).catch(err => {
+                    if (overlay) overlay.style.display = 'none';
+                });
             }
         }
 
@@ -1077,8 +1148,23 @@
         function selectItem(id) {
             currentId = id;
             domForm.style.display = 'block';
-            document.getElementById('formTitle').textContent = currentMode === 'product' ? 'Edit Product' : 'Edit Dealer';
+            
+            let formTitleText = 'Edit Product';
+            if (currentMode === 'dealer') formTitleText = 'Edit Dealer';
+            else if (currentMode === 'service_admin') formTitleText = 'Edit Service Admin';
+            document.getElementById('formTitle').textContent = formTitleText;
+
             populateCategories();
+
+            if (currentMode === 'service_admin') {
+                const item = serviceAdmins.find(i => i.id === id);
+                if (!item) return;
+                inputs.title.value = item.dealer_name || '';
+                inputs.service_admin_id.value = item.username || '';
+                inputs.service_admin_pass.value = '';
+                renderList();
+                return;
+            }
 
             const data = currentMode === 'product' ? products : dealers;
             const item = data.find(i => i.id === id);
@@ -1146,13 +1232,21 @@
 
             currentId = -1;
             domForm.style.display = 'block';
-            document.getElementById('formTitle').textContent = currentMode === 'product' ? 'New Product' : 'New Dealer';
+            
+            let formTitleText = 'New Product';
+            if (currentMode === 'dealer') formTitleText = 'New Dealer';
+            else if (currentMode === 'service_admin') formTitleText = 'New Service Admin';
+            document.getElementById('formTitle').textContent = formTitleText;
+
             populateCategories();
 
             inputs.category.selectedIndex = 0;
             inputs.title.value = '';
 
-            if (currentMode === 'product') {
+            if (currentMode === 'service_admin') {
+                inputs.service_admin_id.value = '';
+                inputs.service_admin_pass.value = '';
+            } else if (currentMode === 'product') {
                 inputs.desc.value = '';
                 inputs.desc_bottom.value = '';
                 inputs.price.value = 0;
@@ -1186,6 +1280,79 @@
             const loadingText = document.getElementById('loadingText');
             if (overlay) overlay.style.display = 'flex';
             if (loadingText) loadingText.innerText = 'Saving Data...';
+
+            if (currentMode === 'service_admin') {
+                const adminId = inputs.service_admin_id.value.trim();
+                const adminName = inputs.title.value.trim();
+                const adminPass = inputs.service_admin_pass.value;
+
+                if (!adminId) {
+                    alert('Login ID를 입력해 주세요.');
+                    if (overlay) overlay.style.display = 'none';
+                    return;
+                }
+                if (!adminName) {
+                    alert('서비스 관리자 이름을 입력해 주세요.');
+                    if (overlay) overlay.style.display = 'none';
+                    return;
+                }
+                if (currentId === -1 && !adminPass) {
+                    alert('새 계정의 비밀번호를 입력해 주세요.');
+                    if (overlay) overlay.style.display = 'none';
+                    return;
+                }
+
+                // 기존 유저의 username 변경 전 원본 username 찾기
+                let originalUsername = null;
+                if (currentId !== -1) {
+                    const existing = serviceAdmins.find(a => a.id === currentId);
+                    if (existing) {
+                        originalUsername = existing.username;
+                    }
+                }
+
+                try {
+                    const supaPass = await getAdminPassword();
+                    if (!supaPass) {
+                        if (overlay) overlay.style.display = 'none';
+                        return;
+                    }
+
+                    const adminUser = sessionStorage.getItem('currentUser') || 'alpineaudio';
+                    const client = await getSupaAdmin();
+                    const { data, error } = await client.rpc('admin_upsert_dealer', {
+                        p_admin_username: adminUser,
+                        p_admin_password: supaPass,
+                        p_old_username: originalUsername || null,
+                        p_new_username: adminId,
+                        p_new_password: adminPass || null,
+                        p_role: 'service_admin',
+                        p_dealer_name: adminName,
+                        p_category: 'Service Admin'
+                    });
+
+                    if (error) throw new Error(error.message);
+                    if (data && data.success === false) throw new Error(data.error || 'Unknown error');
+
+                    // 새로 고침
+                    serviceAdmins = await fetchServiceAdmins();
+                    
+                    if (currentId === -1) {
+                        alert('서비스 관리자 계정이 추가되었습니다.');
+                    } else {
+                        alert('서비스 관리자 계정이 수정되었습니다.');
+                    }
+                    
+                    domForm.style.display = 'none';
+                    renderList();
+                } catch (err) {
+                    console.error('서비스 관리자 저장 오류:', err);
+                    alert('서비스 관리자 저장 실패:\n' + err.message);
+                } finally {
+                    if (overlay) overlay.style.display = 'none';
+                }
+                return;
+            }
 
             // [Modified] Main Image Upload Logic
             // 1. Instant Upload is handled by 'change' event. 
@@ -1467,6 +1634,18 @@
             if (currentMode === 'product' && products.length === 0 && typeof productData !== 'undefined') products = [...productData];
             if (currentMode === 'dealer' && dealers.length === 0 && typeof dealerData !== 'undefined') dealers = [...dealerData];
 
+            if (currentMode === 'service_admin') {
+                serviceAdmins.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = `product-item ${item.id === currentId ? 'active' : ''}`;
+                    const title = item.dealer_name || item.username;
+                    li.innerHTML = `<h4>${title}</h4><p>${item.username}</p>`;
+                    li.onclick = () => selectItem(item.id);
+                    domList.appendChild(li);
+                });
+                return;
+            }
+
             const data = currentMode === 'product' ? products : dealers;
 
 
@@ -1488,6 +1667,27 @@
 
         async function deleteCurrent() {
             if (!confirm('Are you sure?')) return;
+
+            if (currentMode === 'service_admin') {
+                const deletedAdmin = serviceAdmins.find(a => a.id === currentId);
+                const deletedUsername = deletedAdmin ? deletedAdmin.username : null;
+
+                const overlay = document.getElementById('loadingOverlay');
+                const loadingText = document.getElementById('loadingText');
+                if (overlay) overlay.style.display = 'flex';
+                if (loadingText) loadingText.innerText = 'Deleting Service Admin...';
+
+                if (deletedUsername) {
+                    await deleteDealerFromSupabase(deletedUsername);
+                }
+
+                serviceAdmins = serviceAdmins.filter(a => a.id !== currentId);
+                domForm.style.display = 'none';
+                if (overlay) overlay.style.display = 'none';
+                renderList();
+                return;
+            }
+
             const isProduct = currentMode === 'product';
             const storageKey = isProduct ? 'productData' : 'dealerData';
 
@@ -2180,6 +2380,36 @@
             const pass = prompt('Supabase 동기화를 위해 관리자 비밀번호를 입력하세요:');
             if (pass) _cachedAdminPass = pass;
             return pass;
+        }
+
+        async function fetchServiceAdmins() {
+            try {
+                const supaPass = await getAdminPassword();
+                if (!supaPass) return [];
+                const adminUser = sessionStorage.getItem('currentUser') || 'alpineaudio';
+                const client = await getSupaAdmin();
+                const { data, error } = await client.rpc('admin_list_service_admins', {
+                    p_admin_username: adminUser,
+                    p_admin_password: supaPass
+                });
+                if (error) {
+                    console.error('[Supabase] 서비스 관리자 로드 에러:', error.message);
+                    alert('서비스 관리자를 불러오는데 실패했습니다: ' + error.message);
+                    return [];
+                }
+                if (data && data.success) {
+                    return data.data || [];
+                } else if (data && data.error) {
+                    console.error('[Supabase] 서비스 관리자 로드 실패:', data.error);
+                    alert('서비스 관리자를 불러오는데 실패했습니다: ' + data.error);
+                    return [];
+                }
+                return [];
+            } catch (e) {
+                console.error('[Supabase] 서비스 관리자 로드 예외:', e.message);
+                alert('서비스 관리자를 불러오는데 실패했습니다: ' + e.message);
+                return [];
+            }
         }
 
         // 딜러 Supabase 동기화 헬퍼
