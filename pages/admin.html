@@ -44,16 +44,16 @@
         .admin-wrapper {
             display: flex;
             flex: 1;
-            align-items: flex-start;
-            height: auto;
+            align-items: stretch;
+            height: calc(100vh - 80px);
             min-height: 0;
-            /* Fixed height removed */
             overflow: hidden;
             /* Prevent wrapper scroll */
         }
 
         .sidebar {
-            width: 300px;
+            width: 380px;
+            min-width: 380px;
             background: #fff;
             border-right: 1px solid #ddd;
             display: flex;
@@ -2463,7 +2463,7 @@
 
 
     <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="loading-overlay">
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
         <div class="spinner"></div>
         <div id="loadingText">Processing...</div>
     </div>
