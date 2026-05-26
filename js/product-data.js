@@ -4278,7 +4278,7 @@ const initialProductData = [
     {
         "id": 1779781277289,
         "category": "Alpine Status",
-        "title": "Alpine Status 풀 패키지",
+        "title": "Alpine Status 풀 패키지(192kHz/24Bit 실현)",
         "desc": "꿈의 플래그십 F#1의 감동을 내 차에 완벽하게 이식하다",
         "desc_bottom": "시공비 별도 협의/300만원부터",
         "price": 13970000,
@@ -4298,7 +4298,7 @@ const initialProductData = [
             {
                 "id": "1779780957861409431",
                 "type": "text",
-                "value": "초고해상도 소스 유닛 [HDS-990]: 순정 시스템과 독립 구동되어 192kHz/24bit Hi-Res 음원의 디테일을 왜곡 없이 그대로 송출합니다."
+                "value": "초고해상도 소스 유닛 [HDS-990]: 순정 시스템과 독립 구동되어 192kHz/24bit Hi-Res 음원의 디테일을 왜곡 없이 그대로 송출합니다.\n\nUSB : 192kHz/24Bit 재생\n스마트폰 : USB OTG(USB Audio) 연결, 192kHz/24Bit / 블루투스 LDAC 연결,  96kHz/24Bit"
             },
             {
                 "id": "1779780980915259953",
@@ -4365,7 +4365,7 @@ const initialProductData = [
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1779781519262;
+const PRODUCT_DATA_VERSION = 1779783489286;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
