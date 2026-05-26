@@ -43,12 +43,11 @@ const EstimateUI = {
             t = Date.now(); // Force network fetch
         }
 
-        const scripts = [
-            `${root}estimate-data.js?t=${t}`,
-            `${root}pnp-search-data.js?t=${t}`,
-            `${root}pnp-rule-data.js?t=${t}`,
-            `${root}labor-rule-data.js?t=${t}`
-        ];
+        const scripts = [];
+        if (typeof estimateData === 'undefined') scripts.push(`${root}estimate-data.js?t=${t}`);
+        if (typeof pnpSearchData === 'undefined') scripts.push(`${root}pnp-search-data.js?t=${t}`);
+        if (typeof initialPnpRuleData === 'undefined') scripts.push(`${root}pnp-rule-data.js?t=${t}`);
+        if (typeof laborRuleData === 'undefined') scripts.push(`${root}labor-rule-data.js?t=${t}`);
 
         const loadScript = (src) => {
             return new Promise((resolve, reject) => {
