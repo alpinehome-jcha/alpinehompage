@@ -216,7 +216,7 @@ const Layout = {
         if (document.getElementById('guide-modal')) return;
 
         const modalHTML = `
-            <div id="guide-modal" class="guide-modal-overlay">
+            <div id="guide-modal" class="guide-modal-overlay" style="display: none;">
                 <div class="guide-modal-container">
                     <button class="guide-close-btn">&times;</button>
                     <iframe id="guide-iframe" class="guide-iframe" src="about:blank"></iframe>
@@ -232,6 +232,12 @@ const Layout = {
             modal.classList.remove('active');
             document.getElementById('guide-iframe').src = 'about:blank';
             document.body.style.overflow = '';
+            // Wait for transition (0.4s) before setting display: none
+            setTimeout(() => {
+                if (!modal.classList.contains('active')) {
+                    modal.style.display = 'none';
+                }
+            }, 400);
         };
 
         modal.onclick = (e) => {
@@ -244,7 +250,11 @@ const Layout = {
         const iframe = document.getElementById('guide-iframe');
         
         iframe.src = url;
-        modal.classList.add('active');
+        modal.style.display = 'flex';
+        // Force reflow/tick to allow transition to trigger
+        setTimeout(() => {
+            modal.classList.add('active');
+        }, 10);
         document.body.style.overflow = 'hidden';
     }
 };

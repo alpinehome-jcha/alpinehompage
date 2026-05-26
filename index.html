@@ -1096,7 +1096,7 @@
             let popupList = [];
 
             // Try to get from Server Data (popup-data.js)
-            if (typeof popupData !== 'undefined') {
+            if (typeof popupData !== 'undefined' && popupData.length > 0) {
                 popupList = popupData;
             } else {
                 // Fallback to LocalStorage (mainly for Admin testing before deploy, or if file fails)
