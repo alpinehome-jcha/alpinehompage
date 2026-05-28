@@ -17,6 +17,10 @@ CREATE TABLE IF NOT EXISTS public.dealers (
     lng DOUBLE PRECISION,
     region TEXT,
     homepage TEXT,
+    blog_url TEXT DEFAULT NULL,
+    instagram_url TEXT DEFAULT NULL,
+    youtube_url TEXT DEFAULT NULL,
+    facebook_url TEXT DEFAULT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -95,4 +99,8 @@ lat = EXCLUDED.lat,
 lng = EXCLUDED.lng,
 region = EXCLUDED.region,
 homepage = EXCLUDED.homepage,
+blog_url = EXCLUDED.blog_url,
+instagram_url = EXCLUDED.instagram_url,
+youtube_url = EXCLUDED.youtube_url,
+facebook_url = EXCLUDED.facebook_url,
 updated_at = NOW();

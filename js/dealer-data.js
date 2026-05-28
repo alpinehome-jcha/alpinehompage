@@ -613,6 +613,17 @@ const initialDealerData = [
 ];
 const DEALER_DATA_VERSION = 1771825011626;
 
+function normalizeDealers(arr) {
+    if (!arr) return [];
+    return arr.map(d => {
+        if (d.blog_url === undefined) d.blog_url = "";
+        if (d.instagram_url === undefined) d.instagram_url = "";
+        if (d.youtube_url === undefined) d.youtube_url = "";
+        if (d.facebook_url === undefined) d.facebook_url = "";
+        return d;
+    });
+}
+
 let dealerData = [];
 if (typeof localStorage !== 'undefined') {
     const storedVersion = localStorage.getItem('dealerDataVersion');
@@ -621,22 +632,26 @@ if (typeof localStorage !== 'undefined') {
     if (typeof DEALER_DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < DEALER_DATA_VERSION)) {
         // Server has newer version, force update
         dealerData = JSON.parse(JSON.stringify(initialDealerData));
+        dealerData = normalizeDealers(dealerData);
         localStorage.setItem('dealerData', JSON.stringify(dealerData));
         localStorage.setItem('dealerDataVersion', DEALER_DATA_VERSION.toString());
     } else if (stored) {
         dealerData = JSON.parse(stored);
+        dealerData = normalizeDealers(dealerData);
         // Safety Check for empty data
         if (dealerData.length === 0 && initialDealerData.length > 0) {
              dealerData = JSON.parse(JSON.stringify(initialDealerData));
+             dealerData = normalizeDealers(dealerData);
              localStorage.setItem('dealerData', JSON.stringify(dealerData));
              if (typeof DEALER_DATA_VERSION !== 'undefined') localStorage.setItem('dealerDataVersion', DEALER_DATA_VERSION.toString());
         }
     } else {
         dealerData = JSON.parse(JSON.stringify(initialDealerData));
+        dealerData = normalizeDealers(dealerData);
         if (typeof DEALER_DATA_VERSION !== 'undefined') localStorage.setItem('dealerDataVersion', DEALER_DATA_VERSION.toString());
     }
 } else {
-    dealerData = initialDealerData;
+    dealerData = normalizeDealers(initialDealerData);
 }
 
 if (typeof window !== 'undefined') {

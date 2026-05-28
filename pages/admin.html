@@ -455,6 +455,22 @@
                         <label>Homepage URL</label>
                         <input type="text" id="conn_homepage" placeholder="https://...">
                     </div>
+                    <div class="form-group">
+                        <label>Blog URL</label>
+                        <input type="text" id="conn_blog_url" placeholder="https://blog.naver.com/...">
+                    </div>
+                    <div class="form-group">
+                        <label>Instagram URL</label>
+                        <input type="text" id="conn_instagram_url" placeholder="https://instagram.com/...">
+                    </div>
+                    <div class="form-group">
+                        <label>YouTube URL</label>
+                        <input type="text" id="conn_youtube_url" placeholder="https://youtube.com/...">
+                    </div>
+                    <div class="form-group">
+                        <label>Facebook URL</label>
+                        <input type="text" id="conn_facebook_url" placeholder="https://facebook.com/...">
+                    </div>
                 </div>
 
                 <div id="serviceAdminFields" style="display:none;">
@@ -624,6 +640,10 @@
             dealer_pass: document.getElementById('conn_dealer_pass'),
             region: document.getElementById('conn_region'),
             homepage: document.getElementById('conn_homepage'),
+            blog_url: document.getElementById('conn_blog_url'),
+            instagram_url: document.getElementById('conn_instagram_url'),
+            youtube_url: document.getElementById('conn_youtube_url'),
+            facebook_url: document.getElementById('conn_facebook_url'),
             manual_url: document.getElementById('conn_manual_url'),
             // Service Admin Specific
             service_admin_id: document.getElementById('conn_service_admin_id'),
@@ -1184,6 +1204,10 @@
                 inputs.dealer_pass.value = '';
                 inputs.region.value = item.region || '서울';
                 inputs.homepage.value = item.homepage || '';
+                inputs.blog_url.value = item.blog_url || '';
+                inputs.instagram_url.value = item.instagram_url || '';
+                inputs.youtube_url.value = item.youtube_url || '';
+                inputs.facebook_url.value = item.facebook_url || '';
             }
             renderList();
         }
@@ -1234,6 +1258,10 @@
                 inputs.dealer_pass.value = '';
                 inputs.region.value = '서울';
                 inputs.homepage.value = '';
+                inputs.blog_url.value = '';
+                inputs.instagram_url.value = '';
+                inputs.youtube_url.value = '';
+                inputs.facebook_url.value = '';
             }
             renderList();
         }
@@ -1435,6 +1463,10 @@
                 newItem.role = 'dealer';
                 newItem.region = inputs.region.value;
                 newItem.homepage = inputs.homepage.value;
+                newItem.blog_url = inputs.blog_url.value;
+                newItem.instagram_url = inputs.instagram_url.value;
+                newItem.youtube_url = inputs.youtube_url.value;
+                newItem.facebook_url = inputs.facebook_url.value;
             }
 
             // [Change Detection]
