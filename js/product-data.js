@@ -311,6 +311,96 @@ const initialProductData = [
         ]
     },
     {
+        "id": 1779781277289,
+        "category": "Alpine Status",
+        "title": "Alpine Status 풀 패키지(192kHz/24Bit 실현)",
+        "desc": "꿈의 플래그십 F#1의 감동을 내 차에 완벽하게 이식하다",
+        "desc_bottom": "시공비 별도 협의/300만원부터",
+        "price": 13970000,
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/Alpine%20status%20package.jpg",
+        "detailBlocks": [
+            {
+                "id": "1779780723353971615",
+                "type": "text",
+                "value": "카오디오 역사상 가장 완벽한 시스템으로 추앙받는 알파인의 최상위 플래그십 'Alpine F#1Status'. \n그 압도적인기술력과 사운드 철학을 고스란히 이어받아, 보다 현실적이고 유연한 인스톨 환경에 맞춰 재탄생한 \n하이엔드 라인업 — 바로 [Alpine Status 풀 패키지]를 선보입니다.\n\n이번 패키지는 원음 소스의 한 방울까지 정밀하게 재생하는 단독 미디어 플레이어부터, \n시스템의 두뇌 역할을 하는 고성능 DSP 앰프, 폭발적인 베이스를 \n핸들링하는 독립 파워 앰프, 그리고 차량 손상 없이 완벽한 하이파이를\n완성하는 슬림핏 3-Way 스피커와 10인치 \n서브우퍼까지 완벽한 오케스트라적 매칭을 이루었습니다."
+            },
+            {
+                "id": "1779780921669866534",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AST-990.jpg"
+            },
+            {
+                "id": "1779780957861409431",
+                "type": "text",
+                "value": "초고해상도 소스 유닛 [HDS-990]: 순정 시스템과 독립 구동되어 192kHz/24bit Hi-Res 음원의 디테일을 왜곡 없이 그대로 송출합니다.\n\nUSB : 192kHz/24Bit 재생\n스마트폰 : USB OTG(USB Audio) 연결, 192kHz/24Bit / 블루투스 LDAC 연결,  96kHz/24Bit"
+            },
+            {
+                "id": "1779780980915259953",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AST-D90.jpg"
+            },
+            {
+                "id": "1779781003687298768",
+                "type": "text",
+                "value": "원음 조율의 핵심 두뇌 [HDP-D90]: 14채널 DSP 프로세싱과 12채널 내장 앰프를 통해 완벽한 타임 얼라이먼트 및 정밀 EQ 튜닝을 수행합니다."
+            },
+            {
+                "id": "1779781015059531500",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AST-F60.jpg"
+            },
+            {
+                "id": "1779781034001966646",
+                "type": "text",
+                "value": "강력한 저역을 위한 심장 [HDA-F60]: 프리미엄 고해상도 파워 앰프로, 본 패키지에서는 서브우퍼 구동을 위한 강력한 브릿지 출력을 담당합니다."
+            },
+            {
+                "id": "1779781047379588295",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AST-653S.jpg"
+            },
+            {
+                "id": "1779781074167518459",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AST-65c.jpg"
+            },
+            {
+                "id": "1779781091695476979",
+                "type": "text",
+                "value": "최고의 공간 효율과 하이파이 스피커 [HDZ-653S]: F#1의 카본 컴포지트 진동판 기술이 적용된 3-Way 스피커로, '슬림핏' 설계를 통해 차량 고유의 인테리어를 해치지 않는 완벽한 인스톨 관용성을 자랑합니다."
+            },
+            {
+                "id": "1779781106865879974",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AST-w10.jpg"
+            },
+            {
+                "id": "1779781121049204982",
+                "type": "text",
+                "value": "타이트하고 깊은 초저역 [HDZ-W10]: 초광대역 사운드의 하단 밸런스를 단단하고 웅장하게 받쳐주는 10인치하이엔드 서브우퍼입니다."
+            },
+            {
+                "id": "1779781154819823468",
+                "type": "text",
+                "value": "오디오 시스템 연결 구성도 (System Connection Diagram)"
+            },
+            {
+                "id": "1779781189131900221",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/구성도 복사.png"
+            },
+            {
+                "id": "1779781214319207928",
+                "type": "text",
+                "value": "연결 구조 상세 설명 (Technical Flow)\n\n1. 최상위 디지털 소스 공급: 디지털 소스 유닛 HDS-990에서 재생된 무손실 오디오 신호는 노이즈 유입을 차단하기위해 고품질 디지털(코액셜 또는 옵티컬) 라인을 통해 메인 프로세서인 HDP-D90으로 손실 없이 다이렉트 전송됩니다.\n\n\n2. 프론트 3-Way 스피커 멀티 구동: 시스템의 두뇌인 HDP-D90 DSP 앰프는 내장된 고음질 앰프 출력을 활용하여 프론트 HDZ-653S 스피커의 트위터, 미드레인지, 미드베이스 총 6개 채널을 독립적으로 매칭(액티브 멀티 구동)합니다. 각 스피커 유닛의 거리에 맞춰 정밀한 타임 얼라이먼트와 주파수 커팅(크로스오버)이 완벽히 조율됩니다.\n\n3. 서브우퍼 파워 매칭 (관용성과 파워의 핵심): 강력한 초저역 제어가 필요한 10인치 서브우퍼 HDZ-W10을 위해,HDP-D90의 프리앰프 아웃(Line Out)에서 정밀 필터링된 서브우퍼 신호를 독립형 4채널 파워 앰프인 HDA-F60으로 보냅니다. HDA-F60은 4채널 출력을 2채널 브릿지(Bridge) 형태로 전환 결선하여 서브우퍼가 요구하는 압도적인 댐핑력과 고출력을 빈틈없이 공급하게 됩니다.\n\n"
+            }
+        ],
+        "attachments": [],
+        "manualUrl": "",
+        "soldOut": false
+    },
+    {
         "id": 1770270859568,
         "category": "Alpine Status",
         "title": "HDS-990",
@@ -915,96 +1005,6 @@ const initialProductData = [
                 "url": "assets/files/PXE-X121-12EV.pdf"
             }
         ],
-        "soldOut": false
-    },
-    {
-        "id": 1779781277289,
-        "category": "Alpine Status",
-        "title": "Alpine Status 풀 패키지(192kHz/24Bit 실현)",
-        "desc": "꿈의 플래그십 F#1의 감동을 내 차에 완벽하게 이식하다",
-        "desc_bottom": "시공비 별도 협의/300만원부터",
-        "price": 13970000,
-        "soldOut": false,
-        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/Alpine%20status%20package.jpg",
-        "detailBlocks": [
-            {
-                "id": "1779780723353971615",
-                "type": "text",
-                "value": "카오디오 역사상 가장 완벽한 시스템으로 추앙받는 알파인의 최상위 플래그십 'Alpine F#1Status'. \n그 압도적인기술력과 사운드 철학을 고스란히 이어받아, 보다 현실적이고 유연한 인스톨 환경에 맞춰 재탄생한 \n하이엔드 라인업 — 바로 [Alpine Status 풀 패키지]를 선보입니다.\n\n이번 패키지는 원음 소스의 한 방울까지 정밀하게 재생하는 단독 미디어 플레이어부터, \n시스템의 두뇌 역할을 하는 고성능 DSP 앰프, 폭발적인 베이스를 \n핸들링하는 독립 파워 앰프, 그리고 차량 손상 없이 완벽한 하이파이를\n완성하는 슬림핏 3-Way 스피커와 10인치 \n서브우퍼까지 완벽한 오케스트라적 매칭을 이루었습니다."
-            },
-            {
-                "id": "1779780921669866534",
-                "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AST-990.jpg"
-            },
-            {
-                "id": "1779780957861409431",
-                "type": "text",
-                "value": "초고해상도 소스 유닛 [HDS-990]: 순정 시스템과 독립 구동되어 192kHz/24bit Hi-Res 음원의 디테일을 왜곡 없이 그대로 송출합니다.\n\nUSB : 192kHz/24Bit 재생\n스마트폰 : USB OTG(USB Audio) 연결, 192kHz/24Bit / 블루투스 LDAC 연결,  96kHz/24Bit"
-            },
-            {
-                "id": "1779780980915259953",
-                "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AST-D90.jpg"
-            },
-            {
-                "id": "1779781003687298768",
-                "type": "text",
-                "value": "원음 조율의 핵심 두뇌 [HDP-D90]: 14채널 DSP 프로세싱과 12채널 내장 앰프를 통해 완벽한 타임 얼라이먼트 및 정밀 EQ 튜닝을 수행합니다."
-            },
-            {
-                "id": "1779781015059531500",
-                "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AST-F60.jpg"
-            },
-            {
-                "id": "1779781034001966646",
-                "type": "text",
-                "value": "강력한 저역을 위한 심장 [HDA-F60]: 프리미엄 고해상도 파워 앰프로, 본 패키지에서는 서브우퍼 구동을 위한 강력한 브릿지 출력을 담당합니다."
-            },
-            {
-                "id": "1779781047379588295",
-                "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AST-653S.jpg"
-            },
-            {
-                "id": "1779781074167518459",
-                "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AST-65c.jpg"
-            },
-            {
-                "id": "1779781091695476979",
-                "type": "text",
-                "value": "최고의 공간 효율과 하이파이 스피커 [HDZ-653S]: F#1의 카본 컴포지트 진동판 기술이 적용된 3-Way 스피커로, '슬림핏' 설계를 통해 차량 고유의 인테리어를 해치지 않는 완벽한 인스톨 관용성을 자랑합니다."
-            },
-            {
-                "id": "1779781106865879974",
-                "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AST-w10.jpg"
-            },
-            {
-                "id": "1779781121049204982",
-                "type": "text",
-                "value": "타이트하고 깊은 초저역 [HDZ-W10]: 초광대역 사운드의 하단 밸런스를 단단하고 웅장하게 받쳐주는 10인치하이엔드 서브우퍼입니다."
-            },
-            {
-                "id": "1779781154819823468",
-                "type": "text",
-                "value": "오디오 시스템 연결 구성도 (System Connection Diagram)"
-            },
-            {
-                "id": "1779781189131900221",
-                "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/구성도 복사.png"
-            },
-            {
-                "id": "1779781214319207928",
-                "type": "text",
-                "value": "연결 구조 상세 설명 (Technical Flow)\n\n1. 최상위 디지털 소스 공급: 디지털 소스 유닛 HDS-990에서 재생된 무손실 오디오 신호는 노이즈 유입을 차단하기위해 고품질 디지털(코액셜 또는 옵티컬) 라인을 통해 메인 프로세서인 HDP-D90으로 손실 없이 다이렉트 전송됩니다.\n\n\n2. 프론트 3-Way 스피커 멀티 구동: 시스템의 두뇌인 HDP-D90 DSP 앰프는 내장된 고음질 앰프 출력을 활용하여 프론트 HDZ-653S 스피커의 트위터, 미드레인지, 미드베이스 총 6개 채널을 독립적으로 매칭(액티브 멀티 구동)합니다. 각 스피커 유닛의 거리에 맞춰 정밀한 타임 얼라이먼트와 주파수 커팅(크로스오버)이 완벽히 조율됩니다.\n\n3. 서브우퍼 파워 매칭 (관용성과 파워의 핵심): 강력한 초저역 제어가 필요한 10인치 서브우퍼 HDZ-W10을 위해,HDP-D90의 프리앰프 아웃(Line Out)에서 정밀 필터링된 서브우퍼 신호를 독립형 4채널 파워 앰프인 HDA-F60으로 보냅니다. HDA-F60은 4채널 출력을 2채널 브릿지(Bridge) 형태로 전환 결선하여 서브우퍼가 요구하는 압도적인 댐핑력과 고출력을 빈틈없이 공급하게 됩니다.\n\n"
-            }
-        ],
-        "attachments": [],
-        "manualUrl": "",
         "soldOut": false
     },
     {
@@ -4366,7 +4366,7 @@ const initialProductData = [
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1779783489287;
+const PRODUCT_DATA_VERSION = 1779783489288;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
