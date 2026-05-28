@@ -332,6 +332,10 @@
             .sns-link.blog:hover {
                 background-color: #e8f9f0;
             }
+            .sns-link.tistory:hover {
+                color: #EB533E;
+                background-color: #ffe8e4;
+            }
             .sns-link.instagram:hover {
                 color: #E1306C;
                 background-color: #ffeef2;
@@ -616,7 +620,7 @@
                         // const dist = Math.sqrt(getDistSq(dealer)).toFixed(0); 
 
                         // Badge HTML if exists
-                        const hasSns = (dealer.homepage || dealer.blog_url || dealer.instagram_url || dealer.youtube_url || dealer.facebook_url);
+                        const hasSns = (dealer.homepage || dealer.blog_url || dealer.tistory_url || dealer.instagram_url || dealer.youtube_url || dealer.facebook_url);
                         const shiningClass = hasSns ? 'shining' : '';
                         const badgeHtml = dealer.badge ? `<span class="badge-certified ${shiningClass}">${dealer.badge}</span>` : '';
 
@@ -635,6 +639,13 @@
                             snsLinks.push(`
                                 <a href="${dealer.blog_url}" target="_blank" class="sns-link blog" title="네이버 블로그 방문">
                                     <svg viewBox="0 0 24 24" width="14" height="14" class="sns-icon-svg" fill="currentColor" style="color: #03C75A;"><rect width="24" height="24" rx="4" fill="#03C75A"/><path d="M16.2 6H13L8.8 12.1V6H6v12h3.2l4.2-6.1V18H16V6z" fill="#FFF"/></svg>
+                                </a>
+                            `);
+                        }
+                        if (dealer.tistory_url) {
+                            snsLinks.push(`
+                                <a href="${dealer.tistory_url}" target="_blank" class="sns-link tistory" title="티스토리 방문">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" class="sns-icon-svg" fill="currentColor" style="color: #EB533E;"><rect width="24" height="24" rx="4" fill="#EB533E"/><path d="M6 6h12v3h-4.5v9h-3v-9H6V6z" fill="#FFF"/></svg>
                                 </a>
                             `);
                         }

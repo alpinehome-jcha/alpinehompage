@@ -617,6 +617,7 @@ function normalizeDealers(arr) {
     if (!arr) return [];
     return arr.map(d => {
         if (d.blog_url === undefined) d.blog_url = "";
+        if (d.tistory_url === undefined) d.tistory_url = "";
         if (d.instagram_url === undefined) d.instagram_url = "";
         if (d.youtube_url === undefined) d.youtube_url = "";
         if (d.facebook_url === undefined) d.facebook_url = "";

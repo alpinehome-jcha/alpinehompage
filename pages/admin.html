@@ -460,6 +460,10 @@
                         <input type="text" id="conn_blog_url" placeholder="https://blog.naver.com/...">
                     </div>
                     <div class="form-group">
+                        <label>Tistory URL</label>
+                        <input type="text" id="conn_tistory_url" placeholder="https://....tistory.com">
+                    </div>
+                    <div class="form-group">
                         <label>Instagram URL</label>
                         <input type="text" id="conn_instagram_url" placeholder="https://instagram.com/...">
                     </div>
@@ -641,6 +645,7 @@
             region: document.getElementById('conn_region'),
             homepage: document.getElementById('conn_homepage'),
             blog_url: document.getElementById('conn_blog_url'),
+            tistory_url: document.getElementById('conn_tistory_url'),
             instagram_url: document.getElementById('conn_instagram_url'),
             youtube_url: document.getElementById('conn_youtube_url'),
             facebook_url: document.getElementById('conn_facebook_url'),
@@ -1205,6 +1210,7 @@
                 inputs.region.value = item.region || '서울';
                 inputs.homepage.value = item.homepage || '';
                 inputs.blog_url.value = item.blog_url || '';
+                inputs.tistory_url.value = item.tistory_url || '';
                 inputs.instagram_url.value = item.instagram_url || '';
                 inputs.youtube_url.value = item.youtube_url || '';
                 inputs.facebook_url.value = item.facebook_url || '';
@@ -1259,6 +1265,7 @@
                 inputs.region.value = '서울';
                 inputs.homepage.value = '';
                 inputs.blog_url.value = '';
+                inputs.tistory_url.value = '';
                 inputs.instagram_url.value = '';
                 inputs.youtube_url.value = '';
                 inputs.facebook_url.value = '';
@@ -1464,6 +1471,7 @@
                 newItem.region = inputs.region.value;
                 newItem.homepage = inputs.homepage.value;
                 newItem.blog_url = inputs.blog_url.value;
+                newItem.tistory_url = inputs.tistory_url.value;
                 newItem.instagram_url = inputs.instagram_url.value;
                 newItem.youtube_url = inputs.youtube_url.value;
                 newItem.facebook_url = inputs.facebook_url.value;

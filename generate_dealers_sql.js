@@ -34,6 +34,11 @@ CREATE TABLE IF NOT EXISTS public.dealers (
     lng DOUBLE PRECISION,
     region TEXT,
     homepage TEXT,
+    blog_url TEXT DEFAULT NULL,
+    tistory_url TEXT DEFAULT NULL,
+    instagram_url TEXT DEFAULT NULL,
+    youtube_url TEXT DEFAULT NULL,
+    facebook_url TEXT DEFAULT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -56,7 +61,7 @@ USING (true)
 WITH CHECK (true);
 
 -- 3. 데이터 삽입
-INSERT INTO public.dealers (id, category, name, badge, address, phone, "desc", username, lat, lng, region, homepage) VALUES
+INSERT INTO public.dealers (id, category, name, badge, address, phone, "desc", username, lat, lng, region, homepage, blog_url, tistory_url, instagram_url, youtube_url, facebook_url) VALUES
 `;
 
 const values = dealerData.map(d => {
@@ -70,8 +75,13 @@ const values = dealerData.map(d => {
     const addr = d.address ? `'${d.address.replace(/'/g, "''")}'` : 'NULL';
     const name = d.name ? `'${d.name.replace(/'/g, "''")}'` : 'NULL';
     const homepage = d.homepage ? `'${d.homepage.replace(/'/g, "''")}'` : 'NULL';
+    const blog = d.blog_url ? `'${d.blog_url.replace(/'/g, "''")}'` : 'NULL';
+    const tistory = d.tistory_url ? `'${d.tistory_url.replace(/'/g, "''")}'` : 'NULL';
+    const instagram = d.instagram_url ? `'${d.instagram_url.replace(/'/g, "''")}'` : 'NULL';
+    const youtube = d.youtube_url ? `'${d.youtube_url.replace(/'/g, "''")}'` : 'NULL';
+    const facebook = d.facebook_url ? `'${d.facebook_url.replace(/'/g, "''")}'` : 'NULL';
 
-    return `(${d.id}, '${d.category}', ${name}, ${badge}, ${addr}, ${phone}, ${desc}, ${username}, ${lat}, ${lng}, ${region}, ${homepage})`;
+    return `(${d.id}, '${d.category}', ${name}, ${badge}, ${addr}, ${phone}, ${desc}, ${username}, ${lat}, ${lng}, ${region}, ${homepage}, ${blog}, ${tistory}, ${instagram}, ${youtube}, ${facebook})`;
 });
 
 sql += values.join(',\n') + '\nON CONFLICT (id) DO UPDATE SET\n' +
@@ -86,6 +96,11 @@ sql += values.join(',\n') + '\nON CONFLICT (id) DO UPDATE SET\n' +
     'lng = EXCLUDED.lng,\n' +
     'region = EXCLUDED.region,\n' +
     'homepage = EXCLUDED.homepage,\n' +
+    'blog_url = EXCLUDED.blog_url,\n' +
+    'tistory_url = EXCLUDED.tistory_url,\n' +
+    'instagram_url = EXCLUDED.instagram_url,\n' +
+    'youtube_url = EXCLUDED.youtube_url,\n' +
+    'facebook_url = EXCLUDED.facebook_url,\n' +
     'updated_at = NOW();\n';
 
 fs.writeFileSync('dealers_migration.sql', sql, 'utf-8');
