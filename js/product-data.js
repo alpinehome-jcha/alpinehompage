@@ -4368,7 +4368,7 @@ const initialProductData = [
     {
         "id": 1780373282792,
         "category": "Speakers",
-        "title": "DSP-25M(KA4 서라운드 스피커)",
+        "title": "DPS-25M (KA4 서라운드 스피커)",
         "desc": "카니발(KA4) 2.5\" 서라운드 스피커",
         "desc_bottom": "장착 공임 별도(20만원부터)",
         "price": 300000,
@@ -4400,7 +4400,7 @@ const initialProductData = [
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1780373750811;
+const PRODUCT_DATA_VERSION = 1780377704020;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
