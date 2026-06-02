@@ -302,6 +302,21 @@
                 transform: rotate(360deg);
             }
         }
+        
+        /* Sidebar Filters Styles */
+        #filterSearch:focus {
+            border-color: #007bff !important;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+        }
+        #filterCategory:focus, #filterRegion:focus, #filterSort:focus {
+            border-color: #007bff !important;
+        }
+        .sidebar-filters select {
+            color: #334155;
+        }
+        .sidebar-filters select option {
+            color: #334155;
+        }
     </style>
 </head>
 
@@ -400,6 +415,57 @@
                 </div>
 
             </div>
+            
+            <!-- Search & Filters Panel -->
+            <div class="sidebar-filters" id="sidebarFilters" style="padding: 12px; background: #fdfdfd; border-bottom: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 8px;">
+                <!-- Search input -->
+                <div style="position: relative; display: flex; align-items: center; width: 100%;">
+                    <input type="text" id="filterSearch" placeholder="검색어 입력..." style="width: 100%; padding: 8px 12px 8px 30px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.85rem; outline: none; box-sizing: border-box; transition: all 0.2s;" oninput="onFilterChange()">
+                    <!-- Search Icon (magnifying glass) -->
+                    <span style="position: absolute; left: 10px; color: #94a3b8; pointer-events: none; display: flex; align-items: center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </span>
+                    <!-- Clear button -->
+                    <button id="clearSearch" onclick="clearSearchInput()" style="position: absolute; right: 8px; background: none; border: none; color: #94a3b8; cursor: pointer; display: none; align-items: center; justify-content: center; padding: 4px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                
+                <!-- Category Select and Options row -->
+                <div style="display: flex; gap: 6px; align-items: center;">
+                    <select id="filterCategory" onchange="onFilterChange()" style="flex: 1.2; padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.8rem; background: #fff; cursor: pointer; outline: none; box-sizing: border-box; height: 32px; font-family: inherit;">
+                        <option value="">전체 (All)</option>
+                    </select>
+                    
+                    <!-- Region select (hidden by default, only shown in dealer mode) -->
+                    <select id="filterRegion" onchange="onFilterChange()" style="flex: 1; padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.8rem; background: #fff; cursor: pointer; outline: none; box-sizing: border-box; display: none; height: 32px; font-family: inherit;">
+                        <option value="">지역 전체</option>
+                    </select>
+
+                    <!-- Sold-out toggle (only shown in product mode) -->
+                    <label id="lblFilterSoldOut" style="display: flex; align-items: center; gap: 4px; font-size: 0.8rem; cursor: pointer; user-select: none; color: #475569; border: 1px solid #cbd5e1; background: #fff; padding: 6px 8px; border-radius: 6px; white-space: nowrap; box-sizing: border-box; height: 32px;">
+                        <input type="checkbox" id="filterExcludeSoldOut" onchange="onFilterChange()" style="cursor: pointer; margin: 0; width: auto; height: auto;">
+                        <span>품절 제외</span>
+                    </label>
+                </div>
+                
+                <!-- Sorting & Result count row -->
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #64748b; margin-top: 2px;">
+                    <div id="filterCount">결과: 0개</div>
+                    <div style="display: flex; align-items: center; gap: 4px;">
+                        <span>정렬:</span>
+                        <select id="filterSort" onchange="onFilterChange()" style="border: none; background: transparent; color: #475569; font-size: 0.75rem; cursor: pointer; font-weight: bold; outline: none; padding: 0 2px; font-family: inherit;">
+                            <option value="name_asc">가나다순</option>
+                            <option value="name_desc">역순</option>
+                            <option value="id_desc" selected>최신등록순</option>
+                            <option value="id_asc">과거등록순</option>
+                            <option value="price_asc">가격낮은순</option>
+                            <option value="price_desc">가격높은순</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
             <ul class="product-list" id="itemList">
                 <!-- List items -->
             </ul>
@@ -616,6 +682,132 @@
         let currentBlocks = [];
         let currentAttachments = [];
 
+        // Simplified Filter Categories
+        const FILTER_CAT_PRODUCTS = [
+            "All", "F#1 Status", "Alpine Status", "DSP/AMP", "Speakers",
+            "PnP Cable", "기타상품", "Alpine OEM Fit", "AlpineStyle"
+        ];
+        const FILTER_CAT_DEALERS = [
+            "All", "Alpine Sound Master", "Team Alpine", "Alpine Style Distributor",
+            "Alpine Regional Distributor", "Alpine Dealer"
+        ];
+
+        // Sidebar filter event handlers
+        function clearSearchInput() {
+            const searchInput = document.getElementById('filterSearch');
+            if (searchInput) {
+                searchInput.value = '';
+                onFilterChange();
+            }
+        }
+
+        function onFilterChange() {
+            const searchInput = document.getElementById('filterSearch');
+            const clearBtn = document.getElementById('clearSearch');
+            if (searchInput && clearBtn) {
+                clearBtn.style.display = searchInput.value ? 'flex' : 'none';
+            }
+            
+            if (currentMode === 'popup') {
+                renderPopupManager();
+            } else if (currentMode === 'estimate') {
+                renderEstimateManager();
+            } else {
+                renderList();
+            }
+        }
+
+        function populateFilterCategories() {
+            const select = document.getElementById('filterCategory');
+            if (!select) return;
+            select.innerHTML = '';
+            
+            const list = currentMode === 'product' ? FILTER_CAT_PRODUCTS : 
+                         currentMode === 'dealer' ? FILTER_CAT_DEALERS : [];
+            
+            list.forEach(c => {
+                const opt = document.createElement('option');
+                opt.value = c === 'All' ? '' : c;
+                opt.innerText = c;
+                select.appendChild(opt);
+            });
+        }
+
+        function adjustFilterVisibility() {
+            const filtersPanel = document.getElementById('sidebarFilters');
+            if (!filtersPanel) return;
+            
+            const categorySelect = document.getElementById('filterCategory');
+            const regionSelect = document.getElementById('filterRegion');
+            const soldOutLabel = document.getElementById('lblFilterSoldOut');
+            const sortSelect = document.getElementById('filterSort');
+            const row2 = categorySelect.parentElement;
+            
+            filtersPanel.style.display = 'flex';
+            
+            if (currentMode === 'product') {
+                categorySelect.style.display = 'block';
+                regionSelect.style.display = 'none';
+                soldOutLabel.style.display = 'flex';
+                soldOutLabel.querySelector('span').innerText = '품절 제외';
+                row2.style.display = 'flex';
+                
+                sortSelect.innerHTML = `
+                    <option value="name_asc">가나다순</option>
+                    <option value="name_desc">역순</option>
+                    <option value="id_desc" selected>최신등록순</option>
+                    <option value="id_asc">과거등록순</option>
+                    <option value="price_asc">가격낮은순</option>
+                    <option value="price_desc">가격높은순</option>
+                `;
+            } else if (currentMode === 'dealer') {
+                categorySelect.style.display = 'block';
+                regionSelect.style.display = 'block';
+                soldOutLabel.style.display = 'none';
+                row2.style.display = 'flex';
+                
+                if (regionSelect.options.length <= 1) {
+                    regionSelect.innerHTML = '<option value="">지역 전체</option>';
+                    CAT_REGIONS.forEach(r => {
+                        const opt = document.createElement('option');
+                        opt.value = r;
+                        opt.innerText = r;
+                        regionSelect.appendChild(opt);
+                    });
+                }
+                
+                sortSelect.innerHTML = `
+                    <option value="name_asc">가나다순</option>
+                    <option value="name_desc">역순</option>
+                    <option value="id_desc" selected>최신등록순</option>
+                    <option value="id_asc">과거등록순</option>
+                `;
+            } else if (currentMode === 'service_admin') {
+                row2.style.display = 'none';
+                sortSelect.innerHTML = `
+                    <option value="name_asc">가나다순</option>
+                    <option value="name_desc">역순</option>
+                `;
+            } else if (currentMode === 'popup') {
+                row2.style.display = 'flex';
+                categorySelect.style.display = 'none';
+                regionSelect.style.display = 'none';
+                soldOutLabel.style.display = 'flex';
+                soldOutLabel.querySelector('span').innerText = '활성화만';
+                
+                sortSelect.innerHTML = `
+                    <option value="name_asc">제목순</option>
+                    <option value="id_desc" selected>최신등록순</option>
+                `;
+            } else if (currentMode === 'estimate') {
+                row2.style.display = 'none';
+                sortSelect.innerHTML = `
+                    <option value="name_asc">브랜드순</option>
+                    <option value="id_desc" selected>최신등록순</option>
+                `;
+            }
+        }
+
 
         // DOM Elements
         const domList = document.getElementById('itemList');
@@ -691,8 +883,38 @@
                 }
             }
 
+            // Get filter values
+            const searchVal = document.getElementById('filterSearch')?.value.trim().toLowerCase() || '';
+            const activeOnly = document.getElementById('filterExcludeSoldOut')?.checked || false;
+            const sortVal = document.getElementById('filterSort')?.value || 'id_desc';
+
+            let displayPopups = [...popupList];
+
+            if (activeOnly) {
+                displayPopups = displayPopups.filter(p => p.isActive);
+            }
+            if (searchVal) {
+                displayPopups = displayPopups.filter(p => 
+                    (p.title || '').toLowerCase().includes(searchVal) || 
+                    (p.imagePath || '').toLowerCase().includes(searchVal)
+                );
+            }
+
+            // Sort popups
+            displayPopups.sort((a, b) => {
+                if (sortVal === 'name_asc') {
+                    return (a.title || '').localeCompare(b.title || '', 'ko');
+                } else {
+                    return b.id - a.id;
+                }
+            });
+
+            // Update count
+            const countDiv = document.getElementById('filterCount');
+            if (countDiv) countDiv.textContent = `결과: ${displayPopups.length}개`;
+
             // Render List Items
-            popupList.forEach(p => {
+            displayPopups.forEach(p => {
                 const li = document.createElement('li');
                 li.className = `product-item ${p.isActive ? '' : 'inactive-item'}`;
                 li.style.display = 'flex';
@@ -713,8 +935,8 @@
             });
 
             // If empty
-            if (popupList.length === 0) {
-                list.innerHTML = '<li style="padding:20px; text-align:center; color:#999;">No popups. Click + New to create.</li>';
+            if (displayPopups.length === 0) {
+                list.innerHTML = '<li style="padding:20px; text-align:center; color:#999;">No popups match. Click + New to create.</li>';
             }
 
             // Reset Editor View (Hidden until select)
@@ -922,6 +1144,28 @@
             const settingsForm = document.getElementById('settingsForm');
             if (settingsForm) settingsForm.style.display = 'none';
 
+            // Reset filters
+            const searchInput = document.getElementById('filterSearch');
+            if (searchInput) searchInput.value = '';
+            const clearBtn = document.getElementById('clearSearch');
+            if (clearBtn) clearBtn.style.display = 'none';
+            
+            const categorySelect = document.getElementById('filterCategory');
+            if (categorySelect) categorySelect.value = '';
+            
+            const regionSelect = document.getElementById('filterRegion');
+            if (regionSelect) regionSelect.value = '';
+            
+            const excludeSoldOut = document.getElementById('filterExcludeSoldOut');
+            if (excludeSoldOut) excludeSoldOut.checked = false;
+            
+            const soldOutSpan = document.getElementById('lblFilterSoldOut')?.querySelector('span');
+            if (soldOutSpan) soldOutSpan.innerText = '품절 제외';
+
+            // Configure filter visibility & categories first
+            populateFilterCategories();
+            adjustFilterVisibility();
+
             // Reset UI for all mode buttons
             document.getElementById('btnModeProduct').style.background = 'transparent';
             document.getElementById('btnModeProduct').style.color = '#aaa';
@@ -1080,7 +1324,36 @@
 
             const data = (typeof estimateData !== 'undefined') ? estimateData : [];
 
-            data.forEach((item, idx) => {
+            // Get search filter value
+            const searchVal = document.getElementById('filterSearch')?.value.trim().toLowerCase() || '';
+            const sortVal = document.getElementById('filterSort')?.value || 'id_desc';
+
+            let displayData = [...data];
+
+            if (searchVal) {
+                displayData = displayData.filter(item => {
+                    const brand = (item.brand || '').toLowerCase();
+                    const model = (item.model || '').toLowerCase();
+                    const code = (item.code || '').toLowerCase();
+                    const system = (item.system || '').toLowerCase();
+                    return brand.includes(searchVal) || model.includes(searchVal) || code.includes(searchVal) || system.includes(searchVal);
+                });
+            }
+
+            // Sort data if name_asc is chosen
+            if (sortVal === 'name_asc') {
+                displayData.sort((a, b) => {
+                    const brandA = a.brand || '';
+                    const brandB = b.brand || '';
+                    return brandA.localeCompare(brandB, 'ko');
+                });
+            }
+
+            // Update count
+            const countDiv = document.getElementById('filterCount');
+            if (countDiv) countDiv.textContent = `결과: ${displayData.length}개`;
+
+            displayData.forEach((item, idx) => {
                 const li = document.createElement('li');
                 li.className = 'product-item';
                 li.innerHTML = `<h4>${item.brand} ${item.model}</h4><p>${item.code} (${item.system})</p>`;
@@ -1088,7 +1361,7 @@
                 list.appendChild(li);
             });
 
-            if (data.length === 0) list.innerHTML = '<li style="padding:20px; text-align:center; color:#999;">데이터가 없습니다.</li>';
+            if (displayData.length === 0) list.innerHTML = '<li style="padding:20px; text-align:center; color:#999;">검색어와 일치하는 데이터가 없습니다.</li>';
 
             domForm.style.display = 'block';
             document.getElementById('formTitle').textContent = 'Estimate Management';
@@ -1107,7 +1380,7 @@
                         <h3 style="margin:0;">서버 동기화 상태: <span id="syncStatus" style="color:#2ecc71;">체크 중...</span></h3>
                         <div class="auto-save-badge" style="background:#2ecc71; color:#fff; padding:2px 8px; border-radius:10px; font-size:0.7rem;">Auto-Save Active</div>
                     </div>
-                    <p style="color: #666; font-size:0.9rem;">현재 로드된 견적 데이터: <strong>${data.length}건</strong></p>
+                    <p style="color: #666; font-size:0.9rem;">현재 로드된 견적 데이터: <strong>${data.length}건</strong> (필터결과: ${displayData.length}건)</p>
                     <button id="btnManualSync" class="btn btn-outline-success" style="width:100%; padding:10px;" onclick="saveToGitHub('estimate')">수동으로 서버에 저장 (Force Sync)</button>
                 </div>
             `;
@@ -1639,8 +1912,40 @@
             if (currentMode === 'product' && products.length === 0 && typeof productData !== 'undefined') products = [...productData];
             if (currentMode === 'dealer' && dealers.length === 0 && typeof dealerData !== 'undefined') dealers = [...dealerData];
 
+            // Get filter values
+            const searchVal = document.getElementById('filterSearch')?.value.trim().toLowerCase() || '';
+            const catVal = document.getElementById('filterCategory')?.value || '';
+            const regionVal = document.getElementById('filterRegion')?.value || '';
+            const excludeSoldOut = document.getElementById('filterExcludeSoldOut')?.checked || false;
+            const sortVal = document.getElementById('filterSort')?.value || 'id_desc';
+
+            let filteredData = [];
+
             if (currentMode === 'service_admin') {
-                serviceAdmins.forEach(item => {
+                // Filter serviceAdmins
+                filteredData = serviceAdmins.filter(item => {
+                    const title = (item.dealer_name || '').toLowerCase();
+                    const username = (item.username || '').toLowerCase();
+                    if (searchVal) {
+                        return title.includes(searchVal) || username.includes(searchVal);
+                    }
+                    return true;
+                });
+                
+                // Sort serviceAdmins
+                filteredData.sort((a, b) => {
+                    const nameA = a.dealer_name || a.username || '';
+                    const nameB = b.dealer_name || b.username || '';
+                    if (sortVal === 'name_asc') return nameA.localeCompare(nameB, 'ko');
+                    if (sortVal === 'name_desc') return nameB.localeCompare(nameA, 'ko');
+                    return 0;
+                });
+
+                // Render count
+                const countDiv = document.getElementById('filterCount');
+                if (countDiv) countDiv.textContent = `결과: ${filteredData.length}개`;
+
+                filteredData.forEach(item => {
                     const li = document.createElement('li');
                     li.className = `product-item ${item.id === currentId ? 'active' : ''}`;
                     const title = item.dealer_name || item.username;
@@ -1652,12 +1957,85 @@
             }
 
             const data = currentMode === 'product' ? products : dealers;
+            let displayData = [...data];
 
+            // Category filter with simplified categories grouping
+            if (catVal) {
+                if (currentMode === 'product') {
+                    displayData = displayData.filter(item => {
+                        const itemCat = item.category || '';
+                        if (catVal === 'PnP Cable') {
+                            return itemCat.startsWith('PnP Cable');
+                        } else if (catVal === 'AlpineStyle') {
+                            return itemCat.toLowerCase() === 'alpinestyle';
+                        } else if (catVal === '기타상품') {
+                            const coreCats = ["F#1 Status", "Alpine Status", "DSP/AMP", "Speakers", "Alpine OEM Fit", "ALPINESTYLE"];
+                            const isCore = coreCats.includes(itemCat) || itemCat.startsWith('PnP Cable');
+                            return !isCore;
+                        } else {
+                            // Exact match
+                            return itemCat === catVal;
+                        }
+                    });
+                } else if (currentMode === 'dealer') {
+                    // Dealer matches exactly
+                    displayData = displayData.filter(item => item.category === catVal);
+                }
+            }
 
+            // Region filter (Dealer only)
+            if (currentMode === 'dealer' && regionVal) {
+                displayData = displayData.filter(item => item.region === regionVal);
+            }
 
-            // If Master, filter dealer list to only Team Alpine
-            // If Master, filter dealer list to only Team Alpine
-            let displayData = data;
+            // Sold Out filter (Product only)
+            if (currentMode === 'product' && excludeSoldOut) {
+                displayData = displayData.filter(item => !item.soldOut);
+            }
+
+            // Search keyword filter
+            if (searchVal) {
+                displayData = displayData.filter(item => {
+                    if (currentMode === 'product') {
+                        const title = (item.title || '').toLowerCase();
+                        const desc = (item.desc || '').toLowerCase();
+                        const cat = (item.category || '').toLowerCase();
+                        return title.includes(searchVal) || desc.includes(searchVal) || cat.includes(searchVal);
+                    } else if (currentMode === 'dealer') {
+                        const name = (item.name || '').toLowerCase();
+                        const address = (item.address || '').toLowerCase();
+                        const phone = (item.phone || '').toLowerCase();
+                        const desc = (item.desc || '').toLowerCase();
+                        return name.includes(searchVal) || address.includes(searchVal) || phone.includes(searchVal) || desc.includes(searchVal);
+                    }
+                    return true;
+                });
+            }
+
+            // Sort data
+            displayData.sort((a, b) => {
+                if (sortVal === 'name_asc') {
+                    const nameA = currentMode === 'product' ? (a.title || '') : (a.name || '');
+                    const nameB = currentMode === 'product' ? (b.title || '') : (b.name || '');
+                    return nameA.localeCompare(nameB, 'ko');
+                } else if (sortVal === 'name_desc') {
+                    const nameA = currentMode === 'product' ? (a.title || '') : (a.name || '');
+                    const nameB = currentMode === 'product' ? (b.title || '') : (b.name || '');
+                    return nameB.localeCompare(nameA, 'ko');
+                } else if (sortVal === 'price_asc') {
+                    return (a.price || 0) - (b.price || 0);
+                } else if (sortVal === 'price_desc') {
+                    return (b.price || 0) - (a.price || 0);
+                } else if (sortVal === 'id_asc') {
+                    return a.id - b.id;
+                } else { // id_desc
+                    return b.id - a.id;
+                }
+            });
+
+            // Update count
+            const countDiv = document.getElementById('filterCount');
+            if (countDiv) countDiv.textContent = `결과: ${displayData.length}개`;
 
             displayData.forEach(item => {
                 const li = document.createElement('li');
