@@ -397,8 +397,7 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": "",
-        "soldOut": false
+        "manualUrl": ""
     },
     {
         "id": 1770270859568,
@@ -2253,7 +2252,7 @@ const initialProductData = [
     },
     {
         "id": 1770356733636,
-        "category": "Others",
+        "category": "DSP/AMP",
         "title": "UTS-A100",
         "desc": "Hi-Res 포터블 DAC/AMP",
         "desc_bottom": ".",
@@ -2262,12 +2261,13 @@ const initialProductData = [
         "image": "assets/images/A100.jpg",
         "detailBlocks": [
             {
-                "id": 1770356720426.7979,
+                "id": "1770356720426.7979",
                 "type": "image",
                 "value": "assets/images/A100-01.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1770357623545,
@@ -4366,7 +4366,7 @@ const initialProductData = [
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1779783489288;
+const PRODUCT_DATA_VERSION = 1780363119250;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
