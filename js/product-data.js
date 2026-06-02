@@ -4364,9 +4364,43 @@ const initialProductData = [
         ],
         "attachments": [],
         "manualUrl": ""
+    },
+    {
+        "id": 1780373282792,
+        "category": "Speakers",
+        "title": "DSP-25M(KA4 서라운드스피커)",
+        "desc": "카니발(KA4) 2.5\" 서라운드 스피커",
+        "desc_bottom": "장착 공임 별도(20만원부터)",
+        "price": 300000,
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DPS-25M(KA4 서라운드스피커).jpg",
+        "detailBlocks": [
+            {
+                "id": "1780373075999490074",
+                "type": "text",
+                "value": "2.5inchs Full Range Speaker\n\nMax : 60W\n260Hz~20kHz\n83dB"
+            },
+            {
+                "id": "1780373085764897359",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DPS-25M(KA4 서라운드스피커)-01.jpg"
+            },
+            {
+                "id": "1780373249271157096",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DPS-25M(KA4 서라운드스피커)-02.jpg"
+            },
+            {
+                "id": "1780373265503910033",
+                "type": "text",
+                "value": "스피커 장착 위치, C필러 상단"
+            }
+        ],
+        "attachments": [],
+        "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1780363119250;
+const PRODUCT_DATA_VERSION = 1780373282795;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
