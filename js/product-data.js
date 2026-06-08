@@ -3401,14 +3401,15 @@ const initialProductData = [
     {
         "id": 1770599277781,
         "category": "Alpine OEM Fit",
-        "title": "KGM 앰비언트 트위터 패키지",
-        "desc": "",
-        "desc_bottom": "",
-        "price": 0,
-        "soldOut": false,
+        "title": "KGM 회오리 앰비언트 S2-S10TW 트위터 패키지",
+        "desc": "KGM 회오리 앰비언트 트위터 커버 + S2-S10TW 패키지",
+        "desc_bottom": ".",
+        "price": 400000,
+        "soldOut": true,
         "image": "assets/images/product_placeholder.png",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1770599339041,
@@ -4400,7 +4401,7 @@ const initialProductData = [
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1780377704020;
+const PRODUCT_DATA_VERSION = 1780905386230;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
