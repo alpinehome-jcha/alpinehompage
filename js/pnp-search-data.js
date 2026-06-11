@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 5. 12. 오후 3:46:34
+ * Updated: 2026. 6. 11. 오후 3:52:38
  */
 const pnpSearchData = [
     {
@@ -700,7 +700,7 @@ const pnpSearchData = [
                         "code": "DL3",
                         "sound": "12채널(크렐)",
                         "integrated": "X",
-                        "typeA": "HK-23A"
+                        "typeA": "HK-25A"
                     }
                 ]
             },
@@ -712,7 +712,7 @@ const pnpSearchData = [
                         "code": "CK",
                         "sound": "7채널(액튠)",
                         "integrated": "X",
-                        "typeA": "HK-23A"
+                        "typeA": "HK-27A"
                     },
                     {
                         "year": "17~23",
@@ -1027,7 +1027,7 @@ const pnpSearchData = [
                         "code": "MQ4",
                         "sound": "12채널(크렐)",
                         "integrated": "X",
-                        "typeA": "HK-23A"
+                        "typeA": "HK-25A"
                     }
                 ]
             },
@@ -1086,7 +1086,7 @@ const pnpSearchData = [
                         "code": "KA4",
                         "sound": "12채널(크렐)",
                         "integrated": "X",
-                        "typeA": "HK-23A"
+                        "typeA": "HK-25A"
                     },
                     {
                         "year": "20~",
