@@ -8004,7 +8004,7 @@ const initialEstimateData = [
         ],
         "center": [],
         "surround": [
-            "DPS-25M (KA4 서라운드 스피커)"
+            "DPS-25M(KA4 서라운드 스피커)"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -8073,7 +8073,7 @@ const initialEstimateData = [
             "DPS-25M+DPS-25M-Uni Baffle"
         ],
         "surround": [
-            "DPS-25M (KA4 서라운드 스피커)"
+            "DPS-25M(KA4 서라운드 스피커)"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -8140,7 +8140,7 @@ const initialEstimateData = [
             "DPS-25M+DPS-25M-Uni Baffle"
         ],
         "surround": [
-            "DPS-25M (KA4 서라운드 스피커)"
+            "DPS-25M(KA4 서라운드 스피커)"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -10897,7 +10897,7 @@ const initialEstimateData = [
         ]
     }
 ];
-const ESTIMATE_DATA_VERSION = 1781161184076;
+const ESTIMATE_DATA_VERSION = 1781161371084;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
