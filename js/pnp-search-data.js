@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 6. 11. 오후 3:52:38
+ * Updated: 2026. 6. 15. 오전 8:38:41
  */
 const pnpSearchData = [
     {
@@ -148,7 +148,7 @@ const pnpSearchData = [
                     {
                         "year": "19~",
                         "code": "DN8",
-                        "sound": "10채널(프리미엄)",
+                        "sound": "10채널(프리미엄) 24년 이후",
                         "integrated": "X",
                         "typeA": "HK-12A"
                     }
