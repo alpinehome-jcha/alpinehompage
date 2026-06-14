@@ -1088,7 +1088,74 @@ const initialEstimateData = [
     {
         "brand": "현대자동차",
         "model": "쏘나타",
-        "year": "19년 이후",
+        "year": "23년 이전",
+        "code": "DN8",
+        "system": "10채널(프리미엄)",
+        "dsp": [
+            "PXE-R80-8",
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "front_door": [
+            "DP2-65C+DPS-25M",
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "front_baffle": [
+            "현대/기아 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "add_front": [],
+        "rear_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
+        ],
+        "rear_baffle": [
+            "현대/기아 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "subwoofer": [
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "extraLabor": 300000,
+        "pnp": [
+            "HK-17A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
+    },
+    {
+        "brand": "현대자동차",
+        "model": "쏘나타",
+        "year": "24년 이후",
         "code": "DN8",
         "system": "10채널(프리미엄)",
         "dsp": [
@@ -10897,7 +10964,7 @@ const initialEstimateData = [
         ]
     }
 ];
-const ESTIMATE_DATA_VERSION = 1781161380506;
+const ESTIMATE_DATA_VERSION = 1781480672574;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
