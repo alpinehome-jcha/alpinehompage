@@ -304,9 +304,9 @@ function renderTable(page) {
             <td style="text-align:right;">${item.cost || ''}</td>
             <td>${item.complete_date || ''}</td>
             <td>${getImageColumnHtml(item.images)}</td>
-            <td style="padding:4px; white-space: nowrap;">
-                <button class="btn btn-edit" style="display:inline-block; width:auto; padding: 4px 8px; font-size: 0.8rem; margin-right: 4px;" onclick="editService(${item.id})">수정</button>
-                <button class="btn btn-delete" style="display:inline-block; width:auto; padding: 4px 8px; font-size: 0.8rem;" onclick="deleteService(${item.id})">삭제</button>
+            <td style="padding:4px 2px; white-space: nowrap;">
+                <button class="btn btn-edit" style="display:inline-block; width:auto; padding: 3px 6px; font-size: 0.75rem; margin-right: 2px;" onclick="editService(${item.id})">수정</button>
+                <button class="btn btn-delete" style="display:inline-block; width:auto; padding: 3px 6px; font-size: 0.75rem;" onclick="deleteService(${item.id})">삭제</button>
             </td>
         `;
         tbody.appendChild(tr);
