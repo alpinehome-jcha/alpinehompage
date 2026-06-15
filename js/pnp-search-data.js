@@ -1,7 +1,7 @@
 /**
  * PnP Cable Search Data
  * Hierarchy: Manufacturer -> Model -> Detail (Year/Code/Sound) -> Products
- * Updated: 2026. 5. 12. 오후 3:46:34
+ * Updated: 2026. 6. 15. 오전 8:41:07
  */
 const pnpSearchData = [
     {
@@ -146,11 +146,18 @@ const pnpSearchData = [
                         "typeA": "HK-2A"
                     },
                     {
-                        "year": "19~",
+                        "year": "24~",
                         "code": "DN8",
-                        "sound": "10채널(프리미엄)",
+                        "sound": "10채널(프리미엄) 24년 이후",
                         "integrated": "X",
                         "typeA": "HK-12A"
+                    },
+                    {
+                        "year": "19~23",
+                        "code": "DN8",
+                        "sound": "10채널(프리미엄) 23년 이전",
+                        "integrated": "",
+                        "typeA": "HK-17A"
                     }
                 ]
             },
@@ -700,7 +707,7 @@ const pnpSearchData = [
                         "code": "DL3",
                         "sound": "12채널(크렐)",
                         "integrated": "X",
-                        "typeA": "HK-23A"
+                        "typeA": "HK-25A"
                     }
                 ]
             },
@@ -712,7 +719,7 @@ const pnpSearchData = [
                         "code": "CK",
                         "sound": "7채널(액튠)",
                         "integrated": "X",
-                        "typeA": "HK-23A"
+                        "typeA": "HK-27A"
                     },
                     {
                         "year": "17~23",
@@ -1027,7 +1034,7 @@ const pnpSearchData = [
                         "code": "MQ4",
                         "sound": "12채널(크렐)",
                         "integrated": "X",
-                        "typeA": "HK-23A"
+                        "typeA": "HK-25A"
                     }
                 ]
             },
@@ -1086,7 +1093,7 @@ const pnpSearchData = [
                         "code": "KA4",
                         "sound": "12채널(크렐)",
                         "integrated": "X",
-                        "typeA": "HK-23A"
+                        "typeA": "HK-25A"
                     },
                     {
                         "year": "20~",

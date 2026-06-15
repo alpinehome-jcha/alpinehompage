@@ -1088,7 +1088,74 @@ const initialEstimateData = [
     {
         "brand": "현대자동차",
         "model": "쏘나타",
-        "year": "19년 이후",
+        "year": "23년 이전",
+        "code": "DN8",
+        "system": "10채널(프리미엄)",
+        "dsp": [
+            "PXE-R80-8",
+            "PXE-R100-8",
+            "PXE-X120-8",
+            "PXE-C80-88",
+            "PXE-X120-10DP",
+            "PXE-X121-12EV",
+            "HDP-D90"
+        ],
+        "front_door": [
+            "DP2-65C+DPS-25M",
+            "S2-S65C+DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "tweeter": [],
+        "front_baffle": [
+            "현대/기아 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "add_front": [],
+        "rear_door": [
+            "DM-65C",
+            "S2-S65C",
+            "DP2-65C HDZ-65C"
+        ],
+        "rear_baffle": [
+            "현대/기아 6.5\" 배플",
+            "커스텀 배플"
+        ],
+        "center": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "surround": [
+            "DPS-25M+DPS-25M-Uni Baffle"
+        ],
+        "subwoofer": [
+            "S2-W12D2 (외장박스 포함)",
+            "RS-W10D2 (외장박스 포함)",
+            "HDZ-W10"
+        ],
+        "amp_4ch": [
+            "R2-A60F",
+            "HDA-F60"
+        ],
+        "amp_sub": [
+            "S2-A60M",
+            "HDA-F60"
+        ],
+        "player": [
+            "HDS-990"
+        ],
+        "extraLabor": 300000,
+        "pnp": [
+            "HK-17A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
+    },
+    {
+        "brand": "현대자동차",
+        "model": "쏘나타",
+        "year": "24년 이후",
         "code": "DN8",
         "system": "10채널(프리미엄)",
         "dsp": [
@@ -3315,6 +3382,8 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "add_front": [],
+        "rear_door": [],
+        "rear_baffle": [],
         "center": [],
         "surround": [],
         "subwoofer": [
@@ -3347,9 +3416,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "rear_door": [],
-        "rear_baffle": []
+        ]
     },
     {
         "brand": "현대자동차",
@@ -3454,6 +3521,8 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "add_front": [],
+        "rear_door": [],
+        "rear_baffle": [],
         "center": [],
         "surround": [],
         "subwoofer": [
@@ -3486,9 +3555,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "rear_door": [],
-        "rear_baffle": []
+        ]
     },
     {
         "brand": "제네시스",
@@ -5261,7 +5328,7 @@ const initialEstimateData = [
         ],
         "extraLabor": 300000,
         "pnp": [
-            "HK-23A",
+            "HK-25A",
             "DS-R80-6B",
             "DS-X12-6B",
             "DS-C80-6B",
@@ -5328,7 +5395,7 @@ const initialEstimateData = [
         ],
         "extraLabor": 0,
         "pnp": [
-            "HK-23A",
+            "HK-27A",
             "DS-M60-4B",
             "DS-R80-4B",
             "DS-X12-4B",
@@ -7670,7 +7737,7 @@ const initialEstimateData = [
         ],
         "extraLabor": 300000,
         "pnp": [
-            "HK-23A",
+            "HK-25A",
             "DS-R80-6B",
             "DS-X12-6B",
             "DS-C80-6B",
@@ -8003,7 +8070,9 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "center": [],
-        "surround": [],
+        "surround": [
+            "DPS-25M(KA4 서라운드 스피커)"
+        ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
             "RS-W10D2 (외장박스 포함)",
@@ -8071,7 +8140,7 @@ const initialEstimateData = [
             "DPS-25M+DPS-25M-Uni Baffle"
         ],
         "surround": [
-            "DPS-25M+DPS-25M-Uni Baffle"
+            "DPS-25M(KA4 서라운드 스피커)"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -8091,7 +8160,7 @@ const initialEstimateData = [
         ],
         "extraLabor": 0,
         "pnp": [
-            "HK-23A",
+            "HK-25A",
             "DS-R80-6B",
             "DS-X12-6B",
             "DS-C80-6B",
@@ -8138,7 +8207,7 @@ const initialEstimateData = [
             "DPS-25M+DPS-25M-Uni Baffle"
         ],
         "surround": [
-            "DPS-25M+DPS-25M-Uni Baffle"
+            "DPS-25M(KA4 서라운드 스피커)"
         ],
         "subwoofer": [
             "S2-W12D2 (외장박스 포함)",
@@ -8338,6 +8407,8 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "add_front": [],
+        "rear_door": [],
+        "rear_baffle": [],
         "center": [],
         "surround": [],
         "subwoofer": [
@@ -8370,9 +8441,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "rear_door": [],
-        "rear_baffle": []
+        ]
     },
     {
         "brand": "기아자동차",
@@ -8403,6 +8472,8 @@ const initialEstimateData = [
             "커스텀 배플"
         ],
         "add_front": [],
+        "rear_door": [],
+        "rear_baffle": [],
         "center": [],
         "surround": [],
         "subwoofer": [
@@ -8435,9 +8506,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "rear_door": [],
-        "rear_baffle": []
+        ]
     },
     {
         "brand": "BENZ",
@@ -10712,6 +10781,7 @@ const initialEstimateData = [
         "front_baffle": [
             "커스텀 배플"
         ],
+        "add_front": [],
         "rear_door": [
             "DM-65C",
             "S2-S65C",
@@ -10720,6 +10790,8 @@ const initialEstimateData = [
         "rear_baffle": [
             "커스텀 배플"
         ],
+        "center": [],
+        "surround": [],
         "subwoofer": [
             "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
@@ -10749,10 +10821,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "add_front": [],
-        "center": [],
-        "surround": []
+        ]
     },
     {
         "brand": "Renault",
@@ -10782,6 +10851,7 @@ const initialEstimateData = [
         "front_baffle": [
             "커스텀 배플"
         ],
+        "add_front": [],
         "rear_door": [
             "DM-65C",
             "S2-S65C",
@@ -10790,6 +10860,8 @@ const initialEstimateData = [
         "rear_baffle": [
             "커스텀 배플"
         ],
+        "center": [],
+        "surround": [],
         "subwoofer": [
             "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
@@ -10819,10 +10891,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "add_front": [],
-        "center": [],
-        "surround": []
+        ]
     },
     {
         "brand": "Renault",
@@ -10852,6 +10921,7 @@ const initialEstimateData = [
         "front_baffle": [
             "커스텀 배플"
         ],
+        "add_front": [],
         "rear_door": [
             "DM-65C",
             "S2-S65C",
@@ -10860,6 +10930,8 @@ const initialEstimateData = [
         "rear_baffle": [
             "커스텀 배플"
         ],
+        "center": [],
+        "surround": [],
         "subwoofer": [
             "PWE-M770",
             "S2-W8D4 (외장박스 포함)",
@@ -10889,13 +10961,10 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "add_front": [],
-        "center": [],
-        "surround": []
+        ]
     }
 ];
-const ESTIMATE_DATA_VERSION = 1780364066733;
+const ESTIMATE_DATA_VERSION = 1781480681340;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {

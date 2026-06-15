@@ -2477,7 +2477,7 @@ const initialProductData = [
     {
         "id": 1770362701723,
         "category": "PnP Cable - 국산차 (Domestic)",
-        "title": "HK-12A / HK-13A / HK-15A / HK-16A",
+        "title": "HK-12A / HK-13A / HK-15A / HK-16A / HK-17A",
         "desc": "현대 순정앰프용 케이블 / 10cm",
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 180000,
@@ -2485,52 +2485,63 @@ const initialProductData = [
         "image": "assets/images/HK-12A.jpg",
         "detailBlocks": [
             {
-                "id": 1770362489773.74,
+                "id": "1770362489773.74",
                 "type": "text",
-                "value": "HK-12A\n쏘나타(DN8)10CH [프리미엄]\n그랜저(GN7)10CH [BOSE]\n싼타페(MX5)10CH [BOSE] \n팰리세이드(LX3)10CH [25년 이후 크렐]\n아이오닉9(ME EV)10CH [프리미엄]\n"
+                "value": "HK-12A\n쏘나타(DN8)10CH [프리미엄]24년 이후\n그랜저(GN7)10CH [BOSE]\n싼타페(MX5)10CH [BOSE] \n팰리세이드(LX3)10CH [25년 이후 크렐]\n아이오닉9(ME EV)10CH [프리미엄]\n"
             },
             {
-                "id": 1771239774883.3137,
+                "id": "1771239774883.3137",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-12A-C.jpg"
             },
             {
-                "id": 1771239837478.7693,
+                "id": "1771239837478.7693",
                 "type": "text",
                 "value": "HK-13A\n그랜저(IG)11CH [JBL]"
             },
             {
-                "id": 1771239845520.4312,
+                "id": "1771239845520.4312",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-13A-C.jpg"
             },
             {
-                "id": 1771239874708.6877,
+                "id": "1771239874708.6877",
                 "type": "text",
                 "value": "HK-15A\n팰리세이드(LX2)11CH [24년 이전 크렐]"
             },
             {
-                "id": 1771239887409.1829,
+                "id": "1771239887409.1829",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-15A-C.jpg"
             },
             {
-                "id": 1771239898348.91,
+                "id": "1771239898348.91",
                 "type": "text",
                 "value": "HK-16A\n아반떼(CN7)6CH [BOSE]\n코나(SX2)6CH [BOSE]"
             },
             {
-                "id": 1771239907904.5142,
+                "id": "1771239907904.5142",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-16A-C.jpg"
+            },
+            {
+                "id": "1781480021307264508",
+                "type": "text",
+                "value": "HK-17A\n쏘나타(DN8)10CH 23년 이전"
+            },
+            {
+                "id": "1781480022156408097",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-17A-C.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1770363147925,
         "category": "PnP Cable - 국산차 (Domestic)",
-        "title": "HK-14A / HK-19A / HK-20A / HK-21A / HK-23A /  HK-24A / HK-26A / HK-28A",
+        "title": "HK-14A / HK-19A / HK-20A / HK-21A / HK-23A /  HK-24A / HK-26A / HK-28A / HK-25A / -HK-27A",
         "desc": "기아 순정앰프용 케이블 / 10cm",
         "desc_bottom": "A타입 / 차측용 케이블",
         "price": 180000,
@@ -2538,87 +2549,108 @@ const initialProductData = [
         "image": "assets/images/HK-14A.jpg",
         "detailBlocks": [
             {
-                "id": 1770362983513.3757,
+                "id": "1770362983513.3757",
                 "type": "text",
                 "value": "HK-14A\n카니발(KA4) 12CH BOSE"
             },
             {
-                "id": 1771243582731.5273,
+                "id": "1771243582731.5273",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-14A-C.jpg"
             },
             {
-                "id": 1771243601704.6052,
+                "id": "1771243601704.6052",
                 "type": "text",
                 "value": "HK-19A\nK9(RJ)12CH [크렐]"
             },
             {
-                "id": 1771243619238.0486,
+                "id": "1771243619238.0486",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-19A-C.jpg"
             },
             {
-                "id": 1771243630359.8813,
+                "id": "1771243630359.8813",
                 "type": "text",
                 "value": "HK-20A\nK9(RJ)12CH [렉시콘]\n"
             },
             {
-                "id": 1771243642657.9768,
+                "id": "1771243642657.9768",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-20A-C.jpg"
             },
             {
-                "id": 1771243652395.7893,
+                "id": "1771243652395.7893",
                 "type": "text",
                 "value": "HK-21A\nK7(YG)11CH [크렐]\nK8(GL3)11CH [메리디안]"
             },
             {
-                "id": 1771243661324.0889,
+                "id": "1771243661324.0889",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-21A-C.jpg"
             },
             {
-                "id": 1771243671519.7524,
+                "id": "1771243671519.7524",
                 "type": "text",
-                "value": "HK-23A\nK5(DL3)12CH [크렐]\n스팅어(CK)7CH [액튠]\n스포티지(NQ5)8CH [25년이후 크렐]\n쏘렌토(MQ4)12CH [크렐]\n카니발(KA4)12CH [크렐]"
+                "value": "HK-23A\n스포티지(NQ5)8CH [25년이후 크렐]\n"
             },
             {
-                "id": 1771243684152.5112,
+                "id": "1771243684152.5112",
                 "type": "image",
-                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-23A-C.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-23A-D.jpg"
             },
             {
-                "id": 1771243693532.7742,
+                "id": "1771243693532.7742",
                 "type": "text",
                 "value": "HK-24A\n스팅어(CK)11CH [렉시콘]\n모하비(HM)11CH [렉시콘]"
             },
             {
-                "id": 1771243705836.6226,
+                "id": "1771243705836.6226",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-24A-C.jpg"
             },
             {
-                "id": 1771243718259.0276,
+                "id": "1771243718259.0276",
                 "type": "text",
                 "value": "HK-26A\n스포티지(NQ5)8CH"
             },
             {
-                "id": 1771243731101.2996,
+                "id": "1771243731101.2996",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-26A-C.jpg"
             },
             {
-                "id": 1771243741533.5112,
+                "id": "1771243741533.5112",
                 "type": "text",
                 "value": "HK-28A\nEV3(SV1)7CH [스탠다드]\nEV4(CT1)7CH [스탠다드]\nEV5(OV1k)7CH[스탠다드]\nEV6(CV)11CH [스탠다드]\nEV9(MV)11CH [메리디안]\n타스만(TK1) 7CH"
             },
             {
-                "id": 1771243787216.4705,
+                "id": "1771243787216.4705",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-28A-C.jpg"
+            },
+            {
+                "id": "1781159826904743020",
+                "type": "text",
+                "value": "[HK-25A]  \nK5(DL3/쏘렌토(MQ4)\n카니발(KA4) 12CH 크렐 "
+            },
+            {
+                "id": "1781159827671538871",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-25A-D.jpg"
+            },
+            {
+                "id": "1781160012369676087",
+                "type": "text",
+                "value": "[HK-27A] \n스팅어(CK) 7CH 액튠 2028년 이후"
+            },
+            {
+                "id": "1781160012928997264",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-27A-D.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1770363434976,
@@ -3401,14 +3433,15 @@ const initialProductData = [
     {
         "id": 1770599277781,
         "category": "Alpine OEM Fit",
-        "title": "KGM 앰비언트 트위터 패키지",
-        "desc": "",
-        "desc_bottom": "",
-        "price": 0,
-        "soldOut": false,
+        "title": "KGM 회오리 앰비언트 S2-S10TW 트위터 패키지",
+        "desc": "KGM 회오리 앰비언트 트위터 커버 + S2-S10TW 패키지",
+        "desc_bottom": ".",
+        "price": 400000,
+        "soldOut": true,
         "image": "assets/images/product_placeholder.png",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1770599339041,
@@ -4400,7 +4433,7 @@ const initialProductData = [
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1780377704020;
+const PRODUCT_DATA_VERSION = 1781480212535;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
