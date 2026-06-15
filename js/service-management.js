@@ -303,6 +303,7 @@ function renderTable(page) {
             <td style="text-align:center;">${item.failure_cause || ''}</td>
             <td style="text-align:right;">${item.cost || ''}</td>
             <td>${item.complete_date || ''}</td>
+            <td>${getImageColumnHtml(item.images)}</td>
             <td style="padding:4px;"><button class="btn btn-edit" style="width:100%; padding: 4px; font-size: 0.8rem;" onclick="editService(${item.id})">수정</button></td>
             <td style="padding:4px;"><button class="btn btn-delete" style="width:100%; padding: 4px; font-size: 0.8rem;" onclick="deleteService(${item.id})">삭제</button></td>
         `;
@@ -310,7 +311,7 @@ function renderTable(page) {
     });
 
     if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="19" style="padding: 20px; text-align: center; color: #999;">검색된 데이터가 없습니다.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="20" style="padding: 20px; text-align: center; color: #999;">검색된 데이터가 없습니다.</td></tr>`;
     }
 
     renderPagination(totalPages);
@@ -371,7 +372,8 @@ function downloadExcel() {
         '고품회수여부': item.recovery_status || '',
         '고장원인': item.failure_cause || '',
         '서비스비용': item.cost || '',
-        '서비스완료일': item.complete_date || ''
+        '서비스완료일': item.complete_date || '',
+        '첨부사진 URL': (Array.isArray(item.images) && item.images.length > 0) ? item.images.join(', ') : ''
     }));
 
     const ws = XLSX.utils.json_to_sheet(exportData);
@@ -379,7 +381,7 @@ function downloadExcel() {
     const collW = [
         { wch: 5 }, { wch: 10 }, { wch: 12 }, { wch: 12 }, { wch: 10 },
         { wch: 20 }, { wch: 15 }, { wch: 10 }, { wch: 15 }, { wch: 30 },
-        { wch: 30 }, { wch: 10 }, { wch: 20 }, { wch: 15 }, { wch: 15 }, { wch: 10 }, { wch: 12 }
+        { wch: 30 }, { wch: 10 }, { wch: 20 }, { wch: 15 }, { wch: 15 }, { wch: 10 }, { wch: 12 }, { wch: 30 }
     ];
     ws['!cols'] = collW;
 
