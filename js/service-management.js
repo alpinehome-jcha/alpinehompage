@@ -90,28 +90,33 @@ async function loadData() {
 async function saveService() {
     const idField = document.getElementById('service_id').value;
 
-    const item = {
-        receive_date: document.getElementById('f_receive_date').value || null,
-        status: document.getElementById('f_status').value || null,
-        customer_name: document.getElementById('f_customer_name').value || null,
-        address: document.getElementById('f_address').value || null,
-        vehicle_info: document.getElementById('f_vehicle_info').value || null,
-        reserve_date: document.getElementById('f_reserve_date').value || null,
-        car_model: document.getElementById('f_car_model').value || null,
-        phone: document.getElementById('f_phone').value || null,
-        symptom: document.getElementById('f_symptom').value || null,
-        method: document.getElementById('f_method').value || null,
-        complete_date: document.getElementById('f_complete_date').value || null,
-        manager: document.getElementById('f_manager').value || null,
-        cost: document.getElementById('f_cost').value || null,
-        details: document.getElementById('f_details').value || null,
-        recovery_status: document.getElementById('f_recovery_status').value || null,
-        failure_cause: document.getElementById('f_failure_cause').value || null
-    };
-
-    showLoading('데이터를 저장하는 중입니다...');
+    showLoading('사진 업로드 및 데이터를 저장하는 중입니다...');
 
     try {
+        // Upload new images and merge with existing ones
+        const newImageUrls = await uploadImages();
+        const finalImages = [...currentImages, ...newImageUrls];
+
+        const item = {
+            receive_date: document.getElementById('f_receive_date').value || null,
+            status: document.getElementById('f_status').value || null,
+            customer_name: document.getElementById('f_customer_name').value || null,
+            address: document.getElementById('f_address').value || null,
+            vehicle_info: document.getElementById('f_vehicle_info').value || null,
+            reserve_date: document.getElementById('f_reserve_date').value || null,
+            car_model: document.getElementById('f_car_model').value || null,
+            phone: document.getElementById('f_phone').value || null,
+            symptom: document.getElementById('f_symptom').value || null,
+            method: document.getElementById('f_method').value || null,
+            complete_date: document.getElementById('f_complete_date').value || null,
+            manager: document.getElementById('f_manager').value || null,
+            cost: document.getElementById('f_cost').value || null,
+            details: document.getElementById('f_details').value || null,
+            recovery_status: document.getElementById('f_recovery_status').value || null,
+            failure_cause: document.getElementById('f_failure_cause').value || null,
+            images: finalImages
+        };
+
         if (idField) {
             // Edit Existing Record
             const { error } = await supabaseClient
@@ -162,6 +167,12 @@ function editService(id) {
     document.getElementById('f_recovery_status').value = item.recovery_status || '';
     document.getElementById('f_failure_cause').value = item.failure_cause || '';
 
+    // Load existing images and reset file selection
+    currentImages = Array.isArray(item.images) ? [...item.images] : [];
+    const fImages = document.getElementById('f_images');
+    if (fImages) fImages.value = '';
+    renderImagePreviews();
+
     // Smooth scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -206,6 +217,12 @@ function resetForm() {
     document.getElementById('f_details').value = '';
     document.getElementById('f_recovery_status').value = '';
     document.getElementById('f_failure_cause').value = '';
+
+    // Clear photo previews
+    currentImages = [];
+    const fImages = document.getElementById('f_images');
+    if (fImages) fImages.value = '';
+    renderImagePreviews();
 }
 
 function toggleAllStatus(checkbox) {
