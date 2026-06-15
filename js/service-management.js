@@ -304,14 +304,16 @@ function renderTable(page) {
             <td style="text-align:right;">${item.cost || ''}</td>
             <td>${item.complete_date || ''}</td>
             <td>${getImageColumnHtml(item.images)}</td>
-            <td style="padding:4px;"><button class="btn btn-edit" style="width:100%; padding: 4px; font-size: 0.8rem;" onclick="editService(${item.id})">수정</button></td>
-            <td style="padding:4px;"><button class="btn btn-delete" style="width:100%; padding: 4px; font-size: 0.8rem;" onclick="deleteService(${item.id})">삭제</button></td>
+            <td style="padding:4px; white-space: nowrap;">
+                <button class="btn btn-edit" style="display:inline-block; width:auto; padding: 4px 8px; font-size: 0.8rem; margin-right: 4px;" onclick="editService(${item.id})">수정</button>
+                <button class="btn btn-delete" style="display:inline-block; width:auto; padding: 4px 8px; font-size: 0.8rem;" onclick="deleteService(${item.id})">삭제</button>
+            </td>
         `;
         tbody.appendChild(tr);
     });
 
     if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="20" style="padding: 20px; text-align: center; color: #999;">검색된 데이터가 없습니다.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="19" style="padding: 20px; text-align: center; color: #999;">검색된 데이터가 없습니다.</td></tr>`;
     }
 
     renderPagination(totalPages);
