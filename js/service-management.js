@@ -1,5 +1,6 @@
 let serviceData = [];
 let supabaseClient = null;
+let currentImages = []; // Array to track currently loaded images for the item being edited
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Check if admin or service_admin
@@ -41,6 +42,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (chkAll) chkAll.checked = allChecked;
         renderTable(1);
     }));
+
+    // File input change listener for preview
+    const fImages = document.getElementById('f_images');
+    if (fImages) {
+        fImages.addEventListener('change', () => {
+            renderImagePreviews();
+        });
+    }
 });
 
 async function loadData() {
@@ -372,3 +381,161 @@ function showLoading(msg) {
 function hideLoading() {
     document.getElementById('loadingOverlay').style.display = 'none';
 }
+
+function renderImagePreviews() {
+    const container = document.getElementById('image_preview_container');
+    if (!container) return;
+    container.innerHTML = '';
+
+    // 1. Render existing images
+    currentImages.forEach((url, index) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'preview-img-wrapper';
+        wrapper.innerHTML = `
+            <img src="${url}" alt="Existing A/S Photo" onclick="openImageModal('${url}', 'A/S 사진')">
+            <button type="button" class="remove-btn" onclick="removeExistingImage(${index})">&times;</button>
+        `;
+        container.appendChild(wrapper);
+    });
+
+    // 2. Render newly selected files
+    const fImages = document.getElementById('f_images');
+    if (fImages && fImages.files) {
+        Array.from(fImages.files).forEach(file => {
+            const objectUrl = URL.createObjectURL(file);
+            const wrapper = document.createElement('div');
+            wrapper.className = 'preview-img-wrapper';
+            wrapper.style.borderColor = '#007bff';
+            wrapper.innerHTML = `
+                <img src="${objectUrl}" alt="New A/S Photo" onclick="openImageModal('${objectUrl}', '${file.name}')">
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 123, 255, 0.8); color: white; font-size: 0.6rem; text-align: center; padding: 2px 0; font-weight: bold;">대기</div>
+            `;
+            container.appendChild(wrapper);
+        });
+    }
+}
+
+function removeExistingImage(index) {
+    currentImages.splice(index, 1);
+    renderImagePreviews();
+}
+
+async function uploadImages() {
+    const fImages = document.getElementById('f_images');
+    if (!fImages || !fImages.files || fImages.files.length === 0) {
+        return [];
+    }
+
+    const uploadedUrls = [];
+    const files = Array.from(fImages.files);
+
+    for (const file of files) {
+        const fileExt = file.name.split('.').pop();
+        const uniqueName = `${Date.now()}_${Math.random().toString(36).substring(2, 11)}.${fileExt}`;
+        const filePath = `service_${uniqueName}`;
+
+        const { data, error } = await supabaseClient.storage
+            .from('service-images')
+            .upload(filePath, file);
+
+        if (error) {
+            console.error('Storage Upload Error:', error);
+            throw new Error(`파일 업로드 실패: ${file.name} (${error.message})`);
+        }
+
+        const { data: { publicUrl } } = supabaseClient.storage
+            .from('service-images')
+            .getPublicUrl(filePath);
+
+        uploadedUrls.push(publicUrl);
+    }
+
+    return uploadedUrls;
+}
+
+function getImageColumnHtml(images) {
+    if (!images || !Array.isArray(images) || images.length === 0) {
+        return '<span style="color:#ccc;">-</span>';
+    }
+
+    const firstUrl = images[0];
+    const hasMore = images.length > 1;
+    const allUrlsJson = JSON.stringify(images).replace(/"/g, '&quot;');
+
+    return `
+        <div class="thumb-container">
+            <img src="${firstUrl}" class="table-thumb" alt="Thumbnail" onclick="openLightbox(${allUrlsJson}, 0)">
+            ${hasMore ? `<span class="thumb-badge">+${images.length - 1}</span>` : ''}
+        </div>
+    `;
+}
+
+let lightboxImages = [];
+let lightboxIndex = 0;
+
+function openLightbox(images, index) {
+    lightboxImages = images;
+    lightboxIndex = index;
+    
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    
+    if (!modal || !modalImg) return;
+    
+    modal.style.display = 'flex';
+    modalImg.src = lightboxImages[lightboxIndex];
+    
+    updateLightboxCaption();
+}
+
+function updateLightboxCaption() {
+    const captionText = document.getElementById('modalCaption');
+    if (!captionText) return;
+    
+    if (lightboxImages.length <= 1) {
+        captionText.innerHTML = `사진 1 / 1`;
+        return;
+    }
+    
+    captionText.innerHTML = `
+        <button type="button" class="btn" style="background:#444; color:white; border:none; padding:4px 10px; margin-right:10px; cursor:pointer;" onclick="changeLightboxIndex(-1)">이전</button>
+        <span>사진 ${lightboxIndex + 1} / ${lightboxImages.length}</span>
+        <button type="button" class="btn" style="background:#444; color:white; border:none; padding:4px 10px; margin-left:10px; cursor:pointer;" onclick="changeLightboxIndex(1)">다음</button>
+    `;
+}
+
+function changeLightboxIndex(direction) {
+    lightboxIndex += direction;
+    if (lightboxIndex < 0) lightboxIndex = lightboxImages.length - 1;
+    if (lightboxIndex >= lightboxImages.length) lightboxIndex = 0;
+    
+    const modalImg = document.getElementById('modalImg');
+    if (modalImg) modalImg.src = lightboxImages[lightboxIndex];
+    updateLightboxCaption();
+}
+
+function closeImageModal() {
+    const modal = document.getElementById('imageModal');
+    if (modal) modal.style.display = 'none';
+}
+
+// Global exposure
+window.openLightbox = openLightbox;
+window.changeLightboxIndex = changeLightboxIndex;
+window.closeImageModal = closeImageModal;
+window.removeExistingImage = removeExistingImage;
+
+window.openImageModal = function(url, caption) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    const captionText = document.getElementById('modalCaption');
+    
+    if (!modal || !modalImg) return;
+    
+    modal.style.display = 'flex';
+    modalImg.src = url;
+    if (captionText) captionText.innerHTML = caption;
+    
+    lightboxImages = [url];
+    lightboxIndex = 0;
+};
