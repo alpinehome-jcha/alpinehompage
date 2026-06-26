@@ -2833,17 +2833,18 @@ const initialProductData = [
         "image": "assets/images/BM-2A.jpg",
         "detailBlocks": [
             {
-                "id": 1771042189893.2913,
+                "id": "1771042189893.2913",
                 "type": "text",
                 "value": "20년~23년 : 9채널(Harman) : 630 / 540 / X7\n\n24년 이후 : 9채널(Bower & Wilkins) : 630 / 540 / X7\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다"
             },
             {
-                "id": 1771305200247.2854,
+                "id": "1771305200247.2854",
                 "type": "image",
-                "value": "assets/images/BM-2A-C.jpg"
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BM-2A-C-01.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "manualUrl": ""
     },
     {
         "id": 1770367024718,
@@ -4433,7 +4434,7 @@ const initialProductData = [
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1781480212535;
+const PRODUCT_DATA_VERSION = 1782462486949;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
