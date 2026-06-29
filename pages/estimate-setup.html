@@ -549,10 +549,11 @@
                 flat['player'] = Array.isArray(d.player) ? d.player.join(', ') : (d.player || '');
                 flat['extraLabor'] = d.extraLabor || 0;
 
-                // W~AX 채널 정보 추가
+                // W~AX 채널 정보 추가 (사용자 정의 순서 적용)
                 const channels = [
-                    '1', '2', '3', '4', '5', '6', '7', '8', '8A', '9', '10', '11', '11A', '12', '12A',
-                    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'
+                    '1', '2', '3', '4', '5', '6', '7', '8', '12A',
+                    'A', 'B', 'C', 'D', 'E', 'F', 'G', '8A', '11A',
+                    '9', '10', 'H', 'I', 'J', 'K', 'L', 'R W', '11', '12'
                 ];
                 channels.forEach(ch => {
                     flat[ch] = d[ch] || '';
@@ -590,8 +591,9 @@
                     // Restore array fields
                     const arrayFields = ['dsp', 'pnp', 'front_door', 'tweeter', 'front_baffle', 'add_front', 'rear_door', 'rear_baffle', 'center', 'surround', 'subwoofer', 'amp_4ch', 'amp_sub', 'player'];
                     const channels = [
-                        '1', '2', '3', '4', '5', '6', '7', '8', '8A', '9', '10', '11', '11A', '12', '12A',
-                        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'
+                        '1', '2', '3', '4', '5', '6', '7', '8', '12A',
+                        'A', 'B', 'C', 'D', 'E', 'F', 'G', '8A', '11A',
+                        '9', '10', 'H', 'I', 'J', 'K', 'L', 'R W', '11', '12'
                     ];
 
                     const processed = json.map(row => {
