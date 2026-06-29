@@ -1733,8 +1733,11 @@ const EstimateUI = {
 
             // 2. Circular badge overlay (DSP Channel number / bypass, 1.5x scale)
             if (dspVal) {
+                const isBypass = dspVal.toLowerCase() === 'bypass';
+                const leftPos = isBypass ? '10.15%' : '9.40%';
+                const transformVal = isBypass ? 'translate(-100%, -50%)' : 'translate(-50%, -50%)';
                 overlayHtml += `
-                    <div style="position: absolute; left: 9.40%; top: ${y + 1.15}%; min-width: 26px; height: 26px; box-sizing: border-box; transform: translate(-50%, -50%); background: #ffffff; border: 1.5px solid #007aff; color: #007aff; border-radius: 13px; font-size: 0.90rem; font-weight: bold; display: flex; align-items: center; justify-content: center; padding: 0 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.15); z-index: 10;" title="${dspVal}">
+                    <div style="position: absolute; left: ${leftPos}; top: ${y + 1.15}%; min-width: 26px; height: 26px; box-sizing: border-box; transform: ${transformVal}; background: #ffffff; border: 1.5px solid #007aff; color: #007aff; border-radius: 13px; font-size: 0.90rem; font-weight: bold; display: flex; align-items: center; justify-content: center; padding: 0 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.15); z-index: 10;" title="${dspVal}">
                         ${dspVal}
                     </div>
                 `;
@@ -1758,8 +1761,11 @@ const EstimateUI = {
 
             // 2. Circular badge overlay (DSP Channel number / bypass, 1.5x scale)
             if (dspVal) {
+                const isBypass = dspVal.toLowerCase() === 'bypass';
+                const leftPos = isBypass ? '80.21%' : '79.46%';
+                const transformVal = isBypass ? 'translate(-100%, -50%)' : 'translate(-50%, -50%)';
                 overlayHtml += `
-                    <div style="position: absolute; left: 79.46%; top: ${y + 1.15}%; min-width: 26px; height: 26px; box-sizing: border-box; transform: translate(-50%, -50%); background: #ffffff; border: 1.5px solid #007aff; color: #007aff; border-radius: 13px; font-size: 0.90rem; font-weight: bold; display: flex; align-items: center; justify-content: center; padding: 0 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.15); z-index: 10;" title="${dspVal}">
+                    <div style="position: absolute; left: ${leftPos}; top: ${y + 1.15}%; min-width: 26px; height: 26px; box-sizing: border-box; transform: ${transformVal}; background: #ffffff; border: 1.5px solid #007aff; color: #007aff; border-radius: 13px; font-size: 0.90rem; font-weight: bold; display: flex; align-items: center; justify-content: center; padding: 0 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.15); z-index: 10;" title="${dspVal}">
                         ${dspVal}
                     </div>
                 `;
