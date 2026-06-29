@@ -1639,22 +1639,22 @@ const EstimateUI = {
         }
 
         // 4. 좌/우 14개 대칭 행 배치 정의 및 채널별 정밀 Y좌표 테이블 매핑 (단위: %)
-        // 4. 좌/우 14개 대칭 행 배치 정의 및 채널별 정밀 Y좌표 테이블 매핑 (1786*2576px 기준: 1번 150px 이동 14.18%, 간격 91px 3.53% 대입)
+        // 4. 좌/우 14개 대칭 행 배치 정의 및 채널별 정밀 Y좌표 테이블 매핑 (1786*2576px 기준: 이전 27.81% 대비 150px 상향인 21.99% 기점, 간격 91px인 3.53% 누적적용)
         const channelYPercents = {
-            '1': 14.18, '2': 14.18,
-            '3': 17.70, '4': 17.70,
-            '5': 21.23, '6': 21.23,
-            '7': 24.77, '8': 24.77,
-            '11A': 28.30, '12A': 28.30,
-            'A': 31.83, 'B': 31.83,
-            'C': 35.37, 'D': 35.37,
-            'E': 38.90, 'F': 38.90,
-            '7A': 53.03, '8A': 53.03,
-            '9': 56.56, '10': 56.56,
-            'G': 60.09, 'H': 60.09,
-            'I': 63.63, 'J': 63.63,
-            'K': 67.16, 'L': 67.16,
-            '11': 70.69, '12': 70.69
+            '1': 21.99, '2': 21.99,
+            '3': 25.52, '4': 25.52,
+            '5': 29.05, '6': 29.05,
+            '7': 32.58, '8': 32.58,
+            '11A': 36.11, '12A': 36.11,
+            'A': 39.64, 'B': 39.64,
+            'C': 43.17, 'D': 43.17,
+            'E': 46.70, 'F': 46.70,
+            '7A': 53.35, '8A': 53.35,
+            '9': 56.88, '10': 56.88,
+            'G': 60.41, 'H': 60.41,
+            'I': 63.94, 'J': 63.94,
+            'K': 67.47, 'L': 67.47,
+            '11': 71.00, '12': 71.00
         };
 
         const leftChannels = ['1', '3', '5', '7', '11A', 'A', 'C', 'E', '7A', '9', 'G', 'I', 'K', '11'];
@@ -1684,12 +1684,12 @@ const EstimateUI = {
             `;
         });
 
-        // 하단 DSP / PnP Cable 오버레이 생성 (69px 위로 이동 교정 적용)
+        // 하단 DSP / PnP Cable 오버레이 생성 (69px 위로 이동 및 수직 중앙 맞춤 튜닝 적용)
         overlayHtml += `
-            <div style="position: absolute; left: 36.20%; top: 87.32%; width: 26.93%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${pnpProd}">
+            <div style="position: absolute; left: 36.20%; top: 86.50%; width: 26.93%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${pnpProd}">
                 ${pnpProd}
             </div>
-            <div style="position: absolute; left: 36.20%; top: 91.02%; width: 26.93%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${dspProd}">
+            <div style="position: absolute; left: 36.20%; top: 90.20%; width: 26.93%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${dspProd}">
                 ${dspProd}
             </div>
         `;
