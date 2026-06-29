@@ -664,8 +664,7 @@ const EstimateUI = {
         }
 
         // Clear player selection if PXE-M60-4 is selected (hiding the step)
-        const selectedDsp = this.selections['dsp'];
-        if (selectedDsp === "PXE-M60-4") {
+        if (this.selections['dsp'] === "PXE-M60-4") {
             delete this.selections['player'];
         }
 
