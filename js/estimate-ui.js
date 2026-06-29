@@ -1114,23 +1114,24 @@ const EstimateUI = {
             }
         });
 
-        // 2. DSP & 스피커 동시 작업 시, 할인 적용 
-        if ((hasDSP || catLabor['DSP'] > 0) && speakerCount > 0 && dspDiscountRatio > 0) {
-            const applicableLabor = catLabor['DSP'] + catLabor['Speaker'];
+        // 2. DSP & (Speaker or Subwoofer) co-installation discount application
+        const hasSubwoofer = catLabor['Subwoofer'] > 0;
+        if ((hasDSP || catLabor['DSP'] > 0) && (speakerCount > 0 || hasSubwoofer) && dspDiscountRatio > 0) {
+            const applicableLabor = catLabor['DSP'] + catLabor['Speaker'] + catLabor['Subwoofer'];
             const discountAmount = applicableLabor * (dspDiscountRatio / 100);
             labor -= discountAmount;
             
-            // 할인액을 각 카테고리 비용에서 비율로 차감 반영 (표기를 위해)
+            // Adjust and reflect discount in each category amount for summary display
             catLabor['DSP'] = catLabor['DSP'] - (catLabor['DSP'] * (dspDiscountRatio / 100));
             catLabor['Speaker'] = catLabor['Speaker'] - (catLabor['Speaker'] * (dspDiscountRatio / 100));
+            catLabor['Subwoofer'] = catLabor['Subwoofer'] - (catLabor['Subwoofer'] * (dspDiscountRatio / 100));
         }
 
-        // 3. Subwoofer, ETC, Player는 DSP나 Speaker 존재 시 기술료 제외
-        const minorItemLabor = catLabor['Subwoofer'] + catLabor['Player'] + catLabor['ETC'];
+        // 3. ETC & Player are excluded from labor fees when DSP or Speaker exists (Subwoofer removed from exclusion list)
+        const minorItemLabor = catLabor['Player'] + catLabor['ETC'];
         const hasAnyDspOrSpeaker = (hasDSP || catLabor['DSP'] > 0 || speakerCount > 0);
         if (hasAnyDspOrSpeaker && minorItemLabor > 0) {
             labor -= minorItemLabor;
-            catLabor['Subwoofer'] = 0;
             catLabor['Player'] = 0;
             catLabor['ETC'] = 0;
         }
