@@ -1114,20 +1114,18 @@ const EstimateUI = {
             }
         });
 
-        // 2. DSP & (Speaker or Subwoofer) co-installation discount application
-        const hasSubwoofer = catLabor['Subwoofer'] > 0;
-        if ((hasDSP || catLabor['DSP'] > 0) && (speakerCount > 0 || hasSubwoofer) && dspDiscountRatio > 0) {
-            const applicableLabor = catLabor['DSP'] + catLabor['Speaker'] + catLabor['Subwoofer'];
+        // 2. DSP & Speaker co-installation discount application (Subwoofer is strictly excluded from discount)
+        if ((hasDSP || catLabor['DSP'] > 0) && speakerCount > 0 && dspDiscountRatio > 0) {
+            const applicableLabor = catLabor['DSP'] + catLabor['Speaker'];
             const discountAmount = applicableLabor * (dspDiscountRatio / 100);
             labor -= discountAmount;
             
             // Adjust and reflect discount in each category amount for summary display
             catLabor['DSP'] = catLabor['DSP'] - (catLabor['DSP'] * (dspDiscountRatio / 100));
             catLabor['Speaker'] = catLabor['Speaker'] - (catLabor['Speaker'] * (dspDiscountRatio / 100));
-            catLabor['Subwoofer'] = catLabor['Subwoofer'] - (catLabor['Subwoofer'] * (dspDiscountRatio / 100));
         }
 
-        // 3. ETC & Player are excluded from labor fees when DSP or Speaker exists (Subwoofer removed from exclusion list)
+        // 3. ETC & Player are excluded from labor fees when DSP or Speaker exists (Subwoofer has no discount or exclusion)
         const minorItemLabor = catLabor['Player'] + catLabor['ETC'];
         const hasAnyDspOrSpeaker = (hasDSP || catLabor['DSP'] > 0 || speakerCount > 0);
         if (hasAnyDspOrSpeaker && minorItemLabor > 0) {
@@ -1182,6 +1180,13 @@ const EstimateUI = {
 
     openModal() {
         document.getElementById('estimateModal').style.display = 'block';
+        
+        // Control visibility of "System Diagram" button based on user login status
+        const systemBtn = document.querySelector('#estimateModal button[onclick="EstimateUI.showSystemDiagram()"]');
+        if (systemBtn) {
+            const isLogged = typeof auth !== 'undefined' && typeof auth.isLoggedIn === 'function' && auth.isLoggedIn();
+            systemBtn.style.display = isLogged ? 'inline-block' : 'none';
+        }
     },
 
     closeModal() {
@@ -1575,6 +1580,13 @@ const EstimateUI = {
     },
 
     showSystemDiagram() {
+        // Double-check login status to prevent console bypass
+        const isLogged = typeof auth !== 'undefined' && typeof auth.isLoggedIn === 'function' && auth.isLoggedIn();
+        if (!isLogged) {
+            alert('대리점 전용 기능입니다. 로그인이 필요합니다.');
+            return;
+        }
+
         if (!this.selectedCar) {
             alert('먼저 차량을 선택해 주세요.');
             return;
