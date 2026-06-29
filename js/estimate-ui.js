@@ -1718,24 +1718,52 @@ const EstimateUI = {
 
         // Generate left overlays
         leftChannels.forEach(ch => {
-            const val = mappedProducts[ch] || "";
+            const speakerName = car[ch] ? String(car[ch]).trim() : "";
+            const dspVal = mappedProducts[ch] || "";
             const y = channelYPercents[ch] || 0;
-            overlayHtml += `
-                <div style="position: absolute; left: 10.75%; top: ${y}%; width: 15.27%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${val}">
-                    ${val}
-                </div>
-            `;
+
+            // 1. Rectangular overlay (original speaker name)
+            if (speakerName) {
+                overlayHtml += `
+                    <div style="position: absolute; left: 10.75%; top: ${y}%; width: 15.27%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${speakerName}">
+                        ${speakerName}
+                    </div>
+                `;
+            }
+
+            // 2. Circular badge overlay (DSP Channel number / bypass)
+            if (dspVal) {
+                overlayHtml += `
+                    <div style="position: absolute; left: 9.40%; top: ${y + 1.15}%; min-width: 18px; height: 18px; box-sizing: border-box; transform: translate(-50%, -50%); background: #ffffff; border: 1.5px solid #007aff; color: #007aff; border-radius: 9px; font-size: 0.60rem; font-weight: bold; display: flex; align-items: center; justify-content: center; padding: 0 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.15); z-index: 10;" title="${dspVal}">
+                        ${dspVal}
+                    </div>
+                `;
+            }
         });
 
         // Generate right overlays
         rightChannels.forEach(ch => {
-            const val = mappedProducts[ch] || "";
+            const speakerName = car[ch] ? String(car[ch]).trim() : "";
+            const dspVal = mappedProducts[ch] || "";
             const y = channelYPercents[ch] || 0;
-            overlayHtml += `
-                <div style="position: absolute; left: 80.81%; top: ${y}%; width: 15.27%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${val}">
-                    ${val}
-                </div>
-            `;
+
+            // 1. Rectangular overlay (original speaker name)
+            if (speakerName) {
+                overlayHtml += `
+                    <div style="position: absolute; left: 80.81%; top: ${y}%; width: 15.27%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${speakerName}">
+                        ${speakerName}
+                    </div>
+                `;
+            }
+
+            // 2. Circular badge overlay (DSP Channel number / bypass)
+            if (dspVal) {
+                overlayHtml += `
+                    <div style="position: absolute; left: 79.46%; top: ${y + 1.15}%; min-width: 18px; height: 18px; box-sizing: border-box; transform: translate(-50%, -50%); background: #ffffff; border: 1.5px solid #007aff; color: #007aff; border-radius: 9px; font-size: 0.60rem; font-weight: bold; display: flex; align-items: center; justify-content: center; padding: 0 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.15); z-index: 10;" title="${dspVal}">
+                        ${dspVal}
+                    </div>
+                `;
+            }
         });
 
         // Generate bottom overlays (69px shift up)
