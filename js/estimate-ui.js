@@ -1684,13 +1684,13 @@ const EstimateUI = {
             }
         });
 
-        // 3. 경로 동적 보정 (file:// 및 배포 환경 호환)
-        let imagePath = 'carsystem/Alpine Car3.png';
+        // 3. Dynamic path correction (compatible with file:// and server environments)
+        let imagePath = 'carsystem/Alpine Car3_clean.png';
         const pathname = window.location.pathname;
         if (pathname.includes('/pages/products/')) {
-            imagePath = '../../carsystem/Alpine Car3.png';
+            imagePath = '../../carsystem/Alpine Car3_clean.png';
         } else if (pathname.includes('/pages/') || pathname.includes('/support/')) {
-            imagePath = '../carsystem/Alpine Car3.png';
+            imagePath = '../carsystem/Alpine Car3_clean.png';
         }
 
         // 4. Coordinates mapping table
