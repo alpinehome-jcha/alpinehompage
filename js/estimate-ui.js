@@ -1603,7 +1603,7 @@ const EstimateUI = {
         const ampSubProd = getSelectedName('amp_sub');
         const playerProd = getSelectedName('player');
 
-        // 2. 엑셀 채널 정보 매핑 알고리즘
+        // 2. 엑셀 채널 정보 매핑 (원본 텍스트 그대로 연동)
         const channels = [
             '1', '2', '3', '4', '5', '6', '7', '8', '8A', '9', '10', '11', '11A', '12', '12A',
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'
@@ -1611,40 +1611,7 @@ const EstimateUI = {
         const mappedProducts = {};
 
         channels.forEach(ch => {
-            const role = car[ch];
-            if (!role) {
-                mappedProducts[ch] = "";
-                return;
-            }
-
-            const cleanRole = role.toUpperCase().trim();
-            let matchedName = "";
-
-            if (cleanRole === "FR" || cleanRole === "FL" || cleanRole === "FL TW" || cleanRole === "FR TW") {
-                if ((cleanRole.includes("TW") || ch === '1' || ch === '2') && tweeterProd) {
-                    matchedName = tweeterProd;
-                } else {
-                    matchedName = frontProd;
-                }
-            } else if (cleanRole === "RL" || cleanRole === "RR") {
-                matchedName = rearProd;
-            } else if (cleanRole.includes("CENTER")) {
-                matchedName = centerProd;
-            } else if (cleanRole.startsWith("SW") || cleanRole === "SUBWOOFER") {
-                matchedName = subProd;
-            } else if (cleanRole.includes("SURROUND")) {
-                matchedName = surroundProd;
-            } else if (cleanRole.includes("MID")) {
-                matchedName = addFrontProd ? addFrontProd : frontProd;
-            } else if (cleanRole.includes("AMP")) {
-                matchedName = amp4chProd ? amp4chProd : ampSubProd;
-            } else if (cleanRole.includes("DSP")) {
-                matchedName = dspProd;
-            } else if (cleanRole.includes("PLAYER")) {
-                matchedName = playerProd;
-            }
-
-            mappedProducts[ch] = matchedName;
+            mappedProducts[ch] = car[ch] || "";
         });
 
         // 3. 경로 동적 보정 (file:// 및 배포 환경 호환)
