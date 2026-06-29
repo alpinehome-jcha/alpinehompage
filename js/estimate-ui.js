@@ -1722,19 +1722,19 @@ const EstimateUI = {
             const dspVal = mappedProducts[ch] || "";
             const y = channelYPercents[ch] || 0;
 
-            // 1. Rectangular overlay (original speaker name)
+            // 1. Rectangular overlay (original speaker name, 1.5x font size, left-aligned)
             if (speakerName) {
                 overlayHtml += `
-                    <div style="position: absolute; left: 10.75%; top: ${y}%; width: 15.27%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${speakerName}">
+                    <div style="position: absolute; left: 10.75%; top: ${y}%; width: 15.27%; height: 2.3%; display: flex; align-items: center; justify-content: flex-start; font-size: 0.98rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: left; padding: 0 4px 0 8px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${speakerName}">
                         ${speakerName}
                     </div>
                 `;
             }
 
-            // 2. Circular badge overlay (DSP Channel number / bypass)
+            // 2. Circular badge overlay (DSP Channel number / bypass, 1.5x scale)
             if (dspVal) {
                 overlayHtml += `
-                    <div style="position: absolute; left: 9.40%; top: ${y + 1.15}%; min-width: 18px; height: 18px; box-sizing: border-box; transform: translate(-50%, -50%); background: #ffffff; border: 1.5px solid #007aff; color: #007aff; border-radius: 9px; font-size: 0.60rem; font-weight: bold; display: flex; align-items: center; justify-content: center; padding: 0 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.15); z-index: 10;" title="${dspVal}">
+                    <div style="position: absolute; left: 9.40%; top: ${y + 1.15}%; min-width: 26px; height: 26px; box-sizing: border-box; transform: translate(-50%, -50%); background: #ffffff; border: 1.5px solid #007aff; color: #007aff; border-radius: 13px; font-size: 0.90rem; font-weight: bold; display: flex; align-items: center; justify-content: center; padding: 0 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.15); z-index: 10;" title="${dspVal}">
                         ${dspVal}
                     </div>
                 `;
@@ -1747,31 +1747,31 @@ const EstimateUI = {
             const dspVal = mappedProducts[ch] || "";
             const y = channelYPercents[ch] || 0;
 
-            // 1. Rectangular overlay (original speaker name)
+            // 1. Rectangular overlay (original speaker name, 1.5x font size, left-aligned)
             if (speakerName) {
                 overlayHtml += `
-                    <div style="position: absolute; left: 80.81%; top: ${y}%; width: 15.27%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${speakerName}">
+                    <div style="position: absolute; left: 80.81%; top: ${y}%; width: 15.27%; height: 2.3%; display: flex; align-items: center; justify-content: flex-start; font-size: 0.98rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: left; padding: 0 4px 0 8px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${speakerName}">
                         ${speakerName}
                     </div>
                 `;
             }
 
-            // 2. Circular badge overlay (DSP Channel number / bypass)
+            // 2. Circular badge overlay (DSP Channel number / bypass, 1.5x scale)
             if (dspVal) {
                 overlayHtml += `
-                    <div style="position: absolute; left: 79.46%; top: ${y + 1.15}%; min-width: 18px; height: 18px; box-sizing: border-box; transform: translate(-50%, -50%); background: #ffffff; border: 1.5px solid #007aff; color: #007aff; border-radius: 9px; font-size: 0.60rem; font-weight: bold; display: flex; align-items: center; justify-content: center; padding: 0 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.15); z-index: 10;" title="${dspVal}">
+                    <div style="position: absolute; left: 79.46%; top: ${y + 1.15}%; min-width: 26px; height: 26px; box-sizing: border-box; transform: translate(-50%, -50%); background: #ffffff; border: 1.5px solid #007aff; color: #007aff; border-radius: 13px; font-size: 0.90rem; font-weight: bold; display: flex; align-items: center; justify-content: center; padding: 0 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.15); z-index: 10;" title="${dspVal}">
                         ${dspVal}
                     </div>
                 `;
             }
         });
 
-        // Generate bottom overlays (69px shift up)
+        // Generate bottom overlays (69px shift up, 1.5x font size)
         overlayHtml += `
-            <div style="position: absolute; left: 36.20%; top: 87.32%; width: 26.93%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${pnpProd}">
+            <div style="position: absolute; left: 36.20%; top: 87.32%; width: 26.93%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.98rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${pnpProd}">
                 ${pnpProd}
             </div>
-            <div style="position: absolute; left: 36.20%; top: 91.02%; width: 26.93%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${dspProd}">
+            <div style="position: absolute; left: 36.20%; top: 91.02%; width: 26.93%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.98rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${dspProd}">
                 ${dspProd}
             </div>
         `;
