@@ -61,6 +61,20 @@ const EstimateUI = {
 
         try {
             await Promise.all(scripts.map(loadScript));
+
+            // 로컬 스토리지 캐시 최우선 적용 (엑셀 즉각 반영 보장)
+            if (typeof localStorage !== 'undefined') {
+                const storedEst = localStorage.getItem('estimateData');
+                if (storedEst) {
+                    try {
+                        window.estimateData = JSON.parse(storedEst);
+                        console.log("Cached estimateData from LocalStorage synced successfully.");
+                    } catch (e) {
+                        console.error("Failed to parse local cached estimateData:", e);
+                    }
+                }
+            }
+
             if (typeof fetchPriceList === 'function') {
                 this.priceData = await fetchPriceList();
             } else {
@@ -1656,10 +1670,10 @@ const EstimateUI = {
 
         // 하단 DSP / PnP Cable 오버레이 생성
         overlayHtml += `
-            <div style="position: absolute; left: 57.8%; top: 90.0%; width: 12.2%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${pnpProd}">
+            <div style="position: absolute; left: 36.20%; top: 90.0%; width: 26.93%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${pnpProd}">
                 ${pnpProd}
             </div>
-            <div style="position: absolute; left: 57.8%; top: 93.7%; width: 12.2%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${dspProd}">
+            <div style="position: absolute; left: 36.20%; top: 93.7%; width: 26.93%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${dspProd}">
                 ${dspProd}
             </div>
         `;
