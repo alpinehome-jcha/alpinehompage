@@ -1561,11 +1561,14 @@ const EstimateUI = {
 
         systemModal.style.display = 'block';
 
-        // 적용 DSP 추출
+        const car = this.selectedCar;
+        const date = new Date().toLocaleDateString();
+
+        // 적용 DSP 추출 (상단 헤더 표시용)
         const dspVal = this.selections['dsp'];
         const dspName = dspVal && dspVal !== "DSP 선택 안함" && dspVal !== "선택 안함" ? dspVal : '선택 안함';
 
-        // PnP Cable 추출
+        // PnP Cable 추출 (상단 헤더 표시용)
         let pnpName = '선택 안함';
         if (this.selections['pnp']) {
             const pnpList = Array.isArray(this.selections['pnp']) ? this.selections['pnp'] : [this.selections['pnp']];
@@ -1575,9 +1578,76 @@ const EstimateUI = {
             }
         }
 
-        const date = new Date().toLocaleDateString();
+        // 1. 카테고리별 실시간 선택 제품명 가져오기
+        const selections = this.selections;
+        const getSelectedName = (cat) => {
+            const val = selections[cat];
+            if (!val || val === "선택 안함" || val === "DSP 선택 안함") return "";
+            if (Array.isArray(val)) {
+                const filtered = val.filter(v => v !== "선택 안함");
+                return filtered.length > 0 ? filtered.join(', ') : "";
+            }
+            return val;
+        };
 
-        // 경로 동적 보정 (file:// 및 배포 환경 호환)
+        const dspProd = getSelectedName('dsp');
+        const pnpProd = getSelectedName('pnp');
+        const frontProd = getSelectedName('front_door');
+        const tweeterProd = getSelectedName('tweeter');
+        const addFrontProd = getSelectedName('add_front');
+        const rearProd = getSelectedName('rear_door');
+        const centerProd = getSelectedName('center');
+        const surroundProd = getSelectedName('surround');
+        const subProd = getSelectedName('subwoofer');
+        const amp4chProd = getSelectedName('amp_4ch');
+        const ampSubProd = getSelectedName('amp_sub');
+        const playerProd = getSelectedName('player');
+
+        // 2. 엑셀 채널 정보 매핑 알고리즘
+        const channels = [
+            '1', '2', '3', '4', '5', '6', '7', '8', '8A', '9', '10', '11', '11A', '12', '12A',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'
+        ];
+        const mappedProducts = {};
+
+        channels.forEach(ch => {
+            const role = car[ch];
+            if (!role) {
+                mappedProducts[ch] = "";
+                return;
+            }
+
+            const cleanRole = role.toUpperCase().trim();
+            let matchedName = "";
+
+            if (cleanRole === "FR" || cleanRole === "FL" || cleanRole === "FL TW" || cleanRole === "FR TW") {
+                if ((cleanRole.includes("TW") || ch === '1' || ch === '2') && tweeterProd) {
+                    matchedName = tweeterProd;
+                } else {
+                    matchedName = frontProd;
+                }
+            } else if (cleanRole === "RL" || cleanRole === "RR") {
+                matchedName = rearProd;
+            } else if (cleanRole.includes("CENTER")) {
+                matchedName = centerProd;
+            } else if (cleanRole.startsWith("SW") || cleanRole === "SUBWOOFER") {
+                matchedName = subProd;
+            } else if (cleanRole.includes("SURROUND")) {
+                matchedName = surroundProd;
+            } else if (cleanRole.includes("MID")) {
+                matchedName = addFrontProd ? addFrontProd : frontProd;
+            } else if (cleanRole.includes("AMP")) {
+                matchedName = amp4chProd ? amp4chProd : ampSubProd;
+            } else if (cleanRole.includes("DSP")) {
+                matchedName = dspProd;
+            } else if (cleanRole.includes("PLAYER")) {
+                matchedName = playerProd;
+            }
+
+            mappedProducts[ch] = matchedName;
+        });
+
+        // 3. 경로 동적 보정 (file:// 및 배포 환경 호환)
         let imagePath = 'carsystem/Alpine Car3.png';
         const pathname = window.location.pathname;
         if (pathname.includes('/pages/products/')) {
@@ -1585,6 +1655,47 @@ const EstimateUI = {
         } else if (pathname.includes('/pages/') || pathname.includes('/support/')) {
             imagePath = '../carsystem/Alpine Car3.png';
         }
+
+        // 4. 좌/우 14개 대칭 행 배치 정의
+        const leftChannels = ['1', '3', '5', '7', '11A', 'A', 'C', 'E', '7A', '9', 'G', 'I', 'K', '11'];
+        const rightChannels = ['2', '4', '6', '8', '12A', 'B', 'D', 'F', '8A', '10', 'H', 'J', 'L', '12'];
+        const rowYPercents = [
+            27.81, 31.11, 35.42, 39.81, 44.07, 48.00, 51.90, 55.80, 59.70, 63.60, 67.50, 71.40, 75.30, 79.20
+        ];
+
+        let overlayHtml = '';
+
+        // 좌측 오버레이 생성
+        leftChannels.forEach((ch, idx) => {
+            const val = mappedProducts[ch] || "";
+            const y = rowYPercents[idx];
+            overlayHtml += `
+                <div style="position: absolute; left: 10.75%; top: ${y}%; width: 15.27%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${val}">
+                    ${val}
+                </div>
+            `;
+        });
+
+        // 우측 오버레이 생성
+        rightChannels.forEach((ch, idx) => {
+            const val = mappedProducts[ch] || "";
+            const y = rowYPercents[idx];
+            overlayHtml += `
+                <div style="position: absolute; left: 80.81%; top: ${y}%; width: 15.27%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${val}">
+                    ${val}
+                </div>
+            `;
+        });
+
+        // 하단 DSP / PnP Cable 오버레이 생성
+        overlayHtml += `
+            <div style="position: absolute; left: 57.8%; top: 90.0%; width: 12.2%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${pnpProd}">
+                ${pnpProd}
+            </div>
+            <div style="position: absolute; left: 57.8%; top: 93.7%; width: 12.2%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${dspProd}">
+                ${dspProd}
+            </div>
+        `;
 
         systemArea.innerHTML = `
             <div style="display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 0.95rem; border-bottom: 2px solid #333; padding-bottom: 15px;">
@@ -1596,8 +1707,9 @@ const EstimateUI = {
                     <p style="margin: 5px 0;"><strong>작성일자:</strong> ${date}</p>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 15px;">
-                <img src="${imagePath}" style="max-width: 100%; height: auto; border: 1px solid #ddd;" alt="Alpine 사운드 시스템도">
+            <div class="system-diagram-container" style="position: relative; width: 100%; max-width: 800px; margin: 0 auto;">
+                <img src="${imagePath}" style="width: 100%; height: auto; display: block;" alt="Alpine 사운드 시스템도">
+                ${overlayHtml}
             </div>
         `;
     },

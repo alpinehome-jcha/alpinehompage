@@ -549,6 +549,15 @@
                 flat['player'] = Array.isArray(d.player) ? d.player.join(', ') : (d.player || '');
                 flat['extraLabor'] = d.extraLabor || 0;
 
+                // W~AX 채널 정보 추가
+                const channels = [
+                    '1', '2', '3', '4', '5', '6', '7', '8', '8A', '9', '10', '11', '11A', '12', '12A',
+                    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'
+                ];
+                channels.forEach(ch => {
+                    flat[ch] = d[ch] || '';
+                });
+
                 return flat;
             });
 
@@ -580,6 +589,10 @@
 
                     // Restore array fields
                     const arrayFields = ['dsp', 'pnp', 'front_door', 'tweeter', 'front_baffle', 'add_front', 'rear_door', 'rear_baffle', 'center', 'surround', 'subwoofer', 'amp_4ch', 'amp_sub', 'player'];
+                    const channels = [
+                        '1', '2', '3', '4', '5', '6', '7', '8', '8A', '9', '10', '11', '11A', '12', '12A',
+                        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'
+                    ];
 
                     const processed = json.map(row => {
                         const newRow = { ...row };
@@ -617,6 +630,16 @@
                             }
                         });
                         if (newRow.extraLabor) newRow.extraLabor = parseInt(newRow.extraLabor) || 0;
+
+                        // 채널 정보 안전하게 복원
+                        channels.forEach(ch => {
+                            if (newRow[ch] !== undefined && newRow[ch] !== null) {
+                                newRow[ch] = String(newRow[ch]).trim();
+                            } else {
+                                newRow[ch] = "";
+                            }
+                        });
+
                         return newRow;
                     });
 
