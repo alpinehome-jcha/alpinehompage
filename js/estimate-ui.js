@@ -638,12 +638,35 @@ const EstimateUI = {
         return ranks[name] || name;
     },
 
+    getDspConnectionMessage() {
+        const dsp = this.selections['dsp'];
+        if (!dsp || dsp === "DSP 선택 안함") return "";
+
+        const trimmed = dsp.trim();
+        if (trimmed === "PXE-R80-8") {
+            return "DSP와 RCA연결가능";
+        }
+        if (["PXE-R100-8", "PXE-X120-8", "PXE-X120-10D", "PXE-X120-10DP", "PXE-X121-12EV", "HDP-D90"].some(name => trimmed.startsWith(name) || name.startsWith(trimmed))) {
+            return "DSP와 RCA/Optical/Coaxial연결가능";
+        }
+        if (trimmed === "PXE-C80-88") {
+            return "DSP와 RCA/Coaxial연결가능";
+        }
+        return "";
+    },
+
     updateSelectionArea() {
         const main = document.getElementById('estSelectionArea');
         if (!this.selectedCar) {
             main.innerHTML = '<p class="guide-text">차량을 먼저 선택해 주세요.</p>';
             this.calculateTotal();
             return;
+        }
+
+        // Clear player selection if PXE-M60-4 is selected (hiding the step)
+        const selectedDsp = this.selections['dsp'];
+        if (selectedDsp === "PXE-M60-4") {
+            delete this.selections['player'];
         }
 
         const categories = [
@@ -697,6 +720,9 @@ const EstimateUI = {
                 const selectedSub = this.selections['subwoofer'];
                 if (!selectedSub || selectedSub === "PWE-M770" || selectedSub === "선택 안함") logicVisible = false;
             }
+            if (cat.id === 'player') {
+                if (selectedDsp === "PXE-M60-4") logicVisible = false;
+            }
             // 그 외 카테고리는 데이터 유무(list.length)로 기본 판단함
 
             // 2. 동적 흐름 제어 (Step-by-Step)
@@ -713,8 +739,15 @@ const EstimateUI = {
                     html += this.renderPnPSection(cat.label, list, selectedDsp);
                     // PnP는 자동 선택되므로 항상 완료로 간주
                 } else {
+                    let headerLabel = cat.label;
+                    if (cat.id === 'player') {
+                        const connMsg = this.getDspConnectionMessage();
+                        if (connMsg) {
+                            headerLabel += ` <span style="font-size: 0.8rem; font-weight: bold; color: #ff9f43; margin-left: 10px; border-left: 2px solid #ddd; padding-left: 10px;">${connMsg}</span>`;
+                        }
+                    }
                     html += `<div class="category-block" data-step="${cat.id}">
-                        <h4 style="margin: 20px 0 10px 0;">${cat.label}</h4>
+                        <h4 style="margin: 20px 0 10px 0; display: flex; align-items: center; flex-wrap: wrap;">${headerLabel}</h4>
                         <div class="product-grid-mini">
                             ${list.map(pName => {
                         const price = (pName === "선택 안함" || pName === "DSP 선택 안함") ? 0 : this.getProductPrice(pName);
@@ -1440,9 +1473,17 @@ const EstimateUI = {
                             }
                         }
 
+                        let cellContent = pName;
+                        if (catId === 'player') {
+                            const connMsg = this.getDspConnectionMessage();
+                            if (connMsg) {
+                                cellContent += `<br><span style="font-size: 0.72rem; color: #ff9f43; font-weight: bold; margin-top: 4px; display: inline-block;">(※ ${connMsg})</span>`;
+                            }
+                        }
+
                         productHtml += `
                             <tr>
-                                <td style="border: 1px solid #ddd; padding: 12px; padding-left: 20px;">${pName}</td>
+                                <td style="border: 1px solid #ddd; padding: 12px; padding-left: 20px; line-height: 1.4;">${cellContent}</td>
                                 <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">1</td>
                                 <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${price.toLocaleString()}</td>
                                 <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">₩${price.toLocaleString()}</td>
@@ -1453,7 +1494,7 @@ const EstimateUI = {
             }
         });
 
-        // 2. 동시작업 할인
+        // 2. DSP & Speaker co-installation discount application (Subwoofer is strictly excluded from discount)
         if ((hasDSP || catLabor['DSP'] > 0) && speakerCount > 0 && dspDiscountRatio > 0) {
             const applicableLabor = catLabor['DSP'] + catLabor['Speaker'];
             const discountAmount = applicableLabor * (dspDiscountRatio / 100);
@@ -1462,12 +1503,13 @@ const EstimateUI = {
             catLabor['Speaker'] = catLabor['Speaker'] - (catLabor['Speaker'] * (dspDiscountRatio / 100));
         }
 
-        // 3. 서브우퍼/기타 기술료 제외
-        const minorItemLabor = catLabor['Subwoofer'] + catLabor['Player'] + catLabor['ETC'];
+        // 3. ETC & Player are excluded from labor fees when DSP or Speaker exists (Subwoofer has no discount or exclusion)
+        const minorItemLabor = catLabor['Player'] + catLabor['ETC'];
         const hasAnyDspOrSpeaker = (hasDSP || catLabor['DSP'] > 0 || speakerCount > 0);
         if (hasAnyDspOrSpeaker && minorItemLabor > 0) {
             labor -= minorItemLabor;
-            catLabor['Subwoofer'] = 0; catLabor['Player'] = 0; catLabor['ETC'] = 0;
+            catLabor['Player'] = 0;
+            catLabor['ETC'] = 0;
         }
 
         labor = Math.round(labor);
