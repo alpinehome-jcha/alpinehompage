@@ -246,6 +246,7 @@ const EstimateUI = {
                     </div>
                     <div style="display: flex; gap: 10px; width: 100%; justify-content: flex-end;">
                         <button class="sub-filter-btn" style="background:#333; color:#fff;" onclick="EstimateUI.resetSelections()">초기화</button>
+                        <button class="sub-filter-btn" style="background:#4b0082; color:#fff;" onclick="EstimateUI.showSystemDiagram()">시스템도</button>
                         <button class="sub-filter-btn" style="background:#007aff; color:#fff;" onclick="EstimateUI.showAIAssessment()">AI의 평가</button>
                         <button class="sub-filter-btn active" onclick="EstimateUI.showEstimateSheet()">견적서 보기</button>
                     </div>
@@ -280,6 +281,22 @@ const EstimateUI = {
                     </div>
                     <div id="printableArea" class="printable-area" style="background: #fff; color: #000; padding: 40px; border: 2px solid #333; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin: 0 auto;">
                         <!-- 견적서 내용이 여기에 동적으로 렌더링됨 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 시스템도 출력용 모달 -->
+            <div id="estimateSystemModal" class="estimate-modal" style="z-index: 10001; background: rgba(0,0,0,0.8); display: none;">
+                <div class="estimate-modal-content" style="max-width: 900px; width: 95%; background:#fff; border-radius:8px;">
+                    <div class="estimate-header no-print" style="padding: 20px; border-bottom: 1px solid #eee;">
+                        <h2 style="margin:0;">알파인 사운드 시스템</h2>
+                        <div style="display:flex; gap:10px; align-items:center;">
+                            <button class="sub-filter-btn active" onclick="EstimateUI.downloadSystemAsImage()" style="padding: 8px 20px; font-weight:bold;">이미지로 다운로드</button>
+                            <span class="close-btn" onclick="EstimateUI.closeSystemModal()">&times;</span>
+                        </div>
+                    </div>
+                    <div id="systemPrintableArea" class="printable-area" style="background: #fff; color: #000; padding: 40px; border: 2px solid #333; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin: 0 auto;">
+                        <!-- 시스템도 내용이 여기에 동적으로 렌더링됨 -->
                     </div>
                 </div>
             </div>
@@ -1530,6 +1547,96 @@ const EstimateUI = {
                 ${dealerInfoHtml}
             </div>
         `;
+    },
+
+    showSystemDiagram() {
+        if (!this.selectedCar) {
+            alert('먼저 차량을 선택해 주세요.');
+            return;
+        }
+
+        const systemModal = document.getElementById('estimateSystemModal');
+        const systemArea = document.getElementById('systemPrintableArea');
+        if (!systemModal || !systemArea) return;
+
+        systemModal.style.display = 'block';
+
+        // 적용 DSP 추출
+        const dspVal = this.selections['dsp'];
+        const dspName = dspVal && dspVal !== "DSP 선택 안함" && dspVal !== "선택 안함" ? dspVal : '선택 안함';
+
+        // PnP Cable 추출
+        let pnpName = '선택 안함';
+        if (this.selections['pnp']) {
+            const pnpList = Array.isArray(this.selections['pnp']) ? this.selections['pnp'] : [this.selections['pnp']];
+            const validPnPs = pnpList.filter(p => p !== "선택 안함");
+            if (validPnPs.length > 0) {
+                pnpName = validPnPs.join(', ');
+            }
+        }
+
+        const date = new Date().toLocaleDateString();
+
+        // 경로 동적 보정 (file:// 및 배포 환경 호환)
+        let imagePath = 'carsystem/Alpine Car3.png';
+        const pathname = window.location.pathname;
+        if (pathname.includes('/pages/products/')) {
+            imagePath = '../../carsystem/Alpine Car3.png';
+        } else if (pathname.includes('/pages/') || pathname.includes('/support/')) {
+            imagePath = '../carsystem/Alpine Car3.png';
+        }
+
+        systemArea.innerHTML = `
+            <div style="display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 0.95rem; border-bottom: 2px solid #333; padding-bottom: 15px;">
+                <div style="width: 100%;">
+                    <p style="margin: 5px 0;"><strong>차량정보:</strong> ${this.selectedCar.brand} ${this.selectedCar.model} (${this.selectedCar.code})</p>
+                    <p style="margin: 5px 0;"><strong>사운드시스템:</strong> ${this.selectedCar.system}</p>
+                    <p style="margin: 5px 0;"><strong>적용 DSP:</strong> <span style="color:#007aff; font-weight:bold;">${dspName}</span></p>
+                    <p style="margin: 5px 0;"><strong>PnP Cable:</strong> <span style="color:#007aff; font-weight:bold;">${pnpName}</span></p>
+                    <p style="margin: 5px 0;"><strong>작성일자:</strong> ${date}</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 15px;">
+                <img src="${imagePath}" style="max-width: 100%; height: auto; border: 1px solid #ddd;" alt="Alpine 사운드 시스템도">
+            </div>
+        `;
+    },
+
+    closeSystemModal() {
+        const systemModal = document.getElementById('estimateSystemModal');
+        if (systemModal) systemModal.style.display = 'none';
+    },
+
+    async downloadSystemAsImage() {
+        const area = document.getElementById('systemPrintableArea');
+        if (!area) return;
+
+        const btn = document.querySelector('button[onclick="EstimateUI.downloadSystemAsImage()"]');
+        if (!btn) return;
+        const originalText = btn.innerText;
+        btn.innerText = "저장 중...";
+        btn.disabled = true;
+
+        try {
+            const canvas = await html2canvas(area, {
+                scale: 2,
+                useCORS: true,
+                logging: false,
+                backgroundColor: "#ffffff"
+            });
+
+            const link = document.createElement('a');
+            const carName = this.selectedCar ? `${this.selectedCar.brand}_${this.selectedCar.model}` : "알파인_사운드시스템";
+            link.download = `Alpine_System_${carName}_${new Date().getTime()}.png`;
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+        } catch (err) {
+            console.error("이미지 저장 실패:", err);
+            alert("이미지 저장 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+        } finally {
+            btn.innerText = originalText;
+            btn.disabled = false;
+        }
     }
 };
 
