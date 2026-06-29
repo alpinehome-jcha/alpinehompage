@@ -12066,8 +12066,8 @@ const initialEstimateData = [
         "2": "FR",
         "3": "Center",
         "4": "R W",
-        "5": "",
-        "6": "",
+        "5": "RL Surround",
+        "6": "RR Surround",
         "7": "",
         "8": "",
         "9": "RL",
@@ -12116,8 +12116,6 @@ const initialEstimateData = [
         "extraLabor": 1000000,
         "11A": "SW L",
         "12A": "SW R",
-        "7A": "RL Surround",
-        "8A": "RR Surround",
         "pnp": [
             "BZ-503",
             "BZ-3A",
@@ -12135,6 +12133,8 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "",
+        "8A": "",
         "G": "",
         "H": "",
         "I": "",
@@ -15416,7 +15416,7 @@ const initialEstimateData = [
         "L": ""
     }
 ];
-const ESTIMATE_DATA_VERSION = 1782701613344;
+const ESTIMATE_DATA_VERSION = 1782712654605;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
