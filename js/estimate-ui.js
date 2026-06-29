@@ -1772,13 +1772,17 @@ const EstimateUI = {
             }
         });
 
-        // Generate bottom overlays (69px shift up, 1.5x font size)
+        // 5. Check if input '1' is present in mapped products for guide message
+        const hasInput1 = Object.values(mappedProducts).some(val => String(val).trim() === "1");
+        const guideMsg = hasInput1 
+            ? "1번 인풋이 있기 때문에 DSP를 HOST로 설정하세요."
+            : "1번 인풋이 없기 때문에 DSP를 ACC로 설정하고 ACC 라인을 설치하십시오.";
+        const guideColor = hasInput1 ? "#007aff" : "#e74c3c";
+
+        // Generate bottom guide overlay (placed at PnP Cable overlay position top: 87.32%)
         overlayHtml += `
-            <div style="position: absolute; left: 36.20%; top: 87.32%; width: 26.93%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.98rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${pnpProd}">
-                ${pnpProd}
-            </div>
-            <div style="position: absolute; left: 36.20%; top: 91.02%; width: 26.93%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.98rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${dspProd}">
-                ${dspProd}
+            <div style="position: absolute; left: 0%; top: 87.32%; width: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.98rem; font-weight: bold; color: ${guideColor}; text-align: center; pointer-events: none;" title="${guideMsg}">
+                ${guideMsg}
             </div>
         `;
 
