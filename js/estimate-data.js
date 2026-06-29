@@ -72,17 +72,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -98,7 +87,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -173,16 +173,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -198,7 +188,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -273,17 +273,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -299,7 +288,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -374,16 +374,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -399,7 +389,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -474,17 +474,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -500,7 +489,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -575,16 +575,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -600,7 +590,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -675,17 +675,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -701,7 +690,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -776,17 +776,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -802,7 +791,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -874,16 +874,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-16A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -899,7 +889,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-16A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -974,17 +974,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -1000,7 +989,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -1075,16 +1075,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -1100,7 +1090,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -1175,16 +1175,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -1200,7 +1190,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -1275,17 +1275,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -1301,7 +1290,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -1376,17 +1376,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -1402,7 +1391,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -1477,17 +1477,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -1503,7 +1492,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -1574,17 +1574,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 300000,
-        "7A": "RL Surround",
-        "8A": "RR Surround",
-        "pnp": [
-            "HK-17A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -1593,12 +1582,23 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL Surround",
+        "8A": "RR Surround",
         "G": "",
         "H": "",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-17A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -1669,17 +1669,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 300000,
-        "7A": "RL Surround",
-        "8A": "RR Surround",
-        "pnp": [
-            "HK-12A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -1688,12 +1677,23 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL Surround",
+        "8A": "RR Surround",
         "G": "",
         "H": "",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-12A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -1768,17 +1768,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -1794,7 +1783,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -1869,17 +1869,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -1895,7 +1884,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -1967,16 +1967,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-16A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -1992,7 +1982,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-16A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -2067,17 +2067,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -2093,7 +2082,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -2168,17 +2168,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -2194,7 +2183,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -2265,16 +2265,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-16A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -2290,7 +2280,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-16A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -2365,17 +2365,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -2391,7 +2380,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -2462,17 +2462,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 300000,
-        "7A": "RL Surround",
-        "8A": "RR Surround",
-        "pnp": [
-            "HK-12A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -2481,12 +2470,23 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL Surround",
+        "8A": "RR Surround",
         "G": "",
         "H": "",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-12A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -2561,16 +2561,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -2586,7 +2576,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -2661,17 +2661,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -2687,7 +2676,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -2757,17 +2757,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "7A": "RL Surround",
-        "8A": "RR Surround",
-        "pnp": [
-            "HK-13A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -2776,12 +2765,23 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL Surround",
+        "8A": "RR Surround",
         "G": "",
         "H": "",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-13A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -2856,17 +2856,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-106",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -2882,7 +2871,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-106",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -2953,8 +2953,22 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 300000,
+        "11A": "",
+        "12A": "",
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": "",
+        "E": "",
+        "F": "",
         "7A": "RL Surround",
         "8A": "RR Surround",
+        "G": "",
+        "H": "",
+        "I": "",
+        "J": "",
+        "K": "",
+        "L": "",
         "pnp": [
             "HK-107",
             "HK-12A",
@@ -2964,21 +2978,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "11A": "",
-        "12A": "",
-        "A": "",
-        "B": "",
-        "C": "",
-        "D": "",
-        "E": "",
-        "F": "",
-        "G": "",
-        "H": "",
-        "I": "",
-        "J": "",
-        "K": "",
-        "L": ""
+        ]
     },
     {
         "1": "FL",
@@ -3053,16 +3053,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -3078,7 +3068,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -3153,16 +3153,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -3178,7 +3168,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -3253,17 +3253,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -3279,7 +3268,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -3354,17 +3354,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -3380,7 +3369,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -3455,17 +3455,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -3481,7 +3470,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -3552,16 +3552,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-16A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -3577,7 +3567,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-16A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -3652,17 +3652,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -3678,7 +3667,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -3753,17 +3753,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -3779,7 +3768,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -3854,17 +3854,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -3880,7 +3869,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -3951,16 +3951,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-16A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -3976,7 +3966,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-16A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -4051,17 +4051,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -4077,7 +4066,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -4152,17 +4152,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -4178,7 +4167,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -4249,17 +4249,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 300000,
-        "7A": "RL Surround",
-        "8A": "RR Surround",
-        "pnp": [
-            "HK-12A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -4268,12 +4257,23 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL Surround",
+        "8A": "RR Surround",
         "G": "",
         "H": "",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-12A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -4348,17 +4348,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -4374,7 +4363,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -4449,17 +4449,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "7A": "RL Surround",
-        "8A": "RR Surround",
-        "pnp": [
-            "HK-15",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -4468,12 +4457,23 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL Surround",
+        "8A": "RR Surround",
         "G": "",
         "H": "",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-15",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -4545,17 +4545,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -4571,7 +4560,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -4642,17 +4642,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 300000,
-        "7A": "RL Surround",
-        "8A": "RR Surround",
-        "pnp": [
-            "HK-12A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -4661,18 +4650,29 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL Surround",
+        "8A": "RR Surround",
         "G": "",
         "H": "",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-12A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
         "2": "FR",
-        "3": "FL",
-        "4": "FR",
+        "3": "",
+        "4": "",
         "5": "",
         "6": "",
         "7": "",
@@ -4734,17 +4734,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -4760,13 +4749,24 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-4B",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
         "2": "FR",
-        "3": "FL",
-        "4": "FR",
+        "3": "",
+        "4": "",
         "5": "",
         "6": "",
         "7": "",
@@ -4835,17 +4835,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -4861,13 +4850,24 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
         "2": "FR",
-        "3": "FL",
-        "4": "FR",
+        "3": "",
+        "4": "",
         "5": "",
         "6": "",
         "7": "",
@@ -4929,17 +4929,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -4955,7 +4944,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-4B",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -5028,16 +5028,6 @@ const initialEstimateData = [
         "extraLabor": 0,
         "11A": "SW L",
         "12A": "SW R",
-        "pnp": [
-            "GE-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "A": "",
         "B": "",
         "C": "",
@@ -5051,7 +5041,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "GE-2A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -5124,8 +5124,20 @@ const initialEstimateData = [
         "extraLabor": 500000,
         "11A": "SW L",
         "12A": "SW R",
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": "",
+        "E": "",
+        "F": "",
         "7A": "RL Surround",
         "8A": "RR Surround",
+        "G": "",
+        "H": "",
+        "I": "",
+        "J": "",
+        "K": "",
+        "L": "",
         "pnp": [
             "GE-3A",
             "DS-R80-6B",
@@ -5134,19 +5146,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "A": "",
-        "B": "",
-        "C": "",
-        "D": "",
-        "E": "",
-        "F": "",
-        "G": "",
-        "H": "",
-        "I": "",
-        "J": "",
-        "K": "",
-        "L": ""
+        ]
     },
     {
         "1": "FL",
@@ -5219,16 +5219,6 @@ const initialEstimateData = [
         "extraLabor": 0,
         "11A": "SW L",
         "12A": "SW R",
-        "pnp": [
-            "GE-7A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "A": "",
         "B": "",
         "C": "",
@@ -5242,7 +5232,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "GE-7A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -5314,10 +5314,21 @@ const initialEstimateData = [
         ],
         "extraLabor": 0,
         "11A": "SW L",
+        "12A": "",
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": "",
+        "E": "",
+        "F": "",
         "7A": "RL TW",
         "8A": "RR TW",
         "G": "RL Surround",
         "H": "RR Surround",
+        "I": "",
+        "J": "",
+        "K": "",
+        "L": "",
         "pnp": [
             "GE-8A",
             "DS-R80-6B",
@@ -5326,18 +5337,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "12A": "",
-        "A": "",
-        "B": "",
-        "C": "",
-        "D": "",
-        "E": "",
-        "F": "",
-        "I": "",
-        "J": "",
-        "K": "",
-        "L": ""
+        ]
     },
     {
         "1": "FL",
@@ -5410,17 +5410,6 @@ const initialEstimateData = [
         "extraLabor": 300000,
         "11A": "SW L",
         "12A": "SW R",
-        "pnp": [
-            "GE-203",
-            "GE-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "A": "",
         "B": "",
         "C": "",
@@ -5434,7 +5423,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "GE-203",
+            "GE-2A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -5507,16 +5507,6 @@ const initialEstimateData = [
         "extraLabor": 300000,
         "11A": "SW L",
         "12A": "SW R",
-        "pnp": [
-            "GE-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "A": "",
         "B": "",
         "C": "",
@@ -5530,7 +5520,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "GE-2A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -5599,10 +5599,20 @@ const initialEstimateData = [
         "extraLabor": 500000,
         "11A": "SW L",
         "12A": "SW R",
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": "",
+        "E": "",
+        "F": "",
         "7A": "RL TW Mid",
         "8A": "RR TW Mid",
         "G": "RL Surround",
         "H": "RR Surround",
+        "I": "",
+        "J": "",
+        "K": "",
+        "L": "",
         "pnp": [
             "GE-6A",
             "DS-R80-6B",
@@ -5611,17 +5621,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "A": "",
-        "B": "",
-        "C": "",
-        "D": "",
-        "E": "",
-        "F": "",
-        "I": "",
-        "J": "",
-        "K": "",
-        "L": ""
+        ]
     },
     {
         "1": "FL",
@@ -5692,19 +5692,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "7A": "RL TW Mid",
-        "8A": "RR TW Mid",
-        "G": "RL Surround",
-        "H": "RR Surround",
-        "pnp": [
-            "GE11A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -5713,10 +5700,23 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL TW Mid",
+        "8A": "RR TW Mid",
+        "G": "RL Surround",
+        "H": "RR Surround",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "GE11A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -5787,19 +5787,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "7A": "RL TW Mid",
-        "8A": "RR TW Mid",
-        "G": "RL Surround",
-        "H": "RR Surround",
-        "pnp": [
-            "GE11A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -5808,10 +5795,23 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL TW Mid",
+        "8A": "RR TW Mid",
+        "G": "RL Surround",
+        "H": "RR Surround",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "GE11A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -5882,10 +5882,20 @@ const initialEstimateData = [
         "extraLabor": 500000,
         "11A": "SW L",
         "12A": "SW R",
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": "",
+        "E": "",
+        "F": "",
         "7A": "RL TW Mid",
         "8A": "RR TW Mid",
         "G": "RL Surround",
         "H": "RR Surround",
+        "I": "",
+        "J": "",
+        "K": "",
+        "L": "",
         "pnp": [
             "GE-9A",
             "DS-R80-6B",
@@ -5894,17 +5904,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "A": "",
-        "B": "",
-        "C": "",
-        "D": "",
-        "E": "",
-        "F": "",
-        "I": "",
-        "J": "",
-        "K": "",
-        "L": ""
+        ]
     },
     {
         "1": "FL",
@@ -5975,10 +5975,20 @@ const initialEstimateData = [
         "extraLabor": 500000,
         "11A": "SW L",
         "12A": "SW R",
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": "",
+        "E": "",
+        "F": "",
         "7A": "RL TW Mid",
         "8A": "RR TW Mid",
         "G": "RL Surround",
         "H": "RR Surround",
+        "I": "",
+        "J": "",
+        "K": "",
+        "L": "",
         "pnp": [
             "GE-10A",
             "DS-R80-6B",
@@ -5987,17 +5997,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "A": "",
-        "B": "",
-        "C": "",
-        "D": "",
-        "E": "",
-        "F": "",
-        "I": "",
-        "J": "",
-        "K": "",
-        "L": ""
+        ]
     },
     {
         "1": "FL",
@@ -6070,16 +6070,6 @@ const initialEstimateData = [
         "extraLabor": 300000,
         "11A": "SW L",
         "12A": "SW R",
-        "pnp": [
-            "GE-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "A": "",
         "B": "",
         "C": "",
@@ -6093,7 +6083,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "GE-2A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -6164,10 +6164,20 @@ const initialEstimateData = [
         "extraLabor": 500000,
         "11A": "SW L",
         "12A": "SW R",
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": "",
+        "E": "",
+        "F": "",
         "7A": "RL TW Mid",
         "8A": "RR TW Mid",
         "G": "RL Surround",
         "H": "RR Surround",
+        "I": "",
+        "J": "",
+        "K": "",
+        "L": "",
         "pnp": [
             "GE-6A",
             "DS-R80-6B",
@@ -6176,17 +6186,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "A": "",
-        "B": "",
-        "C": "",
-        "D": "",
-        "E": "",
-        "F": "",
-        "I": "",
-        "J": "",
-        "K": "",
-        "L": ""
+        ]
     },
     {
         "1": "FL",
@@ -6259,16 +6259,6 @@ const initialEstimateData = [
         "extraLabor": 300000,
         "11A": "SW L",
         "12A": "SW R",
-        "pnp": [
-            "GE-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "A": "",
         "B": "",
         "C": "",
@@ -6282,7 +6272,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "GE-2A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -6353,10 +6353,20 @@ const initialEstimateData = [
         "extraLabor": 500000,
         "11A": "SW L",
         "12A": "SW R",
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": "",
+        "E": "",
+        "F": "",
         "7A": "RL TW Mid",
         "8A": "RR TW Mid",
         "G": "RL Surround",
         "H": "RR Surround",
+        "I": "",
+        "J": "",
+        "K": "",
+        "L": "",
         "pnp": [
             "GE-6A",
             "DS-R80-6B",
@@ -6365,17 +6375,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "A": "",
-        "B": "",
-        "C": "",
-        "D": "",
-        "E": "",
-        "F": "",
-        "I": "",
-        "J": "",
-        "K": "",
-        "L": ""
+        ]
     },
     {
         "1": "FL",
@@ -6448,16 +6448,6 @@ const initialEstimateData = [
         "extraLabor": 300000,
         "11A": "SW L",
         "12A": "SW R",
-        "pnp": [
-            "GE-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "A": "",
         "B": "",
         "C": "",
@@ -6471,7 +6461,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "GE-2A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -6542,10 +6542,20 @@ const initialEstimateData = [
         "extraLabor": 500000,
         "11A": "SW L",
         "12A": "SW R",
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": "",
+        "E": "",
+        "F": "",
         "7A": "RL TW Mid",
         "8A": "RR TW Mid",
         "G": "RL Surround",
         "H": "RR Surround",
+        "I": "",
+        "J": "",
+        "K": "",
+        "L": "",
         "pnp": [
             "GE-6A",
             "DS-R80-6B",
@@ -6554,17 +6564,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "A": "",
-        "B": "",
-        "C": "",
-        "D": "",
-        "E": "",
-        "F": "",
-        "I": "",
-        "J": "",
-        "K": "",
-        "L": ""
+        ]
     },
     {
         "1": "FL",
@@ -6639,16 +6639,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -6664,7 +6654,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -6739,17 +6739,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -6765,7 +6754,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -6840,16 +6840,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -6865,7 +6855,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -6940,16 +6940,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -6965,7 +6955,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -7040,17 +7040,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -7066,7 +7055,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -7141,16 +7141,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -7166,7 +7156,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -7241,17 +7241,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -7267,7 +7256,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -7342,17 +7342,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -7368,7 +7357,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -7439,17 +7439,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 300000,
-        "G": "RL Surround",
-        "H": "RR Surround",
-        "pnp": [
-            "HK-25A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -7460,10 +7449,21 @@ const initialEstimateData = [
         "F": "",
         "7A": "",
         "8A": "",
+        "G": "RL Surround",
+        "H": "RR Surround",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-25A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -7534,16 +7534,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-27A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -7559,7 +7549,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-27A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -7630,17 +7630,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "7A": "RL Surround",
-        "8A": "RR Surround",
-        "pnp": [
-            "HK-24A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -7649,12 +7638,23 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL Surround",
+        "8A": "RR Surround",
         "G": "",
         "H": "",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-24A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -7728,17 +7728,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -7754,7 +7743,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -7825,17 +7825,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "7A": "RL Surround",
-        "8A": "RR Surround",
-        "pnp": [
-            "HK-21A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -7844,12 +7833,23 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL Surround",
+        "8A": "RR Surround",
         "G": "",
         "H": "",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-21A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -7923,17 +7923,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -7949,7 +7938,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -8023,17 +8023,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -8049,7 +8038,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -8120,17 +8120,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 300000,
-        "7A": "RL Surround",
-        "8A": "RR Surround",
-        "pnp": [
-            "HK-21A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -8139,12 +8128,23 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL Surround",
+        "8A": "RR Surround",
         "G": "",
         "H": "",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-21A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -8215,17 +8215,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "G": "RL Surround",
-        "H": "RR Surround",
-        "pnp": [
-            "HK-19A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -8236,10 +8225,21 @@ const initialEstimateData = [
         "F": "",
         "7A": "",
         "8A": "",
+        "G": "RL Surround",
+        "H": "RR Surround",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-19A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -8310,17 +8310,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "G": "RL Surround",
-        "H": "RR Surround",
-        "pnp": [
-            "HK-20A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -8331,10 +8320,21 @@ const initialEstimateData = [
         "F": "",
         "7A": "",
         "8A": "",
+        "G": "RL Surround",
+        "H": "RR Surround",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-20A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -8409,16 +8409,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -8434,7 +8424,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -8509,6 +8509,22 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "11A": "",
+        "12A": "",
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": "",
+        "E": "",
+        "F": "",
+        "7A": "",
+        "8A": "",
+        "G": "",
+        "H": "",
+        "I": "",
+        "J": "",
+        "K": "",
+        "L": "",
         "pnp": [
             "HK-103",
             "HK-1A",
@@ -8519,23 +8535,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "11A": "",
-        "12A": "",
-        "A": "",
-        "B": "",
-        "C": "",
-        "D": "",
-        "E": "",
-        "F": "",
-        "7A": "",
-        "8A": "",
-        "G": "",
-        "H": "",
-        "I": "",
-        "J": "",
-        "K": "",
-        "L": ""
+        ]
     },
     {
         "1": "FL",
@@ -8610,17 +8610,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -8636,7 +8625,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -8707,16 +8707,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-28A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -8732,7 +8722,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-28A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -8807,17 +8807,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -8833,7 +8822,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -8904,16 +8904,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-28A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -8929,7 +8919,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-28A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -9004,17 +9004,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -9030,7 +9019,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -9105,17 +9105,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -9131,7 +9120,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -9203,17 +9203,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 300000,
-        "7A": "RL Surround",
-        "8A": "RR Surround",
-        "pnp": [
-            "HK-28A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -9222,12 +9211,23 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL Surround",
+        "8A": "RR Surround",
         "G": "",
         "H": "",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-28A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -9302,17 +9302,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -9328,7 +9317,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -9400,17 +9400,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 300000,
-        "7A": "RL Surround",
-        "8A": "RR Surround",
-        "pnp": [
-            "HK-28A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -9419,12 +9408,23 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL Surround",
+        "8A": "RR Surround",
         "G": "",
         "H": "",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-28A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -9499,17 +9499,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -9525,7 +9514,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -9600,17 +9600,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -9626,7 +9615,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -9701,17 +9701,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -9727,7 +9716,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -9802,17 +9802,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -9828,7 +9817,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -9903,17 +9903,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -9929,7 +9918,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -10004,17 +10004,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -10030,7 +10019,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -10105,17 +10105,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -10131,7 +10120,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -10206,17 +10206,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -10232,7 +10221,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -10303,16 +10303,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-26A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -10328,7 +10318,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-26A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -10400,16 +10400,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-23A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -10425,7 +10415,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-23A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -10500,17 +10500,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -10526,7 +10515,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -10601,17 +10601,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -10627,7 +10616,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -10702,17 +10702,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -10728,7 +10717,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -10800,17 +10800,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 300000,
-        "G": "RL Surround",
-        "H": "RR Surround",
-        "pnp": [
-            "HK-25A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -10821,10 +10810,21 @@ const initialEstimateData = [
         "F": "",
         "7A": "",
         "8A": "",
+        "G": "RL Surround",
+        "H": "RR Surround",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-25A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -10899,16 +10899,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -10924,7 +10914,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -10996,17 +10996,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "7A": "RL Surround",
-        "8A": "RR Surround",
-        "pnp": [
-            "HK-24A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -11015,12 +11004,23 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL Surround",
+        "8A": "RR Surround",
         "G": "",
         "H": "",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-24A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -11095,17 +11095,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -11121,7 +11110,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -11195,17 +11195,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -11221,7 +11210,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -11294,17 +11294,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -11320,7 +11309,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -11391,17 +11391,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "G": "RL Surround",
-        "H": "RR Surround",
-        "pnp": [
-            "HK-25A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -11412,10 +11401,21 @@ const initialEstimateData = [
         "F": "",
         "7A": "",
         "8A": "",
+        "G": "RL Surround",
+        "H": "RR Surround",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-25A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -11486,17 +11486,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 300000,
-        "7A": "RL Surround",
-        "8A": "RR Surround",
-        "pnp": [
-            "HK-14A",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -11505,12 +11494,23 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL Surround",
+        "8A": "RR Surround",
         "G": "",
         "H": "",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-14A",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -11585,17 +11585,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -11611,7 +11600,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -11682,16 +11682,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-28A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -11707,7 +11697,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-28A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -11775,17 +11775,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-4B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -11801,7 +11790,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-4B",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -11868,17 +11868,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-104",
-            "HK-2A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -11894,7 +11883,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-104",
+            "HK-2A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -11952,17 +11952,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "BZ-501",
-            "BZ-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -11978,7 +11967,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "BZ-501",
+            "BZ-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -12033,17 +12033,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "pnp": [
-            "BZ-502",
-            "BZ-2A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -12059,7 +12048,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "BZ-502",
+            "BZ-2A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -12116,17 +12116,6 @@ const initialEstimateData = [
         "extraLabor": 1000000,
         "11A": "SW L",
         "12A": "SW R",
-        "pnp": [
-            "BZ-503",
-            "BZ-3A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "A": "",
         "B": "",
         "C": "",
@@ -12140,7 +12129,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "BZ-503",
+            "BZ-3A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -12202,16 +12202,6 @@ const initialEstimateData = [
         "extraLabor": 1000000,
         "11A": "SW L",
         "12A": "SW R",
-        "pnp": [
-            "BM-401",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "A": "",
         "B": "",
         "C": "",
@@ -12225,7 +12215,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "BM-401",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -12287,17 +12287,6 @@ const initialEstimateData = [
         "extraLabor": 1000000,
         "11A": "SW L",
         "12A": "SW R",
-        "pnp": [
-            "BM-402",
-            "BM-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "A": "",
         "B": "",
         "C": "",
@@ -12311,7 +12300,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "BM-402",
+            "BM-1A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -12373,17 +12373,6 @@ const initialEstimateData = [
         "extraLabor": 1000000,
         "11A": "SW L",
         "12A": "SW R",
-        "pnp": [
-            "BM-402",
-            "BM-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "A": "",
         "B": "",
         "C": "",
@@ -12397,7 +12386,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "BM-402",
+            "BM-1A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -12459,8 +12459,20 @@ const initialEstimateData = [
         "extraLabor": 1500000,
         "11A": "SW L",
         "12A": "SW R",
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": "",
+        "E": "",
+        "F": "",
         "7A": "RL Surround",
         "8A": "RR Surround",
+        "G": "",
+        "H": "",
+        "I": "",
+        "J": "",
+        "K": "",
+        "L": "",
         "pnp": [
             "BM-403",
             "BM-2A",
@@ -12471,19 +12483,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "A": "",
-        "B": "",
-        "C": "",
-        "D": "",
-        "E": "",
-        "F": "",
-        "G": "",
-        "H": "",
-        "I": "",
-        "J": "",
-        "K": "",
-        "L": ""
+        ]
     },
     {
         "1": "FL",
@@ -12545,8 +12545,20 @@ const initialEstimateData = [
         "extraLabor": 1500000,
         "11A": "SW L",
         "12A": "SW R",
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": "",
+        "E": "",
+        "F": "",
         "7A": "RL Surround",
         "8A": "RR Surround",
+        "G": "",
+        "H": "",
+        "I": "",
+        "J": "",
+        "K": "",
+        "L": "",
         "pnp": [
             "BM-403",
             "BM-2A",
@@ -12557,19 +12569,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "A": "",
-        "B": "",
-        "C": "",
-        "D": "",
-        "E": "",
-        "F": "",
-        "G": "",
-        "H": "",
-        "I": "",
-        "J": "",
-        "K": "",
-        "L": ""
+        ]
     },
     {
         "1": "FL",
@@ -12639,16 +12639,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "AU-1A",
-            "DS-M60-4B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -12664,7 +12654,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "AU-1A",
+            "DS-M60-4B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -12737,16 +12737,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "VW-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -12762,7 +12752,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "VW-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -12835,16 +12835,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "BY-101",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -12860,7 +12850,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "BY-101",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -12933,16 +12933,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "BY-2A",
-            "DS-M60-4B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -12958,7 +12948,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "BY-2A",
+            "DS-M60-4B",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -13028,12 +13028,22 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
+        "11A": "",
+        "12A": "",
         "A": "FL Surround",
         "B": "FR Surround",
+        "C": "",
+        "D": "",
+        "E": "",
+        "F": "",
+        "7A": "",
+        "8A": "",
         "G": "RL MID",
         "H": "RR Mid",
         "I": "RL Surround",
         "J": "RR Surround",
+        "K": "",
+        "L": "",
         "pnp": [
             "RR-1A",
             "DS-M60-4B",
@@ -13043,17 +13053,7 @@ const initialEstimateData = [
             "DS-10DP-8B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "11A": "",
-        "12A": "",
-        "C": "",
-        "D": "",
-        "E": "",
-        "F": "",
-        "7A": "",
-        "8A": "",
-        "K": "",
-        "L": ""
+        ]
     },
     {
         "1": "FL",
@@ -13123,20 +13123,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "G": "RL TW",
-        "H": "RR TW",
-        "I": "RL Surround",
-        "J": "RR Surround",
-        "pnp": [
-            "RR-2A",
-            "DS-M60-4B",
-            "DS-R80-6B",
-            "DS-X12-6B",
-            "DS-C80-6B",
-            "DS-10DP-8B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -13147,8 +13133,22 @@ const initialEstimateData = [
         "F": "",
         "7A": "",
         "8A": "",
+        "G": "RL TW",
+        "H": "RR TW",
+        "I": "RL Surround",
+        "J": "RR Surround",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "RR-2A",
+            "DS-M60-4B",
+            "DS-R80-6B",
+            "DS-X12-6B",
+            "DS-C80-6B",
+            "DS-10DP-8B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -13197,9 +13197,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "TS-301"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -13215,7 +13212,10 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "TS-301"
+        ]
     },
     {
         "1": "FL",
@@ -13264,9 +13264,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "TS-302"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -13282,7 +13279,10 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "TS-302"
+        ]
     },
     {
         "1": "FL",
@@ -13331,11 +13331,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "7A": "RL Surround",
-        "8A": "RR surround",
-        "pnp": [
-            "TS-303"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -13344,12 +13339,17 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL Surround",
+        "8A": "RR surround",
         "G": "",
         "H": "",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "TS-303"
+        ]
     },
     {
         "1": "FL",
@@ -13398,11 +13398,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "7A": "RL Surround",
-        "8A": "RR surround",
-        "pnp": [
-            "TS-304"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -13411,12 +13406,17 @@ const initialEstimateData = [
         "D": "",
         "E": "",
         "F": "",
+        "7A": "RL Surround",
+        "8A": "RR surround",
         "G": "",
         "H": "",
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "TS-304"
+        ]
     },
     {
         "1": "FL",
@@ -13489,16 +13489,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "CH-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -13514,7 +13504,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "CH-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -13590,17 +13590,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -13616,7 +13605,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -13691,16 +13691,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "KG-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -13716,7 +13706,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "KG-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -13792,17 +13792,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -13818,7 +13807,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -13893,16 +13893,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "KG-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -13918,7 +13908,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "KG-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -13994,16 +13994,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -14019,7 +14009,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -14095,17 +14095,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -14121,7 +14110,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -14196,16 +14196,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "KG-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -14221,7 +14211,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "KG-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -14297,17 +14297,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -14323,7 +14312,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -14398,16 +14398,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "KG-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -14423,7 +14413,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "KG-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -14497,16 +14497,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -14522,7 +14512,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -14596,17 +14596,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -14622,7 +14611,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -14696,17 +14696,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -14722,7 +14711,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -14796,16 +14796,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -14821,7 +14811,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -14895,17 +14895,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-103",
-            "HK-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -14921,7 +14910,18 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-103",
+            "HK-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -14995,16 +14995,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "HK-102",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -15020,7 +15010,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "HK-102",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -15094,8 +15094,22 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
+        "11A": "",
+        "12A": "",
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": "",
+        "E": "",
+        "F": "",
         "7A": "RL Surround",
         "8A": "RR Surround",
+        "G": "",
+        "H": "",
+        "I": "",
+        "J": "",
+        "K": "",
+        "L": "",
         "pnp": [
             "TY-1A",
             "DS-M60-2B",
@@ -15105,21 +15119,7 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ],
-        "11A": "",
-        "12A": "",
-        "A": "",
-        "B": "",
-        "C": "",
-        "D": "",
-        "E": "",
-        "F": "",
-        "G": "",
-        "H": "",
-        "I": "",
-        "J": "",
-        "K": "",
-        "L": ""
+        ]
     },
     {
         "1": "FL",
@@ -15192,16 +15192,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "RN-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -15217,7 +15207,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "RN-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -15290,16 +15290,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "RN-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -15315,7 +15305,17 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "RN-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     },
     {
         "1": "FL",
@@ -15388,16 +15388,6 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 0,
-        "pnp": [
-            "RN-1A",
-            "DS-M60-2B",
-            "DS-R80-4B",
-            "DS-X12-4B",
-            "DS-C80-4B",
-            "DS-10DP-6B",
-            "DS-12EV-B",
-            "DS-D90-B"
-        ],
         "11A": "",
         "12A": "",
         "A": "",
@@ -15413,10 +15403,20 @@ const initialEstimateData = [
         "I": "",
         "J": "",
         "K": "",
-        "L": ""
+        "L": "",
+        "pnp": [
+            "RN-1A",
+            "DS-M60-2B",
+            "DS-R80-4B",
+            "DS-X12-4B",
+            "DS-C80-4B",
+            "DS-10DP-6B",
+            "DS-12EV-B",
+            "DS-D90-B"
+        ]
     }
 ];
-const ESTIMATE_DATA_VERSION = 1782712661787;
+const ESTIMATE_DATA_VERSION = 1782716594149;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
