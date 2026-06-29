@@ -551,9 +551,9 @@
 
                 // W~AX 채널 정보 추가 (사용자 정의 순서 적용)
                 const channels = [
-                    '1', '2', '3', '4', '5', '6', '7', '8', '12A',
-                    'A', 'B', 'C', 'D', 'E', 'F', 'G', '8A', '11A',
-                    '9', '10', 'H', 'I', 'J', 'K', 'L', 'R W', '11', '12'
+                    '1', '2', '3', '4', '5', '6', '7', '8', '11A', '12A',
+                    'A', 'B', 'C', 'D', 'E', 'F', '7A', '8A', '9', '10',
+                    'G', 'H', 'I', 'J', 'K', 'L', '11', '12'
                 ];
                 channels.forEach(ch => {
                     flat[ch] = d[ch] || '';
@@ -570,9 +570,9 @@
                 'center', 'surround', 'subwoofer', 'amp_4ch', 'amp_sub', 
                 'player', 'extraLabor', 
                 '__EMPTY_COLUMN__', // V열 자리 비우기 (밀림 방지)
-                '1', '2', '3', '4', '5', '6', '7', '8', '12A', 
-                'A', 'B', 'C', 'D', 'E', 'F', 'G', '8A', '11A', 
-                '9', '10', 'H', 'I', 'J', 'K', 'L', 'R W', '11', '12'
+                '1', '2', '3', '4', '5', '6', '7', '8', '11A', '12A', 
+                'A', 'B', 'C', 'D', 'E', 'F', '7A', '8A', '9', '10', 
+                'G', 'H', 'I', 'J', 'K', 'L', '11', '12'
             ];
 
             const ws = XLSX.utils.json_to_sheet(exportData, { header: exactHeaders });
@@ -604,9 +604,9 @@
                     // Restore array fields
                     const arrayFields = ['dsp', 'pnp', 'front_door', 'tweeter', 'front_baffle', 'add_front', 'rear_door', 'rear_baffle', 'center', 'surround', 'subwoofer', 'amp_4ch', 'amp_sub', 'player'];
                     const channels = [
-                        '1', '2', '3', '4', '5', '6', '7', '8', '12A',
-                        'A', 'B', 'C', 'D', 'E', 'F', 'G', '8A', '11A',
-                        '9', '10', 'H', 'I', 'J', 'K', 'L', 'R W', '11', '12'
+                        '1', '2', '3', '4', '5', '6', '7', '8', '11A', '12A',
+                        'A', 'B', 'C', 'D', 'E', 'F', '7A', '8A', '9', '10',
+                        'G', 'H', 'I', 'J', 'K', 'L', '11', '12'
                     ];
 
                     const processed = json.map(row => {
