@@ -48,6 +48,7 @@ const EstimateUI = {
         if (typeof pnpSearchData === 'undefined') scripts.push(`${root}pnp-search-data.js?t=${t}`);
         if (typeof initialPnpRuleData === 'undefined') scripts.push(`${root}pnp-rule-data.js?t=${t}`);
         if (typeof laborRuleData === 'undefined') scripts.push(`${root}labor-rule-data.js?t=${t}`);
+        if (typeof dspChannelData === 'undefined') scripts.push(`${root}dsp-channel-data.js?t=${t}`);
 
         const loadScript = (src) => {
             return new Promise((resolve, reject) => {
@@ -71,6 +72,15 @@ const EstimateUI = {
                         console.log("Cached estimateData from LocalStorage synced successfully.");
                     } catch (e) {
                         console.error("Failed to parse local cached estimateData:", e);
+                    }
+                }
+                const storedDsp = localStorage.getItem('dspChannelData');
+                if (storedDsp) {
+                    try {
+                        window.dspChannelData = JSON.parse(storedDsp);
+                        console.log("Cached dspChannelData from LocalStorage synced successfully.");
+                    } catch (e) {
+                        console.error("Failed to parse local cached dspChannelData:", e);
                     }
                 }
             }
@@ -1617,7 +1627,7 @@ const EstimateUI = {
         const ampSubProd = getSelectedName('amp_sub');
         const playerProd = getSelectedName('player');
 
-        // 2. 엑셀 채널 정보 매핑 (사용자 원본 엑셀 순서 및 명칭 그대로 적용)
+        // 2. 엑셀 채널 정보 매핑 (PnP 케이블 매칭 DSP 채널 연동 규칙 적용)
         const channels = [
             '1', '2', '3', '4', '5', '6', '7', '8', '11A', '12A',
             'A', 'B', 'C', 'D', 'E', 'F', '7A', '8A', '9', '10',
@@ -1625,8 +1635,53 @@ const EstimateUI = {
         ];
         const mappedProducts = {};
 
+        // 2-1. dspChannelData 헤더와 현재 PnP Cable 이름 대조 및 매칭 헤더 검색
+        let matchedPnpHeader = null;
+        if (pnpProd && typeof dspChannelData !== 'undefined' && dspChannelData.headers) {
+            const pnpTokens = pnpProd.split(/[\s,+/]+/).map(s => s.trim().toUpperCase()).filter(s => s !== '');
+            for (const token of pnpTokens) {
+                const found = dspChannelData.headers.find(h => h.trim().toUpperCase() === token);
+                if (found) {
+                    matchedPnpHeader = found;
+                    break;
+                }
+            }
+        }
+
+        // 2-2. 각 채널별로 DSP 채널 번호 또는 bypass 분기 대입
         channels.forEach(ch => {
-            mappedProducts[ch] = car[ch] || "";
+            const originalVal = car[ch] ? String(car[ch]).trim() : "";
+            if (!originalVal) {
+                mappedProducts[ch] = ""; // 차량 스피커 구성에 채널 데이터가 없으면 비워둠
+                return;
+            }
+
+            // 알파벳 채널(A~L)은 dspChannel 엑셀 시트에 존재하지 않으므로 무조건 bypass
+            const alphabetChannels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
+            if (alphabetChannels.includes(ch)) {
+                mappedProducts[ch] = "bypass";
+                return;
+            }
+
+            // 숫자 채널의 공유 매핑 규칙 적용
+            let lookupKey = ch;
+            if (ch === '7A') lookupKey = '7';
+            else if (ch === '8A') lookupKey = '8';
+            else if (ch === '11A') lookupKey = '11';
+            else if (ch === '12A') lookupKey = '12';
+
+            // 매칭된 PnP 헤더 열에서 DSP 채널 번호 조회
+            let dspChVal = null;
+            if (matchedPnpHeader && typeof dspChannelData !== 'undefined' && dspChannelData.rows && dspChannelData.rows[lookupKey]) {
+                dspChVal = dspChannelData.rows[lookupKey][matchedPnpHeader];
+            }
+
+            // 매핑 값이 존재하면 해당 DSP 번호를 사용하고, 비어 있으면 bypass 처리
+            if (dspChVal !== undefined && dspChVal !== null && dspChVal !== '') {
+                mappedProducts[ch] = String(dspChVal);
+            } else {
+                mappedProducts[ch] = "bypass";
+            }
         });
 
         // 3. 경로 동적 보정 (file:// 및 배포 환경 호환)

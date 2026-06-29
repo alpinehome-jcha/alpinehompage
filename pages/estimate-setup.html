@@ -243,6 +243,11 @@
                             4. <strong>차량별 추가 공임비(고급차 시공 할증비)</strong>는 추가 공임비가 적용된 차량 대상으로 <strong>DSP 스피커 동시작업 공임 할인 비율</strong>에 따라 비례 적용됩니다.
                         </div>
                     </div>
+                    <div style="margin-top: 10px;">
+                        <button class="btn btn-excel" onclick="downloadDspExcel()">📊 DSP 채널 설정 다운로드</button>
+                        <input type="file" id="dspExcelInput" style="display: none;" accept=".xlsx, .xls">
+                        <button class="btn btn-upload" onclick="document.getElementById('dspExcelInput').click()">📥 DSP 채널 설정 업로드</button>
+                    </div>
                     <div>
                         <button class="btn btn-restore" onclick="resetToInitial()">♻️ 서버 데이터로 복구</button>
                     </div>
@@ -335,7 +340,8 @@
                 `../js/estimate-data.js?t=${t}`,
                 `../js/pnp-search-data.js?t=${t}`,
                 `../js/pnp-rule-data.js?t=${t}`,
-                `../js/labor-rule-data.js?t=${t}`
+                `../js/labor-rule-data.js?t=${t}`,
+                `../js/dsp-channel-data.js?t=${t}`
             ];
 
             const loadScript = (src) => {
@@ -392,6 +398,7 @@
             document.getElementById('excelInput').addEventListener('change', handleExcelUpload);
             document.getElementById('pnpRuleExcelInput').addEventListener('change', handlePnpRuleUpload);
             document.getElementById('laborRuleExcelInput').addEventListener('change', handleLaborRuleUpload);
+            document.getElementById('dspExcelInput').addEventListener('change', handleDspExcelUpload);
         });
 
         function toggleGithubSettings() {
@@ -906,6 +913,126 @@
             }
         }
 
+        async function syncDspChannelToGitHub(silent = false) {
+            try {
+                await saveToGitHub('dspChannel', silent);
+                if (!silent) alert('DSP 채널 매핑 규칙 서버 저장이 완료되었습니다.');
+            } catch (err) {
+                if (!silent) alert('저장 실패: ' + err.message);
+            }
+        }
+
+        function downloadDspExcel() {
+            let localData = null;
+            const stored = localStorage.getItem('dspChannelData');
+            if (stored) {
+                localData = JSON.parse(stored);
+            } else if (typeof dspChannelData !== 'undefined') {
+                localData = dspChannelData;
+            }
+
+            if (!localData || !localData.headers || !localData.rows) {
+                alert('DSP 채널 데이터가 존재하지 않습니다.');
+                return;
+            }
+
+            const headers = ['NO.', ...localData.headers];
+            const rowsData = [];
+
+            for (let r = 1; r <= 12; r++) {
+                const rowKey = r.toString();
+                const rowObj = { 'NO.': r };
+                const rowMap = localData.rows[rowKey] || {};
+                localData.headers.forEach(h => {
+                    rowObj[h] = (rowMap[h] !== undefined && rowMap[h] !== null) ? rowMap[h] : '';
+                });
+                rowsData.push(rowObj);
+            }
+
+            const ws = XLSX.utils.json_to_sheet(rowsData, { header: headers });
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "DSP_Channels");
+
+            const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+            XLSX.writeFile(wb, `Alpine_DSP_Channel_Data_${dateStr}.xlsx`);
+        }
+
+        function handleDspExcelUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (evt) {
+                try {
+                    const data = new Uint8Array(evt.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                    
+                    const rowsRaw = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                    if (rowsRaw.length === 0) {
+                        alert('데이터가 비어있습니다.');
+                        return;
+                    }
+
+                    const rawHeaders = rowsRaw[0];
+                    if (!rawHeaders || rawHeaders[0] !== 'NO.') {
+                        alert('엑셀 파일의 첫 번째 열 명칭은 반드시 "NO." 여야 합니다.');
+                        return;
+                    }
+
+                    const headers = rawHeaders.slice(1).filter(h => h !== null && h !== undefined && h !== '');
+                    const rows = {};
+
+                    for (let r = 1; r <= 12; r++) {
+                        rows[r.toString()] = {};
+                        headers.forEach(h => {
+                            rows[r.toString()][h] = null;
+                        });
+                    }
+
+                    for (let i = 1; i < rowsRaw.length; i++) {
+                        const rowData = rowsRaw[i];
+                        if (!rowData || rowData.length === 0) continue;
+
+                        const rowNo = parseInt(rowData[0]);
+                        if (isNaN(rowNo) || rowNo < 1 || rowNo > 12) continue;
+
+                        const rowKey = rowNo.toString();
+                        headers.forEach((h, hIdx) => {
+                            const val = rowData[hIdx + 1];
+                            rows[rowKey][h] = (val !== undefined && val !== null && val !== '') ? val : null;
+                        });
+                    }
+
+                    if (!confirm(`총 ${headers.length}개의 PnP 케이블 매칭 DSP 채널 설정을 불러왔습니다. 기존 설정을 덮어쓰시겠습니까?`)) {
+                        return;
+                    }
+
+                    dspChannelData = {
+                        headers: headers,
+                        rows: rows
+                    };
+
+                    localStorage.setItem('dspChannelData', JSON.stringify(dspChannelData));
+                    localStorage.setItem('dspChannelDataVersion', Date.now().toString());
+
+                    if (typeof window !== 'undefined') {
+                        window.dspChannelData = dspChannelData;
+                    }
+
+                    // Auto-sync
+                    syncDspChannelToGitHub(true);
+
+                } catch (err) {
+                    console.error(err);
+                    alert('엑셀 파싱 에러: ' + err.message);
+                } finally {
+                    e.target.value = '';
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
         function resetToInitial() {
             if (!confirm('로컬에 저장된 모든 변경사항을 지우고 서버의 최신 데이터로 복구하시겠습니까?')) return;
             localStorage.removeItem('estimateData');
@@ -914,6 +1041,8 @@
             localStorage.removeItem('pnpRuleDataVersion');
             localStorage.removeItem('laborRuleData');
             localStorage.removeItem('laborRuleDataVersion');
+            localStorage.removeItem('dspChannelData');
+            localStorage.removeItem('dspChannelDataVersion');
             localStorage.removeItem('estimate_sync_pending');
             location.reload();
         }

@@ -43,6 +43,11 @@ function downloadData(type) {
             fileName = 'estimate-data.js';
             dataObj = (typeof estimateData !== 'undefined') ? estimateData : null;
             break;
+        case 'dspChannel':
+            dataName = 'dspChannelData';
+            fileName = 'dsp-channel-data.js';
+            dataObj = (typeof dspChannelData !== 'undefined') ? dspChannelData : null;
+            break;
         case 'pnp':
             dataName = 'pnpSearchData';
             fileName = 'pnp-search-data.js';
@@ -103,7 +108,11 @@ function downloadData(type) {
     let logicVar = dataName; // e.g. productData
     let versionKey = dataName + 'Version';
 
-    fileContent += `let ${logicVar} = [];\n`;
+    if (type === 'dspChannel') {
+        fileContent += `let ${logicVar} = {};\n`;
+    } else {
+        fileContent += `let ${logicVar} = [];\n`;
+    }
     fileContent += `if (typeof localStorage !== 'undefined') {\n`;
     fileContent += `    const stored = localStorage.getItem('${dataName}');\n`;
     fileContent += `    const storedVer = localStorage.getItem('${dataName}_version');\n`;
@@ -206,6 +215,11 @@ async function saveToGitHub(type, silent = false) {
             fileName = 'js/estimate-data.js';
             dataObj = (typeof estimateData !== 'undefined') ? estimateData : null;
             break;
+        case 'dspChannel':
+            dataName = 'dspChannelData';
+            fileName = 'js/dsp-channel-data.js';
+            dataObj = (typeof dspChannelData !== 'undefined') ? dspChannelData : null;
+            break;
         case 'pnp':
             dataName = 'pnpSearchData';
             fileName = 'js/pnp-search-data.js';
@@ -247,7 +261,8 @@ async function saveToGitHub(type, silent = false) {
                                 (type === 'estimate') ? 'initialEstimateData' :
                                     (type === 'pnpRule') ? 'initialPnpRuleData' :
                                         (type === 'laborRule') ? 'initialLaborRuleData' :
-                                            'initial' + type.charAt(0).toUpperCase() + type.slice(1) + 'Data';
+                                            (type === 'dspChannel') ? 'initialDspChannelData' :
+                                                'initial' + type.charAt(0).toUpperCase() + type.slice(1) + 'Data';
 
     const versionVarName = (type === 'dealer') ? 'DEALER_DATA_VERSION' :
         (type === 'product') ? 'PRODUCT_DATA_VERSION' :
@@ -259,7 +274,8 @@ async function saveToGitHub(type, silent = false) {
                                 (type === 'estimate') ? 'ESTIMATE_DATA_VERSION' :
                                     (type === 'pnpRule') ? 'PNP_RULE_DATA_VERSION' :
                                         (type === 'laborRule') ? 'LABOR_RULE_DATA_VERSION' :
-                                            'DATA_VERSION';
+                                            (type === 'dspChannel') ? 'DSP_CHANNEL_DATA_VERSION' :
+                                                'DATA_VERSION';
 
     let fileContent = `const ${varName} = ${jsonStr};\n`;
     fileContent += `const ${versionVarName} = ${version};\n\n`;
@@ -267,7 +283,11 @@ async function saveToGitHub(type, silent = false) {
     let logicVar = dataName;
     let versionKey = dataName + 'Version';
 
-    fileContent += `let ${logicVar} = [];\n`;
+    if (type === 'dspChannel') {
+        fileContent += `let ${logicVar} = {};\n`;
+    } else {
+        fileContent += `let ${logicVar} = [];\n`;
+    }
     fileContent += `if (typeof localStorage !== 'undefined') {\n`;
     fileContent += `    const storedVersion = localStorage.getItem('${versionKey}');\n`;
     fileContent += `    const stored = localStorage.getItem('${dataName}');\n\n`;
@@ -280,7 +300,11 @@ async function saveToGitHub(type, silent = false) {
     fileContent += `    } else if (stored) {\n`;
     fileContent += `        ${logicVar} = JSON.parse(stored);\n`;
     fileContent += `        // Safety Check for empty data\n`;
-    fileContent += `        if (${logicVar}.length === 0 && ${varName}.length > 0) {\n`;
+    if (type === 'dspChannel') {
+        fileContent += `        if (Object.keys(${logicVar}).length === 0 && Object.keys(${varName}).length > 0) {\n`;
+    } else {
+        fileContent += `        if (${logicVar}.length === 0 && ${varName}.length > 0) {\n`;
+    }
     fileContent += `             ${logicVar} = JSON.parse(JSON.stringify(${varName}));\n`;
     fileContent += `             localStorage.setItem('${dataName}', JSON.stringify(${logicVar}));\n`;
     fileContent += `             if (typeof ${versionVarName} !== 'undefined') localStorage.setItem('${versionKey}', ${versionVarName}.toString());\n`;
