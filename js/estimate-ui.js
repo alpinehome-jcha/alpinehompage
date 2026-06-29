@@ -1638,19 +1638,33 @@ const EstimateUI = {
             imagePath = '../carsystem/Alpine Car3.png';
         }
 
-        // 4. 좌/우 14개 대칭 행 배치 정의
+        // 4. 좌/우 14개 대칭 행 배치 정의 및 채널별 정밀 Y좌표 테이블 매핑 (단위: %)
+        const channelYPercents = {
+            '1': 20.00, '2': 20.00,
+            '3': 23.90, '4': 23.90,
+            '5': 27.80, '6': 27.80,
+            '7': 31.70, '8': 31.70,
+            '11A': 35.60, '12A': 35.60,
+            'A': 39.50, 'B': 39.50,
+            'C': 43.40, 'D': 43.40,
+            'E': 54.91, 'F': 54.91,
+            '7A': 59.17, '8A': 59.17,
+            '9': 63.56, '10': 63.56,
+            'G': 67.90, 'H': 67.90,
+            'I': 72.08, 'J': 72.08,
+            'K': 76.33, 'L': 76.33,
+            '11': 80.20, '12': 80.20
+        };
+
         const leftChannels = ['1', '3', '5', '7', '11A', 'A', 'C', 'E', '7A', '9', 'G', 'I', 'K', '11'];
         const rightChannels = ['2', '4', '6', '8', '12A', 'B', 'D', 'F', '8A', '10', 'H', 'J', 'L', '12'];
-        const rowYPercents = [
-            27.81, 31.11, 35.42, 39.81, 44.07, 48.00, 51.90, 55.80, 59.70, 63.60, 67.50, 71.40, 75.30, 79.20
-        ];
 
         let overlayHtml = '';
 
         // 좌측 오버레이 생성
-        leftChannels.forEach((ch, idx) => {
+        leftChannels.forEach(ch => {
             const val = mappedProducts[ch] || "";
-            const y = rowYPercents[idx];
+            const y = channelYPercents[ch] || 0;
             overlayHtml += `
                 <div style="position: absolute; left: 10.75%; top: ${y}%; width: 15.27%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${val}">
                     ${val}
@@ -1659,9 +1673,9 @@ const EstimateUI = {
         });
 
         // 우측 오버레이 생성
-        rightChannels.forEach((ch, idx) => {
+        rightChannels.forEach(ch => {
             const val = mappedProducts[ch] || "";
-            const y = rowYPercents[idx];
+            const y = channelYPercents[ch] || 0;
             overlayHtml += `
                 <div style="position: absolute; left: 80.81%; top: ${y}%; width: 15.27%; height: 2.3%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #111; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; padding: 0 4px; box-sizing: border-box; background: transparent; pointer-events: none;" title="${val}">
                     ${val}
