@@ -7460,7 +7460,7 @@ const initialEstimateData = [
             "DS-R80-6B",
             "DS-X12-6B",
             "DS-C80-6B",
-            "DS-10DP-6B",
+            "DS-10DP-8B",
             "DS-12EV-B",
             "DS-D90-B"
         ]
@@ -15416,7 +15416,7 @@ const initialEstimateData = [
         ]
     }
 ];
-const ESTIMATE_DATA_VERSION = 1782778902460;
+const ESTIMATE_DATA_VERSION = 1782779202466;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
