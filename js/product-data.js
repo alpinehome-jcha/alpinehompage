@@ -4432,9 +4432,43 @@ const initialProductData = [
         ],
         "attachments": [],
         "manualUrl": ""
+    },
+    {
+        "id": 1783038118946,
+        "category": "Others",
+        "title": "DPS-25M-Chamber",
+        "desc": "DPS-25M/Metio Sound용 2.5\"챔버",
+        "desc_bottom": ".",
+        "price": 100000,
+        "soldOut": false,
+        "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DPS-25M-Chamber.jpg",
+        "detailBlocks": [
+            {
+                "id": "1783037503111254481",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DPS-25M-Chamber-01.jpg"
+            },
+            {
+                "id": "1783037755864071234",
+                "type": "text",
+                "value": "DSP-25M과 Metio sound의 지붕 스피커를 장착할 수 있는 챔버입니다."
+            },
+            {
+                "id": "1783037843808339670",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DPS-25M-Chamber-02.jpg"
+            },
+            {
+                "id": "1783037948216386043",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DPS-25M-Chamber-03.jpg"
+            }
+        ],
+        "attachments": [],
+        "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1782462486949;
+const PRODUCT_DATA_VERSION = 1783038118949;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
