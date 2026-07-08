@@ -4462,13 +4462,23 @@ const initialProductData = [
                 "id": "1783037948216386043",
                 "type": "image",
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DPS-25M-Chamber-03.jpg"
+            },
+            {
+                "id": "1783477284320657528",
+                "type": "image",
+                "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DPS-25M-Chamber-04.jpg"
+            },
+            {
+                "id": "1783477287597340733",
+                "type": "text",
+                "value": "10UF 콘덴서도 포함되어 있습니다. 흰색이 마이너스입니다."
             }
         ],
         "attachments": [],
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1783038118949;
+const PRODUCT_DATA_VERSION = 1783477344599;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
