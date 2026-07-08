@@ -12033,8 +12033,7 @@ const initialEstimateData = [
             "HDS-990"
         ],
         "extraLabor": 500000,
-        "11A": "",
-        "12A": "SW R",
+        "11A": "SW R",
         "A": "",
         "B": "",
         "C": "",
@@ -12059,7 +12058,8 @@ const initialEstimateData = [
             "DS-10DP-6B",
             "DS-12EV-B",
             "DS-D90-B"
-        ]
+        ],
+        "12A": ""
     },
     {
         "1": "FL",
@@ -15416,7 +15416,7 @@ const initialEstimateData = [
         ]
     }
 ];
-const ESTIMATE_DATA_VERSION = 1783554386761;
+const ESTIMATE_DATA_VERSION = 1783554556255;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
