@@ -11991,7 +11991,7 @@ const initialEstimateData = [
         "8": "",
         "9": "RL",
         "10": "RR",
-        "11": "SW",
+        "11": "",
         "12": "",
         "brand": "BENZ",
         "model": "E250 / E250D_C300",
@@ -12034,7 +12034,7 @@ const initialEstimateData = [
         ],
         "extraLabor": 500000,
         "11A": "",
-        "12A": "",
+        "12A": "SW R",
         "A": "",
         "B": "",
         "C": "",
@@ -15416,7 +15416,7 @@ const initialEstimateData = [
         ]
     }
 ];
-const ESTIMATE_DATA_VERSION = 1782779202466;
+const ESTIMATE_DATA_VERSION = 1783554386761;
 
 let estimateData = [];
 if (typeof localStorage !== 'undefined') {
