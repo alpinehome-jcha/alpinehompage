@@ -64,7 +64,20 @@ async function loadData() {
 
         if (error) throw error;
 
-        serviceData = data || [];
+        if (data && data.length > 0) {
+            serviceData = data;
+            // Sync to local storage as backup
+            localStorage.setItem('serviceData', JSON.stringify(serviceData));
+        } else {
+            // Fallback to local storage if server returns empty (due to RLS or empty DB)
+            const local = localStorage.getItem('serviceData');
+            if (local) {
+                serviceData = JSON.parse(local);
+                console.warn('Supabase returned empty data. Fallback to LocalStorage data.');
+            } else {
+                serviceData = [];
+            }
+        }
     } catch (e) {
         console.error('Supabase 데이터 로드 중 오류 발생', e);
         // Fallback to local storage if DB fails temporarily
@@ -117,6 +130,30 @@ async function saveService() {
             images: finalImages
         };
 
+        // 1. Save to LocalStorage first as backup
+        let localData = [];
+        const local = localStorage.getItem('serviceData');
+        if (local) {
+            try {
+                localData = JSON.parse(local);
+            } catch(err) {
+                console.error('Local Parse Error during save:', err);
+            }
+        }
+
+        if (idField) {
+            const targetId = parseInt(idField);
+            const idx = localData.findIndex(s => s.id === targetId);
+            if (idx !== -1) {
+                localData[idx] = { ...localData[idx], ...item };
+            }
+        } else {
+            const newItem = { ...item, id: Date.now() }; // Temp ID for local display
+            localData.unshift(newItem);
+        }
+        localStorage.setItem('serviceData', JSON.stringify(localData));
+
+        // 2. Try saving to Supabase DB
         if (idField) {
             // Edit Existing Record
             const { error } = await supabaseClient
@@ -140,7 +177,11 @@ async function saveService() {
 
     } catch (e) {
         console.error('Supabase DB 저장 에러:', e);
-        alert('저장에 실패했습니다. 관리자에게 문의하세요.\n\n오류: ' + e.message);
+        // Fallback to local storage data on UI on server failure
+        const local = localStorage.getItem('serviceData');
+        if (local) serviceData = JSON.parse(local);
+        renderTable(1);
+        alert('서버 저장에 실패했습니다. (로컬 브라우저에 임시 저장되었습니다)\n\n오류: ' + e.message);
     }
     hideLoading();
 }
