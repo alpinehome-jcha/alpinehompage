@@ -20,23 +20,26 @@ CREATE TABLE IF NOT EXISTS public.service_management (
     recovery_status VARCHAR(50), -- 고품회수여부
     failure_cause VARCHAR(255),  -- 고장원인
     details TEXT,
+    images JSONB,                -- 첨부 이미지 목록 저장 (배열)
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
 -- 2. Turn on Row Level Security (RLS)
 ALTER TABLE public.service_management ENABLE ROW LEVEL SECURITY;
 
--- 3. Create a policy that allows anyone to read (if you want dealers to see it, or keep it admin only)
--- For this feature, since the UI is protected by auth.js admin check, we can allow full access for now, 
--- or we can restrict it if needed. Because the website relies on a shared anon key and custom RPC auth, 
--- standard Supabase auth is bypassed. So we will just allow anon key to do full CRUD, but the UI protects it.
+-- 3. Create a policy that allows anyone to read/write (anon key full CRUD)
+DROP POLICY IF EXISTS "Allow anonymous read access" ON public.service_management;
+DROP POLICY IF EXISTS "Allow anonymous insert access" ON public.service_management;
+DROP POLICY IF EXISTS "Allow anonymous update access" ON public.service_management;
+DROP POLICY IF EXISTS "Allow anonymous delete access" ON public.service_management;
 
 CREATE POLICY "Allow anonymous read access" ON public.service_management FOR SELECT USING (true);
 CREATE POLICY "Allow anonymous insert access" ON public.service_management FOR INSERT WITH CHECK (true);
 CREATE POLICY "Allow anonymous update access" ON public.service_management FOR UPDATE USING (true);
 CREATE POLICY "Allow anonymous delete access" ON public.service_management FOR DELETE USING (true);
 
--- If the table already exists, you can add the new column by running this directly:
--- ALTER TABLE public.service_management ADD COLUMN failure_cause VARCHAR(255);
+-- If the table already exists, you can run these ALTER commands directly:
+-- ALTER TABLE public.service_management ADD COLUMN IF NOT EXISTS failure_cause VARCHAR(255);
+-- ALTER TABLE public.service_management ADD COLUMN IF NOT EXISTS images JSONB;
 
 -- End of script
