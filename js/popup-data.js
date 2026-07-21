@@ -1,5 +1,14 @@
-const initialPopupData = [];
-const POPUP_DATA_VERSION = 1771559594889;
+const initialPopupData = [
+    {
+        "id": 1771558591828,
+        "title": "오키나와",
+        "isActive": true,
+        "imagePath": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/popupimage/01.jpg",
+        "hideDays": 365,
+        "linkUrl": "https://ko.okiren8131.com/"
+    }
+];
+const POPUP_DATA_VERSION = 1784606214083;
 
 let popupData = [];
 if (typeof localStorage !== 'undefined') {
