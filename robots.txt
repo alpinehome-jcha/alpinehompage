@@ -1,4 +1,14 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
+Disallow: /pages/admin.html
+Disallow: /pages/service-management.html
+Disallow: /pages/analytics.html
+Disallow: /pages/estimate-setup.html
+Disallow: /pages/pnp-setup.html
+Disallow: /pages/login.html
+Disallow: /support/price-list.html
+Disallow: /support/price-input.html
+Disallow: /support/partner-board.html
+Disallow: /support/dealer-only.html
 
-Sitemap: https://alpine-korea.co.kr/sitemap.xml
+Sitemap: https://www.alpine-korea.co.kr/sitemap.xml

@@ -21,7 +21,7 @@ const templatePath = path.join(pagesDir, 'detail.html');
 const templateHtml = fs.readFileSync(templatePath, 'utf8');
 
 function slugify(text) {
-    return text.toString().toLowerCase()
+    return text.toString().normalize('NFC').toLowerCase()
         .replace(/\s+/g, '-')           // Replace spaces with -
         .replace(/[^\w\-가-힣]+/g, '')  // Remove non-word chars (allow Korean)
         .replace(/\-\-+/g, '-')         // Replace multiple - with single -
@@ -39,9 +39,11 @@ function linkify(text) {
 function generateProductHtml(product) {
     const slug = slugify(product.title) || product.id.toString();
     const cleanDesc = (product.desc || '').replace(/"/g, '&quot;').replace(/\n/g, ' ');
-    const ogImage = product.image ? `https://alpine-korea.co.kr/${product.image.replace('../', '').replace(/^\//, '')}` : '';
+    const ogImage = product.image
+        ? (product.image.startsWith('http') ? product.image : `https://www.alpine-korea.co.kr/${product.image.replace('../', '').replace(/^\//, '')}`)
+        : '';
     const encodedSlug = encodeURIComponent(slug);
-    const pageUrl = `https://alpine-korea.co.kr/pages/products/${encodedSlug}.html`;
+    const pageUrl = `https://www.alpine-korea.co.kr/pages/products/${encodedSlug}.html`;
 
     const seoTags = `
     <!-- SEO_META_TAGS -->
