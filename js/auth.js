@@ -34,10 +34,18 @@ const getRelativeRoot = () => {
 };
 
 // ============================================================
-// Supabase Configuration
+// Supabase Configuration (Production Local Infrastructure)
 // ============================================================
-const SUPABASE_URL = 'https://tlgjgworselvkaatdftz.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us';
+const DEFAULT_LOCAL_SUPABASE_URL = 'http://183.101.105.167:8000';
+const DEFAULT_LOCAL_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us';
+
+const SUPABASE_URL = (typeof window !== 'undefined' && window.ENV && window.ENV.NEXT_PUBLIC_SUPABASE_URL)
+    ? window.ENV.NEXT_PUBLIC_SUPABASE_URL
+    : DEFAULT_LOCAL_SUPABASE_URL;
+
+const SUPABASE_ANON_KEY = (typeof window !== 'undefined' && window.ENV && window.ENV.NEXT_PUBLIC_SUPABASE_ANON_KEY)
+    ? window.ENV.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    : DEFAULT_LOCAL_SUPABASE_ANON_KEY;
 
 // Load Supabase SDK dynamically (CDN)
 async function loadSupabase() {
