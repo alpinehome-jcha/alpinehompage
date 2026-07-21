@@ -461,7 +461,7 @@
     </script>
 
     <script>
-        document.write('<script src="js/product-data.js?v=' + Date.now() + '"><\/script>');
+        document.write('<script src="js/product-data.js?v=20260721"><\/script>');
     </script>
     <script>
         // Render Products
@@ -532,7 +532,7 @@
                 card.innerHTML = `
                     <div style="position: relative;">
                         ${product.soldOut ? '<div class="sold-out-badge">SOLD OUT</div>' : ''}
-                        <img src="${product.image}" alt="${product.title}" class="product-image">
+                        <img src="${product.image}" alt="${product.title}" class="product-image" loading="lazy">
                     </div>
                     <div class="product-info">
                         <div class="product-category">${product.category}</div>

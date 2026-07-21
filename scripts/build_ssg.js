@@ -85,7 +85,7 @@ function generateProductHtml(product) {
                 const imgPath = block.value.startsWith('http') ? block.value : '../../' + block.value.replace('../', '');
                 blocksHTML += `
                             <div class="detail-content-item">
-                                <img src="${imgPath}" alt="Product Detail" onerror="this.style.display='none'">
+                                <img src="${imgPath}" alt="Product Detail" loading="lazy" onerror="this.style.display='none'">
                             </div>
                 `;
             } else if (block.type === 'html') {

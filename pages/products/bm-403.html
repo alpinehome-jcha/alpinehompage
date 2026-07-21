@@ -440,7 +440,7 @@ DSP : PXE-X120-10DP와 연결되는 케이블입니다.</p>
 
     <script src="../../js/auth.js?v=20260211"></script>
     <script>
-        document.write('<script src="../../js/product-data.js?v=' + Date.now() + '"><\/script>');
+        document.write('<script src="../../js/product-data.js?v=20260721"><\/script>');
     </script>
     <script>
         const translations = {
@@ -557,7 +557,7 @@ DSP : PXE-X120-10DP와 연결되는 케이블입니다.</p>
                     } else if (block.type === 'image') {
                         blocksHTML += `
                             <div class="detail-content-item">
-                                <img src="${fixPath(block.value)}" alt="Product Detail" onerror="this.style.display='none'">
+                                <img src="${fixPath(block.value)}" alt="Product Detail" loading="lazy" onerror="this.style.display='none'">
                             </div>
                         `;
                     } else if (block.type === 'html') {

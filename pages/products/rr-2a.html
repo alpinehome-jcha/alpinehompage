@@ -373,7 +373,7 @@ DSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다
                             </div>
                 
                             <div class="detail-content-item">
-                                <img src="https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/RR-2A-C.jpg" alt="Product Detail" onerror="this.style.display='none'">
+                                <img src="https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/RR-2A-C.jpg" alt="Product Detail" loading="lazy" onerror="this.style.display='none'">
                             </div>
                 
                 </div>
@@ -442,7 +442,7 @@ DSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다
 
     <script src="../../js/auth.js?v=20260211"></script>
     <script>
-        document.write('<script src="../../js/product-data.js?v=' + Date.now() + '"><\/script>');
+        document.write('<script src="../../js/product-data.js?v=20260721"><\/script>');
     </script>
     <script>
         const translations = {
@@ -559,7 +559,7 @@ DSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다
                     } else if (block.type === 'image') {
                         blocksHTML += `
                             <div class="detail-content-item">
-                                <img src="${fixPath(block.value)}" alt="Product Detail" onerror="this.style.display='none'">
+                                <img src="${fixPath(block.value)}" alt="Product Detail" loading="lazy" onerror="this.style.display='none'">
                             </div>
                         `;
                     } else if (block.type === 'html') {
