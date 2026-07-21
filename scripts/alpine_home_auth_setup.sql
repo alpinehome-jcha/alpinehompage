@@ -415,14 +415,14 @@ GRANT INSERT ON "alpine-home".visitor_logs TO anon, authenticated;
 GRANT USAGE, SELECT ON SEQUENCE "alpine-home".visitor_logs_id_seq TO anon, authenticated;
 
 -- ------------------------------------------------------------
--- 13. Storage: as-attachments 버킷 (서비스 관리 AS 사진 첨부)
---     실제 버킷명이 코드(js/service-management.js)와 달라(service-images)
---     한 번도 업로드가 성공한 적 없던 문제 수정. anon INSERT만 허용
---     (버킷 자체가 public=true라 읽기는 정책 불필요, 삭제는 허용 안 함)
+-- 14. inbound_analytics: 유입 경로 추적(공개 스크립트, 현재는 어느 페이지에도
+--     포함되지 않아 비활성 상태지만 public 권한 자체는 위험해서 회수)
 -- ------------------------------------------------------------
-CREATE POLICY "Anon upload for as-attachments" ON storage.objects
-FOR INSERT TO anon
-WITH CHECK (bucket_id = 'as-attachments');
+-- id가 uuid(gen_random_uuid())라 별도 시퀀스 없음
+REVOKE INSERT, UPDATE, DELETE, TRUNCATE ON public.inbound_analytics FROM anon, authenticated;
+GRANT INSERT ON "alpine-home".inbound_analytics TO anon, authenticated;
+
+-- 참고: Storage(as-attachments 버킷) 정책은 scripts/alpine_home_github_proxy.sql에 있음(중복 방지)
 
 -- 완료
 SELECT 'alpine-home 인증 시스템 및 권한 조치 완료' AS result;
