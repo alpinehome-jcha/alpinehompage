@@ -8,7 +8,7 @@ const initialPopupData = [
         "linkUrl": "https://ko.okiren8131.com/"
     }
 ];
-const POPUP_DATA_VERSION = 1784606214083;
+const POPUP_DATA_VERSION = 1784606252338;
 
 let popupData = [];
 if (typeof localStorage !== 'undefined') {
