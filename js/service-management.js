@@ -2,6 +2,15 @@ let serviceData = [];
 let supabaseClient = null;
 let currentImages = []; // Array to track currently loaded images for the item being edited
 
+// 관리자 비밀번호 캐시 (세션 동안 1회 입력, RPC 서버측 검증용)
+let _cachedAdminPass = null;
+async function getAdminPassword() {
+    if (_cachedAdminPass) return _cachedAdminPass;
+    const pass = prompt('서비스 데이터 접근을 위해 관리자 비밀번호를 입력하세요:');
+    if (pass) _cachedAdminPass = pass;
+    return pass;
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     // Check if admin or service_admin
     auth.checkAuthAndRedirect();
@@ -56,13 +65,19 @@ async function loadData() {
     showLoading('데이터를 불러오는 중입니다...');
 
     try {
-        const { data, error } = await supabaseClient
-            .from('service_management')
-            .select('*')
-            .order('receive_date', { ascending: false })
-            .order('id', { ascending: false });
+        const supaPass = await getAdminPassword();
+        if (!supaPass) throw new Error('관리자 비밀번호가 필요합니다.');
+        const adminUser = sessionStorage.getItem('currentUser');
+
+        const { data: result, error } = await supabaseClient.rpc('admin_list_service_records', {
+            p_admin_username: adminUser,
+            p_admin_password: supaPass
+        });
 
         if (error) throw error;
+        if (result && result.error) throw new Error(result.error);
+
+        const data = (result && result.data) || [];
 
         if (data && data.length > 0) {
             serviceData = data;
@@ -153,23 +168,20 @@ async function saveService() {
         }
         localStorage.setItem('serviceData', JSON.stringify(localData));
 
-        // 2. Try saving to Supabase DB
-        if (idField) {
-            // Edit Existing Record
-            const { error } = await supabaseClient
-                .from('service_management')
-                .update(item)
-                .eq('id', parseInt(idField));
+        // 2. Try saving to Supabase DB (관리자 인증 RPC 경유)
+        const supaPass = await getAdminPassword();
+        if (!supaPass) throw new Error('관리자 비밀번호가 필요합니다.');
+        const adminUser = sessionStorage.getItem('currentUser');
 
-            if (error) throw error;
-        } else {
-            // Add New Record
-            const { error } = await supabaseClient
-                .from('service_management')
-                .insert([item]);
+        const { data: result, error } = await supabaseClient.rpc('admin_upsert_service_record', {
+            p_admin_username: adminUser,
+            p_admin_password: supaPass,
+            p_id: idField ? parseInt(idField) : null,
+            p_record: item
+        });
 
-            if (error) throw error;
-        }
+        if (error) throw error;
+        if (result && result.error) throw new Error(result.error);
 
         alert('저장되었습니다.');
         resetForm();
@@ -223,12 +235,18 @@ async function deleteService(id) {
 
     showLoading('데이터를 삭제하는 중입니다...');
     try {
-        const { error } = await supabaseClient
-            .from('service_management')
-            .delete()
-            .eq('id', parseInt(id));
+        const supaPass = await getAdminPassword();
+        if (!supaPass) throw new Error('관리자 비밀번호가 필요합니다.');
+        const adminUser = sessionStorage.getItem('currentUser');
+
+        const { data: result, error } = await supabaseClient.rpc('admin_delete_service_record', {
+            p_admin_username: adminUser,
+            p_admin_password: supaPass,
+            p_id: parseInt(id)
+        });
 
         if (error) throw error;
+        if (result && result.error) throw new Error(result.error);
 
         resetForm();
         await loadData();

@@ -1,13 +1,13 @@
-const DEFAULT_LOCAL_SUPABASE_URL = "http://183.101.105.167:8000";
-const DEFAULT_LOCAL_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us";
+const SC_DEFAULT_LOCAL_SUPABASE_URL = "https://supabase.alpine-korea.co.kr";
+const SC_DEFAULT_LOCAL_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us";
 
 const CLIENT_SUPABASE_URL = (typeof window !== 'undefined' && window.ENV && window.ENV.NEXT_PUBLIC_SUPABASE_URL)
     ? window.ENV.NEXT_PUBLIC_SUPABASE_URL
-    : DEFAULT_LOCAL_SUPABASE_URL;
+    : SC_DEFAULT_LOCAL_SUPABASE_URL;
 
 const CLIENT_SUPABASE_ANON_KEY = (typeof window !== 'undefined' && window.ENV && window.ENV.NEXT_PUBLIC_SUPABASE_ANON_KEY)
     ? window.ENV.NEXT_PUBLIC_SUPABASE_ANON_KEY
-    : DEFAULT_LOCAL_SUPABASE_ANON_KEY;
+    : SC_DEFAULT_LOCAL_SUPABASE_ANON_KEY;
 
 // CDN 방식으로 Supabase JS를 사용하는 경우 (별도 로드 필요)
 if (typeof supabase === 'undefined') {
@@ -15,7 +15,9 @@ if (typeof supabase === 'undefined') {
 }
 
 const supabaseClient = (typeof supabase !== 'undefined')
-    ? supabase.createClient(CLIENT_SUPABASE_URL, CLIENT_SUPABASE_ANON_KEY)
+    ? supabase.createClient(CLIENT_SUPABASE_URL, CLIENT_SUPABASE_ANON_KEY, {
+        db: { schema: 'alpine-home' }
+      })
     : null;
 
 // 공유를 위해 전역 변수로 설정 (기존 소스 호환성)
@@ -74,41 +76,6 @@ async function fetchDealerList() {
         return [];
     }
     return data;
-}
-
-/**
- * 대리점 데이터를 추가/수정합니다 (Upsert)
- * @param {Object} dealerData
- * @returns {Promise<boolean>}
- */
-async function upsertDealer(dealerData) {
-    const { error } = await window.supabase
-        .from('dealers')
-        .upsert(dealerData);
-
-    if (error) {
-        console.error('Error upserting dealer:', error);
-        return false;
-    }
-    return true;
-}
-
-/**
- * 대리점 데이터를 삭제합니다.
- * @param {number} dealerId
- * @returns {Promise<boolean>}
- */
-async function deleteDealer(dealerId) {
-    const { error } = await window.supabase
-        .from('dealers')
-        .delete()
-        .eq('id', dealerId);
-
-    if (error) {
-        console.error('Error deleting dealer:', error);
-        return false;
-    }
-    return true;
 }
 
 // DOMContentLoaded 시점에 로딩 오버레이 동적 삽입

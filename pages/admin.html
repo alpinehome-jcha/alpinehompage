@@ -1835,24 +1835,40 @@
                     alert('변경내용은 저장되었으나, 서버 동기화에 실패했습니다:\n' + e.message);
                 }
             } else {
-                // Supabase Dealer Data sync
+                // Supabase Dealer Data + 계정 통합 동기화 (관리자 비밀번호 검증 RPC)
                 loadingText.innerText = '대리점 정보 DB 동기화 중 (Supabase)...';
                 try {
-                    const dbItem = { ...newItem };
-                    delete dbItem.password;
-                    delete dbItem.role;
+                    const supaPass = await getAdminPassword();
+                    if (!supaPass) {
+                        overlay.style.display = 'none';
+                        return;
+                    }
+                    const adminUser = sessionStorage.getItem('currentUser');
+                    const savedItem = collection.find(i => i.id === currentId) || newItem;
+                    const client = await getSupaAdmin();
+                    const { data, error } = await client.rpc('admin_upsert_dealer', {
+                        p_admin_username: adminUser,
+                        p_admin_password: supaPass,
+                        p_old_username: originalDealerUsername || null,
+                        p_new_username: newItem.username,
+                        p_new_password: newItem.password || null,
+                        p_role: CAT_ROLE_MAP[newItem.category] || 'dealer',
+                        p_dealer_name: newItem.name,
+                        p_category: newItem.category,
+                        p_badge: newItem.badge,
+                        p_address: newItem.address,
+                        p_phone: newItem.phone,
+                        p_desc: newItem.desc,
+                        p_lat: savedItem.lat,
+                        p_lng: savedItem.lng,
+                        p_region: newItem.region,
+                        p_homepage: newItem.homepage
+                    });
 
-                    const success = await upsertDealer(dbItem);
-                    if (newItem.username) {
-                        loadingText.innerText = 'Supabase 보안 계정 동기화 중...';
-                        await syncDealerToSupabase(originalDealerUsername, newItem);
-                    }
                     overlay.style.display = 'none';
-                    if (success) {
-                        alert('대리점 정보가 안전하게 DB에 반영되었습니다.');
-                    } else {
-                        alert('대리점 정보 저장 중 DB 에러가 발생했습니다.');
-                    }
+                    if (error) throw new Error(error.message);
+                    if (data && data.error) throw new Error(data.error);
+                    alert('대리점 정보가 안전하게 DB에 반영되었습니다.');
                 } catch (err) {
                     console.error(err);
                     overlay.style.display = 'none';
@@ -2086,10 +2102,19 @@
                 dealers = dealers.filter(d => d.id !== currentId);
                 localStorage.setItem(storageKey, JSON.stringify(dealers));
 
-                // Supabase에서도 삭제
-                await deleteDealer(currentId);
+                // Supabase에서도 삭제 (dealers + users 계정 동시 삭제)
                 if (deletedUsername) {
-                    await deleteDealerFromSupabase(deletedUsername);
+                    const supaPass = await getAdminPassword();
+                    if (supaPass) {
+                        const adminUser = sessionStorage.getItem('currentUser');
+                        const client = await getSupaAdmin();
+                        const { error } = await client.rpc('admin_delete_dealer', {
+                            p_admin_username: adminUser,
+                            p_admin_password: supaPass,
+                            p_username: deletedUsername
+                        });
+                        if (error) console.warn('[Supabase] 딜러 삭제 오류:', error.message);
+                    }
                 }
             }
 
@@ -2359,7 +2384,7 @@
             currentUserRole = sessionStorage.getItem('userRole');
 
             // Strict Role Check
-            if (currentUserRole !== 'admin') {
+            if (!auth.isLoggedIn() || currentUserRole !== 'admin') {
                 alert('Access Denied. Admins only.');
                 window.location.href = '../index.html';
                 return;
@@ -2746,7 +2771,7 @@
         // --- GitHub Settings Logic ---
 
         // ── Supabase 클라이언트 (딜러 계정 동기화용) ──────────────
-        const _LOCAL_SUPA_URL = 'http://183.101.105.167:8000';
+        const _LOCAL_SUPA_URL = 'https://supabase.alpine-korea.co.kr';
         const _LOCAL_SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us';
         const _ADMIN_SUPA_URL = (typeof window !== 'undefined' && window.ENV && window.ENV.NEXT_PUBLIC_SUPABASE_URL) ? window.ENV.NEXT_PUBLIC_SUPABASE_URL : _LOCAL_SUPA_URL;
         const _ADMIN_SUPA_KEY = (typeof window !== 'undefined' && window.ENV && window.ENV.NEXT_PUBLIC_SUPABASE_ANON_KEY) ? window.ENV.NEXT_PUBLIC_SUPABASE_ANON_KEY : _LOCAL_SUPA_KEY;
@@ -2754,7 +2779,7 @@
         async function getSupaAdmin() {
             if (_supaAdmin) return _supaAdmin;
             const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-            _supaAdmin = createClient(_ADMIN_SUPA_URL, _ADMIN_SUPA_KEY);
+            _supaAdmin = createClient(_ADMIN_SUPA_URL, _ADMIN_SUPA_KEY, { db: { schema: 'alpine-home' } });
             return _supaAdmin;
         }
 
@@ -2803,29 +2828,6 @@
             'Alpine Style Distributor': 'style', 'Alpine Regional Distributor': 'region',
             'Alpine Dealer': 'dealer'
         };
-        async function syncDealerToSupabase(oldUsername, newItem) {
-            try {
-                const supaPass = await getAdminPassword();
-                if (!supaPass) return;
-                const adminUser = sessionStorage.getItem('currentUser') || 'alpineaudio';
-                const client = await getSupaAdmin();
-                const { data, error } = await client.rpc('admin_upsert_dealer', {
-                    p_admin_username: adminUser,
-                    p_admin_password: supaPass,
-                    p_old_username: oldUsername || null,
-                    p_new_username: newItem.username,
-                    p_new_password: newItem.password || null,
-                    p_role: CAT_ROLE_MAP[newItem.category] || 'dealer',
-                    p_dealer_name: newItem.name,
-                    p_category: newItem.category
-                });
-                if (error) console.warn('[Supabase] 동기화 오류:', error.message);
-                else if (data && data.error) console.warn('[Supabase] 동기화 실패:', data.error);
-                else console.log('[Supabase] 딜러 계정 동기화 완료:', newItem.username);
-            } catch (e) {
-                console.warn('[Supabase] 동기화 예외:', e.message);
-            }
-        }
         async function deleteDealerFromSupabase(username) {
             try {
                 const supaPass = await getAdminPassword();

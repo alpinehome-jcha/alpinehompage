@@ -36,7 +36,7 @@ const getRelativeRoot = () => {
 // ============================================================
 // Supabase Configuration (Production Local Infrastructure)
 // ============================================================
-const DEFAULT_LOCAL_SUPABASE_URL = 'http://183.101.105.167:8000';
+const DEFAULT_LOCAL_SUPABASE_URL = 'https://supabase.alpine-korea.co.kr';
 const DEFAULT_LOCAL_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us';
 
 const SUPABASE_URL = (typeof window !== 'undefined' && window.ENV && window.ENV.NEXT_PUBLIC_SUPABASE_URL)
@@ -53,7 +53,9 @@ async function loadSupabase() {
 
     // Check if the global supabase object from CDN exists
     if (window.supabase && typeof window.supabase.createClient === 'function') {
-        window._supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        window._supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+            db: { schema: 'alpine-home' }
+        });
         return window._supabaseClient;
     }
 
@@ -72,30 +74,11 @@ async function loadSupabase() {
             document.head.appendChild(script);
         });
     }
-    window._supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    window._supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+        db: { schema: 'alpine-home' }
+    });
     return window._supabaseClient;
 }
-
-// ============================================================
-// Fallback Credentials (하드코딩 - 비상용 / Supabase 불가 시)
-// ============================================================
-const USERS = {
-    'alpineaudio': { pass: '6198107276aa!!', role: 'admin' },
-    'master': { pass: 'master123', role: 'master' },
-    'team': { pass: 'team123', role: 'team' },
-    'style': { pass: 'style123', role: 'style' },
-    'region': { pass: 'region123', role: 'region' },
-    'dealer': { pass: 'dealer123', role: 'dealer' }
-};
-
-const FRIENDLY_NAMES = {
-    'alpineaudio': '관리자',
-    'master': 'Sound Master',
-    'team': 'Team Alpine',
-    'style': 'Alpine Style',
-    'region': 'Regional Dist',
-    'dealer': 'Dealer'
-};
 
 const auth = {
     loadSupabase: loadSupabase,
@@ -122,61 +105,35 @@ const auth = {
     },
 
     login: async (username, password) => {
-        // ── 1순위: Supabase RPC 로그인 ──────────────────────────────
-        try {
-            const client = await loadSupabase();
-            const { data, error } = await client.rpc('verify_login', {
-                p_username: username,
-                p_password: password
-            });
+        const client = await loadSupabase();
+        const { data, error } = await client.rpc('verify_login', {
+            p_username: username,
+            p_password: password
+        });
 
-            if (!error) {
-                // DB에 계정이 있지만 비밀번호 틀림 → 즉시 실패 (폴백 없음)
-                if (data && data.error === 'wrong_password') {
-                    return false;
-                }
-                // 로그인 성공
-                if (data && !data.error) {
-                    const role = data.role || 'dealer';
-                    const dealerName = data.dealer_name || username;
-
-                    sessionStorage.setItem(AUTH_KEY, 'true');
-                    sessionStorage.setItem(ROLE_KEY, role);
-                    sessionStorage.setItem('dealerName', dealerName);
-                    sessionStorage.setItem('currentUser', username);
-
-                    await saveVisitLog({
-                        date: new Date().toLocaleString('ko-KR'),
-                        username: username,
-                        name: dealerName,
-                        role: role
-                    });
-                    return true;
-                }
-                // data === null: DB에 없는 계정 → USERS 폴백 시도
-            }
-            // error가 있을 때도 USERS 폴백 허용
-        } catch (e) {
-            console.warn('[Auth] Supabase 연결 실패, 비상 폴백 시도:', e.message);
+        if (error) {
+            console.error('[Auth] Supabase 로그인 오류:', error.message);
+            return false;
+        }
+        if (!data || data.error) {
+            return false;
         }
 
-        // ── 2순위: 하드코딩 관리자 계정만 (비상용 fallback) ──────────
-        const user = USERS[username];
-        if (user && user.pass === password) {
-            sessionStorage.setItem(AUTH_KEY, 'true');
-            sessionStorage.setItem(ROLE_KEY, user.role);
-            sessionStorage.setItem('dealerName', FRIENDLY_NAMES[username] || username);
-            sessionStorage.setItem('currentUser', username);
-            await saveVisitLog({
-                date: new Date().toLocaleString('ko-KR'),
-                username: username,
-                name: FRIENDLY_NAMES[username] || username,
-                role: user.role
-            });
-            return true;
-        }
+        const role = data.role || 'dealer';
+        const dealerName = data.dealer_name || username;
 
-        return false;
+        sessionStorage.setItem(AUTH_KEY, 'true');
+        sessionStorage.setItem(ROLE_KEY, role);
+        sessionStorage.setItem('dealerName', dealerName);
+        sessionStorage.setItem('currentUser', username);
+
+        await saveVisitLog({
+            date: new Date().toLocaleString('ko-KR'),
+            username: username,
+            name: dealerName,
+            role: role
+        });
+        return true;
     },
     changePassword: async (currentPass, newPass) => {
         const username = sessionStorage.getItem('currentUser');
@@ -648,7 +605,7 @@ async function saveVisitLog(entry) {
         if (typeof loadSupabase === 'function') {
             const client = await loadSupabase();
             const { error } = await client.from('visitor_logs').insert([{
-                visit_date: entry.date,
+                visit_date: new Date().toISOString().slice(0, 10),
                 username: entry.username || '',
                 name: entry.name || '',
                 role: entry.role || 'dealer'
