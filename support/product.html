@@ -324,6 +324,11 @@
                 <h3>📢 대리점 방문 기록 (Visit Log) - Admin Only</h3>
                 <button class="btn btn-secondary btn-sm" onclick="clearVisitLog()">로그 초기화</button>
             </div>
+            <div style="margin-bottom: 12px;">
+                <input type="text" id="visitLogSearch" placeholder="대리점명 또는 아이디로 검색"
+                    oninput="renderVisitLog(1)"
+                    style="width: 100%; max-width: 320px; padding: 8px 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 0.9rem; box-sizing: border-box;">
+            </div>
             <table class="board-table" style="font-size: 0.9rem;">
                 <thead style="background: #eee;">
                     <tr>
@@ -490,16 +495,27 @@
                     }
                 }
             }
+            // Search Filter (Dealer Name / User ID)
+            const searchInput = document.getElementById('visitLogSearch');
+            const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+            const filteredLogs = keyword
+                ? logs.filter(log =>
+                    (log.name || '').toLowerCase().includes(keyword) ||
+                    (log.username || '').toLowerCase().includes(keyword))
+                : logs;
+
             // Pagination Logic
-            const totalItems = logs.length;
+            const totalItems = filteredLogs.length;
             const totalPages = Math.ceil(totalItems / LOG_ITEMS_PER_PAGE);
             const start = (page - 1) * LOG_ITEMS_PER_PAGE;
             const end = start + LOG_ITEMS_PER_PAGE;
-            const paginatedLogs = logs.slice(start, end);
+            const paginatedLogs = filteredLogs.slice(start, end);
 
             tbody.innerHTML = '';
             if (paginatedLogs.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">기록이 없습니다. (GitHub설정 확인 필요)</td></tr>';
+                tbody.innerHTML = keyword
+                    ? '<tr><td colspan="4" style="text-align:center;">검색 결과가 없습니다.</td></tr>'
+                    : '<tr><td colspan="4" style="text-align:center;">기록이 없습니다. (GitHub설정 확인 필요)</td></tr>';
                 // Remove pagination if exists
                 const pDiv = document.getElementById('visitLogPagination');
                 if (pDiv) pDiv.innerHTML = '';
