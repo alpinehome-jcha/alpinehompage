@@ -515,7 +515,7 @@ async function uploadImages() {
         const filePath = `service_${uniqueName}`;
 
         const { data, error } = await supabaseClient.storage
-            .from('service-images')
+            .from('as-attachments')
             .upload(filePath, file);
 
         if (error) {
@@ -524,7 +524,7 @@ async function uploadImages() {
         }
 
         const { data: { publicUrl } } = supabaseClient.storage
-            .from('service-images')
+            .from('as-attachments')
             .getPublicUrl(filePath);
 
         uploadedUrls.push(publicUrl);

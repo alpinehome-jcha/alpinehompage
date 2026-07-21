@@ -414,5 +414,15 @@ REVOKE INSERT, UPDATE, DELETE, TRUNCATE ON public.visitor_logs FROM anon, authen
 GRANT INSERT ON "alpine-home".visitor_logs TO anon, authenticated;
 GRANT USAGE, SELECT ON SEQUENCE "alpine-home".visitor_logs_id_seq TO anon, authenticated;
 
+-- ------------------------------------------------------------
+-- 13. Storage: as-attachments 버킷 (서비스 관리 AS 사진 첨부)
+--     실제 버킷명이 코드(js/service-management.js)와 달라(service-images)
+--     한 번도 업로드가 성공한 적 없던 문제 수정. anon INSERT만 허용
+--     (버킷 자체가 public=true라 읽기는 정책 불필요, 삭제는 허용 안 함)
+-- ------------------------------------------------------------
+CREATE POLICY "Anon upload for as-attachments" ON storage.objects
+FOR INSERT TO anon
+WITH CHECK (bucket_id = 'as-attachments');
+
 -- 완료
 SELECT 'alpine-home 인증 시스템 및 권한 조치 완료' AS result;
