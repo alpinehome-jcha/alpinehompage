@@ -1,59 +1,41 @@
-# 구현 계획서: Mixed Content 문제 해결 (2번 이슈)
+# 구현 계획서: 개인정보처리방침 페이지 신설 + 푸터 링크 추가
 
 - **작성일**: 2026-07-21
-- **대상 이슈**: HTTPS로 서빙되는 사이트에서 클라이언트 JS가 평문 HTTP Supabase 엔드포인트를 호출하여 브라우저에 의해 차단될 수 있는 문제
+- **배경**: 법적 규정 준수 점검 결과, 개인정보처리방침 페이지가 전혀 존재하지 않음을 확인. 사용자 확인 결과 대리점 정보는 홍보 목적 공개이나, `js/analytics.js`가 모든 페이지에서 방문자의 referrer/user-agent/방문 경로/세션ID를 자동 수집해 Supabase(`inbound_analytics`)에 저장 중 — 이에 대한 고지가 없는 상태. 간단한 개인정보처리방침 페이지를 신설하고, 이 자동 수집 사실을 명시하며, 전 페이지 공통 푸터에 링크를 추가한다.
 
-## 1. 현황 분석 (완료)
+## 1. 신규 페이지: `pages/privacy-policy.html`
+- `pages/about.html`과 동일한 head(메타/OG/canonical)·header·footer 구조를 재사용(사이트 전체 톤 일관성 유지).
+- `<title>개인정보처리방침 | 알파인 코리아(ALPINE Korea)</title>`, `noindex` 없이 일반 색인 허용(공개 법적 고지 문서이므로 검색 노출에 문제 없음).
+- 본문 구성(총 9개 항목, 시행일자 2026-07-21):
+  1. 총칙 — 처리 주체: JCHAUTO,INC.(알파인 코리아), 준거법(개인정보보호법)
+  2. 수집하는 개인정보 항목 및 수집 방법
+     - (a) 대리점(파트너) 계정 정보: 아이디, 비밀번호(암호화 저장), 대리점명, 연락처, 주소 — 관리자가 직접 등록(회원가입 폼 없음)
+     - (b) 방문자 자동 수집 정보: 접속 페이지 경로, 유입 경로(referrer), 브라우저/기기 정보(User-Agent), 세션 식별자 — 전 페이지 방문 시 자동 수집(`js/analytics.js`)
+     - 명시: 이름/전화번호/이메일 등 일반 방문자(잠재고객)로부터 직접 입력받는 개인정보는 없음(문의/회원가입 폼 미운영)
+  3. 개인정보의 수집 및 이용 목적 — 대리점 계정 관리, 웹사이트 유입경로/트래픽 분석 및 서비스 개선
+  4. 개인정보의 보유 및 이용 기간 — 대리점 계정: 계약 종료 시까지, 방문 로그: 수집일로부터 1년 후 파기
+  5. 개인정보의 제3자 제공 — 제공하지 않음
+  6. 개인정보 처리위탁 — 자체 구축 서버(국내) 및 자체 호스팅 Supabase 사용, 외부 위탁 없음
+  7. 정보주체의 권리·의무 및 행사방법 — 열람/정정/삭제 요청 창구(개인정보보호책임자 연락처)
+  8. 자동 수집 장치 및 행태정보에 관한 사항 — `js/analytics.js`의 구체적 수집 항목/목적/브라우저 설정 안내
+  9. 개인정보 보호책임자 — 한길전 (기존 푸터에 이미 기재된 것과 동일 인물), 연락처는 기존 푸터의 TEL/주소 재사용
+  10. 부칙(시행일자)
 
-- `js/auth.js`, `js/supabase-client.js`, `pages/admin.html` 3개 파일 모두 `window.ENV.NEXT_PUBLIC_SUPABASE_URL`이 없을 경우 아래 값으로 폴백함:
+## 2. 푸터 링크 추가: `js/layout.js`
+- `renderFooter()`가 생성하는 HTML의 `.copyright` 영역 바로 아래(또는 옆)에 링크 1개 추가:
+  ```html
+  <div class="footer-legal">
+      <a href="${rootPath}pages/privacy-policy.html">개인정보처리방침</a>
+  </div>
   ```
-  http://183.101.105.167:8000
-  ```
-- `window.ENV`를 실제로 주입하는 코드가 사이트 어디에도 없음(전수 검색 결과 0건) → **항상 이 평문 HTTP 폴백이 사용됨**.
-- 사이트는 현재 Cloudflare(HTTPS, SSL 모드 `Full`)를 통해 정상 서빙 중(1번 이슈에서 확인 완료).
-- HTTPS 페이지에서 평문 HTTP로 `fetch`(활성 콘텐츠)를 호출하면 최신 브라우저는 기본적으로 Mixed Content를 차단 → 로그인, 가격표, 딜러 목록, 관리자 동기화 등 Supabase 의존 기능이 실사용자 브라우저에서 실패할 가능성이 높음.
-- Kong(8000번 포트)은 TLS를 제공하지 않으므로, 브라우저가 직접 `https://183.101.105.167:8000`으로 호출하는 것도 불가능(포트 자체에 인증서가 없음).
+- `rootPath`는 기존 로직 그대로 사용(이미 index/pages/support 각 위치에서 정확히 계산되고 있음 — 별도 수정 불필요).
+- `css/style.css`에 `.footer-legal` 최소 스타일(작은 글씨, 여백) 추가.
 
-## 2. 조치 계획
+## 3. 영향 범위
+- **변경 파일**: `js/layout.js`(1개 함수 내 HTML 템플릿 수정), `css/style.css`(스타일 추가), 신규 `pages/privacy-policy.html` 1개.
+- `renderFooter()`를 사용하는 기존 19개 파일(정적 상품/support 페이지 포함)은 코드 수정 없이 자동으로 링크가 반영됨(공통 함수 방식이므로).
+- DB/RPC/서버 인프라 변경 없음. 정적 콘텐츠 추가 + 클라이언트 JS 한 함수 수정뿐이라 리스크 낮음.
 
-### Step 1. Cloudflare DNS 레코드 추가 (인프라, 가역적)
-- `supabase.alpine-korea.co.kr` A 레코드 → `183.101.105.167`, Proxied 켬
-- 기존 `.env.local`에 저장된 `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ZONE_ID`로 API를 통해 생성
-- 문제 발생 시 Cloudflare API로 즉시 삭제 가능
-
-### Step 2. 로컬 서버 nginx 설정 추가 (인프라)
-- 신규 파일: `/etc/nginx/sites-available/supabase.alpine-korea.co.kr`
-- 80 → 443 리다이렉트, 443에서는 기존 `/home/jchauto/ssl/alpine-korea.crt`/`.key`를 재사용
-  - 확인 결과 이 인증서는 자체서명이며 SAN 확장이 없는 CN 단일 인증서지만, Cloudflare SSL 모드가 `Full`(strict 아님)이라 호스트네임 검증을 하지 않으므로 재사용에 문제 없음(현재도 www/non-www/alpine-audio 등 여러 호스트에 동일 인증서를 쓰고 있는 것과 동일한 방식)
-- `proxy_pass http://127.0.0.1:8000;`로 Kong에 프록시 (기존 `supabase.jchauto.co.kr` 설정과 동일 패턴)
-- `nginx -t` 통과 확인 후 `sites-enabled`에 심볼릭 링크 생성 및 `systemctl reload nginx`
-- Kong의 CORS 플러그인은 전 라우트에 설정값 없이 적용되어 있어(기본값 = 전체 허용) 별도 CORS 조정 불필요함을 확인함
-
-### Step 3. 클라이언트 코드 수정
-- 아래 3개 파일의 로컬 폴백 URL을 평문 HTTP → 신규 HTTPS 서브도메인으로 변경
-  - `js/auth.js` (`DEFAULT_LOCAL_SUPABASE_URL`)
-  - `js/supabase-client.js` (`DEFAULT_LOCAL_SUPABASE_URL`)
-  - `pages/admin.html` (`_LOCAL_SUPA_URL`)
-  - 변경 후 값: `https://supabase.alpine-korea.co.kr`
-- ANON KEY는 변경하지 않음(그대로 유지)
-
-### Step 4. 검증
-- `curl -I https://supabase.alpine-korea.co.kr/` 정상 응답(401/200 등 Kong 응답) 확인
-- 로컬에서 정적 파일을 브라우저로 열어 콘솔에 Mixed Content 경고가 사라지는지, 가격표/딜러 목록 fetch가 정상 동작하는지 확인
-- 배포 후 실사이트(`https://www.alpine-korea.co.kr`)에서 동일하게 콘솔 에러 없는지 확인
-
-### Step 5. 배포 (별도 승인 필요)
-- 위 코드 변경은 로컬에 반영만 하고, **GitHub 푸시는 프로젝트 규칙(Golden Rule)에 따라 사용자의 별도 명시적 지시가 있을 때만 실행**함
-- 푸시 전 `docs/handover.md` 갱신 및 빌드/문법 검증 수행
-
-## 3. 리스크 및 롤백
-
-| 항목 | 리스크 | 롤백 방법 |
-|---|---|---|
-| Cloudflare DNS 레코드 | 거의 없음(신규 서브도메인 추가일 뿐, 기존 레코드 변경 없음) | API로 레코드 삭제 |
-| nginx 신규 conf | 오타 시 reload 실패 가능 → `nginx -t`로 사전 검증 후에만 reload, 기존 사이트(alpine-korea.co.kr) 설정 파일은 건드리지 않음 | 심볼릭 링크 제거 후 reload |
-| 클라이언트 코드 변경 | 신규 도메인이 아직 전파/검증 전 상태로 배포되면 일시적으로 API 호출 실패 가능 | git revert, 또는 재배포 |
-
-## 4. 이번 범위에 포함하지 않는 것
-- Kong/PostgREST 자체의 `alpine-home` 스키마 권한 이슈(별도 트래킹된 미해결 항목) — 이번 작업은 "전송 구간 암호화" 문제만 다룸
-- admin.html 인증 부재, `service_management` 테이블 RLS 문제(3·4번 이슈) — 별도 계획으로 진행 예정
+## 4. 검증 계획
+- 로컬 정적 서버 + Playwright로 `index.html`, `pages/about.html`, `support/product.html`에서 푸터 링크 클릭 → `privacy-policy.html` 정상 렌더링 확인.
+- 콘솔 에러 0건 확인.

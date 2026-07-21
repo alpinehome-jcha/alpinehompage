@@ -100,6 +100,9 @@ const Layout = {
             </div>
             <div class="copyright">
                 COPYRIGHT©${year} JCHAUTO,INC. ALL RIGHTS RESERVED.
+                <div class="footer-legal">
+                    <a href="${rootPath}pages/privacy-policy.html">개인정보처리방침</a>
+                </div>
             </div>
         </footer>
         `;

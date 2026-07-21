@@ -420,6 +420,20 @@ footer {
     font-size: 0.8rem;
 }
 
+.footer-legal {
+    margin-top: 0.5rem;
+}
+
+.footer-legal a {
+    color: var(--text-muted);
+    text-decoration: underline;
+    font-size: 0.8rem;
+}
+
+.footer-legal a:hover {
+    color: var(--text-color, #333);
+}
+
 /* About Page Styles */
 .about-section {
     padding: 2rem 0;
