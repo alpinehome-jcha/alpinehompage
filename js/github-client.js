@@ -1,82 +1,81 @@
 /**
- * GitHub Client for saving data directly to the repository.
- * Uses the GitHub REST API to commit files.
- * Updated: Force Raw URL (2026-02-13)
+ * GitHub Client for saving data to the repository.
+ * Commits are performed server-side (Supabase RPC + admin password
+ * verification) via the "alpine-home".admin_github_* functions —
+ * the GitHub token itself never touches the browser.
  */
 if (typeof GitHubClient === 'undefined') {
+    let _ghAdminPass = null;
+    async function _ghGetAdminPassword() {
+        if (_ghAdminPass) return _ghAdminPass;
+        const pass = prompt('GitHub 저장을 위해 관리자 비밀번호를 입력하세요:');
+        if (pass) _ghAdminPass = pass;
+        return pass;
+    }
+
     class GitHubClient {
         constructor() {
-            this.token = localStorage.getItem('github_token') || '';
-            let repo = localStorage.getItem('github_repo') || '';
+            this.repo = '';
+            this.branch = 'main';
+            this._configured = false;
+        }
 
-            // Auto-sanitize on load (in case it was saved incorrectly before)
-            repo = repo.replace(/^https?:\/\/github\.com\//, '').replace(/\.git$/, '');
-            if (repo.endsWith('/')) repo = repo.slice(0, -1);
+        async _adminCall(rpcName, params) {
+            const adminUser = sessionStorage.getItem('currentUser');
+            const adminPass = await _ghGetAdminPassword();
+            if (!adminPass) throw new Error('관리자 비밀번호가 필요합니다.');
 
-            this.repo = repo;
-            this.branch = localStorage.getItem('github_branch') || 'main'; // Default to main
+            const client = await loadSupabase();
+            const { data, error } = await client.rpc(rpcName, {
+                p_admin_username: adminUser,
+                p_admin_password: adminPass,
+                ...params
+            });
+
+            if (error) throw new Error(error.message);
+            if (data && data.error) throw new Error(data.error);
+            return data;
         }
 
         isConfigured() {
-            return this.token && this.repo;
+            return this._configured;
         }
 
-        configure(token, repo, branch) {
-            // Aggressive sanitization: remove ALL whitespace/newlines
-            this.token = token ? token.replace(/\s+/g, '') : '';
-            this.repo = repo ? repo.trim() : '';
-            this.branch = branch ? branch.trim() : 'main';
+        async configure(token, repo, branch) {
+            repo = repo ? repo.trim() : '';
+            repo = repo.replace(/^https?:\/\/github\.com\//, '').replace(/\.git$/, '');
+            if (repo.endsWith('/')) repo = repo.slice(0, -1);
+            branch = branch ? branch.trim() : 'main';
 
-            // Sanitization: Remove full URL if pasted
-            this.repo = this.repo.replace(/^https?:\/\/github\.com\//, '').replace(/\.git$/, '');
-            if (this.repo.endsWith('/')) this.repo = this.repo.slice(0, -1);
+            await this._adminCall('admin_set_github_config', {
+                p_token: token ? token.replace(/\s+/g, '') : '',
+                p_repo: repo,
+                p_branch: branch
+            });
 
-            localStorage.setItem('github_token', this.token);
-            localStorage.setItem('github_repo', this.repo);
-            localStorage.setItem('github_branch', this.branch);
+            this.repo = repo;
+            this.branch = branch;
+            this._configured = true;
+        }
+
+        async refreshStatus() {
+            // 토큰 값은 절대 반환하지 않는 공개 상태 조회라 관리자 인증 불필요
+            const client = await loadSupabase();
+            const { data, error } = await client.rpc('admin_github_status');
+            if (error) throw new Error(error.message);
+
+            this._configured = !!data.configured;
+            this.repo = data.repo || '';
+            this.branch = data.branch || 'main';
+            return data;
         }
 
         async testConnection() {
-            if (!this.isConfigured()) return { success: false, message: 'Configuration missing' };
-
             try {
-                // 1. Check Repo
-                const repoUrl = `https://api.github.com/repos/${this.repo}`;
-                const repoResp = await fetch(repoUrl, {
-                    headers: {
-                        'Authorization': `token ${this.token}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    },
-                    cache: 'no-store'
-                });
-
-                if (!repoResp.ok) {
-                    if (repoResp.status === 401) return { success: false, message: 'Invalid Token (401). Check if token has expired.' };
-                    if (repoResp.status === 404) return { success: false, message: `Repository '${this.repo}' Not Found (404). Check owner/repo name.` };
-                    return { success: false, message: `GitHub API Error: ${repoResp.status}` };
-                }
-
-                const repoData = await repoResp.json();
-
-                // 2. Check Branch
-                const branchUrl = `https://api.github.com/repos/${this.repo}/branches/${this.branch}`;
-                const branchResp = await fetch(branchUrl, {
-                    headers: {
-                        'Authorization': `token ${this.token}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    },
-                    cache: 'no-store'
-                });
-
-                if (!branchResp.ok) {
-                    return { success: false, message: `Branch '${this.branch}' not found. Please check branch name (main vs master).` };
-                }
-
-                return { success: true, message: `Connected to ${repoData.full_name} (Branch: ${this.branch})` };
-
+                const data = await this._adminCall('admin_github_test_connection', {});
+                return { success: true, message: data.message };
             } catch (error) {
-                console.error('Connection Test Error:', error);
-                return { success: false, message: `Network/CORS Error: ${error.message}. Check Internet or Repo Name format.` };
+                return { success: false, message: error.message };
             }
         }
 
@@ -85,85 +84,26 @@ if (typeof GitHubClient === 'undefined') {
         }
 
         async getFileSha(path) {
-            if (!this.isConfigured()) throw new Error('GitHub Settings not configured.');
-
-            const encodedPath = this._encodePath(path);
-            const url = `https://api.github.com/repos/${this.repo}/contents/${encodedPath}?ref=${this.branch}&_t=${Date.now()}`;
-            let response;
-            try {
-                response = await fetch(url, {
-                    headers: {
-                        'Authorization': `token ${this.token}`,
-                        // Removed Cache-Control to reduce preflight complexity
-                        'Accept': 'application/vnd.github.v3+json'
-                    },
-                    cache: 'no-store'
-                });
-            } catch (error) {
-                console.error('SHA Fetch Failed URL:', url);
-                // Include Token Length in error for debugging (safe)
-                const tokenLen = this.token ? this.token.length : 0;
-                throw new Error(`Network Error (SHA): ${error.message}. Repo: ${this.repo}, TokenLen: ${tokenLen}`);
-            }
-
-            if (response.status === 404) return null; // File doesn't exist yet
-            if (!response.ok) throw new Error(`GitHub API Error: ${response.status} ${response.statusText}`);
-
-            const data = await response.json();
+            const data = await this._adminCall('admin_github_get_sha', { p_path: path });
             return data.sha;
         }
 
         async commitFile(path, content, message = 'Update file via Web Client') {
-            if (!this.isConfigured()) throw new Error('GitHub Settings not configured.');
-
-            // 1. Get SHA of existing file (if any)
-            const sha = await this.getFileSha(path);
-
-            // 2. Encode content to Base64 (handle UTF-8 correctly)
-            // btoa fails with unicode, so we need a workaround
             const utf8Bytes = new TextEncoder().encode(content);
             let binaryString = '';
             utf8Bytes.forEach(byte => binaryString += String.fromCharCode(byte));
             const contentBase64 = btoa(binaryString);
 
-            // 3. Create Commit Payload
-            const payload = {
-                message: message,
-                content: contentBase64,
-                branch: this.branch
-            };
-
-            if (sha) {
-                payload.sha = sha;
-            }
-
-            // 4. Send Request
-            const encodedPath = this._encodePath(path);
-            const url = `https://api.github.com/repos/${this.repo}/contents/${encodedPath}`;
-            const response = await fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Authorization': `token ${this.token}`,
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/vnd.github.v3+json'
-                },
-                body: JSON.stringify(payload)
+            return await this._adminCall('admin_github_put_file', {
+                p_path: path,
+                p_content_base64: contentBase64,
+                p_message: message
             });
-
-            if (!response.ok) {
-                const errData = await response.json();
-                throw new Error(`GitHub Commit Failed: ${errData.message}`);
-            }
-
-            return await response.json();
         }
 
         async uploadFile(path, file, message = 'Upload file via Web Client') {
-            if (!this.isConfigured()) throw new Error('GitHub Settings not configured.');
-
             let contentBase64;
 
-            // Handle both File objects and plain strings
             if (typeof file === 'string') {
                 const utf8Bytes = new TextEncoder().encode(file);
                 let binaryString = '';
@@ -174,52 +114,22 @@ if (typeof GitHubClient === 'undefined') {
                     const reader = new FileReader();
                     reader.onload = () => {
                         const result = reader.result;
-                        // Remove data URL prefix (e.g., "data:image/png;base64,")
-                        const base64 = result.split(',')[1];
-                        resolve(base64);
+                        resolve(result.split(',')[1]);
                     };
                     reader.onerror = error => reject(new Error('File reading failed: ' + error));
                     reader.readAsDataURL(file);
                 });
             }
 
-            // 3. Get SHA if exists (to update)
-            const sha = await this.getFileSha(path);
-
-            // 4. Create Payload
-            const payload = {
-                message: message,
-                content: contentBase64,
-                branch: this.branch
-            };
-
-            if (sha) {
-                payload.sha = sha;
-            }
-
-            // 5. Send Request
-            const encodedPath = this._encodePath(path);
-            const url = `https://api.github.com/repos/${this.repo}/contents/${encodedPath}`;
-            const response = await fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Authorization': `token ${this.token}`,
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/vnd.github.v3+json'
-                },
-                body: JSON.stringify(payload)
+            const data = await this._adminCall('admin_github_put_file', {
+                p_path: path,
+                p_content_base64: contentBase64,
+                p_message: message
             });
-            console.log(`GitHub API Response for ${path}: ${response.status} ${response.statusText}`);
 
-            if (!response.ok) {
-                const errData = await response.json();
-                throw new Error(`GitHub Upload Failed: ${errData.message}`);
-            }
-
-            const data = await response.json();
-            // Ensure download_url exists (Manual construction if missing)
             if (!data.content) data.content = {};
             if (!data.content.download_url) {
+                const encodedPath = this._encodePath(path);
                 data.content.download_url = `https://raw.githubusercontent.com/${this.repo}/${this.branch}/${encodedPath}`;
             }
             return data;
@@ -232,4 +142,5 @@ if (typeof GitHubClient === 'undefined') {
 
 if (typeof ghClient === 'undefined') {
     window.ghClient = new GitHubClient();
+    window.ghClient.refreshStatus().catch(() => {});
 }

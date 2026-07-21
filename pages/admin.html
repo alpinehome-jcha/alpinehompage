@@ -2427,7 +2427,7 @@
 
         // System Status Logic
         // System Status Logic
-        function updateStatusPanel() {
+        async function updateStatusPanel() {
             try {
                 // Popups
                 const pList = (typeof popupList !== 'undefined') ? popupList : [];
@@ -2439,11 +2439,12 @@
                 if (elDataCount) elDataCount.textContent = pData.length;
 
                 // GitHub
-                const token = localStorage.getItem('github_token');
                 const elToken = document.getElementById('statusToken');
-                if (elToken) {
-                    elToken.textContent = token ? 'Configured' : 'Missing';
-                    elToken.style.color = token ? 'green' : 'red';
+                if (elToken && typeof ghClient !== 'undefined') {
+                    await ghClient.refreshStatus().catch(() => {});
+                    const configured = ghClient.isConfigured();
+                    elToken.textContent = configured ? 'Configured' : 'Missing';
+                    elToken.style.color = configured ? 'green' : 'red';
                 }
             } catch (e) {
                 console.error('Status Panel Update Error:', e);
@@ -2469,15 +2470,13 @@
         }
 
         async function checkGitHubStatus() {
-            const client = new GitHubClient();
-            if (client.isConfigured()) {
-                try {
-                    // Try to fetch something simple, or just check user
-                    // The client doesn't expose getUser easily unless we add it, but we can assume configured = ok for now
-                    alert('GitHub Client is configured locally.');
-                } catch (e) {
-                    alert('Error: ' + e.message);
-                }
+            if (typeof ghClient === 'undefined') {
+                alert('GitHub Client is NOT loaded.');
+                return;
+            }
+            await ghClient.refreshStatus().catch(() => {});
+            if (ghClient.isConfigured()) {
+                alert(`GitHub Client is configured (${ghClient.repo} / ${ghClient.branch}).`);
             } else {
                 alert('GitHub Client is NOT configured.');
             }
@@ -2491,15 +2490,18 @@
 
         async function checkSystemHealth() {
             const statusDiv = document.getElementById('systemStatus');
-            const token = localStorage.getItem('github_token');
             let html = '';
 
             // 1. GitHub Check
+            let configured = false;
             if (typeof ghClient === 'undefined') {
                 html += '<span style="color:red; font-weight:bold; margin-right:10px;">❌ Script Error (ghClient missing)</span>';
+            } else {
+                await ghClient.refreshStatus().catch(() => {});
+                configured = ghClient.isConfigured();
             }
 
-            if (!token) {
+            if (!configured) {
                 html += '<span style="color:red; font-weight:bold;">⚠️ GitHub Disconnected (Uploads Disabled)</span>';
                 statusDiv.style.background = '#ffe6e6';
             } else {

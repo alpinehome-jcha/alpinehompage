@@ -192,15 +192,25 @@ const auth = {
             window.location.href = getRelativeRoot() + 'pages/login.html';
         }
     },
-    openGitHubSettings: (e) => {
+    openGitHubSettings: async (e) => {
         if (e) e.preventDefault();
         const modal = document.getElementById('ghSettingsModal');
         if (modal) {
             modal.style.display = 'block';
-            // Load current values
-            document.getElementById('global_gh_token').value = localStorage.getItem('github_token') || '';
-            document.getElementById('global_gh_repo').value = localStorage.getItem('github_repo') || '';
-            document.getElementById('global_gh_branch').value = localStorage.getItem('github_branch') || 'main';
+            // 토큰은 서버에만 저장되므로 빈 칸으로 두고, 저장소/브랜치만 서버에서 조회해 표시
+            document.getElementById('global_gh_token').value = '';
+            document.getElementById('global_gh_repo').value = '';
+            document.getElementById('global_gh_branch').value = 'main';
+            try {
+                await auth.loadGitHubClient();
+                if (typeof ghClient !== 'undefined') {
+                    const status = await ghClient.refreshStatus();
+                    document.getElementById('global_gh_repo').value = status.repo || '';
+                    document.getElementById('global_gh_branch').value = status.branch || 'main';
+                }
+            } catch (e) {
+                console.warn('[GitHub] 현재 설정 조회 실패:', e.message);
+            }
         }
     },
     updateUI: () => {
@@ -245,7 +255,7 @@ const auth = {
                 const repo = document.getElementById('global_gh_repo').value.trim();
                 const branch = document.getElementById('global_gh_branch').value.trim() || 'main'; // Default main
 
-                if (!token || !repo) { alert('설정 값을 먼저 입력해주세요 (테스트 전).'); return; }
+                if (!repo) { alert('저장소 주소를 먼저 입력해주세요.'); return; }
 
                 try {
                     await auth.loadGitHubClient();
@@ -254,20 +264,17 @@ const auth = {
                     return;
                 }
 
-                // Configure Global Client
                 if (typeof ghClient === 'undefined') { alert('Client loaded but object not found.'); return; }
 
-                ghClient.configure(token, repo, branch);
-
-                // Test Connection
-                const result = await ghClient.testConnection();
-                alert(result.message);
-
-                if (result.success) {
-                    // Auto-save if successful
-                    localStorage.setItem('github_token', token);
-                    localStorage.setItem('github_repo', repo);
-                    localStorage.setItem('github_branch', branch);
+                try {
+                    // 토큰을 새로 입력한 경우에만 서버에 반영 (빈 값이면 기존 서버 설정 유지)
+                    if (token) {
+                        await ghClient.configure(token, repo, branch);
+                    }
+                    const result = await ghClient.testConnection();
+                    alert(result.message);
+                } catch (e) {
+                    alert('연결 테스트 실패: ' + e.message);
                 }
             };
 
@@ -280,27 +287,24 @@ const auth = {
                 const repo = document.getElementById('global_gh_repo').value.trim();
                 const branch = document.getElementById('global_gh_branch').value.trim() || 'main';
 
-                if (!token || !repo) { alert('토큰과 저장소 주소를 모두 입력해주세요.'); return; }
+                if (!repo) { alert('저장소 주소를 입력해주세요.'); return; }
+                if (!token) { alert('토큰을 입력해주세요. (한번 저장된 토큰은 보안상 다시 표시되지 않으므로, 변경할 때만 새로 입력하면 됩니다)'); return; }
 
                 try {
                     await auth.loadGitHubClient();
-                    // Configure & Test before saving to be sure
                     if (typeof ghClient !== 'undefined') {
-                        ghClient.configure(token, repo, branch);
+                        await ghClient.configure(token, repo, branch);
                         const result = await ghClient.testConnection();
                         if (!result.success) {
-                            if (!confirm('연결 테스트에 실패했습니다. 그래도 저장하시겠습니까?\n' + result.message)) return;
+                            alert('저장은 완료됐지만 연결 테스트에 실패했습니다:\n' + result.message);
                         }
                     }
                 } catch (e) {
-                    console.error(e);
-                    // Allow save even if test fails/client fails, just warn
+                    alert('저장 실패: ' + e.message);
+                    return;
                 }
 
-                localStorage.setItem('github_token', token);
-                localStorage.setItem('github_repo', repo);
-                localStorage.setItem('github_branch', branch);
-                alert('설정이 저장되었습니다. 이제 파일 업로드가 가능합니다.');
+                alert('설정이 서버에 안전하게 저장되었습니다. 이제 파일 업로드가 가능합니다.');
                 document.getElementById('ghSettingsModal').style.display = 'none';
             };
         }
