@@ -121,38 +121,54 @@
     </header>
 
     <style>
-        /* Blinds Slideshow Styles */
+        /* Blinds Slideshow Styles (HTML <img> Layer Based) */
         .hero-container {
             position: relative;
             width: 100%;
-            /* Aspect ratio maintenance using padding or fixed height */
-            /* If we want responsive 1900x680, that is approx 35.8% aspect ratio */
-            /* But previously it was height: auto. Let's keep the user's previous request desire: responsive. */
-            height: auto;
-            min-height: 200px;
-            /* safety */
             overflow: hidden;
-            padding-top: 35.79%;
-            /* 680 / 1900 * 100 = 35.79% aspect ratio for responsive container */
             background-color: #000;
         }
 
         #hero-slider {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .hero-base-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        #hero-blinds-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            pointer-events: none;
+            z-index: 2;
         }
 
         .blind-slice {
             position: absolute;
             top: 0;
             height: 100%;
-            background-size: cover;
-            background-repeat: no-repeat;
-            transition: transform 1s ease-in-out;
-            transform-origin: left;
+            overflow: hidden;
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            transform-origin: left center;
+            will-change: transform;
+            backface-visibility: hidden;
+        }
+
+        .blind-slice-img {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            object-fit: cover;
+            max-width: none !important;
+            display: block;
         }
 
         /* Sold Out Badge */
@@ -321,13 +337,15 @@
     </style>
 
     <section class="hero-container">
-        <div id="hero-slider"></div>
+        <div id="hero-slider">
+            <img id="hero-base-img" class="hero-base-img" src="assets/images/alpine_status_main_v6.jpg" alt="Alpine Status Hero" />
+            <div id="hero-blinds-container"></div>
+        </div>
     </section>
 
     <script src="js/auth.js?v=20260211"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const sliderContainer = document.getElementById('hero-slider');
             const images = [
                 'assets/images/alpine_status_main_v6.jpg',
                 'assets/images/alpine_status_main_v7.jpg',
@@ -336,121 +354,64 @@
             let currentIndex = 0;
             const sliceCount = 10;
 
-            function createSlices(imageSrc) {
-                sliderContainer.innerHTML = '';
-                const widthPerSlice = 100 / sliceCount;
+            // Preload hero images to guarantee seamless zero-flicker transitions
+            images.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
 
-                for (let i = 0; i < sliceCount; i++) {
-                    const slice = document.createElement('div');
-                    slice.classList.add('blind-slice');
-                    slice.style.width = widthPerSlice + '%';
-                    slice.style.left = (i * widthPerSlice) + '%';
-                    slice.style.backgroundImage = `url('${imageSrc}')`;
-                    // Calculate background position to show the correct part of the image
-                    // The background size is cover, so it spans the full container.
-                    // We need to shift the background position for each slice.
-                    // Since size is 'cover' (100% 100%), 
-                    // background-position-x should be: (i * 100 / (sliceCount - 1))% ?
-                    // Actually if background-size is 100% (container width), then:
-                    slice.style.backgroundSize = `${sliceCount * 100}% 100%`;
-                    slice.style.backgroundPosition = `-${i * 100}% 0`;
-
-                    // Wait, simplistic approach:
-                    // background-size: 100% of container width = 100vw or similar.
-                    // Let's rely on standard percentage math.
-                    // slice width is 10%.
-                    // background-size needs to be 1000% of the slice width to match container width.
-                    // background-position-x needs to offset.
-
-                    sliderContainer.appendChild(slice);
-                }
-            }
-
-            // Initial setup
-            // To make "blinds" effect:
-            // 1. Current image is visible on slices.
-            // 2. Container background is set to Next Image.
-            // 3. Slices rotate/shrink to reveal container background.
+            const baseImg = document.getElementById('hero-base-img');
+            const blindsContainer = document.getElementById('hero-blinds-container');
 
             function updateSlider() {
-                const currentImg = images[currentIndex];
+                const currentImgSrc = images[currentIndex];
                 const nextIndex = (currentIndex + 1) % images.length;
-                const nextImg = images[nextIndex];
+                const nextImgSrc = images[nextIndex];
 
-                // Set container background to next image (the one we want to reveal)
-                sliderContainer.style.background = `url('${nextImg}') no-repeat center center`;
-                sliderContainer.style.backgroundSize = 'cover';
-
-                // Create slices with CURRENT image covering the next image
-                sliderContainer.innerHTML = '';
+                // 1. Build slices with currentImgSrc using real <img> layers
+                blindsContainer.innerHTML = '';
                 const widthPerSlice = 100 / sliceCount;
 
                 for (let i = 0; i < sliceCount; i++) {
                     const slice = document.createElement('div');
                     slice.classList.add('blind-slice');
-                    slice.style.width = `${widthPerSlice + 0.1}%`; // +0.1 to prevent gaps
-                    slice.style.left = (i * widthPerSlice) + '%';
-                    slice.style.backgroundImage = `url('${currentImg}')`;
-                    slice.style.backgroundSize = `${sliceCount * 100}% 100%`; // Scale bg to full width relative to slice
-                    // Position: we need the slice to show the i-th section. 
-                    // If slice is 100px wide, 10 slices, total 1000px.
-                    // bg needs to be 1000px.
-                    // slice 0: bg-pos 0.
-                    // slice 1: bg-pos -100px.
-                    // In percentages relative to the slice:
-                    // positions are usually relative to the element.
-                    // If element is 10% of total, and bg is 1000% of element.
-                    // bg-pos 0% = left edge.
-                    // bg-pos 10% ? No.
-                    // Standard formula for sprites/slices: 
-                    // backgroundPositionX = (i / (sliceCount - 1)) * 100 + '%'
-                    slice.style.backgroundPosition = `${(i / (sliceCount - 1)) * 100}% 0`;
+                    slice.style.left = `${i * widthPerSlice}%`;
+                    slice.style.width = `calc(${widthPerSlice}% + 0.8px)`; // 0.8px overlap to remove hairline gaps
+                    slice.style.transform = 'scaleX(1)';
 
-                    sliderContainer.appendChild(slice);
+                    const img = document.createElement('img');
+                    img.src = currentImgSrc;
+                    img.classList.add('blind-slice-img');
+                    img.style.left = `-${i * 100}%`;
+                    img.style.width = `${sliceCount * 100}%`;
+                    img.alt = 'Hero Slice';
+
+                    slice.appendChild(img);
+                    blindsContainer.appendChild(slice);
                 }
 
-                // Trigger animation after a small delay
+                // 2. Set baseImg (underneath layer) to nextImgSrc
+                baseImg.src = nextImgSrc;
+
+                // 3. Trigger staggered blinds shrinking animation
                 setTimeout(() => {
-                    const slices = document.querySelectorAll('.blind-slice');
+                    const slices = blindsContainer.querySelectorAll('.blind-slice');
                     slices.forEach((slice, i) => {
-                        // Staggered effect
                         setTimeout(() => {
-                            // "Blinds" effect: scale X to 0 (close the blind)
                             slice.style.transform = 'scaleX(0)';
-                        }, i * 100); // 100ms delay per slice
+                        }, i * 80); // Stagger 80ms per slice
                     });
 
-                    // Update index after animation
+                    // 4. Clean up blinds container after transition completes
                     setTimeout(() => {
+                        blindsContainer.innerHTML = '';
                         currentIndex = nextIndex;
-                        // Optional: Reset slices or just leave it for next cycle?
-                        // For next cycle, we need to rebuild slices with new CURRENT image.
-                        // But right now, we are looking at the container background (NextImg).
-                        // Is that clean?
-                        // Better to re-render slices with NextImg fully visible (scale 1) to prepare for next loop
-                        // prevent flash?
-                        // Actually, if we just leave it, we are seeing the background.
-                        // Next updateSlider call:
-                        // currentImg = old NextImg.
-                        // nextImg = ...
-                        // It sets container bg to new NextImg.
-                        // Rebuilds slices with currentImg (which is visible now as bg).
-                        // Then animates slices away.
-                        // This works seamlessly.
-                    }, (sliceCount * 100) + 1000); // Wait for all animations + transition time
-
-                }, 100); // Initial delay before starting animation
+                    }, (sliceCount * 80) + 900);
+                }, 50);
             }
 
-            // Start loop
-            // Initial view: just static image or slices?
-            // Let's set initial state.
-            sliderContainer.style.background = `url('${images[0]}') no-repeat center center`;
-            sliderContainer.style.backgroundSize = 'cover';
-
-            // Start interval
-            setInterval(updateSlider, 5000); // Change every 5 seconds
-
+            // Start slide interval every 5 seconds
+            setInterval(updateSlider, 5000);
         });
     </script>
     <script src="js/i18n.js?v=20260211"></script>
