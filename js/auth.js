@@ -362,54 +362,45 @@ const auth = {
         const authLink = document.querySelector('.auth-link');
 
         if (authItem && authLink) {
-            // Remove existing injected elements
-            const existingName = authItem.querySelector('.user-name-display');
-            if (existingName) existingName.remove();
-            const existingPwBtn = authItem.querySelector('.pw-change-btn');
-            if (existingPwBtn) existingPwBtn.remove();
+            // Remove existing injected dropdown content (재호출 대비)
+            const existingContent = authItem.querySelector('.dropdown-content');
+            if (existingContent) existingContent.remove();
 
             if (isLogged) {
                 const name = sessionStorage.getItem('dealerName') || 'Partner';
 
-                // Create Name Span
-                const nameSpan = document.createElement('span');
-                nameSpan.className = 'user-name-display';
-                nameSpan.textContent = `${name}님 `;
-                nameSpan.style.marginRight = '10px';
-                nameSpan.style.fontWeight = 'bold';
-                nameSpan.style.fontSize = '0.9rem';
-
-                // Insert before the link
-                authItem.insertBefore(nameSpan, authLink);
-
-                authLink.textContent = 'Logout';
+                authItem.classList.add('dropdown');
+                authLink.textContent = `${name}님`;
+                authLink.removeAttribute('style');
+                authLink.className = 'nav-link auth-link';
                 authLink.href = '#';
-                authLink.onclick = async (e) => {
-                    e.preventDefault();
-                    await auth.logout();
-                };
+                authLink.onclick = (e) => e.preventDefault();
 
-                // Create Password Change Link (Right of Logout)
-                const pwBtn = document.createElement('a');
-                pwBtn.className = 'pw-change-btn';
-                pwBtn.href = '#';
-                pwBtn.textContent = '비밀번호 변경';
-                pwBtn.style.marginLeft = '10px';
-                pwBtn.style.fontSize = '0.8rem';
-                pwBtn.style.color = '#666';
-                pwBtn.style.textDecoration = 'underline';
-                pwBtn.onclick = (e) => {
+                const dropdownContent = document.createElement('ul');
+                dropdownContent.className = 'dropdown-content';
+                dropdownContent.innerHTML = `
+                    <li><a href="#" class="dropdown-item pw-change-btn">비밀번호 변경</a></li>
+                    <li><a href="#" class="dropdown-item logout-btn">Logout</a></li>
+                `;
+                dropdownContent.querySelector('.pw-change-btn').onclick = (e) => {
                     e.preventDefault();
                     document.getElementById('pwChangeModal').style.display = 'block';
                 };
-
-                // 모든 로그인 사용자에게 비밀번호 변경 버튼 표시
-                authItem.appendChild(pwBtn);
-
+                dropdownContent.querySelector('.logout-btn').onclick = async (e) => {
+                    e.preventDefault();
+                    await auth.logout();
+                };
+                authItem.appendChild(dropdownContent);
 
                 addPartnerMenu(role);
 
             } else {
+                authItem.classList.remove('dropdown');
+                authLink.className = 'auth-link';
+                authLink.style.marginLeft = '15px';
+                authLink.style.fontSize = '0.9rem';
+                authLink.style.color = '#333';
+                authLink.style.textDecoration = 'none';
                 authLink.textContent = 'Login';
                 authLink.onclick = null; // Remove logout handler
                 if (window.location.pathname.includes('/support/')) {
