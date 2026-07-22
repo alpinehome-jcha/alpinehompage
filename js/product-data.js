@@ -4438,7 +4438,7 @@ const initialProductData = [
         "category": "Others",
         "title": "DPS-25M-Chamber",
         "desc": "DPS-25M/Metio Sound용 2.5\"챔버",
-        "desc_bottom": ".",
+        "desc_bottom": "..",
         "price": 100000,
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DPS-25M-Chamber.jpg",
@@ -4478,7 +4478,7 @@ const initialProductData = [
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1783477344599;
+const PRODUCT_DATA_VERSION = 1784695661023;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
