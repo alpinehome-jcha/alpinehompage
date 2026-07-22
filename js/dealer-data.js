@@ -12,23 +12,23 @@ const initialDealerData = [
         "lng": 126.9238,
         "region": "경기중앙(성남,안양,용인,과천)",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
-        "updated_at": "2026-07-22T05:13:19.723887+00:00",
+        "updated_at": "2026-07-22T06:30:35.895018+00:00",
         "homepage": "https://blog.naver.com/gaincaraudio"
     },
     {
         "id": 2,
         "category": "Team Alpine",
-        "name": "개구리 카오디오",
+        "name": "???????",
         "badge": "Team Alpine",
-        "address": "경기도 성남시 분당구 대왕판교로 255",
+        "address": "??? ??? ??? 255",
         "phone": "010-5283-6277",
-        "desc": "F#1 Status 및 알파인 모든 사운드 시스템을 취급합니다.",
+        "desc": "F#1 Status ? ?? ? ??? ???? ?????.",
         "username": "Frog",
         "lat": 35.1796,
         "lng": 129.0756,
-        "region": "경기중앙(성남,안양,용인,과천)",
+        "region": "????(??,??,??,??)",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
-        "updated_at": "2026-02-25T08:33:18.146828+00:00",
+        "updated_at": "2026-07-22T06:11:26.832659+00:00",
         "homepage": "https://blog.naver.com/gaegoory"
     },
     {
@@ -752,7 +752,7 @@ const initialDealerData = [
         "homepage": null
     }
 ];
-const DEALER_DATA_VERSION = 1784697204112;
+const DEALER_DATA_VERSION = 1784701840152;
 
 let dealerData = [];
 if (typeof localStorage !== 'undefined') {
