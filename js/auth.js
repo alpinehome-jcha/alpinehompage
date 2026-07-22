@@ -126,6 +126,7 @@ const auth = {
         sessionStorage.setItem(ROLE_KEY, role);
         sessionStorage.setItem('dealerName', dealerName);
         sessionStorage.setItem('currentUser', username);
+        sessionStorage.setItem('adminPassword', password);
 
         await saveVisitLog({
             date: new Date().toLocaleString('ko-KR'),

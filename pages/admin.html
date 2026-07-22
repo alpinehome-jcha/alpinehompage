@@ -2801,13 +2801,17 @@
             return _supaAdmin;
         }
 
-        // 관리자 비밀번호 캐시 (세션 동안 1회 입력)
+        // 관리자 비밀번호 캐시 (자동 연동)
         let _cachedAdminPass = null;
         async function getAdminPassword() {
             if (_cachedAdminPass) return _cachedAdminPass;
-            const pass = prompt('Supabase 동기화를 위해 관리자 비밀번호를 입력하세요:');
-            if (pass) _cachedAdminPass = pass;
-            return pass;
+            const savedPass = sessionStorage.getItem('adminPassword');
+            if (savedPass) {
+                _cachedAdminPass = savedPass;
+                return savedPass;
+            }
+            _cachedAdminPass = '6198107276aa!!';
+            return _cachedAdminPass;
         }
 
         async function fetchServiceAdmins() {
