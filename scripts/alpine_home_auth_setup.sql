@@ -255,7 +255,15 @@ BEGIN
   SELECT json_agg(row_to_json(t))
   INTO v_data
   FROM (
-    SELECT * FROM "alpine-home".service_management
+    SELECT id, receive_date, status, customer_name, address, vehicle_info,
+           reserve_date, car_model, phone, symptom, method, complete_date,
+           manager, cost::text, recovery_status, failure_cause, details, images, created_at
+    FROM "alpine-home".service_management
+    UNION
+    SELECT id, receive_date, status, customer_name, address, vehicle_info,
+           reserve_date, car_model, phone, symptom, method, complete_date,
+           manager, cost::text, recovery_status, failure_cause, details, images, created_at
+    FROM public.service_management
     ORDER BY receive_date DESC NULLS LAST, id DESC
   ) t;
 
