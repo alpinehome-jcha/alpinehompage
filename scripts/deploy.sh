@@ -36,6 +36,13 @@ echo "Cleaning up existing target container if any..."
 docker stop $TARGET_CONTAINER 2>/dev/null || true
 docker rm $TARGET_CONTAINER 2>/dev/null || true
 
+# Apply Supabase database schema updates if supabase-db container is active
+if docker ps | grep -q "supabase-db"; then
+  echo "Applying Supabase DB schema updates to supabase-db container..."
+  docker exec -i supabase-db psql -U postgres < ./scripts/alpine_home_auth_setup.sql || true
+  docker exec -i supabase-db psql -U postgres < ./scripts/alpine_home_github_proxy.sql || true
+fi
+
 # Build new docker image
 echo "Building Docker image alpine-korea:latest..."
 docker build -t alpine-korea:latest .
