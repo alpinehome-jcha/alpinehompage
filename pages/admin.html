@@ -1865,10 +1865,25 @@
                         p_homepage: newItem.homepage
                     });
 
-                    overlay.style.display = 'none';
                     if (error) throw new Error(error.message);
                     if (data && data.error) throw new Error(data.error);
-                    alert('대리점 정보가 안전하게 DB에 반영되었습니다.');
+
+                    // DB 저장 성공 후 dealer-data.js 자동 GitHub 배포
+                    loadingText.innerText = '홈페이지 반영 중 (GitHub 배포)...';
+                    try {
+                        // DB에서 최신 전체 대리점 목록 가져오기
+                        const dealerRes = await client.from('dealers').select('*').order('id', { ascending: true });
+                        if (!dealerRes.error && dealerRes.data) {
+                            const ts = Date.now();
+                            const jsContent = `const initialDealerData = ${JSON.stringify(dealerRes.data, null, 4)};\nconst DEALER_DATA_VERSION = ${ts};\n\nlet dealerData = [];\nif (typeof localStorage !== 'undefined') {\n    const storedVersion = localStorage.getItem('dealerDataVersion');\n    if (!storedVersion || parseInt(storedVersion) < DEALER_DATA_VERSION) {\n        dealerData = JSON.parse(JSON.stringify(initialDealerData));\n        localStorage.setItem('dealerData', JSON.stringify(dealerData));\n        localStorage.setItem('dealerDataVersion', DEALER_DATA_VERSION.toString());\n    } else {\n        const stored = localStorage.getItem('dealerData');\n        dealerData = stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(initialDealerData));\n    }\n} else {\n    dealerData = initialDealerData;\n}\n\nif (typeof window !== 'undefined') { window.dealerData = dealerData; }\nif (typeof module !== 'undefined' && module.exports) { module.exports = dealerData; }`;
+                            await ghClient.commitFile('js/dealer-data.js', jsContent, 'Auto-sync dealer data from DB after admin save');
+                        }
+                    } catch (ghErr) {
+                        console.warn('[GitHub] dealer-data.js 자동 배포 실패 (DB 저장은 완료):', ghErr.message);
+                    }
+
+                    overlay.style.display = 'none';
+                    alert('대리점 정보가 DB에 저장되고 홈페이지에 반영되었습니다.\n(약 1~2분 후 라이브 사이트에 반영됩니다)');
                 } catch (err) {
                     console.error(err);
                     overlay.style.display = 'none';
