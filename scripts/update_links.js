@@ -16,7 +16,7 @@ function slugify(text) {
 
 const idToSlug = {};
 productData.forEach(p => {
-    idToSlug[p.id] = slugify(p.title) || p.id.toString();
+    idToSlug[p.id] = p.slug || slugify(p.title) || p.id.toString();
 });
 
 function walkSync(dir, filelist = []) {

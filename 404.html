@@ -86,7 +86,7 @@
             loader.style.display = 'block';
 
             // Find product by slug
-            const product = initialProductData.find(p => slugify(p.title) === slug || p.id.toString() === slug);
+            const product = initialProductData.find(p => p.slug === slug || slugify(p.title) === slug || p.id.toString() === slug);
             
             if (product) {
                 // Redirect to dynamic detail page

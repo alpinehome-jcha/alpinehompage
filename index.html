@@ -523,7 +523,7 @@
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.style.cursor = 'pointer';
-                const slug = slugify(product.title) || product.id.toString();
+                const slug = product.slug || slugify(product.title) || product.id.toString();
                 card.onclick = () => window.location.href = `pages/products/${slug}.html`;
 
                 // Formatter
@@ -1023,7 +1023,7 @@
             const product = productData.find(p => p.title.includes(searchKey));
 
             if (product) {
-                return `<div class="pnp-link-btn" onclick="window.location.href='pages/products/${slugify(product.title) || product.id}.html'">제품 보기 (View Product)</div>`;
+                return `<div class="pnp-link-btn" onclick="window.location.href='pages/products/${product.slug || slugify(product.title) || product.id}.html'">제품 보기 (View Product)</div>`;
             } else {
                 return `<span style="color:#999; font-size:0.9rem;">(제품 페이지 없음)</span>`;
             }

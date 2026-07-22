@@ -37,7 +37,7 @@ function linkify(text) {
 }
 
 function generateProductHtml(product) {
-    const slug = slugify(product.title) || product.id.toString();
+    const slug = product.slug || slugify(product.title) || product.id.toString();
     const cleanDesc = (product.desc || '').replace(/"/g, '&quot;').replace(/\n/g, ' ');
     const ogImage = product.image
         ? (product.image.startsWith('http') ? product.image : `https://www.alpine-korea.co.kr/${product.image.replace('../', '').replace(/^\//, '')}`)
