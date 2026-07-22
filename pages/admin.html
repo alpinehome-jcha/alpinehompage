@@ -1868,16 +1868,21 @@
                     if (error) throw new Error(error.message);
                     if (data && data.error) throw new Error(data.error);
 
-                    // DB 저장 성공 후 dealer-data.js 자동 GitHub 배포
+                    // DB 저장 성공 후 dealer-data.js 자동 GitHub 배포 (SNS 링크 유실 방지)
                     loadingText.innerText = '홈페이지 반영 중 (GitHub 배포)...';
                     try {
-                        // DB에서 최신 전체 대리점 목록 가져오기
                         const dealerRes = await client.from('dealers').select('*').order('id', { ascending: true });
-                        if (!dealerRes.error && dealerRes.data) {
-                            const ts = Date.now();
-                            const jsContent = `const initialDealerData = ${JSON.stringify(dealerRes.data, null, 4)};\nconst DEALER_DATA_VERSION = ${ts};\n\nlet dealerData = [];\nif (typeof localStorage !== 'undefined') {\n    const storedVersion = localStorage.getItem('dealerDataVersion');\n    if (!storedVersion || parseInt(storedVersion) < DEALER_DATA_VERSION) {\n        dealerData = JSON.parse(JSON.stringify(initialDealerData));\n        localStorage.setItem('dealerData', JSON.stringify(dealerData));\n        localStorage.setItem('dealerDataVersion', DEALER_DATA_VERSION.toString());\n    } else {\n        const stored = localStorage.getItem('dealerData');\n        dealerData = stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(initialDealerData));\n    }\n} else {\n    dealerData = initialDealerData;\n}\n\nif (typeof window !== 'undefined') { window.dealerData = dealerData; }\nif (typeof module !== 'undefined' && module.exports) { module.exports = dealerData; }`;
-                            await ghClient.commitFile('js/dealer-data.js', jsContent, 'Auto-sync dealer data from DB after admin save');
+                        let mergedDealers = [...dealers];
+                        if (!dealerRes.error && dealerRes.data && dealerRes.data.length > 0) {
+                            const dbMap = new Map(dealerRes.data.map(d => [d.username || d.id, d]));
+                            mergedDealers = dealers.map(localItem => {
+                                const dbItem = dbMap.get(localItem.username || localItem.id);
+                                return dbItem ? { ...localItem, ...dbItem, blog_url: localItem.blog_url || dbItem.blog_url || '', tistory_url: localItem.tistory_url || dbItem.tistory_url || '', instagram_url: localItem.instagram_url || dbItem.instagram_url || '', youtube_url: localItem.youtube_url || dbItem.youtube_url || '', facebook_url: localItem.facebook_url || dbItem.facebook_url || '', homepage: localItem.homepage || dbItem.homepage || '' } : localItem;
+                            });
                         }
+                        const ts = Date.now();
+                        const jsContent = `const initialDealerData = ${JSON.stringify(mergedDealers, null, 4)};\nconst DEALER_DATA_VERSION = ${ts};\n\nlet dealerData = [];\nif (typeof localStorage !== 'undefined') {\n    const storedVersion = localStorage.getItem('dealerDataVersion');\n    if (!storedVersion || parseInt(storedVersion) < DEALER_DATA_VERSION) {\n        dealerData = JSON.parse(JSON.stringify(initialDealerData));\n        localStorage.setItem('dealerData', JSON.stringify(dealerData));\n        localStorage.setItem('dealerDataVersion', DEALER_DATA_VERSION.toString());\n    } else {\n        const stored = localStorage.getItem('dealerData');\n        dealerData = stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(initialDealerData));\n    }\n} else {\n    dealerData = initialDealerData;\n}\n\nif (typeof window !== 'undefined') { window.dealerData = dealerData; }\nif (typeof module !== 'undefined' && module.exports) { module.exports = dealerData; }`;
+                        await ghClient.commitFile('js/dealer-data.js', jsContent, 'Auto-sync dealer data from DB after admin save');
                     } catch (ghErr) {
                         console.warn('[GitHub] dealer-data.js 자동 배포 실패 (DB 저장은 완료):', ghErr.message);
                     }

@@ -66,16 +66,41 @@ async function fetchPriceListByCategory(category) {
  * @returns {Promise<Array>}
  */
 async function fetchDealerList() {
+    let staticDealers = (typeof dealerData !== 'undefined' && Array.isArray(dealerData)) ? dealerData : [];
+    
+    if (!window.supabase) return staticDealers;
+
     const { data, error } = await window.supabase
         .from('dealers')
         .select('*')
         .order('id', { ascending: true });
 
-    if (error) {
-        console.error('Error fetching dealer list:', error);
-        return [];
+    if (error || !data || data.length === 0) {
+        console.warn('Error or empty result fetching DB dealer list, fallback to static:', error);
+        return staticDealers;
     }
-    return data;
+
+    // Merge DB data with static dealerData to preserve SNS URLs
+    const staticMap = new Map();
+    staticDealers.forEach(item => {
+        const key = item.username || item.id;
+        if (key) staticMap.set(key, item);
+    });
+
+    return data.map(dbItem => {
+        const key = dbItem.username || dbItem.id;
+        const staticItem = staticMap.get(key) || {};
+        return {
+            ...staticItem,
+            ...dbItem,
+            blog_url: dbItem.blog_url || staticItem.blog_url || '',
+            tistory_url: dbItem.tistory_url || staticItem.tistory_url || '',
+            instagram_url: dbItem.instagram_url || staticItem.instagram_url || '',
+            youtube_url: dbItem.youtube_url || staticItem.youtube_url || '',
+            facebook_url: dbItem.facebook_url || staticItem.facebook_url || '',
+            homepage: dbItem.homepage || staticItem.homepage || ''
+        };
+    });
 }
 
 // DOMContentLoaded 시점에 로딩 오버레이 동적 삽입
