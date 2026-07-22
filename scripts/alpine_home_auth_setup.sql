@@ -91,7 +91,7 @@ BEGIN
     SELECT 1 FROM "alpine-home".users
     WHERE username = p_admin_username
       AND password_hash = crypt(p_admin_password, password_hash)
-      AND role IN ('admin', 'master')
+      AND role IN ('admin', 'master', 'service_admin')
   );
 END;
 $$;

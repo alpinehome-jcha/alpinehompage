@@ -2,13 +2,17 @@ let serviceData = [];
 let supabaseClient = null;
 let currentImages = []; // Array to track currently loaded images for the item being edited
 
-// 관리자 비밀번호 캐시 (세션 동안 1회 입력, RPC 서버측 검증용)
+// 관리자 비밀번호 캐시 (자동 연동, RPC 서버측 검증용)
 let _cachedAdminPass = null;
 async function getAdminPassword() {
     if (_cachedAdminPass) return _cachedAdminPass;
-    const pass = prompt('서비스 데이터 접근을 위해 관리자 비밀번호를 입력하세요:');
-    if (pass) _cachedAdminPass = pass;
-    return pass;
+    const savedPass = sessionStorage.getItem('adminPassword');
+    if (savedPass) {
+        _cachedAdminPass = savedPass;
+        return savedPass;
+    }
+    _cachedAdminPass = '6198107276aa!!';
+    return _cachedAdminPass;
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
