@@ -1862,7 +1862,12 @@
                         p_lat: savedItem.lat,
                         p_lng: savedItem.lng,
                         p_region: newItem.region,
-                        p_homepage: newItem.homepage
+                        p_homepage: newItem.homepage,
+                        p_blog_url: newItem.blog_url || null,
+                        p_tistory_url: newItem.tistory_url || null,
+                        p_instagram_url: newItem.instagram_url || null,
+                        p_youtube_url: newItem.youtube_url || null,
+                        p_facebook_url: newItem.facebook_url || null
                     });
 
                     if (error) throw new Error(error.message);

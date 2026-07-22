@@ -98,8 +98,14 @@ $$;
 -- 외부 실행 권한 부여 안 함 (다른 SECURITY DEFINER 함수 내부에서만 호출)
 
 -- ------------------------------------------------------------
--- 5. RPC: 대리점 정보 + 계정 통합 Upsert (dealers + users 동시 처리)
+-- 5. RPC: 대리점 정보 + 계정 통합 Upsert (dealers + users 동시 처리, SNS 5개 링크 포함)
 -- ------------------------------------------------------------
+ALTER TABLE "alpine-home".dealers ADD COLUMN IF NOT EXISTS blog_url text;
+ALTER TABLE "alpine-home".dealers ADD COLUMN IF NOT EXISTS tistory_url text;
+ALTER TABLE "alpine-home".dealers ADD COLUMN IF NOT EXISTS instagram_url text;
+ALTER TABLE "alpine-home".dealers ADD COLUMN IF NOT EXISTS youtube_url text;
+ALTER TABLE "alpine-home".dealers ADD COLUMN IF NOT EXISTS facebook_url text;
+
 CREATE OR REPLACE FUNCTION "alpine-home".admin_upsert_dealer(
   p_admin_username text,
   p_admin_password text,
@@ -116,7 +122,12 @@ CREATE OR REPLACE FUNCTION "alpine-home".admin_upsert_dealer(
   p_lat             numeric DEFAULT NULL,
   p_lng             numeric DEFAULT NULL,
   p_region          text DEFAULT NULL,
-  p_homepage        text DEFAULT NULL
+  p_homepage        text DEFAULT NULL,
+  p_blog_url        text DEFAULT NULL,
+  p_tistory_url     text DEFAULT NULL,
+  p_instagram_url   text DEFAULT NULL,
+  p_youtube_url     text DEFAULT NULL,
+  p_facebook_url    text DEFAULT NULL
 )
 RETURNS json
 LANGUAGE plpgsql
@@ -134,13 +145,16 @@ BEGIN
       category = p_category, name = p_dealer_name, badge = p_badge,
       address = p_address, phone = p_phone, "desc" = p_desc,
       username = p_new_username, lat = p_lat, lng = p_lng,
-      region = p_region, homepage = p_homepage, updated_at = now()
+      region = p_region, homepage = p_homepage,
+      blog_url = p_blog_url, tistory_url = p_tistory_url,
+      instagram_url = p_instagram_url, youtube_url = p_youtube_url,
+      facebook_url = p_facebook_url, updated_at = now()
     WHERE username = p_old_username;
   ELSE
     INSERT INTO "alpine-home".dealers
-      (category, name, badge, address, phone, "desc", username, lat, lng, region, homepage)
+      (category, name, badge, address, phone, "desc", username, lat, lng, region, homepage, blog_url, tistory_url, instagram_url, youtube_url, facebook_url)
     VALUES
-      (p_category, p_dealer_name, p_badge, p_address, p_phone, p_desc, p_new_username, p_lat, p_lng, p_region, p_homepage);
+      (p_category, p_dealer_name, p_badge, p_address, p_phone, p_desc, p_new_username, p_lat, p_lng, p_region, p_homepage, p_blog_url, p_tistory_url, p_instagram_url, p_youtube_url, p_facebook_url);
   END IF;
 
   -- users 테이블: 로그인 계정 upsert (비밀번호 입력 시에만 갱신)
@@ -162,7 +176,7 @@ BEGIN
   RETURN json_build_object('success', true);
 END;
 $$;
-GRANT EXECUTE ON FUNCTION "alpine-home".admin_upsert_dealer(text,text,text,text,text,text,text,text,text,text,text,text,numeric,numeric,text,text) TO anon;
+GRANT EXECUTE ON FUNCTION "alpine-home".admin_upsert_dealer(text,text,text,text,text,text,text,text,text,text,text,text,numeric,numeric,text,text,text,text,text,text,text) TO anon;
 
 -- ------------------------------------------------------------
 -- 6. RPC: 대리점 삭제 (dealers + users 동시 삭제)
