@@ -1862,13 +1862,7 @@
                         p_lat: savedItem.lat,
                         p_lng: savedItem.lng,
                         p_region: newItem.region,
-                        p_homepage: newItem.homepage,
-                        p_blog_url: newItem.blog_url || null,
-                        p_tistory_url: newItem.tistory_url || null,
-                        p_instagram_url: newItem.instagram_url || null,
-                        p_youtube_url: newItem.youtube_url || null,
-                        p_facebook_url: newItem.facebook_url || null,
-                        p_id: newItem.id
+                        p_homepage: newItem.homepage
                     });
 
                     overlay.style.display = 'none';
@@ -2595,10 +2589,12 @@
 
 
         async function saveToGitHub(type, silent = false) {
-            const token = localStorage.getItem('github_token');
-            const repo = localStorage.getItem('github_repo');
-
-            if (!token || !repo) {
+            if (typeof ghClient === 'undefined') {
+                if (!silent) alert('GitHub Client is not loaded.');
+                return;
+            }
+            await ghClient.refreshStatus().catch(() => {});
+            if (!ghClient.isConfigured()) {
                 if (!silent) alert('GitHub Settings are missing. Please configure them first.');
                 return;
             }
@@ -2740,8 +2736,7 @@
             fileContent += `}`;
 
             // Execute Commit
-            const client = new GitHubClient(); // Assuming script is loaded
-            client.configure(token, repo);
+            const client = ghClient;
 
             try {
                 // Determine message

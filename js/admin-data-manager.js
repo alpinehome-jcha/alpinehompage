@@ -160,11 +160,13 @@ function clearAllLocalStorage() {
 }
 
 async function saveToGitHub(type, silent = false) {
-    const token = localStorage.getItem('github_token');
-    const repo = localStorage.getItem('github_repo');
-
-    if (!token || !repo) {
-        if (!silent) alert('GitHub Settings are missing. Please configure them in Admin > Partner Zone > GitHub Settings.');
+    if (typeof ghClient === 'undefined') {
+        if (!silent) alert('GitHub Client is not loaded.');
+        return;
+    }
+    await ghClient.refreshStatus().catch(() => {});
+    if (!ghClient.isConfigured()) {
+        if (!silent) alert('GitHub Settings are missing. Please configure them in GitHub Settings.');
         return;
     }
 
@@ -333,10 +335,6 @@ async function saveToGitHub(type, silent = false) {
     }
 
     // Ensure client is configured
-    if (!ghClient.isConfigured() || localStorage.getItem('github_branch')) {
-        const branch = localStorage.getItem('github_branch') || 'main';
-        ghClient.configure(token, repo, branch);
-    }
 
     try {
         const msg = silent ? `Auto-save ${type} data` : `Update ${type} data from Admin/Resource Panel`;
