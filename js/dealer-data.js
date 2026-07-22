@@ -36,12 +36,7 @@ const initialDealerData = [
         "region": "????(??,??,??,??)",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-07-22T06:11:26.832659+00:00",
-        "homepage": "https://blog.naver.com/gaegoory",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/gaegoory"
     },
     {
         "id": 3,
@@ -57,12 +52,7 @@ const initialDealerData = [
         "region": "경기남부(수원,화성,평택,안성)",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/cutty0016",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/cutty0016"
     },
     {
         "id": 4,
@@ -78,12 +68,7 @@ const initialDealerData = [
         "region": "경기북부(고양,파주,의정부,양주)",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/miini1021",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/miini1021"
     },
     {
         "id": 5,
@@ -99,12 +84,7 @@ const initialDealerData = [
         "region": "??",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-07-22T05:10:53.855696+00:00",
-        "homepage": "",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": ""
     },
     {
         "id": 6,
@@ -120,12 +100,7 @@ const initialDealerData = [
         "region": "경기중앙(성남,안양,용인,과천)",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/cshkkn",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/cshkkn"
     },
     {
         "id": 1770248942602,
@@ -141,12 +116,7 @@ const initialDealerData = [
         "region": "인천",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/rohst731",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/rohst731"
     },
     {
         "id": 1770249019903,
@@ -162,12 +132,7 @@ const initialDealerData = [
         "region": "경기서부(김포,부천,광명,안산)",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/daesung76",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/daesung76"
     },
     {
         "id": 1770249089862,
@@ -183,12 +148,7 @@ const initialDealerData = [
         "region": "광주",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/ysoung78",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/ysoung78"
     },
     {
         "id": 1770249157344,
@@ -204,12 +164,7 @@ const initialDealerData = [
         "region": "제주",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/shinjee2000",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/shinjee2000"
     },
     {
         "id": 1770249233020,
@@ -225,12 +180,7 @@ const initialDealerData = [
         "region": "전북",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/bezel0822",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/bezel0822"
     },
     {
         "id": 1770249301228,
@@ -246,12 +196,7 @@ const initialDealerData = [
         "region": "강원",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/retro_sound",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/retro_sound"
     },
     {
         "id": 1770249368030,
@@ -267,12 +212,7 @@ const initialDealerData = [
         "region": "서울",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/soundraw21",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/soundraw21"
     },
     {
         "id": 1770249535832,
@@ -288,12 +228,7 @@ const initialDealerData = [
         "region": "경기동부(남양주,하남,이천,양평)",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/beisitz",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/beisitz"
     },
     {
         "id": 1770249644286,
@@ -309,12 +244,7 @@ const initialDealerData = [
         "region": "부산",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": null
     },
     {
         "id": 1770251069642,
@@ -330,12 +260,7 @@ const initialDealerData = [
         "region": "광주",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": null
     },
     {
         "id": 1770251199375,
@@ -351,12 +276,7 @@ const initialDealerData = [
         "region": "광주",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/cvtwon",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/cvtwon"
     },
     {
         "id": 1770251278146,
@@ -372,12 +292,7 @@ const initialDealerData = [
         "region": "경기중앙(성남,안양,용인,과천)",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/k8786",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/k8786"
     },
     {
         "id": 1770251356239,
@@ -393,12 +308,7 @@ const initialDealerData = [
         "region": "경기남부(수원,화성,평택,안성)",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/jnc8158",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/jnc8158"
     },
     {
         "id": 1770251431563,
@@ -414,12 +324,7 @@ const initialDealerData = [
         "region": "충북",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": null
     },
     {
         "id": 1770251555171,
@@ -435,12 +340,7 @@ const initialDealerData = [
         "region": "서울",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://www.autosound21.co.kr/",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://www.autosound21.co.kr/"
     },
     {
         "id": 1770251639994,
@@ -456,12 +356,7 @@ const initialDealerData = [
         "region": "경기중앙(성남,안양,용인,과천)",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/aquam29",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/aquam29"
     },
     {
         "id": 1770251746434,
@@ -477,12 +372,7 @@ const initialDealerData = [
         "region": "경기남부(수원,화성,평택,안성)",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/csp-k",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/csp-k"
     },
     {
         "id": 1770251812987,
@@ -498,12 +388,7 @@ const initialDealerData = [
         "region": "전북",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/ysca1979",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/ysca1979"
     },
     {
         "id": 1770251885018,
@@ -519,12 +404,7 @@ const initialDealerData = [
         "region": "충남",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/jjnd1973",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/jjnd1973"
     },
     {
         "id": 1770251944630,
@@ -540,12 +420,7 @@ const initialDealerData = [
         "region": "경기동부(남양주,하남,이천,양평)",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/huipalam",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/huipalam"
     },
     {
         "id": 1770252017508,
@@ -561,12 +436,7 @@ const initialDealerData = [
         "region": "경남",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": null
     },
     {
         "id": 1770252102820,
@@ -582,12 +452,7 @@ const initialDealerData = [
         "region": "서울",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/ham_sb7777",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/ham_sb7777"
     },
     {
         "id": 1770252184174,
@@ -603,12 +468,7 @@ const initialDealerData = [
         "region": "서울",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/ysy0101",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/ysy0101"
     },
     {
         "id": 1770252250504,
@@ -624,12 +484,7 @@ const initialDealerData = [
         "region": "대전",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/bd0759",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/bd0759"
     },
     {
         "id": 1770252302728,
@@ -645,12 +500,7 @@ const initialDealerData = [
         "region": "대전",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/lifeup",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/lifeup"
     },
     {
         "id": 1770252367530,
@@ -666,12 +516,7 @@ const initialDealerData = [
         "region": "서울",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/2145841",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/2145841"
     },
     {
         "id": 1770252423184,
@@ -687,12 +532,7 @@ const initialDealerData = [
         "region": "부산",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/gpqjffp134",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/gpqjffp134"
     },
     {
         "id": 1770252538684,
@@ -708,12 +548,7 @@ const initialDealerData = [
         "region": "울산",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/woos1234",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/woos1234"
     },
     {
         "id": 1770252612776,
@@ -729,12 +564,7 @@ const initialDealerData = [
         "region": "경남",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://www.facebook.com/profile.php?id=100005510130004&mibextid=kFxxJD",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://www.facebook.com/profile.php?id=100005510130004&mibextid=kFxxJD"
     },
     {
         "id": 1770252674996,
@@ -750,12 +580,7 @@ const initialDealerData = [
         "region": "대구",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/sat700",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/sat700"
     },
     {
         "id": 1770252725836,
@@ -771,12 +596,7 @@ const initialDealerData = [
         "region": "대구",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/zero1789",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/zero1789"
     },
     {
         "id": 1770252770959,
@@ -792,12 +612,7 @@ const initialDealerData = [
         "region": "대구",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": null
     },
     {
         "id": 1770252813652,
@@ -813,12 +628,7 @@ const initialDealerData = [
         "region": "대구",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/car0772",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/car0772"
     },
     {
         "id": 1770252968891,
@@ -834,12 +644,7 @@ const initialDealerData = [
         "region": "서울",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "http://www.roadmine.co.kr/",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "http://www.roadmine.co.kr/"
     },
     {
         "id": 1770253046567,
@@ -855,12 +660,7 @@ const initialDealerData = [
         "region": "부산",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://blog.naver.com/korearanking",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/korearanking"
     },
     {
         "id": 1770253137261,
@@ -876,12 +676,7 @@ const initialDealerData = [
         "region": "부산",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "https://www.phasecaraudio.com/",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://www.phasecaraudio.com/"
     },
     {
         "id": 1770253229315,
@@ -897,12 +692,7 @@ const initialDealerData = [
         "region": "경남",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
         "updated_at": "2026-02-25T08:33:18.146828+00:00",
-        "homepage": "",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": null
     },
     {
         "id": 1772009451942,
@@ -918,12 +708,7 @@ const initialDealerData = [
         "region": "서울",
         "created_at": "2026-02-25T08:50:52.030404+00:00",
         "updated_at": "2026-02-25T08:50:52.030404+00:00",
-        "homepage": "https://blog.naver.com/multinh",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/multinh"
     },
     {
         "id": 1775802361688,
@@ -939,12 +724,7 @@ const initialDealerData = [
         "region": "경기중앙(성남,안양,용인,과천)",
         "created_at": "2026-04-10T06:26:03.517117+00:00",
         "updated_at": "2026-04-10T06:26:03.517117+00:00",
-        "homepage": "https://www.realmagicsound.com/",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://www.realmagicsound.com/"
     },
     {
         "id": 1776818521471,
@@ -960,12 +740,7 @@ const initialDealerData = [
         "region": "부산",
         "created_at": "2026-04-22T00:42:02.182808+00:00",
         "updated_at": "2026-04-22T00:42:02.182808+00:00",
-        "homepage": "https://blog.naver.com/greatkoo1",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": "https://blog.naver.com/greatkoo1"
     },
     {
         "id": 1776818521473,
@@ -981,15 +756,10 @@ const initialDealerData = [
         "region": null,
         "created_at": "2026-07-22T04:53:26.878852+00:00",
         "updated_at": "2026-07-22T04:53:26.878852+00:00",
-        "homepage": "",
-        "blog_url": "",
-        "tistory_url": "",
-        "instagram_url": "",
-        "youtube_url": "",
-        "facebook_url": ""
+        "homepage": null
     }
 ];
-const DEALER_DATA_VERSION = 1784703254028;
+const DEALER_DATA_VERSION = 1784703577123;
 
 let dealerData = [];
 if (typeof localStorage !== 'undefined') {
