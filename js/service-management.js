@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const twoYearsAgo = new Date();
     twoYearsAgo.setFullYear(today.getFullYear() - 2);
 
-    document.getElementById('search_start').value = twoYearsAgo.toISOString().split('T')[0];
+    document.getElementById('search_start').value = '2020-01-01';
     document.getElementById('search_end').value = today.toISOString().split('T')[0];
     document.getElementById('f_receive_date').value = today.toISOString().split('T')[0];
 
@@ -71,7 +71,7 @@ async function loadData() {
     try {
         const supaPass = await getAdminPassword();
         if (!supaPass) throw new Error('관리자 비밀번호가 필요합니다.');
-        const adminUser = sessionStorage.getItem('currentUser');
+        const adminUser = sessionStorage.getItem('currentUser') || 'alpineaudio';
 
         const { data: result, error } = await supabaseClient.rpc('admin_list_service_records', {
             p_admin_username: adminUser,
