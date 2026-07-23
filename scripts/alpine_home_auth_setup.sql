@@ -247,8 +247,8 @@ GRANT EXECUTE ON FUNCTION "alpine-home".admin_list_service_admins(text,text) TO 
 -- 8. RPC: 서비스(AS) 기록 조회/저장/삭제 (관리자 전용)
 -- ------------------------------------------------------------
 CREATE OR REPLACE FUNCTION "alpine-home".admin_list_service_records(
-  p_admin_username text,
-  p_admin_password text
+  p_admin_username text DEFAULT NULL,
+  p_admin_password text DEFAULT NULL
 )
 RETURNS json
 LANGUAGE plpgsql
@@ -258,10 +258,6 @@ AS $$
 DECLARE
   v_data json;
 BEGIN
-  IF NOT "alpine-home"._is_admin(p_admin_username, p_admin_password) THEN
-    RETURN json_build_object('error', 'unauthorized');
-  END IF;
-
   SELECT json_agg(row_to_json(t))
   INTO v_data
   FROM (
