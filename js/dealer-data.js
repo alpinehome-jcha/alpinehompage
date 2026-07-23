@@ -85,9 +85,9 @@ const initialDealerData = [
     },
     {
         "id": 5,
-        "category": "Team Alpine",
+        "category": "Alpine Dealer",
         "name": "오토갤러리",
-        "badge": "Team Alpine",
+        "badge": "Alpine Sound",
         "address": "서울특별시 송파구 새말로 176 트윈팰리스101동 102호",
         "phone": "010-5220-8034",
         "desc": "알파인 모든 사운드 시스템을 취급합니다.",
@@ -102,7 +102,9 @@ const initialDealerData = [
         "youtube_url": "",
         "instagram_url": "",
         "facebook_url": "",
-        "tistory_url": ""
+        "tistory_url": "",
+        "password": null,
+        "role": "dealer"
     },
     {
         "id": 6,
@@ -1327,7 +1329,7 @@ const initialDealerData = [
         "tistory_url": ""
     }
 ];
-const DEALER_DATA_VERSION = 1784788593436;
+const DEALER_DATA_VERSION = 1784788618441;
 
 let dealerData = [];
 if (typeof localStorage !== 'undefined') {
