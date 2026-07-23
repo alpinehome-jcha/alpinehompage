@@ -97,7 +97,7 @@ const auth = {
             const script = document.createElement('script');
             const scriptPath = getRelativeRoot() + 'js/github-client.js';
 
-            script.src = scriptPath + '?v=202602162250';
+            script.src = scriptPath + '?v=20260723_v3';
             script.onload = () => resolve();
             script.onerror = () => reject(new Error('Failed to load ' + scriptPath));
             document.head.appendChild(script);

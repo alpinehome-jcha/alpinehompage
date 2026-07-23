@@ -861,7 +861,11 @@
 
             // Load Config & Migrate if needed
             const storedList = localStorage.getItem('popupList');
-            if (storedList) {
+            if (typeof popupData !== 'undefined' && Array.isArray(popupData) && popupData.length > 0) {
+                // Always sync with the server's actual popupData first to prevent missing popups on new devices
+                popupList = JSON.parse(JSON.stringify(popupData));
+                localStorage.setItem('popupList', JSON.stringify(popupList));
+            } else if (storedList) {
                 popupList = JSON.parse(storedList);
             } else {
                 // Check for old config and migrate
@@ -2893,7 +2897,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script src="../js/supabase-client.js?v=20260722_v2"></script>
-    <script src="../js/github-client.js?v=202602162250"></script>
+    <script src="../js/github-client.js?v=20260723_v3"></script>
     <script src="../js/i18n.js"></script>
 </body>
 
