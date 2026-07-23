@@ -29,13 +29,23 @@ const getRelativeRoot = () => {
     return '';
 };
 
-window.authState = {
+let initialAuthState = {
     isLoggedIn: false,
     role: null,
     dealerName: null,
     currentUser: null,
     adminPassword: null
 };
+try {
+    const stored = sessionStorage.getItem('authState');
+    if (stored) {
+        initialAuthState = JSON.parse(stored);
+    }
+} catch(e) {
+    console.warn("Failed to parse stored authState");
+}
+
+window.authState = initialAuthState;
 
 // ============================================================
 // Supabase Configuration (Production Local Infrastructure)
@@ -120,7 +130,7 @@ const auth = {
         const role = data.role || 'dealer';
         const dealerName = data.dealer_name || username;
 
-        // Save state in memory only
+        // Save state in memory and sessionStorage for cross-page persistence
         window.authState = {
             isLoggedIn: true,
             role: role,
@@ -128,6 +138,7 @@ const auth = {
             currentUser: username,
             adminPassword: password
         };
+        sessionStorage.setItem('authState', JSON.stringify(window.authState));
 
         await saveVisitLog({
             date: new Date().toLocaleString('ko-KR'),
@@ -182,6 +193,7 @@ const auth = {
             currentUser: null,
             adminPassword: null
         };
+        sessionStorage.removeItem('authState');
         window.location.href = getRelativeRoot() + 'index.html';
     },
     isLoggedIn: () => {
