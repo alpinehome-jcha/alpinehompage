@@ -46,6 +46,10 @@ fi
 # Search server backup directories for service_management dump files without restoring to DB
 echo "Searching server backup directories for service_management records..."
 mkdir -p ./scripts/found_dumps
+docker exec -i supabase-db psql -U postgres -c "SELECT table_schema, table_name FROM information_schema.tables WHERE table_name LIKE '%service%';" > ./scripts/found_dumps/all_tables.txt 2>&1 || true
+docker exec -i supabase-db psql -U postgres -c "SELECT id, receive_date, status, customer_name, car_model, phone, address FROM public.service_management ORDER BY receive_date DESC, id DESC;" > ./scripts/found_dumps/public_rows.txt 2>&1 || true
+docker exec -i supabase-db psql -U postgres -c "SELECT id, receive_date, status, customer_name, car_model, phone, address FROM \"alpine-home\".service_management ORDER BY receive_date DESC, id DESC;" > ./scripts/found_dumps/alpine_rows.txt 2>&1 || true
+
 find /home/jchauto /var/backups /tmp /root -type f \( -name "*backup*" -o -name "*.sql*" -o -name "*.dump*" -o -name "*.tar*" -o -name "*.gz*" \) 2>/dev/null | while read -r f; do
   if grep -qi "service_management" "$f" 2>/dev/null; then
     echo "Found service_management in: $f" >> ./scripts/found_dumps/summary.txt
