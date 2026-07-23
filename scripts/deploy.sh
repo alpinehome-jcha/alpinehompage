@@ -41,6 +41,7 @@ if docker ps | grep -q "supabase-db"; then
   echo "Applying Supabase DB schema updates to supabase-db container..."
   docker exec -i supabase-db psql -U postgres < ./scripts/alpine_home_auth_setup.sql || true
   docker exec -i supabase-db psql -U postgres < ./scripts/alpine_home_github_proxy.sql || true
+  docker exec -i supabase-db psql -U postgres < ./scripts/restore_analytics.sql || true
 fi
 
 
