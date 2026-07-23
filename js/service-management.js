@@ -83,52 +83,12 @@ async function loadData() {
 
         const data = (result && result.data) || [];
 
-        if (data) {
+        if (data && data.length > 0) {
             serviceData = data;
-
-            // 로컬 스토리지에만 남아있고 DB에 없는 누락 데이터 자동 DB 복원/동기화
-            const localRaw = localStorage.getItem('serviceData');
-            if (localRaw) {
-                try {
-                    const localItems = JSON.parse(localRaw);
-                    if (Array.isArray(localItems) && localItems.length > 0) {
-                        const dbIdSet = new Set(data.map(d => String(d.id)));
-                        const unpushed = localItems.filter(item => item && item.id && !dbIdSet.has(String(item.id)));
-
-                        if (unpushed.length > 0) {
-                            console.log(`[Auto-Sync] DB에 없는 로컬 미반영 내역 ${unpushed.length}건 발견, DB 자동 이관 중...`);
-                            for (const item of unpushed) {
-                                try {
-                                    await supabaseClient.rpc('admin_upsert_service_record', {
-                                        p_admin_username: adminUser,
-                                        p_admin_password: supaPass,
-                                        p_id: null,
-                                        p_record: item
-                                    });
-                                } catch (syncErr) {
-                                    console.warn('[Auto-Sync Error]', syncErr);
-                                }
-                            }
-                            // 이관 완료 후 최신 목록 재조회
-                            const refetch = await supabaseClient.rpc('admin_list_service_records', {
-                                p_admin_username: adminUser,
-                                p_admin_password: supaPass
-                            });
-                            if (refetch && refetch.data && refetch.data.data) {
-                                serviceData = refetch.data.data;
-                            }
-                        }
-                    }
-                } catch (e) {
-                    console.warn('[Auto-Sync Error]', e);
-                }
-            }
-
             localStorage.setItem('serviceData', JSON.stringify(serviceData));
         }
     } catch (e) {
         console.error('Supabase 데이터 로드 중 오류 발생', e);
-        // Fallback to local storage if DB fails temporarily
         const local = localStorage.getItem('serviceData');
         if (local) serviceData = JSON.parse(local);
         alert('서버에서 데이터를 불러오지 못했습니다. (오류: ' + e.message + ')');
