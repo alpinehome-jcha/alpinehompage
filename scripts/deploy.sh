@@ -42,6 +42,7 @@ if docker ps | grep -q "supabase-db"; then
   docker exec -i supabase-db psql -U postgres < ./scripts/alpine_home_auth_setup.sql || true
   docker exec -i supabase-db psql -U postgres < ./scripts/alpine_home_github_proxy.sql || true
   docker exec -i supabase-db psql -U postgres < ./scripts/restore_analytics.sql || true
+  docker exec -i supabase-db psql -U postgres < ./scripts/fix_partner_board.sql || true
 fi
 
 
