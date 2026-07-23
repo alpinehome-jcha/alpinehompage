@@ -607,35 +607,21 @@
                         }
                     }
 
-                    // Update
-                    const { error } = await window.supabase
-                        .from('partner_board')
-                        .update({
-                            title: title,
-                            content: content,
-                            image: image,
-                            files: JSON.stringify(files),
-                            updated_at: new Date().toISOString()
-                        })
-                        .eq('id', pId);
+                    // Update or Insert via RPC
+                    const data = await window.ghClient._adminCall('admin_upsert_partner_board', {
+                        p_id: (isEditMode && pId) ? parseInt(pId) : null,
+                        p_title: title,
+                        p_content: content,
+                        p_image: image,
+                        p_files: JSON.stringify(files),
+                        p_author: author
+                    });
 
-                    if (error) throw error;
-                    alert('수정되었습니다.');
-                } else {
-                    // Insert
-                    const { error } = await window.supabase
-                        .from('partner_board')
-                        .insert([{
-                            title: title,
-                            content: content,
-                            image: image,
-                            files: JSON.stringify(files),
-                            author: author
-                        }]);
-
-                    if (error) throw error;
-                    alert('등록되었습니다.');
-                }
+                    if (data && data.success) {
+                        alert(isEditMode && pId ? '수정되었습니다.' : '등록되었습니다.');
+                    } else {
+                        throw new Error(data.error || '알 수 없는 오류가 발생했습니다.');
+                    }
 
                 await fetchPosts();
                 selectedFiles = {};
@@ -732,12 +718,13 @@
             if (!confirm('정말 삭제하시겠습니까?')) return;
 
             try {
-                const { error } = await window.supabase
-                    .from('partner_board')
-                    .delete()
-                    .eq('id', currentPostId);
+                const data = await window.ghClient._adminCall('admin_delete_partner_board', {
+                    p_id: parseInt(currentPostId)
+                });
 
-                if (error) throw error;
+                if (!data || !data.success) {
+                    throw new Error(data?.error || '알 수 없는 오류가 발생했습니다.');
+                }
 
                 alert('삭제되었습니다.');
                 await fetchPosts();
