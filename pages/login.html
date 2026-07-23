@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -112,13 +112,7 @@
         const usernameInput = document.getElementById('username');
         const rememberIdCheckbox = document.getElementById('rememberId');
 
-        // Load saved ID
-        const savedId = localStorage.getItem('savedId');
-        if (savedId) {
-            usernameInput.value = savedId;
-            rememberIdCheckbox.checked = true;
-        }
-
+        // '아이디 저장' 기능은 보안 정책에 따라 제거됨
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const username = usernameInput.value.trim();
@@ -131,11 +125,6 @@
             errorMsg.style.display = 'none';
 
             if (await auth.login(username, password)) {
-                if (rememberIdCheckbox.checked) {
-                    localStorage.setItem('savedId', username);
-                } else {
-                    localStorage.removeItem('savedId');
-                }
                 window.location.href = '../index.html';
             } else {
                 loginBtn.disabled = false;

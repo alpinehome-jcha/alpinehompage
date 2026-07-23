@@ -466,12 +466,22 @@
     </script>
 
     <script>
-        document.write('<script src="js/product-data.js?v=20260721"><\/script>');
+        let productData = [];
     </script>
     <script>
         // Render Products
         const productGrid = document.getElementById('productGrid');
         const filterBtns = document.querySelectorAll('.filter-btn');
+
+        async function fetchProductsFromDB() {
+            try {
+                const client = await loadSupabase();
+                const { data } = await client.from('products').select('*').order('sort_order', { ascending: true });
+                if (data) productData = data;
+            } catch(e) {
+                console.error("Failed to load products from DB", e);
+            }
+        }
 
         function slugify(text) {
             return text.toString().toLowerCase()
@@ -624,116 +634,83 @@
             });
         }
 
-        // Handle URL Parameters for Filtering
-        const urlParams = new URLSearchParams(window.location.search);
-        const categoryParam = urlParams.get('category');
+        async function applyInitialFilters() {
+            await fetchProductsFromDB();
+            
+            // Handle URL Parameters for Filtering
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryParam = urlParams.get('category');
 
-        // Check URL first, then SessionStorage
-        // Check URL first, then SessionStorage
-        if (categoryParam) {
-            let targetBtn = null;
-            let isSubCategory = false;
+            // Check URL first, then SessionStorage
+            if (categoryParam) {
+                let targetBtn = null;
+                let isSubCategory = false;
 
-            // Check if it's a sub-category (PnP Cable - ...)
-            if (categoryParam.startsWith('PnP Cable - ')) {
-                isSubCategory = true;
-                // Find Parent Button (PnP Cable)
-                filterBtns.forEach(btn => {
-                    if (btn.textContent.trim() === 'PnP Cable') targetBtn = btn;
-                });
-            } else {
-                // Normal Category Match
-                filterBtns.forEach(btn => {
-                    const btnText = btn.textContent.trim();
-                    if (btnText === categoryParam) {
-                        targetBtn = btn;
-                    } else if (categoryParam === 'Others' && btnText === '기타상품') {
-                        targetBtn = btn;
-                    } else if (categoryParam === '기타상품' && btnText === '기타상품') {
-                        targetBtn = btn;
-                    }
-                });
-            }
-
-            if (targetBtn) {
-                document.querySelector('.filter-btn.active').classList.remove('active');
-                targetBtn.classList.add('active');
-
-                // If it's a sub-category, handle sub-menu
-                if (isSubCategory) {
-                    subFilterContainer.style.display = 'flex';
-                    // Deactivate all sub-btns
-                    document.querySelectorAll('.sub-filter-btn.active').forEach(b => b.classList.remove('active'));
-
-                    // Activate specific sub-btn
-                    // categoryParam e.g. "PnP Cable - 국산차"
-                    // sub-btn data-sub="국산차"
-                    const subKey = categoryParam.replace('PnP Cable - ', '');
-                    // Need to match data-sub. simple string match?
-                    const subBtns = document.querySelectorAll('.sub-filter-btn');
-                    subBtns.forEach(sb => {
-                        if (sb.dataset.sub === subKey || categoryParam.includes(sb.dataset.sub)) {
-                            sb.classList.add('active');
+                // Check if it's a sub-category (PnP Cable - ...)
+                if (categoryParam.startsWith('PnP Cable - ')) {
+                    isSubCategory = true;
+                    // Find Parent Button (PnP Cable)
+                    filterBtns.forEach(btn => {
+                        if (btn.textContent.trim() === 'PnP Cable') targetBtn = btn;
+                    });
+                } else {
+                    // Normal Category Match
+                    filterBtns.forEach(btn => {
+                        const btnText = btn.textContent.trim();
+                        if (btnText === categoryParam) {
+                            targetBtn = btn;
+                        } else if (categoryParam === 'Others' && btnText === '기타상품') {
+                            targetBtn = btn;
+                        } else if (categoryParam === '기타상품' && btnText === '기타상품') {
+                            targetBtn = btn;
                         }
                     });
-
-                    renderProducts(categoryParam);
-                    sessionStorage.setItem('lastCategory', categoryParam);
-                } else {
-                    // Normal Category
-                    const filterName = targetBtn.textContent.trim();
-
-                    if (filterName === 'PnP Cable') {
-                        // Redirect 'PnP Cable' to 'Domestic Cars' (PnP Cable - 국산차)
-                        subFilterContainer.style.display = 'flex';
-
-                        // Reset active sub-buttons
-                        document.querySelectorAll('.sub-filter-btn.active').forEach(b => b.classList.remove('active'));
-
-                        // Select 'Domestic Cars' by default
-                        const defaultSub = document.querySelector('.sub-filter-btn[data-sub="국산차"]');
-                        if (defaultSub) {
-                            defaultSub.classList.add('active');
-                            renderProducts('PnP Cable - 국산차');
-
-                            // Update State to match the specific sub-category
-                            const subName = 'PnP Cable - 국산차';
-                            sessionStorage.setItem('lastCategory', subName);
-                            // Optionally update URL to reflect the redirect
-                            const subUrl = `${window.location.pathname}?category=${encodeURIComponent(subName)}`;
-                            history.replaceState({ path: subUrl }, '', subUrl);
-                        } else {
-                            // Fallback
-                            renderProducts(filterName);
-                            sessionStorage.setItem('lastCategory', filterName);
-                        }
-                    } else {
-                        subFilterContainer.style.display = 'none'; // Hide if not PnP
-                        renderProducts(filterName);
-                        sessionStorage.setItem('lastCategory', filterName);
-                    }
                 }
-
-
-            } else {
-                renderProducts(); // Default
-            }
-        } else {
-            // No URL param -> Check SessionStorage (History Back Support)
-            const lastCategory = sessionStorage.getItem('lastCategory');
-            if (lastCategory) {
-                let targetBtn = null;
-                filterBtns.forEach(btn => {
-                    if (btn.textContent.trim() === lastCategory) targetBtn = btn;
-                });
 
                 if (targetBtn) {
                     document.querySelector('.filter-btn.active').classList.remove('active');
                     targetBtn.classList.add('active');
-                    renderProducts(lastCategory);
-                } else {
-                    renderProducts();
-                }
+
+                    // If it's a sub-category, handle sub-menu
+                    if (isSubCategory) {
+                        subFilterContainer.style.display = 'flex';
+                        // Deactivate all sub-btns
+                        document.querySelectorAll('.sub-filter-btn.active').forEach(b => b.classList.remove('active'));
+
+                        // Activate specific sub-btn
+                        const subKey = categoryParam.replace('PnP Cable - ', '');
+                        const subBtns = document.querySelectorAll('.sub-filter-btn');
+                        subBtns.forEach(sb => {
+                            if (sb.dataset.sub === subKey || categoryParam.includes(sb.dataset.sub)) {
+                                sb.classList.add('active');
+                            }
+                        });
+
+                        renderProducts(categoryParam);
+                        sessionStorage.setItem('lastCategory', categoryParam);
+                    } else {
+                        // Normal Category
+                        const filterName = targetBtn.textContent.trim();
+
+                        if (filterName === 'PnP Cable') {
+                            subFilterContainer.style.display = 'flex';
+                            document.querySelectorAll('.sub-filter-btn.active').forEach(b => b.classList.remove('active'));
+                            const defaultSubBtn = document.querySelector('.sub-filter-btn[data-sub="국산차"]');
+                            if (defaultSubBtn) {
+                                defaultSubBtn.classList.add('active');
+                                const subName = 'PnP Cable - 국산차';
+                                sessionStorage.setItem('lastCategory', subName);
+                                const subUrl = `${window.location.pathname}?category=${encodeURIComponent(subName)}`;
+                                history.replaceState({ path: subUrl }, '', subUrl);
+                            } else {
+                                renderProducts(filterName);
+                                sessionStorage.setItem('lastCategory', filterName);
+                            }
+                        } else {
+                            subFilterContainer.style.display = 'none'; // Hide if not PnP
+                            renderProducts(filterName);
+                            sessionStorage.setItem('lastCategory', filterName);
+                        }
             } else {
                 // Default to the active button (F#1 Status) instead of 'All'
                 const activeBtn = document.querySelector('.filter-btn.active');
@@ -1033,13 +1010,12 @@
     <!-- Popup Container -->
     <div id="popupContainer"></div>
 
-    <script src="js/popup-data.js?v=20260213"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            renderPopups();
+        document.addEventListener('DOMContentLoaded', async function () {
+            await renderPopups();
         });
 
-        function renderPopups() {
+        async function renderPopups() {
             const container = document.getElementById('popupContainer');
             container.innerHTML = '';
 
@@ -1050,7 +1026,6 @@
                     (performance.navigation && performance.navigation.type === 1);
 
                 if (isReload) {
-                    // console.log("Page reloaded. Clearing popup session storage.");
                     Object.keys(sessionStorage).forEach(key => {
                         if (key.startsWith('popup_closed_')) {
                             sessionStorage.removeItem(key);
@@ -1061,34 +1036,16 @@
                 console.error("Navigation API not supported or error:", e);
             }
 
-            // 1. Get List
+            // 1. Get List from Supabase
             let popupList = [];
-
-            // Try to get from Server Data (popup-data.js)
-            if (typeof popupData !== 'undefined' && popupData.length > 0) {
-                popupList = popupData;
-            } else {
-                // Fallback to LocalStorage (mainly for Admin testing before deploy, or if file fails)
-                const storedList = localStorage.getItem('popupList');
-                if (storedList) {
-                    popupList = JSON.parse(storedList);
-                } else {
-                    // Fallback / Migration for old config
-                    const oldConfig = localStorage.getItem('popupConfig');
-                    if (oldConfig) {
-                        const c = JSON.parse(oldConfig);
-                        if (c.isActive) {
-                            popupList.push({
-                                id: 'legacy',
-                                title: 'Event',
-                                imagePath: c.imagePath,
-                                linkUrl: c.linkUrl,
-                                hideDays: c.hideDays,
-                                isActive: true
-                            });
-                        }
-                    }
+            try {
+                const client = await loadSupabase();
+                const { data, error } = await client.from('popups').select('*');
+                if (!error && data) {
+                    popupList = data;
                 }
+            } catch (err) {
+                console.error("Error loading popups from Supabase:", err);
             }
 
             // 2. Filter Active & Not Hidden

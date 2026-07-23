@@ -1,7 +1,3 @@
-// Role-Based Auth Logic - Supabase Edition
-const AUTH_KEY = 'isLoggedIn';
-const ROLE_KEY = 'userRole';
-
 // Centralized relative root path calculation to prevent 404 pathing errors in deep directories
 const getRelativeRoot = () => {
     const pathname = window.location.pathname.toLowerCase();
@@ -33,6 +29,14 @@ const getRelativeRoot = () => {
     return '';
 };
 
+window.authState = {
+    isLoggedIn: false,
+    role: null,
+    dealerName: null,
+    currentUser: null,
+    adminPassword: null
+};
+
 // ============================================================
 // Supabase Configuration (Production Local Infrastructure)
 // ============================================================
@@ -51,7 +55,6 @@ const SUPABASE_ANON_KEY = (typeof window !== 'undefined' && window.ENV && window
 async function loadSupabase() {
     if (window._supabaseClient) return window._supabaseClient;
 
-    // Check if the global supabase object from CDN exists
     if (window.supabase && typeof window.supabase.createClient === 'function') {
         window._supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
             db: { schema: 'alpine-home' }
@@ -59,7 +62,6 @@ async function loadSupabase() {
         return window._supabaseClient;
     }
 
-    // Check if window.supabase is already a client (from supabase-client.js)
     if (window.supabase && typeof window.supabase.from === 'function') {
         window._supabaseClient = window.supabase;
         return window._supabaseClient;
@@ -82,11 +84,7 @@ async function loadSupabase() {
 
 const auth = {
     loadSupabase: loadSupabase,
-    // Expose Shared Config removed.
-    // sharedConfig: {},
 
-
-    // Helper to load GitHub Client
     loadGitHubClient: () => {
         return new Promise((resolve, reject) => {
             if (typeof ghClient !== 'undefined') {
@@ -122,11 +120,14 @@ const auth = {
         const role = data.role || 'dealer';
         const dealerName = data.dealer_name || username;
 
-        sessionStorage.setItem(AUTH_KEY, 'true');
-        sessionStorage.setItem(ROLE_KEY, role);
-        sessionStorage.setItem('dealerName', dealerName);
-        sessionStorage.setItem('currentUser', username);
-        sessionStorage.setItem('adminPassword', password);
+        // Save state in memory only
+        window.authState = {
+            isLoggedIn: true,
+            role: role,
+            dealerName: dealerName,
+            currentUser: username,
+            adminPassword: password
+        };
 
         await saveVisitLog({
             date: new Date().toLocaleString('ko-KR'),
@@ -137,7 +138,7 @@ const auth = {
         return true;
     },
     changePassword: async (currentPass, newPass) => {
-        const username = sessionStorage.getItem('currentUser');
+        const username = window.authState.currentUser;
         if (!username) return { success: false, message: '로그인이 필요합니다.' };
 
         // ── Supabase RPC 비밀번호 변경 (서버측 bcrypt 검증) ──────────
@@ -174,23 +175,25 @@ const auth = {
         }
     },
     logout: () => {
-        // Supabase DB 방식은 별도 서버 세션 없음 → sessionStorage 제거만 하면 됨
-        sessionStorage.removeItem(AUTH_KEY);
-        sessionStorage.removeItem(ROLE_KEY);
-        sessionStorage.removeItem('dealerName');
-        sessionStorage.removeItem('currentUser');
-
+        window.authState = {
+            isLoggedIn: false,
+            role: null,
+            dealerName: null,
+            currentUser: null,
+            adminPassword: null
+        };
         window.location.href = getRelativeRoot() + 'index.html';
     },
     isLoggedIn: () => {
-        return sessionStorage.getItem(AUTH_KEY) === 'true';
+        return window.authState && window.authState.isLoggedIn === true;
     },
     getRole: () => {
-        return sessionStorage.getItem(ROLE_KEY);
+        return window.authState ? window.authState.role : null;
     },
     checkAuthAndRedirect: () => {
         if (!auth.isLoggedIn()) {
-            window.location.href = getRelativeRoot() + 'pages/login.html';
+            // No redirect to login.html since it's removed. Admin page handles its own prompt.
+            console.warn('Auth required but missing memory state.');
         }
     },
     openGitHubSettings: async (e) => {
