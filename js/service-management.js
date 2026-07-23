@@ -642,13 +642,64 @@ window.openImageModal = function(url, caption) {
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImg');
     const captionText = document.getElementById('modalCaption');
-    
+
     if (!modal || !modalImg) return;
-    
+
     modal.style.display = 'flex';
     modalImg.src = url;
     if (captionText) captionText.innerHTML = caption;
-    
+
     lightboxImages = [url];
     lightboxIndex = 0;
 };
+
+async function handleRestoreFile(input) {
+    if (!input.files || !input.files[0]) return;
+    const file = input.files[0];
+    showLoading('백업 파일을 분석하고 DB로 복구하는 중입니다...');
+
+    try {
+        const text = await file.text();
+        let items = [];
+        try {
+            items = JSON.parse(text);
+        } catch(e) {
+            alert('JSON 백업 파일 형식이 필요합니다.');
+            hideLoading();
+            return;
+        }
+
+        if (!Array.isArray(items)) {
+            alert('올바른 백업 파일(배열 형태)이 아닙니다.');
+            hideLoading();
+            return;
+        }
+
+        const supaPass = await getAdminPassword();
+        const adminUser = sessionStorage.getItem('currentUser') || 'alpineaudio';
+        let successCount = 0;
+
+        for (const item of items) {
+            if (!item || !item.receive_date) continue;
+            const { data, error } = await supabaseClient.rpc('admin_upsert_service_record', {
+                p_admin_username: adminUser,
+                p_admin_password: supaPass,
+                p_id: null,
+                p_record: item
+            });
+            if (!error && data && data.success) {
+                successCount++;
+            }
+        }
+
+        alert(`총 ${successCount}건의 A/S 접수 내역이 수퍼베이스 DB로 완벽하게 복원되었습니다!`);
+        await loadData();
+    } catch (err) {
+        console.error('File Restore Error:', err);
+        alert('복구 중 오류가 발생했습니다: ' + err.message);
+    } finally {
+        hideLoading();
+        input.value = '';
+    }
+}
+window.handleRestoreFile = handleRestoreFile;

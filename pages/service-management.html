@@ -551,6 +551,8 @@
             </div>
 
             <button class="btn btn-excel" onclick="downloadExcel()">검색결과 엑셀 다운로드</button>
+            <button class="btn btn-search" style="background:#27ae60; margin-left:10px;" onclick="document.getElementById('restore_file_input').click()">A/S 백업 파일 복원</button>
+            <input type="file" id="restore_file_input" accept=".json,.csv,.txt" style="display:none;" onchange="handleRestoreFile(this)">
         </div>
 
         <div class="table-responsive">
@@ -604,7 +606,7 @@
     <script src="../js/layout.js?v=20260721"></script>
     <script src="../js/auth.js?v=20260216"></script>
     <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
-    <script src="../js/service-management.js?v=20260722_v4"></script>
+    <script src="../js/service-management.js?v=20260723_v1"></script>
 </body>
 
 </html>
