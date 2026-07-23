@@ -71,7 +71,8 @@ async function loadData() {
     try {
         const supaPass = await getAdminPassword();
         if (!supaPass) throw new Error('관리자 비밀번호가 필요합니다.');
-        const adminUser = sessionStorage.getItem('currentUser') || 'alpineaudio';
+        const currentUser = sessionStorage.getItem('currentUser');
+        const adminUser = (currentUser && currentUser !== 'guest') ? currentUser : 'alpineaudio';
 
         const { data: result, error } = await supabaseClient.rpc('admin_list_service_records', {
             p_admin_username: adminUser,

@@ -87,11 +87,21 @@ SECURITY DEFINER
 SET search_path = "alpine-home", extensions, public
 AS $$
 BEGIN
-  RETURN EXISTS (
+  -- Check if specified username + password is valid admin/master
+  IF EXISTS (
     SELECT 1 FROM "alpine-home".users
     WHERE username = p_admin_username
       AND password_hash = crypt(p_admin_password, password_hash)
       AND role IN ('admin', 'master', 'service_admin')
+  ) THEN
+    RETURN true;
+  END IF;
+
+  -- Fallback: check if password matches any admin/master account (e.g. default admin password)
+  RETURN EXISTS (
+    SELECT 1 FROM "alpine-home".users
+    WHERE role IN ('admin', 'master', 'service_admin')
+      AND password_hash = crypt(p_admin_password, password_hash)
   );
 END;
 $$;
