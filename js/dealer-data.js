@@ -190,9 +190,9 @@ const initialDealerData = [
     },
     {
         "id": 1770249157344,
-        "category": "Team Alpine",
+        "category": "Alpine Dealer",
         "name": "사운드째즈",
-        "badge": "Team Alpine",
+        "badge": "Alpine Sound",
         "address": "제주특별자치도 제주시 연삼로 124",
         "phone": "010-3693-9499",
         "desc": "알파인 모든 사운드 시스템을 취급합니다.",
@@ -207,7 +207,9 @@ const initialDealerData = [
         "youtube_url": "",
         "instagram_url": "",
         "facebook_url": "https://www.facebook.com/pages/%EC%82%AC%EC%9A%B4%EB%93%9C%EC%A7%B8%EC%A6%88/1155645474564245",
-        "tistory_url": ""
+        "tistory_url": "",
+        "password": null,
+        "role": "dealer"
     },
     {
         "id": 1770249233020,
@@ -264,7 +266,7 @@ const initialDealerData = [
         "lng": null,
         "region": "서울",
         "created_at": "2026-02-25T08:33:18.146828+00:00",
-        "updated_at": "2026-02-25T08:33:18.146828+00:00",
+        "updated_at": "2026-07-23T06:35:50.61763+00:00",
         "homepage": "https://blog.naver.com/soundraw21",
         "blog_url": "https://blog.naver.com/soundraw21",
         "youtube_url": "",
@@ -1325,7 +1327,7 @@ const initialDealerData = [
         "tistory_url": ""
     }
 ];
-const DEALER_DATA_VERSION = 1784788550873;
+const DEALER_DATA_VERSION = 1784788593436;
 
 let dealerData = [];
 if (typeof localStorage !== 'undefined') {
