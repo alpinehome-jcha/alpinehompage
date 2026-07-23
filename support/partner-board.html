@@ -606,8 +606,9 @@
                             files = existingPost.files || [];
                         }
                     }
+                }
 
-                    // Update or Insert via RPC
+                // Update or Insert via RPC
                     const data = await window.ghClient._adminCall('admin_upsert_partner_board', {
                         p_id: (isEditMode && pId) ? parseInt(pId) : null,
                         p_title: title,
