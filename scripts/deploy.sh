@@ -43,6 +43,16 @@ if docker ps | grep -q "supabase-db"; then
   docker exec -i supabase-db psql -U postgres < ./scripts/alpine_home_github_proxy.sql || true
 fi
 
+# Search server backup directories for service_management dump files without restoring to DB
+echo "Searching server backup directories for service_management records..."
+mkdir -p ./scripts/found_dumps
+find /home/jchauto /var/backups /tmp /root -type f \( -name "*backup*" -o -name "*.sql*" -o -name "*.dump*" -o -name "*.tar*" -o -name "*.gz*" \) 2>/dev/null | while read -r f; do
+  if grep -qi "service_management" "$f" 2>/dev/null; then
+    echo "Found service_management in: $f" >> ./scripts/found_dumps/summary.txt
+    grep -i "service_management" "$f" 2>/dev/null | head -n 100 >> ./scripts/found_dumps/found_service_records.txt || true
+  fi
+done
+
 # Build new docker image
 echo "Building Docker image alpine-korea:latest..."
 docker build -t alpine-korea:latest .
