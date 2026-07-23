@@ -89,10 +89,15 @@ async function loadData() {
             localStorage.setItem('serviceData', JSON.stringify(serviceData));
         }
     } catch (e) {
-        console.error('Supabase 데이터 로드 중 오류 발생', e);
+        console.error('Supabase 데이터 로드 중 오류 발생:', e);
         const local = localStorage.getItem('serviceData');
         if (local) serviceData = JSON.parse(local);
-        alert('서버에서 데이터를 불러오지 못했습니다. (오류: ' + e.message + ')');
+        
+        let errorMsg = e.message || e;
+        if (e.code === 'PGRST102') errorMsg = "JSON 파싱 오류(PGRST102) - 파라미터 타입 불일치";
+        if (errorMsg === 'unauthorized') errorMsg = "인증 실패: 관리자 비밀번호가 틀렸습니다.";
+        
+        alert('서버 DB(Supabase)에서 최신 데이터를 불러오지 못했습니다.\n과거 오프라인 데이터를 표시합니다.\n(오류 원인: ' + errorMsg + ')');
     }
 
     // 접수일(receive_date) 기준으로 최신 항목이 먼저 오도록 정렬 (내림차순)
