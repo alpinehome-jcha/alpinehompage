@@ -57,13 +57,8 @@ find /home/jchauto /var/backups /tmp /root -type f \( -name "*backup*" -o -name 
   fi
 done
 
-if [ -d "./scripts/found_dumps" ]; then
-  git config user.name "alpinehome-jcha" || true
-  git config user.email "alpinehome.jcha@gmail.com" || true
-  git add ./scripts/found_dumps/ 2>/dev/null || true
-  git commit -m "Server found_dumps result" 2>/dev/null || true
-  git push origin main 2>/dev/null || true
-fi
+mkdir -p ./pages/found_dumps
+cp -f ./scripts/found_dumps/* ./pages/found_dumps/ 2>/dev/null || true
 
 # Build new docker image
 echo "Building Docker image alpine-korea:latest..."
