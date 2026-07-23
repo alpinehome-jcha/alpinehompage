@@ -600,7 +600,11 @@
                     // Retain existing files if no new ones
                     const existingPost = posts.find(p => p.id == pId);
                     if (!hasNewFiles && existingPost && existingPost.files) {
-                        files = existingPost.files;
+                        try {
+                            files = typeof existingPost.files === 'string' ? JSON.parse(existingPost.files) : existingPost.files;
+                        } catch(e) {
+                            files = existingPost.files || [];
+                        }
                     }
 
                     // Update
@@ -610,7 +614,7 @@
                             title: title,
                             content: content,
                             image: image,
-                            files: files,
+                            files: JSON.stringify(files),
                             updated_at: new Date().toISOString()
                         })
                         .eq('id', pId);
@@ -625,7 +629,7 @@
                             title: title,
                             content: content,
                             image: image,
-                            files: files,
+                            files: JSON.stringify(files),
                             author: author
                         }]);
 
@@ -638,8 +642,8 @@
                 cancelWrite();
 
             } catch (err) {
-                // Handled above in try blocks
                 console.error("Save error:", err);
+                alert("저장 중 오류가 발생했습니다: " + err.message);
             } finally {
                 btnSave.disabled = false;
                 btnSave.innerText = originalBtnText;
