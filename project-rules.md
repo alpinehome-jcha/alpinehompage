@@ -47,3 +47,7 @@ Project Rules (Alpine Korea Homepage System / alpine-korea)
   - Server 2 (Standby): `192.168.0.30` (내부망), Port: `8282`, Username: `jcha-ready`
   - SSH Key: `C:\Users\martin\.ssh\antigravity_key`
 * **인프라 문서 참조**: 최신 `c:\Antigravity\infrastructure_20260721.md` (v1.39.0) 참조.
+
+12. **Data Sync & Security Policy (데이터 동기화 및 보안 원칙 - 필수 준수)**:
+* **단일 진실 공급원 (SSOT)**: 모든 동적 데이터(대리점, 팝업, 제품 목록 등)는 반드시 **Supabase DB**에서만 실시간으로 읽고 써야 한다. 과거 사용되던 `js/*-data.js` 정적 파일 덮어쓰기나 브라우저 `localStorage` 기반의 데이터 의존성(캐싱)을 절대 부활시키지 않는다.
+* **보안 스토리지 격리**: 브라우저 `localStorage`나 `sessionStorage`에 평문(ID, 로그인 세션 정보, 딜러 캐시 등)을 남겨 취약점을 유발하는 편법 코드를 금지한다. 속도 저하나 세션 초기화(새로고침 시 재로그인 필요)와 같은 단점이 생기더라도 무조건 **보안과 최신 데이터 정합성**을 최우선으로 둔다.
