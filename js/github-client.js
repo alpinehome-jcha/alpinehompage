@@ -5,12 +5,8 @@
  * the GitHub token itself never touches the browser.
  */
 if (typeof GitHubClient === 'undefined') {
-    let _ghAdminPass = null;
     async function _ghGetAdminPassword() {
-        if (_ghAdminPass) return _ghAdminPass;
-        const pass = prompt('GitHub 저장을 위해 관리자 비밀번호를 입력하세요:');
-        if (pass) _ghAdminPass = pass;
-        return pass;
+        return sessionStorage.getItem('adminPassword');
     }
 
     class GitHubClient {
@@ -95,7 +91,7 @@ if (typeof GitHubClient === 'undefined') {
             const contentBase64 = btoa(binaryString);
 
             return await this._adminCall('admin_github_put_file', {
-                p_path: path,
+                p_path: encodeURI(path),
                 p_content_base64: contentBase64,
                 p_message: message
             });
@@ -122,7 +118,7 @@ if (typeof GitHubClient === 'undefined') {
             }
 
             const data = await this._adminCall('admin_github_put_file', {
-                p_path: path,
+                p_path: encodeURI(path),
                 p_content_base64: contentBase64,
                 p_message: message
             });
