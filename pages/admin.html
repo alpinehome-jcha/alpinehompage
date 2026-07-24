@@ -2453,10 +2453,20 @@
             const urlParams = new URLSearchParams(window.location.search);
             let modeParam = urlParams.get('mode');
 
-            // Initialize Data by fetching directly from Supabase
+            // Initialize Data by fetching directly from Supabase (for Dealers) and File (for Products)
             const client = await loadSupabase();
-            const { data: dbProducts } = await client.from('products').select('*');
-            products = dbProducts || [];
+            
+            try {
+                const res = await fetch('../js/product-data.js?v=' + Date.now());
+                const text = await res.text();
+                const script = document.createElement('script');
+                script.textContent = text;
+                document.head.appendChild(script);
+                products = (typeof productData !== 'undefined') ? productData : [];
+            } catch (e) {
+                console.error("Failed to load product data", e);
+                products = [];
+            }
 
             const { data: dbDealers } = await client.from('dealers').select('*');
             dealers = dbDealers || [];
@@ -2649,7 +2659,16 @@
 
 
         async function saveToGitHub(type, silent = false) {
-            // Deprecated: No longer sync to GitHub static files for security (Dynamic DB Fetch active)
+            if (type === 'product') {
+                if (typeof ghClient === 'undefined') {
+                    if (!silent) alert('GitHub Client is not loaded.');
+                    return Promise.reject(new Error('GitHub Client not loaded'));
+                }
+                const newVersion = Date.now();
+                const jsCode = `const initialProductData = ${JSON.stringify(products, null, 4)};\nconst PRODUCT_DATA_VERSION = ${newVersion};\n\nlet productData = [];\nif (typeof localStorage !== 'undefined') {\n    const storedVersion = localStorage.getItem('productDataVersion');\n    const stored = localStorage.getItem('productData');\n    if (typeof PRODUCT_DATA_VERSION !== 'undefined' && (!storedVersion || parseInt(storedVersion) < PRODUCT_DATA_VERSION)) {\n        productData = JSON.parse(JSON.stringify(initialProductData));\n        localStorage.setItem('productData', JSON.stringify(productData));\n        localStorage.setItem('productDataVersion', PRODUCT_DATA_VERSION.toString());\n    } else if (stored) {\n        productData = JSON.parse(stored);\n        if (productData.length === 0 && initialProductData.length > 0) {\n             productData = JSON.parse(JSON.stringify(initialProductData));\n             localStorage.setItem('productData', JSON.stringify(productData));\n             if (typeof PRODUCT_DATA_VERSION !== 'undefined') localStorage.setItem('productDataVersion', PRODUCT_DATA_VERSION.toString());\n        }\n    } else {\n        productData = JSON.parse(JSON.stringify(initialProductData));\n        if (typeof PRODUCT_DATA_VERSION !== 'undefined') localStorage.setItem('productDataVersion', PRODUCT_DATA_VERSION.toString());\n    }\n} else {\n    productData = initialProductData;\n}\n\nif (typeof window !== 'undefined') {\n    window.productData = productData;\n}\nif (typeof module !== 'undefined' && module.exports) {\n    module.exports = productData;\n}\n`;
+                await ghClient.commitFile('js/product-data.js', jsCode, 'Update product data via File Admin');
+                return Promise.resolve();
+            }
             return Promise.resolve();
         }
 
