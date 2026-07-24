@@ -387,10 +387,17 @@ const auth = {
             if (existingContent) existingContent.remove();
 
             if (isLogged) {
-                const name = sessionStorage.getItem('dealerName') || 'Partner';
+                const dealerName = window.authState.dealerName || '';
+                const role = window.authState.role || '';
+                let displayName = '';
+                if (role === 'admin') {
+                    displayName = '관리자';
+                } else {
+                    displayName = dealerName || window.authState.currentUser || 'Partner';
+                }
 
                 authItem.classList.add('dropdown');
-                authLink.textContent = `${name}님`;
+                authLink.textContent = `${displayName}님`;
                 authLink.removeAttribute('style');
                 authLink.className = 'nav-link auth-link';
                 authLink.href = '#';
