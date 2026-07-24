@@ -466,15 +466,15 @@
     </script>
 
     <script src="js/product-data.js?v=20260721"></script>
-    <script>
-        let productData = typeof initialProductData !== 'undefined' ? initialProductData : [];
-    </script>
+    <!-- productData is initialized in product-data.js -->
     <script>
         // Render Products
         const productGrid = document.getElementById('productGrid');
         const filterBtns = document.querySelectorAll('.filter-btn');
 
-        // DB Fetch removed; using static productData        function slugify(text) {
+        // DB Fetch removed; using static productData
+        
+        function slugify(text) {
             return text.toString().toLowerCase()
                 .replace(/\s+/g, '-')
                 .replace(/[^\w\-가-힣]+/g, '')
