@@ -348,7 +348,7 @@
         </div>
     </section>
 
-    <script src="js/auth.js?v=20260724"></script>
+    <script src="js/auth.js?v=20260724b"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const images = [
@@ -477,7 +477,13 @@
             try {
                 const client = await loadSupabase();
                 const { data } = await client.from('products').select('*').order('sort_order', { ascending: true });
-                if (data) productData = data;
+                if (data) {
+                    productData = data.map(item => ({
+                        ...item,
+                        desc: item.description || item.desc || '',
+                        detailBlocks: item.detail_blocks || item.detailBlocks || []
+                    }));
+                }
             } catch(e) {
                 console.error("Failed to load products from DB", e);
             }
