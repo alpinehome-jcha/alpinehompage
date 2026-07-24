@@ -581,8 +581,6 @@
                 btn.classList.add('active');
 
                 const filterName = btn.textContent.trim();
-                sessionStorage.setItem('lastCategory', filterName); // Save State
-
                 // Update URL without reloading
                 const newUrl = `${window.location.pathname}?category=${encodeURIComponent(filterName)}`;
                 history.pushState({ path: newUrl }, '', newUrl);
@@ -603,7 +601,6 @@
                         const subName = 'PnP Cable - 국산차';
                         const subUrl = `${window.location.pathname}?category=${encodeURIComponent(subName)}`;
                         history.replaceState({ path: subUrl }, '', subUrl);
-                        sessionStorage.setItem('lastCategory', subName);
                     }
                 } else {
                     subFilterContainer.style.display = 'none';
@@ -622,7 +619,6 @@
                 const categoryName = `PnP Cable - ${btn.dataset.sub}`;
                 renderProducts(categoryName);
 
-                sessionStorage.setItem('lastCategory', categoryName);
                 const newUrl = `${window.location.pathname}?category=${encodeURIComponent(categoryName)}`;
                 history.pushState({ path: newUrl }, '', newUrl);
             });
@@ -647,7 +643,6 @@
             const urlParams = new URLSearchParams(window.location.search);
             const categoryParam = urlParams.get('category');
 
-            // Check URL first, then SessionStorage
             if (categoryParam) {
                 let targetBtn = null;
                 let isSubCategory = false;
@@ -693,7 +688,6 @@
                         });
 
                         renderProducts(categoryParam);
-                        sessionStorage.setItem('lastCategory', categoryParam);
                     } else {
                         // Normal Category
                         const filterName = targetBtn.textContent.trim();
@@ -705,17 +699,14 @@
                             if (defaultSubBtn) {
                                 defaultSubBtn.classList.add('active');
                                 const subName = 'PnP Cable - 국산차';
-                                sessionStorage.setItem('lastCategory', subName);
                                 const subUrl = `${window.location.pathname}?category=${encodeURIComponent(subName)}`;
                                 history.replaceState({ path: subUrl }, '', subUrl);
                             } else {
                                 renderProducts(filterName);
-                                sessionStorage.setItem('lastCategory', filterName);
                             }
                         } else {
                             subFilterContainer.style.display = 'none'; // Hide if not PnP
                             renderProducts(filterName);
-                            sessionStorage.setItem('lastCategory', filterName);
                         }
                     }
                 }
@@ -738,7 +729,6 @@
                 btn.classList.add('active');
 
                 const filterName = btn.textContent.trim();
-                sessionStorage.setItem('lastCategory', filterName); // Save State
 
                 // ... (rest of logic handles PnP sub-filters or render)
                 // Existing listeners handle the render, we just injected the save.
