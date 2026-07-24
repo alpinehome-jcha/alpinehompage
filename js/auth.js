@@ -623,7 +623,7 @@ async function saveVisitLog(entry) {
         if (typeof loadSupabase === 'function') {
             const client = await loadSupabase();
             const { error } = await client.from('visitor_logs').insert([{
-                visit_date: new Date().toISOString().slice(0, 10),
+                visit_date: entry.date || new Date().toLocaleString('ko-KR'),
                 username: entry.username || '',
                 name: entry.name || '',
                 role: entry.role || 'dealer'
