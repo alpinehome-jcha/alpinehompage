@@ -1,4 +1,4 @@
-const SC_DEFAULT_LOCAL_SUPABASE_URL = "https://tlgjgworselvkaatdftz.supabase.co";
+const SC_DEFAULT_LOCAL_SUPABASE_URL = "https://supabase.alpine-korea.co.kr";
 const SC_DEFAULT_LOCAL_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us";
 
 const CLIENT_SUPABASE_URL = (typeof window !== 'undefined' && window.ENV && window.ENV.NEXT_PUBLIC_SUPABASE_URL)

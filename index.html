@@ -465,38 +465,15 @@
         });
     </script>
 
-    <script>
-        let productData = [];
-    </script>
+    <script src="js/product-data.js?v=20260721"></script>
+    <!-- productData is initialized in product-data.js -->
     <script>
         // Render Products
         const productGrid = document.getElementById('productGrid');
         const filterBtns = document.querySelectorAll('.filter-btn');
 
-        let _supaClient = null;
-        async function loadSupabase() {
-            if (_supaClient) return _supaClient;
-            const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-            _supaClient = createClient('https://tlgjgworselvkaatdftz.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us');
-            return _supaClient;
-        }
-
-        async function fetchProductsFromDB() {
-            try {
-                const client = await loadSupabase();
-                const { data } = await client.from('products').select('*').order('sort_order', { ascending: true });
-                if (data) {
-                    productData = data.map(item => ({
-                        ...item,
-                        desc: item.description || item.desc || '',
-                        detailBlocks: item.detail_blocks || item.detailBlocks || []
-                    }));
-                }
-            } catch(e) {
-                console.error("Failed to load products from DB", e);
-            }
-        }
-
+        // DB Fetch removed; using static productData
+        
         function slugify(text) {
             return text.toString().toLowerCase()
                 .replace(/\s+/g, '-')
@@ -644,8 +621,7 @@
             });
         }
 
-        async function applyInitialFilters() {
-            await fetchProductsFromDB();
+        function applyInitialFilters() {
             
             // Handle URL Parameters for Filtering
             const urlParams = new URLSearchParams(window.location.search);
