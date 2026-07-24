@@ -465,31 +465,16 @@
         });
     </script>
 
+    <script src="js/product-data.js?v=20260721"></script>
     <script>
-        let productData = [];
+        let productData = typeof initialProductData !== 'undefined' ? initialProductData : [];
     </script>
     <script>
         // Render Products
         const productGrid = document.getElementById('productGrid');
         const filterBtns = document.querySelectorAll('.filter-btn');
 
-        async function fetchProductsFromDB() {
-            try {
-                const client = await loadSupabase();
-                const { data } = await client.from('products').select('*').order('sort_order', { ascending: true });
-                if (data) {
-                    productData = data.map(item => ({
-                        ...item,
-                        desc: item.description || item.desc || '',
-                        detailBlocks: item.detail_blocks || item.detailBlocks || []
-                    }));
-                }
-            } catch(e) {
-                console.error("Failed to load products from DB", e);
-            }
-        }
-
-        function slugify(text) {
+        // DB Fetch removed; using static productData        function slugify(text) {
             return text.toString().toLowerCase()
                 .replace(/\s+/g, '-')
                 .replace(/[^\w\-가-힣]+/g, '')
@@ -636,8 +621,7 @@
             });
         }
 
-        async function applyInitialFilters() {
-            await fetchProductsFromDB();
+        function applyInitialFilters() {
             
             // Handle URL Parameters for Filtering
             const urlParams = new URLSearchParams(window.location.search);
