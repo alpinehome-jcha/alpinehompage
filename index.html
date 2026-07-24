@@ -473,6 +473,14 @@
         const productGrid = document.getElementById('productGrid');
         const filterBtns = document.querySelectorAll('.filter-btn');
 
+        let _supaClient = null;
+        async function loadSupabase() {
+            if (_supaClient) return _supaClient;
+            const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+            _supaClient = createClient('https://tlgjgworselvkaatdftz.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us');
+            return _supaClient;
+        }
+
         async function fetchProductsFromDB() {
             try {
                 const client = await loadSupabase();
