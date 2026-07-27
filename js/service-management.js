@@ -156,29 +156,7 @@ async function saveService() {
             images: finalImages
         };
 
-        // 1. Save to LocalStorage first as backup
-        let localData = [];
-        const local = localStorage.getItem('serviceData');
-        if (local) {
-            try {
-                localData = JSON.parse(local);
-            } catch(err) {
-                console.error('Local Parse Error during save:', err);
-            }
-        }
-
-        if (idField) {
-            const targetId = parseInt(idField);
-            const idx = localData.findIndex(s => s.id === targetId);
-            if (idx !== -1) {
-                localData[idx] = { ...localData[idx], ...item };
-            }
-        } else {
-            const newItem = { ...item, id: Date.now() }; // Temp ID for local display
-            localData.unshift(newItem);
-        }
-        localStorage.setItem('serviceData', JSON.stringify(localData));
-
+        // 1. Removed LocalStorage save per security policy
         // 2. Try saving to Supabase DB (관리자 인증 RPC 경유)
         const supaPass = await getAdminPassword();
         if (!supaPass) throw new Error('관리자 비밀번호가 필요합니다.');
@@ -200,11 +178,7 @@ async function saveService() {
 
     } catch (e) {
         console.error('Supabase DB 저장 에러:', e);
-        // Fallback to local storage data on UI on server failure
-        const local = localStorage.getItem('serviceData');
-        if (local) serviceData = JSON.parse(local);
-        renderTable(1);
-        alert('서버 저장에 실패했습니다. (로컬 브라우저에 임시 저장되었습니다)\n\n오류: ' + e.message);
+        alert('서버 저장에 실패했습니다.\n(보안 정책에 의해 로컬에 임시 저장되지 않습니다.)\n\n오류: ' + e.message);
     }
     hideLoading();
 }
