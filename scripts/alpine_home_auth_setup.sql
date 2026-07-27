@@ -426,6 +426,8 @@ ON CONFLICT (username) DO NOTHING;
 -- ------------------------------------------------------------
 REVOKE INSERT, UPDATE, DELETE, TRUNCATE ON public.dealers FROM anon, authenticated;
 REVOKE INSERT, UPDATE, DELETE, TRUNCATE ON public.price_list FROM anon, authenticated;
+ALTER TABLE public.service_management ADD COLUMN IF NOT EXISTS images jsonb DEFAULT '[]'::jsonb;
+ALTER TABLE "alpine-home".service_management ADD COLUMN IF NOT EXISTS images jsonb DEFAULT '[]'::jsonb;
 REVOKE INSERT, UPDATE, DELETE, TRUNCATE ON public.service_management FROM anon, authenticated;
 REVOKE SELECT ON public.service_management FROM anon, authenticated;
 
