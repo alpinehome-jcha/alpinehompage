@@ -87,20 +87,20 @@ SECURITY DEFINER
 SET search_path = "alpine-home", extensions, public
 AS $$
 BEGIN
-  -- Check if specified username + password is valid admin/master
+  -- Check if specified username + password is valid admin/master/dealer/service_admin
   IF EXISTS (
     SELECT 1 FROM "alpine-home".users
     WHERE username = p_admin_username
       AND password_hash = crypt(p_admin_password, password_hash)
-      AND role IN ('admin', 'master', 'service_admin')
+      AND role IN ('admin', 'master', 'service_admin', 'dealer')
   ) THEN
     RETURN true;
   END IF;
 
-  -- Fallback: check if password matches any admin/master account (e.g. default admin password)
+  -- Fallback: check if password matches any admin/master/dealer account
   RETURN EXISTS (
     SELECT 1 FROM "alpine-home".users
-    WHERE role IN ('admin', 'master', 'service_admin')
+    WHERE role IN ('admin', 'master', 'service_admin', 'dealer')
       AND password_hash = crypt(p_admin_password, password_hash)
   );
 END;
@@ -276,7 +276,10 @@ BEGIN
   RETURN json_build_object('success', true, 'data', COALESCE(v_data, '[]'::json));
 END;
 $$;
-GRANT EXECUTE ON FUNCTION "alpine-home".admin_list_service_records(text,text) TO anon;
+-- 중복 생성된 integer 타입 함수 삭제 (bigint 단일화)
+DROP FUNCTION IF EXISTS "alpine-home".admin_upsert_service_record(text, text, integer, jsonb);
+DROP FUNCTION IF EXISTS public.admin_upsert_service_record(text, text, integer, jsonb);
+DROP FUNCTION IF EXISTS public.admin_upsert_service_record(text, text, bigint, jsonb);
 
 CREATE OR REPLACE FUNCTION "alpine-home".admin_upsert_service_record(
   p_admin_username text,
@@ -452,5 +455,40 @@ GRANT INSERT ON "alpine-home".inbound_analytics TO anon, authenticated;
 
 -- 참고: Storage(as-attachments 버킷) 정책은 scripts/alpine_home_github_proxy.sql에 있음(중복 방지)
 
+-- ------------------------------------------------------------
+-- 15. public 스키마 호환성 래퍼 함수 및 PostgREST 캐시 갱신
+-- ------------------------------------------------------------
+CREATE OR REPLACE FUNCTION public.admin_list_service_admins(p_admin_username text DEFAULT NULL, p_admin_password text DEFAULT NULL)
+RETURNS json LANGUAGE plpgsql SECURITY DEFINER SET search_path TO 'alpine-home', 'extensions', 'public' AS $$
+BEGIN
+  RETURN "alpine-home".admin_list_service_admins(p_admin_username, p_admin_password);
+END; $$;
+
+CREATE OR REPLACE FUNCTION public.admin_upsert_service_record(p_admin_username text, p_admin_password text, p_id bigint, p_record jsonb)
+RETURNS json LANGUAGE plpgsql SECURITY DEFINER SET search_path TO 'alpine-home', 'extensions', 'public' AS $$
+BEGIN
+  RETURN "alpine-home".admin_upsert_service_record(p_admin_username, p_admin_password, p_id, p_record);
+END; $$;
+
+CREATE OR REPLACE FUNCTION public.admin_delete_service_record(p_admin_username text, p_admin_password text, p_id bigint)
+RETURNS json LANGUAGE plpgsql SECURITY DEFINER SET search_path TO 'alpine-home', 'extensions', 'public' AS $$
+BEGIN
+  RETURN "alpine-home".admin_delete_service_record(p_admin_username, p_admin_password, p_id);
+END; $$;
+
+CREATE OR REPLACE FUNCTION public.admin_list_service_records(p_admin_username text DEFAULT NULL, p_admin_password text DEFAULT NULL)
+RETURNS json LANGUAGE plpgsql SECURITY DEFINER SET search_path TO 'alpine-home', 'extensions', 'public' AS $$
+BEGIN
+  RETURN "alpine-home".admin_list_service_records(p_admin_username, p_admin_password);
+END; $$;
+
+GRANT EXECUTE ON FUNCTION public.admin_list_service_admins(text, text) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.admin_upsert_service_record(text, text, bigint, jsonb) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.admin_delete_service_record(text, text, bigint) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.admin_list_service_records(text, text) TO anon, authenticated;
+
+-- PostgREST 스키마 캐시 강제 갱신
+NOTIFY pgrst, 'reload schema';
+
 -- 완료
-SELECT 'alpine-home 인증 시스템 및 권한 조치 완료' AS result;
+SELECT 'alpine-home 인증 시스템, public 래퍼 및 스키마 캐시 갱신 완료' AS result;
