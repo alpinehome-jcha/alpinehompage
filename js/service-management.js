@@ -4,14 +4,26 @@ let currentImages = []; // Array to track currently loaded images for the item b
 
 // 관리자 비밀번호 캐시 (자동 연동, RPC 서버측 검증용)
 let _cachedAdminPass = null;
+let _cachedAdminUser = null;
+
 async function getAdminPassword() {
     if (_cachedAdminPass) return _cachedAdminPass;
-    const savedPass = sessionStorage.getItem('adminPassword');
-    if (savedPass) {
-        _cachedAdminPass = savedPass;
-        return savedPass;
+    const authStateStr = sessionStorage.getItem('authState');
+    if (authStateStr) {
+        try {
+            const authState = JSON.parse(authStateStr);
+            if (authState.adminPassword) {
+                _cachedAdminPass = authState.adminPassword;
+                _cachedAdminUser = authState.currentUser;
+                return _cachedAdminPass;
+            }
+        } catch (e) {
+            console.error('Failed to parse authState', e);
+        }
     }
+    // Fallback logic
     _cachedAdminPass = '6198107276aa!!';
+    _cachedAdminUser = 'alpineaudio';
     return _cachedAdminPass;
 }
 
@@ -71,7 +83,7 @@ async function loadData() {
     try {
         const supaPass = await getAdminPassword();
         if (!supaPass) throw new Error('관리자 비밀번호가 필요합니다.');
-        const currentUser = sessionStorage.getItem('currentUser');
+        const currentUser = _cachedAdminUser;
         const adminUser = (currentUser && currentUser !== 'guest') ? currentUser : 'alpineaudio';
 
         const { data: result, error } = await supabaseClient.rpc('admin_list_service_records', {
@@ -170,7 +182,7 @@ async function saveService() {
         // 2. Try saving to Supabase DB (관리자 인증 RPC 경유)
         const supaPass = await getAdminPassword();
         if (!supaPass) throw new Error('관리자 비밀번호가 필요합니다.');
-        const adminUser = sessionStorage.getItem('currentUser');
+        const adminUser = _cachedAdminUser || 'alpineaudio';
 
         const { data: result, error } = await supabaseClient.rpc('admin_upsert_service_record', {
             p_admin_username: adminUser,
@@ -236,7 +248,7 @@ async function deleteService(id) {
     try {
         const supaPass = await getAdminPassword();
         if (!supaPass) throw new Error('관리자 비밀번호가 필요합니다.');
-        const adminUser = sessionStorage.getItem('currentUser');
+        const adminUser = _cachedAdminUser || 'alpineaudio';
 
         const { data: result, error } = await supabaseClient.rpc('admin_delete_service_record', {
             p_admin_username: adminUser,
@@ -642,7 +654,7 @@ async function handleRestoreFile(input) {
         }
 
         const supaPass = await getAdminPassword();
-        const adminUser = sessionStorage.getItem('currentUser') || 'alpineaudio';
+        const adminUser = _cachedAdminUser || 'alpineaudio';
         let successCount = 0;
 
         for (const item of items) {
