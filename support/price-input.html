@@ -303,9 +303,7 @@
             }
 
             const { data, error } = await window.supabase
-                .from('price_list')
-                .upsert(payload)
-                .select();
+                .rpc('admin_upsert_price_list', { p_data: payload });
 
             if (error) {
                 console.error('Save error:', error);
@@ -347,9 +345,7 @@
         async function deleteItem(id) {
             if (confirm('정말 삭제하시겠습니까?')) {
                 const { error } = await window.supabase
-                    .from('price_list')
-                    .delete()
-                    .eq('id', id);
+                    .rpc('admin_delete_price_list', { p_id: id });
 
                 if (error) {
                     alert('삭제 실패: ' + error.message);
@@ -506,14 +502,14 @@
                     // 1. Process Updates
                     for (let i = 0; i < itemsToUpdate.length; i += batchSize) {
                         const batch = itemsToUpdate.slice(i, i + batchSize);
-                        const { error } = await window.supabase.from('price_list').upsert(batch);
+                        const { error } = await window.supabase.rpc('admin_upsert_price_list', { p_data: batch });
                         if (error) throw error;
                     }
 
                     // 2. Process Inserts
                     for (let i = 0; i < itemsToInsert.length; i += batchSize) {
                         const batch = itemsToInsert.slice(i, i + batchSize);
-                        const { error } = await window.supabase.from('price_list').insert(batch);
+                        const { error } = await window.supabase.rpc('admin_insert_price_list', { p_data: batch });
                         if (error) throw error;
                     }
 
