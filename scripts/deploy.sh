@@ -43,6 +43,11 @@ if docker ps | grep -q "supabase-db"; then
   docker exec -i supabase-db psql -U postgres < ./scripts/alpine_home_github_proxy.sql || true
   docker exec -i supabase-db psql -U postgres < ./scripts/restore_analytics.sql || true
   docker exec -i supabase-db psql -U postgres < ./scripts/fix_partner_board.sql || true
+  # price_list RPC 함수 적용 (permission denied 방지)
+  if [ -f "./price_rpc.sql" ]; then
+    echo "Applying price_list RPC functions..."
+    docker exec -i supabase-db psql -U supabase_admin -d postgres < ./price_rpc.sql || true
+  fi
 fi
 
 
@@ -102,5 +107,17 @@ fi
 
 # Cleanup old images
 docker image prune -f
+
+# Purge Cloudflare cache to ensure visitors get the latest HTML/JS files
+if [ -n "$CF_ZONE_ID" ] && [ -n "$CF_API_TOKEN" ]; then
+  echo "Purging Cloudflare edge cache..."
+  curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
+    -H "Authorization: Bearer $CF_API_TOKEN" \
+    -H "Content-Type: application/json" \
+    --data '{"purge_everything":true}' | grep -o '"success":[a-z]*'
+  echo "Cloudflare cache purge complete."
+else
+  echo "CF_ZONE_ID or CF_API_TOKEN not set — skipping Cloudflare cache purge."
+fi
 
 echo "=== Deployment Completed Successfully! Active Container: $TARGET_CONTAINER (Port: $TARGET_PORT) ==="
