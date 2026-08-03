@@ -15,7 +15,7 @@ if (typeof supabase === 'undefined') {
 }
 
 const supabaseClient = (typeof supabase !== 'undefined')
-    ? supabase.createClient(CLIENT_SUPABASE_URL, CLIENT_SUPABASE_ANON_KEY)
+    ? supabase.createClient(CLIENT_SUPABASE_URL, CLIENT_SUPABASE_ANON_KEY, { db: { schema: 'alpine-home' } })
     : null;
 
 // 공유를 위해 전역 변수로 설정 (기존 소스 호환성)
