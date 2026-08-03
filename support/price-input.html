@@ -277,11 +277,11 @@
 
             const parsePriceInput = (id) => {
                 const val = document.getElementById(id).value;
-                if (!val || val.trim() === '') return 0;
-                // If it's a number, return as number. If it has '-' or non-numeric, return as string clean.
+                if (!val || val.trim() === '' || val.trim() === '-') return null;
                 const clean = val.replace(/,/g, '').trim();
+                if (clean === '-') return null;
                 const num = parseInt(clean);
-                return isNaN(num) ? clean : num;
+                return isNaN(num) ? null : num;
             };
 
             const msrp = parsePriceInput('reg-msrp');
@@ -473,15 +473,15 @@
                     const reverseCategoryMap = Object.fromEntries(Object.entries(categoryMap).map(([k, v]) => [v, k]));
 
                     const parseExcelPrice = (val) => {
-                        if (val === undefined || val === null || val === '-') return '-';
+                        if (val === undefined || val === null || val === '-') return null;
                         if (typeof val === 'number') return val;
                         if (typeof val === 'string') {
-                            const clean = val.replace(/[, ]/g, '');
-                            if (clean === '' || clean === '-') return '-';
+                            const clean = val.replace(/[, ]/g, '').trim();
+                            if (clean === '' || clean === '-') return null;
                             const num = Number(clean);
-                            return isNaN(num) ? val : num;
+                            return isNaN(num) ? null : num;
                         }
-                        return val;
+                        return null;
                     };
 
                     const batchData = validData.map((row, idx) => {
