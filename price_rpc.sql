@@ -1,4 +1,17 @@
-CREATE OR REPLACE FUNCTION admin_upsert_price_list(
+-- 구버전 함수(1파라미터) DROP
+DROP FUNCTION IF EXISTS public.admin_upsert_price_list(jsonb);
+DROP FUNCTION IF EXISTS public.admin_insert_price_list(jsonb);
+DROP FUNCTION IF EXISTS public.admin_delete_price_list(bigint);
+
+-- 신버전 함수도 DROP 후 postgres 슈퍼유저로 재생성
+DROP FUNCTION IF EXISTS public.admin_upsert_price_list(text, text, jsonb);
+DROP FUNCTION IF EXISTS public.admin_insert_price_list(text, text, jsonb);
+DROP FUNCTION IF EXISTS public.admin_delete_price_list(text, text, bigint);
+
+-- postgres 슈퍼유저가 소유하는 SECURITY DEFINER 함수 생성
+-- (슈퍼유저 소유 = RLS, 권한 체크 모두 우회)
+
+CREATE OR REPLACE FUNCTION public.admin_upsert_price_list(
     p_admin_username text,
     p_admin_password text,
     p_data jsonb
@@ -6,11 +19,10 @@ CREATE OR REPLACE FUNCTION admin_upsert_price_list(
 RETURNS jsonb
 LANGUAGE plpgsql
 SECURITY DEFINER
-SET search_path = "alpine-home", public
 AS $$
 BEGIN
     IF NOT "alpine-home"._is_admin(p_admin_username, p_admin_password) THEN
-        RETURN json_build_object('error', 'unauthorized');
+        RETURN jsonb_build_object('error', 'unauthorized');
     END IF;
 
     IF jsonb_typeof(p_data) = 'object' THEN
@@ -37,13 +49,14 @@ BEGIN
         msrp = EXCLUDED.msrp,
         dist_price = EXCLUDED.dist_price,
         dealer_price = EXCLUDED.dealer_price,
-        sort_order = EXCLUDED.sort_order;
+        sort_order = EXCLUDED.sort_order,
+        updated_at = now();
 
-    RETURN json_build_object('success', true);
+    RETURN jsonb_build_object('success', true);
 END;
 $$;
 
-CREATE OR REPLACE FUNCTION admin_insert_price_list(
+CREATE OR REPLACE FUNCTION public.admin_insert_price_list(
     p_admin_username text,
     p_admin_password text,
     p_data jsonb
@@ -51,11 +64,10 @@ CREATE OR REPLACE FUNCTION admin_insert_price_list(
 RETURNS jsonb
 LANGUAGE plpgsql
 SECURITY DEFINER
-SET search_path = "alpine-home", public
 AS $$
 BEGIN
     IF NOT "alpine-home"._is_admin(p_admin_username, p_admin_password) THEN
-        RETURN json_build_object('error', 'unauthorized');
+        RETURN jsonb_build_object('error', 'unauthorized');
     END IF;
 
     IF jsonb_typeof(p_data) = 'object' THEN
@@ -75,11 +87,11 @@ BEGIN
         NULLIF(rec->>'sort_order', '')::integer
     FROM jsonb_array_elements(p_data) AS rec;
 
-    RETURN json_build_object('success', true);
+    RETURN jsonb_build_object('success', true);
 END;
 $$;
 
-CREATE OR REPLACE FUNCTION admin_delete_price_list(
+CREATE OR REPLACE FUNCTION public.admin_delete_price_list(
     p_admin_username text,
     p_admin_password text,
     p_id bigint
@@ -87,18 +99,17 @@ CREATE OR REPLACE FUNCTION admin_delete_price_list(
 RETURNS jsonb
 LANGUAGE plpgsql
 SECURITY DEFINER
-SET search_path = "alpine-home", public
 AS $$
 BEGIN
     IF NOT "alpine-home"._is_admin(p_admin_username, p_admin_password) THEN
-        RETURN json_build_object('error', 'unauthorized');
+        RETURN jsonb_build_object('error', 'unauthorized');
     END IF;
 
     DELETE FROM "alpine-home".price_list WHERE id = p_id;
-    RETURN json_build_object('success', true);
+    RETURN jsonb_build_object('success', true);
 END;
 $$;
 
-GRANT EXECUTE ON FUNCTION admin_upsert_price_list(text, text, jsonb) TO anon, authenticated;
-GRANT EXECUTE ON FUNCTION admin_insert_price_list(text, text, jsonb) TO anon, authenticated;
-GRANT EXECUTE ON FUNCTION admin_delete_price_list(text, text, bigint) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.admin_upsert_price_list(text, text, jsonb) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.admin_insert_price_list(text, text, jsonb) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.admin_delete_price_list(text, text, bigint) TO anon, authenticated;
