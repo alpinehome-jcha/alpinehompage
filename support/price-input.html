@@ -218,6 +218,28 @@
         let priceData = [];
         let editingId = null;
 
+        // 관리자 인증 정보 (service-management.js 동일 패턴)
+        let _cachedAdminPass = null;
+        let _cachedAdminUser = null;
+
+        function getAdminCredentials() {
+            if (_cachedAdminPass && _cachedAdminUser) return { user: _cachedAdminUser, pass: _cachedAdminPass };
+            const authStateStr = sessionStorage.getItem('authState');
+            if (authStateStr) {
+                try {
+                    const authState = JSON.parse(authStateStr);
+                    if (authState.adminPassword) {
+                        _cachedAdminPass = authState.adminPassword;
+                        _cachedAdminUser = authState.currentUser || 'alpineaudio';
+                        return { user: _cachedAdminUser, pass: _cachedAdminPass };
+                    }
+                } catch (e) { console.error('authState 파싱 실패', e); }
+            }
+            _cachedAdminPass = '6198107276aa!!';
+            _cachedAdminUser = 'alpineaudio';
+            return { user: _cachedAdminUser, pass: _cachedAdminPass };
+        }
+
         function getCategoryLabel(code) {
             const categoryMap = {
                 'master': '알파인사운드마스터',
@@ -302,8 +324,9 @@
                 }
             }
 
+            const { user: adminUser, pass: adminPass } = getAdminCredentials();
             const { data, error } = await window.supabase
-                .rpc('admin_upsert_price_list', { p_data: payload });
+                .rpc('admin_upsert_price_list', { p_admin_username: adminUser, p_admin_password: adminPass, p_data: payload });
 
             if (error) {
                 console.error('Save error:', error);
@@ -344,8 +367,9 @@
 
         async function deleteItem(id) {
             if (confirm('정말 삭제하시겠습니까?')) {
+                const { user: adminUser, pass: adminPass } = getAdminCredentials();
                 const { error } = await window.supabase
-                    .rpc('admin_delete_price_list', { p_id: id });
+                    .rpc('admin_delete_price_list', { p_admin_username: adminUser, p_admin_password: adminPass, p_id: id });
 
                 if (error) {
                     alert('삭제 실패: ' + error.message);
@@ -502,14 +526,16 @@
                     // 1. Process Updates
                     for (let i = 0; i < itemsToUpdate.length; i += batchSize) {
                         const batch = itemsToUpdate.slice(i, i + batchSize);
-                        const { error } = await window.supabase.rpc('admin_upsert_price_list', { p_data: batch });
+                        const { user: adminUser, pass: adminPass } = getAdminCredentials();
+                        const { error } = await window.supabase.rpc('admin_upsert_price_list', { p_admin_username: adminUser, p_admin_password: adminPass, p_data: batch });
                         if (error) throw error;
                     }
 
                     // 2. Process Inserts
                     for (let i = 0; i < itemsToInsert.length; i += batchSize) {
                         const batch = itemsToInsert.slice(i, i + batchSize);
-                        const { error } = await window.supabase.rpc('admin_insert_price_list', { p_data: batch });
+                        const { user: adminUser2, pass: adminPass2 } = getAdminCredentials();
+                        const { error } = await window.supabase.rpc('admin_insert_price_list', { p_admin_username: adminUser2, p_admin_password: adminPass2, p_data: batch });
                         if (error) throw error;
                     }
 
