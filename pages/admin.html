@@ -2683,7 +2683,7 @@
         async function getSupaAdmin() {
             if (_supaAdmin) return _supaAdmin;
             const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-            _supaAdmin = createClient(_ADMIN_SUPA_URL, _ADMIN_SUPA_KEY);
+            _supaAdmin = createClient(_ADMIN_SUPA_URL, _ADMIN_SUPA_KEY, { db: { schema: 'alpine-home' } });
             return _supaAdmin;
         }
 
