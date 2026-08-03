@@ -2,12 +2,11 @@ CREATE OR REPLACE FUNCTION admin_upsert_price_list(p_data jsonb)
 RETURNS void
 LANGUAGE plpgsql
 SECURITY DEFINER
-SET search_path = public
+SET search_path = "alpine-home", public
 AS $$
 DECLARE
     v_role text;
 BEGIN
-    -- Check admin role using the existing _is_admin() function
     v_role := _is_admin();
     IF v_role NOT IN ('admin', 'master') THEN
         RAISE EXCEPTION 'Unauthorized: only admin or master can modify price list';
@@ -16,19 +15,19 @@ BEGIN
     IF jsonb_typeof(p_data) = 'object' THEN
         p_data := jsonb_build_array(p_data);
     END IF;
-    
-    INSERT INTO public.price_list (
+
+    INSERT INTO "alpine-home".price_list (
         id, category, product_category, product, msrp, dist_price, dealer_price, sort_order
     )
     SELECT
-        (rec->>'id')::bigint,
+        NULLIF(rec->>'id', '')::bigint,
         rec->>'category',
         rec->>'product_category',
         rec->>'product',
         NULLIF(rec->>'msrp', '')::integer,
         NULLIF(rec->>'dist_price', '')::integer,
         NULLIF(rec->>'dealer_price', '')::integer,
-        (rec->>'sort_order')::numeric
+        NULLIF(rec->>'sort_order', '')::numeric
     FROM jsonb_array_elements(p_data) AS rec
     ON CONFLICT (id) DO UPDATE SET
         category = EXCLUDED.category,
@@ -45,12 +44,11 @@ CREATE OR REPLACE FUNCTION admin_insert_price_list(p_data jsonb)
 RETURNS void
 LANGUAGE plpgsql
 SECURITY DEFINER
-SET search_path = public
+SET search_path = "alpine-home", public
 AS $$
 DECLARE
     v_role text;
 BEGIN
-    -- Check admin role
     v_role := _is_admin();
     IF v_role NOT IN ('admin', 'master') THEN
         RAISE EXCEPTION 'Unauthorized: only admin or master can modify price list';
@@ -60,8 +58,7 @@ BEGIN
         p_data := jsonb_build_array(p_data);
     END IF;
 
-    -- Insert without id, allowing default serial to trigger
-    INSERT INTO public.price_list (
+    INSERT INTO "alpine-home".price_list (
         category, product_category, product, msrp, dist_price, dealer_price, sort_order
     )
     SELECT
@@ -71,7 +68,7 @@ BEGIN
         NULLIF(rec->>'msrp', '')::integer,
         NULLIF(rec->>'dist_price', '')::integer,
         NULLIF(rec->>'dealer_price', '')::integer,
-        (rec->>'sort_order')::numeric
+        NULLIF(rec->>'sort_order', '')::numeric
     FROM jsonb_array_elements(p_data) AS rec;
 END;
 $$;
@@ -80,7 +77,7 @@ CREATE OR REPLACE FUNCTION admin_delete_price_list(p_id bigint)
 RETURNS void
 LANGUAGE plpgsql
 SECURITY DEFINER
-SET search_path = public
+SET search_path = "alpine-home", public
 AS $$
 DECLARE
     v_role text;
@@ -90,6 +87,6 @@ BEGIN
         RAISE EXCEPTION 'Unauthorized: only admin or master can modify price list';
     END IF;
 
-    DELETE FROM public.price_list WHERE id = p_id;
+    DELETE FROM "alpine-home".price_list WHERE id = p_id;
 END;
 $$;
