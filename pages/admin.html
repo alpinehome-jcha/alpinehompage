@@ -1627,7 +1627,7 @@
                 }
 
                 try {
-                    const supaPass = await getAdminPassword();
+                    let supaPass = await getAdminPassword();
                     if (!supaPass) {
                         if (overlay) overlay.style.display = 'none';
                         return;
@@ -2142,7 +2142,11 @@
                 if (loadingText) loadingText.innerText = 'Deleting Service Admin...';
 
                 if (deletedUsername) {
-                    await deleteDealerFromSupabase(deletedUsername);
+                    const success = await deleteDealerFromSupabase(deletedUsername);
+                    if (!success) {
+                        if (overlay) overlay.style.display = 'none';
+                        return;
+                    }
                 }
 
                 serviceAdmins = serviceAdmins.filter(a => a.id !== currentId);
@@ -2161,22 +2165,33 @@
                 const deletedDealer = dealers.find(d => d.id === currentId);
                 const deletedUsername = deletedDealer ? deletedDealer.username : null;
 
-                dealers = dealers.filter(d => d.id !== currentId);
-
-                // Supabase에서도 삭제 (dealers + users 계정 동시 삭제)
+                // Supabase에서 먼저 삭제 시도
                 if (deletedUsername) {
                     const supaPass = await getAdminPassword();
                     if (supaPass) {
                         const adminUser = window.authState.currentUser;
                         const client = await getSupaAdmin();
-                        const { error } = await client.rpc('admin_delete_dealer', {
+                        const { data, error } = await client.rpc('admin_delete_dealer', {
                             p_admin_username: adminUser,
                             p_admin_password: supaPass,
                             p_username: deletedUsername
                         });
-                        if (error) console.warn('[Supabase] 딜러 삭제 오류:', error.message);
+                        if (error || (data && data.error)) {
+                            console.warn('[Supabase] 삭제 실패:', error || data.error);
+                            if ((data && data.error === 'unauthorized') || (error && error.message && error.message.includes('unauthorized'))) {
+                                _cachedAdminPass = null;
+                                alert('비밀번호가 틀렸거나 권한이 없습니다.');
+                            } else {
+                                alert('오류가 발생했습니다: ' + (error ? error.message : data.error));
+                            }
+                            return; // 중단
+                        }
+                    } else {
+                        return; // 비밀번호 취소 시 중단
                     }
                 }
+
+                dealers = dealers.filter(d => d.id !== currentId);
             }
 
             domForm.style.display = 'none';
@@ -2739,16 +2754,26 @@
         async function deleteDealerFromSupabase(username) {
             try {
                 const supaPass = await getAdminPassword();
-                if (!supaPass) return;
+                if (!supaPass) return false;
                 const adminUser = (window.authState && window.authState.currentUser) ? window.authState.currentUser : 'alpineaudio';
                 const client = await getSupaAdmin();
-                const { error } = await client.rpc('admin_delete_dealer', {
+                const { data, error } = await client.rpc('admin_delete_dealer', {
                     p_admin_username: adminUser,
                     p_admin_password: supaPass,
                     p_username: username
                 });
-                if (error) console.warn('[Supabase] 삭제 오류:', error.message);
-                else console.log('[Supabase] 딜러 계정 삭제 완료:', username);
+                if (error || (data && data.error)) {
+                    if ((data && data.error === 'unauthorized') || (error && error.message && error.message.includes('unauthorized'))) {
+                        _cachedAdminPass = null;
+                        alert('비밀번호가 틀렸거나 권한이 없습니다.');
+                    } else {
+                        alert('삭제 오류: ' + (error ? error.message : data.error));
+                    }
+                    return false;
+                }
+                console.log('[Supabase] DB 삭제 완료:', username);
+                return true;
+
             } catch (e) {
                 console.warn('[Supabase] 삭제 예외:', e.message);
             }
