@@ -194,6 +194,14 @@ const auth = {
             adminPassword: null
         };
         sessionStorage.removeItem('authState');
+        
+        // Security feature: wipe all partner/sensitive data from localStorage on logout
+        const keysToRemove = [
+            'serviceData', 'priceData', 'estimateData', 'dspChannelData', 
+            'pnpRuleData', 'laborRuleData', 'dealerData', 'estimate_sync_pending'
+        ];
+        keysToRemove.forEach(k => localStorage.removeItem(k));
+        
         window.location.href = getRelativeRoot() + 'index.html';
     },
     isLoggedIn: () => {

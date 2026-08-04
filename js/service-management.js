@@ -98,7 +98,7 @@ async function loadData() {
 
         if (data && data.length > 0) {
             serviceData = data;
-            localStorage.setItem('serviceData', JSON.stringify(serviceData));
+            // localStorage.setItem('serviceData', JSON.stringify(serviceData)); // Removed for privacy/security
         }
     } catch (e) {
         console.error('Supabase 데이터 로드 중 오류 발생:', e);

@@ -1553,8 +1553,8 @@ const EstimateUI = {
         const date = new Date().toLocaleDateString();
 
         let dealerInfoHtml = '';
-        if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('isLoggedIn') === 'true') {
-            const username = sessionStorage.getItem('currentUser');
+        if (typeof window !== 'undefined' && window.authState && window.authState.isLoggedIn) {
+            const username = window.authState.currentUser;
             const dealerList = (typeof window !== 'undefined' && window.dealerData) ? window.dealerData : 
                                (typeof dealerData !== 'undefined' ? dealerData : JSON.parse(localStorage.getItem('dealerData') || '[]'));
             const dealer = dealerList.find(d => d.username === username);
