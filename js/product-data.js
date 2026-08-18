@@ -166,7 +166,8 @@ const initialProductData = [
                 "url": "assets/files/F1-OM_68-47428Z48-A_KR.pdf"
             }
         ],
-        "soldOut": false
+        "soldOut": false,
+        "slug": "alpine-f1-status-full-system"
     },
     {
         "id": 1770265116216,
@@ -197,7 +198,8 @@ const initialProductData = [
                 "type": "html",
                 "value": "<table class=\"product-detail-table\" style=\"width:100%; border-collapse: collapse; margin: 1rem 0;\"><tr><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">항목</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">상세 내용</th></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Battery</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Built-in lithium polymer battery (3,300 mAh/3.7 V)</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Auto-off function</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Auto power off, backlight off, sleep timer</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">*Charging method ⁷</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Charging only (power off), charging and playback and data transfer</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Shape</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">USB Type-C (charging, data transfer)</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Connection method</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">MTP (media device) method</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Display</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4.1-in TFT color LCD (electrical capacitance touch screen)</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Resolution</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">HD (720 × 1280 dots)</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Dimensions</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Approx. 67.9 mm [W] × approx. 117 mm [H] × approx. 16.9 mm [D]</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Weight</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Approx. 203 g</td></tr></table>"
             }
-        ]
+        ],
+        "slug": "dap-7909"
     },
     {
         "id": 1770265993300,
@@ -233,7 +235,8 @@ const initialProductData = [
                 "type": "html",
                 "value": "<table class=\"product-detail-table\" style=\"width:100%; border-collapse: collapse; margin: 1rem 0;\"><tr><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">대분류 (Category)</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">상세 항목 (Details)</th></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Audio operation</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Play / Pause / MIX / Track up/down / Track selection / Back / Source changeover / Last mode retention / Vol Up/Down / Sub.W Vol adjustment / EQ Preset selection / Balance/Fader / Repeat / Shuffle / Black OUT / Power ON/OFF</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Display function</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Image display for track being played back (album artwork) / Indication of track name/album name/artist name/genre name/folder name / High resolution icon display / Vehicle information / Playback time / Sampling frequency of track being played back / Track number / Knob illumination / Variable illumination brightness (AutoDimmer) / Error display / Interlocking between DAP and HU indications</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Language display</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">English</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Device connectable to Audio Player</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">DAP connection (charging is possible) / USB memory / Support for interruption by NAVI and hands-free call (IN-INT signal)</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Audio formats (USB)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">WMA, OGG, ACC, MP3, FLAC, WAV</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Settings</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Preset EQ / Backlight (LCD/KEY) brightness adjustment / Dimmer setting / Serial No. / Version information / Clear All settings / Sub. W Vol setting / Knob illumination change / Change of AUX name</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Accessories</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Two USB extension cables / Between Commander and B.BOX / OTG cable for DAP / Power supply harness</td></tr></table>"
             }
-        ]
+        ],
+        "slug": "hds-7909"
     },
     {
         "id": 1770269667487,
@@ -256,7 +259,8 @@ const initialProductData = [
                 "value": "<table class=\"product-detail-table\" style=\"width:100%; border-collapse: collapse; margin: 1rem 0;\"><tr><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">카테고리 (Category)</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">상세 내용 (Details)</th></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Sound Features</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">\"Parametric-EQ</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\"></td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">ch.1-6: 10 Hz to 40 kHz, 34 bands (DP 10 + SP 24)</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\"></td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">ch.7-8 (Subwoofer): 10 Hz to 499.0 Hz, DP 13 bands</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\"></td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">(Steps: 0.1Hz@10-100Hz, 1Hz@100Hz-1kHz, 10Hz@1kHz-40kHz)</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\"></td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Level : -12 to +12 dB (0.01 dB steps)</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\"></td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Q: 0.1 to 10 (0.1 steps)</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\"></td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Delay : TCR 8ch, 20 msec total, step: min 0.0025 msec (384 kHz)</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\"></td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Divider (X-Over)</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\"></td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Slope: -6, -12, -18, -24, -30, -36, -42, -48 dB/oct</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\"></td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Level: -24 to 0 dB, 0.1 dB steps, 0 to 20 kHz</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\"></td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Phase : 0 / -180°\"</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Cable Accessories</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">\"A2 cable (connection between HU and AP), 5 m</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\"></td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Communication cabled AMP/MCG/HU Remote, MCG black out, MCG Detect, genuine IN-INT</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\"></td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Backup current MAX : 5mA</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\"></td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Operation Temperature : -20 to 60°C / Storage: -40 to 85°C</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\"></td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Frequency Char. : 10 Hz to 80 kHz, -1 dB\"</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">External I/F</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">A2B, UART, USB, HU status communication in, AMP/HU Remote out</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">System</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Master Clock</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Audio Input</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">\"RCA Analog, one system (2 ch or 6 ch of Hi/Mid/Lo)</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\"></td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">A2B Digital (384kHz/32bit)\"</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Audio Output</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">8ch 8V Balance out</td></tr></table>"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "hdp-h900"
     },
     {
         "id": 1770269898813,
@@ -282,7 +286,8 @@ const initialProductData = [
                 "type": "text",
                 "value": "Four 2-m balance cables are supplied."
             }
-        ]
+        ],
+        "slug": "hda-f90"
     },
     {
         "id": 1770270357744,
@@ -308,7 +313,8 @@ const initialProductData = [
                 "type": "html",
                 "value": "<table class=\"product-detail-table\" style=\"width:100%; border-collapse: collapse; margin: 1rem 0;\"><tr><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">Unit</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">Imp.</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">Sensitivity</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">Frequency response</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">Peak</th></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Tweeter</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4Ω</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">84.5dB@1W</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">3.5kHz-80kHz</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">200W</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Midrange</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4Ω</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">79dB@1W</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">250Hz-40kHz</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">200W</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Woofer</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">6Ω</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">86dB@1W</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">55Hz-8kHz</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">300W</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Subwoofer</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4+4Ω</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">82.5dB@1W</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">20Hz-800Hz</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">900W</td></tr></table>"
             }
-        ]
+        ],
+        "slug": "hdz-9000"
     },
     {
         "id": 1779781277289,
@@ -397,7 +403,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": ""
+        "manualUrl": "",
+        "slug": "alpine-status-풀-패키지192khz24bit-실현"
     },
     {
         "id": 1770270859568,
@@ -470,7 +477,8 @@ const initialProductData = [
                 "name": "HDS-990-Manual",
                 "url": "assets/files/HDS-990-Manual.pdf"
             }
-        ]
+        ],
+        "slug": "hds-990"
     },
     {
         "id": 1770271955069,
@@ -530,7 +538,8 @@ const initialProductData = [
             }
         ],
         "soldOut": false,
-        "manualUrl": "https://d90-pc.vercel.app/"
+        "manualUrl": "https://d90-pc.vercel.app/",
+        "slug": "hdp-d90"
     },
     {
         "id": 1770272801679,
@@ -556,7 +565,8 @@ const initialProductData = [
                 "type": "text",
                 "value": "사운드 컨트롤\n\n알파인 디지털 사운드 프로세서 및 앰프용 독립형 컨트롤러입니다.\n회전 노브를 사용하면 음악의 볼륨과 베이스 레벨과 입력소스와 프리셋을 쉽게 조정할 수 있습니다."
             }
-        ]
+        ],
+        "slug": "rux-c810"
     },
     {
         "id": 1770274455905,
@@ -584,7 +594,8 @@ const initialProductData = [
                 "name": "OM_HDZ-65C_HDZ-653",
                 "url": "assets/files/OM_HDZ-65C_HDZ-653.pdf"
             }
-        ]
+        ],
+        "slug": "hdz-653"
     },
     {
         "id": 1770274708541,
@@ -613,7 +624,8 @@ const initialProductData = [
                 "name": "OM_HDZ-65CS_HDZ-653S",
                 "url": "assets/files/OM_HDZ-65CS_HDZ-653S.pdf"
             }
-        ]
+        ],
+        "slug": "hdz-653s"
     },
     {
         "id": 1770275302610,
@@ -641,7 +653,8 @@ const initialProductData = [
                 "name": "OM_HDZ-65C_HDZ-653",
                 "url": "assets/files/OM_HDZ-65C_HDZ-653.pdf"
             }
-        ]
+        ],
+        "slug": "hdz-65c"
     },
     {
         "id": 1770275512360,
@@ -669,7 +682,8 @@ const initialProductData = [
                 "name": "OM_HDZ-65",
                 "url": "assets/files/OM_HDZ-65.pdf"
             }
-        ]
+        ],
+        "slug": "hdz-65"
     },
     {
         "id": 1770275822402,
@@ -697,7 +711,8 @@ const initialProductData = [
                 "name": "OM_HDZ-W10_HDZ-W12",
                 "url": "assets/files/OM_HDZ-W10_HDZ-W12.pdf"
             }
-        ]
+        ],
+        "slug": "hdz-w10"
     },
     {
         "id": 1770276139112,
@@ -736,7 +751,8 @@ const initialProductData = [
                 "url": "assets/files/OM_HDA-M80_HDA-F60_HDA-V90.pdf"
             }
         ],
-        "soldOut": false
+        "soldOut": false,
+        "slug": "hda-f60"
     },
     {
         "id": 1770276535208,
@@ -775,7 +791,8 @@ const initialProductData = [
                 "url": "assets/files/PXE-M60-4.pdf"
             }
         ],
-        "soldOut": false
+        "soldOut": false,
+        "slug": "pxe-m60-4"
     },
     {
         "id": 1770278648001,
@@ -814,7 +831,8 @@ const initialProductData = [
                 "url": "assets/files/PXE-R80-8 Owners manual.pdf"
             }
         ],
-        "soldOut": false
+        "soldOut": false,
+        "slug": "pxe-r80-8"
     },
     {
         "id": 1770279659907,
@@ -853,7 +871,8 @@ const initialProductData = [
                 "url": "assets/files/PXE-R100-8 Owners manual.pdf"
             }
         ],
-        "soldOut": false
+        "soldOut": false,
+        "slug": "pxe-r100-8"
     },
     {
         "id": 1770279980374,
@@ -892,7 +911,8 @@ const initialProductData = [
                 "url": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/files/PXE-X120-8%20Owners%20manual.pdf"
             }
         ],
-        "soldOut": false
+        "soldOut": false,
+        "slug": "pxe-x120-8"
     },
     {
         "id": 1770280979586,
@@ -931,7 +951,8 @@ const initialProductData = [
                 "url": "assets/files/PXE-X120-10DPCHOM-English.pdf"
             }
         ],
-        "soldOut": false
+        "soldOut": false,
+        "slug": "pxe-x120-10dp"
     },
     {
         "id": 1770281132274,
@@ -970,7 +991,8 @@ const initialProductData = [
                 "url": "assets/files/PXE-X121-12EV.pdf"
             }
         ],
-        "soldOut": false
+        "soldOut": false,
+        "slug": "pxe-x121-12ev"
     },
     {
         "id": 1770281847783,
@@ -1004,7 +1026,8 @@ const initialProductData = [
                 "url": "assets/files/PXE-X121-12EV.pdf"
             }
         ],
-        "soldOut": false
+        "soldOut": false,
+        "slug": "pxe-x121-12ev-x-2"
     },
     {
         "id": 1770334515662,
@@ -1016,7 +1039,8 @@ const initialProductData = [
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/KTX-990.jpg",
         "detailBlocks": [],
         "attachments": [],
-        "soldOut": false
+        "soldOut": false,
+        "slug": "ktx-990"
     },
     {
         "id": 1770334880774,
@@ -1050,7 +1074,8 @@ const initialProductData = [
                 "name": "PXE-C80-88_manual",
                 "url": "assets/files/PXE-C80-88_manual.pdf"
             }
-        ]
+        ],
+        "slug": "pxe-c80-88"
     },
     {
         "id": 1770337380170,
@@ -1074,7 +1099,8 @@ const initialProductData = [
                 "name": "R-A60F_R-A75M_OM",
                 "url": "assets/files/R-A60F_R-A75M_OM.pdf"
             }
-        ]
+        ],
+        "slug": "r2-a60f"
     },
     {
         "id": 1770337818950,
@@ -1098,7 +1124,8 @@ const initialProductData = [
                 "name": "OM_S2-A60M_S2-A120M",
                 "url": "assets/files/OM_S2-A60M_S2-A120M.pdf"
             }
-        ]
+        ],
+        "slug": "s2-a60m"
     },
     {
         "id": 1770338317503,
@@ -1127,7 +1154,8 @@ const initialProductData = [
                 "name": "PWE-M770-OM",
                 "url": "assets/files/PWE-M770-OM.pdf"
             }
-        ]
+        ],
+        "slug": "pwe-m770"
     },
     {
         "id": 1770338439799,
@@ -1139,7 +1167,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "assets/images/amp-m770rcu.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "pwe-770-rcu"
     },
     {
         "id": 1770339269599,
@@ -1232,7 +1261,8 @@ const initialProductData = [
                 "value": "HAMR 서라운드 (High-Amplitude Multi-Roll)\n\nAlpine 고유의 HAMR(고진폭 멀티롤) 서라운드 기술은 스피커 콘이 전후로 움직이는 폭(Excursion)을 최대화하면서도, 흔들림 없는 정밀한 제어력을 유지합니다. 그 결과, 볼륨을 크게 높여도 소리의 왜곡 없이 강력하고 깊은 저음을 구현합니다."
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "r2-s653"
     },
     {
         "id": 1770341784181,
@@ -1296,7 +1326,8 @@ const initialProductData = [
                 "name": "DP-653_OM_English",
                 "url": "assets/files/DP-653_OM_English.pdf"
             }
-        ]
+        ],
+        "slug": "dp2-653"
     },
     {
         "id": 1770342281262,
@@ -1324,7 +1355,8 @@ const initialProductData = [
                 "value": "Hi-Res 대응 및 유닛 사운드 특성 조정과 함께 크로스오버 하드웨어 설계를 재보정하여 다중 주파스 네트워크에 탁월하고 균형잡힌 음질을 제공합니다."
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "dp2-653nw"
     },
     {
         "id": 1770342709016,
@@ -1388,7 +1420,8 @@ const initialProductData = [
                 "name": "DP-653_OM_English",
                 "url": "assets/files/DP-653_OM_English.pdf"
             }
-        ]
+        ],
+        "slug": "dp2-65c"
     },
     {
         "id": 1770342988896,
@@ -1442,7 +1475,8 @@ const initialProductData = [
                 "name": "DP-653_OM_English",
                 "url": "assets/files/DP-653_OM_English.pdf"
             }
-        ]
+        ],
+        "slug": "dp2-35m"
     },
     {
         "id": 1770343496220,
@@ -1520,7 +1554,8 @@ const initialProductData = [
                 "value": "대형 마그넷 구조 (Large Magnet Structure)\n\nS-시리즈 스피커 후면에 탑재된 대형 스트론튬 마그넷은 압도적인 성능을 자랑합니다.\n\n이 마그넷은 대형 보이스 코일 및 Alpine의 특허받은 HAMR 서라운드와 결합하여, 콘의 진폭(Excursion)과 드라이버의 구동력을 높여줍니다.\n\n그 결과, 더욱 크고 타격감 넘치는(Punchy) 사운드를 선사합니다."
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "s2-s65c"
     },
     {
         "id": 1770344152693,
@@ -1588,7 +1623,8 @@ const initialProductData = [
                 "value": "대형 마그넷 구조 (Large Magnet Structure)\n\nS-시리즈 스피커 후면에 탑재된 대형 스트론튬 마그넷은 압도적인 성능을 자랑합니다.\n\n이 마그넷은 대형 보이스 코일 및 Alpine의 특허받은 HAMR 서라운드와 결합하여, 콘의 진폭(Excursion)과 드라이버의 구동력을 높여줍니다.\n\n그 결과, 더욱 크고 타격감 넘치는(Punchy) 사운드를 선사합니다."
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "s2-s65"
     },
     {
         "id": 1770345538900,
@@ -1606,7 +1642,8 @@ const initialProductData = [
                 "value": "FEATURES\nTwo (2) 1” Tweeters\nHigh-Grade Neodymium Motor Structure\nSilk Dome Tweeter Design\nRemoveable Alpine Logo\nIncludes a 15-degree Swivel Flush Cup Housing\nIncludes a height adjustable stealth OEM mount\nCompatible with Alpine’s S-Series\n\nTECH SPECS\nPeak Power Capacity: 240W\nMaterial: Silk\nMagnet Type: Neodymium\nVoice Coil Type: Copper Clad Aluminum\nCrossover: Passive 12dB/Octave High-Pass Filter\nFrequency Response: 1kHz-22kHz\nSensitivity: 88dB (1W / 1m)\nImpedance: 6 Ohm\nFlush Mounting Depth: 17.6mm\nCutout Diameter: 51mm"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "s-s10tw"
     },
     {
         "id": 1770345793630,
@@ -1624,7 +1661,8 @@ const initialProductData = [
                 "value": "FEATURES\nSpeaker type\n6-1/2\" (16.5 cm) Component 2-Way Speakers\n\nFrequency response\n65 Hz - 20 kHz\n\nPower handling\n180 Watts peak power\n\nSensitivity\n90 dB\n\nDesign\nShallow Mounting Design\n\nMateriaㅣ\nSoft dome tweeter\nNeodymium Magnet for tweeter\nFerrite Magnet for woofer\nPolypropylene Cone"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "dm-65c"
     },
     {
         "id": 1770345922698,
@@ -1636,7 +1674,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "assets/images/spk-dm65.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "dm-65"
     },
     {
         "id": 1770346228726,
@@ -1715,7 +1754,8 @@ const initialProductData = [
                 "name": "R-Series_Shallow_Subwoofers_OM",
                 "url": "assets/files/R-Series_Shallow_Subwoofers_OM.pdf"
             }
-        ]
+        ],
+        "slug": "rs-w10d2"
     },
     {
         "id": 1770346830655,
@@ -1784,7 +1824,8 @@ const initialProductData = [
                 "name": "OM_S2-Subwoofers",
                 "url": "assets/files/OM_S2-Subwoofers.pdf"
             }
-        ]
+        ],
+        "slug": "s2-w12d2"
     },
     {
         "id": 1770349514541,
@@ -1853,7 +1894,8 @@ const initialProductData = [
                 "name": "OM_S2-Subwoofers",
                 "url": "assets/files/OM_S2-Subwoofers.pdf"
             }
-        ]
+        ],
+        "slug": "s2-w10d2"
     },
     {
         "id": 1770349990137,
@@ -1922,7 +1964,8 @@ const initialProductData = [
                 "name": "OM_S2-Subwoofers",
                 "url": "assets/files/OM_S2-Subwoofers.pdf"
             }
-        ]
+        ],
+        "slug": "s2-w8d4"
     },
     {
         "id": 1770350274959,
@@ -1951,7 +1994,8 @@ const initialProductData = [
                 "name": "R-Series_Shallow_Subwoofers_OM",
                 "url": "assets/files/R-Series_Shallow_Subwoofers_OM.pdf"
             }
-        ]
+        ],
+        "slug": "rs-w10d2-외장박스-포함"
     },
     {
         "id": 1770350377190,
@@ -1980,7 +2024,8 @@ const initialProductData = [
                 "name": "OM_S2-Subwoofers",
                 "url": "assets/files/OM_S2-Subwoofers.pdf"
             }
-        ]
+        ],
+        "slug": "s2-w12d2-외장박스-포함"
     },
     {
         "id": 1770350445206,
@@ -2004,7 +2049,8 @@ const initialProductData = [
                 "name": "OM_S2-Subwoofers",
                 "url": "assets/files/OM_S2-Subwoofers.pdf"
             }
-        ]
+        ],
+        "slug": "s2-w10d2-외장박스-포함"
     },
     {
         "id": 1770350520053,
@@ -2028,7 +2074,8 @@ const initialProductData = [
                 "name": "OM_S2-Subwoofers",
                 "url": "assets/files/OM_S2-Subwoofers.pdf"
             }
-        ]
+        ],
+        "slug": "s2-w8d4-외장박스-포함"
     },
     {
         "id": 1770350638022,
@@ -2056,7 +2103,8 @@ const initialProductData = [
                 "value": "DPS-25M의 수입명은 DSP-65C-SIEN이지만 한국출시 명칭은 DPS-25M 입니다.\n\n2.5\" 미드레인지 스피커로, 작은사이즈의 OEM 미드레인지를 교체할때 유용합니다.\n\n카니발/스포티지/싼타페/그랜저/K8/쏘나타/K5의 센터 스피커와 미드레인지 스피커, 서라운드 스피커 교체용.\n\n제네시스 렉시콘/B&O의 후면 미드레인지 스피커와 서라운드 스피커 교체용.\n\nDPS-25M-Uni Baffle을 함께 사용하면 편리하게 장착할 수 있습니다.\n\n"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "dps-25m"
     },
     {
         "id": 1770351241064,
@@ -2074,7 +2122,8 @@ const initialProductData = [
                 "value": "6.5\" Mid-Woofer\n1\" Tweeter\n65Hz~20kHz\n200W\n89dB"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ev-65cf"
     },
     {
         "id": 1770351379992,
@@ -2086,7 +2135,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/EV-65CF-Converter%20P.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "ev-65cf-converter-p"
     },
     {
         "id": 1770351726055,
@@ -2104,7 +2154,8 @@ const initialProductData = [
                 "value": "4\"Midrange X4ea\n1\" Tweeter X1ea\n65hZ~20kHz\n200W\n89dB"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ev-40m-t"
     },
     {
         "id": 1770351951047,
@@ -2122,7 +2173,8 @@ const initialProductData = [
                 "value": "4\" Midrange x 2ea\n100Hz~18kHz\n160W\n90dB"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ev-40mr-t"
     },
     {
         "id": 1770352133875,
@@ -2140,7 +2192,8 @@ const initialProductData = [
                 "value": "25Hz~300kHz\n500W\n86dB"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ev-100sw-3"
     },
     {
         "id": 1770352291577,
@@ -2158,7 +2211,8 @@ const initialProductData = [
                 "value": "25Hz~300kHz\n500W\n86dB"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ev-100sw-y"
     },
     {
         "id": 1770354073337,
@@ -2176,7 +2230,8 @@ const initialProductData = [
                 "value": "4.5\" Mid Bass\n1\" Tweeter\n90Hz~20kHz\n100W\n83dB"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "dp2-45c-b"
     },
     {
         "id": 1770354226028,
@@ -2194,7 +2249,8 @@ const initialProductData = [
                 "value": "4.5\" Coaxial Speaker\n90Hz~20kHz\n100W\n82dB"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "dp2-45-b"
     },
     {
         "id": 1770354478837,
@@ -2212,7 +2268,8 @@ const initialProductData = [
                 "value": "4\" Mid Bass\n1\" Tweeter\n90Hz~20kHz\n100W\n82dB\n(센터스피커는 1개만 사용)"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "dp2-40c-b"
     },
     {
         "id": 1770355815036,
@@ -2230,7 +2287,8 @@ const initialProductData = [
                 "value": "1.5kHz~20kHz\n100W\n87dB"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "dp2-15tw-b"
     },
     {
         "id": 1770356079034,
@@ -2248,7 +2306,8 @@ const initialProductData = [
                 "value": "35Hz~500kHz\n200W"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "dp2-80wf-b"
     },
     {
         "id": 1770356733636,
@@ -2267,7 +2326,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": ""
+        "manualUrl": "",
+        "slug": "uts-a100"
     },
     {
         "id": 1770357623545,
@@ -2285,7 +2345,8 @@ const initialProductData = [
                 "value": "assets/images/Rav4-01.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "rav4-lift-up-speaker"
     },
     {
         "id": 1770359518939,
@@ -2303,7 +2364,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DVR-DM1000KO-IC.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "dvr-dm1000ko-ic"
     },
     {
         "id": 1770359774429,
@@ -2321,7 +2383,8 @@ const initialProductData = [
                 "value": "assets/images/metio-01.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ms-165-ko-wh"
     },
     {
         "id": 1770360102037,
@@ -2333,7 +2396,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "assets/images/chamber.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "status-tweeter-chamber"
     },
     {
         "id": 1770360222735,
@@ -2345,7 +2409,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/현대_기아 6.5 배플.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "현대기아-65-배플"
     },
     {
         "id": 1770361138902,
@@ -2388,7 +2453,8 @@ const initialProductData = [
                 "value": "HK-103\n현대/기아 73P / 17년~23년 차출 차량 / 케이블길이 1.5M / PXE-M60-4와 연결\n\nKGM 73P / 24년 이후 KGM 차량 / 케이블길이 1.5M / PXE-M60-4와 연결"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "hk-101-hk-102-hk-103"
     },
     {
         "id": 1770361278078,
@@ -2406,7 +2472,8 @@ const initialProductData = [
                 "value": "<table class=\"product-detail-table\" style=\"width:100%; border-collapse: collapse; margin: 1rem 0;\"><tr><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">차종</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">연식</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">채널</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;background-color: #f2f2f2;\">커넥터 타입</th></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">그랜저(GN7)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2023~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">그랜저(IG)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2016~22</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">소나타(DN8)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2024~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">소나타(DN8)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2020~23</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">아반떼(CN7)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2021~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">팰리세이드(LX2)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2019~24</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">팰리세이드(LX3)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2025~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">6CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">싼타페(MX5)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2024~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">투싼(NX4)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2021~23</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">투싼(NX4)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2024~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">코나(SX2)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2023~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">K8(GL3)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2021~24</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">K8(GL3)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2025~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">K7(YG)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2016~21</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">K5(DL3)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2020~24</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">K5(DL3)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2025~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">모하비(HM)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2020~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">쏘렌토(MQ4)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2020~24</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">쏘렌토(MQ4)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2025~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">스포티지(NQ5)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2021~24</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">스포티지(NQ5)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2025~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">스팅어(CK)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2028~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">카니발(KA4)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2020~23</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">4CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">73P</td></tr><tr><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">카니발(KA4)</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">2024~</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">6CH</td><td style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">신형 74p</td></tr></table>"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "hk-104"
     },
     {
         "id": 1770361461122,
@@ -2418,7 +2485,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-106.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "hk-106"
     },
     {
         "id": 1770361584272,
@@ -2430,7 +2498,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-107.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "hk-107"
     },
     {
         "id": 1770362031545,
@@ -2448,7 +2517,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/HK-1A-C.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "hk-1a"
     },
     {
         "id": 1770362107471,
@@ -2472,7 +2542,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": ""
+        "manualUrl": "",
+        "slug": "hk-2a"
     },
     {
         "id": 1770362701723,
@@ -2536,7 +2607,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": ""
+        "manualUrl": "",
+        "slug": "hk-12a-hk-13a-hk-15a-hk-16a-hk-17a"
     },
     {
         "id": 1770363147925,
@@ -2650,7 +2722,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": ""
+        "manualUrl": "",
+        "slug": "hk-14a-hk-19a-hk-20a-hk-21a-hk-23a-hk-24a-hk-26a-hk-28a-hk-25a-hk-27a"
     },
     {
         "id": 1770363434976,
@@ -2743,7 +2816,8 @@ const initialProductData = [
                 "value": "assets/images/GE-11A-C.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ge-2a-ge-3a-ge-6a-ge-7a-ge-8a-ge-9a-ge-10a-ge-11a"
     },
     {
         "id": 1770364057984,
@@ -2761,7 +2835,8 @@ const initialProductData = [
                 "value": "19년이전 7채널(구형 Hi-Fi) 차량\n\nDSP : PXE-X120-10DP와 연결되는 케이블입니다."
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "bm-401"
     },
     {
         "id": 1770365173085,
@@ -2779,7 +2854,8 @@ const initialProductData = [
                 "value": "20년~23년 : 7채널(신형 Hi-Fi) : \n520 / 320 / X4 / X3 / X1 / 118D / 218D\n\n24년 이후 : 7채널(Harman) : 520 / 320 / X4 / X3 / X1 / 118D / 218D\n\n\nDSP : PXE-X120-10DP와 연결되는 케이블입니다.\n"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "bm-402"
     },
     {
         "id": 1770365281227,
@@ -2797,7 +2873,8 @@ const initialProductData = [
                 "value": "20년~23년 : 9채널(Harman) : 630 / 540 / X7\n\n24년 이후 : 9채널(Bower & Wilkins) : 630 / 540 / X7\n\nDSP : PXE-X120-10DP와 연결되는 케이블입니다."
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "bm-403"
     },
     {
         "id": 1770365490851,
@@ -2820,7 +2897,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BM-1A-C.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "bm-1a"
     },
     {
         "id": 1770365565273,
@@ -2844,7 +2922,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": ""
+        "manualUrl": "",
+        "slug": "bm-2a"
     },
     {
         "id": 1770367024718,
@@ -2862,7 +2941,8 @@ const initialProductData = [
                 "value": "Stereo 4채널 차량\n\nDSP : PXE-C80-88과 연결되는 케이블입니다."
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "bz-501"
     },
     {
         "id": 1770367114315,
@@ -2880,7 +2960,8 @@ const initialProductData = [
                 "value": "20년 이후 : 5채널(Mbux1st) : E250 / E250D\n\n20년 이후 : 6채널(Mbux2nd) : C300\n\nDSP : PXE-C80-88과 연결되는 케이블입니다."
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "bz-502"
     },
     {
         "id": 1770367189705,
@@ -2898,7 +2979,8 @@ const initialProductData = [
                 "value": "20년 이후 : 10채널(Burmeater) : E300 / E350 / E450 / GLE400D / CLS450 / EQC(p,e)\n\nDSP : PXE-X120-10DP와 연결되는 케이블입니다."
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "bz-503"
     },
     {
         "id": 1770367336366,
@@ -2916,7 +2998,8 @@ const initialProductData = [
                 "value": "Stereo 4채널 차량\n\nDSP : 차측 케이블이므로 DSP용 케이블을 추가 구매해야합니다."
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "bz-1a"
     },
     {
         "id": 1770367412537,
@@ -2939,7 +3022,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BZ-2A-C.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "bz-2a"
     },
     {
         "id": 1770367459467,
@@ -2962,7 +3046,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BZ-3A-C.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "bz-3a"
     },
     {
         "id": 1770597358732,
@@ -2980,7 +3065,8 @@ const initialProductData = [
                 "value": "25년 이후 : ATTO3 / Dolphin / 4채널\n\nDSP : PXE-M60-4와 연결되는 케이블입니다."
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "by-101"
     },
     {
         "id": 1770597414437,
@@ -3004,7 +3090,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": ""
+        "manualUrl": "",
+        "slug": "by-2a"
     },
     {
         "id": 1770597493775,
@@ -3028,7 +3115,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": ""
+        "manualUrl": "",
+        "slug": "rr-1a"
     },
     {
         "id": 1770597598438,
@@ -3052,7 +3140,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": ""
+        "manualUrl": "",
+        "slug": "rr-2a"
     },
     {
         "id": 1770597639317,
@@ -3070,7 +3159,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/AU-1A-C.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "au-1a"
     },
     {
         "id": 1770597875990,
@@ -3088,7 +3178,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-M60-4B.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ds-m60-2b"
     },
     {
         "id": 1770597986370,
@@ -3106,7 +3197,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-M60-2B.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ds-m60-4b"
     },
     {
         "id": 1770598056914,
@@ -3129,7 +3221,8 @@ const initialProductData = [
                 "value": "출력 7번과 8번은 서브우퍼와 연결되어 있으므로 믹스설정에서 입력 1번과 2번을 출력 7번과 8번으로 연결시켜야함."
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ds_r80-4b"
     },
     {
         "id": 1770598139412,
@@ -3152,7 +3245,8 @@ const initialProductData = [
                 "value": "출력 7번과 8번은 서브우퍼와 연결되어 있으므로 믹스설정에서 입력 1번과 2번을 출력 7번과 8번으로 연결시켜야함."
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ds-r80-6b"
     },
     {
         "id": 1770598191236,
@@ -3170,7 +3264,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-X12-4B-1.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ds-x12-4b"
     },
     {
         "id": 1770598255334,
@@ -3188,7 +3283,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-X12-6B.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ds-x12-6b"
     },
     {
         "id": 1770598306432,
@@ -3206,7 +3302,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-C80-4B.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ds-c80-4b"
     },
     {
         "id": 1770598432164,
@@ -3224,7 +3321,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-10DP-6B.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ds-10dp-6b"
     },
     {
         "id": 1770598482182,
@@ -3242,7 +3340,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-10DP-8B.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ds-10dp-8b"
     },
     {
         "id": 1770598547088,
@@ -3260,7 +3359,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-12EV-B.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ds-12ev-b"
     },
     {
         "id": 1770598652512,
@@ -3278,7 +3378,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-D90-B.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ds-d90-b"
     },
     {
         "id": 1770598808144,
@@ -3290,7 +3391,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/M60%203M.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "m60-3m-연장케이블"
     },
     {
         "id": 1770598850684,
@@ -3302,7 +3404,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/M60 유니버셜.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "m60-유니버셜-젠더-20p"
     },
     {
         "id": 1770598954524,
@@ -3314,7 +3417,8 @@ const initialProductData = [
         "soldOut": true,
         "image": "assets/images/product_placeholder.png",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "35m-연장-케이블"
     },
     {
         "id": 1770599144668,
@@ -3362,7 +3466,8 @@ const initialProductData = [
                 "value": "눈앞에서 부르는 듯한 생생함, 대시보드 미드레인지 [EV-40MT]\n\n테슬라 실내 음향의 밸런스를 잡아주는 4인치 미드레인지 스피커입니다.\n\n운전석 정면에서 또렷하게 맺히는 보컬의 숨결과 풍성하고 입체적인 서라운드 스테이지를 경험해 보세요.\n\n\n\"매일 타는 테슬라, 이제 사운드도 혁신할 때입니다.\"\n\n단순한 음악 감상을 넘어 차 안을 나만의 프라이빗 콘서트홀로 만들어줄 알파인 EV-65CF & EV-40MT 시스템!\n지금 바로 예약하고 가슴 뛰는 하이엔드 오디오의 차이를 직접 경험해 보세요.\n\n\n바이지츠아우토\n경기도 하남시 대성로169번길 34\n010-9126-9223"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "테슬라-프론트-알파인-스피커-패키지-무손상-oem-fit"
     },
     {
         "id": 1770599178435,
@@ -3386,7 +3491,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": "https://kgm-m770-pc-v2-v2.vercel.app/"
+        "manualUrl": "https://kgm-m770-pc-v2-v2.vercel.app/",
+        "slug": "kgm-알파인오디오-옵션-차량-서브우퍼-패키지"
     },
     {
         "id": 1770599246780,
@@ -3429,7 +3535,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/OEM%20Fit%20BMW-02.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "bmw-스피커-패키지-무손상-oem-fit"
     },
     {
         "id": 1770599277781,
@@ -3442,7 +3549,8 @@ const initialProductData = [
         "image": "assets/images/product_placeholder.png",
         "detailBlocks": [],
         "attachments": [],
-        "manualUrl": ""
+        "manualUrl": "",
+        "slug": "kgm-회오리-앰비언트-s2-s10tw-트위터-패키지"
     },
     {
         "id": 1770599339041,
@@ -3454,7 +3562,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "assets/images/product_placeholder.png",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "레인지로버-18ch-메리디안-3d-서라운드-알파인-status-패키지"
     },
     {
         "id": 1770599469749,
@@ -3537,7 +3646,8 @@ const initialProductData = [
                 "value": "장착 대리점 안내\n\n아래 링크를 클릭 하시면 전국의 알파인 대리점을 확인 할 수 있습니다.\n\n전화로 문의 해보세요\nhttps://www.alpine-korea.co.kr/pages/dealers.html"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "g80-7채널-액튠_알파인-사운드-패키지무손상-oem-fit"
     },
     {
         "id": 1770600682237,
@@ -3549,7 +3659,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/M770%20EX.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "pxe-m770-external-cable8m"
     },
     {
         "id": 1770603575697,
@@ -3561,7 +3672,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "assets/images/TS-301.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "ts-301"
     },
     {
         "id": 1770603638565,
@@ -3573,7 +3685,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "assets/images/TS-301.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "ts-302"
     },
     {
         "id": 1770603681161,
@@ -3585,7 +3698,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "assets/images/TS-301.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "ts-303"
     },
     {
         "id": 1770603735895,
@@ -3597,7 +3711,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "assets/images/TS-301.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "ts-304"
     },
     {
         "id": 1770778417150,
@@ -3615,7 +3730,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/VW-1A-C.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "vw-1a"
     },
     {
         "id": 1770778453204,
@@ -3633,7 +3749,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/CH-1A-C.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ch-1a"
     },
     {
         "id": 1770988034579,
@@ -3645,7 +3762,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/GE-203.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "ge-203"
     },
     {
         "id": 1771985617838,
@@ -3657,7 +3775,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/KG-1A.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "kg-1a"
     },
     {
         "id": 1771985839541,
@@ -3669,7 +3788,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/KGM 5.5 to 6.5 배플.jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "kgm-55-to-65-배플"
     },
     {
         "id": 1771986826764,
@@ -3681,7 +3801,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/Universal%20Speaker%20Wire(2P).jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "universal-speaker-wire2p"
     },
     {
         "id": 1772431121062,
@@ -3699,7 +3820,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DS-C80-6B.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "ds-c80-6b"
     },
     {
         "id": 1772683222883,
@@ -3732,7 +3854,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/DPS-25M-Uni%20Baffle-03.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "dps-25m-uni-baffle"
     },
     {
         "id": 1773363359421,
@@ -3760,7 +3883,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/Speaker%20Connector%20A-02.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "speaker-connector-a"
     },
     {
         "id": 1773363728266,
@@ -3783,7 +3907,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/Speaker%20Connector%20B-02.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "speaker-connector-b"
     },
     {
         "id": 1773363790940,
@@ -3806,7 +3931,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/Speaker%20Connector%20C-02.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "speaker-connector-c"
     },
     {
         "id": 1773363904936,
@@ -3829,7 +3955,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/Speaker%20Connector%20D-02.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "speaker-connector-d"
     },
     {
         "id": 1773363956072,
@@ -3852,7 +3979,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/Speaker%20Connector%20E-02.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "speaker-connector-e"
     },
     {
         "id": 1773388000237,
@@ -3864,7 +3992,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/KTE-8G.3 (S2-W8D그릴).jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "s2-w8d그릴-kte-8g3"
     },
     {
         "id": 1773388147415,
@@ -3876,7 +4005,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/KTE-10G.3 (S2-W10D그릴).jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "s2-w10d그릴-kte-10g3"
     },
     {
         "id": 1773388239774,
@@ -3888,7 +4018,8 @@ const initialProductData = [
         "soldOut": false,
         "image": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/KTE-12G.3 (S2-W12D그릴).jpg",
         "detailBlocks": [],
-        "attachments": []
+        "attachments": [],
+        "slug": "s2-w12d그릴-kte-12g3"
     },
     {
         "id": 1773796225598,
@@ -3907,7 +4038,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": ""
+        "manualUrl": "",
+        "slug": "ty-1a"
     },
     {
         "id": 1773819135551,
@@ -3930,7 +4062,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/6.9 배플-01.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "toyota-69-배플"
     },
     {
         "id": 1773974028877,
@@ -3983,7 +4116,8 @@ const initialProductData = [
                 "value": "차원이 다른 알파인 사운드와 완벽한 무손상 인스톨의 결합!\n\n알파인이 자신 있게 선보이는 차별화된 오디오 솔루션으로, BYD 씰리온7과 함께하는 드라이빙의 즐거움을 한 차원 더 높여보세요.\n\n\n장착 문의\n알파인 사운드 마스터\n가인 오디오\n경기도 안양시 만안구 안양로 21\n010-8545-5311"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "byd-sealion7-알파인-사운드-패키지-무손상-oem-fit"
     },
     {
         "id": 1774339147421,
@@ -4181,7 +4315,8 @@ const initialProductData = [
                 "value": "장착 대리점 안내\n\n아래 링크를 클릭 하시면 전국의 알파인 대리점을 확인 할 수 있습니다.\n\n전화로 문의 해보세요\nhttps://www.alpine-korea.co.kr/pages/dealers.html"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "g80-렉시콘뱅앤울룹슨_알파인-스테이터스-패키지-무손상-oem-fit"
     },
     {
         "id": 1775014737605,
@@ -4250,7 +4385,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": ""
+        "manualUrl": "",
+        "slug": "기아-pv5-전용-사운드-튜닝-알파인-메티오-사운드-패키지-oem-fit"
     },
     {
         "id": 1775457031776,
@@ -4268,7 +4404,8 @@ const initialProductData = [
                 "value": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/BM-404-C.jpg"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "bm-4a"
     },
     {
         "id": 1775457981007,
@@ -4286,7 +4423,8 @@ const initialProductData = [
                 "value": "트위터 보호를 위한 하이패스 필터입니다.\n\n4Ω 기준 8.4hHz 컷오프 입니다.\n\n제네시스나 현대 기아차의 트위터가 미드레인지나 미드우퍼에 패시브로 연결되었을 경우 Alpine Status 653S나 DP2-653의 트위터 보호할때 장착 합니다.\n\n\n사이즈 : 두께 2CM, 길이 3.5CM"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "트위터-라인-패시브"
     },
     {
         "id": 1775458959969,
@@ -4304,7 +4442,8 @@ const initialProductData = [
                 "value": "미드레인지 보호를 위한 하이패스 필터 입니다.\n\n4Ω기준 846Hz 컷오프\n\nK8과 같이 미드레인지와 미드우퍼가 패시브 상태일경우 HDZ-653S나 DP2-653의 미드레인지 스피커를 보호할때 사용합니다.\n\n\n사이즈 : 두께 3.3CM  길이 5.5CM"
             }
         ],
-        "attachments": []
+        "attachments": [],
+        "slug": "미드레인지-라인-패시브"
     },
     {
         "id": 1776135277967,
@@ -4373,7 +4512,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": ""
+        "manualUrl": "",
+        "slug": "기아-pv5-전용-사운드-튜닝-알파인-사운드-패키지oem-fit"
     },
     {
         "id": 1778554814702,
@@ -4397,7 +4537,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": ""
+        "manualUrl": "",
+        "slug": "rn-1a"
     },
     {
         "id": 1780373282792,
@@ -4431,7 +4572,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": ""
+        "manualUrl": "",
+        "slug": "dps-25m-ka4-서라운드-스피커"
     },
     {
         "id": 1783038118946,
@@ -4475,7 +4617,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "manualUrl": ""
+        "manualUrl": "",
+        "slug": "dps-25m-chamber"
     }
 ];
 const PRODUCT_DATA_VERSION = 1784695661023;

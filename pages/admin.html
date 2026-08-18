@@ -1588,6 +1588,15 @@
             renderList();
         }
 
+        function slugify(text) {
+            return text.toString().normalize('NFC').toLowerCase()
+                .replace(/\s+/g, '-')
+                .replace(/[^\w\-가-힣]+/g, '')
+                .replace(/\-\-+/g, '-')
+                .replace(/^-+/, '')
+                .replace(/-+$/, '');
+        }
+
         async function saveCurrent() {
             console.log('saveCurrent called'); // Debug Log
             // Show Loading
@@ -1760,6 +1769,18 @@
             };
 
             if (isProduct) {
+                // Ensure slug is preserved or generated on creation
+                if (currentId !== -1) {
+                    const existingProduct = products.find(p => p.id === currentId);
+                    if (existingProduct && existingProduct.slug) {
+                        newItem.slug = existingProduct.slug;
+                    } else {
+                        newItem.slug = slugify(inputs.title.value) || currentId.toString();
+                    }
+                } else {
+                    newItem.slug = slugify(inputs.title.value) || newItem.id.toString();
+                }
+                
                 newItem.title = inputs.title.value;
                 newItem.desc = inputs.desc.value;
                 newItem.desc_bottom = inputs.desc_bottom.value;
