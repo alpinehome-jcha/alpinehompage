@@ -1643,7 +1643,7 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "slug": "s-s10tw"
+        "slug": "s2-s10tw"
     },
     {
         "id": 1770345793630,
