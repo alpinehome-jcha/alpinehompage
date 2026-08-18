@@ -1629,7 +1629,7 @@ const initialProductData = [
     {
         "id": 1770345538900,
         "category": "Speakers",
-        "title": "S2-S10TW",
+        "title": "S-S10TW",
         "desc": "1\" Tweeter Set",
         "desc_bottom": "장착 공임 별도/20만원 부터",
         "price": 150000,
@@ -1643,8 +1643,8 @@ const initialProductData = [
             }
         ],
         "attachments": [],
-        "slug": "s2-s10tw",
-        "old_slug": "s-s10tw"
+        "slug": "s-s10tw",
+        "old_slug": "s2-s10tw"
     },
     {
         "id": 1770345793630,
