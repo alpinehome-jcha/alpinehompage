@@ -85,8 +85,13 @@
             statusEl.querySelector('p').textContent = "잠시만 기다려 주세요. 상세 페이지로 이동합니다.";
             loader.style.display = 'block';
 
-            // Find product by slug
-            const product = initialProductData.find(p => p.slug === slug || slugify(p.title) === slug || p.id.toString() === slug);
+            // Find product by slug, old_slug, title, or id
+            const product = initialProductData.find(p => 
+                p.slug === slug || 
+                p.old_slug === slug || 
+                slugify(p.title) === slug || 
+                p.id.toString() === slug
+            );
             
             if (product) {
                 // Redirect to dynamic detail page

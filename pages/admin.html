@@ -1777,6 +1777,9 @@
                     } else {
                         newItem.slug = slugify(inputs.title.value) || currentId.toString();
                     }
+                    if (existingProduct && existingProduct.old_slug) {
+                        newItem.old_slug = existingProduct.old_slug;
+                    }
                 } else {
                     newItem.slug = slugify(inputs.title.value) || newItem.id.toString();
                 }
