@@ -7,7 +7,7 @@
     
     <!-- SEO_META_TAGS -->
     <meta name="description" content="6.5&quot; Coaxial Speaker Set">
-    <meta property="og:title" content="S2-S65 | 알파인 코리아">
+    <meta property="og:title" content="S2-S65 | ?�파??코리??>
     <meta property="og:description" content="6.5&quot; Coaxial Speaker Set">
     <meta property="og:image" content="https://www.alpine-korea.co.kr/assets/images/spk-s65.jpg">
     <meta property="og:url" content="https://www.alpine-korea.co.kr/pages/products/s2-s65.html">
@@ -17,7 +17,7 @@
         window.STATIC_PRODUCT_ID = 1770344152693;
     </script>
     
-    <title>S2-S65 | 알파인(ALPINE Korea)</title>
+    <title>S2-S65 | ?�파??ALPINE Korea)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -149,22 +149,22 @@
                 <ul class="nav-menu">
                     <li><a href="../about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
                     <li class="dropdown">
-                        <a href="../../../index.html" class="nav-link active" data-i18n="nav_products">제품소개</a>
+                        <a href="../../../index.html" class="nav-link active" data-i18n="nav_products">?�품?�개</a>
                         <!-- Submenu logic could go here if needed -->
                     </li>
                     <li>
-                        <a href="../dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
+                        <a href="../dealers.html" class="nav-link" data-i18n="nav_dealers">?�국 ?�리점 목록</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
+                        <a href="#" class="nav-link" data-i18n="nav_support">고객지??/a>
                         <ul class="dropdown-content">
                             <li><a href="../../../support/product.html" class="dropdown-item"
-                                    data-i18n="nav_support_product">제품
-                                    자료실</a></li>
+                                    data-i18n="nav_support_product">?�품
+                                    ?�료??/a></li>
                             <li><a href="../../../support/install.html" class="dropdown-item"
-                                    data-i18n="nav_support_install">시공자료실</a></li>
+                                    data-i18n="nav_support_install">?�공?�료??/a></li>
                             <li><a href="../../../support/promo.html" class="dropdown-item"
-                                    data-i18n="nav_support_promo">홍보자료실</a></li>
+                                    data-i18n="nav_support_promo">?�보?�료??/a></li>
                         </ul>
                     </li>
                     <li class="social-icons">
@@ -210,7 +210,7 @@
             <button class="filter-btn" onclick="goToCategory('DSP/AMP')">DSP/AMP</button>
             <button class="filter-btn" onclick="goToCategory('Speakers')">Speakers</button>
             <button class="filter-btn" onclick="goToCategory('PnP Cable')">PnP Cable</button>
-            <button class="filter-btn" onclick="goToCategory('기타상품')">기타상품</button>
+            <button class="filter-btn" onclick="goToCategory('기�??�품')">기�??�품</button>
             <button class="filter-btn" onclick="goToCategory('Alpine OEM Fit')">Alpine OEM Fit</button>
             <button class="filter-btn" onclick="goToCategory('ALPINESTYLE')">ALPINESTYLE</button>
         </div>
@@ -218,11 +218,11 @@
         <!-- Sub Filters for PnP Cable (Hidden by default) -->
         <div id="subFilterContainer" class="sub-filters"
             style="display: none; justify-content: center; gap: 10px; margin-bottom: 40px; margin-top: -20px;">
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 국산차')">국산차 PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 독일차')">독일차 PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기타수입차')">기타수입차 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - �?���?)">�?���?PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - ?�일�?)">?�일�?PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기�??�입�?)">기�??�입�?PnP</button>
             <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - DSP')">DSP PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기타')">기타 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기�?')">기�? PnP</button>
         </div>
 
         <!-- Add Styles for Active State -->
@@ -272,9 +272,9 @@
                 // Identify Parent Category
                 if (currentCat.startsWith('PnP Cable')) {
                     mainCategory = 'PnP Cable';
-                    subCategory = currentCat; // e.g., "PnP Cable - 국산차 (Domestic)" or just "PnP Cable - 국산차"
+                    subCategory = currentCat; // e.g., "PnP Cable - �?���?(Domestic)" or just "PnP Cable - �?���?
                 } else if (currentCat === 'Others') {
-                    mainCategory = '기타상품'; // Button text
+                    mainCategory = '기�??�품'; // Button text
                 }
 
                 // Highlight Main Button
@@ -309,24 +309,24 @@
 
                         const subButtons = document.querySelectorAll('.sub-filter-btn');
                         subButtons.forEach(subBtn => {
-                            // subBtn text: "국산차 PnP" -> we need to map to category "PnP Cable - 국산차"
+                            // subBtn text: "�?���?PnP" -> we need to map to category "PnP Cable - �?���?
                             // active logic: check if currentCat contains the keyword?
-                            // Data category: "PnP Cable - 국산차 (Domestic)"
-                            // Button text: "국산차 PnP"
+                            // Data category: "PnP Cable - �?���?(Domestic)"
+                            // Button text: "�?���?PnP"
 
                             const btnLabel = subBtn.innerText;
                             let keyword = '';
-                            if (btnLabel.includes('국산차')) keyword = '국산차';
-                            else if (btnLabel.includes('독일차')) keyword = '독일차';
-                            else if (btnLabel.includes('기타수입차')) keyword = '기타수입차'; // or Other Imported
+                            if (btnLabel.includes('�?���?)) keyword = '�?���?;
+                            else if (btnLabel.includes('?�일�?)) keyword = '?�일�?;
+                            else if (btnLabel.includes('기�??�입�?)) keyword = '기�??�입�?; // or Other Imported
                             else if (btnLabel.includes('DSP')) keyword = 'DSP';
-                            else if (btnLabel.includes('기타')) keyword = '기타';
+                            else if (btnLabel.includes('기�?')) keyword = '기�?';
 
                             let match = false;
                             if (keyword) {
-                                if (keyword === '기타') {
-                                    // "기타" matches "PnP Cable - 기타" but NOT "PnP Cable - 기타수입차"
-                                    if (currentCat.includes('기타') && !currentCat.includes('기타수입차')) {
+                                if (keyword === '기�?') {
+                                    // "기�?" matches "PnP Cable - 기�?" but NOT "PnP Cable - 기�??�입�?
+                                    if (currentCat.includes('기�?') && !currentCat.includes('기�??�입�?)) {
                                         match = true;
                                     }
                                 } else {
@@ -356,10 +356,10 @@
                         <h1 class="detail-title">S2-S65</h1>
                         <p class="detail-summary">6.5" Coaxial Speaker Set</p>
                         <div class="detail-price">
-                            ₩230,000 
+                            ??30,000 
                             
                         </div>
-                        <p class="detail-summary">장착 공임 별도/20만원 부터</p>
+                        <p class="detail-summary">?�착 공임 별도/20만원 부??/p>
                         
                     </div>
                 </div>
@@ -371,13 +371,12 @@
 Cone Material: Poly Propylene, Glass Fiber, and Mica Cone Material
 Design: Lightweight Design with High Output and Low Distortion
 Surround: High-Amplitude Multi-Roll (H.A.M.R.) Surround
-Tweeters: Included 1” Adjustable Tweeters with Threaded Removable Housing (Component)
+Tweeters: Included 1??Adjustable Tweeters with Threaded Removable Housing (Component)
 Crossovers: OEM Fitment with In-Line Crossovers
 Compatibility: Compatible with KTE-S65G Speaker Grille (sold separately)
 
 TECH SPECS
-Woofer Size: 6.5”
-Tweeter Size: 1” (Coaxial)
+Woofer Size: 6.5??Tweeter Size: 1??(Coaxial)
 Power Handling: 240W Peak
 Frequency Response: 70Hz - 40kHz (Hi-Res)
 Sensitivity: 88dB</p>
@@ -388,17 +387,17 @@ Sensitivity: 88dB</p>
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">하이레졸루션 오디오(Hi-Res Audio)란 무엇인가?
+                                <p class="detail-content-text">?�이?�졸루션 ?�디??Hi-Res Audio)?� 무엇?��??
 
-하이레졸루션 오디오 스트리밍 서비스와 음악 다운로드가 보편화되면서, 이제 CD보다 높은 샘플링 레이트로 음악을 재생하여 좋아하는 트랙에 생동감과 극강의 선명함을 더할 수 있게 되었습니다. Alpine의 하이레졸루션 오디오 인증 헤드 유닛, 앰프 및 디지털 신호 프로세서(DSP)는 최대 192kHz/24Bit의 고해상도 소스 및 녹음물로부터 원음에 충실한 오디오 재생을 구현하도록 정밀하게 설계되었습니다. 이러한 구성 요소들은 아티스트의 원본 녹음에 가까운 고화질 재생과 압도적인 성능을 위해 최적화되어 있습니다.
+?�이?�졸루션 ?�디???�트리밍 ?�비?��? ?�악 ?�운로드가 보편?�되면서, ?�제 CD보다 ?��? ?�플�??�이?�로 ?�악???�생?�여 좋아?�는 ?�랙???�동감과 극강???�명?�을 ?�할 ???�게 ?�었?�니?? Alpine???�이?�졸루션 ?�디???�증 ?�드 ?�닛, ?�프 �??��????�호 ?�로?�서(DSP)??최�? 192kHz/24Bit??고해?�도 ?�스 �??�음물로부???�음??충실???�디???�생??구현?�도�??��??�게 ?�계?�었?�니?? ?�러??구성 ?�소?��? ?�티?�트???�본 ?�음??가까운 고화�??�생�??�도?�인 ?�능???�해 최적?�되???�습?�다.
 
-왜 하이레졸루션 오디오인가?
+???�이?�졸루션 ?�디?�인가?
 
-고해상도 오디오를 감상하면 음악 속의 모든 감정을 느끼고 미세한 뉘앙스까지 포착할 수 있습니다. 좋아하는 아티스트가 스튜디오에서 선보인 오리지널 퍼포먼스의 모든 디테일이 완벽하게 재현되기 때문입니다. 하이레졸루션 오디오는 왜곡이 전혀 없는 궁극의 청취 경험을 제공합니다.
+고해?�도 ?�디?��? 감상?�면 ?�악 ?�의 모든 감정???�끼�?미세???�앙?�까지 ?�착?????�습?�다. 좋아?�는 ?�티?�트가 ?�튜?�오?�서 ?�보???�리지???�포먼스??모든 ?�테?�이 ?�벽?�게 ?�현?�기 ?�문?�니?? ?�이?�졸루션 ?�디?�는 ?�곡???��? ?�는 궁극??�?�� 경험???�공?�니??
 
-왜 하이레졸루션 오디오 인증 스피커인가?
+???�이?�졸루션 ?�디???�증 ?�피커인가?
 
-하이레졸루션 오디오는 일반 스피커의 한계를 뛰어넘습니다. 고해상도 음원과 녹음물을 진정한 고화질로 정확하게 표현하기 위해서는 최대 40kHz에 이르는 확장된 다이내믹 주파수 범위를 재생하는 능력이 무엇보다 중요합니다.</p>
+?�이?�졸루션 ?�디?�는 ?�반 ?�피커의 ?�계�??�어?�습?�다. 고해?�도 ?�원�??�음물을 진정??고화질로 ?�확?�게 ?�현?�기 ?�해?�는 최�? 40kHz???�르???�장???�이?��? 주파??범위�??�생?�는 ?�력??무엇보다 중요?�니??</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -406,9 +405,9 @@ Sensitivity: 88dB</p>
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">하이레졸루션 오디오(Hi-Res Audio) 인증
+                                <p class="detail-content-text">?�이?�졸루션 ?�디??Hi-Res Audio) ?�증
 
-S-시리즈를 위해 완전히 새로워진 하이레졸루션 오디오 인증은 여러분의 일상적인 드라이브에 완전히 새로운 차원의 탁월한 음향을 선사합니다. 최대 40kHz에 이르는 고차 배음(upper harmonics)을 재생하는 인상적인 확장 다이내믹 레인지를 통해, 모든 곡은 원본 녹음에 충실한 수준의 디테일과 미세한 뉘앙스가 더해져 생동감 있게 살아납니다.</p>
+S-?�리즈�? ?�해 ?�전???�로?�진 ?�이?�졸루션 ?�디???�증?� ?�러분의 ?�상?�인 ?�라?�브???�전???�로??차원???�월???�향???�사?�니?? 최�? 40kHz???�르??고차 배음(upper harmonics)???�생?�는 ?�상?�인 ?�장 ?�이?��? ?�인지�??�해, 모든 곡�? ?�본 ?�음??충실???��????�테?�과 미세???�앙?��? ?�해???�동�??�게 ?�아?�니??</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -416,9 +415,9 @@ S-시리즈를 위해 완전히 새로워진 하이레졸루션 오디오 인증
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">HAMR 서라운드 (High-Amplitude Multi-Roll)
+                                <p class="detail-content-text">HAMR ?�라?�드 (High-Amplitude Multi-Roll)
 
-Alpine의 특허받은 HAMR(고진폭 멀티롤) 서라운드는 높은 음압(SPL)을 내기 위해 콘이 격렬하게 움직이는 모든 단계에서도 진동판을 완벽하게 제어합니다. 또한, 일반적인 돔 형태 서라운드의 최대 선형 진폭을 훨씬 뛰어넘는 성능을 통해, 왜곡 없이 아름답고 순수한 사운드와 가슴을 울리는 강력한 저음을 선사합니다.</p>
+Alpine???�허받�? HAMR(고진??멀?�롤) ?�라?�드???��? ?�압(SPL)???�기 ?�해 콘이 격렬?�게 ?�직이??모든 ?�계?�서??진동?�을 ?�벽?�게 ?�어?�니?? ?�한, ?�반?�인 ???�태 ?�라?�드??최�? ?�형 진폭???�씬 ?�어?�는 ?�능???�해, ?�곡 ?�이 ?�름?�고 ?�수???�운?��? 가?�을 ?�리??강력???�?�을 ?�사?�니??</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -426,9 +425,9 @@ Alpine의 특허받은 HAMR(고진폭 멀티롤) 서라운드는 높은 음압(S
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">유리 섬유 복합소재 우퍼 콘 (Glass Fiber Composite Woofer Cone)
+                                <p class="detail-content-text">?�리 ?�유 복합?�재 ?�퍼 �?(Glass Fiber Composite Woofer Cone)
 
-도어 우퍼에는 완전히 새로워진 유리 섬유 복합소재 콘이 적용되었습니다. 이 콘은 방향성을 고려한 **직조 구조(Directionally weaved construction)**로 설계되어, 기존의 일반적인 타원형 콘 진동판보다 훨씬 더 강력한 내구성을 자랑합니다. 이러한 뛰어난 강성과 유리 섬유 고유의 가벼움이 결합되어 콘의 진폭(Excursion)을 정밀하게 제어하며, 그 결과 탁월한 응답성과 고품질의 오디오 재현력을 선사합니다.</p>
+?�어 ?�퍼?�는 ?�전???�로?�진 ?�리 ?�유 복합?�재 콘이 ?�용?�었?�니?? ??콘�? 방향?�을 고려??**직조 구조(Directionally weaved construction)**�??�계?�어, 기존???�반?�인 ?�?�형 �?진동?�보???�씬 ??강력???�구?�을 ?�랑?�니?? ?�러???�어??강성�??�리 ?�유 고유??가벼�???결합?�어 콘의 진폭(Excursion)???��??�게 ?�어?�며, �?결과 ?�월???�답?�과 고품질의 ?�디???�현?�을 ?�사?�니??</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -436,13 +435,13 @@ Alpine의 특허받은 HAMR(고진폭 멀티롤) 서라운드는 높은 음압(S
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">대형 마그넷 구조 (Large Magnet Structure)
+                                <p class="detail-content-text">?�??마그??구조 (Large Magnet Structure)
 
-S-시리즈 스피커 후면에 탑재된 대형 스트론튬 마그넷은 압도적인 성능을 자랑합니다.
+S-?�리�??�피�??�면???�재???�???�트론튬 마그?��? ?�도?�인 ?�능???�랑?�니??
 
-이 마그넷은 대형 보이스 코일 및 Alpine의 특허받은 HAMR 서라운드와 결합하여, 콘의 진폭(Excursion)과 드라이버의 구동력을 높여줍니다.
+??마그?��? ?�??보이??코일 �?Alpine???�허받�? HAMR ?�라?�드?� 결합?�여, 콘의 진폭(Excursion)�??�라?�버??구동?�을 ?�여줍니??
 
-그 결과, 더욱 크고 타격감 넘치는(Punchy) 사운드를 선사합니다.</p>
+�?결과, ?�욱 ?�고 ?�격감 ?�치??Punchy) ?�운?��? ?�사?�니??</p>
                             </div>
                 
                 </div>
@@ -459,11 +458,11 @@ S-시리즈 스피커 후면에 탑재된 대형 스트론튬 마그넷은 압�
                     <img src="../../assets/images/jch_logo.png" alt="JCH Auto" style="height: 30px;" id="footer-logo-img">
                 </div>
                 <p class="footer-text">
-                    <strong data-i18n="footer_ceo">대표 | 이정현</strong><br>
-                    <span data-i18n="footer_address">경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)</span><br>
+                    <strong data-i18n="footer_ceo">?�??| ?�정??/strong><br>
+                    <span data-i18n="footer_address">경기???�양???�안�??�에?�로 136, A??1401???�계?? 금정??차SKV1?�??</span><br>
                     <span data-i18n="footer_contact">TEL | 1670-7425 FAX | 031-477-7220</span><br>
-                    <span data-i18n="footer_hours">상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)</span><br>
-                    <span data-i18n="footer_biz_info">사업자등록번호 | 619-81-07276 개인정보보호책임자 | 한길전</span>
+                    <span data-i18n="footer_hours">?�담?�간 | ??�?09:00~17:00 (????공휴???�무)</span><br>
+                    <span data-i18n="footer_biz_info">?�업?�등록번??| 619-81-07276 개인?�보보호책임??| ?�길??/span>
                 </p>
             </div>
             <div class="footer-section footer-links">
@@ -474,7 +473,7 @@ S-시리즈 스피커 후면에 탑재된 대형 스트론튬 마그넷은 압�
                     <li><a href="../../index.html?category=DSP%2FAMP">DSP/AMP</a></li>
                     <li><a href="../../index.html?category=Speakers">Speakers</a></li>
                     <li><a href="../../index.html?category=PnP%20Cable">PnP Cable</a></li>
-                    <li><a href="../../index.html?category=기타상품" data-i18n="filter_others">기타상품</a></li>
+                    <li><a href="../../index.html?category=기�??�품" data-i18n="filter_others">기�??�품</a></li>
                     <li><a href="../../index.html?category=Alpine%20OEM%20Fit">Alpine OEM Fit</a></li>
                     <li><a href="../../index.html?category=ALPINESTYLE">ALPINESTYLE</a></li>
                 </ul>
@@ -511,35 +510,35 @@ S-시리즈 스피커 후면에 탑재된 대형 스트론튬 마그넷은 압�
 
     <script src="../../js/auth.js?v=20260724b"></script>
     <script>
-        document.write('<script src="../../js/product-data.js?v=20260721"><\/script>');
+        document.write('<script src="../../js/product-data.js?v=20260819"><\/script>');
     </script>
     <script>
         const translations = {
             ko: {
-                nav_about: '회사소개(About)',
-                nav_products: '제품소개',
-                nav_dealers: '전국 대리점 목록',
-                nav_support: '고객지원',
-                nav_support_product: '제품 자료실',
-                nav_support_install: '시공자료실',
-                nav_support_promo: '홍보자료실',
-                nav_company: '회사소개',
-                footer_ceo: '대표 | 이정현',
-                footer_address: '경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)',
+                nav_about: '?�사?�개(About)',
+                nav_products: '?�품?�개',
+                nav_dealers: '?�국 ?�리점 목록',
+                nav_support: '고객지??,
+                nav_support_product: '?�품 ?�료??,
+                nav_support_install: '?�공?�료??,
+                nav_support_promo: '?�보?�료??,
+                nav_company: '?�사?�개',
+                footer_ceo: '?�??| ?�정??,
+                footer_address: '경기???�양???�안�??�에?�로 136, A??1401???�계?? 금정??차SKV1?�??',
                 footer_contact: 'TEL | 1670-7425   FAX | 031-477-7220',
-                footer_hours: '상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)',
-                footer_biz_info: '사업자등록번호 | 619-81-07276   개인정보보호책임자 | 한길전',
-                footer_products: '제품',
-                footer_support: '지원',
+                footer_hours: '?�담?�간 | ??�?09:00~17:00 (????공휴???�무)',
+                footer_biz_info: '?�업?�등록번??| 619-81-07276   개인?�보보호책임??| ?�길??,
+                footer_products: '?�품',
+                footer_support: '지??,
                 footer_global: '글로벌',
-                footer_global_japan: '일본',
-                footer_global_asia: '아시아',
-                footer_global_australia: '호주',
-                footer_global_europe: '유럽',
+                footer_global_japan: '?�본',
+                footer_global_asia: '?�시??,
+                footer_global_australia: '?�주',
+                footer_global_europe: '?�럽',
                 footer_global_china: '중국',
-                footer_global_na: '북미',
-                btn_view: '자세히 보기',
-                btn_back: '제품 목록으로 가기'
+                footer_global_na: '북�?',
+                btn_view: '?�세??보기',
+                btn_back: '?�품 목록?�로 가�?
             },
             en: {
                 nav_about: 'About Us',
@@ -613,7 +612,7 @@ S-시리즈 스피커 후면에 탑재된 대형 스트론튬 마그넷은 압�
             const isEnglish = lang === 'en';
             const priceDisplay = isEnglish ?
                 '$' + Math.round(product.price / 1400).toLocaleString() :
-                '₩' + product.price.toLocaleString();
+                '?? + product.price.toLocaleString();
 
             // Prepare detail content
             let blocksHTML = '';
@@ -684,7 +683,7 @@ S-시리즈 스피커 후면에 탑재된 대형 스트론튬 마그넷은 압�
                                     <span style="margin-right: 8px;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                                     </span>
-                                    인터렉티브 매뉴얼
+                                    ?�터?�티�?매뉴??
                                 </a>
                             </div>
                         `;
@@ -709,7 +708,7 @@ S-시리즈 스피커 후면에 탑재된 대형 스트론튬 마그넷은 압�
                         <span style="margin-right: 8px;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                         </span>
-                        인터렉티브 매뉴얼
+                        ?�터?�티�?매뉴??
                     </a>
                     <style>
                         .interactive-manual-btn:hover {
@@ -732,7 +731,7 @@ S-시리즈 스피커 후면에 탑재된 대형 스트론튬 마그넷은 압�
                         <p class="detail-summary">${product.desc}</p>
                         <div class="detail-price">
                             ${priceDisplay} 
-                            ${product.soldOut ? '<span style="color: #d9534f; font-size: 1rem; margin-left: 10px;">(품절 / SOLD OUT)</span>' : ''}
+                            ${product.soldOut ? '<span style="color: #d9534f; font-size: 1rem; margin-left: 10px;">(?�절 / SOLD OUT)</span>' : ''}
                         </div>
                         <p class="detail-summary">${product.desc_bottom !== undefined ? product.desc_bottom : product.desc}</p>
                         ${attachmentsHTML}
@@ -742,7 +741,7 @@ S-시리즈 스피커 후면에 탑재된 대형 스트론튬 마그넷은 압�
                 <div class="detail-content">
                     ${blocksHTML || `
                         <div style="text-align: center; color: #999; padding: 40px;">
-                            ${isEnglish ? 'Detailed information is not registered.' : '상세 정보가 등록되지 않았습니다.'}
+                            ${isEnglish ? 'Detailed information is not registered.' : '?�세 ?�보가 ?�록?��? ?�았?�니??'}
                         </div>
                     `}
                 </div>
@@ -785,10 +784,10 @@ S-시리즈 스피커 후면에 탑재된 대형 스트론튬 마그넷은 압�
                         "@type": "Review",
                         "author": {
                             "@type": "Person",
-                            "name": "알파인고객"
+                            "name": "?�파?�고�?
                         },
                         "datePublished": new Date().toISOString().split('T')[0],
-                        "reviewBody": "최상의 사운드 경험을 선사하는 솔루션입니다.",
+                        "reviewBody": "최상???�운??경험???�사?�는 ?�루?�입?�다.",
                         "reviewRating": {
                             "@type": "Rating",
                             "ratingValue": "5",
@@ -812,13 +811,13 @@ S-시리즈 스피커 후면에 탑재된 대형 스트론튬 마그넷은 압�
                     {
                         "@type": "ListItem",
                         "position": 1,
-                        "name": "홈",
+                        "name": "??,
                         "item": "https://www.alpine-korea.co.kr/"
                     },
                     {
                         "@type": "ListItem",
                         "position": 2,
-                        "name": "제품",
+                        "name": "?�품",
                         "item": "https://www.alpine-korea.co.kr/index.html"
                     },
                     {
