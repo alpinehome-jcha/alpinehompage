@@ -3542,8 +3542,8 @@ const initialProductData = [
     {
         "id": 1770599277781,
         "category": "Alpine OEM Fit",
-        "title": "KGM 회오리 앰비언트 S2-S10TW 트위터 패키지",
-        "desc": "KGM 회오리 앰비언트 트위터 커버 + S2-S10TW 패키지",
+        "title": "KGM 회오리 앰비언트 S-S10TW 트위터 패키지",
+        "desc": "KGM 회오리 앰비언트 트위터 커버 + S-S10TW 패키지",
         "desc_bottom": ".",
         "price": 400000,
         "soldOut": true,
@@ -4622,7 +4622,7 @@ const initialProductData = [
         "slug": "dps-25m-chamber"
     }
 ];
-const PRODUCT_DATA_VERSION = 1784695661023;
+const PRODUCT_DATA_VERSION = 1784695661024;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
