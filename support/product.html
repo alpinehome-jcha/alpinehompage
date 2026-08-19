@@ -5,10 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>?�품 ?�료??| ?�파??코리??ALPINE Korea)</title>
-    <meta name="description" content="?�파??ALPINE) ?�품 카탈로그, 매뉴?????�품 관???�료�??�운로드?�세??">
-    <meta property="og:title" content="?�품 ?�료??| ?�파??코리??ALPINE Korea)">
-    <meta property="og:description" content="?�파??ALPINE) ?�품 카탈로그, 매뉴?????�품 관???�료�??�운로드?�세??">
+    <title>제품 자료실 | 알파인 코리아(ALPINE Korea)</title>
+    <meta name="description" content="알파인(ALPINE) 제품 카탈로그, 매뉴얼 등 제품 관련 자료를 다운로드하세요.">
+    <meta property="og:title" content="제품 자료실 | 알파인 코리아(ALPINE Korea)">
+    <meta property="og:description" content="알파인(ALPINE) 제품 카탈로그, 매뉴얼 등 제품 관련 자료를 다운로드하세요.">
     <meta property="og:image" content="https://www.alpine-korea.co.kr/assets/images/alpine_logo.png">
     <meta property="og:url" content="https://www.alpine-korea.co.kr/support/product.html">
     <meta property="og:type" content="website">
@@ -186,19 +186,19 @@
                 <ul class="nav-menu">
                     <li><a href="../pages/about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
                     <li class="dropdown">
-                        <a href="../index.html" class="nav-link" data-i18n="nav_products">?�품?�개</a>
+                        <a href="../index.html" class="nav-link" data-i18n="nav_products">제품소개</a>
                     </li>
                     <li>
-                        <a href="../pages/dealers.html" class="nav-link" data-i18n="nav_dealers">?�국 ?�리점 목록</a>
+                        <a href="../pages/dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link active" data-i18n="nav_support">고객지??/a>
+                        <a href="#" class="nav-link active" data-i18n="nav_support">고객지원</a>
                         <ul class="dropdown-content">
-                            <li><a href="product.html" class="dropdown-item" data-i18n="nav_support_product">?�품 ?�료??/a>
+                            <li><a href="product.html" class="dropdown-item" data-i18n="nav_support_product">제품 자료실</a>
                             </li>
-                            <li><a href="install.html" class="dropdown-item" data-i18n="nav_support_install">?�공?�료??/a>
+                            <li><a href="install.html" class="dropdown-item" data-i18n="nav_support_install">시공자료실</a>
                             </li>
-                            <li><a href="promo.html" class="dropdown-item" data-i18n="nav_support_promo">?�보?�료??/a></li>
+                            <li><a href="promo.html" class="dropdown-item" data-i18n="nav_support_promo">홍보자료실</a></li>
                         </ul>
                     </li>
                     <li class="social-icons">
@@ -237,7 +237,7 @@
     </header>
 
     <main class="container" style="padding-top: 100px;">
-        <h2 class="section-title">?�품 ?�료??(Product Archives)</h2>
+        <h2 class="section-title">제품 자료실 (Product Archives)</h2>
         <p class="section-desc">Download manuals, firmware, and other product-related documents.</p>
 
         <div id="contentArea">
@@ -245,7 +245,7 @@
             <div id="boardListSection" class="board-container">
                 <div class="board-header">
                     <h3>Documents List</h3>
-                    <button id="btnWrite" class="btn btn-primary" onclick="openWrite()" style="display:none;">글?�기
+                    <button id="btnWrite" class="btn btn-primary" onclick="openWrite()" style="display:none;">글쓰기
                         (Write)</button>
                 </div>
                 <table class="board-table">
@@ -265,24 +265,24 @@
 
             <!-- Write/Edit View -->
             <div id="boardWrite" class="board-container write-form">
-                <h3 id="writeModeTitle">??글 ?�성 (New Post)</h3>
+                <h3 id="writeModeTitle">새 글 작성 (New Post)</h3>
                 <div class="form-group">
-                    <label>?�목 (Title)</label>
+                    <label>제목 (Title)</label>
                     <input type="text" id="postTitle" class="form-control" placeholder="Enter title">
                 </div>
                 <div class="form-group">
-                    <label>?�용 (Content)</label>
+                    <label>내용 (Content)</label>
                     <textarea id="postContent" class="form-control" rows="10" placeholder="Enter content"></textarea>
                 </div>
                 <!-- Optional Image for Products too? Usually needed. -->
                 <div class="form-group">
-                    <label>?�???��?지 (Main Image)</label>
+                    <label>대표 이미지 (Main Image)</label>
                     <input type="file" onchange="handleFile(this, 'postImage')">
                     <input type="text" id="postImage" class="form-control" readonly placeholder="assets/images/..."
                         style="margin-top:5px; background:#f9f9f9;">
                 </div>
                 <div class="form-group">
-                    <label>첨�??�일 (Attachments - Max 5)</label>
+                    <label>첨부파일 (Attachments - Max 5)</label>
                     <div class="file-list">
                         <input type="file" onchange="handleFile(this, 'file1')"><input type="hidden" id="fileData1">
                         <input type="file" onchange="handleFile(this, 'file2')"><input type="hidden" id="fileData2">
@@ -293,7 +293,7 @@
                 </div>
                 <div style="text-align: right; margin-top:20px;">
                     <button class="btn btn-secondary" onclick="cancelWrite()">취소</button>
-                    <button class="btn btn-primary" onclick="savePost()">?�??(Save)</button>
+                    <button class="btn btn-primary" onclick="savePost()">저장 (Save)</button>
                 </div>
             </div>
 
@@ -311,15 +311,15 @@
                 <div id="viewContent" class="view-content">Content</div>
 
                 <div id="viewFiles" class="view-files" style="display:none;">
-                    <h4>첨�??�일</h4>
+                    <h4>첨부파일</h4>
                     <div id="fileLinks"></div>
                 </div>
 
                 <div style="text-align: right; margin-top:30px; border-top:1px solid #eee; padding-top:20px;">
-                    <button id="btnEdit" class="btn btn-warning" onclick="editPost()" style="display:none;">?�정</button>
+                    <button id="btnEdit" class="btn btn-warning" onclick="editPost()" style="display:none;">수정</button>
                     <button id="btnDelete" class="btn btn-danger" onclick="deleteCurrentPost()"
-                        style="display:none;">??��</button>
-                    <button class="btn btn-secondary" onclick="closeView()">목록?�로</button>
+                        style="display:none;">삭제</button>
+                    <button class="btn btn-secondary" onclick="closeView()">목록으로</button>
                 </div>
             </div>
         </div>
@@ -328,11 +328,11 @@
         <div id="visitLogSection" class="board-container"
             style="display:none; margin-top: 50px; border-top: 2px solid #333;">
             <div class="board-header">
-                <h3>?�� ?�리점 방문 기록 (Visit Log) - Admin Only</h3>
-                <button class="btn btn-secondary btn-sm" onclick="clearVisitLog()">로그 초기??/button>
+                <h3>📢 대리점 방문 기록 (Visit Log) - Admin Only</h3>
+                <button class="btn btn-secondary btn-sm" onclick="clearVisitLog()">로그 초기화</button>
             </div>
             <div style="margin-bottom: 12px;">
-                <input type="text" id="visitLogSearch" placeholder="?�리점�??�는 ?�이?�로 검??
+                <input type="text" id="visitLogSearch" placeholder="대리점명 또는 아이디로 검색"
                     oninput="renderVisitLog(1)"
                     style="width: 100%; max-width: 320px; padding: 8px 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 0.9rem; box-sizing: border-box;">
             </div>
@@ -366,7 +366,7 @@
     <script src="../js/auth.js?v=20260307"></script>
     <script src="../js/i18n.js?v=20260211"></script>
     <script>
-        document.write('<script src="../js/support-product-data.js?v=20260819"><\/script>');
+        document.write('<script src="../js/support-product-data.js?v=20260721"><\/script>');
     </script>
     <script src="../js/github-client.js?v=202602162250"></script>
     <script src="../js/admin-data-manager.js"></script>
@@ -440,7 +440,7 @@
 
             // Ensure contentArea is visible (renderVisitLog might have hidden it)
             if (document.getElementById('contentArea')) document.getElementById('contentArea').style.display = 'block';
-            if (document.querySelector('.section-title')) document.querySelector('.section-title').innerText = '?�품 ?�료??(Product Archives)';
+            if (document.querySelector('.section-title')) document.querySelector('.section-title').innerText = '제품 자료실 (Product Archives)';
             if (document.querySelector('.section-desc')) document.querySelector('.section-desc').style.display = 'block';
         }
 
@@ -459,7 +459,7 @@
                 // Exclusive View
                 logSection.style.display = 'block';
                 if (document.getElementById('contentArea')) document.getElementById('contentArea').style.display = 'none';
-                if (document.querySelector('.section-title')) document.querySelector('.section-title').innerText = '?�리점 방문 기록 (Visit Log)';
+                if (document.querySelector('.section-title')) document.querySelector('.section-title').innerText = '대리점 방문 기록 (Visit Log)';
                 if (document.querySelector('.section-desc')) document.querySelector('.section-desc').style.display = 'none';
                 window.scrollTo(0, 0);
             } else {
@@ -521,8 +521,8 @@
             tbody.innerHTML = '';
             if (paginatedLogs.length === 0) {
                 tbody.innerHTML = keyword
-                    ? '<tr><td colspan="4" style="text-align:center;">검??결과가 ?�습?�다.</td></tr>'
-                    : '<tr><td colspan="4" style="text-align:center;">기록???�습?�다. (GitHub?�정 ?�인 ?�요)</td></tr>';
+                    ? '<tr><td colspan="4" style="text-align:center;">검색 결과가 없습니다.</td></tr>'
+                    : '<tr><td colspan="4" style="text-align:center;">기록이 없습니다. (GitHub설정 확인 필요)</td></tr>';
                 // Remove pagination if exists
                 const pDiv = document.getElementById('visitLogPagination');
                 if (pDiv) pDiv.innerHTML = '';
@@ -571,7 +571,7 @@
         }
 
         async function clearVisitLog() {
-            if (!confirm('방문 기록???�말 초기?�하?�겠?�니�? (?�버 ?�이????��)')) return;
+            if (!confirm('방문 기록을 정말 초기화하시겠습니까? (서버 데이터 삭제)')) return;
 
             // Clear Supabase Data
             try {
@@ -589,7 +589,7 @@
                 }
             } catch (e) {
                 console.error('[Supabase] Clear Error:', e.message);
-                alert('DB 초기???�패 (Supabase): ' + e.message + '\\n\\n로컬 ?�이?�만 초기?�합?�다.');
+                alert('DB 초기화 실패 (Supabase): ' + e.message + '\\n\\n로컬 데이터만 초기화합니다.');
             }
 
             // Fallback clear local storage
@@ -609,7 +609,7 @@
             }
 
             renderVisitLog(1);
-            alert('방문 기록??초기?�되?�습?�다.');
+            alert('방문 기록이 초기화되었습니다.');
         }
 
         const BOARD_ITEMS_PER_PAGE = 20;
@@ -639,7 +639,7 @@
                     <td>${displayNum}</td>
                     <td><a href="./product/${post.id}/" class="board-title">${post.title}</a></td>
                     <td>${post.date}</td>
-                    <td>${hasAttach ? '?��' : ''}</td>
+                    <td>${hasAttach ? '💾' : ''}</td>
                 `;
                 tbody.appendChild(tr);
             });
@@ -724,7 +724,7 @@
                         filePath = '../../' + filePath;
                     }
                     a.href = filePath;
-                    a.textContent = `?�� ${f.name}`;
+                    a.textContent = `💾 ${f.name}`;
                     a.className = 'file-link';
                     a.setAttribute('target', '_blank');
                     a.setAttribute('rel', 'noopener noreferrer');
@@ -745,7 +745,7 @@
             }
             // Ensure content area is visible (if previously hidden by exclusive exclusive)
             document.getElementById('contentArea').style.display = 'block';
-            document.querySelector('.section-title').innerText = '?�품 ?�료??(Product Archives)';
+            document.querySelector('.section-title').innerText = '제품 자료실 (Product Archives)';
             document.querySelector('.section-desc').style.display = 'block';
             window.scrollTo(0, 0);
         }
@@ -758,7 +758,7 @@
             if (auth.getRole() !== 'admin') return;
             isEditMode = false;
             currentPostId = null;
-            document.getElementById('writeModeTitle').innerText = "??글 ?�성 (New Post)";
+            document.getElementById('writeModeTitle').innerText = "새 글 작성 (New Post)";
 
             // Clear Form
             document.getElementById('postTitle').value = '';
@@ -777,7 +777,7 @@
             if (!post) return;
 
             isEditMode = true;
-            document.getElementById('writeModeTitle').innerText = "글 ?�정 (Edit Post)";
+            document.getElementById('writeModeTitle').innerText = "글 수정 (Edit Post)";
 
             // Fill Form
             document.getElementById('postTitle').value = post.title;
@@ -817,7 +817,7 @@
 
                 const sanitizeFilename = (name) => {
                     // Allow Korean, English, numbers, dots, underscores, dashes
-                    return name.replace(/[^a-zA-Z0-9가-??_-]/g, '_');
+                    return name.replace(/[^a-zA-Z0-9가-힣._-]/g, '_');
                 };
 
                 // 1. Upload Main Image
@@ -843,7 +843,7 @@
                             }
                         }
                     } else {
-                        alert('GitHub ?�정???�어?��? ?�아 ?��?지�??�로?�할 ???�습?�다.\nPartner Zone > Github Settings?�서 ?�정???�인?�주?�요.');
+                        alert('GitHub 설정이 되어있지 않아 이미지를 업로드할 수 없습니다.\nPartner Zone > Github Settings에서 설정을 확인해주세요.');
                     }
                 }
 
@@ -871,7 +871,7 @@
                                 }
                             }
                         } else {
-                            alert('GitHub ?�정???�어?��? ?�아 ?�일???�로?�할 ???�습?�다.\nPartner Zone > Github Settings?�서 ?�정???�인?�주?�요.');
+                            alert('GitHub 설정이 되어있지 않아 파일을 업로드할 수 없습니다.\nPartner Zone > Github Settings에서 설정을 확인해주세요.');
                         }
                         // Use original name for display, but safe path
                         files.push({ name: file.name, path: finalPath });

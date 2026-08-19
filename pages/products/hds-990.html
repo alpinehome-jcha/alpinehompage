@@ -7,7 +7,7 @@
     
     <!-- SEO_META_TAGS -->
     <meta name="description" content="Hi-Res Digital Media Player">
-    <meta property="og:title" content="HDS-990 | ?�파??코리??>
+    <meta property="og:title" content="HDS-990 | 알파인 코리아">
     <meta property="og:description" content="Hi-Res Digital Media Player">
     <meta property="og:image" content="https://www.alpine-korea.co.kr/assets/images/AST-990.jpg">
     <meta property="og:url" content="https://www.alpine-korea.co.kr/pages/products/hds-990.html">
@@ -17,7 +17,7 @@
         window.STATIC_PRODUCT_ID = 1770270859568;
     </script>
     
-    <title>HDS-990 | ?�파??ALPINE Korea)</title>
+    <title>HDS-990 | 알파인(ALPINE Korea)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -149,22 +149,22 @@
                 <ul class="nav-menu">
                     <li><a href="../about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
                     <li class="dropdown">
-                        <a href="../../../index.html" class="nav-link active" data-i18n="nav_products">?�품?�개</a>
+                        <a href="../../../index.html" class="nav-link active" data-i18n="nav_products">제품소개</a>
                         <!-- Submenu logic could go here if needed -->
                     </li>
                     <li>
-                        <a href="../dealers.html" class="nav-link" data-i18n="nav_dealers">?�국 ?�리점 목록</a>
+                        <a href="../dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link" data-i18n="nav_support">고객지??/a>
+                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
                         <ul class="dropdown-content">
                             <li><a href="../../../support/product.html" class="dropdown-item"
-                                    data-i18n="nav_support_product">?�품
-                                    ?�료??/a></li>
+                                    data-i18n="nav_support_product">제품
+                                    자료실</a></li>
                             <li><a href="../../../support/install.html" class="dropdown-item"
-                                    data-i18n="nav_support_install">?�공?�료??/a></li>
+                                    data-i18n="nav_support_install">시공자료실</a></li>
                             <li><a href="../../../support/promo.html" class="dropdown-item"
-                                    data-i18n="nav_support_promo">?�보?�료??/a></li>
+                                    data-i18n="nav_support_promo">홍보자료실</a></li>
                         </ul>
                     </li>
                     <li class="social-icons">
@@ -210,7 +210,7 @@
             <button class="filter-btn" onclick="goToCategory('DSP/AMP')">DSP/AMP</button>
             <button class="filter-btn" onclick="goToCategory('Speakers')">Speakers</button>
             <button class="filter-btn" onclick="goToCategory('PnP Cable')">PnP Cable</button>
-            <button class="filter-btn" onclick="goToCategory('기�??�품')">기�??�품</button>
+            <button class="filter-btn" onclick="goToCategory('기타상품')">기타상품</button>
             <button class="filter-btn" onclick="goToCategory('Alpine OEM Fit')">Alpine OEM Fit</button>
             <button class="filter-btn" onclick="goToCategory('ALPINESTYLE')">ALPINESTYLE</button>
         </div>
@@ -218,11 +218,11 @@
         <!-- Sub Filters for PnP Cable (Hidden by default) -->
         <div id="subFilterContainer" class="sub-filters"
             style="display: none; justify-content: center; gap: 10px; margin-bottom: 40px; margin-top: -20px;">
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - �?���?)">�?���?PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - ?�일�?)">?�일�?PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기�??�입�?)">기�??�입�?PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 국산차')">국산차 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 독일차')">독일차 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기타수입차')">기타수입차 PnP</button>
             <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - DSP')">DSP PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기�?')">기�? PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기타')">기타 PnP</button>
         </div>
 
         <!-- Add Styles for Active State -->
@@ -272,9 +272,9 @@
                 // Identify Parent Category
                 if (currentCat.startsWith('PnP Cable')) {
                     mainCategory = 'PnP Cable';
-                    subCategory = currentCat; // e.g., "PnP Cable - �?���?(Domestic)" or just "PnP Cable - �?���?
+                    subCategory = currentCat; // e.g., "PnP Cable - 국산차 (Domestic)" or just "PnP Cable - 국산차"
                 } else if (currentCat === 'Others') {
-                    mainCategory = '기�??�품'; // Button text
+                    mainCategory = '기타상품'; // Button text
                 }
 
                 // Highlight Main Button
@@ -309,24 +309,24 @@
 
                         const subButtons = document.querySelectorAll('.sub-filter-btn');
                         subButtons.forEach(subBtn => {
-                            // subBtn text: "�?���?PnP" -> we need to map to category "PnP Cable - �?���?
+                            // subBtn text: "국산차 PnP" -> we need to map to category "PnP Cable - 국산차"
                             // active logic: check if currentCat contains the keyword?
-                            // Data category: "PnP Cable - �?���?(Domestic)"
-                            // Button text: "�?���?PnP"
+                            // Data category: "PnP Cable - 국산차 (Domestic)"
+                            // Button text: "국산차 PnP"
 
                             const btnLabel = subBtn.innerText;
                             let keyword = '';
-                            if (btnLabel.includes('�?���?)) keyword = '�?���?;
-                            else if (btnLabel.includes('?�일�?)) keyword = '?�일�?;
-                            else if (btnLabel.includes('기�??�입�?)) keyword = '기�??�입�?; // or Other Imported
+                            if (btnLabel.includes('국산차')) keyword = '국산차';
+                            else if (btnLabel.includes('독일차')) keyword = '독일차';
+                            else if (btnLabel.includes('기타수입차')) keyword = '기타수입차'; // or Other Imported
                             else if (btnLabel.includes('DSP')) keyword = 'DSP';
-                            else if (btnLabel.includes('기�?')) keyword = '기�?';
+                            else if (btnLabel.includes('기타')) keyword = '기타';
 
                             let match = false;
                             if (keyword) {
-                                if (keyword === '기�?') {
-                                    // "기�?" matches "PnP Cable - 기�?" but NOT "PnP Cable - 기�??�입�?
-                                    if (currentCat.includes('기�?') && !currentCat.includes('기�??�입�?)) {
+                                if (keyword === '기타') {
+                                    // "기타" matches "PnP Cable - 기타" but NOT "PnP Cable - 기타수입차"
+                                    if (currentCat.includes('기타') && !currentCat.includes('기타수입차')) {
                                         match = true;
                                     }
                                 } else {
@@ -356,10 +356,10 @@
                         <h1 class="detail-title">HDS-990</h1>
                         <p class="detail-summary">Hi-Res Digital Media Player</p>
                         <div class="detail-price">
-                            ??,990,000 
+                            ₩2,990,000 
                             
                         </div>
-                        <p class="detail-summary">?�착공임 별도</p>
+                        <p class="detail-summary">장착공임 별도</p>
                         <div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed #ddd;"><strong style="display: block; margin-bottom: 10px; color: #555;">Downloads:</strong><div style="display: flex; flex-direction: column; gap: 8px;">
                         <a href="../../assets/files/HDS-990-Manual.pdf" download target="_blank" style="display: flex; align-items: center; font-size: 0.95rem; text-decoration: none; color: #007bff; transition: color 0.2s;">
                             <span style="margin-right: 8px;">
@@ -393,8 +393,9 @@ Wireless Audio Playback: AAC, aptX, aptX HD, LDAC, SBC</p>
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">?�별???�운??
-50???�상 ?�리미엄 ?�동�??�디???�품???�작?????�문 지?�과 Ultra Hi-Res Alpine F#1Status ?�스??기술로�????��? ?��??�어�?�??�자?�을 ?�용??Alpine Status ?�스?��? ?�월???�닝�?최상???�운???�생???�한 ?��???빌드 ?�질???�징?�로 ?�니?? �?구성 ?�소???�급 최고???�디???�능???�해 최고 ?�질???�료�??�작?�으�??�택?�여 ?�성???�스?�으�??�용??경우 192kHz/24bit ?�생???�성?????�습?�다.</p>
+                                <p class="detail-content-text">특별한 사운드
+
+50년 이상 프리미엄 자동차 오디오 제품을 제작해 온 전문 지식과 Ultra Hi-Res Alpine F#1Status 시스템 기술로부터 얻은 엔지니어링 및 디자인을 활용한 Alpine Status 시스템은 탁월한 튜닝과 최상의 사운드 재생을 위한 풍부한 빌드 품질을 특징으로 합니다. 각 구성 요소는 동급 최고의 오디오 성능을 위해 최고 품질의 재료를 수작업으로 선택하여 완성된 시스템으로 사용할 경우 192kHz/24bit 재생을 달성할 수 있습니다.</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -402,9 +403,9 @@ Wireless Audio Playback: AAC, aptX, aptX HD, LDAC, SBC</p>
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">믿을 ???�는 리얼리즘
+                                <p class="detail-content-text">믿을 수 없는 리얼리즘
 
-?�이?�스 ?�디?�는 복잡???��? ?�항�??�?�운 ?�질�??�악???�생?�으로써 모든 ?�래???�재?�을 최�???발휘?�니?? 그러???�러???��????�악 ?�능?� ?�도???�이?�스 ?�양??지?�할 ???�는 ?�스가 ?�요?�니?? HDS-990 ?�이?�스 ?��???미디???�레?�어??직접 USB 케?�블 ?�결???�해 192kHz/24bit??최고 ?�질???�생???�성?�며, 복잡???��? ?�항�??�?�운 ?�실?�으�??�악???�생?�으로써 모든 ?�래???�재?�을 발휘?�니??</p>
+하이레스 오디오는 복잡한 세부 사항과 놀라운 품질로 음악을 재생함으로써 모든 노래의 잠재력을 최대한 발휘합니다. 그러나 이러한 수준의 음악 성능은 의도된 하이레스 사양을 지원할 수 있는 소스가 필요합니다. HDS-990 하이레스 디지털 미디어 플레이어는 직접 USB 케이블 연결을 통해 192kHz/24bit의 최고 품질의 재생을 달성하며, 복잡한 세부 사항과 놀라운 사실성으로 음악을 재생함으로써 모든 노래의 잠재력을 발휘합니다.</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -412,9 +413,9 @@ Wireless Audio Playback: AAC, aptX, aptX HD, LDAC, SBC</p>
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">?�연???�생
+                                <p class="detail-content-text">유연한 재생
 
-HDS-990?�는 ?�연???�생 ?�션???�해 MP3?�서 Hi-RES까�? 광범?�한 ?��????�악 ?�일 ?�식???�생?????�는 ?�중 ?��????�스 ?�력???�습?�다. USB?�결?�나 USB�??�해 ?�마?�폰?�나 ?�?�량 ?�?�장치�? ?�결?�거??Bluetooth �?LDAC?�결??무선?�로 ?�결?????�습?�다. 고해?�도 ?�악?� Apple Music, Tidal, Amazon Music HD?�과 같�? ?�기 ?�는 고해?�도 ?�트리밍 ?�비?�에???�세?�하거나 HD Track�?같�? ?�랫?�에??구입?�고 ?�운로드 ?????�습?�다.</p>
+HDS-990에는 유연한 재생 옵션을 위해 MP3에서 Hi-RES까지 광범위한 디지털 음악 파일 형식을 재생할 수 있는 다중 디지털 소스 입력이 있습니다. USB연결이나 USB를 통해 스마트폰이나 대용량 저장장치를 연결하거나 Bluetooth 및 LDAC연결을 무선으로 연결할 수 있습니다. 고해상도 음악은 Apple Music, Tidal, Amazon Music HD등과 같은 인기 있는 고해상도 스트리밍 서비스에서 엑세스하거나 HD Track과 같은 플랫폼에서 구입하고 다운로드 할 수 있습니다.</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -424,7 +425,7 @@ HDS-990?�는 ?�연???�생 ?�션???�해 MP3?�서 Hi-RES까�? 광범?�한 ?��????�
                             <div class="detail-content-item">
                                 <p class="detail-content-text">ICONIC DESIGN
 
-HDS-990?� ?�양???�운??�??�악 컨트롤에 ?�세?�할 ???�는 6개의 버튼??갖춘 커맨???�닛�??�래 ?�보�??�공?�는 고화�??�스?�레?��? 갖추�??�습?�다. ???�치???�?�보?�에 ?�리?�게 ?�착?????�으�??�립???�악 ?�스�??�용?�거??RCA ?�는 4채널 고급 ?�력???�해 공장 ?�는 ?�프?�마�??�드 ?�닛�??�합?�어 ?��????�악 ?�스�??�게 ?�환?????�습?�다.</p>
+HDS-990은 다양한 사운드 및 음악 컨트롤에 엑세스할 수 있는 6개의 버튼을 갖춘 커맨더 유닛과 노래 정보를 제공하는 고화질 디스플레이를 갖추고 있습니다. 이 장치는 대시보드에 편리하게 장착할 수 있으며 독립형 음악 소스로 사용되거나 RCA 또는 4채널 고급 입력을 통해 공장 또는 애프터마켓 헤드 유닛과 통합되어 디지털 음악 소스를 쉽게 전환할 수 있습니다.</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -432,9 +433,9 @@ HDS-990?� ?�양???�운??�??�악 컨트롤에 ?�세?�할 ???�는 6개의 버튼?
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">?�연???�치
+                                <p class="detail-content-text">유연한 설치
 
-HDS-990?�는 좌석?�래 ?�는 ?�연???�치 ?�션???�해 ?�겨�??�른 공간???�치?????�는 별도??박스가 ?�함?�어 ?�습?�다. 박스??모든 ?�형???�운???�스?�에 ?�리?�게 ?�합?????�는 ?�양???�력 �?출력 기능??갖추�??�습?�다.</p>
+HDS-990에는 좌석아래 또는 유연한 설치 옵션을 위해 숨겨진 다른 공간에 설치할 수 있는 별도의 박스가 포함되어 있습니다. 박스는 모든 유형의 사운드 시스템에 편리하게 통합할 수 있는 다양한 입력 및 출력 기능을 갖추고 있습니다.</p>
                             </div>
                 
                 </div>
@@ -451,11 +452,11 @@ HDS-990?�는 좌석?�래 ?�는 ?�연???�치 ?�션???�해 ?�겨�??�른 공간???
                     <img src="../../assets/images/jch_logo.png" alt="JCH Auto" style="height: 30px;" id="footer-logo-img">
                 </div>
                 <p class="footer-text">
-                    <strong data-i18n="footer_ceo">?�??| ?�정??/strong><br>
-                    <span data-i18n="footer_address">경기???�양???�안�??�에?�로 136, A??1401???�계?? 금정??차SKV1?�??</span><br>
+                    <strong data-i18n="footer_ceo">대표 | 이정현</strong><br>
+                    <span data-i18n="footer_address">경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)</span><br>
                     <span data-i18n="footer_contact">TEL | 1670-7425 FAX | 031-477-7220</span><br>
-                    <span data-i18n="footer_hours">?�담?�간 | ??�?09:00~17:00 (????공휴???�무)</span><br>
-                    <span data-i18n="footer_biz_info">?�업?�등록번??| 619-81-07276 개인?�보보호책임??| ?�길??/span>
+                    <span data-i18n="footer_hours">상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)</span><br>
+                    <span data-i18n="footer_biz_info">사업자등록번호 | 619-81-07276 개인정보보호책임자 | 한길전</span>
                 </p>
             </div>
             <div class="footer-section footer-links">
@@ -466,7 +467,7 @@ HDS-990?�는 좌석?�래 ?�는 ?�연???�치 ?�션???�해 ?�겨�??�른 공간???
                     <li><a href="../../index.html?category=DSP%2FAMP">DSP/AMP</a></li>
                     <li><a href="../../index.html?category=Speakers">Speakers</a></li>
                     <li><a href="../../index.html?category=PnP%20Cable">PnP Cable</a></li>
-                    <li><a href="../../index.html?category=기�??�품" data-i18n="filter_others">기�??�품</a></li>
+                    <li><a href="../../index.html?category=기타상품" data-i18n="filter_others">기타상품</a></li>
                     <li><a href="../../index.html?category=Alpine%20OEM%20Fit">Alpine OEM Fit</a></li>
                     <li><a href="../../index.html?category=ALPINESTYLE">ALPINESTYLE</a></li>
                 </ul>
@@ -503,35 +504,35 @@ HDS-990?�는 좌석?�래 ?�는 ?�연???�치 ?�션???�해 ?�겨�??�른 공간???
 
     <script src="../../js/auth.js?v=20260724b"></script>
     <script>
-        document.write('<script src="../../js/product-data.js?v=20260819"><\/script>');
+        document.write('<script src="../../js/product-data.js?v=20260721"><\/script>');
     </script>
     <script>
         const translations = {
             ko: {
-                nav_about: '?�사?�개(About)',
-                nav_products: '?�품?�개',
-                nav_dealers: '?�국 ?�리점 목록',
-                nav_support: '고객지??,
-                nav_support_product: '?�품 ?�료??,
-                nav_support_install: '?�공?�료??,
-                nav_support_promo: '?�보?�료??,
-                nav_company: '?�사?�개',
-                footer_ceo: '?�??| ?�정??,
-                footer_address: '경기???�양???�안�??�에?�로 136, A??1401???�계?? 금정??차SKV1?�??',
+                nav_about: '회사소개(About)',
+                nav_products: '제품소개',
+                nav_dealers: '전국 대리점 목록',
+                nav_support: '고객지원',
+                nav_support_product: '제품 자료실',
+                nav_support_install: '시공자료실',
+                nav_support_promo: '홍보자료실',
+                nav_company: '회사소개',
+                footer_ceo: '대표 | 이정현',
+                footer_address: '경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)',
                 footer_contact: 'TEL | 1670-7425   FAX | 031-477-7220',
-                footer_hours: '?�담?�간 | ??�?09:00~17:00 (????공휴???�무)',
-                footer_biz_info: '?�업?�등록번??| 619-81-07276   개인?�보보호책임??| ?�길??,
-                footer_products: '?�품',
-                footer_support: '지??,
+                footer_hours: '상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)',
+                footer_biz_info: '사업자등록번호 | 619-81-07276   개인정보보호책임자 | 한길전',
+                footer_products: '제품',
+                footer_support: '지원',
                 footer_global: '글로벌',
-                footer_global_japan: '?�본',
-                footer_global_asia: '?�시??,
-                footer_global_australia: '?�주',
-                footer_global_europe: '?�럽',
+                footer_global_japan: '일본',
+                footer_global_asia: '아시아',
+                footer_global_australia: '호주',
+                footer_global_europe: '유럽',
                 footer_global_china: '중국',
-                footer_global_na: '북�?',
-                btn_view: '?�세??보기',
-                btn_back: '?�품 목록?�로 가�?
+                footer_global_na: '북미',
+                btn_view: '자세히 보기',
+                btn_back: '제품 목록으로 가기'
             },
             en: {
                 nav_about: 'About Us',
@@ -605,7 +606,7 @@ HDS-990?�는 좌석?�래 ?�는 ?�연???�치 ?�션???�해 ?�겨�??�른 공간???
             const isEnglish = lang === 'en';
             const priceDisplay = isEnglish ?
                 '$' + Math.round(product.price / 1400).toLocaleString() :
-                '?? + product.price.toLocaleString();
+                '₩' + product.price.toLocaleString();
 
             // Prepare detail content
             let blocksHTML = '';
@@ -676,7 +677,7 @@ HDS-990?�는 좌석?�래 ?�는 ?�연???�치 ?�션???�해 ?�겨�??�른 공간???
                                     <span style="margin-right: 8px;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                                     </span>
-                                    ?�터?�티�?매뉴??
+                                    인터렉티브 매뉴얼
                                 </a>
                             </div>
                         `;
@@ -701,7 +702,7 @@ HDS-990?�는 좌석?�래 ?�는 ?�연???�치 ?�션???�해 ?�겨�??�른 공간???
                         <span style="margin-right: 8px;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                         </span>
-                        ?�터?�티�?매뉴??
+                        인터렉티브 매뉴얼
                     </a>
                     <style>
                         .interactive-manual-btn:hover {
@@ -724,7 +725,7 @@ HDS-990?�는 좌석?�래 ?�는 ?�연???�치 ?�션???�해 ?�겨�??�른 공간???
                         <p class="detail-summary">${product.desc}</p>
                         <div class="detail-price">
                             ${priceDisplay} 
-                            ${product.soldOut ? '<span style="color: #d9534f; font-size: 1rem; margin-left: 10px;">(?�절 / SOLD OUT)</span>' : ''}
+                            ${product.soldOut ? '<span style="color: #d9534f; font-size: 1rem; margin-left: 10px;">(품절 / SOLD OUT)</span>' : ''}
                         </div>
                         <p class="detail-summary">${product.desc_bottom !== undefined ? product.desc_bottom : product.desc}</p>
                         ${attachmentsHTML}
@@ -734,7 +735,7 @@ HDS-990?�는 좌석?�래 ?�는 ?�연???�치 ?�션???�해 ?�겨�??�른 공간???
                 <div class="detail-content">
                     ${blocksHTML || `
                         <div style="text-align: center; color: #999; padding: 40px;">
-                            ${isEnglish ? 'Detailed information is not registered.' : '?�세 ?�보가 ?�록?��? ?�았?�니??'}
+                            ${isEnglish ? 'Detailed information is not registered.' : '상세 정보가 등록되지 않았습니다.'}
                         </div>
                     `}
                 </div>
@@ -777,10 +778,10 @@ HDS-990?�는 좌석?�래 ?�는 ?�연???�치 ?�션???�해 ?�겨�??�른 공간???
                         "@type": "Review",
                         "author": {
                             "@type": "Person",
-                            "name": "?�파?�고�?
+                            "name": "알파인고객"
                         },
                         "datePublished": new Date().toISOString().split('T')[0],
-                        "reviewBody": "최상???�운??경험???�사?�는 ?�루?�입?�다.",
+                        "reviewBody": "최상의 사운드 경험을 선사하는 솔루션입니다.",
                         "reviewRating": {
                             "@type": "Rating",
                             "ratingValue": "5",
@@ -804,13 +805,13 @@ HDS-990?�는 좌석?�래 ?�는 ?�연???�치 ?�션???�해 ?�겨�??�른 공간???
                     {
                         "@type": "ListItem",
                         "position": 1,
-                        "name": "??,
+                        "name": "홈",
                         "item": "https://www.alpine-korea.co.kr/"
                     },
                     {
                         "@type": "ListItem",
                         "position": 2,
-                        "name": "?�품",
+                        "name": "제품",
                         "item": "https://www.alpine-korea.co.kr/index.html"
                     },
                     {

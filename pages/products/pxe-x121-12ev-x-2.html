@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO_META_TAGS -->
-    <meta name="description" content="24CH DSP Amplifier _ 브릿지 케?�블 ?�함">
-    <meta property="og:title" content="PXE-X121-12EV x 2 | ?�파??코리??>
-    <meta property="og:description" content="24CH DSP Amplifier _ 브릿지 케?�블 ?�함">
+    <meta name="description" content="24CH DSP Amplifier _ 브릿지 케이블 포함">
+    <meta property="og:title" content="PXE-X121-12EV x 2 | 알파인 코리아">
+    <meta property="og:description" content="24CH DSP Amplifier _ 브릿지 케이블 포함">
     <meta property="og:image" content="https://www.alpine-korea.co.kr/assets/images/DSP-12EVx2.jpg">
     <meta property="og:url" content="https://www.alpine-korea.co.kr/pages/products/pxe-x121-12ev-x-2.html">
     <meta property="og:type" content="product">
@@ -17,7 +17,7 @@
         window.STATIC_PRODUCT_ID = 1770281847783;
     </script>
     
-    <title>PXE-X121-12EV x 2 | ?�파??ALPINE Korea)</title>
+    <title>PXE-X121-12EV x 2 | 알파인(ALPINE Korea)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -149,22 +149,22 @@
                 <ul class="nav-menu">
                     <li><a href="../about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
                     <li class="dropdown">
-                        <a href="../../../index.html" class="nav-link active" data-i18n="nav_products">?�품?�개</a>
+                        <a href="../../../index.html" class="nav-link active" data-i18n="nav_products">제품소개</a>
                         <!-- Submenu logic could go here if needed -->
                     </li>
                     <li>
-                        <a href="../dealers.html" class="nav-link" data-i18n="nav_dealers">?�국 ?�리점 목록</a>
+                        <a href="../dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link" data-i18n="nav_support">고객지??/a>
+                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
                         <ul class="dropdown-content">
                             <li><a href="../../../support/product.html" class="dropdown-item"
-                                    data-i18n="nav_support_product">?�품
-                                    ?�료??/a></li>
+                                    data-i18n="nav_support_product">제품
+                                    자료실</a></li>
                             <li><a href="../../../support/install.html" class="dropdown-item"
-                                    data-i18n="nav_support_install">?�공?�료??/a></li>
+                                    data-i18n="nav_support_install">시공자료실</a></li>
                             <li><a href="../../../support/promo.html" class="dropdown-item"
-                                    data-i18n="nav_support_promo">?�보?�료??/a></li>
+                                    data-i18n="nav_support_promo">홍보자료실</a></li>
                         </ul>
                     </li>
                     <li class="social-icons">
@@ -210,7 +210,7 @@
             <button class="filter-btn" onclick="goToCategory('DSP/AMP')">DSP/AMP</button>
             <button class="filter-btn" onclick="goToCategory('Speakers')">Speakers</button>
             <button class="filter-btn" onclick="goToCategory('PnP Cable')">PnP Cable</button>
-            <button class="filter-btn" onclick="goToCategory('기�??�품')">기�??�품</button>
+            <button class="filter-btn" onclick="goToCategory('기타상품')">기타상품</button>
             <button class="filter-btn" onclick="goToCategory('Alpine OEM Fit')">Alpine OEM Fit</button>
             <button class="filter-btn" onclick="goToCategory('ALPINESTYLE')">ALPINESTYLE</button>
         </div>
@@ -218,11 +218,11 @@
         <!-- Sub Filters for PnP Cable (Hidden by default) -->
         <div id="subFilterContainer" class="sub-filters"
             style="display: none; justify-content: center; gap: 10px; margin-bottom: 40px; margin-top: -20px;">
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - �?���?)">�?���?PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - ?�일�?)">?�일�?PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기�??�입�?)">기�??�입�?PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 국산차')">국산차 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 독일차')">독일차 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기타수입차')">기타수입차 PnP</button>
             <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - DSP')">DSP PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기�?')">기�? PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기타')">기타 PnP</button>
         </div>
 
         <!-- Add Styles for Active State -->
@@ -272,9 +272,9 @@
                 // Identify Parent Category
                 if (currentCat.startsWith('PnP Cable')) {
                     mainCategory = 'PnP Cable';
-                    subCategory = currentCat; // e.g., "PnP Cable - �?���?(Domestic)" or just "PnP Cable - �?���?
+                    subCategory = currentCat; // e.g., "PnP Cable - 국산차 (Domestic)" or just "PnP Cable - 국산차"
                 } else if (currentCat === 'Others') {
-                    mainCategory = '기�??�품'; // Button text
+                    mainCategory = '기타상품'; // Button text
                 }
 
                 // Highlight Main Button
@@ -309,24 +309,24 @@
 
                         const subButtons = document.querySelectorAll('.sub-filter-btn');
                         subButtons.forEach(subBtn => {
-                            // subBtn text: "�?���?PnP" -> we need to map to category "PnP Cable - �?���?
+                            // subBtn text: "국산차 PnP" -> we need to map to category "PnP Cable - 국산차"
                             // active logic: check if currentCat contains the keyword?
-                            // Data category: "PnP Cable - �?���?(Domestic)"
-                            // Button text: "�?���?PnP"
+                            // Data category: "PnP Cable - 국산차 (Domestic)"
+                            // Button text: "국산차 PnP"
 
                             const btnLabel = subBtn.innerText;
                             let keyword = '';
-                            if (btnLabel.includes('�?���?)) keyword = '�?���?;
-                            else if (btnLabel.includes('?�일�?)) keyword = '?�일�?;
-                            else if (btnLabel.includes('기�??�입�?)) keyword = '기�??�입�?; // or Other Imported
+                            if (btnLabel.includes('국산차')) keyword = '국산차';
+                            else if (btnLabel.includes('독일차')) keyword = '독일차';
+                            else if (btnLabel.includes('기타수입차')) keyword = '기타수입차'; // or Other Imported
                             else if (btnLabel.includes('DSP')) keyword = 'DSP';
-                            else if (btnLabel.includes('기�?')) keyword = '기�?';
+                            else if (btnLabel.includes('기타')) keyword = '기타';
 
                             let match = false;
                             if (keyword) {
-                                if (keyword === '기�?') {
-                                    // "기�?" matches "PnP Cable - 기�?" but NOT "PnP Cable - 기�??�입�?
-                                    if (currentCat.includes('기�?') && !currentCat.includes('기�??�입�?)) {
+                                if (keyword === '기타') {
+                                    // "기타" matches "PnP Cable - 기타" but NOT "PnP Cable - 기타수입차"
+                                    if (currentCat.includes('기타') && !currentCat.includes('기타수입차')) {
                                         match = true;
                                     }
                                 } else {
@@ -354,12 +354,12 @@
                     <div class="detail-info">
                         <div class="detail-category">DSP/AMP</div>
                         <h1 class="detail-title">PXE-X121-12EV x 2</h1>
-                        <p class="detail-summary">24CH DSP Amplifier _ 브릿지 케?�블 ?�함</p>
+                        <p class="detail-summary">24CH DSP Amplifier _ 브릿지 케이블 포함</p>
                         <div class="detail-price">
-                            ??,750,000 
+                            ₩4,750,000 
                             
                         </div>
-                        <p class="detail-summary">?�착 공임 별도/40만원 부??/p>
+                        <p class="detail-summary">장착 공임 별도/40만원 부터</p>
                         <div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed #ddd;"><strong style="display: block; margin-bottom: 10px; color: #555;">Downloads:</strong><div style="display: flex; flex-direction: column; gap: 8px;">
                         <a href="../../assets/files/PXE-X121-12EV.pdf" download target="_blank" style="display: flex; align-items: center; font-size: 0.95rem; text-decoration: none; color: #007bff; transition: color 0.2s;">
                             <span style="margin-right: 8px;">
@@ -401,42 +401,42 @@ Matrix input summing</p>
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">?�파??Alpine)??PXE-X121-12EV�?2�??�결?�여 24채널 ?�스?�을 구성?�는 것�?, ?�존?�는 카오?�오 ?�닝 �?가???�려?�고 ?�도?�인 '?�트???�이?�드' ?�역??발을 ?�이??것입?�다.
+                                <p class="detail-content-text">알파인(Alpine)의 PXE-X121-12EV를 2개 연결하여 24채널 시스템을 구성하는 것은, 현존하는 카오디오 튜닝 중 가장 화려하고 압도적인 '울트라 하이엔드' 영역에 발을 들이는 것입니다.
 
-?�순???�리가 커�???것을 ?�어, 차량 ?�의 모든 ?�피커�? ?�나?�나 ?�립?�으�??�벽?�게 ?�제?�겠?�는 ?��?가 ?�긴 구성?�죠. ???�스?�의 ?�징�?가치�? ?�기 ?�게 ?�명???�릴게요.
+단순히 소리가 커지는 것을 넘어, 차량 내의 모든 스피커를 하나하나 독립적으로 완벽하게 통제하겠다는 의지가 담긴 구성이죠. 이 시스템의 특징과 가치를 알기 쉽게 설명해 드릴게요.
 
-1. 24채널 ?�스?�의 ?�심: "?�??링크(Dual Link)"
-PXE-X121-12EV???�계 ?�계부??**2?� ?�결(Linking)**??고려?�여 만들?�졌?�니?? ?�용 링크 케?�블�???기기�??�결?�면 ?�음�?같�? 마법???�어?�니??
+1. 24채널 시스템의 핵심: "듀얼 링크(Dual Link)"
+PXE-X121-12EV는 설계 단계부터 **2대 연결(Linking)**을 고려하여 만들어졌습니다. 전용 링크 케이블로 두 기기를 연결하면 다음과 같은 마법이 일어납니다.
 
-?�스 공유 (Source Sharing): 마스??Master) 기기???�결??블루?�스, 광학(Optical), ?�축(Coaxial), USB ?�디???�호가 ?�레?�브(Slave) 기기�?무손??공유?�니?? ?�스 기기�??�로?�로 ?�결???�요가 ?�습?�다.
+소스 공유 (Source Sharing): 마스터(Master) 기기에 연결된 블루투스, 광학(Optical), 동축(Coaxial), USB 오디오 신호가 슬레이브(Slave) 기기로 무손실 공유됩니다. 소스 기기를 따로따로 연결할 필요가 없습니다.
 
-?�합 ?�어: 24개의 채널???�나???�스?�처??관리할 ???�습?�다. ?�력 매트�?�� ?�정???�기?�되?? 복잡???�채???�호 처리가 ?�씬 간결?�집?�다.
+통합 제어: 24개의 채널을 하나의 시스템처럼 관리할 수 있습니다. 입력 매트릭스 설정이 동기화되어, 복잡한 다채널 신호 처리가 훨씬 간결해집니다.
 
-?�벽???�립 ?�닝: 24�??�피�?각각???�???�립?�인 31밴드 EQ, ?�???�라?�먼?? ?�로?�오버�? ?�정?????�습?�다.
+완벽한 독립 튜닝: 24개 스피커 각각에 대해 독립적인 31밴드 EQ, 타임 얼라이먼트, 크로스오버를 설정할 수 있습니다.
 
-2. 진정??3D ?�라?�드 (Atmos�??�경) 구현
-최신 ?�리미엄 차량?��? ?�피커�? 20�??�상??경우가 많습?�다.
+2. 진정한 3D 서라운드 (Atmos급 환경) 구현
+최신 프리미엄 차량들은 스피커가 20개 이상인 경우가 많습니다.
 
-?�드?�이??천장) ?�피�? A?�러 ?�단???�이??Height) ?�피�? ?�좌???�라?�드까�? 모든 ?�닛???�립 ?�어?�려�?24채널???�수?�니?? ?�리가 ?�에???�래�? ?�에???�으�??�르???�체감을 ?�벽???�현?????�습?�다.
+헤드라이너(천장) 스피커, A필러 상단의 하이트(Height) 스피커, 뒷좌석 서라운드까지 모든 유닛을 독립 제어하려면 24채널이 필수입니다. 소리가 위에서 아래로, 뒤에서 앞으로 흐르는 입체감을 완벽히 재현할 수 있습니다.
 
-3. '1 ?�피�?= 1 채널' ?�칙???�현
-?�피�?배선??브릿지�?묶�? ?�고 모든 ?�라?�버???�용 채널???�당?�니??
+3. '1 스피커 = 1 채널' 원칙의 실현
+스피커 배선을 브릿지로 묶지 않고 모든 드라이버에 전용 채널을 할당합니다.
 
-?��? ?�해 �??�피커의 물리???�성??맞는 초정밀 커팅??가?�해?? 중복?�는 주파?�로 ?�한 지?�분한 ?�리(Phase Cancellation)�??�천 차단?�니??
+이를 통해 각 스피커의 물리적 특성에 맞는 초정밀 커팅이 가능해져, 중복되는 주파수로 인한 지저분한 소리(Phase Cancellation)를 원천 차단합니다.
 
-4. ?�도?�인 �?출력 (Total 1700W RMS ?�상)
-?�일 기기로는 부족할 ???�는 ?�너지�???배로 ?�보?�니?? ?�히 X121-12EV ?�유???�태거드 출력(Staggered Power) ?�계�?24채널�??�장?�면, ?�런??3-Way??물론 리어?� ?�브?�퍼까�? ?�치???�으�?밀?�줄 ???�습?�다.
+4. 압도적인 총 출력 (Total 1700W RMS 이상)
+단일 기기로는 부족할 수 있는 에너지를 두 배로 확보합니다. 특히 X121-12EV 특유의 스태거드 출력(Staggered Power) 설계를 24채널로 확장하면, 프런트 3-Way는 물론 리어와 서브우퍼까지 넘치는 힘으로 밀어줄 수 있습니다.
 
-5. ??구성?� **"공간???�고 ?�피�?배치가 복잡???�리미엄 ?�기�?�?SUV"**�??�해 존재?�니??
+5. 이 구성은 **"공간이 넓고 스피커 배치가 복잡한 프리미엄 전기차 및 SUV"**를 위해 존재합니다.
 
- - ?�슬??모델 X / 루시???�어: ?�피�?개수가 매우 많고 ?�력 ?�율??중요???�기차에??최상??궁합??보여줍니??
+ - 테슬라 모델 X / 루시드 에어: 스피커 개수가 매우 많고 전력 효율이 중요한 전기차에서 최상의 궁합을 보여줍니다.
 
- - ??���??�?�이�?SUV: ?�스컬레?�드, ?�인지로버, KGM ?�스?�급 차량처럼 ?�내 체적??커서 ?�채??배치???�과가 극�??�되??경우.
+ - 럭셔리 풀사이즈 SUV: 에스컬레이드, 레인지로버, KGM 렉스턴급 차량처럼 실내 체적이 커서 다채널 배치의 효과가 극대화되는 경우.
 
- - ?�카(Show Car) �??�모�? 브랜?��? ?�?�하??최상???�운???�리?��? 보여주어???�는 ?�로?�트.
+ - 쇼카(Show Car) 및 데모카: 브랜드를 대표하는 최상위 사운드 퀄리티를 보여주어야 하는 프로젝트.
 
 
-PXE-X121-12EV 2?� 구성?� **"�??�에??구현 가?�한 물리???�운?�의 ?�계???�전?�는 ??**?�니?? KGM Q300 ?�로?�트가 차량 ?�체�??�우르는 ?�도?�인 ?�라?�드 ?�스?�을 지?�한?�면, ??24채널 구성??가???�벽??마침?��? ??것입?�다.</p>
+PXE-X121-12EV 2대 구성은 **"차 안에서 구현 가능한 물리적 사운드의 한계에 도전하는 일"**입니다. KGM Q300 프로젝트가 차량 전체를 아우르는 압도적인 서라운드 시스템을 지향한다면, 이 24채널 구성이 가장 완벽한 마침표가 될 것입니다.</p>
                             </div>
                 
                 </div>
@@ -453,11 +453,11 @@ PXE-X121-12EV 2?� 구성?� **"�??�에??구현 가?�한 물리???�운?�의 ?�계
                     <img src="../../assets/images/jch_logo.png" alt="JCH Auto" style="height: 30px;" id="footer-logo-img">
                 </div>
                 <p class="footer-text">
-                    <strong data-i18n="footer_ceo">?�??| ?�정??/strong><br>
-                    <span data-i18n="footer_address">경기???�양???�안�??�에?�로 136, A??1401???�계?? 금정??차SKV1?�??</span><br>
+                    <strong data-i18n="footer_ceo">대표 | 이정현</strong><br>
+                    <span data-i18n="footer_address">경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)</span><br>
                     <span data-i18n="footer_contact">TEL | 1670-7425 FAX | 031-477-7220</span><br>
-                    <span data-i18n="footer_hours">?�담?�간 | ??�?09:00~17:00 (????공휴???�무)</span><br>
-                    <span data-i18n="footer_biz_info">?�업?�등록번??| 619-81-07276 개인?�보보호책임??| ?�길??/span>
+                    <span data-i18n="footer_hours">상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)</span><br>
+                    <span data-i18n="footer_biz_info">사업자등록번호 | 619-81-07276 개인정보보호책임자 | 한길전</span>
                 </p>
             </div>
             <div class="footer-section footer-links">
@@ -468,7 +468,7 @@ PXE-X121-12EV 2?� 구성?� **"�??�에??구현 가?�한 물리???�운?�의 ?�계
                     <li><a href="../../index.html?category=DSP%2FAMP">DSP/AMP</a></li>
                     <li><a href="../../index.html?category=Speakers">Speakers</a></li>
                     <li><a href="../../index.html?category=PnP%20Cable">PnP Cable</a></li>
-                    <li><a href="../../index.html?category=기�??�품" data-i18n="filter_others">기�??�품</a></li>
+                    <li><a href="../../index.html?category=기타상품" data-i18n="filter_others">기타상품</a></li>
                     <li><a href="../../index.html?category=Alpine%20OEM%20Fit">Alpine OEM Fit</a></li>
                     <li><a href="../../index.html?category=ALPINESTYLE">ALPINESTYLE</a></li>
                 </ul>
@@ -505,35 +505,35 @@ PXE-X121-12EV 2?� 구성?� **"�??�에??구현 가?�한 물리???�운?�의 ?�계
 
     <script src="../../js/auth.js?v=20260724b"></script>
     <script>
-        document.write('<script src="../../js/product-data.js?v=20260819"><\/script>');
+        document.write('<script src="../../js/product-data.js?v=20260721"><\/script>');
     </script>
     <script>
         const translations = {
             ko: {
-                nav_about: '?�사?�개(About)',
-                nav_products: '?�품?�개',
-                nav_dealers: '?�국 ?�리점 목록',
-                nav_support: '고객지??,
-                nav_support_product: '?�품 ?�료??,
-                nav_support_install: '?�공?�료??,
-                nav_support_promo: '?�보?�료??,
-                nav_company: '?�사?�개',
-                footer_ceo: '?�??| ?�정??,
-                footer_address: '경기???�양???�안�??�에?�로 136, A??1401???�계?? 금정??차SKV1?�??',
+                nav_about: '회사소개(About)',
+                nav_products: '제품소개',
+                nav_dealers: '전국 대리점 목록',
+                nav_support: '고객지원',
+                nav_support_product: '제품 자료실',
+                nav_support_install: '시공자료실',
+                nav_support_promo: '홍보자료실',
+                nav_company: '회사소개',
+                footer_ceo: '대표 | 이정현',
+                footer_address: '경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)',
                 footer_contact: 'TEL | 1670-7425   FAX | 031-477-7220',
-                footer_hours: '?�담?�간 | ??�?09:00~17:00 (????공휴???�무)',
-                footer_biz_info: '?�업?�등록번??| 619-81-07276   개인?�보보호책임??| ?�길??,
-                footer_products: '?�품',
-                footer_support: '지??,
+                footer_hours: '상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)',
+                footer_biz_info: '사업자등록번호 | 619-81-07276   개인정보보호책임자 | 한길전',
+                footer_products: '제품',
+                footer_support: '지원',
                 footer_global: '글로벌',
-                footer_global_japan: '?�본',
-                footer_global_asia: '?�시??,
-                footer_global_australia: '?�주',
-                footer_global_europe: '?�럽',
+                footer_global_japan: '일본',
+                footer_global_asia: '아시아',
+                footer_global_australia: '호주',
+                footer_global_europe: '유럽',
                 footer_global_china: '중국',
-                footer_global_na: '북�?',
-                btn_view: '?�세??보기',
-                btn_back: '?�품 목록?�로 가�?
+                footer_global_na: '북미',
+                btn_view: '자세히 보기',
+                btn_back: '제품 목록으로 가기'
             },
             en: {
                 nav_about: 'About Us',
@@ -607,7 +607,7 @@ PXE-X121-12EV 2?� 구성?� **"�??�에??구현 가?�한 물리???�운?�의 ?�계
             const isEnglish = lang === 'en';
             const priceDisplay = isEnglish ?
                 '$' + Math.round(product.price / 1400).toLocaleString() :
-                '?? + product.price.toLocaleString();
+                '₩' + product.price.toLocaleString();
 
             // Prepare detail content
             let blocksHTML = '';
@@ -678,7 +678,7 @@ PXE-X121-12EV 2?� 구성?� **"�??�에??구현 가?�한 물리???�운?�의 ?�계
                                     <span style="margin-right: 8px;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                                     </span>
-                                    ?�터?�티�?매뉴??
+                                    인터렉티브 매뉴얼
                                 </a>
                             </div>
                         `;
@@ -703,7 +703,7 @@ PXE-X121-12EV 2?� 구성?� **"�??�에??구현 가?�한 물리???�운?�의 ?�계
                         <span style="margin-right: 8px;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                         </span>
-                        ?�터?�티�?매뉴??
+                        인터렉티브 매뉴얼
                     </a>
                     <style>
                         .interactive-manual-btn:hover {
@@ -726,7 +726,7 @@ PXE-X121-12EV 2?� 구성?� **"�??�에??구현 가?�한 물리???�운?�의 ?�계
                         <p class="detail-summary">${product.desc}</p>
                         <div class="detail-price">
                             ${priceDisplay} 
-                            ${product.soldOut ? '<span style="color: #d9534f; font-size: 1rem; margin-left: 10px;">(?�절 / SOLD OUT)</span>' : ''}
+                            ${product.soldOut ? '<span style="color: #d9534f; font-size: 1rem; margin-left: 10px;">(품절 / SOLD OUT)</span>' : ''}
                         </div>
                         <p class="detail-summary">${product.desc_bottom !== undefined ? product.desc_bottom : product.desc}</p>
                         ${attachmentsHTML}
@@ -736,7 +736,7 @@ PXE-X121-12EV 2?� 구성?� **"�??�에??구현 가?�한 물리???�운?�의 ?�계
                 <div class="detail-content">
                     ${blocksHTML || `
                         <div style="text-align: center; color: #999; padding: 40px;">
-                            ${isEnglish ? 'Detailed information is not registered.' : '?�세 ?�보가 ?�록?��? ?�았?�니??'}
+                            ${isEnglish ? 'Detailed information is not registered.' : '상세 정보가 등록되지 않았습니다.'}
                         </div>
                     `}
                 </div>
@@ -779,10 +779,10 @@ PXE-X121-12EV 2?� 구성?� **"�??�에??구현 가?�한 물리???�운?�의 ?�계
                         "@type": "Review",
                         "author": {
                             "@type": "Person",
-                            "name": "?�파?�고�?
+                            "name": "알파인고객"
                         },
                         "datePublished": new Date().toISOString().split('T')[0],
-                        "reviewBody": "최상???�운??경험???�사?�는 ?�루?�입?�다.",
+                        "reviewBody": "최상의 사운드 경험을 선사하는 솔루션입니다.",
                         "reviewRating": {
                             "@type": "Rating",
                             "ratingValue": "5",
@@ -806,13 +806,13 @@ PXE-X121-12EV 2?� 구성?� **"�??�에??구현 가?�한 물리???�운?�의 ?�계
                     {
                         "@type": "ListItem",
                         "position": 1,
-                        "name": "??,
+                        "name": "홈",
                         "item": "https://www.alpine-korea.co.kr/"
                     },
                     {
                         "@type": "ListItem",
                         "position": 2,
-                        "name": "?�품",
+                        "name": "제품",
                         "item": "https://www.alpine-korea.co.kr/index.html"
                     },
                     {

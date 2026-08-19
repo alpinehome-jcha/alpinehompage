@@ -7,7 +7,7 @@
     
     <!-- SEO_META_TAGS -->
     <meta name="description" content="8CH DSP Amplifier">
-    <meta property="og:title" content="PXE-R100-8 | ?�파??코리??>
+    <meta property="og:title" content="PXE-R100-8 | 알파인 코리아">
     <meta property="og:description" content="8CH DSP Amplifier">
     <meta property="og:image" content="https://www.alpine-korea.co.kr/assets/images/DSP-R100.jpg">
     <meta property="og:url" content="https://www.alpine-korea.co.kr/pages/products/pxe-r100-8.html">
@@ -17,7 +17,7 @@
         window.STATIC_PRODUCT_ID = 1770279659907;
     </script>
     
-    <title>PXE-R100-8 | ?�파??ALPINE Korea)</title>
+    <title>PXE-R100-8 | 알파인(ALPINE Korea)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -149,22 +149,22 @@
                 <ul class="nav-menu">
                     <li><a href="../about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
                     <li class="dropdown">
-                        <a href="../../../index.html" class="nav-link active" data-i18n="nav_products">?�품?�개</a>
+                        <a href="../../../index.html" class="nav-link active" data-i18n="nav_products">제품소개</a>
                         <!-- Submenu logic could go here if needed -->
                     </li>
                     <li>
-                        <a href="../dealers.html" class="nav-link" data-i18n="nav_dealers">?�국 ?�리점 목록</a>
+                        <a href="../dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link" data-i18n="nav_support">고객지??/a>
+                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
                         <ul class="dropdown-content">
                             <li><a href="../../../support/product.html" class="dropdown-item"
-                                    data-i18n="nav_support_product">?�품
-                                    ?�료??/a></li>
+                                    data-i18n="nav_support_product">제품
+                                    자료실</a></li>
                             <li><a href="../../../support/install.html" class="dropdown-item"
-                                    data-i18n="nav_support_install">?�공?�료??/a></li>
+                                    data-i18n="nav_support_install">시공자료실</a></li>
                             <li><a href="../../../support/promo.html" class="dropdown-item"
-                                    data-i18n="nav_support_promo">?�보?�료??/a></li>
+                                    data-i18n="nav_support_promo">홍보자료실</a></li>
                         </ul>
                     </li>
                     <li class="social-icons">
@@ -210,7 +210,7 @@
             <button class="filter-btn" onclick="goToCategory('DSP/AMP')">DSP/AMP</button>
             <button class="filter-btn" onclick="goToCategory('Speakers')">Speakers</button>
             <button class="filter-btn" onclick="goToCategory('PnP Cable')">PnP Cable</button>
-            <button class="filter-btn" onclick="goToCategory('기�??�품')">기�??�품</button>
+            <button class="filter-btn" onclick="goToCategory('기타상품')">기타상품</button>
             <button class="filter-btn" onclick="goToCategory('Alpine OEM Fit')">Alpine OEM Fit</button>
             <button class="filter-btn" onclick="goToCategory('ALPINESTYLE')">ALPINESTYLE</button>
         </div>
@@ -218,11 +218,11 @@
         <!-- Sub Filters for PnP Cable (Hidden by default) -->
         <div id="subFilterContainer" class="sub-filters"
             style="display: none; justify-content: center; gap: 10px; margin-bottom: 40px; margin-top: -20px;">
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - �?���?)">�?���?PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - ?�일�?)">?�일�?PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기�??�입�?)">기�??�입�?PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 국산차')">국산차 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 독일차')">독일차 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기타수입차')">기타수입차 PnP</button>
             <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - DSP')">DSP PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기�?')">기�? PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기타')">기타 PnP</button>
         </div>
 
         <!-- Add Styles for Active State -->
@@ -272,9 +272,9 @@
                 // Identify Parent Category
                 if (currentCat.startsWith('PnP Cable')) {
                     mainCategory = 'PnP Cable';
-                    subCategory = currentCat; // e.g., "PnP Cable - �?���?(Domestic)" or just "PnP Cable - �?���?
+                    subCategory = currentCat; // e.g., "PnP Cable - 국산차 (Domestic)" or just "PnP Cable - 국산차"
                 } else if (currentCat === 'Others') {
-                    mainCategory = '기�??�품'; // Button text
+                    mainCategory = '기타상품'; // Button text
                 }
 
                 // Highlight Main Button
@@ -309,24 +309,24 @@
 
                         const subButtons = document.querySelectorAll('.sub-filter-btn');
                         subButtons.forEach(subBtn => {
-                            // subBtn text: "�?���?PnP" -> we need to map to category "PnP Cable - �?���?
+                            // subBtn text: "국산차 PnP" -> we need to map to category "PnP Cable - 국산차"
                             // active logic: check if currentCat contains the keyword?
-                            // Data category: "PnP Cable - �?���?(Domestic)"
-                            // Button text: "�?���?PnP"
+                            // Data category: "PnP Cable - 국산차 (Domestic)"
+                            // Button text: "국산차 PnP"
 
                             const btnLabel = subBtn.innerText;
                             let keyword = '';
-                            if (btnLabel.includes('�?���?)) keyword = '�?���?;
-                            else if (btnLabel.includes('?�일�?)) keyword = '?�일�?;
-                            else if (btnLabel.includes('기�??�입�?)) keyword = '기�??�입�?; // or Other Imported
+                            if (btnLabel.includes('국산차')) keyword = '국산차';
+                            else if (btnLabel.includes('독일차')) keyword = '독일차';
+                            else if (btnLabel.includes('기타수입차')) keyword = '기타수입차'; // or Other Imported
                             else if (btnLabel.includes('DSP')) keyword = 'DSP';
-                            else if (btnLabel.includes('기�?')) keyword = '기�?';
+                            else if (btnLabel.includes('기타')) keyword = '기타';
 
                             let match = false;
                             if (keyword) {
-                                if (keyword === '기�?') {
-                                    // "기�?" matches "PnP Cable - 기�?" but NOT "PnP Cable - 기�??�입�?
-                                    if (currentCat.includes('기�?') && !currentCat.includes('기�??�입�?)) {
+                                if (keyword === '기타') {
+                                    // "기타" matches "PnP Cable - 기타" but NOT "PnP Cable - 기타수입차"
+                                    if (currentCat.includes('기타') && !currentCat.includes('기타수입차')) {
                                         match = true;
                                     }
                                 } else {
@@ -356,10 +356,10 @@
                         <h1 class="detail-title">PXE-R100-8</h1>
                         <p class="detail-summary">8CH DSP Amplifier</p>
                         <div class="detail-price">
-                            ??,300,000 
+                            ₩1,300,000 
                             
                         </div>
-                        <p class="detail-summary">?�착 공임 별도/20만원 부??/p>
+                        <p class="detail-summary">장착 공임 별도/20만원 부터</p>
                         <div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed #ddd;"><strong style="display: block; margin-bottom: 10px; color: #555;">Downloads:</strong><div style="display: flex; flex-direction: column; gap: 8px;">
                         <a href="../../assets/files/PXE-R100-8 Owners manual.pdf" download target="_blank" style="display: flex; align-items: center; font-size: 0.95rem; text-decoration: none; color: #007bff; transition: color 0.2s;">
                             <span style="margin-right: 8px;">
@@ -396,35 +396,37 @@ Matrix input summing</p>
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">?�파??Alpine)??PXE-R100-8?� ?�이?�드 ?�디???�스?�의 ?�점??찍기 ?�해 ?�계??8채널 ?�프 ?�체??DSP?�니??
+                                <p class="detail-content-text">알파인(Alpine)의 PXE-R100-8은 하이엔드 오디오 시스템의 정점을 찍기 위해 설계된 8채널 앰프 일체형 DSP입니다.
 
-R100-8?� ??강력??출력�??�도?�인 ?�호 처리 ?�력?�로 무장??모델?�니??
+R100-8은 더 강력한 출력과 압도적인 신호 처리 능력으로 무장한 모델입니다.
 
-1. 고출???�워 ?�프???�정??(8채널 x 50W RMS)
-?�순???�리�??�우??것이 ?�니?? 고음?????미세???�림부???�?�역?�??묵직???�격감까�? **?�핑 ?�력(?�피커�? ?�어?�는 ??**???�교?�니??
+1. 고출력 파워 앰프의 안정성 (8채널 x 50W RMS)
+단순히 소리를 키우는 것이 아니라, 고음역대의 미세한 떨림부터 저음역대의 묵직한 타격감까지 **댐핑 능력(스피커를 제어하는 힘)**이 정교합니다.
 
-2.12채널???��????�로?�싱 & ?�장??�?12채널???�립?�인 ?�로?�싱??가?�하?? 8채널?� ?�장 ?�프�?구동?�고 ?�머지 4채널?� RCA 출력???�해 고성???�장 ?�프???�브?�퍼 ?�용 ?�프�??�결?????�습?�다.
+2.12채널의 정밀한 프로세싱 & 확장성
+총 12채널의 독립적인 프로세싱이 가능하여, 8채널은 내장 앰프로 구동하고 나머지 4채널은 RCA 출력을 통해 고성능 외장 앰프나 서브우퍼 전용 앰프로 연결할 수 있습니다.
 
-3-Way ?�런??+ 리어 + ?�브?�퍼?�는 ?�벽???� ?�스?�을 구축????가???�상?�인 ?�브 ??��???�니??
+3-Way 프런트 + 리어 + 서브우퍼라는 완벽한 풀 시스템을 구축할 때 가장 이상적인 허브 역할을 합니다.
 
-3. ?�이?�드 ?�용 부??채용 (Audiophile Grade)
-?��? 커패?�터?� OP-AMP ???�심 ?�자?�이 ?�질 지?�적???�이?�드 ?�급?�로 ?�그?�이?�되???�습?�다. ?�이�??�제?�이 ?�월?�며, ?�?�량?�서???�리가 뭉개지지 ?�는 '?�이?�이(Hi-Fi)' 본연???�상?�을 ?�사?�니??
+3. 하이엔드 전용 부품 채용 (Audiophile Grade)
+내부 커패시터와 OP-AMP 등 핵심 소자들이 음질 지향적인 하이엔드 등급으로 업그레이드되어 있습니다. 노이즈 억제력이 탁월하며, 대음량에서도 소리가 뭉개지지 않는 '하이파이(Hi-Fi)' 본연의 해상력을 선사합니다.
 
-4. ?�합 마스??컨트�?�?고해?�도 지??R100-8?� 고해?�도 ?�디???�증??받았??뿐만 ?�니?? ?�축(Coaxial) �?�?Optical) ?�력??모두 지?�하???��????�스 기기?�??직결 ???�실 ?�는 ?�음 ?�생??가?�합?�다.
+4. 통합 마스터 컨트롤 및 고해상도 지원
+R100-8은 고해상도 오디오 인증을 받았을 뿐만 아니라, 동축(Coaxial) 및 광(Optical) 입력을 모두 지원하여 디지털 소스 기기와의 직결 시 손실 없는 원음 재생이 가능합니다.
 
-5. PXE-R100-8?� 차량???�디???�스?�이 매우 복잡?�거?? ?�리 ?�나?�나??질감??집중?�는 ?�경??강력??추천?�니??
+5. PXE-R100-8은 차량의 오디오 시스템이 매우 복잡하거나, 소리 하나하나의 질감에 집중하는 환경에 강력히 추천합니다.
 
- - ?�정 ?�리미엄 ?�디???�션 ?�벽 ?�?? ?�프 ?�호가 ?�채?�로 분리??최고�??�디???�션(?? ?�네?�스 ?�시�? 벤츠 부메스?? BMW 바워?????�킨???? 차량?�서 ?�정 기능???��??�며 ?�질�?극�??�하�??�을 ??
+ - 순정 프리미엄 오디오 옵션 완벽 대응: 앰프 신호가 다채널로 분리된 최고급 오디오 옵션(예: 제네시스 렉시콘, 벤츠 부메스터, BMW 바워스 앤 윌킨스 등) 차량에서 순정 기능을 유지하며 음질만 극대화하고 싶을 때.
 
- - 본격?�인 '?� 멀?? ?�스??구축: ?�위?? 미드?�인지, 미드?�퍼�?각각 ?�립?�으�??��? ?�어?�고???�는 ?�이?�드 지???�스??
+ - 본격적인 '풀 멀티' 시스템 구축: 트위터, 미드레인지, 미드우퍼를 각각 독립적으로 정밀 제어하고자 하는 하이엔드 지향 시스템.
 
- - ?�이즈에 민감???�기�?EV): ?�기�??�유???�숙???�내 ?�경?�서 ?�껴지??미세???�이???�이즈�? 최소?�하�??�명???�운?��? 즐기�??��? 경우.
+ - 노이즈에 민감한 전기차(EV): 전기차 특유의 정숙한 실내 환경에서 느껴지는 미세한 화이트 노이즈를 최소화하고 선명한 사운드를 즐기고 싶은 경우.
 
-6. 추천 차종 ?�시
+6. 추천 차종 예시
 
- - ?�리미엄 ?�단 �?SUV: ?�네?�스 GV80/G80, 벤츠 S?�래??GLE, BMW X5/X7, ?�우??A8/Q8 ??
+ - 프리미엄 세단 및 SUV: 제네시스 GV80/G80, 벤츠 S클래스/GLE, BMW X5/X7, 아우디 A8/Q8 등.
 
- - ?�규 ?�랫??차량: KGM ?�티??Q300), ?�레????최신 ?�포?�인먼트가 ?�용?�어 ?��????�호 보정(Summing/EQ)???�수?�인 차량.</p>
+ - 신규 플랫폼 차량: KGM 액티언(Q300), 토레스 등 최신 인포테인먼트가 적용되어 정밀한 신호 보정(Summing/EQ)이 필수적인 차량.</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -445,11 +447,11 @@ R100-8?� ??강력??출력�??�도?�인 ?�호 처리 ?�력?�로 무장??모델?��
                     <img src="../../assets/images/jch_logo.png" alt="JCH Auto" style="height: 30px;" id="footer-logo-img">
                 </div>
                 <p class="footer-text">
-                    <strong data-i18n="footer_ceo">?�??| ?�정??/strong><br>
-                    <span data-i18n="footer_address">경기???�양???�안�??�에?�로 136, A??1401???�계?? 금정??차SKV1?�??</span><br>
+                    <strong data-i18n="footer_ceo">대표 | 이정현</strong><br>
+                    <span data-i18n="footer_address">경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)</span><br>
                     <span data-i18n="footer_contact">TEL | 1670-7425 FAX | 031-477-7220</span><br>
-                    <span data-i18n="footer_hours">?�담?�간 | ??�?09:00~17:00 (????공휴???�무)</span><br>
-                    <span data-i18n="footer_biz_info">?�업?�등록번??| 619-81-07276 개인?�보보호책임??| ?�길??/span>
+                    <span data-i18n="footer_hours">상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)</span><br>
+                    <span data-i18n="footer_biz_info">사업자등록번호 | 619-81-07276 개인정보보호책임자 | 한길전</span>
                 </p>
             </div>
             <div class="footer-section footer-links">
@@ -460,7 +462,7 @@ R100-8?� ??강력??출력�??�도?�인 ?�호 처리 ?�력?�로 무장??모델?��
                     <li><a href="../../index.html?category=DSP%2FAMP">DSP/AMP</a></li>
                     <li><a href="../../index.html?category=Speakers">Speakers</a></li>
                     <li><a href="../../index.html?category=PnP%20Cable">PnP Cable</a></li>
-                    <li><a href="../../index.html?category=기�??�품" data-i18n="filter_others">기�??�품</a></li>
+                    <li><a href="../../index.html?category=기타상품" data-i18n="filter_others">기타상품</a></li>
                     <li><a href="../../index.html?category=Alpine%20OEM%20Fit">Alpine OEM Fit</a></li>
                     <li><a href="../../index.html?category=ALPINESTYLE">ALPINESTYLE</a></li>
                 </ul>
@@ -497,35 +499,35 @@ R100-8?� ??강력??출력�??�도?�인 ?�호 처리 ?�력?�로 무장??모델?��
 
     <script src="../../js/auth.js?v=20260724b"></script>
     <script>
-        document.write('<script src="../../js/product-data.js?v=20260819"><\/script>');
+        document.write('<script src="../../js/product-data.js?v=20260721"><\/script>');
     </script>
     <script>
         const translations = {
             ko: {
-                nav_about: '?�사?�개(About)',
-                nav_products: '?�품?�개',
-                nav_dealers: '?�국 ?�리점 목록',
-                nav_support: '고객지??,
-                nav_support_product: '?�품 ?�료??,
-                nav_support_install: '?�공?�료??,
-                nav_support_promo: '?�보?�료??,
-                nav_company: '?�사?�개',
-                footer_ceo: '?�??| ?�정??,
-                footer_address: '경기???�양???�안�??�에?�로 136, A??1401???�계?? 금정??차SKV1?�??',
+                nav_about: '회사소개(About)',
+                nav_products: '제품소개',
+                nav_dealers: '전국 대리점 목록',
+                nav_support: '고객지원',
+                nav_support_product: '제품 자료실',
+                nav_support_install: '시공자료실',
+                nav_support_promo: '홍보자료실',
+                nav_company: '회사소개',
+                footer_ceo: '대표 | 이정현',
+                footer_address: '경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)',
                 footer_contact: 'TEL | 1670-7425   FAX | 031-477-7220',
-                footer_hours: '?�담?�간 | ??�?09:00~17:00 (????공휴???�무)',
-                footer_biz_info: '?�업?�등록번??| 619-81-07276   개인?�보보호책임??| ?�길??,
-                footer_products: '?�품',
-                footer_support: '지??,
+                footer_hours: '상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)',
+                footer_biz_info: '사업자등록번호 | 619-81-07276   개인정보보호책임자 | 한길전',
+                footer_products: '제품',
+                footer_support: '지원',
                 footer_global: '글로벌',
-                footer_global_japan: '?�본',
-                footer_global_asia: '?�시??,
-                footer_global_australia: '?�주',
-                footer_global_europe: '?�럽',
+                footer_global_japan: '일본',
+                footer_global_asia: '아시아',
+                footer_global_australia: '호주',
+                footer_global_europe: '유럽',
                 footer_global_china: '중국',
-                footer_global_na: '북�?',
-                btn_view: '?�세??보기',
-                btn_back: '?�품 목록?�로 가�?
+                footer_global_na: '북미',
+                btn_view: '자세히 보기',
+                btn_back: '제품 목록으로 가기'
             },
             en: {
                 nav_about: 'About Us',
@@ -599,7 +601,7 @@ R100-8?� ??강력??출력�??�도?�인 ?�호 처리 ?�력?�로 무장??모델?��
             const isEnglish = lang === 'en';
             const priceDisplay = isEnglish ?
                 '$' + Math.round(product.price / 1400).toLocaleString() :
-                '?? + product.price.toLocaleString();
+                '₩' + product.price.toLocaleString();
 
             // Prepare detail content
             let blocksHTML = '';
@@ -670,7 +672,7 @@ R100-8?� ??강력??출력�??�도?�인 ?�호 처리 ?�력?�로 무장??모델?��
                                     <span style="margin-right: 8px;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                                     </span>
-                                    ?�터?�티�?매뉴??
+                                    인터렉티브 매뉴얼
                                 </a>
                             </div>
                         `;
@@ -695,7 +697,7 @@ R100-8?� ??강력??출력�??�도?�인 ?�호 처리 ?�력?�로 무장??모델?��
                         <span style="margin-right: 8px;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                         </span>
-                        ?�터?�티�?매뉴??
+                        인터렉티브 매뉴얼
                     </a>
                     <style>
                         .interactive-manual-btn:hover {
@@ -718,7 +720,7 @@ R100-8?� ??강력??출력�??�도?�인 ?�호 처리 ?�력?�로 무장??모델?��
                         <p class="detail-summary">${product.desc}</p>
                         <div class="detail-price">
                             ${priceDisplay} 
-                            ${product.soldOut ? '<span style="color: #d9534f; font-size: 1rem; margin-left: 10px;">(?�절 / SOLD OUT)</span>' : ''}
+                            ${product.soldOut ? '<span style="color: #d9534f; font-size: 1rem; margin-left: 10px;">(품절 / SOLD OUT)</span>' : ''}
                         </div>
                         <p class="detail-summary">${product.desc_bottom !== undefined ? product.desc_bottom : product.desc}</p>
                         ${attachmentsHTML}
@@ -728,7 +730,7 @@ R100-8?� ??강력??출력�??�도?�인 ?�호 처리 ?�력?�로 무장??모델?��
                 <div class="detail-content">
                     ${blocksHTML || `
                         <div style="text-align: center; color: #999; padding: 40px;">
-                            ${isEnglish ? 'Detailed information is not registered.' : '?�세 ?�보가 ?�록?��? ?�았?�니??'}
+                            ${isEnglish ? 'Detailed information is not registered.' : '상세 정보가 등록되지 않았습니다.'}
                         </div>
                     `}
                 </div>
@@ -771,10 +773,10 @@ R100-8?� ??강력??출력�??�도?�인 ?�호 처리 ?�력?�로 무장??모델?��
                         "@type": "Review",
                         "author": {
                             "@type": "Person",
-                            "name": "?�파?�고�?
+                            "name": "알파인고객"
                         },
                         "datePublished": new Date().toISOString().split('T')[0],
-                        "reviewBody": "최상???�운??경험???�사?�는 ?�루?�입?�다.",
+                        "reviewBody": "최상의 사운드 경험을 선사하는 솔루션입니다.",
                         "reviewRating": {
                             "@type": "Rating",
                             "ratingValue": "5",
@@ -798,13 +800,13 @@ R100-8?� ??강력??출력�??�도?�인 ?�호 처리 ?�력?�로 무장??모델?��
                     {
                         "@type": "ListItem",
                         "position": 1,
-                        "name": "??,
+                        "name": "홈",
                         "item": "https://www.alpine-korea.co.kr/"
                     },
                     {
                         "@type": "ListItem",
                         "position": 2,
-                        "name": "?�품",
+                        "name": "제품",
                         "item": "https://www.alpine-korea.co.kr/index.html"
                     },
                     {
