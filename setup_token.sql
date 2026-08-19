@@ -1,0 +1,1 @@
+SET search_path = "alpine-home", extensions, public; INSERT INTO "alpine-home".app_secrets (key, value, updated_at) VALUES ('github_token', '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', now()), ('github_repo', 'alpinehome-jcha/alpinehompage', now()), ('github_branch', 'main', now()) ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value, updated_at = now();
