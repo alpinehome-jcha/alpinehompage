@@ -3551,7 +3551,8 @@ const initialProductData = [
         "detailBlocks": [],
         "attachments": [],
         "manualUrl": "",
-        "slug": "kgm-회오리-앰비언트-s2-s10tw-트위터-패키지"
+        "slug": "kgm-회오리-앰비언트-s2-s10tw-트위터-패키지",
+        "old_slug": "kgm-회오리-앰비언트-s-s10tw-트위터-패키지"
     },
     {
         "id": 1770599339041,
@@ -4622,7 +4623,7 @@ const initialProductData = [
         "slug": "dps-25m-chamber"
     }
 ];
-const PRODUCT_DATA_VERSION = 1784695661025;
+const PRODUCT_DATA_VERSION = 1784695661026;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
