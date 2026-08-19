@@ -4622,7 +4622,7 @@ const initialProductData = [
         "slug": "dps-25m-chamber"
     }
 ];
-const PRODUCT_DATA_VERSION = 1784695661024;
+const PRODUCT_DATA_VERSION = 1784695661025;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
