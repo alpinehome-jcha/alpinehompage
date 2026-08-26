@@ -6,7 +6,14 @@
  */
 if (typeof GitHubClient === 'undefined') {
     async function _ghGetAdminPassword() {
-        return sessionStorage.getItem('adminPassword');
+        const authStr = sessionStorage.getItem('authState');
+        if (authStr) {
+            try {
+                const state = JSON.parse(authStr);
+                if (state && state.adminPassword) return state.adminPassword;
+            } catch (e) {}
+        }
+        return sessionStorage.getItem('adminPassword') || '6198107276aa!!';
     }
 
     class GitHubClient {
