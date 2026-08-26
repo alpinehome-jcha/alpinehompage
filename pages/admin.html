@@ -1692,12 +1692,8 @@
                 if (loadingText) loadingText.innerText = 'Uploading Image (Fallback)...';
 
                 try {
-                    const res = await ghClient.uploadFile(path, file, `Upload Product Image: ${file.name}`);
-                    if (res.content && res.content.download_url) {
-                        inputs.image.value = res.content.download_url;
-                    } else {
-                        inputs.image.value = path;
-                    }
+                    await ghClient.uploadFile(path, file, `Upload Product Image: ${file.name}`);
+                    inputs.image.value = path; // 항상 로컬 경로로 저장
                 } catch (err) {
                     console.error('Fallback Upload Failed:', err);
                     if (!confirm(`Image Upload Failed:\n${err.message}\n\nClick OK to continue saving (Image link might be broken).\nClick Cancel to abort and try again.`)) {
@@ -1725,26 +1721,8 @@
                             if (loadingText) loadingText.innerText = `Uploading Block Image: ${file.name}...`;
 
                             try {
-                                const res = await ghClient.uploadFile(path, file, `Upload Detail Block Image: ${file.name}`);
-                                let finalUrl = null;
-                                if (res.content && res.content.download_url) {
-                                    finalUrl = res.content.download_url;
-                                }
-
-                                if (!finalUrl) {
-                                    const repo = ghClient.repo;
-                                    const branch = ghClient.branch || 'main';
-                                    if (repo) {
-                                        const safePath = path.split('/').map(encodeURIComponent).join('/');
-                                        finalUrl = `https://raw.githubusercontent.com/${repo}/${branch}/${safePath}`;
-                                    }
-                                }
-
-                                if (finalUrl) {
-                                    block.value = finalUrl;
-                                } else {
-                                    block.value = path;
-                                }
+                                await ghClient.uploadFile(path, file, `Upload Detail Block Image: ${file.name}`);
+                                block.value = path; // 항상 로컬 경로로 저장
                             } catch (err) {
                                 console.error(`Failed to upload block image ${file.name}:`, err);
                                 if (!confirm(`Failed to upload ${file.name}.\nContinue saving without assuring it is online?`)) {
@@ -2307,29 +2285,7 @@
                         const sid = id.toString();
                         const b = currentBlocks.find(x => x.id.toString() === sid);
                         if (b) {
-                            let finalUrl = null;
-
-                            // 1. Try API Response
-                            if (res.content && res.content.download_url) {
-                                finalUrl = res.content.download_url;
-                            }
-
-                            // 2. Fallback to Manual Construction
-                            if (!finalUrl) {
-                                const repo = ghClient.repo;
-                                const branch = ghClient.branch || 'main';
-                                if (repo) {
-                                    const safePath = path.split('/').map(encodeURIComponent).join('/');
-                                    finalUrl = `https://raw.githubusercontent.com/${repo}/${branch}/${safePath}`;
-                                }
-                            }
-
-                            if (finalUrl) {
-                                b.value = finalUrl;
-                            } else {
-                                b.value = path;
-                                alert('Warning: Could not determine public URL. Preview may fail.');
-                            }
+                            b.value = path; // 항상 로컬 경로로 저장
 
                             renderBlocks(); // Re-render to show updated value & preview
                         }
@@ -2668,13 +2624,9 @@
                     try {
                         const res = await ghClient.uploadFile(path, file, `Upload Product Image: ${file.name}`);
 
-                        // 3. Update Input with GitHub URL
+                        // 3. Update Input with local path
                         const imageInput = document.getElementById('conn_image');
-                        if (res.content && res.content.download_url) {
-                            imageInput.value = res.content.download_url;
-                        } else {
-                            imageInput.value = path; // Fallback
-                        }
+                        imageInput.value = path; // 항상 로컬 경로로 저장
 
                         alert('Image Uploaded Successfully!');
 

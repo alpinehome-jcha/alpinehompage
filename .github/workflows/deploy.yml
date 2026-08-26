@@ -12,6 +12,27 @@ jobs:
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check if product-data.js changed
+        id: check_ssg
+        run: |
+          if git diff --name-only HEAD~1 HEAD | grep -q 'js/product-data.js'; then
+            echo "run_ssg=true" >> $GITHUB_OUTPUT
+          else
+            echo "run_ssg=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup Node.js (for SSG)
+        if: steps.check_ssg.outputs.run_ssg == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run SSG Build
+        if: steps.check_ssg.outputs.run_ssg == 'true'
+        run: node scripts/build_ssg.js
 
       - name: Make Scripts Executable
         run: chmod +x ./scripts/*.sh || true
