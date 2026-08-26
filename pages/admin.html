@@ -1686,7 +1686,8 @@
             if (currentMode === 'product' && fileInput && fileInput.files.length > 0) {
                 // Only if input is not empty (cleared on success instant upload)
                 const file = fileInput.files[0];
-                const path = 'assets/images/' + file.name;
+                const safeName = file.name.replace(/[() ]/g, '_');
+                const path = 'assets/images/' + safeName;
 
                 // Show uploading status
                 if (loadingText) loadingText.innerText = 'Uploading Image (Fallback)...';
@@ -1716,7 +1717,8 @@
                         // If input is empty, accessing block.value (existing url) is fine.
                         if (fileInput && fileInput.files.length > 0) {
                             const file = fileInput.files[0];
-                            const path = 'assets/images/' + file.name;
+                            const safeName = file.name.replace(/[() ]/g, '_');
+                    const path = 'assets/images/' + safeName;
 
                             if (loadingText) loadingText.innerText = `Uploading Block Image: ${file.name}...`;
 
@@ -2267,7 +2269,8 @@
         function handleBlockFile(id, input) {
             const file = input.files[0];
             if (!file) return;
-            const path = 'assets/images/' + file.name;
+            const safeName = file.name.replace(/[() ]/g, '_');
+            const path = 'assets/images/' + safeName;
 
             // Upload immediately
             const overlay = document.getElementById('loadingOverlay');
@@ -2601,7 +2604,8 @@
                     return;
                 }
                 const file = e.target.files[0];
-                const path = 'assets/images/' + file.name;
+                const safeName = file.name.replace(/[() ]/g, '_');
+                const path = 'assets/images/' + safeName;
 
                 // 1. Local Preview
                 const reader = new FileReader();
