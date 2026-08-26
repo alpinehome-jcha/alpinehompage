@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>?�파??ALPINE Korea)</title>
+    <title>알파인(ALPINE Korea)</title>
 
     <!-- Global Error Handler (Emergency Debugging) -->
     <script>
@@ -14,7 +14,7 @@
             const errorMsg = `Script Error: ${msg} at line ${lineNo}`;
             console.error(errorMsg, error);
             if (statusDiv) {
-                statusDiv.innerHTML = `<span style="color:red; font-weight:bold;">??Fatal Error: ${msg} (Line ${lineNo})</span>`;
+                statusDiv.innerHTML = `<span style="color:red; font-weight:bold;">❌ Fatal Error: ${msg} (Line ${lineNo})</span>`;
                 statusDiv.style.background = '#ffe6e6';
             }
             alert(errorMsg);
@@ -336,23 +336,23 @@
                 <ul class="nav-menu">
                     <li><a href="about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
                     <li class="dropdown">
-                        <a href="../index.html" class="nav-link" data-i18n="nav_products">?�품?�개</a>
+                        <a href="../index.html" class="nav-link" data-i18n="nav_products">제품소개</a>
                     </li>
                     <li>
-                        <a href="dealers.html" class="nav-link" data-i18n="nav_dealers">?�국 ?�리점 목록</a>
+                        <a href="dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link" data-i18n="nav_support">고객지??/a>
+                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
                         <ul class="dropdown-content">
                             <li><a href="../support/product.html" class="dropdown-item"
-                                    data-i18n="nav_support_product">?�품
-                                    ?�료??/a>
+                                    data-i18n="nav_support_product">제품
+                                    자료실</a>
                             </li>
                             <li><a href="../support/install.html" class="dropdown-item"
-                                    data-i18n="nav_support_install">?�공?�료??/a>
+                                    data-i18n="nav_support_install">시공자료실</a>
                             </li>
                             <li><a href="../support/promo.html" class="dropdown-item"
-                                    data-i18n="nav_support_promo">?�보?�료??/a></li>
+                                    data-i18n="nav_support_promo">홍보자료실</a></li>
                         </ul>
                     </li>
                     <li class="social-icons">
@@ -420,7 +420,7 @@
             <div class="sidebar-filters" id="sidebarFilters" style="padding: 12px; background: #fdfdfd; border-bottom: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 8px;">
                 <!-- Search input -->
                 <div style="position: relative; display: flex; align-items: center; width: 100%;">
-                    <input type="text" id="filterSearch" placeholder="검?�어 ?�력..." style="width: 100%; padding: 8px 12px 8px 30px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.85rem; outline: none; box-sizing: border-box; transition: all 0.2s;" oninput="onFilterChange()">
+                    <input type="text" id="filterSearch" placeholder="검색어 입력..." style="width: 100%; padding: 8px 12px 8px 30px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.85rem; outline: none; box-sizing: border-box; transition: all 0.2s;" oninput="onFilterChange()">
                     <!-- Search Icon (magnifying glass) -->
                     <span style="position: absolute; left: 10px; color: #94a3b8; pointer-events: none; display: flex; align-items: center;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -434,33 +434,33 @@
                 <!-- Category Select and Options row -->
                 <div style="display: flex; gap: 6px; align-items: center;">
                     <select id="filterCategory" onchange="onFilterChange()" style="flex: 1.2; padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.8rem; background: #fff; cursor: pointer; outline: none; box-sizing: border-box; height: 32px; font-family: inherit;">
-                        <option value="">?�체 (All)</option>
+                        <option value="">전체 (All)</option>
                     </select>
                     
                     <!-- Region select (hidden by default, only shown in dealer mode) -->
                     <select id="filterRegion" onchange="onFilterChange()" style="flex: 1; padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.8rem; background: #fff; cursor: pointer; outline: none; box-sizing: border-box; display: none; height: 32px; font-family: inherit;">
-                        <option value="">지???�체</option>
+                        <option value="">지역 전체</option>
                     </select>
 
                     <!-- Sold-out toggle (only shown in product mode) -->
                     <label id="lblFilterSoldOut" style="display: flex; align-items: center; gap: 4px; font-size: 0.8rem; cursor: pointer; user-select: none; color: #475569; border: 1px solid #cbd5e1; background: #fff; padding: 6px 8px; border-radius: 6px; white-space: nowrap; box-sizing: border-box; height: 32px;">
                         <input type="checkbox" id="filterExcludeSoldOut" onchange="onFilterChange()" style="cursor: pointer; margin: 0; width: auto; height: auto;">
-                        <span>?�절 ?�외</span>
+                        <span>품절 제외</span>
                     </label>
                 </div>
                 
                 <!-- Sorting & Result count row -->
                 <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #64748b; margin-top: 2px;">
-                    <div id="filterCount">결과: 0�?/div>
+                    <div id="filterCount">결과: 0개</div>
                     <div style="display: flex; align-items: center; gap: 4px;">
-                        <span>?�렬:</span>
+                        <span>정렬:</span>
                         <select id="filterSort" onchange="onFilterChange()" style="border: none; background: transparent; color: #475569; font-size: 0.75rem; cursor: pointer; font-weight: bold; outline: none; padding: 0 2px; font-family: inherit;">
-                            <option value="name_asc">가?�다??/option>
-                            <option value="name_desc">??��</option>
-                            <option value="id_desc" selected>최신?�록??/option>
-                            <option value="id_asc">과거?�록??/option>
-                            <option value="price_asc">가격낮?�??/option>
-                            <option value="price_desc">가격높?�??/option>
+                            <option value="name_asc">가나다순</option>
+                            <option value="name_desc">역순</option>
+                            <option value="id_desc" selected>최신등록순</option>
+                            <option value="id_asc">과거등록순</option>
+                            <option value="price_asc">가격낮은순</option>
+                            <option value="price_desc">가격높은순</option>
                         </select>
                     </div>
                 </div>
@@ -573,7 +573,7 @@
                     <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
                         <input type="checkbox" id="conn_sold_out" style="width: auto;">
                         <label for="conn_sold_out" style="margin: 0; cursor: pointer; color: #d9534f;">Sold Out
-                            (?�절)</label>
+                            (품절)</label>
                     </div>
                     <div class="form-group">
                         <label>Product Image</label>
@@ -615,7 +615,7 @@
                     <div class="form-group">
                         <label>Interactive Manual URL</label>
                         <input type="text" id="conn_manual_url" placeholder="https://...">
-                        <small style="color: #666; display: block; margin-top: 5px;">* ??URL?� 로그?�한 ?�용?�에게만 버튼?�로 ?�시?�니??</small>
+                        <small style="color: #666; display: block; margin-top: 5px;">* 이 URL은 로그인한 사용자에게만 버튼으로 표시됩니다.</small>
                     </div>
                     <div class="form-group">
                         <label>Detail Sections</label>
@@ -670,12 +670,12 @@
                 overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:99999;display:flex;justify-content:center;align-items:center;';
                 overlay.innerHTML = `
                     <div style="background:#fff;padding:30px;border-radius:10px;text-align:center;width:300px;">
-                        <h3 style="margin-top:0;">관리자 로그??/h3>
-                        <p style="color:#666;font-size:12px;margin-bottom:20px;">보안???�해 ?�로고침 ?�마??로그?�해???�니??</p>
+                        <h3 style="margin-top:0;">관리자 로그인</h3>
+                        <p style="color:#666;font-size:12px;margin-bottom:20px;">보안을 위해 새로고침 시마다 로그인해야 합니다.</p>
                         <input type="text" id="admin_username" value="alpineaudio" style="width:100%;padding:10px;margin-bottom:10px;border:1px solid #ddd;border-radius:5px;" disabled />
-                        <input type="password" id="admin_password" placeholder="비�?번호" style="width:100%;padding:10px;margin-bottom:20px;border:1px solid #ddd;border-radius:5px;" autofocus />
-                        <button id="admin_login_btn" style="width:100%;padding:10px;background:#0055ff;color:#fff;border:none;border-radius:5px;cursor:pointer;font-weight:bold;">로그??/button>
-                        <p id="admin_login_err" style="color:red;font-size:12px;display:none;margin-top:10px;">비�?번호가 ?�치?��? ?�습?�다.</p>
+                        <input type="password" id="admin_password" placeholder="비밀번호" style="width:100%;padding:10px;margin-bottom:20px;border:1px solid #ddd;border-radius:5px;" autofocus />
+                        <button id="admin_login_btn" style="width:100%;padding:10px;background:#0055ff;color:#fff;border:none;border-radius:5px;cursor:pointer;font-weight:bold;">로그인</button>
+                        <p id="admin_login_err" style="color:red;font-size:12px;display:none;margin-top:10px;">비밀번호가 일치하지 않습니다.</p>
                     </div>
                 `;
                 document.body.appendChild(overlay);
@@ -687,7 +687,7 @@
                 const doLogin = async () => {
                     const pw = pwInput.value;
                     btn.disabled = true;
-                    btn.textContent = '로그??�?..';
+                    btn.textContent = '로그인 중...';
                     const success = await auth.login('alpineaudio', pw);
                     if (success && auth.getRole() === 'admin') {
                         document.body.removeChild(overlay);
@@ -695,7 +695,7 @@
                     } else {
                         err.style.display = 'block';
                         btn.disabled = false;
-                        btn.textContent = '로그??;
+                        btn.textContent = '로그인';
                     }
                 };
 
@@ -723,7 +723,7 @@
         // Simplified Filter Categories
         const FILTER_CAT_PRODUCTS = [
             "All", "F#1 Status", "Alpine Status", "DSP/AMP", "Speakers",
-            "PnP Cable", "기�??�품", "Alpine OEM Fit", "AlpineStyle"
+            "PnP Cable", "기타상품", "Alpine OEM Fit", "AlpineStyle"
         ];
         const FILTER_CAT_DEALERS = [
             "All", "Alpine Sound Master", "Team Alpine", "Alpine Style Distributor",
@@ -787,16 +787,16 @@
                 categorySelect.style.display = 'block';
                 regionSelect.style.display = 'none';
                 soldOutLabel.style.display = 'flex';
-                soldOutLabel.querySelector('span').innerText = '?�절 ?�외';
+                soldOutLabel.querySelector('span').innerText = '품절 제외';
                 row2.style.display = 'flex';
                 
                 sortSelect.innerHTML = `
-                    <option value="name_asc">가?�다??/option>
-                    <option value="name_desc">??��</option>
-                    <option value="id_desc" selected>최신?�록??/option>
-                    <option value="id_asc">과거?�록??/option>
-                    <option value="price_asc">가격낮?�??/option>
-                    <option value="price_desc">가격높?�??/option>
+                    <option value="name_asc">가나다순</option>
+                    <option value="name_desc">역순</option>
+                    <option value="id_desc" selected>최신등록순</option>
+                    <option value="id_asc">과거등록순</option>
+                    <option value="price_asc">가격낮은순</option>
+                    <option value="price_desc">가격높은순</option>
                 `;
             } else if (currentMode === 'dealer') {
                 categorySelect.style.display = 'block';
@@ -805,7 +805,7 @@
                 row2.style.display = 'flex';
                 
                 if (regionSelect.options.length <= 1) {
-                    regionSelect.innerHTML = '<option value="">지???�체</option>';
+                    regionSelect.innerHTML = '<option value="">지역 전체</option>';
                     CAT_REGIONS.forEach(r => {
                         const opt = document.createElement('option');
                         opt.value = r;
@@ -815,33 +815,33 @@
                 }
                 
                 sortSelect.innerHTML = `
-                    <option value="name_asc">가?�다??/option>
-                    <option value="name_desc">??��</option>
-                    <option value="id_desc" selected>최신?�록??/option>
-                    <option value="id_asc">과거?�록??/option>
+                    <option value="name_asc">가나다순</option>
+                    <option value="name_desc">역순</option>
+                    <option value="id_desc" selected>최신등록순</option>
+                    <option value="id_asc">과거등록순</option>
                 `;
             } else if (currentMode === 'service_admin') {
                 row2.style.display = 'none';
                 sortSelect.innerHTML = `
-                    <option value="name_asc">가?�다??/option>
-                    <option value="name_desc">??��</option>
+                    <option value="name_asc">가나다순</option>
+                    <option value="name_desc">역순</option>
                 `;
             } else if (currentMode === 'popup') {
                 row2.style.display = 'flex';
                 categorySelect.style.display = 'none';
                 regionSelect.style.display = 'none';
                 soldOutLabel.style.display = 'flex';
-                soldOutLabel.querySelector('span').innerText = '?�성?�만';
+                soldOutLabel.querySelector('span').innerText = '활성화만';
                 
                 sortSelect.innerHTML = `
-                    <option value="name_asc">?�목??/option>
-                    <option value="id_desc" selected>최신?�록??/option>
+                    <option value="name_asc">제목순</option>
+                    <option value="id_desc" selected>최신등록순</option>
                 `;
             } else if (currentMode === 'estimate') {
                 row2.style.display = 'none';
                 sortSelect.innerHTML = `
-                    <option value="name_asc">브랜?�순</option>
-                    <option value="id_desc" selected>최신?�록??/option>
+                    <option value="name_asc">브랜드순</option>
+                    <option value="id_desc" selected>최신등록순</option>
                 `;
             }
         }
@@ -953,7 +953,7 @@
 
             // Update count
             const countDiv = document.getElementById('filterCount');
-            if (countDiv) countDiv.textContent = `결과: ${displayPopups.length}�?;
+            if (countDiv) countDiv.textContent = `결과: ${displayPopups.length}개`;
 
             // Render List Items
             displayPopups.forEach(p => {
@@ -1202,7 +1202,7 @@
             if (excludeSoldOut) excludeSoldOut.checked = false;
             
             const soldOutSpan = document.getElementById('lblFilterSoldOut')?.querySelector('span');
-            if (soldOutSpan) soldOutSpan.innerText = '?�절 ?�외';
+            if (soldOutSpan) soldOutSpan.innerText = '품절 제외';
 
             // Configure filter visibility & categories first
             populateFilterCategories();
@@ -1393,17 +1393,17 @@
 
             // Update count
             const countDiv = document.getElementById('filterCount');
-            if (countDiv) countDiv.textContent = `결과: ${displayData.length}�?;
+            if (countDiv) countDiv.textContent = `결과: ${displayData.length}개`;
 
             displayData.forEach((item, idx) => {
                 const li = document.createElement('li');
                 li.className = 'product-item';
                 li.innerHTML = `<h4>${item.brand} ${item.model}</h4><p>${item.code} (${item.system})</p>`;
-                li.onclick = () => alert('개별 ?�정 기능?� 준�?중입?�다. ?�체 ?�이?��? ?�버�??�기?�하?�면 ?�단 버튼???�용??주세??');
+                li.onclick = () => alert('개별 수정 기능은 준비 중입니다. 전체 데이터를 서버로 동기화하려면 상단 버튼을 이용해 주세요.');
                 list.appendChild(li);
             });
 
-            if (displayData.length === 0) list.innerHTML = '<li style="padding:20px; text-align:center; color:#999;">검?�어?� ?�치?�는 ?�이?��? ?�습?�다.</li>';
+            if (displayData.length === 0) list.innerHTML = '<li style="padding:20px; text-align:center; color:#999;">검색어와 일치하는 데이터가 없습니다.</li>';
 
             domForm.style.display = 'block';
             document.getElementById('formTitle').textContent = 'Estimate Management';
@@ -1419,11 +1419,11 @@
             estimateControls.innerHTML = `
                 <div class="form-group" style="padding: 20px; border: 1px solid #ddd; background: #fff; border-radius: 8px; display:block; border-left: 5px solid #2ecc71;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-                        <h3 style="margin:0;">?�버 ?�기???�태: <span id="syncStatus" style="color:#2ecc71;">체크 �?..</span></h3>
+                        <h3 style="margin:0;">서버 동기화 상태: <span id="syncStatus" style="color:#2ecc71;">체크 중...</span></h3>
                         <div class="auto-save-badge" style="background:#2ecc71; color:#fff; padding:2px 8px; border-radius:10px; font-size:0.7rem;">Auto-Save Active</div>
                     </div>
-                    <p style="color: #666; font-size:0.9rem;">?�재 로드??견적 ?�이?? <strong>${data.length}�?/strong> (?�터결과: ${displayData.length}�?</p>
-                    <button id="btnManualSync" class="btn btn-outline-success" style="width:100%; padding:10px;" onclick="saveToGitHub('estimate')">?�동?�로 ?�버???�??(Force Sync)</button>
+                    <p style="color: #666; font-size:0.9rem;">현재 로드된 견적 데이터: <strong>${data.length}건</strong> (필터결과: ${displayData.length}건)</p>
+                    <button id="btnManualSync" class="btn btn-outline-success" style="width:100%; padding:10px;" onclick="saveToGitHub('estimate')">수동으로 서버에 저장 (Force Sync)</button>
                 </div>
             `;
 
@@ -1432,21 +1432,21 @@
             const serverVer = (typeof ESTIMATE_DATA_VERSION !== 'undefined') ? ESTIMATE_DATA_VERSION : 0;
 
             if (storedVer && parseInt(storedVer) > serverVer) {
-                document.getElementById('syncStatus').innerText = '?�데?�트 발견 (?�동 ?�??�?..)';
+                document.getElementById('syncStatus').innerText = '업데이트 발견 (자동 저장 중...)';
                 document.getElementById('syncStatus').style.color = '#e67e22';
 
                 // Trigger Silent Auto Save
                 setTimeout(() => {
                     saveToGitHub('estimate', true).then(() => {
-                        document.getElementById('syncStatus').innerText = '최신 ?�태 (?�버 ?�기???�료)';
+                        document.getElementById('syncStatus').innerText = '최신 상태 (서버 동기화 완료)';
                         document.getElementById('syncStatus').style.color = '#2ecc71';
                     }).catch(err => {
-                        document.getElementById('syncStatus').innerText = '?�동 ?�???�패';
+                        document.getElementById('syncStatus').innerText = '자동 저장 실패';
                         document.getElementById('syncStatus').style.color = '#e74c3c';
                     });
                 }, 1000);
             } else {
-                document.getElementById('syncStatus').innerText = '최신 ?�태 (?�버?� ?�치)';
+                document.getElementById('syncStatus').innerText = '최신 상태 (서버와 일치)';
             }
         }
 
@@ -1520,9 +1520,9 @@
                 inputs.phone.value = item.phone || '';
                 inputs.dealer_desc.value = item.desc || '';
                 inputs.dealer_id.value = item.username || '';
-                // 비�?번호???�방???�호?�되??반환?��? ?�으므�? ?�정 ????�� 빈칸?�로 ?�시?�고 placeholder�??�내?�니??
+                // 비밀번호는 단방향 암호화되어 반환되지 않으므로, 수정 시 항상 빈칸으로 표시하고 placeholder로 안내합니다
                 inputs.dealer_pass.value = '';
-                inputs.region.value = item.region || '?�울';
+                inputs.region.value = item.region || '서울';
                 inputs.homepage.value = item.homepage || '';
                 inputs.blog_url.value = item.blog_url || '';
                 inputs.tistory_url.value = item.tistory_url || '';
@@ -1577,7 +1577,7 @@
                 inputs.dealer_desc.value = '';
                 inputs.dealer_id.value = '';
                 inputs.dealer_pass.value = '';
-                inputs.region.value = '?�울';
+                inputs.region.value = '서울';
                 inputs.homepage.value = '';
                 inputs.blog_url.value = '';
                 inputs.tistory_url.value = '';
@@ -1591,7 +1591,7 @@
         function slugify(text) {
             return text.toString().normalize('NFC').toLowerCase()
                 .replace(/\s+/g, '-')
-                .replace(/[^\w\-가-??+/g, '')
+                .replace(/[^\w\-가-힣]+/g, '')
                 .replace(/\-\-+/g, '-')
                 .replace(/^-+/, '')
                 .replace(/-+$/, '');
@@ -1611,22 +1611,22 @@
                 const adminPass = inputs.service_admin_pass.value;
 
                 if (!adminId) {
-                    alert('Login ID�??�력??주세??');
+                    alert('Login ID를 입력해 주세요.');
                     if (overlay) overlay.style.display = 'none';
                     return;
                 }
                 if (!adminName) {
-                    alert('?�비??관리자 ?�름???�력??주세??');
+                    alert('서비스 관리자 이름을 입력해 주세요.');
                     if (overlay) overlay.style.display = 'none';
                     return;
                 }
                 if (currentId === -1 && !adminPass) {
-                    alert('??계정??비�?번호�??�력??주세??');
+                    alert('새 계정의 비밀번호를 입력해 주세요.');
                     if (overlay) overlay.style.display = 'none';
                     return;
                 }
 
-                // 기존 ?��???username 변�????�본 username 찾기
+                // 기존 유저의 username 변경 전 원본 username 찾기
                 let originalUsername = null;
                 if (currentId !== -1) {
                     const existing = serviceAdmins.find(a => a.id === currentId);
@@ -1658,20 +1658,20 @@
                     if (error) throw new Error(error.message);
                     if (data && data.success === false) throw new Error(data.error || 'Unknown error');
 
-                    // ?�로 고침
+                    // 새로 고침
                     serviceAdmins = await fetchServiceAdmins();
                     
                     if (currentId === -1) {
-                        alert('?�비??관리자 계정??추�??�었?�니??');
+                        alert('서비스 관리자 계정이 추가되었습니다.');
                     } else {
-                        alert('?�비??관리자 계정???�정?�었?�니??');
+                        alert('서비스 관리자 계정이 수정되었습니다.');
                     }
                     
                     domForm.style.display = 'none';
                     renderList();
                 } catch (err) {
-                    console.error('?�비??관리자 ?�???�류:', err);
-                    alert('?�비??관리자 ?�???�패:\n' + err.message);
+                    console.error('서비스 관리자 저장 오류:', err);
+                    alert('서비스 관리자 저장 실패:\n' + err.message);
                 } finally {
                     if (overlay) overlay.style.display = 'none';
                 }
@@ -1686,15 +1686,14 @@
             if (currentMode === 'product' && fileInput && fileInput.files.length > 0) {
                 // Only if input is not empty (cleared on success instant upload)
                 const file = fileInput.files[0];
-                const safeName = file.name.replace(/[^a-zA-Z0-9.\-_��-�R]/g, '_');
-                    const path = 'assets/images/' + safeName;
+                const path = 'assets/images/' + file.name;
 
                 // Show uploading status
                 if (loadingText) loadingText.innerText = 'Uploading Image (Fallback)...';
 
                 try {
                     await ghClient.uploadFile(path, file, `Upload Product Image: ${file.name}`);
-                    inputs.image.value = path; // ??�� 로컬 경로�??�??
+                    inputs.image.value = path; // 항상 로컬 경로로 저장
                 } catch (err) {
                     console.error('Fallback Upload Failed:', err);
                     if (!confirm(`Image Upload Failed:\n${err.message}\n\nClick OK to continue saving (Image link might be broken).\nClick Cancel to abort and try again.`)) {
@@ -1717,14 +1716,13 @@
                         // If input is empty, accessing block.value (existing url) is fine.
                         if (fileInput && fileInput.files.length > 0) {
                             const file = fileInput.files[0];
-                            const safeName = file.name.replace(/[^a-zA-Z0-9.\-_��-�R]/g, '_');
-                    const path = 'assets/images/' + safeName;
+                            const path = 'assets/images/' + file.name;
 
                             if (loadingText) loadingText.innerText = `Uploading Block Image: ${file.name}...`;
 
                             try {
                                 await ghClient.uploadFile(path, file, `Upload Detail Block Image: ${file.name}`);
-                                block.value = path; // ??�� 로컬 경로�??�??
+                                block.value = path; // 항상 로컬 경로로 저장
                             } catch (err) {
                                 console.error(`Failed to upload block image ${file.name}:`, err);
                                 if (!confirm(`Failed to upload ${file.name}.\nContinue saving without assuring it is online?`)) {
@@ -1783,8 +1781,8 @@
                 // password and role are not in dealers table. Only used for Authentication and handled by syncDealerToSupabase.
                 // We keep them in the object briefly for syncDealerToSupabase but we need to delete them before upserting 
 
-                // 만약 기존 ?�리점???�정?�는??비�?번호가 비워???�다�? 비�?번호�?변경하지 ?�습?�다 (null ?�송).
-                // ???�리점?�데 비워???�다�? ?�버 ?�리거�? 기본 비�?번호�??�정??것입?�다.
+                // 만약 기존 대리점을 수정하는데 비밀번호가 비워져 있다면, 비밀번호를 변경하지 않습니다 (null 전송).
+                // 새 대리점인데 비워져 있다면, 서버 트리거가 기본 비밀번호를 설정할 것입니다.
                 newItem.password = inputs.dealer_pass.value ? inputs.dealer_pass.value : null;
                 newItem.role = 'dealer';
                 newItem.region = inputs.region.value;
@@ -1837,11 +1835,11 @@
             if (!hasChanges) {
                 loadingText.innerText = '';
                 overlay.style.display = 'none';
-                alert('변�??�용???�습?�다.');
+                alert('변경 내용이 없습니다.');
                 return;
             }
 
-            // ?�러 ?�정 ??기존 username ?�??(Supabase ?�기?�용)
+            // 딜러 수정 시 기존 username 저장 (Supabase 동기화용)
             const originalDealerUsername = (!isProduct && existingIdx !== -1)
                 ? (collection[existingIdx].username || null) : null;
 
@@ -1866,23 +1864,23 @@
 
             if (isProduct) {
                 // Auto Save to Server (GitHub)
-                loadingText.innerText = '?�버???�기??�?(GitHub)...';
+                loadingText.innerText = '서버에 동기화 중 (GitHub)...';
                 try {
                     await saveToGitHub(currentMode, true);
                     overlay.style.display = 'none';
                     if (currentId === -1 || (collection.findIndex(i => i.id === currentId) === -1)) {
-                        alert('????��??추�??�고 ?�버??반영?�었?�니??');
+                        alert('새 항목이 추가되고 서버에 반영되었습니다.');
                     } else {
-                        alert('변경내?�을 반영?�습?�다.\n(GitHub ?�기???�료)');
+                        alert('변경내용을 반영했습니다.\n(GitHub 동기화 완료)');
                     }
                 } catch (e) {
                     console.error(e);
                     overlay.style.display = 'none';
-                    alert('변경내?��? ?�?�되?�으?? ?�버 ?�기?�에 ?�패?�습?�다:\n' + e.message);
+                    alert('변경내용은 저장되었으나, 서버 동기화에 실패했습니다:\n' + e.message);
                 }
             } else {
-                // Supabase Dealer Data + 계정 ?�합 ?�기??(관리자 비�?번호 검�?RPC)
-                loadingText.innerText = '?�리점 ?�보 DB ?�기??�?(Supabase)...';
+                // Supabase Dealer Data + 계정 통합 동기화 (관리자 비밀번호 검증 RPC)
+                loadingText.innerText = '대리점 정보 DB 동기화 중 (Supabase)...';
                 try {
                     const supaPass = await getAdminPassword();
                     if (!supaPass) {
@@ -1919,7 +1917,7 @@
                     if (error) throw new Error(error.message);
                     if (data && data.error) throw new Error(data.error);
 
-                    // DB ?�???�공 ??리스??갱신
+                    // DB 저장 성공 후 리스트 갱신
                     try {
                         const dealerRes = await client.from('dealers').select('*').order('id', { ascending: true });
                         let mergedDealers = [...dealers];
@@ -1933,15 +1931,15 @@
                         dealers = mergedDealers;
                         renderList();
                     } catch (err) {
-                        console.warn('[Supabase] 리스??갱신 ?�패:', err.message);
+                        console.warn('[Supabase] 리스트 갱신 실패:', err.message);
                     }
 
                     overlay.style.display = 'none';
-                    alert('?�리점 ?�보가 DB???�?�되?�습?�다.');
+                    alert('대리점 정보가 DB에 저장되었습니다.');
                 } catch (err) {
                     console.error(err);
                     overlay.style.display = 'none';
-                    alert('Supabase ?�기???�패:\n' + err.message);
+                    alert('Supabase 동기화 실패:\n' + err.message);
                 }
             }
         }
@@ -1949,7 +1947,7 @@
         // CATEGORIES (Moved from missing global scope or re-declared)
         const CAT_PRODUCTS = [
             "F#1 Status", "Alpine Status", "DSP/AMP", "Speakers",
-            "PnP Cable - �?���?(Domestic)", "PnP Cable - ?�일�?(German Cars)", "PnP Cable - 기�??�입�?(Other Imported Cars)", "PnP Cable - DSP", "PnP Cable - 기�? (Other)",
+            "PnP Cable - 국산차 (Domestic)", "PnP Cable - 독일차 (German Cars)", "PnP Cable - 기타수입차 (Other Imported Cars)", "PnP Cable - DSP", "PnP Cable - 기타 (Other)",
             "Alpine OEM Fit", "ALPINESTYLE", "Head Units", "Players", "Subwoofers", "Others"
         ];
         const CAT_DEALERS = [
@@ -1958,13 +1956,13 @@
         ];
 
         const CAT_REGIONS = [
-            '?�울',
-            '경기북�?(고양,?�주,?�정부,?�주)',
-            '경기?��?(김??부�?광명,?�산)',
-            '경기중앙(?�남,?�양,?�인,과천)',
-            '경기?��?(?�양�??�남,?�천,?�평)',
-            '경기?��?(?�원,?�성,?�택,?�성)',
-            '?�천', '?�??, '?�종', '충북', '충남', '강원', '?�북', '광주', '?�남', '?��?, '?�산', '경북', '부??, '경남', '?�주'
+            '서울',
+            '경기북부(고양,파주,의정부,양주)',
+            '경기서부(김포,부천,광명,안산)',
+            '경기중앙(성남,안양,용인,과천)',
+            '경기동부(남양주,하남,이천,양평)',
+            '경기남부(수원,화성,평택,안성)',
+            '인천', '대전', '세종', '충북', '충남', '강원', '전북', '광주', '전남', '대구', '울산', '경북', '부산', '경남', '제주'
         ];
 
         function populateCategories() {
@@ -2028,7 +2026,7 @@
 
                 // Render count
                 const countDiv = document.getElementById('filterCount');
-                if (countDiv) countDiv.textContent = `결과: ${filteredData.length}�?;
+                if (countDiv) countDiv.textContent = `결과: ${filteredData.length}개`;
 
                 filteredData.forEach(item => {
                     const li = document.createElement('li');
@@ -2053,7 +2051,7 @@
                             return itemCat.startsWith('PnP Cable');
                         } else if (catVal === 'AlpineStyle') {
                             return itemCat.toLowerCase() === 'alpinestyle';
-                        } else if (catVal === '기�??�품') {
+                        } else if (catVal === '기타상품') {
                             const coreCats = ["F#1 Status", "Alpine Status", "DSP/AMP", "Speakers", "Alpine OEM Fit", "ALPINESTYLE"];
                             const isCore = coreCats.includes(itemCat) || itemCat.startsWith('PnP Cable');
                             return !isCore;
@@ -2120,7 +2118,7 @@
 
             // Update count
             const countDiv = document.getElementById('filterCount');
-            if (countDiv) countDiv.textContent = `결과: ${displayData.length}�?;
+            if (countDiv) countDiv.textContent = `결과: ${displayData.length}개`;
 
             displayData.forEach(item => {
                 const li = document.createElement('li');
@@ -2165,11 +2163,11 @@
             if (isProduct) {
                 products = products.filter(p => p.id !== currentId);
             } else {
-                // ??�� ??username ?�??
+                // 삭제 전 username 저장
                 const deletedDealer = dealers.find(d => d.id === currentId);
                 const deletedUsername = deletedDealer ? deletedDealer.username : null;
 
-                // Supabase?�서 먼�? ??�� ?�도
+                // Supabase에서 먼저 삭제 시도
                 if (deletedUsername) {
                     const supaPass = await getAdminPassword();
                     if (supaPass) {
@@ -2181,17 +2179,17 @@
                             p_username: deletedUsername
                         });
                         if (error || (data && data.error)) {
-                            console.warn('[Supabase] ??�� ?�패:', error || data.error);
+                            console.warn('[Supabase] 삭제 실패:', error || data.error);
                             if ((data && data.error === 'unauthorized') || (error && error.message && error.message.includes('unauthorized'))) {
                                 _cachedAdminPass = null;
-                                alert('비�?번호가 ?�?�거??권한???�습?�다.');
+                                alert('비밀번호가 틀렸거나 권한이 없습니다.');
                             } else {
-                                alert('?�류가 발생?�습?�다: ' + (error ? error.message : data.error));
+                                alert('오류가 발생했습니다: ' + (error ? error.message : data.error));
                             }
                             return; // 중단
                         }
                     } else {
-                        return; // 비�?번호 취소 ??중단
+                        return; // 비밀번호 취소 시 중단
                     }
                 }
 
@@ -2269,8 +2267,7 @@
         function handleBlockFile(id, input) {
             const file = input.files[0];
             if (!file) return;
-            const safeName = file.name.replace(/[^a-zA-Z0-9.\-_��-�R]/g, '_');
-                    const path = 'assets/images/' + safeName;
+            const path = 'assets/images/' + file.name;
 
             // Upload immediately
             const overlay = document.getElementById('loadingOverlay');
@@ -2288,7 +2285,7 @@
                         const sid = id.toString();
                         const b = currentBlocks.find(x => x.id.toString() === sid);
                         if (b) {
-                            b.value = path; // ??�� 로컬 경로�??�??
+                            b.value = path; // 항상 로컬 경로로 저장
 
                             renderBlocks(); // Re-render to show updated value & preview
                         }
@@ -2563,29 +2560,29 @@
             // 1. GitHub Check
             let configured = false;
             if (typeof ghClient === 'undefined') {
-                html += '<span style="color:red; font-weight:bold; margin-right:10px;">??Script Error (ghClient missing)</span>';
+                html += '<span style="color:red; font-weight:bold; margin-right:10px;">❌ Script Error (ghClient missing)</span>';
             } else {
                 await ghClient.refreshStatus().catch(() => {});
                 configured = ghClient.isConfigured();
             }
 
             if (!configured) {
-                html += '<span style="color:red; font-weight:bold;">?�️ GitHub Disconnected (Uploads Disabled)</span>';
+                html += '<span style="color:red; font-weight:bold;">⚠️ GitHub Disconnected (Uploads Disabled)</span>';
                 statusDiv.style.background = '#ffe6e6';
             } else {
-                html += '<span style="color:green; font-weight:bold;">??GitHub Connected</span>';
+                html += '<span style="color:green; font-weight:bold;">✅ GitHub Connected</span>';
             }
 
             // 2. File API Check
             if (window.FileReader && window.File && window.FileList && window.Blob) {
-                html += '<span style="color:blue;">??File API Ready</span>';
+                html += '<span style="color:blue;">✅ File API Ready</span>';
             } else {
-                html += '<span style="color:red; font-weight:bold;">??File API Not Supported (Update Browser)</span>';
+                html += '<span style="color:red; font-weight:bold;">❌ File API Not Supported (Update Browser)</span>';
             }
 
             // 3. Version Check (Simple Timestamp)
             const vDate = new Date().toLocaleTimeString();
-            html += `<span style="color:#666;">?�� Script Loaded: ${vDate}</span>`;
+            html += `<span style="color:#666;">🕒 Script Loaded: ${vDate}</span>`;
 
             statusDiv.innerHTML = html;
 
@@ -2604,8 +2601,7 @@
                     return;
                 }
                 const file = e.target.files[0];
-                const safeName = file.name.replace(/[^a-zA-Z0-9.\-_��-�R]/g, '_');
-                    const path = 'assets/images/' + safeName;
+                const path = 'assets/images/' + file.name;
 
                 // 1. Local Preview
                 const reader = new FileReader();
@@ -2630,7 +2626,7 @@
 
                         // 3. Update Input with local path
                         const imageInput = document.getElementById('conn_image');
-                        imageInput.value = path; // ??�� 로컬 경로�??�??
+                        imageInput.value = path; // 항상 로컬 경로로 저장
 
                         alert('Image Uploaded Successfully!');
 
@@ -2669,7 +2665,7 @@
 
         // --- GitHub Settings Logic ---
 
-        // ?�?� Supabase ?�라?�언??(?�러 계정 ?�기?�용) ?�?�?�?�?�?�?�?�?�?�?�?�?�?�
+        // ── Supabase 클라이언트 (딜러 계정 동기화용) ──────────────
         const _LOCAL_SUPA_URL = 'https://supabase.alpine-korea.co.kr';
         const _LOCAL_SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us';
         const _ADMIN_SUPA_URL = (typeof window !== 'undefined' && window.ENV && window.ENV.NEXT_PUBLIC_SUPABASE_URL) ? window.ENV.NEXT_PUBLIC_SUPABASE_URL : _LOCAL_SUPA_URL;
@@ -2682,7 +2678,7 @@
             return _supaAdmin;
         }
 
-        // 관리자 비�?번호 캐시 (?�동 ?�동)
+        // 관리자 비밀번호 캐시 (자동 연동)
         let _cachedAdminPass = null;
         async function getAdminPassword() {
             if (_cachedAdminPass) return _cachedAdminPass;
@@ -2706,26 +2702,26 @@
                     p_admin_password: supaPass
                 });
                 if (error) {
-                    console.error('[Supabase] ?�비??관리자 로드 ?�러:', error.message);
-                    alert('?�비??관리자�?불러?�는???�패?�습?�다: ' + error.message);
+                    console.error('[Supabase] 서비스 관리자 로드 에러:', error.message);
+                    alert('서비스 관리자를 불러오는데 실패했습니다: ' + error.message);
                     return [];
                 }
                 if (data && data.success) {
                     return data.data || [];
                 } else if (data && data.error) {
-                    console.error('[Supabase] ?�비??관리자 로드 ?�패:', data.error);
-                    alert('?�비??관리자�?불러?�는???�패?�습?�다: ' + data.error);
+                    console.error('[Supabase] 서비스 관리자 로드 실패:', data.error);
+                    alert('서비스 관리자를 불러오는데 실패했습니다: ' + data.error);
                     return [];
                 }
                 return [];
             } catch (e) {
-                console.error('[Supabase] ?�비??관리자 로드 ?�외:', e.message);
-                alert('?�비??관리자�?불러?�는???�패?�습?�다: ' + e.message);
+                console.error('[Supabase] 서비스 관리자 로드 예외:', e.message);
+                alert('서비스 관리자를 불러오는데 실패했습니다: ' + e.message);
                 return [];
             }
         }
 
-        // ?�러 Supabase ?�기???�퍼
+        // 딜러 Supabase 동기화 헬퍼
         const CAT_ROLE_MAP = {
             'Alpine Sound Master': 'master', 'Team Alpine': 'team',
             'Alpine Style Distributor': 'style', 'Alpine Regional Distributor': 'region',
@@ -2745,17 +2741,17 @@
                 if (error || (data && data.error)) {
                     if ((data && data.error === 'unauthorized') || (error && error.message && error.message.includes('unauthorized'))) {
                         _cachedAdminPass = null;
-                        alert('비�?번호가 ?�?�거??권한???�습?�다.');
+                        alert('비밀번호가 틀렸거나 권한이 없습니다.');
                     } else {
-                        alert('??�� ?�류: ' + (error ? error.message : data.error));
+                        alert('삭제 오류: ' + (error ? error.message : data.error));
                     }
                     return false;
                 }
-                console.log('[Supabase] DB ??�� ?�료:', username);
+                console.log('[Supabase] DB 삭제 완료:', username);
                 return true;
 
             } catch (e) {
-                console.warn('[Supabase] ??�� ?�외:', e.message);
+                console.warn('[Supabase] 삭제 예외:', e.message);
             }
         }
 
