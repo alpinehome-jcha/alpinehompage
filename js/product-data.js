@@ -3542,13 +3542,29 @@ const initialProductData = [
     {
         "id": 1770599277781,
         "category": "Alpine OEM Fit",
-        "title": "KGM 회오리 앰비언트 S-S10TW 트위터 패키지",
-        "desc": "KGM 회오리 앰비언트 트위터 커버 + S-S10TW 패키지",
+        "title": "KGM 회오리 앰비언트 DM 트위터 패키지",
+        "desc": "KGM 회오리 앰비언트 트위터 커버 + DM 패키지",
         "desc_bottom": ".",
-        "price": 400000,
-        "soldOut": true,
-        "image": "assets/images/product_placeholder.png",
-        "detailBlocks": [],
+        "price": 300000,
+        "soldOut": false,
+        "image": "assets/images/KGM_앰비언트_라이트_트위터_Small.png",
+        "detailBlocks": [
+            {
+                "id": "1787731380626697150",
+                "type": "image",
+                "value": "assets/images/광고페이지_KGM_앰비언트_회오리_트위터_01.png"
+            },
+            {
+                "id": "1787731398618446842",
+                "type": "image",
+                "value": "assets/images/광고페이지_KGM_앰비언트_회오리_트위터_02.png"
+            },
+            {
+                "id": "1787731424581166061",
+                "type": "image",
+                "value": "assets/images/광고페이지_KGM_앰비언트_회오리_트위터_06.png"
+            }
+        ],
         "attachments": [],
         "manualUrl": "",
         "slug": "kgm-회오리-앰비언트-s2-s10tw-트위터-패키지",
@@ -4623,7 +4639,7 @@ const initialProductData = [
         "slug": "dps-25m-chamber"
     }
 ];
-const PRODUCT_DATA_VERSION = 1787723083713;
+const PRODUCT_DATA_VERSION = 1788149845385;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
