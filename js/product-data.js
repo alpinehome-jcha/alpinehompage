@@ -3544,7 +3544,7 @@ const initialProductData = [
         "category": "Alpine OEM Fit",
         "title": "KGM 회오리 앰비언트 DM 트위터 패키지",
         "desc": "KGM 회오리 앰비언트 트위터 커버 + DM 패키지",
-        "desc_bottom": ".",
+        "desc_bottom": "시공비 별도",
         "price": 300000,
         "soldOut": false,
         "image": "assets/images/KGM_앰비언트_라이트_트위터_Small.png",
@@ -4639,7 +4639,7 @@ const initialProductData = [
         "slug": "dps-25m-chamber"
     }
 ];
-const PRODUCT_DATA_VERSION = 1788149845385;
+const PRODUCT_DATA_VERSION = 1788151304980;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
