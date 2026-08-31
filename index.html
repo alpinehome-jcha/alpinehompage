@@ -465,8 +465,11 @@
         });
     </script>
 
-    <script src="js/product-data.js?v=20260721"></script>
-    <!-- productData is initialized in product-data.js -->
+    <!-- productData is initialized dynamically to bypass CDN cache -->
+    <script>
+        document.write('<script src="js/product-data.js?v=' + new Date().getTime() + '"><\/script>');
+    </script>
+    <script src="js/popup-data.js?v=20260721"></script>
     <script>
         // Render Products
         const productGrid = document.getElementById('productGrid');
