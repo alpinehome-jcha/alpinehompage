@@ -3563,6 +3563,11 @@ const initialProductData = [
                 "id": "1787731424581166061",
                 "type": "image",
                 "value": "assets/images/광고페이지_KGM_앰비언트_회오리_트위터_06.png"
+            },
+            {
+                "id": "1788161147205927719",
+                "type": "text",
+                "value": "https://www.youtube.com/watch?v=ZNEUJJmg8cs"
             }
         ],
         "attachments": [],
@@ -4639,7 +4644,7 @@ const initialProductData = [
         "slug": "dps-25m-chamber"
     }
 ];
-const PRODUCT_DATA_VERSION = 1788151304980;
+const PRODUCT_DATA_VERSION = 1788161172613;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
