@@ -18,7 +18,13 @@ jobs:
       - name: Check if product-data.js changed
         id: check_ssg
         run: |
-          if git diff --name-only HEAD~1 HEAD | grep -q 'js/product-data.js'; then
+          # push 이벤트의 모든 커밋 범위에서 변경 감지 (없으면 이전 커밋 1개만 비교)
+          BASE_SHA="${{ github.event.before }}"
+          HEAD_SHA="${{ github.sha }}"
+          if [ -z "$BASE_SHA" ] || [ "$BASE_SHA" = "0000000000000000000000000000000000000000" ]; then
+            BASE_SHA="HEAD~1"
+          fi
+          if git diff --name-only $BASE_SHA $HEAD_SHA | grep -q 'js/product-data.js'; then
             echo "run_ssg=true" >> $GITHUB_OUTPUT
           else
             echo "run_ssg=false" >> $GITHUB_OUTPUT
