@@ -15,9 +15,18 @@ const initialPopupData = [
         "imagePath": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/popups/alpine_dealer_popup2.jpg",
         "hideDays": 365,
         "linkUrl": "#"
+    },
+    {
+        "id": 1788411969373,
+        "title": "앰비언트 트위",
+        "isActive": true,
+        "dealerOnly": true,
+        "imagePath": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/popups/__________.jpg",
+        "hideDays": 1,
+        "linkUrl": "https://www.alpine-korea.co.kr/pages/products/kgm-%ED%9A%8C%EC%98%A4%EB%A6%AC-%EC%95%B0%EB%B9%84%EC%96%B8%ED%8A%B8-s2-s10tw-%ED%8A%B8%EC%9C%84%ED%84%B0-%ED%8C%A8%ED%82%A4%EC%A7%80.html"
     }
 ];
-const POPUP_DATA_VERSION = 1788411885819;
+const POPUP_DATA_VERSION = 1788411970545;
 
 let popupData = [];
 if (typeof localStorage !== 'undefined') {
