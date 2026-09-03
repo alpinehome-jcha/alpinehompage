@@ -1,0 +1,1 @@
+const fs = require('fs'); let content = fs.readFileSync('js/popup-data.js', 'utf8'); content = content.replace(/"id": 20260903001,[\s\S]*?"title": ".*?",/, '"id": 20260903001,\n        "title": "알파인 대리점 모집",'); fs.writeFileSync('js/popup-data.js', content, 'utf8');
