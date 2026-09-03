@@ -15,7 +15,7 @@ if (typeof supabase === 'undefined') {
 }
 
 const supabaseClient = (typeof supabase !== 'undefined')
-    ? supabase.createClient(CLIENT_SUPABASE_URL, CLIENT_SUPABASE_ANON_KEY, { db: { schema: 'alpine-home' } })
+    ? supabase.createClient(CLIENT_SUPABASE_URL, CLIENT_SUPABASE_ANON_KEY, { db: { schema: 'public' } })
     : null;
 
 // 공유를 위해 전역 변수로 설정 (기존 소스 호환성)
@@ -26,7 +26,9 @@ window.supabase = supabaseClient;
  * @returns {Promise<Array>}
  */
 async function fetchPriceList() {
-    const { data, error } = await window.supabase
+    if (!window.supabase) return [];
+    const client = window.supabase.schema ? window.supabase.schema('public') : window.supabase;
+    const { data, error } = await client
         .from('price_list')
         .select('*')
         .order('sort_order', { ascending: true });
@@ -45,8 +47,10 @@ async function fetchPriceList() {
  */
 async function fetchPriceListByCategory(category) {
     if (category === 'admin') return fetchPriceList(); // admin은 전체 조회
+    if (!window.supabase) return [];
 
-    const { data, error } = await window.supabase
+    const client = window.supabase.schema ? window.supabase.schema('public') : window.supabase;
+    const { data, error } = await client
         .from('price_list')
         .select('*')
         .eq('category', category)
@@ -62,38 +66,44 @@ async function fetchPriceListByCategory(category) {
 /**
  * 제품 데이터 전체를 Supabase에서 가져옵니다.
  * product-data.js 의 productData 배열과 동일한 형태로 반환합니다.
- * @returns {Promise<Array>}
+ * @returns {Promise<Array|null>}
  */
 async function fetchProductList() {
     if (!window.supabase) return null;
 
-    const { data, error } = await window.supabase
-        .from('products')
-        .select('*')
-        .eq('is_active', true)
-        .order('sort_order', { ascending: true });
+    try {
+        const client = window.supabase.schema ? window.supabase.schema('public') : window.supabase;
+        const { data, error } = await client
+            .from('products')
+            .select('*')
+            .eq('is_active', true)
+            .order('sort_order', { ascending: true });
 
-    if (error || !data) {
-        console.warn('Error fetching product list from Supabase:', error);
+        if (error || !data || data.length === 0) {
+            console.warn('Error fetching product list from Supabase:', error);
+            return null;
+        }
+
+        // Supabase 컬럼명 → JS 필드명 변환
+        return data.map(row => ({
+            id: row.id,
+            category: row.category,
+            title: row.title,
+            desc: row.description || '',
+            desc_bottom: row.desc_bottom || '',
+            price: row.price,
+            soldOut: row.sold_out || false,
+            image: row.image || 'assets/images/product_placeholder.png',
+            detailBlocks: row.detail_blocks || [],
+            attachments: row.attachments || [],
+            manualUrl: row.manual_url || '',
+            slug: row.slug || '',
+            sort_order: row.sort_order,
+        }));
+    } catch (e) {
+        console.warn('Exception in fetchProductList:', e);
         return null;
     }
-
-    // Supabase 컬럼명 → JS 필드명 변환
-    return data.map(row => ({
-        id: row.id,
-        category: row.category,
-        title: row.title,
-        desc: row.description || '',
-        desc_bottom: row.desc_bottom || '',
-        price: row.price,
-        soldOut: row.sold_out || false,
-        image: row.image || 'assets/images/product_placeholder.png',
-        detailBlocks: row.detail_blocks || [],
-        attachments: row.attachments || [],
-        manualUrl: row.manual_url || '',
-        slug: row.slug || '',
-        sort_order: row.sort_order,
-    }));
 }
 
 async function fetchDealerList() {

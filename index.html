@@ -481,8 +481,13 @@
         const productGrid = document.getElementById('productGrid');
         const filterBtns = document.querySelectorAll('.filter-btn');
 
-        // 전역 productData (Supabase 또는 JS 파일에서 채워짐)
-        let productData = (typeof productData !== 'undefined') ? productData : [];
+        // 전역 productData (Supabase 또는 product-data.js에서 채워짐)
+        function getProductData() {
+            if (typeof window.productData !== 'undefined' && Array.isArray(window.productData)) {
+                return window.productData;
+            }
+            return [];
+        }
 
         function slugify(text) {
             return text.toString().toLowerCase()
@@ -497,12 +502,10 @@
             if (!productGrid) return;
             productGrid.innerHTML = '';
 
-            // Basic language detection (if global 'translations' not available, default to EN style for now or detecting DOM)
-            // Let's rely on CSS class or text content of language toggle if needed, or just default.
-            // Using price format.
             const isEnglish = document.querySelector('.curr-lang') ? document.querySelector('.curr-lang').textContent.trim() === 'EN' : false;
+            const items = getProductData();
 
-            productData.forEach(product => {
+            items.forEach(product => {
                 // Filter logic
                 let isMatch = false;
 
@@ -739,10 +742,10 @@
         async function initProducts() {
             if (typeof fetchProductList === 'function') {
                 const sbData = await fetchProductList();
-                if (sbData && sbData.length > 0) {
-                    productData = sbData;
+                if (sbData && Array.isArray(sbData) && sbData.length > 0) {
+                    window.productData = sbData;
                 }
-                // sbData가 null이거나 비어있으면 이미 로드된 productData(JS 파일) 사용
+                // sbData가 null이거나 비어있으면 이미 로드된 window.productData(JS 파일) 사용
             }
             applyInitialFilters();
         }
