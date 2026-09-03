@@ -1088,7 +1088,7 @@
                 wrapper.style.display = 'none'; // Keep hidden during load to prevent black FOUC
 
                 const linkHtml = (p.linkUrl && p.linkUrl !== '#')
-                    ? `<a href="${p.linkUrl}" style="cursor:pointer;" target="_blank"><img src="${p.imagePath}" alt="${p.title}"></a>`
+                    ? `<a href="${p.linkUrl}" style="cursor:pointer;"><img src="${p.imagePath}" alt="${p.title}"></a>`
                     : `<img src="${p.imagePath}" alt="${p.title}">`;
 
                 wrapper.innerHTML = `
