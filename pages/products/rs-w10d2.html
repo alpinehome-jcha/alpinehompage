@@ -531,8 +531,11 @@ R-시리즈 슬림형 서브우퍼는 다이캐스트 알루미늄 프레임을 
     </footer>
 
     <script src="../../js/auth.js?v=20260724b"></script>
+    <!-- Supabase: product-data.js보다 먼저 로드 -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../js/supabase-client.js?v=20260903"></script>
     <script>
-        document.write('<script src="../../js/product-data.js?v=20260721"><\/script>');
+        document.write('<script src="../../js/product-data.js?v=' + new Date().getTime() + '"><\/script>');
     </script>
     <script>
         const translations = {
@@ -597,7 +600,7 @@ R-시리즈 슬림형 서브우퍼는 다이캐스트 알루미늄 프레임을 
 
         const paramId = getParam('id');
         const productId = paramId ? parseInt(paramId) : (typeof window.STATIC_PRODUCT_ID !== 'undefined' ? window.STATIC_PRODUCT_ID : null);
-        const product = productData.find(p => p.id === productId);
+        let product = null; // async 초기화로 채워짐
         const container = document.getElementById('productDetail');
 
         // Helper to fix paths for assets when in pages/ directory
@@ -889,25 +892,36 @@ R-시리즈 슬림형 서브우퍼는 다이캐스트 알루미늄 프레임을 
             });
         }
 
-        // Init
-        const savedLang = sessionStorage.getItem('lang') || 'ko';
-        if (langText) langText.textContent = savedLang.toUpperCase();
-
-        // Initial translation update for header/footer
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translations[savedLang] && translations[savedLang][key]) {
-                el.textContent = translations[savedLang][key];
+        // Supabase 우선으로 제품 데이터 로드 후 렌더링
+        async function initDetail() {
+            // 1. Supabase에서 ID로 단일 제품 조회 시도
+            if (productId && typeof fetchProductList === 'function') {
+                const sbData = await fetchProductList();
+                if (sbData && sbData.length > 0) {
+                    product = sbData.find(p => p.id === productId) || null;
+                }
             }
-        });
+            // 2. Supabase 실패 또는 데이터 없으면 JS 파일 fallback
+            if (!product && typeof productData !== 'undefined') {
+                product = productData.find(p => p.id === productId) || null;
+            }
 
-        if (savedLang === 'en' || typeof window.STATIC_PRODUCT_ID === 'undefined') {
+            // 3. 렌더링
+            const savedLang = sessionStorage.getItem('lang') || 'ko';
+            if (langText) langText.textContent = savedLang.toUpperCase();
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[savedLang] && translations[savedLang][key]) {
+                    el.textContent = translations[savedLang][key];
+                }
+            });
+
             renderDetailContent(savedLang);
         }
+        initDetail();
     </script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="../../js/supabase-client.js?v=20260223"></script>
     <script src="../../js/pnp-rule-data.js?v=20260302_v1"></script>
     <script src="../../js/estimate-ui.js?v=20260804"></script>
 </body>
