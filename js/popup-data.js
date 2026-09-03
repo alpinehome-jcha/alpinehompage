@@ -1,14 +1,13 @@
 const initialPopupData = [
     {
-        "id": 1771558591828,
-        "title": "오키나와",
+        "id": 20260903001,
+        "title": "알파인 대리점 모집",
         "isActive": true,
-        "imagePath": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/popupimage/01.jpg",
-        "hideDays": 365,
-        "linkUrl": "https://ko.okiren8131.com/"
+        "imagePath": "assets/images/popupimage/alpine_dealer_popup.jpg",
+        "hideDays": 1,
     }
 ];
-const POPUP_DATA_VERSION = 1784606252338;
+const POPUP_DATA_VERSION = 639240376163509324;
 
 let popupData = [];
 if (typeof localStorage !== 'undefined') {
