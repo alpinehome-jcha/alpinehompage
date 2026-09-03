@@ -59,6 +59,43 @@ async function fetchPriceListByCategory(category) {
     return data;
 }
 
+/**
+ * 제품 데이터 전체를 Supabase에서 가져옵니다.
+ * product-data.js 의 productData 배열과 동일한 형태로 반환합니다.
+ * @returns {Promise<Array>}
+ */
+async function fetchProductList() {
+    if (!window.supabase) return null;
+
+    const { data, error } = await window.supabase
+        .from('products')
+        .select('*')
+        .eq('is_active', true)
+        .order('sort_order', { ascending: true });
+
+    if (error || !data) {
+        console.warn('Error fetching product list from Supabase:', error);
+        return null;
+    }
+
+    // Supabase 컬럼명 → JS 필드명 변환
+    return data.map(row => ({
+        id: row.id,
+        category: row.category,
+        title: row.title,
+        desc: row.description || '',
+        desc_bottom: row.desc_bottom || '',
+        price: row.price,
+        soldOut: row.sold_out || false,
+        image: row.image || 'assets/images/product_placeholder.png',
+        detailBlocks: row.detail_blocks || [],
+        attachments: row.attachments || [],
+        manualUrl: row.manual_url || '',
+        slug: row.slug || '',
+        sort_order: row.sort_order,
+    }));
+}
+
 async function fetchDealerList() {
     if (!window.supabase) return [];
 
