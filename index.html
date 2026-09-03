@@ -1059,6 +1059,13 @@
             const activePopups = popupList.filter(p => {
                 if (!p.isActive) return false;
 
+                // Dealer-only check (require login)
+                if (p.dealerOnly) {
+                    if (typeof auth === 'undefined' || !auth.isLoggedIn()) {
+                        return false;
+                    }
+                }
+
                 // Check "Do not show today" (LocalStorage)
                 const hiddenUntil = localStorage.getItem('popup_hidden_' + p.id);
                 const now = new Date().getTime();

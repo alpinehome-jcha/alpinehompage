@@ -9,8 +9,9 @@ const initialPopupData = [
     },
     {
         "id": 1788408625755,
-        "title": "대리점모집",
+        "title": "알파인 대리점 모집",
         "isActive": true,
+        "dealerOnly": true,
         "imagePath": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/popups/alpine_dealer_popup2.jpg",
         "hideDays": 365,
         "linkUrl": "#"

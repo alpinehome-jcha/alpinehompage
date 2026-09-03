@@ -1035,6 +1035,11 @@
                         <input type="checkbox" id="popupActive" ${data.isActive ? 'checked' : ''}>
                         <span class="slider round"></span> Active
                     </label>
+                    &nbsp;&nbsp;&nbsp;
+                    <label class="switch">
+                        <input type="checkbox" id="popupDealerOnly" ${data.dealerOnly ? 'checked' : ''}>
+                        <span class="slider round"></span> 대리점 전용
+                    </label>
                 </div>
                 <div class="form-group" style="display:block;">
                     <label>Popup Image</label>
@@ -1106,6 +1111,7 @@
         async function savePopupConfig() {
             const title = document.getElementById('popupTitle').value;
             const isActive = document.getElementById('popupActive').checked;
+            const dealerOnly = document.getElementById('popupDealerOnly').checked;
             const hideDays = parseInt(document.getElementById('popupHideDays').value) || 1;
             const linkUrl = document.getElementById('popupLink').value;
 
@@ -1148,6 +1154,7 @@
                 id: currentId === -1 ? Date.now() : currentId,
                 title: title,
                 isActive: isActive,
+                dealerOnly: dealerOnly,
                 imagePath: imagePath,
                 hideDays: hideDays,
                 linkUrl: linkUrl
