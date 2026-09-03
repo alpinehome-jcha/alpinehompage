@@ -1,3 +1,4 @@
+// product-data.js — last updated: 2026-09-03 (SSG rebuild trigger)
 const initialProductData = [
     {
         "id": 1770186124033,
