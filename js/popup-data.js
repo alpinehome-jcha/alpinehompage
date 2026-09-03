@@ -11,13 +11,13 @@ const initialPopupData = [
         "id": 1788408625755,
         "title": "대리점모집",
         "isActive": true,
-        "dealerOnly": true,
+        "dealerOnly": false,
         "imagePath": "https://raw.githubusercontent.com/alpinehome-jcha/alpinehompage/main/assets/images/popups/alpine_dealer_popup2.jpg",
         "hideDays": 365,
         "linkUrl": "#"
     }
 ];
-const POPUP_DATA_VERSION = 1788411837064;
+const POPUP_DATA_VERSION = 1788411885819;
 
 let popupData = [];
 if (typeof localStorage !== 'undefined') {
