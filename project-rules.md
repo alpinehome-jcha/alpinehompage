@@ -34,8 +34,13 @@ Project Rules (Alpine Korea Homepage System / alpine-korea)
 8. **Encoding & File Handling Standard** :
 * **Encoding** : 모든 소스 파일은 **UTF-8 (BOM 없음)** 인코딩을 사용한다.
 
-9. **Autonomous Execution (자율 실행 원칙)** :
-* **Skip Redundant Confirmation** : 사용자가 최종 "작업 지시서(또는 구현 계획)"를 승인한 후에는, 개별 코딩 단계나 세부 구현 과정에서 일일이 질문하거나 확인받지 않고 스스로 판단하여 완수한다.
+9. **Autonomous Execution & Interaction Rules (자율 실행 및 상호작용 규칙 — 필수 준수)** :
+* **기본 자율 실행**: 목표 달성을 위한 일반적인 탐색, 파일 읽기/수정, 코드 생성 및 일반 CLI 명령 실행은 사용자에게 "계속 진행할까요?"라고 묻지 말고 즉시 끝까지 실행한다. 단일 작업이 여러 단계로 나뉘더라도 중간 승인 없이 최종 결과까지 연속으로 수행한다.
+* **확인이 필요한 예외 상황 (이 경우에만 질문할 것)**:
+  1. 비가역적 파괴 작업 (예: 대규모 파일/DB 영구 삭제, 강제 푸시 등)
+  2. 비용이 발생하는 외부 API 결제 또는 프로덕션 배포
+  3. 치명적인 충돌이나 요구사항의 모호성으로 명확한 선택이 필요한 경우
+* **보고 방식**: 각 단계마다 질문을 던지는 대신, 모든 작업이 완료된 후 요약 보고서 형태로 결과를 제시한다.
 
 10. **Implementation Plan & Manual Approval Protocol (필수 준수)**:
 * 모든 기술적 코드 수정이나 인프라 변경 작업 착수 전에는 반드시 `implementation_plan.md`를 제출하여 계획을 보고한다.
