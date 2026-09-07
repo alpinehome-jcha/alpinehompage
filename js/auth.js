@@ -140,6 +140,11 @@ const auth = {
         };
         sessionStorage.setItem('authState', JSON.stringify(window.authState));
 
+        // 새 로그인 세션 시작 — 대리점 전용 팝업 "봤음" 기록 초기화 (로그인마다 한 번씩 표시)
+        Object.keys(sessionStorage)
+            .filter(k => k.startsWith('dealerOnly_shown_'))
+            .forEach(k => sessionStorage.removeItem(k));
+
         await saveVisitLog({
             date: new Date().toLocaleString('ko-KR'),
             username: username,

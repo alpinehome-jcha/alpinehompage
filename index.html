@@ -1079,9 +1079,13 @@
             const activePopups = popupList.filter(p => {
                 if (!p.isActive) return false;
 
-                // Dealer-only check (require login)
+                // 대리점 전용 팝업: 로그인 상태여야 하고, 이번 로그인 세션에서 이미 표시됐으면 숨김
                 if (p.dealerOnly) {
                     if (typeof auth === 'undefined' || !auth.isLoggedIn()) {
+                        return false;
+                    }
+                    // 이번 로그인 세션에서 이미 한 번 표시됐으면 다시 보여주지 않음
+                    if (sessionStorage.getItem('dealerOnly_shown_' + p.id)) {
                         return false;
                     }
                 }
@@ -1126,15 +1130,23 @@
 
                 // Show only after image loads to avoid black box FOUC
                 const img = wrapper.querySelector('img');
+                const markDealerOnlyShown = () => {
+                    // 대리점 전용 팝업은 표시되는 순간 "봤음" 기록 → 새로고침해도 다시 안 나타남
+                    if (p.dealerOnly) {
+                        sessionStorage.setItem('dealerOnly_shown_' + p.id, 'true');
+                    }
+                };
                 if (img) {
                     if (img.complete) {
                         wrapper.style.display = 'flex';
+                        markDealerOnlyShown();
                     } else {
-                        img.onload = () => { wrapper.style.display = 'flex'; };
-                        img.onerror = () => { wrapper.style.display = 'flex'; }; // fallback
+                        img.onload = () => { wrapper.style.display = 'flex'; markDealerOnlyShown(); };
+                        img.onerror = () => { wrapper.style.display = 'flex'; markDealerOnlyShown(); }; // fallback
                     }
                 } else {
                     wrapper.style.display = 'flex';
+                    markDealerOnlyShown();
                 }
             });
         }
