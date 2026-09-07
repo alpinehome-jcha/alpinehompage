@@ -39,10 +39,10 @@ docker rm $TARGET_CONTAINER 2>/dev/null || true
 # Apply Supabase database schema updates if supabase-db container is active
 if docker ps | grep -q "supabase-db"; then
   echo "Applying Supabase DB schema updates to supabase-db container..."
-  docker exec -i supabase-db psql -U postgres < ./scripts/alpine_home_auth_setup.sql || true
-  docker exec -i supabase-db psql -U postgres < ./scripts/alpine_home_github_proxy.sql || true
-  docker exec -i supabase-db psql -U postgres < ./scripts/restore_analytics.sql || true
-  docker exec -i supabase-db psql -U postgres < ./scripts/fix_partner_board.sql || true
+  docker exec -i supabase-db psql -U supabase_admin -d postgres < ./scripts/alpine_home_auth_setup.sql || true
+  docker exec -i supabase-db psql -U supabase_admin -d postgres < ./scripts/alpine_home_github_proxy.sql || true
+  docker exec -i supabase-db psql -U supabase_admin -d postgres < ./scripts/restore_analytics.sql || true
+  docker exec -i supabase-db psql -U supabase_admin -d postgres < ./scripts/fix_partner_board.sql || true
   docker exec -i supabase-db psql -U supabase_admin -d postgres < ./scripts/fix_visitor_logs_grant.sql || true
   # price_list RPC 함수 적용 (permission denied 방지)
   if [ -f "./price_rpc.sql" ]; then
