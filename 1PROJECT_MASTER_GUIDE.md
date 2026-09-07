@@ -18,13 +18,8 @@ AI 에이전트와 모든 개발자는 작업을 시작하기 전과 배포하�
 본 프로젝트는 외부 클라우드가 아닌 자체 물리 서버(Local) 환경에서 호스팅됩니다.
 
 - **1번 메인서버 (183.101.105.167)**: GitHub Actions 빌드 및 배포 대상 서버, 로컬 Supabase 호스팅 서버.
-- **2번 백업서버 (192.168.0.30)**: `www.alpine-korea.co.kr` (Cloudflare Argo Tunnel)이 실제 연결되는 서버.
-
-> **💡 2번 서버 동기화 절차 (매우 중요)**
-> 프론트엔드 정적 파일(HTML/JS)만 변경된 경우 1번 서버 배포 후 CF 캐시 퍼지만 하면 되지만, **서버 로직이나 도커 컨테이너 자체가 변경된 경우** 1번 서버 빌드 완료 후 아래 명령어로 2번 서버에 이미지를 직접 넘겨주어야 합니다.
-> ```bash
-> docker save alpine-korea:latest | ssh -i ~/.ssh/antigravity_key -p 8282 jcha-ready@192.168.0.30 'docker load && docker stop alpine-korea-blue-clone 2>/dev/null || true && docker rm alpine-korea-blue-clone 2>/dev/null || true && docker run -d --name alpine-korea-blue-clone --restart unless-stopped -p 127.0.0.1:3062:80 alpine-korea:latest'
-> ```
+- **2번 백업서버 (192.168.0.30)**: 메인 서버에 문제 발생 시 동작하는 failover 서버.
+  > ⚠️ **절대 주의**: 2번 백업 서버는 자체적인 자동 백업 시스템에 의해 메인 서버와 동기화되므로, **어떠한 경우에도 2번 서버를 수동으로 수정하거나 배포해서는 안 됩니다. 모든 수정과 배포는 오직 1번(메인) 서버에만 진행합니다.**
 
 ---
 
