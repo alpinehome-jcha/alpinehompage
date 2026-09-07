@@ -1,7 +1,7 @@
 /**
  * GitHub Client for saving data to the repository.
  * Commits are performed server-side (Supabase RPC + admin password
- * verification) via the "alpine-home".admin_github_* functions —
+ * verification) via the "alpine-home".admin_github_* functions ??
  * the GitHub token itself never touches the browser.
  */
 if (typeof GitHubClient === 'undefined') {
@@ -26,10 +26,10 @@ if (typeof GitHubClient === 'undefined') {
         async _adminCall(rpcName, params) {
             const adminUser = sessionStorage.getItem('currentUser');
             const adminPass = await _ghGetAdminPassword();
-            if (!adminPass) throw new Error('관리자 비밀번호가 필요합니다.');
+            if (!adminPass) throw new Error('관리자 비�?번호가 ?�요?�니??');
 
             const client = await loadSupabase();
-            const { data, error } = await client.rpc(rpcName, {
+            const { data, error } = await client.schema('alpine-home').rpc(rpcName, {
                 p_admin_username: adminUser,
                 p_admin_password: adminPass,
                 ...params
@@ -62,9 +62,9 @@ if (typeof GitHubClient === 'undefined') {
         }
 
         async refreshStatus() {
-            // 토큰 값은 절대 반환하지 않는 공개 상태 조회라 관리자 인증 불필요
+            // ?�큰 값�? ?��? 반환?��? ?�는 공개 ?�태 조회??관리자 ?�증 불필??
             const client = await loadSupabase();
-            const { data, error } = await client.rpc('admin_github_status');
+            const { data, error } = await client.schema('alpine-home').rpc('admin_github_status');
             if (error) throw new Error(error.message);
 
             this._configured = !!data.configured;

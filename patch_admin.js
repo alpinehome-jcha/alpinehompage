@@ -1,4 +1,4 @@
-ï»¿const fs = require('fs');
+const fs = require('fs');
 const path = require('path');
 
 const filePath = path.resolve('pages', 'admin.html');
@@ -26,9 +26,9 @@ const replace1 = `                        p_tistory_url: newItem.tistory_url
                     if (error || (data && data.error)) {
                         if ((data && data.error === 'unauthorized') || (error && error.message && error.message.includes('unauthorized'))) {
                             _cachedAdminPass = null;
-                            alert('ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë ¸ê±°ë‚˜ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.');
+                            alert('ºñ¹Ğ¹øÈ£°¡ Æ²·È°Å³ª ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.');
                         } else {
-                            alert('ì €ì¥ ì‹¤íŒ¨: ' + (error ? error.message : data.error));
+                            alert('ÀúÀå ½ÇÆĞ: ' + (error ? error.message : data.error));
                         }
                         if (overlay) overlay.style.display = 'none';
                         return;
@@ -44,15 +44,15 @@ const target2 = `        async function deleteDealerFromSupabase(username) {
                 if (!supaPass) return;
                 const adminUser = (window.authState && window.authState.currentUser) ? window.authState.currentUser : 'alpineaudio';
                 const client = await getSupaAdmin();
-                const { error } = await client.rpc('admin_delete_dealer', {
+                const { error } = await client.schema('alpine-home').rpc('admin_delete_dealer', {
                     p_admin_username: adminUser,
                     p_admin_password: supaPass,
                     p_username: username
                 });
-                if (error) console.warn('[Supabase] ì‚­ì œ ì‹¤íŒ¨:', error.message);
-                else console.log('[Supabase] DB ì‚­ì œ ì™„ë£Œ:', username);
+                if (error) console.warn('[Supabase] »èÁ¦ ½ÇÆĞ:', error.message);
+                else console.log('[Supabase] DB »èÁ¦ ¿Ï·á:', username);
             } catch (e) {
-                console.warn('[Supabase] ì˜ˆì™¸ ë°œìƒ:', e.message);
+                console.warn('[Supabase] ¿¹¿Ü ¹ß»ı:', e.message);
             }
         }`;
 const replace2 = `        async function deleteDealerFromSupabase(username) {
@@ -61,7 +61,7 @@ const replace2 = `        async function deleteDealerFromSupabase(username) {
                 if (!supaPass) return false;
                 const adminUser = (window.authState && window.authState.currentUser) ? window.authState.currentUser : 'alpineaudio';
                 const client = await getSupaAdmin();
-                const { data, error } = await client.rpc('admin_delete_dealer', {
+                const { data, error } = await client.schema('alpine-home').rpc('admin_delete_dealer', {
                     p_admin_username: adminUser,
                     p_admin_password: supaPass,
                     p_username: username
@@ -69,16 +69,16 @@ const replace2 = `        async function deleteDealerFromSupabase(username) {
                 if (error || (data && data.error)) {
                     if ((data && data.error === 'unauthorized') || (error && error.message && error.message.includes('unauthorized'))) {
                         _cachedAdminPass = null;
-                        alert('ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë ¸ê±°ë‚˜ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.');
+                        alert('ºñ¹Ğ¹øÈ£°¡ Æ²·È°Å³ª ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.');
                     } else {
-                        alert('ì‚­ì œ ì˜¤ë¥˜: ' + (error ? error.message : data.error));
+                        alert('»èÁ¦ ¿À·ù: ' + (error ? error.message : data.error));
                     }
                     return false;
                 }
-                console.log('[Supabase] DB ì‚­ì œ ì™„ë£Œ:', username);
+                console.log('[Supabase] DB »èÁ¦ ¿Ï·á:', username);
                 return true;
             } catch (e) {
-                console.warn('[Supabase] ì˜ˆì™¸ ë°œìƒ:', e.message);
+                console.warn('[Supabase] ¿¹¿Ü ¹ß»ı:', e.message);
                 return false;
             }
         }`;
@@ -98,54 +98,54 @@ const replace3 = `                if (deletedUsername) {
 content = replaceExact(content, target3, replace3);
 
 // 4. deleteCurrent for dealers (lines ~2160-2180)
-const target4 = `                // í˜„ì¬ ì‚­ì œ ëŒ€ìƒì˜ username ì°¾ê¸°
+const target4 = `                // ÇöÀç »èÁ¦ ´ë»óÀÇ username Ã£±â
                 const deletedDealer = dealers.find(d => d.id === currentId);
                 const deletedUsername = deletedDealer ? deletedDealer.username : null;
 
                 dealers = dealers.filter(d => d.id !== currentId);
 
-                // Supabaseì—ì„œ ì‚­ì œ (dealers + users ë™ì‹œ ì‚­ì œ)
+                // Supabase¿¡¼­ »èÁ¦ (dealers + users µ¿½Ã »èÁ¦)
                 if (deletedUsername) {
                     const supaPass = await getAdminPassword();
                     if (supaPass) {
                         const adminUser = window.authState.currentUser;
                         const client = await getSupaAdmin();
-                        const { error } = await client.rpc('admin_delete_dealer', {
+                        const { error } = await client.schema('alpine-home').rpc('admin_delete_dealer', {
                             p_admin_username: adminUser,
                             p_admin_password: supaPass,
                             p_username: deletedUsername
                         });
-                        if (error) console.warn('[Supabase] ì‚­ì œ ì‹¤íŒ¨:', error.message);
+                        if (error) console.warn('[Supabase] »èÁ¦ ½ÇÆĞ:', error.message);
                     }
                 }
             }`;
-const replace4 = `                // í˜„ì¬ ì‚­ì œ ëŒ€ìƒì˜ username ì°¾ê¸°
+const replace4 = `                // ÇöÀç »èÁ¦ ´ë»óÀÇ username Ã£±â
                 const deletedDealer = dealers.find(d => d.id === currentId);
                 const deletedUsername = deletedDealer ? deletedDealer.username : null;
 
-                // Supabaseì—ì„œ ë¨¼ì € ì‚­ì œ ì‹œë„
+                // Supabase¿¡¼­ ¸ÕÀú »èÁ¦ ½Ãµµ
                 if (deletedUsername) {
                     const supaPass = await getAdminPassword();
                     if (supaPass) {
                         const adminUser = window.authState.currentUser;
                         const client = await getSupaAdmin();
-                        const { data, error } = await client.rpc('admin_delete_dealer', {
+                        const { data, error } = await client.schema('alpine-home').rpc('admin_delete_dealer', {
                             p_admin_username: adminUser,
                             p_admin_password: supaPass,
                             p_username: deletedUsername
                         });
                         if (error || (data && data.error)) {
-                            console.warn('[Supabase] ì‚­ì œ ì‹¤íŒ¨:', error || data.error);
+                            console.warn('[Supabase] »èÁ¦ ½ÇÆĞ:', error || data.error);
                             if ((data && data.error === 'unauthorized') || (error && error.message && error.message.includes('unauthorized'))) {
                                 _cachedAdminPass = null;
-                                alert('ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë ¸ê±°ë‚˜ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.');
+                                alert('ºñ¹Ğ¹øÈ£°¡ Æ²·È°Å³ª ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.');
                             } else {
-                                alert('ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤: ' + (error ? error.message : data.error));
+                                alert('¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù: ' + (error ? error.message : data.error));
                             }
-                            return; // ì¤‘ë‹¨
+                            return; // Áß´Ü
                         }
                     } else {
-                        return; // ë¹„ë°€ë²ˆí˜¸ ì·¨ì†Œ ì‹œ ì¤‘ë‹¨
+                        return; // ºñ¹Ğ¹øÈ£ Ãë¼Ò ½Ã Áß´Ü
                     }
                 }
                 

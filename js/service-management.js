@@ -2,7 +2,7 @@ let serviceData = [];
 let supabaseClient = null;
 let currentImages = []; // Array to track currently loaded images for the item being edited
 
-// 관리자 비밀번호 캐시 (자동 연동, RPC 서버측 검증용)
+// 관리자 비�?번호 캐시 (?�동 ?�동, RPC ?�버�?검증용)
 let _cachedAdminPass = null;
 let _cachedAdminUser = null;
 
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     auth.checkAuthAndRedirect();
     const role = auth.getRole();
     if (role !== 'admin' && role !== 'service_admin') {
-        alert('관리자 또는 서비스 관리자만 접근 가능한 페이지입니다.');
+        alert('관리자 ?�는 ?�비??관리자�??�근 가?�한 ?�이지?�니??');
         window.location.href = '../index.html';
         return;
     }
@@ -52,11 +52,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             supabaseClient = await loadSupabase();
             await loadData();
         } else {
-            alert('Supabase 클라이언트를 초기화할 수 없습니다. (auth.js 오류)');
+            alert('Supabase ?�라?�언?��? 초기?�할 ???�습?�다. (auth.js ?�류)');
         }
     } catch (e) {
         console.error('Initial load failed', e);
-        alert('데이터 로드에 실패했습니다: ' + e.message);
+        alert('?�이??로드???�패?�습?�다: ' + e.message);
     }
 
     // Checkbox event listeners
@@ -78,15 +78,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 async function loadData() {
-    showLoading('데이터를 불러오는 중입니다...');
+    showLoading('?�이?��? 불러?�는 중입?�다...');
 
     try {
         const supaPass = await getAdminPassword();
-        if (!supaPass) throw new Error('관리자 비밀번호가 필요합니다.');
+        if (!supaPass) throw new Error('관리자 비�?번호가 ?�요?�니??');
         const currentUser = _cachedAdminUser;
         const adminUser = (currentUser && currentUser !== 'guest') ? currentUser : 'alpineaudio';
 
-        const { data: result, error } = await supabaseClient.rpc('admin_list_service_records', {
+        const { data: result, error } = await supabaseClient.schema('alpine-home').rpc('admin_list_service_records', {
             p_admin_username: adminUser,
             p_admin_password: supaPass
         });
@@ -101,18 +101,18 @@ async function loadData() {
             // localStorage.setItem('serviceData', JSON.stringify(serviceData)); // Removed for privacy/security
         }
     } catch (e) {
-        console.error('Supabase 데이터 로드 중 오류 발생:', e);
+        console.error('Supabase ?�이??로드 �??�류 발생:', e);
         const local = localStorage.getItem('serviceData');
         if (local) serviceData = JSON.parse(local);
         
         let errorMsg = e.message || e;
-        if (e.code === 'PGRST102') errorMsg = "JSON 파싱 오류(PGRST102) - 파라미터 타입 불일치";
-        if (errorMsg === 'unauthorized') errorMsg = "인증 실패: 관리자 비밀번호가 틀렸습니다.";
+        if (e.code === 'PGRST102') errorMsg = "JSON ?�싱 ?�류(PGRST102) - ?�라미터 ?�??불일�?;
+        if (errorMsg === 'unauthorized') errorMsg = "?�증 ?�패: 관리자 비�?번호가 ?�?�습?�다.";
         
-        alert('서버 DB(Supabase)에서 최신 데이터를 불러오지 못했습니다.\n과거 오프라인 데이터를 표시합니다.\n(오류 원인: ' + errorMsg + ')');
+        alert('?�버 DB(Supabase)?�서 최신 ?�이?��? 불러?��? 못했?�니??\n과거 ?�프?�인 ?�이?��? ?�시?�니??\n(?�류 ?�인: ' + errorMsg + ')');
     }
 
-    // 접수일(receive_date) 기준으로 최신 항목이 먼저 오도록 정렬 (내림차순)
+    // ?�수??receive_date) 기�??�로 최신 ??��??먼�? ?�도�??�렬 (?�림차순)
     if (serviceData && serviceData.length > 0) {
         serviceData.sort((a, b) => {
             const dateA = a.receive_date || '';
@@ -129,7 +129,7 @@ async function loadData() {
 async function saveService() {
     const idField = document.getElementById('service_id').value;
 
-    showLoading('사진 업로드 및 데이터를 저장하는 중입니다...');
+    showLoading('?�진 ?�로??�??�이?��? ?�?�하??중입?�다...');
 
     try {
         // Upload new images and merge with existing ones
@@ -157,12 +157,12 @@ async function saveService() {
         };
 
         // 1. Removed LocalStorage save per security policy
-        // 2. Try saving to Supabase DB (관리자 인증 RPC 경유)
+        // 2. Try saving to Supabase DB (관리자 ?�증 RPC 경유)
         const supaPass = await getAdminPassword();
-        if (!supaPass) throw new Error('관리자 비밀번호가 필요합니다.');
+        if (!supaPass) throw new Error('관리자 비�?번호가 ?�요?�니??');
         const adminUser = _cachedAdminUser || 'alpineaudio';
 
-        const { data: result, error } = await supabaseClient.rpc('admin_upsert_service_record', {
+        const { data: result, error } = await supabaseClient.schema('alpine-home').rpc('admin_upsert_service_record', {
             p_admin_username: adminUser,
             p_admin_password: supaPass,
             p_id: idField ? parseInt(idField) : null,
@@ -172,13 +172,13 @@ async function saveService() {
         if (error) throw error;
         if (result && result.error) throw new Error(result.error);
 
-        alert('저장되었습니다.');
+        alert('?�?�되?�습?�다.');
         resetForm();
         await loadData(); // Reload table from DB
 
     } catch (e) {
-        console.error('Supabase DB 저장 에러:', e);
-        alert('서버 저장에 실패했습니다.\n(보안 정책에 의해 로컬에 임시 저장되지 않습니다.)\n\n오류: ' + e.message);
+        console.error('Supabase DB ?�???�러:', e);
+        alert('?�버 ?�?�에 ?�패?�습?�다.\n(보안 ?�책???�해 로컬???�시 ?�?�되지 ?�습?�다.)\n\n?�류: ' + e.message);
     }
     hideLoading();
 }
@@ -216,15 +216,15 @@ function editService(id) {
 }
 
 async function deleteService(id) {
-    if (!confirm('정말 이 기록을 삭제하시겠습니까? (삭제 후 복구 불가능합니다)')) return;
+    if (!confirm('?�말 ??기록????��?�시겠습?�까? (??�� ??복구 불�??�합?�다)')) return;
 
-    showLoading('데이터를 삭제하는 중입니다...');
+    showLoading('?�이?��? ??��?�는 중입?�다...');
     try {
         const supaPass = await getAdminPassword();
-        if (!supaPass) throw new Error('관리자 비밀번호가 필요합니다.');
+        if (!supaPass) throw new Error('관리자 비�?번호가 ?�요?�니??');
         const adminUser = _cachedAdminUser || 'alpineaudio';
 
-        const { data: result, error } = await supabaseClient.rpc('admin_delete_service_record', {
+        const { data: result, error } = await supabaseClient.schema('alpine-home').rpc('admin_delete_service_record', {
             p_admin_username: adminUser,
             p_admin_password: supaPass,
             p_id: parseInt(id)
@@ -236,8 +236,8 @@ async function deleteService(id) {
         resetForm();
         await loadData();
     } catch (e) {
-        console.error('Supabase DB 삭제 에러:', e);
-        alert('삭제에 실패했습니다. 관리자에게 문의하세요.\n\n오류: ' + e.message);
+        console.error('Supabase DB ??�� ?�러:', e);
+        alert('??��???�패?�습?�다. 관리자?�게 문의?�세??\n\n?�류: ' + e.message);
     }
     hideLoading();
 }
@@ -324,10 +324,10 @@ function renderTable(page) {
     paginatedItems.forEach(item => {
         const tr = document.createElement('tr');
 
-        let statusColor = '#000'; // 기본 검정색
-        if (item.status === '서비스접수') statusColor = '#27ae60'; // 초록색
-        else if (item.status === '서비스예약') statusColor = '#e67e22'; // 주황색
-        else if (item.status === '서비스보류') statusColor = '#7f8c8d'; // 회색
+        let statusColor = '#000'; // 기본 검?�색
+        if (item.status === '?�비?�접??) statusColor = '#27ae60'; // 초록??
+        else if (item.status === '?�비?�예??) statusColor = '#e67e22'; // 주황??
+        else if (item.status === '?�비?�보�?) statusColor = '#7f8c8d'; // ?�색
 
         tr.innerHTML = `
             <td>${displayId--}</td>
@@ -349,15 +349,15 @@ function renderTable(page) {
             <td>${item.complete_date || ''}</td>
             <td>${getImageColumnHtml(item.images)}</td>
             <td style="padding:4px 2px; white-space: nowrap;">
-                <button class="btn btn-edit" style="display:inline-block; width:auto; padding: 3px 6px; font-size: 0.75rem; margin-right: 2px;" onclick="editService(${item.id})">수정</button>
-                <button class="btn btn-delete" style="display:inline-block; width:auto; padding: 3px 6px; font-size: 0.75rem;" onclick="deleteService(${item.id})">삭제</button>
+                <button class="btn btn-edit" style="display:inline-block; width:auto; padding: 3px 6px; font-size: 0.75rem; margin-right: 2px;" onclick="editService(${item.id})">?�정</button>
+                <button class="btn btn-delete" style="display:inline-block; width:auto; padding: 3px 6px; font-size: 0.75rem;" onclick="deleteService(${item.id})">??��</button>
             </td>
         `;
         tbody.appendChild(tr);
     });
 
     if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="19" style="padding: 20px; text-align: center; color: #999;">검색된 데이터가 없습니다.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="19" style="padding: 20px; text-align: center; color: #999;">검?�된 ?�이?��? ?�습?�다.</td></tr>`;
     }
 
     renderPagination(totalPages);
@@ -397,29 +397,29 @@ function downloadExcel() {
     });
 
     if (filtered.length === 0) {
-        alert('다운로드할 데이터가 없습니다.');
+        alert('?�운로드???�이?��? ?�습?�다.');
         return;
     }
 
     const exportData = filtered.map((item, index) => ({
         '번호': filtered.length - index,
-        '진행사항': item.status || '',
-        '접수일': item.receive_date || '',
-        '서비스예약일': item.reserve_date || '',
-        '고객명': item.customer_name || '',
+        '진행?�항': item.status || '',
+        '?�수??: item.receive_date || '',
+        '?�비?�예?�일': item.reserve_date || '',
+        '고객�?: item.customer_name || '',
         '고객 주소': item.address || '',
-        '전화번호': item.phone || '',
+        '?�화번호': item.phone || '',
         '차종': item.car_model || '',
-        '차량번호/차대번호/주행거리': item.vehicle_info || '',
+        '차량번호/차�?번호/주행거리': item.vehicle_info || '',
         '증상': item.symptom || '',
-        '서비스방법 및 지시': item.method || '',
-        '서비스 담당자': item.manager || '',
-        '처리내용': item.details || '',
-        '고품회수여부': item.recovery_status || '',
-        '고장원인': item.failure_cause || '',
-        '서비스비용': item.cost || '',
-        '서비스완료일': item.complete_date || '',
-        '첨부사진 URL': (Array.isArray(item.images) && item.images.length > 0) ? item.images.join(', ') : ''
+        '?�비?�방�?�?지??: item.method || '',
+        '?�비???�당??: item.manager || '',
+        '처리?�용': item.details || '',
+        '고품?�수?��?': item.recovery_status || '',
+        '고장?�인': item.failure_cause || '',
+        '?�비?�비??: item.cost || '',
+        '?�비?�완료일': item.complete_date || '',
+        '첨�??�진 URL': (Array.isArray(item.images) && item.images.length > 0) ? item.images.join(', ') : ''
     }));
 
     const ws = XLSX.utils.json_to_sheet(exportData);
@@ -457,7 +457,7 @@ function renderImagePreviews() {
         const wrapper = document.createElement('div');
         wrapper.className = 'preview-img-wrapper';
         wrapper.innerHTML = `
-            <img src="${url}" alt="Existing A/S Photo" onclick="openImageModal('${url}', 'A/S 사진')">
+            <img src="${url}" alt="Existing A/S Photo" onclick="openImageModal('${url}', 'A/S ?�진')">
             <button type="button" class="remove-btn" onclick="removeExistingImage(${index})">&times;</button>
         `;
         container.appendChild(wrapper);
@@ -473,7 +473,7 @@ function renderImagePreviews() {
             wrapper.style.borderColor = '#007bff';
             wrapper.innerHTML = `
                 <img src="${objectUrl}" alt="New A/S Photo" onclick="openImageModal('${objectUrl}', '${file.name}')">
-                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 123, 255, 0.8); color: white; font-size: 0.6rem; text-align: center; padding: 2px 0; font-weight: bold;">대기</div>
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 123, 255, 0.8); color: white; font-size: 0.6rem; text-align: center; padding: 2px 0; font-weight: bold;">?��?/div>
             `;
             container.appendChild(wrapper);
         });
@@ -505,7 +505,7 @@ async function uploadImages() {
 
         if (error) {
             console.error('Storage Upload Error:', error);
-            throw new Error(`파일 업로드 실패: ${file.name} (${error.message})`);
+            throw new Error(`?�일 ?�로???�패: ${file.name} (${error.message})`);
         }
 
         const { data: { publicUrl } } = supabaseClient.storage
@@ -558,14 +558,14 @@ function updateLightboxCaption() {
     if (!captionText) return;
     
     if (lightboxImages.length <= 1) {
-        captionText.innerHTML = `사진 1 / 1`;
+        captionText.innerHTML = `?�진 1 / 1`;
         return;
     }
     
     captionText.innerHTML = `
-        <button type="button" class="btn" style="background:#444; color:white; border:none; padding:4px 10px; margin-right:10px; cursor:pointer;" onclick="changeLightboxIndex(-1)">이전</button>
-        <span>사진 ${lightboxIndex + 1} / ${lightboxImages.length}</span>
-        <button type="button" class="btn" style="background:#444; color:white; border:none; padding:4px 10px; margin-left:10px; cursor:pointer;" onclick="changeLightboxIndex(1)">다음</button>
+        <button type="button" class="btn" style="background:#444; color:white; border:none; padding:4px 10px; margin-right:10px; cursor:pointer;" onclick="changeLightboxIndex(-1)">?�전</button>
+        <span>?�진 ${lightboxIndex + 1} / ${lightboxImages.length}</span>
+        <button type="button" class="btn" style="background:#444; color:white; border:none; padding:4px 10px; margin-left:10px; cursor:pointer;" onclick="changeLightboxIndex(1)">?�음</button>
     `;
 }
 
@@ -608,7 +608,7 @@ window.openImageModal = function(url, caption) {
 async function handleRestoreFile(input) {
     if (!input.files || !input.files[0]) return;
     const file = input.files[0];
-    showLoading('백업 파일을 분석하고 DB로 복구하는 중입니다...');
+    showLoading('백업 ?�일??분석?�고 DB�?복구?�는 중입?�다...');
 
     try {
         const text = await file.text();
@@ -616,13 +616,13 @@ async function handleRestoreFile(input) {
         try {
             items = JSON.parse(text);
         } catch(e) {
-            alert('JSON 백업 파일 형식이 필요합니다.');
+            alert('JSON 백업 ?�일 ?�식???�요?�니??');
             hideLoading();
             return;
         }
 
         if (!Array.isArray(items)) {
-            alert('올바른 백업 파일(배열 형태)이 아닙니다.');
+            alert('?�바�?백업 ?�일(배열 ?�태)???�닙?�다.');
             hideLoading();
             return;
         }
@@ -633,7 +633,7 @@ async function handleRestoreFile(input) {
 
         for (const item of items) {
             if (!item || !item.receive_date) continue;
-            const { data, error } = await supabaseClient.rpc('admin_upsert_service_record', {
+            const { data, error } = await supabaseClient.schema('alpine-home').rpc('admin_upsert_service_record', {
                 p_admin_username: adminUser,
                 p_admin_password: supaPass,
                 p_id: null,
@@ -644,11 +644,11 @@ async function handleRestoreFile(input) {
             }
         }
 
-        alert(`총 ${successCount}건의 A/S 접수 내역이 수퍼베이스 DB로 완벽하게 복원되었습니다!`);
+        alert(`�?${successCount}건의 A/S ?�수 ?�역???�퍼베이??DB�??�벽?�게 복원?�었?�니??`);
         await loadData();
     } catch (err) {
         console.error('File Restore Error:', err);
-        alert('복구 중 오류가 발생했습니다: ' + err.message);
+        alert('복구 �??�류가 발생?�습?�다: ' + err.message);
     } finally {
         hideLoading();
         input.value = '';
