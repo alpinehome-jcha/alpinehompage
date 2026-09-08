@@ -1929,15 +1929,9 @@
                     // DB ?�???�공 ??리스??갱신
                     try {
                         const dealerRes = await client.from('dealers').select('*').order('id', { ascending: true });
-                        let mergedDealers = [...dealers];
                         if (!dealerRes.error && dealerRes.data && dealerRes.data.length > 0) {
-                            const dbMap = new Map(dealerRes.data.map(d => [d.username || d.id, d]));
-                            mergedDealers = dealers.map(localItem => {
-                                const dbItem = dbMap.get(localItem.username || localItem.id);
-                                return dbItem ? { ...dbItem, ...localItem } : localItem;
-                            });
+                            dealers = dealerRes.data;
                         }
-                        dealers = mergedDealers;
                         renderList();
                     } catch (err) {
                         console.warn('[Supabase] 리스??갱신 ?�패:', err.message);
