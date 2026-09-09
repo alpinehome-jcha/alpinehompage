@@ -2,6 +2,7 @@
 
 이 문서는 Alpine Korea 홈페이지 프로젝트의 단일 진실 공급원(Single Source of Truth)입니다.
 AI 에이전트와 모든 개발자는 작업을 시작하기 전과 배포하기 직전에 **반드시 이 문서를 숙지하고 지침을 엄수**해야 합니다.
+(본 문서는 기존 handover, project-rules, README_SUPABASE 및 jchauto-gjhan-ssh 가이드를 모두 통합한 최종 문서입니다.)
 
 ---
 
@@ -14,28 +15,58 @@ AI 에이전트와 모든 개발자는 작업을 시작하기 전과 배포하�
 
 ---
 
-## 2. 인프라 및 서버 구조 (Infrastructure)
+## 2. 인프라 및 서버 접속 (SSH & Server Details)
 본 프로젝트는 외부 클라우드가 아닌 자체 물리 서버(Local) 환경에서 호스팅됩니다.
+담당자(`gjhan`)를 위한 전용 SSH 접속 정보는 아래와 같습니다.
+- **SSH Key**: `antigravity_gjhan_key` (개인키 위치: `~/.ssh/antigravity_gjhan_key`)
 
-- **1번 메인서버 (183.101.105.167)**: GitHub Actions 빌드 및 배포 대상 서버, 로컬 Supabase 호스팅 서버.
-- **2번 백업서버 (192.168.0.30)**: 메인 서버에 문제 발생 시 동작하는 failover 서버.
-  > ⚠️ **절대 주의**: 2번 백업 서버는 자체적인 자동 백업 시스템에 의해 메인 서버와 동기화되므로, **어떠한 경우에도 2번 서버를 수동으로 수정하거나 배포해서는 안 됩니다. 모든 수정과 배포는 오직 1번(메인) 서버에만 진행합니다.**
+### 2.1 Server 1: Primary Production Web Server (1번 메인 서버)
+모든 소스 편집, 컨테이너 제어, 배포는 **오직 1번 메인 서버에서만** 진행합니다.
+- **Host (내부망/VPN 권장)**: `192.168.0.31`
+- **Host (외부망/공용)**: `183.101.105.167` (사무실 IP 방화벽 적용)
+- **Port / Username**: `8282` / `jchauto-gjhan`
+- **접속 명령어**: `ssh -p 8282 -i ~/.ssh/antigravity_gjhan_key jchauto-gjhan@183.101.105.167`
+
+### 2.2 Server 2: Standby Clone (2번 대기 서버)
+> ⚠️ **절대 주의**: 2번 백업 서버는 자동 백업 시스템에 의해 메인 서버와 동기화됩니다. **어떠한 경우에도 2번 서버를 수동으로 수정하거나 배포해서는 안 됩니다.**
+- **Host (내부망/VPN 전용)**: `192.168.0.30`
+- **Port / Username**: `8282` / `jchauto-gjhan`
 
 ---
 
-## 3. 배포 프로토콜 및 주의사항 (Deployment & Cloudflare)
+## 3. 권한 및 컨테이너 관리 (Docker & Permissions)
+`jchauto-gjhan` 계정은 타 서비스를 침범하지 않도록 안전하게 격리된 관리 도구가 기본 탑재되어 있습니다. (솔라가드, 스페라 등 타 프로젝트 접근은 완전 차단됨)
 
-> ⚠️ **가장 중요한 주의사항 (Cloudflare Cache)**
-> GitHub Actions 배포 스크립트 내 토큰 누락으로 인해, 코드를 푸시하고 빌드가 성공하더라도 **실제 사이트에는 구버전이 노출**됩니다 (4시간 캐시).
-> **반드시 배포 직후 아래 PowerShell 명령어를 실행하여 수동으로 엣지 캐시를 퍼지(Purge)해야 합니다.**
+### 3.1 담당 프로젝트 디렉토리 및 컨테이너
+| 담당 프로젝트 | 디렉토리 경로 (Server 1) | 허용 Docker 컨테이너 | 세부 권한 |
+| :--- | :--- | :--- | :---: |
+| **알파인 홈페이지** | `/home/jchauto/alpine-korea-app` | `alpine-korea-blue`, `green`, `blue-clone` | **`rwx` 배포 및 제어** |
+| **도요타 PPO** | `/home/jchauto/apps/toyota-ppo` | `toyota-ppo-blue`, `green`, `clone` | **`rwx` 배포 및 제어** |
+| **Supabase DB** | `127.0.0.1:5432` / `6543` | - | 터널링/쿼리 가능 |
+| **Nginx 서비스** | `/etc/nginx/sites-available/*` | - | reload 및 설정 수정 |
 
-### 3.1 배포 순서
-1. 코드 검증 및 수정 완료
-2. `git add .` -> `git commit -m "내용"` -> `git push origin main`
-3. GitHub Actions `deploy.yml` 성공 여부 확인
+### 3.2 Docker 컨테이너 상태 및 로그 확인
+- 상태 확인: `docker ps` 또는 `toyota-docker ps`
+- 실시간 로그: `docker logs -f alpine-korea-blue`
+- 재시작: `docker restart alpine-korea-blue`
+
+---
+
+## 4. 배포 프로토콜 및 주의사항 (Deployment & Cloudflare)
+
+> ⚠️ **가장 중요한 주의사항 (Cloudflare Cache & 수동 배포)**
+> GitHub Actions 배포 스크립트 내 토큰 누락 등으로 인해 GitHub에 푸시하는 것만으로는 실제 서버(1번 메인 서버)에 즉각 반영되지 않을 수 있습니다.
+> **따라서, 반드시 서버에 SSH로 접속하여 무중단 배포 명령어(`deploy-alpine`)를 직접 실행하고, 그 직후 Cloudflare 엣지 캐시를 퍼지(Purge)해야 합니다.**
+
+### 4.1 전체 배포 순서
+1. 로컬 환경에서 코드 검증 및 수정 완료
+2. GitHub 업로드: `git add .` -> `git commit -m "내용"` -> `git push origin main`
+3. **[필수] 메인 서버 배포 실행**: 
+   - 1번 메인 서버(183.101.105.167)에 SSH 접속 후 `deploy-alpine` (알파인) 또는 `deploy-toyota` (도요타) 명령어 실행
+   - *(내부 명령어 동작: `sudo /usr/local/bin/alpine-docker deploy alpine`)*
 4. **[필수] 수동 Cloudflare 캐시 퍼지 실행**
 
-### 3.2 수동 캐시 퍼지 명령어 (PowerShell)
+### 4.2 수동 캐시 퍼지 명령어 (PowerShell)
 ```powershell
 # 주의: 토큰 값은 .env.local 파일의 CLOUDFLARE_API_TOKEN 값을 사용하세요.
 Invoke-RestMethod -Uri "https://api.cloudflare.com/client/v4/zones/04ad726778cdc824a9d16c79efedda95/purge_cache" -Method Post -Headers @{Authorization="Bearer [CLOUDFLARE_API_TOKEN]"; "Content-Type"="application/json"} -Body '{"purge_everything":true}'
@@ -43,14 +74,14 @@ Invoke-RestMethod -Uri "https://api.cloudflare.com/client/v4/zones/04ad726778cdc
 
 ---
 
-## 4. 데이터베이스 및 백엔드 (Supabase Local)
+## 5. 데이터베이스 및 백엔드 (Supabase Local)
 Supabase는 `183.101.105.167` 서버에 도커로 직접 구축되어 있습니다.
 
-### 4.1 스키마 및 DB 접근
+### 5.1 스키마 및 DB 접근
 - 실제 운영 스키마: `alpine-home` (하이픈 포함이므로 SQL 작성 시 큰따옴표 `"alpine-home"` 필수)
 - DB 직접 수정 접근법: `docker exec -it supabase-db psql -U supabase_admin`
 
-### 4.2 권한 (GRANT) 및 RPC 규칙
+### 5.2 권한 (GRANT) 및 RPC 규칙
 로컬 구축의 특성상 프론트엔드(Client)에서 DB에 접근하려면 권한을 수동으로 명시해야 합니다.
 새로운 테이블이나 함수(RPC)를 만들면 **반드시 3가지 GRANT를 실행**해야 합니다.
 
@@ -72,7 +103,7 @@ AS $$ ...
 
 ---
 
-## 5. 환경 변수 참조 (.env.local)
+## 6. 환경 변수 참조 (.env.local)
 로컬 인프라와 관련된 주요 자격 증명은 `.env.local`에 정의되어 있습니다.
 
 - **DB_MODE**: `"local"` (모든 데이터는 이 로컬 인프라를 바라봄)
@@ -85,4 +116,4 @@ AS $$ ...
 - **GITHUB_PAT**: `ghp_...` (GitHub API 호출 및 Actions 확인용)
 
 ---
-*이 파일은 모든 프로젝트 문서의 단일 진실 공급원입니다. 기존의 문서들(`handover-20260721.md`, `project-rules.md`, `README_SUPABASE.md`)을 이 파일 하나로 완벽히 대체합니다.*
+*이 파일은 모든 프로젝트 문서의 단일 진실 공급원입니다. 기존의 문서들(handover-20260721.md, project-rules.md, README_SUPABASE.md, jchauto-gjhan-ssh.md)을 이 파일 하나로 완벽히 대체합니다.*
