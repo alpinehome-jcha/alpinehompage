@@ -1,4 +1,4 @@
-﻿// Centralized relative root path calculation to prevent 404 pathing errors in deep directories
+// Centralized relative root path calculation to prevent 404 pathing errors in deep directories
 const getRelativeRoot = () => {
     const pathname = window.location.pathname.toLowerCase();
     
@@ -82,7 +82,7 @@ async function loadSupabase() {
             const script = document.createElement('script');
             script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
             script.onload = resolve;
-            script.onerror = () => reject(new Error('Supabase CDN 濡쒕뱶 ?ㅽ뙣'));
+            script.onerror = () => reject(new Error('Supabase CDN 로드 실패'));
             document.head.appendChild(script);
         });
     }
@@ -120,7 +120,7 @@ const auth = {
         });
 
         if (error) {
-            console.error('[Auth] Supabase 濡쒓렇???ㅻ쪟:', error.message);
+            console.error('[Auth] Supabase 로그인 오류:', error.message);
             return false;
         }
         if (!data || data.error) {
@@ -150,9 +150,9 @@ const auth = {
     },
     changePassword: async (currentPass, newPass) => {
         const username = window.authState.currentUser;
-        if (!username) return { success: false, message: '濡쒓렇?몄씠 ?꾩슂?⑸땲??' };
+        if (!username) return { success: false, message: '로그인이 필요합니다.' };
 
-        // ?? Supabase RPC 鍮꾨?踰덊샇 蹂寃?(?쒕쾭痢?bcrypt 寃利? ??????????
+        // ── Supabase RPC 비밀번호 변경 (서버측 bcrypt 검증) ──────────
         try {
             const client = await loadSupabase();
             const { data: changed, error } = await client.rpc('update_password', {
@@ -162,7 +162,7 @@ const auth = {
             });
             if (error) throw error;
             if (changed === true) {
-                // 愿由ъ옄 ?⑤꼸 ?쒖떆? ?숆린??(localStorage ?쒕윭 ?곗씠??password ?낅뜲?댄듃)
+                // 관리자 패널 표시와 동기화 (localStorage 딜러 데이터 password 업데이트)
                 try {
                     const storedDealers = localStorage.getItem('dealerData');
                     if (storedDealers) {
@@ -174,15 +174,15 @@ const auth = {
                         }
                     }
                 } catch (syncErr) {
-                    console.warn('[Auth] localStorage ?숆린???ㅽ뙣:', syncErr);
+                    console.warn('[Auth] localStorage 동기화 실패:', syncErr);
                 }
-                return { success: true, message: '鍮꾨?踰덊샇媛 蹂寃쎈릺?덉뒿?덈떎.' };
+                return { success: true, message: '비밀번호가 변경되었습니다.' };
             }
 
-            return { success: false, message: '?꾩옱 鍮꾨?踰덊샇媛 ?쇱튂?섏? ?딆뒿?덈떎.' };
+            return { success: false, message: '현재 비밀번호가 일치하지 않습니다.' };
         } catch (e) {
-            console.error('[Auth] 鍮꾨?踰덊샇 蹂寃??ㅻ쪟:', e.message);
-            return { success: false, message: 'Supabase ?곌껐 ?ㅻ쪟: ' + e.message };
+            console.error('[Auth] 비밀번호 변경 오류:', e.message);
+            return { success: false, message: 'Supabase 연결 오류: ' + e.message };
         }
     },
     logout: () => {
@@ -221,7 +221,7 @@ const auth = {
         const modal = document.getElementById('ghSettingsModal');
         if (modal) {
             modal.style.display = 'block';
-            // ?좏겙? ?쒕쾭?먮쭔 ??λ릺誘濡?鍮?移몄쑝濡??먭퀬, ??μ냼/釉뚮옖移섎쭔 ?쒕쾭?먯꽌 議고쉶???쒖떆
+            // 토큰은 서버에만 저장되므로 빈 칸으로 두고, 저장소/브랜치만 서버에서 조회해 표시
             document.getElementById('global_gh_token').value = '';
             document.getElementById('global_gh_repo').value = '';
             document.getElementById('global_gh_branch').value = 'main';
@@ -233,7 +233,7 @@ const auth = {
                     document.getElementById('global_gh_branch').value = status.branch || 'main';
                 }
             } catch (e) {
-                console.warn('[GitHub] ?꾩옱 ?ㅼ젙 議고쉶 ?ㅽ뙣:', e.message);
+                console.warn('[GitHub] 현재 설정 조회 실패:', e.message);
             }
         }
     },
@@ -251,8 +251,8 @@ const auth = {
             const ghModalHTML = `
                 <div id="ghSettingsModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.4);">
                     <div style="background-color:#fefefe; margin:15% auto; padding:20px; border:1px solid #888; width:350px; border-radius:8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-                        <h3 style="margin-top:0;">GitHub ?ㅼ젙</h3>
-                        <p style="font-size:0.9rem; color:#666; margin-bottom:15px;">?쒕쾭 ??μ쓣 ?꾪븳 ?몄쬆 ?뺣낫瑜??낅젰?섏꽭??</p>
+                        <h3 style="margin-top:0;">GitHub 설정</h3>
+                        <p style="font-size:0.9rem; color:#666; margin-bottom:15px;">서버 저장을 위한 인증 정보를 입력하세요.</p>
                         <div style="margin-bottom:10px;">
                             <label style="display:block; margin-bottom:5px; font-weight:bold;">Personal Access Token</label>
                             <input type="password" id="global_gh_token" placeholder="ghp_..." style="width:100%; padding:8px; margin-bottom:10px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;">
@@ -264,9 +264,9 @@ const auth = {
                             <input type="text" id="global_gh_branch" placeholder="main" style="width:100%; padding:8px; margin-bottom:5px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;">
                         </div>
                         <div style="text-align:right;">
-                            <button id="btnTestGh" style="padding:8px 12px; cursor:pointer; background:#17a2b8; color:white; border:none; border-radius:4px; margin-right:5px;">?곌껐 ?뚯뒪??/button>
-                            <button id="btnCancelGh" style="padding:8px 12px; cursor:pointer; background:#ccc; border:none; border-radius:4px; margin-right:5px;">?リ린</button>
-                            <button id="btnSaveGh" style="padding:8px 12px; cursor:pointer; background:#28a745; color:white; border:none; border-radius:4px;">???/button>
+                            <button id="btnTestGh" style="padding:8px 12px; cursor:pointer; background:#17a2b8; color:white; border:none; border-radius:4px; margin-right:5px;">연결 테스트</button>
+                            <button id="btnCancelGh" style="padding:8px 12px; cursor:pointer; background:#ccc; border:none; border-radius:4px; margin-right:5px;">닫기</button>
+                            <button id="btnSaveGh" style="padding:8px 12px; cursor:pointer; background:#28a745; color:white; border:none; border-radius:4px;">저장</button>
                         </div>
                     </div>
                 </div>
@@ -279,26 +279,26 @@ const auth = {
                 const repo = document.getElementById('global_gh_repo').value.trim();
                 const branch = document.getElementById('global_gh_branch').value.trim() || 'main'; // Default main
 
-                if (!repo) { alert('??μ냼 二쇱냼瑜?癒쇱? ?낅젰?댁＜?몄슂.'); return; }
+                if (!repo) { alert('저장소 주소를 먼저 입력해주세요.'); return; }
 
                 try {
                     await auth.loadGitHubClient();
                 } catch (e) {
-                    alert('GitHub Client Library 濡쒕뱶 ?ㅽ뙣: ' + e.message);
+                    alert('GitHub Client Library 로드 실패: ' + e.message);
                     return;
                 }
 
                 if (typeof ghClient === 'undefined') { alert('Client loaded but object not found.'); return; }
 
                 try {
-                    // ?좏겙???덈줈 ?낅젰??寃쎌슦?먮쭔 ?쒕쾭??諛섏쁺 (鍮?媛믪씠硫?湲곗〈 ?쒕쾭 ?ㅼ젙 ?좎?)
+                    // 토큰을 새로 입력한 경우에만 서버에 반영 (빈 값이면 기존 서버 설정 유지)
                     if (token) {
                         await ghClient.configure(token, repo, branch);
                     }
                     const result = await ghClient.testConnection();
                     alert(result.message);
                 } catch (e) {
-                    alert('?곌껐 ?뚯뒪???ㅽ뙣: ' + e.message);
+                    alert('연결 테스트 실패: ' + e.message);
                 }
             };
 
@@ -311,8 +311,8 @@ const auth = {
                 const repo = document.getElementById('global_gh_repo').value.trim();
                 const branch = document.getElementById('global_gh_branch').value.trim() || 'main';
 
-                if (!repo) { alert('??μ냼 二쇱냼瑜??낅젰?댁＜?몄슂.'); return; }
-                if (!token) { alert('?좏겙???낅젰?댁＜?몄슂. (?쒕쾲 ??λ맂 ?좏겙? 蹂댁븞???ㅼ떆 ?쒖떆?섏? ?딆쑝誘濡? 蹂寃쏀븷 ?뚮쭔 ?덈줈 ?낅젰?섎㈃ ?⑸땲??'); return; }
+                if (!repo) { alert('저장소 주소를 입력해주세요.'); return; }
+                if (!token) { alert('토큰을 입력해주세요. (한번 저장된 토큰은 보안상 다시 표시되지 않으므로, 변경할 때만 새로 입력하면 됩니다)'); return; }
 
                 try {
                     await auth.loadGitHubClient();
@@ -320,15 +320,15 @@ const auth = {
                         await ghClient.configure(token, repo, branch);
                         const result = await ghClient.testConnection();
                         if (!result.success) {
-                            alert('??μ? ?꾨즺?먯?留??곌껐 ?뚯뒪?몄뿉 ?ㅽ뙣?덉뒿?덈떎:\n' + result.message);
+                            alert('저장은 완료됐지만 연결 테스트에 실패했습니다:\n' + result.message);
                         }
                     }
                 } catch (e) {
-                    alert('????ㅽ뙣: ' + e.message);
+                    alert('저장 실패: ' + e.message);
                     return;
                 }
 
-                alert('?ㅼ젙???쒕쾭???덉쟾?섍쾶 ??λ릺?덉뒿?덈떎. ?댁젣 ?뚯씪 ?낅줈?쒓? 媛?ν빀?덈떎.');
+                alert('설정이 서버에 안전하게 저장되었습니다. 이제 파일 업로드가 가능합니다.');
                 document.getElementById('ghSettingsModal').style.display = 'none';
             };
         }
@@ -338,24 +338,24 @@ const auth = {
             const modalHTML = `
                 <div id="pwChangeModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.4);">
                     <div style="background-color:#fefefe; margin:15% auto; padding:20px; border:1px solid #888; width:320px; border-radius:8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-                        <h3 style="margin-top:0;">鍮꾨?踰덊샇 蹂寃?/h3>
+                        <h3 style="margin-top:0;">비밀번호 변경</h3>
                         <div style="margin-bottom:10px;">
                             <div style="position:relative; margin-bottom:8px;">
-                                <input type="password" id="modalCurrentPass" placeholder="?꾩옱 鍮꾨?踰덊샇" style="width:100%; padding:8px 36px 8px 8px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;">
-                                <button type="button" onclick="(function(b){var i=document.getElementById('modalCurrentPass');i.type=i.type==='password'?'text':'password';b.textContent=i.type==='password'?'?몓':'?솃';})(this)" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;padding:0;line-height:1;">?몓</button>
+                                <input type="password" id="modalCurrentPass" placeholder="현재 비밀번호" style="width:100%; padding:8px 36px 8px 8px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;">
+                                <button type="button" onclick="(function(b){var i=document.getElementById('modalCurrentPass');i.type=i.type==='password'?'text':'password';b.textContent=i.type==='password'?'👁':'🙈';})(this)" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;padding:0;line-height:1;">👁</button>
                             </div>
                             <div style="position:relative; margin-bottom:8px;">
-                                <input type="password" id="modalNewPass" placeholder="??鍮꾨?踰덊샇" style="width:100%; padding:8px 36px 8px 8px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;">
-                                <button type="button" onclick="(function(b){var i=document.getElementById('modalNewPass');i.type=i.type==='password'?'text':'password';b.textContent=i.type==='password'?'?몓':'?솃';})(this)" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;padding:0;line-height:1;">?몓</button>
+                                <input type="password" id="modalNewPass" placeholder="새 비밀번호" style="width:100%; padding:8px 36px 8px 8px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;">
+                                <button type="button" onclick="(function(b){var i=document.getElementById('modalNewPass');i.type=i.type==='password'?'text':'password';b.textContent=i.type==='password'?'👁':'🙈';})(this)" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;padding:0;line-height:1;">👁</button>
                             </div>
                             <div style="position:relative; margin-bottom:8px;">
-                                <input type="password" id="modalConfirmPass" placeholder="??鍮꾨?踰덊샇 ?뺤씤" style="width:100%; padding:8px 36px 8px 8px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;">
-                                <button type="button" onclick="(function(b){var i=document.getElementById('modalConfirmPass');i.type=i.type==='password'?'text':'password';b.textContent=i.type==='password'?'?몓':'?솃';})(this)" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;padding:0;line-height:1;">?몓</button>
+                                <input type="password" id="modalConfirmPass" placeholder="새 비밀번호 확인" style="width:100%; padding:8px 36px 8px 8px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;">
+                                <button type="button" onclick="(function(b){var i=document.getElementById('modalConfirmPass');i.type=i.type==='password'?'text':'password';b.textContent=i.type==='password'?'👁':'🙈';})(this)" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;padding:0;line-height:1;">👁</button>
                             </div>
                         </div>
                         <div style="text-align:right;">
-                            <button id="btnCancelPw" style="padding:5px 10px; cursor:pointer; background:#ccc; border:none; border-radius:4px;">痍⑥냼</button>
-                            <button id="btnSavePw" style="padding:5px 10px; cursor:pointer; background:#2673E2; color:white; border:none; border-radius:4px;">蹂寃?/button>
+                            <button id="btnCancelPw" style="padding:5px 10px; cursor:pointer; background:#ccc; border:none; border-radius:4px;">취소</button>
+                            <button id="btnSavePw" style="padding:5px 10px; cursor:pointer; background:#2673E2; color:white; border:none; border-radius:4px;">변경</button>
                         </div>
                     </div>
                 </div>
@@ -371,8 +371,8 @@ const auth = {
                 const newP = document.getElementById('modalNewPass').value;
                 const confirmP = document.getElementById('modalConfirmPass').value;
 
-                if (!current || !newP || !confirmP) { alert('紐⑤뱺 ?꾨뱶瑜??낅젰?섏꽭??'); return; }
-                if (newP !== confirmP) { alert('??鍮꾨?踰덊샇媛 ?쇱튂?섏? ?딆뒿?덈떎.'); return; }
+                if (!current || !newP || !confirmP) { alert('모든 필드를 입력하세요.'); return; }
+                if (newP !== confirmP) { alert('새 비밀번호가 일치하지 않습니다.'); return; }
 
                 const result = await auth.changePassword(current, newP);
                 alert(result.message);
@@ -390,7 +390,7 @@ const auth = {
         const authLink = document.querySelector('.auth-link');
 
         if (authItem && authLink) {
-            // Remove existing injected dropdown content (?ы샇異??鍮?
+            // Remove existing injected dropdown content (재호출 대비)
             const existingContent = authItem.querySelector('.dropdown-content');
             if (existingContent) existingContent.remove();
 
@@ -399,13 +399,13 @@ const auth = {
                 const role = window.authState.role || '';
                 let displayName = '';
                 if (role === 'admin') {
-                    displayName = '愿由ъ옄';
+                    displayName = '관리자';
                 } else {
                     displayName = dealerName || window.authState.currentUser || 'Partner';
                 }
 
                 authItem.classList.add('dropdown');
-                authLink.textContent = `${displayName}??;
+                authLink.textContent = `${displayName}님`;
                 authLink.removeAttribute('style');
                 authLink.className = 'nav-link auth-link';
                 authLink.href = '#';
@@ -414,7 +414,7 @@ const auth = {
                 const dropdownContent = document.createElement('ul');
                 dropdownContent.className = 'dropdown-content';
                 dropdownContent.innerHTML = `
-                    <li><a href="#" class="dropdown-item pw-change-btn">鍮꾨?踰덊샇 蹂寃?/a></li>
+                    <li><a href="#" class="dropdown-item pw-change-btn">비밀번호 변경</a></li>
                     <li><a href="#" class="dropdown-item logout-btn">Logout</a></li>
                 `;
                 dropdownContent.querySelector('.pw-change-btn').onclick = (e) => {
@@ -504,7 +504,8 @@ const auth = {
                         <span style="margin-right: 8px;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                         </span>
-                        ?명꽣?됲떚釉?留ㅻ돱??                    </a>
+                        인터렉티브 매뉴얼
+                    </a>
                 </div>
                 <style>
                     // Interactive Manual Button (Only for Logged-in Users)
@@ -549,44 +550,44 @@ function addPartnerMenu(role) {
     let menuItems = '';
 
     if (role === 'service_admin') {
-        menuItems = `<li><a href="${adminPrefix}service-management.html" class="dropdown-item">?쒕퉬??愿由?/a></li>`;
+        menuItems = `<li><a href="${adminPrefix}service-management.html" class="dropdown-item">서비스 관리</a></li>`;
     } else {
         menuItems = `
-                <li><a href="${prefix}price-list.html" class="dropdown-item">媛寃⑺몴</a></li>
+                <li><a href="${prefix}price-list.html" class="dropdown-item">가격표</a></li>
         `;
 
         if (role === 'admin') {
-            menuItems += `<li><a href="${adminPrefix}service-management.html" class="dropdown-item">?쒕퉬??愿由?/a></li>`;
+            menuItems += `<li><a href="${adminPrefix}service-management.html" class="dropdown-item">서비스 관리</a></li>`;
         }
 
         menuItems += `
-                <li><a href="${prefix}partner-board.html" class="dropdown-item">?꾩슜 寃뚯떆??/a></li>
-                <li><a href="${prefix}dealer-only.html" class="dropdown-item">?꾩슜 ?먮즺??/a></li>
+                <li><a href="${prefix}partner-board.html" class="dropdown-item">전용 게시판</a></li>
+                <li><a href="${prefix}dealer-only.html" class="dropdown-item">전용 자료실</a></li>
         `;
 
         if (role === 'admin') {
-            menuItems += `<li><a href="${prefix}price-input.html" class="dropdown-item">媛寃⑺몴 ?낅젰</a></li>`;
-            menuItems += `<li><a href="${adminPrefix}admin.html?mode=product" class="dropdown-item">?쒗뭹 愿由?/a></li>`;
-            menuItems += `<li><a href="${adminPrefix}admin.html?mode=dealer" class="dropdown-item">?由ъ젏 愿由?/a></li>`;
-            menuItems += `<li><a href="${adminPrefix}admin.html?mode=popup" class="dropdown-item">?앹뾽 愿由?/a></li>`;
-            menuItems += `<li><a href="${adminPrefix}admin.html?mode=service_admin" class="dropdown-item">?쒕퉬?ㅺ?由ъ옄 愿由?/a></li>`;
-            menuItems += `<li><a href="${adminPrefix}pnp-setup.html" class="dropdown-item">PnP 李얘린 ?ㅼ젙</a></li>`;
-            menuItems += `<li><a href="${adminPrefix}estimate-setup.html" class="dropdown-item">寃ъ쟻 ?ㅼ젙</a></li>`;
+            menuItems += `<li><a href="${prefix}price-input.html" class="dropdown-item">가격표 입력</a></li>`;
+            menuItems += `<li><a href="${adminPrefix}admin.html?mode=product" class="dropdown-item">제품 관리</a></li>`;
+            menuItems += `<li><a href="${adminPrefix}admin.html?mode=dealer" class="dropdown-item">대리점 관리</a></li>`;
+            menuItems += `<li><a href="${adminPrefix}admin.html?mode=popup" class="dropdown-item">팝업 관리</a></li>`;
+            menuItems += `<li><a href="${adminPrefix}admin.html?mode=service_admin" class="dropdown-item">서비스관리자 관리</a></li>`;
+            menuItems += `<li><a href="${adminPrefix}pnp-setup.html" class="dropdown-item">PnP 찾기 설정</a></li>`;
+            menuItems += `<li><a href="${adminPrefix}estimate-setup.html" class="dropdown-item">견적 설정</a></li>`;
 
             // Visit Log Link
             const visitLogLink = window.location.pathname.includes('product.html') ? '#visitLogSection' : `${prefix}product.html#visitLogSection`;
-            menuItems += `<li><a href="${visitLogLink}" class="dropdown-item" style="border-top:1px solid #eee;">諛⑸Ц 湲곕줉</a></li>`;
+            menuItems += `<li><a href="${visitLogLink}" class="dropdown-item" style="border-top:1px solid #eee;">방문 기록</a></li>`;
 
             // Inbound Analysis Link
-            menuItems += `<li><a href="${adminPrefix}analytics.html" class="dropdown-item">?좎엯 寃쎈줈</a></li>`;
+            menuItems += `<li><a href="${adminPrefix}analytics.html" class="dropdown-item">유입 경로</a></li>`;
 
             // GitHub Settings Link
-            menuItems += `<li><a href="#" class="dropdown-item" onclick="auth.openGitHubSettings(event)">GitHub ?ㅼ젙</a></li>`;
+            menuItems += `<li><a href="#" class="dropdown-item" onclick="auth.openGitHubSettings(event)">GitHub 설정</a></li>`;
         }
     }
 
     partnerLi.innerHTML = `
-        <a href="#" class="nav-link" style="color: #e74c3c;">?뚰듃??議?/a>
+        <a href="#" class="nav-link" style="color: #e74c3c;">파트너 존</a>
         <ul class="dropdown-content">
             ${menuItems}
         </ul>
@@ -606,7 +607,8 @@ function addPartnerMenu(role) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Supabase DB 諛⑹떇? 蹂꾨룄 Auth ?몄뀡 ?놁쓬 ??sessionStorage 湲곗??쇰줈 濡쒓렇??耳??    auth.updateUI();
+    // Supabase DB 방식은 별도 Auth 세션 없음 → sessionStorage 기준으로 로그인 케크
+    auth.updateUI();
 });
 
 // Helper to save visit log
@@ -687,7 +689,8 @@ async function saveVisitLog(entry) {
                         <span style="margin-right: 8px;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                         </span>
-                        ?명꽣?됲떚釉?留ㅻ돱??                    </a>
+                        인터렉티브 매뉴얼
+                    </a>
                 </div>
                 <style>
                     .interactive-manual-btn:hover {
@@ -710,4 +713,3 @@ async function saveVisitLog(entry) {
     setTimeout(injectManualButton, 500);
     setTimeout(injectManualButton, 2000);
 })();
-

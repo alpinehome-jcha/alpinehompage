@@ -9,25 +9,25 @@ const CLIENT_SUPABASE_ANON_KEY = (typeof window !== 'undefined' && window.ENV &&
     ? window.ENV.NEXT_PUBLIC_SUPABASE_ANON_KEY
     : SC_DEFAULT_LOCAL_SUPABASE_ANON_KEY;
 
-// CDN 방식?�로 Supabase JS�??�용?�는 경우 (별도 로드 ?�요)
+// CDN 방식으로 Supabase JS를 사용하는 경우 (별도 로드 필요)
 if (typeof supabase === 'undefined') {
     console.warn("Supabase SDK is not loaded. Make sure to include <script src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2'></script> before this script.");
 }
 
 const supabaseClient = (typeof supabase !== 'undefined')
-    ? supabase.createClient(CLIENT_SUPABASE_URL, CLIENT_SUPABASE_ANON_KEY, { db: { schema: 'alpine-home' } })
+    ? supabase.createClient(CLIENT_SUPABASE_URL, CLIENT_SUPABASE_ANON_KEY, { db: { schema: 'public' } })
     : null;
 
-// 공유�??�해 ?�역 변?�로 ?�정 (기존 ?�스 ?�환??
+// 공유를 위해 전역 변수로 설정 (기존 소스 호환성)
 window.supabase = supabaseClient;
 
 /**
- * 가�??�이???�체�?가?�옵?�다.
+ * 가격 데이터 전체를 가져옵니다.
  * @returns {Promise<Array>}
  */
 async function fetchPriceList() {
     if (!window.supabase) return [];
-    const client = window.supabase.schema ? window.supabase.schema('public') : window.supabase;
+    const client = window.supabase.schema ? window.supabase.schema('alpine-home') : window.supabase;
     const { data, error } = await client
         .from('price_list')
         .select('*')
@@ -41,12 +41,12 @@ async function fetchPriceList() {
 }
 
 /**
- * ?�정 ??��(category)???�른 가�??�이?��? 가?�옵?�다.
+ * 특정 역할(category)에 따른 가격 데이터를 가져옵니다.
  * @param {string} category 'master', 'team', 'style', 'region', 'dealer'
  * @returns {Promise<Array>}
  */
 async function fetchPriceListByCategory(category) {
-    if (category === 'admin') return fetchPriceList(); // admin?� ?�체 조회
+    if (category === 'admin') return fetchPriceList(); // admin은 전체 조회
     if (!window.supabase) return [];
 
     const client = window.supabase.schema ? window.supabase.schema('public') : window.supabase;
@@ -64,8 +64,8 @@ async function fetchPriceListByCategory(category) {
 }
 
 /**
- * ?�품 ?�이???�체�?Supabase?�서 가?�옵?�다.
- * product-data.js ??productData 배열�??�일???�태�?반환?�니??
+ * 제품 데이터 전체를 Supabase에서 가져옵니다.
+ * product-data.js 의 productData 배열과 동일한 형태로 반환합니다.
  * @returns {Promise<Array|null>}
  */
 async function fetchProductList() {
@@ -84,7 +84,7 @@ async function fetchProductList() {
             return null;
         }
 
-        // Supabase 컬럼�???JS ?�드�?변??
+        // Supabase 컬럼명 → JS 필드명 변환
         return data.map(row => ({
             id: row.id,
             category: row.category,
@@ -109,7 +109,8 @@ async function fetchProductList() {
 async function fetchDealerList() {
     if (!window.supabase) return [];
 
-    const { data, error } = await (window.supabase.schema ? window.supabase.schema('alpine-home') : window.supabase).from('dealers')
+    const { data, error } = await window.supabase
+        (window.supabase.schema ? window.supabase.schema('alpine-home') : window.supabase).from('dealers')
         .select('*')
         .order('id', { ascending: true });
 
@@ -121,7 +122,7 @@ async function fetchDealerList() {
     return data;
 }
 
-// DOMContentLoaded ?�점??로딩 ?�버?�이 ?�적 ?�입
+// DOMContentLoaded 시점에 로딩 오버레이 동적 삽입
 document.addEventListener('DOMContentLoaded', () => {
     if (!document.getElementById('loadingOverlay')) {
         const overlay = document.createElement('div');
@@ -147,3 +148,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+async function fetchPopupList() {
+    if (!window.supabase) return [];
+    try {
+        const { data, error } = await (window.supabase.schema ? window.supabase.schema('alpine-home') : window.supabase).from('popups').select('*').order('id', { ascending: true });
+        if (error || !data) return [];
+        return data;
+    } catch (e) {
+        return [];
+    }
+}
+async function savePopup(popup) {
+    if (!window.supabase) return;
+    try {
+        await (window.supabase.schema ? window.supabase.schema('alpine-home') : window.supabase).from('popups').upsert([popup]);
+    } catch (e) {}
+}
+async function deletePopupSupabase(id) {
+    if (!window.supabase) return;
+    try {
+        await (window.supabase.schema ? window.supabase.schema('alpine-home') : window.supabase).from('popups').delete().eq('id', id);
+    } catch (e) {}
+}
+window.fetchPopupList = fetchPopupList;
+window.savePopup = savePopup;
+window.deletePopupSupabase = deletePopupSupabase;
