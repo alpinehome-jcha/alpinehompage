@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -7,7 +7,7 @@
     
     <!-- SEO_META_TAGS -->
     <meta name="description" content="4CH DSP Amplifier">
-    <meta property="og:title" content="PXE-M60-4 | 알파인 코리아">
+    <meta property="og:title" content="PXE-M60-4 | ?뚰뙆??肄붾━??>
     <meta property="og:description" content="4CH DSP Amplifier">
     <meta property="og:image" content="https://www.alpine-korea.co.kr/assets/images/DSP-M60.jpg">
     <meta property="og:url" content="https://www.alpine-korea.co.kr/pages/products/pxe-m60-4.html">
@@ -17,7 +17,7 @@
         window.STATIC_PRODUCT_ID = 1770276535208;
     </script>
     
-    <title>PXE-M60-4 | 알파인(ALPINE Korea)</title>
+    <title>PXE-M60-4 | ?뚰뙆??ALPINE Korea)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -149,22 +149,22 @@
                 <ul class="nav-menu">
                     <li><a href="../about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
                     <li class="dropdown">
-                        <a href="../../../index.html" class="nav-link active" data-i18n="nav_products">제품소개</a>
+                        <a href="../../../index.html" class="nav-link active" data-i18n="nav_products">?쒗뭹?뚭컻</a>
                         <!-- Submenu logic could go here if needed -->
                     </li>
                     <li>
-                        <a href="../dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
+                        <a href="../dealers.html" class="nav-link" data-i18n="nav_dealers">?꾧뎅 ?由ъ젏 紐⑸줉</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
+                        <a href="#" class="nav-link" data-i18n="nav_support">怨좉컼吏??/a>
                         <ul class="dropdown-content">
                             <li><a href="../../../support/product.html" class="dropdown-item"
-                                    data-i18n="nav_support_product">제품
-                                    자료실</a></li>
+                                    data-i18n="nav_support_product">?쒗뭹
+                                    ?먮즺??/a></li>
                             <li><a href="../../../support/install.html" class="dropdown-item"
-                                    data-i18n="nav_support_install">시공자료실</a></li>
+                                    data-i18n="nav_support_install">?쒓났?먮즺??/a></li>
                             <li><a href="../../../support/promo.html" class="dropdown-item"
-                                    data-i18n="nav_support_promo">홍보자료실</a></li>
+                                    data-i18n="nav_support_promo">?띾낫?먮즺??/a></li>
                         </ul>
                     </li>
                     <li class="social-icons">
@@ -210,7 +210,7 @@
             <button class="filter-btn" onclick="goToCategory('DSP/AMP')">DSP/AMP</button>
             <button class="filter-btn" onclick="goToCategory('Speakers')">Speakers</button>
             <button class="filter-btn" onclick="goToCategory('PnP Cable')">PnP Cable</button>
-            <button class="filter-btn" onclick="goToCategory('기타상품')">기타상품</button>
+            <button class="filter-btn" onclick="goToCategory('湲고??곹뭹')">湲고??곹뭹</button>
             <button class="filter-btn" onclick="goToCategory('Alpine OEM Fit')">Alpine OEM Fit</button>
             <button class="filter-btn" onclick="goToCategory('ALPINESTYLE')">ALPINESTYLE</button>
         </div>
@@ -218,11 +218,11 @@
         <!-- Sub Filters for PnP Cable (Hidden by default) -->
         <div id="subFilterContainer" class="sub-filters"
             style="display: none; justify-content: center; gap: 10px; margin-bottom: 40px; margin-top: -20px;">
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 국산차')">국산차 PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 독일차')">독일차 PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기타수입차')">기타수입차 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 援?궛李?)">援?궛李?PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - ?낆씪李?)">?낆씪李?PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 湲고??섏엯李?)">湲고??섏엯李?PnP</button>
             <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - DSP')">DSP PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기타')">기타 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 湲고?')">湲고? PnP</button>
         </div>
 
         <!-- Add Styles for Active State -->
@@ -272,9 +272,9 @@
                 // Identify Parent Category
                 if (currentCat.startsWith('PnP Cable')) {
                     mainCategory = 'PnP Cable';
-                    subCategory = currentCat; // e.g., "PnP Cable - 국산차 (Domestic)" or just "PnP Cable - 국산차"
+                    subCategory = currentCat; // e.g., "PnP Cable - 援?궛李?(Domestic)" or just "PnP Cable - 援?궛李?
                 } else if (currentCat === 'Others') {
-                    mainCategory = '기타상품'; // Button text
+                    mainCategory = '湲고??곹뭹'; // Button text
                 }
 
                 // Highlight Main Button
@@ -309,24 +309,24 @@
 
                         const subButtons = document.querySelectorAll('.sub-filter-btn');
                         subButtons.forEach(subBtn => {
-                            // subBtn text: "국산차 PnP" -> we need to map to category "PnP Cable - 국산차"
+                            // subBtn text: "援?궛李?PnP" -> we need to map to category "PnP Cable - 援?궛李?
                             // active logic: check if currentCat contains the keyword?
-                            // Data category: "PnP Cable - 국산차 (Domestic)"
-                            // Button text: "국산차 PnP"
+                            // Data category: "PnP Cable - 援?궛李?(Domestic)"
+                            // Button text: "援?궛李?PnP"
 
                             const btnLabel = subBtn.innerText;
                             let keyword = '';
-                            if (btnLabel.includes('국산차')) keyword = '국산차';
-                            else if (btnLabel.includes('독일차')) keyword = '독일차';
-                            else if (btnLabel.includes('기타수입차')) keyword = '기타수입차'; // or Other Imported
+                            if (btnLabel.includes('援?궛李?)) keyword = '援?궛李?;
+                            else if (btnLabel.includes('?낆씪李?)) keyword = '?낆씪李?;
+                            else if (btnLabel.includes('湲고??섏엯李?)) keyword = '湲고??섏엯李?; // or Other Imported
                             else if (btnLabel.includes('DSP')) keyword = 'DSP';
-                            else if (btnLabel.includes('기타')) keyword = '기타';
+                            else if (btnLabel.includes('湲고?')) keyword = '湲고?';
 
                             let match = false;
                             if (keyword) {
-                                if (keyword === '기타') {
-                                    // "기타" matches "PnP Cable - 기타" but NOT "PnP Cable - 기타수입차"
-                                    if (currentCat.includes('기타') && !currentCat.includes('기타수입차')) {
+                                if (keyword === '湲고?') {
+                                    // "湲고?" matches "PnP Cable - 湲고?" but NOT "PnP Cable - 湲고??섏엯李?
+                                    if (currentCat.includes('湲고?') && !currentCat.includes('湲고??섏엯李?)) {
                                         match = true;
                                     }
                                 } else {
@@ -356,10 +356,10 @@
                         <h1 class="detail-title">PXE-M60-4</h1>
                         <p class="detail-summary">4CH DSP Amplifier</p>
                         <div class="detail-price">
-                            ₩750,000 
+                            ??50,000 
                             
                         </div>
-                        <p class="detail-summary">장착 공임 별도/20만원 부터</p>
+                        <p class="detail-summary">?μ갑 怨듭엫 蹂꾨룄/20留뚯썝 遺??/p>
                         <div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed #ddd;"><strong style="display: block; margin-bottom: 10px; color: #555;">Downloads:</strong><div style="display: flex; flex-direction: column; gap: 8px;">
                         <a href="../../assets/files/PXE-M60-4.pdf" download target="_blank" style="display: flex; align-items: center; font-size: 0.95rem; text-decoration: none; color: #007bff; transition: color 0.2s;">
                             <span style="margin-right: 8px;">
@@ -391,30 +391,26 @@ Sampling Rate : 48kHz/24Bit</p>
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">알파인(Alpine)의 PXE-M60-4는 합리적인 가격대에 강력한 사운드 프로세싱 성능을 갖춘 4채널 앰프 일체형 DSP입니다. 이 모델이 동급 제품들 사이에서 돋보이는 제품 입니다.
+                                <p class="detail-content-text">?뚰뙆??Alpine)??PXE-M60-4???⑸━?곸씤 媛寃⑸???媛뺣젰???ъ슫???꾨줈?몄떛 ?깅뒫??媛뽰텣 4梨꾨꼸 ?고봽 ?쇱껜??DSP?낅땲?? ??紐⑤뜽???숆툒 ?쒗뭹???ъ씠?먯꽌 ?뗫낫?대뒗 ?쒗뭹 ?낅땲??
 
-1. 뛰어난 가성비와 입문자 친화성
-가장 큰 장점은 '알파인(Alpine)'이라는 브랜드 신뢰도 대비 가격이 매우 합리적이라는 점입니다. 고가의 하이엔드 DSP로 가기에는 부담스럽고, 저가형 중국산 브랜드의 안정성이 우려되는 사용자들에게 가장 완벽한 대안입니다.
+1. ?곗뼱??媛?깅퉬? ?낅Ц??移쒗솕??媛?????μ젏? '?뚰뙆??Alpine)'?대씪??釉뚮옖???좊ː???鍮?媛寃⑹씠 留ㅼ슦 ?⑸━?곸씠?쇰뒗 ?먯엯?덈떎. 怨좉????섏씠?붾뱶 DSP濡?媛湲곗뿉??遺?댁뒪?쎄퀬, ?媛??以묎뎅??釉뚮옖?쒖쓽 ?덉젙?깆씠 ?곕젮?섎뒗 ?ъ슜?먮뱾?먭쾶 媛???꾨꼍????덉엯?덈떎.
 
-2. '내비 믹스(Navi Mix)' 기능
-순정 헤드유닛을 그대로 사용하는 환경에서 특히 빛을 발합니다. 음악 감상 중에 순정 내비게이션 안내 음성이 나오면 자연스럽게 섞여 출력되도록 설계되어, 안내음을 놓치거나 음악이 툭 끊기는 불편함이 없습니다.
+2. '?대퉬 誘뱀뒪(Navi Mix)' 湲곕뒫
+?쒖젙 ?ㅻ뱶?좊떅??洹몃?濡??ъ슜?섎뒗 ?섍꼍?먯꽌 ?뱁엳 鍮쏆쓣 諛쒗빀?덈떎. ?뚯븙 媛먯긽 以묒뿉 ?쒖젙 ?대퉬寃뚯씠???덈궡 ?뚯꽦???섏삤硫??먯뿰?ㅻ읇寃??욎뿬 異쒕젰?섎룄濡??ㅺ퀎?섏뼱, ?덈궡?뚯쓣 ?볦튂嫄곕굹 ?뚯븙?????딄린??遺덊렪?⑥씠 ?놁뒿?덈떎.
 
-3. 초소형 사이즈와 고효율
-가로 160mm, 세로 140mm의 콤팩트한 크기 덕분에 시트 아래나 대시보드 안쪽 등 좁은 공간에도 장착이 용이합니다. 또한, 저전력 고효율 설계로 차량 배터리에 무리를 주지 않으면서도 순정 대비 훨씬 선명한 해상력을 제공합니다.
+3. 珥덉냼???ъ씠利덉? 怨좏슚??媛濡?160mm, ?몃줈 140mm??肄ㅽ뙥?명븳 ?ш린 ?뺣텇???쒗듃 ?꾨옒????쒕낫???덉そ ??醫곸? 怨듦컙?먮룄 ?μ갑???⑹씠?⑸땲?? ?먰븳, ??꾨젰 怨좏슚???ㅺ퀎濡?李⑤웾 諛고꽣由ъ뿉 臾대━瑜?二쇱? ?딆쑝硫댁꽌???쒖젙 ?鍮??⑥뵮 ?좊챸???댁긽?μ쓣 ?쒓났?⑸땲??
 
-4. PXE-M60-4는 다음과 같은 상황에서 최고의 효율을 발휘합니다.
+4. PXE-M60-4???ㅼ쓬怨?媛숈? ?곹솴?먯꽌 理쒓퀬???⑥쑉??諛쒗쐶?⑸땲??
 
-1)순정 헤드유닛을 유지해야 하는 차량: 최신 국산차(현대/기아)나 수입차처럼 인포테인먼트 시스템이 일체형이라 데크 교체가 불가능한 경우.
+1)?쒖젙 ?ㅻ뱶?좊떅???좎??댁빞 ?섎뒗 李⑤웾: 理쒖떊 援?궛李??꾨?/湲곗븘)???섏엯李⑥쿂???명룷?뚯씤癒쇳듃 ?쒖뒪?쒖씠 ?쇱껜?뺤씠???고겕 援먯껜媛 遺덇??ν븳 寃쎌슦.
 
-2)자출(내장 앰프) 사양 차량: 별도의 외장 앰프가 없는 기본 오디오 옵션 차량에서 사운드 스테이지(무대감)를 만들고 싶을 때 강력 추천합니다.
+2)?먯텧(?댁옣 ?고봽) ?ъ뼇 李⑤웾: 蹂꾨룄???몄옣 ?고봽媛 ?녿뒗 湲곕낯 ?ㅻ뵒???듭뀡 李⑤웾?먯꽌 ?ъ슫???ㅽ뀒?댁?(臾대?媛?瑜?留뚮뱾怨??띠쓣 ??媛뺣젰 異붿쿇?⑸땲??
 
-3)공간 제약이 큰 소형/준중형 차량: 트렁크 공간을 차지하지 않고 깔끔한 매립형 튜닝을 선호하는 차주분들께 적합합니다.
+3)怨듦컙 ?쒖빟?????뚰삎/以以묓삎 李⑤웾: ?몃쟻??怨듦컙??李⑥??섏? ?딄퀬 源붾걫??留ㅻ┰???쒕떇???좏샇?섎뒗 李⑥＜遺꾨뱾猿??곹빀?⑸땲??
 
-4)추천 차종 예시
-  - 국산차: 아반떼(CN7), 셀토스, 코나, 스포티지, 쏘렌토(기본 오디오), 트레일블레이저 등
-  - 수입차: BMW 1/3시리즈(기본 오디오), 미니 쿠퍼, 폭스바겐 골프 등
-
-"순정 스피커의 답답함을 해소하고 싶지만, 대공사는 부담스러운" 유저들에게 최고의 선택지입니다. 만약 4채널 출력을 넘어 더 강력한 베이스를 원하신다면, 남는 2채널 RCA 출력을 이용해 액티브 서브우퍼(PWE-M770)를 추가로 연결하는 구성도 가능합니다.</p>
+4)異붿쿇 李⑥쥌 ?덉떆
+  - 援?궛李? ?꾨컲??CN7), ??좎뒪, 肄붾굹, ?ㅽ룷?곗?, ?섎젋??湲곕낯 ?ㅻ뵒??, ?몃젅?쇰툝?덉씠? ??  - ?섏엯李? BMW 1/3?쒕━利?湲곕낯 ?ㅻ뵒??, 誘몃땲 荑좏띁, ??뒪諛붽쾺 怨⑦봽 ??
+"?쒖젙 ?ㅽ뵾而ㅼ쓽 ?듬떟?⑥쓣 ?댁냼?섍퀬 ?띠?留? ?怨듭궗??遺?댁뒪?ъ슫" ?좎??ㅼ뿉寃?理쒓퀬???좏깮吏?낅땲?? 留뚯빟 4梨꾨꼸 異쒕젰???섏뼱 ??媛뺣젰??踰좎씠?ㅻ? ?먰븯?좊떎硫? ?⑤뒗 2梨꾨꼸 RCA 異쒕젰???댁슜???≫떚釉??쒕툕?고띁(PWE-M770)瑜?異붽?濡??곌껐?섎뒗 援ъ꽦??媛?ν빀?덈떎.</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -435,11 +431,11 @@ Sampling Rate : 48kHz/24Bit</p>
                     <img src="../../assets/images/jch_logo.png" alt="JCH Auto" style="height: 30px;" id="footer-logo-img">
                 </div>
                 <p class="footer-text">
-                    <strong data-i18n="footer_ceo">대표 | 이정현</strong><br>
-                    <span data-i18n="footer_address">경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)</span><br>
+                    <strong data-i18n="footer_ceo">???| ?댁젙??/strong><br>
+                    <span data-i18n="footer_address">寃쎄린???덉뼇???숈븞援??섏뿉?ㅻ줈 136, A??1401???멸퀎?? 湲덉젙??李쮁KV1???</span><br>
                     <span data-i18n="footer_contact">TEL | 1670-7425 FAX | 031-477-7220</span><br>
-                    <span data-i18n="footer_hours">상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)</span><br>
-                    <span data-i18n="footer_biz_info">사업자등록번호 | 619-81-07276 개인정보보호책임자 | 한길전</span>
+                    <span data-i18n="footer_hours">?곷떞?쒓컙 | ??湲?09:00~17:00 (????怨듯쑕???대Т)</span><br>
+                    <span data-i18n="footer_biz_info">?ъ뾽?먮벑濡앸쾲??| 619-81-07276 媛쒖씤?뺣낫蹂댄샇梨낆엫??| ?쒓만??/span>
                 </p>
             </div>
             <div class="footer-section footer-links">
@@ -450,7 +446,7 @@ Sampling Rate : 48kHz/24Bit</p>
                     <li><a href="../../index.html?category=DSP%2FAMP">DSP/AMP</a></li>
                     <li><a href="../../index.html?category=Speakers">Speakers</a></li>
                     <li><a href="../../index.html?category=PnP%20Cable">PnP Cable</a></li>
-                    <li><a href="../../index.html?category=기타상품" data-i18n="filter_others">기타상품</a></li>
+                    <li><a href="../../index.html?category=湲고??곹뭹" data-i18n="filter_others">湲고??곹뭹</a></li>
                     <li><a href="../../index.html?category=Alpine%20OEM%20Fit">Alpine OEM Fit</a></li>
                     <li><a href="../../index.html?category=ALPINESTYLE">ALPINESTYLE</a></li>
                 </ul>
@@ -481,12 +477,12 @@ Sampling Rate : 48kHz/24Bit</p>
             </div>
         </div>
         <div class="copyright">
-            COPYRIGHT©2026 JCHAUTO,INC. ALL RIGHTS RESERVED.
+            COPYRIGHT짤2026 JCHAUTO,INC. ALL RIGHTS RESERVED.
         </div>
     </footer>
 
-    <script src="../../js/auth.js?v=20260724b"></script>
-    <!-- Supabase: product-data.js보다 먼저 로드 -->
+    <script src="../../js/auth.js?v=20260910_v3"></script>
+    <!-- Supabase: product-data.js蹂대떎 癒쇱? 濡쒕뱶 -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../../js/supabase-client.js?v=20260903"></script>
     <script>
@@ -495,30 +491,30 @@ Sampling Rate : 48kHz/24Bit</p>
     <script>
         const translations = {
             ko: {
-                nav_about: '회사소개(About)',
-                nav_products: '제품소개',
-                nav_dealers: '전국 대리점 목록',
-                nav_support: '고객지원',
-                nav_support_product: '제품 자료실',
-                nav_support_install: '시공자료실',
-                nav_support_promo: '홍보자료실',
-                nav_company: '회사소개',
-                footer_ceo: '대표 | 이정현',
-                footer_address: '경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)',
+                nav_about: '?뚯궗?뚭컻(About)',
+                nav_products: '?쒗뭹?뚭컻',
+                nav_dealers: '?꾧뎅 ?由ъ젏 紐⑸줉',
+                nav_support: '怨좉컼吏??,
+                nav_support_product: '?쒗뭹 ?먮즺??,
+                nav_support_install: '?쒓났?먮즺??,
+                nav_support_promo: '?띾낫?먮즺??,
+                nav_company: '?뚯궗?뚭컻',
+                footer_ceo: '???| ?댁젙??,
+                footer_address: '寃쎄린???덉뼇???숈븞援??섏뿉?ㅻ줈 136, A??1401???멸퀎?? 湲덉젙??李쮁KV1???',
                 footer_contact: 'TEL | 1670-7425   FAX | 031-477-7220',
-                footer_hours: '상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)',
-                footer_biz_info: '사업자등록번호 | 619-81-07276   개인정보보호책임자 | 한길전',
-                footer_products: '제품',
-                footer_support: '지원',
-                footer_global: '글로벌',
-                footer_global_japan: '일본',
-                footer_global_asia: '아시아',
-                footer_global_australia: '호주',
-                footer_global_europe: '유럽',
-                footer_global_china: '중국',
-                footer_global_na: '북미',
-                btn_view: '자세히 보기',
-                btn_back: '제품 목록으로 가기'
+                footer_hours: '?곷떞?쒓컙 | ??湲?09:00~17:00 (????怨듯쑕???대Т)',
+                footer_biz_info: '?ъ뾽?먮벑濡앸쾲??| 619-81-07276   媛쒖씤?뺣낫蹂댄샇梨낆엫??| ?쒓만??,
+                footer_products: '?쒗뭹',
+                footer_support: '吏??,
+                footer_global: '湲濡쒕쾶',
+                footer_global_japan: '?쇰낯',
+                footer_global_asia: '?꾩떆??,
+                footer_global_australia: '?몄＜',
+                footer_global_europe: '?좊읇',
+                footer_global_china: '以묎뎅',
+                footer_global_na: '遺곷?',
+                btn_view: '?먯꽭??蹂닿린',
+                btn_back: '?쒗뭹 紐⑸줉?쇰줈 媛湲?
             },
             en: {
                 nav_about: 'About Us',
@@ -555,7 +551,7 @@ Sampling Rate : 48kHz/24Bit</p>
 
         const paramId = getParam('id');
         const productId = paramId ? parseInt(paramId) : (typeof window.STATIC_PRODUCT_ID !== 'undefined' ? window.STATIC_PRODUCT_ID : null);
-        let product = null; // async 초기화로 채워짐
+        let product = null; // async 珥덇린?붾줈 梨꾩썙吏?
         const container = document.getElementById('productDetail');
 
         // Helper to fix paths for assets when in pages/ directory
@@ -592,7 +588,7 @@ Sampling Rate : 48kHz/24Bit</p>
             const isEnglish = lang === 'en';
             const priceDisplay = isEnglish ?
                 '$' + Math.round(product.price / 1400).toLocaleString() :
-                '₩' + product.price.toLocaleString();
+                '?? + product.price.toLocaleString();
 
             // Prepare detail content
             let blocksHTML = '';
@@ -663,7 +659,7 @@ Sampling Rate : 48kHz/24Bit</p>
                                     <span style="margin-right: 8px;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                                     </span>
-                                    인터렉티브 매뉴얼
+                                    ?명꽣?됲떚釉?留ㅻ돱??
                                 </a>
                             </div>
                         `;
@@ -688,7 +684,7 @@ Sampling Rate : 48kHz/24Bit</p>
                         <span style="margin-right: 8px;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                         </span>
-                        인터렉티브 매뉴얼
+                        ?명꽣?됲떚釉?留ㅻ돱??
                     </a>
                     <style>
                         .interactive-manual-btn:hover {
@@ -711,7 +707,7 @@ Sampling Rate : 48kHz/24Bit</p>
                         <p class="detail-summary">${product.desc}</p>
                         <div class="detail-price">
                             ${priceDisplay} 
-                            ${product.soldOut ? '<span style="color: #d9534f; font-size: 1rem; margin-left: 10px;">(품절 / SOLD OUT)</span>' : ''}
+                            ${product.soldOut ? '<span style="color: #d9534f; font-size: 1rem; margin-left: 10px;">(?덉젅 / SOLD OUT)</span>' : ''}
                         </div>
                         <p class="detail-summary">${product.desc_bottom !== undefined ? product.desc_bottom : product.desc}</p>
                         ${attachmentsHTML}
@@ -721,7 +717,7 @@ Sampling Rate : 48kHz/24Bit</p>
                 <div class="detail-content">
                     ${blocksHTML || `
                         <div style="text-align: center; color: #999; padding: 40px;">
-                            ${isEnglish ? 'Detailed information is not registered.' : '상세 정보가 등록되지 않았습니다.'}
+                            ${isEnglish ? 'Detailed information is not registered.' : '?곸꽭 ?뺣낫媛 ?깅줉?섏? ?딆븯?듬땲??'}
                         </div>
                     `}
                 </div>
@@ -764,10 +760,10 @@ Sampling Rate : 48kHz/24Bit</p>
                         "@type": "Review",
                         "author": {
                             "@type": "Person",
-                            "name": "알파인고객"
+                            "name": "?뚰뙆?멸퀬媛?
                         },
                         "datePublished": new Date().toISOString().split('T')[0],
-                        "reviewBody": "최상의 사운드 경험을 선사하는 솔루션입니다.",
+                        "reviewBody": "理쒖긽???ъ슫??寃쏀뿕???좎궗?섎뒗 ?붾（?섏엯?덈떎.",
                         "reviewRating": {
                             "@type": "Rating",
                             "ratingValue": "5",
@@ -791,13 +787,13 @@ Sampling Rate : 48kHz/24Bit</p>
                     {
                         "@type": "ListItem",
                         "position": 1,
-                        "name": "홈",
+                        "name": "??,
                         "item": "https://www.alpine-korea.co.kr/"
                     },
                     {
                         "@type": "ListItem",
                         "position": 2,
-                        "name": "제품",
+                        "name": "?쒗뭹",
                         "item": "https://www.alpine-korea.co.kr/index.html"
                     },
                     {
@@ -847,21 +843,21 @@ Sampling Rate : 48kHz/24Bit</p>
             });
         }
 
-        // Supabase 우선으로 제품 데이터 로드 후 렌더링
+        // Supabase ?곗꽑?쇰줈 ?쒗뭹 ?곗씠??濡쒕뱶 ???뚮뜑留?
         async function initDetail() {
-            // 1. Supabase에서 ID로 단일 제품 조회 시도
+            // 1. Supabase?먯꽌 ID濡??⑥씪 ?쒗뭹 議고쉶 ?쒕룄
             if (productId && typeof fetchProductList === 'function') {
                 const sbData = await fetchProductList();
                 if (sbData && sbData.length > 0) {
                     product = sbData.find(p => p.id === productId) || null;
                 }
             }
-            // 2. Supabase 실패 또는 데이터 없으면 JS 파일 fallback
+            // 2. Supabase ?ㅽ뙣 ?먮뒗 ?곗씠???놁쑝硫?JS ?뚯씪 fallback
             if (!product && typeof productData !== 'undefined') {
                 product = productData.find(p => p.id === productId) || null;
             }
 
-            // 3. 렌더링
+            // 3. ?뚮뜑留?
             const savedLang = sessionStorage.getItem('lang') || 'ko';
             if (langText) langText.textContent = savedLang.toUpperCase();
 

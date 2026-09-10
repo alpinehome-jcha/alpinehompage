@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -7,7 +7,7 @@
     
     <!-- SEO_META_TAGS -->
     <meta name="description" content="14ch Hi-Res Digital Sound Processor & Amplifier">
-    <meta property="og:title" content="HDP-D90 | 알파인 코리아">
+    <meta property="og:title" content="HDP-D90 | ?뚰뙆??肄붾━??>
     <meta property="og:description" content="14ch Hi-Res Digital Sound Processor & Amplifier">
     <meta property="og:image" content="https://www.alpine-korea.co.kr/assets/images/AST-D90.jpg">
     <meta property="og:url" content="https://www.alpine-korea.co.kr/pages/products/hdp-d90.html">
@@ -17,7 +17,7 @@
         window.STATIC_PRODUCT_ID = 1770271955069;
     </script>
     
-    <title>HDP-D90 | 알파인(ALPINE Korea)</title>
+    <title>HDP-D90 | ?뚰뙆??ALPINE Korea)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -149,22 +149,22 @@
                 <ul class="nav-menu">
                     <li><a href="../about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
                     <li class="dropdown">
-                        <a href="../../../index.html" class="nav-link active" data-i18n="nav_products">제품소개</a>
+                        <a href="../../../index.html" class="nav-link active" data-i18n="nav_products">?쒗뭹?뚭컻</a>
                         <!-- Submenu logic could go here if needed -->
                     </li>
                     <li>
-                        <a href="../dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
+                        <a href="../dealers.html" class="nav-link" data-i18n="nav_dealers">?꾧뎅 ?由ъ젏 紐⑸줉</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
+                        <a href="#" class="nav-link" data-i18n="nav_support">怨좉컼吏??/a>
                         <ul class="dropdown-content">
                             <li><a href="../../../support/product.html" class="dropdown-item"
-                                    data-i18n="nav_support_product">제품
-                                    자료실</a></li>
+                                    data-i18n="nav_support_product">?쒗뭹
+                                    ?먮즺??/a></li>
                             <li><a href="../../../support/install.html" class="dropdown-item"
-                                    data-i18n="nav_support_install">시공자료실</a></li>
+                                    data-i18n="nav_support_install">?쒓났?먮즺??/a></li>
                             <li><a href="../../../support/promo.html" class="dropdown-item"
-                                    data-i18n="nav_support_promo">홍보자료실</a></li>
+                                    data-i18n="nav_support_promo">?띾낫?먮즺??/a></li>
                         </ul>
                     </li>
                     <li class="social-icons">
@@ -210,7 +210,7 @@
             <button class="filter-btn" onclick="goToCategory('DSP/AMP')">DSP/AMP</button>
             <button class="filter-btn" onclick="goToCategory('Speakers')">Speakers</button>
             <button class="filter-btn" onclick="goToCategory('PnP Cable')">PnP Cable</button>
-            <button class="filter-btn" onclick="goToCategory('기타상품')">기타상품</button>
+            <button class="filter-btn" onclick="goToCategory('湲고??곹뭹')">湲고??곹뭹</button>
             <button class="filter-btn" onclick="goToCategory('Alpine OEM Fit')">Alpine OEM Fit</button>
             <button class="filter-btn" onclick="goToCategory('ALPINESTYLE')">ALPINESTYLE</button>
         </div>
@@ -218,11 +218,11 @@
         <!-- Sub Filters for PnP Cable (Hidden by default) -->
         <div id="subFilterContainer" class="sub-filters"
             style="display: none; justify-content: center; gap: 10px; margin-bottom: 40px; margin-top: -20px;">
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 국산차')">국산차 PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 독일차')">독일차 PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기타수입차')">기타수입차 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 援?궛李?)">援?궛李?PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - ?낆씪李?)">?낆씪李?PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 湲고??섏엯李?)">湲고??섏엯李?PnP</button>
             <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - DSP')">DSP PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기타')">기타 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 湲고?')">湲고? PnP</button>
         </div>
 
         <!-- Add Styles for Active State -->
@@ -272,9 +272,9 @@
                 // Identify Parent Category
                 if (currentCat.startsWith('PnP Cable')) {
                     mainCategory = 'PnP Cable';
-                    subCategory = currentCat; // e.g., "PnP Cable - 국산차 (Domestic)" or just "PnP Cable - 국산차"
+                    subCategory = currentCat; // e.g., "PnP Cable - 援?궛李?(Domestic)" or just "PnP Cable - 援?궛李?
                 } else if (currentCat === 'Others') {
-                    mainCategory = '기타상품'; // Button text
+                    mainCategory = '湲고??곹뭹'; // Button text
                 }
 
                 // Highlight Main Button
@@ -309,24 +309,24 @@
 
                         const subButtons = document.querySelectorAll('.sub-filter-btn');
                         subButtons.forEach(subBtn => {
-                            // subBtn text: "국산차 PnP" -> we need to map to category "PnP Cable - 국산차"
+                            // subBtn text: "援?궛李?PnP" -> we need to map to category "PnP Cable - 援?궛李?
                             // active logic: check if currentCat contains the keyword?
-                            // Data category: "PnP Cable - 국산차 (Domestic)"
-                            // Button text: "국산차 PnP"
+                            // Data category: "PnP Cable - 援?궛李?(Domestic)"
+                            // Button text: "援?궛李?PnP"
 
                             const btnLabel = subBtn.innerText;
                             let keyword = '';
-                            if (btnLabel.includes('국산차')) keyword = '국산차';
-                            else if (btnLabel.includes('독일차')) keyword = '독일차';
-                            else if (btnLabel.includes('기타수입차')) keyword = '기타수입차'; // or Other Imported
+                            if (btnLabel.includes('援?궛李?)) keyword = '援?궛李?;
+                            else if (btnLabel.includes('?낆씪李?)) keyword = '?낆씪李?;
+                            else if (btnLabel.includes('湲고??섏엯李?)) keyword = '湲고??섏엯李?; // or Other Imported
                             else if (btnLabel.includes('DSP')) keyword = 'DSP';
-                            else if (btnLabel.includes('기타')) keyword = '기타';
+                            else if (btnLabel.includes('湲고?')) keyword = '湲고?';
 
                             let match = false;
                             if (keyword) {
-                                if (keyword === '기타') {
-                                    // "기타" matches "PnP Cable - 기타" but NOT "PnP Cable - 기타수입차"
-                                    if (currentCat.includes('기타') && !currentCat.includes('기타수입차')) {
+                                if (keyword === '湲고?') {
+                                    // "湲고?" matches "PnP Cable - 湲고?" but NOT "PnP Cable - 湲고??섏엯李?
+                                    if (currentCat.includes('湲고?') && !currentCat.includes('湲고??섏엯李?)) {
                                         match = true;
                                     }
                                 } else {
@@ -356,10 +356,10 @@
                         <h1 class="detail-title">HDP-D90</h1>
                         <p class="detail-summary">14ch Hi-Res Digital Sound Processor & Amplifier</p>
                         <div class="detail-price">
-                            ₩4,300,000 
+                            ??,300,000 
                             
                         </div>
-                        <p class="detail-summary">장착공임 별도</p>
+                        <p class="detail-summary">?μ갑怨듭엫 蹂꾨룄</p>
                         <div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed #ddd;"><strong style="display: block; margin-bottom: 10px; color: #555;">Downloads:</strong><div style="display: flex; flex-direction: column; gap: 8px;">
                         <a href="../../assets/files/HDP-D90-Manual.pdf" download target="_blank" style="display: flex; align-items: center; font-size: 0.95rem; text-decoration: none; color: #007bff; transition: color 0.2s;">
                             <span style="margin-right: 8px;">
@@ -377,7 +377,7 @@
                                 <p class="detail-content-text">Hi-Res Audio Certified (192kHz / 24Bit)
 PC Tuning Application with Selectable Preloaded Sound System Configurations
 Embedded RTA Signals for Sound Tuning
-Bluetooth ® Audio Streaming with included External Module
+Bluetooth 짰 Audio Streaming with included External Module
 31 Band Parametric or Graphic EQ
 Hi Pass / Low Pass Crossover per Channel
 Matrix Input Summing
@@ -385,13 +385,12 @@ Sampling Rate = Internal: 192kHz / 32Bit
 S/N: >110dB, THD: <0.001%
 Inputs: 12-Ch Hi-Level, 2-Ch RCA/Optical (SPDIF) / Coaxial (Digital)
 Input Votage : High level : 26Vpp
-Outputs: 10-Ch RCA Output / 12-Ch Hi-Level Amplified Outputs (50W x 1ch~8ch @ 4Ω + 80W x 9ch~12ch @ 4Ω)</p>
+Outputs: 10-Ch RCA Output / 12-Ch Hi-Level Amplified Outputs (50W x 1ch~8ch @ 4廓 + 80W x 9ch~12ch @ 4廓)</p>
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">특별한 사운드
-
-50년 이상 프리미엄 자동차 오디오 제품을 제작해 온 전문 지식과 Ultra Hi-Res Alpine F#1Status 시스템 기술로부터 얻은 엔지니어링 및 디자인을 활용한 Alpine Status 시스템은 탁월한 튜닝과 최상의 사운드 재생을 위한 풍부한 빌드 품질을 특징으로 합니다. 각 구성 요소는 동급 최고의 오디오 성능을 위해 최고 품질의 재료를 수작업으로 선택하여 완성된 시스템으로 사용할 경우 192kHz/24bit 재생을 달성할 수 있습니다.</p>
+                                <p class="detail-content-text">?밸퀎???ъ슫??
+50???댁긽 ?꾨━誘몄뾼 ?먮룞李??ㅻ뵒???쒗뭹???쒖옉?????꾨Ц 吏?앷낵 Ultra Hi-Res Alpine F#1Status ?쒖뒪??湲곗닠濡쒕????살? ?붿??덉뼱留?諛??붿옄?몄쓣 ?쒖슜??Alpine Status ?쒖뒪?쒖? ?곸썡???쒕떇怨?理쒖긽???ъ슫???ъ깮???꾪븳 ?띾???鍮뚮뱶 ?덉쭏???뱀쭠?쇰줈 ?⑸땲?? 媛?援ъ꽦 ?붿냼???숆툒 理쒓퀬???ㅻ뵒???깅뒫???꾪빐 理쒓퀬 ?덉쭏???щ즺瑜??섏옉?낆쑝濡??좏깮?섏뿬 ?꾩꽦???쒖뒪?쒖쑝濡??ъ슜??寃쎌슦 192kHz/24bit ?ъ깮???ъ꽦?????덉뒿?덈떎.</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -401,7 +400,7 @@ Outputs: 10-Ch RCA Output / 12-Ch Hi-Level Amplified Outputs (50W x 1ch~8ch @ 4�
                             <div class="detail-content-item">
                                 <p class="detail-content-text">SYSTEM POWERHOUSE
 
-차량 내부 환경의 음향 문제를 극복하면서 사운드 시스템을 구축하는 것은 쉬운 일이 아니지만, HDP-D90 14채널 하이레스 디지털 사운드 프로세서 앰프는 유연한 시스템 구축 및 최대 192kHz/24Bit의 하이레스 처리 능력을 제공하여 완벽한 청취 경험을 제공합니다.</p>
+李⑤웾 ?대? ?섍꼍???뚰뼢 臾몄젣瑜?洹밸났?섎㈃???ъ슫???쒖뒪?쒖쓣 援ъ텞?섎뒗 寃껋? ?ъ슫 ?쇱씠 ?꾨땲吏留? HDP-D90 14梨꾨꼸 ?섏씠?덉뒪 ?붿????ъ슫???꾨줈?몄꽌 ?고봽???좎뿰???쒖뒪??援ъ텞 諛?理쒕? 192kHz/24Bit???섏씠?덉뒪 泥섎━ ?λ젰???쒓났?섏뿬 ?꾨꼍??泥?랬 寃쏀뿕???쒓났?⑸땲??</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -409,9 +408,9 @@ Outputs: 10-Ch RCA Output / 12-Ch Hi-Level Amplified Outputs (50W x 1ch~8ch @ 4�
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">울트라 프로세싱 파워 
+                                <p class="detail-content-text">?명듃???꾨줈?몄떛 ?뚯썙 
 
-고해상도 재생용으로 맞춤 개발된 HDP-D90은 192kHz/64Bit 내부 샘플링 속도와 스튜디오 수준의 사운드 녹음을 위한 10Hz~110kHz의 매우 넓은 오디오 대역폭을 제공합니다. 구리 도금 섀시와 같은 의도적인 디자인은 신호 대 잡음비를 최대 110dB까지 높이고 재생 중 잡음과 왜곡을 최소화하여 원본소스에 충실한 완전한 음악 충실도를 제공 합니다.</p>
+怨좏빐?곷룄 ?ъ깮?⑹쑝濡?留욎땄 媛쒕컻??HDP-D90? 192kHz/64Bit ?대? ?섑뵆留??띾룄? ?ㅽ뒠?붿삤 ?섏????ъ슫???뱀쓬???꾪븳 10Hz~110kHz??留ㅼ슦 ?볦? ?ㅻ뵒?????룺???쒓났?⑸땲?? 援щ━ ?꾧툑 ??쒖? 媛숈? ?섎룄?곸씤 ?붿옄?몄? ?좏샇 ? ?≪쓬鍮꾨? 理쒕? 110dB源뚯? ?믪씠怨??ъ깮 以??≪쓬怨??쒓끝??理쒖냼?뷀븯???먮낯?뚯뒪??異⑹떎???꾩쟾???뚯븙 異⑹떎?꾨? ?쒓났 ?⑸땲??</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -419,9 +418,8 @@ Outputs: 10-Ch RCA Output / 12-Ch Hi-Level Amplified Outputs (50W x 1ch~8ch @ 4�
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">시스템 유연성
-
-HDP-D90에는 OEM헤드 유닛이나 애프터마켓 헤드유닛 또는 HDS-990 디지털 미디어 컨트롤러 옵션을 위한 유연한 시스템 구축을 위한 다중 소스 입력이 포함 되어 있습니다. 소스 플레이어가 없는 구형 차량의 경우 HDP-D90은 독립형 음악 소스로도 작동할 수 있으며 블루투스 무선 스트리밍을 통해 스마트폰에서 직접 전송된 음악을 수신할 수 있습니다.</p>
+                                <p class="detail-content-text">?쒖뒪???좎뿰??
+HDP-D90?먮뒗 OEM?ㅻ뱶 ?좊떅?대굹 ?좏봽?곕쭏耳??ㅻ뱶?좊떅 ?먮뒗 HDS-990 ?붿???誘몃뵒??而⑦듃濡ㅻ윭 ?듭뀡???꾪븳 ?좎뿰???쒖뒪??援ъ텞???꾪븳 ?ㅼ쨷 ?뚯뒪 ?낅젰???ы븿 ?섏뼱 ?덉뒿?덈떎. ?뚯뒪 ?뚮젅?댁뼱媛 ?녿뒗 援ы삎 李⑤웾??寃쎌슦 HDP-D90? ?낅┰???뚯븙 ?뚯뒪濡쒕룄 ?묐룞?????덉쑝硫?釉붾（?ъ뒪 臾댁꽑 ?ㅽ듃由щ컢???듯빐 ?ㅻ쭏?명룿?먯꽌 吏곸젒 ?꾩넚???뚯븙???섏떊?????덉뒿?덈떎.</p>
                             </div>
                 
                 </div>
@@ -438,11 +436,11 @@ HDP-D90에는 OEM헤드 유닛이나 애프터마켓 헤드유닛 또는 HDS-990
                     <img src="../../assets/images/jch_logo.png" alt="JCH Auto" style="height: 30px;" id="footer-logo-img">
                 </div>
                 <p class="footer-text">
-                    <strong data-i18n="footer_ceo">대표 | 이정현</strong><br>
-                    <span data-i18n="footer_address">경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)</span><br>
+                    <strong data-i18n="footer_ceo">???| ?댁젙??/strong><br>
+                    <span data-i18n="footer_address">寃쎄린???덉뼇???숈븞援??섏뿉?ㅻ줈 136, A??1401???멸퀎?? 湲덉젙??李쮁KV1???</span><br>
                     <span data-i18n="footer_contact">TEL | 1670-7425 FAX | 031-477-7220</span><br>
-                    <span data-i18n="footer_hours">상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)</span><br>
-                    <span data-i18n="footer_biz_info">사업자등록번호 | 619-81-07276 개인정보보호책임자 | 한길전</span>
+                    <span data-i18n="footer_hours">?곷떞?쒓컙 | ??湲?09:00~17:00 (????怨듯쑕???대Т)</span><br>
+                    <span data-i18n="footer_biz_info">?ъ뾽?먮벑濡앸쾲??| 619-81-07276 媛쒖씤?뺣낫蹂댄샇梨낆엫??| ?쒓만??/span>
                 </p>
             </div>
             <div class="footer-section footer-links">
@@ -453,7 +451,7 @@ HDP-D90에는 OEM헤드 유닛이나 애프터마켓 헤드유닛 또는 HDS-990
                     <li><a href="../../index.html?category=DSP%2FAMP">DSP/AMP</a></li>
                     <li><a href="../../index.html?category=Speakers">Speakers</a></li>
                     <li><a href="../../index.html?category=PnP%20Cable">PnP Cable</a></li>
-                    <li><a href="../../index.html?category=기타상품" data-i18n="filter_others">기타상품</a></li>
+                    <li><a href="../../index.html?category=湲고??곹뭹" data-i18n="filter_others">湲고??곹뭹</a></li>
                     <li><a href="../../index.html?category=Alpine%20OEM%20Fit">Alpine OEM Fit</a></li>
                     <li><a href="../../index.html?category=ALPINESTYLE">ALPINESTYLE</a></li>
                 </ul>
@@ -484,12 +482,12 @@ HDP-D90에는 OEM헤드 유닛이나 애프터마켓 헤드유닛 또는 HDS-990
             </div>
         </div>
         <div class="copyright">
-            COPYRIGHT©2026 JCHAUTO,INC. ALL RIGHTS RESERVED.
+            COPYRIGHT짤2026 JCHAUTO,INC. ALL RIGHTS RESERVED.
         </div>
     </footer>
 
-    <script src="../../js/auth.js?v=20260724b"></script>
-    <!-- Supabase: product-data.js보다 먼저 로드 -->
+    <script src="../../js/auth.js?v=20260910_v3"></script>
+    <!-- Supabase: product-data.js蹂대떎 癒쇱? 濡쒕뱶 -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../../js/supabase-client.js?v=20260903"></script>
     <script>
@@ -498,30 +496,30 @@ HDP-D90에는 OEM헤드 유닛이나 애프터마켓 헤드유닛 또는 HDS-990
     <script>
         const translations = {
             ko: {
-                nav_about: '회사소개(About)',
-                nav_products: '제품소개',
-                nav_dealers: '전국 대리점 목록',
-                nav_support: '고객지원',
-                nav_support_product: '제품 자료실',
-                nav_support_install: '시공자료실',
-                nav_support_promo: '홍보자료실',
-                nav_company: '회사소개',
-                footer_ceo: '대표 | 이정현',
-                footer_address: '경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)',
+                nav_about: '?뚯궗?뚭컻(About)',
+                nav_products: '?쒗뭹?뚭컻',
+                nav_dealers: '?꾧뎅 ?由ъ젏 紐⑸줉',
+                nav_support: '怨좉컼吏??,
+                nav_support_product: '?쒗뭹 ?먮즺??,
+                nav_support_install: '?쒓났?먮즺??,
+                nav_support_promo: '?띾낫?먮즺??,
+                nav_company: '?뚯궗?뚭컻',
+                footer_ceo: '???| ?댁젙??,
+                footer_address: '寃쎄린???덉뼇???숈븞援??섏뿉?ㅻ줈 136, A??1401???멸퀎?? 湲덉젙??李쮁KV1???',
                 footer_contact: 'TEL | 1670-7425   FAX | 031-477-7220',
-                footer_hours: '상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)',
-                footer_biz_info: '사업자등록번호 | 619-81-07276   개인정보보호책임자 | 한길전',
-                footer_products: '제품',
-                footer_support: '지원',
-                footer_global: '글로벌',
-                footer_global_japan: '일본',
-                footer_global_asia: '아시아',
-                footer_global_australia: '호주',
-                footer_global_europe: '유럽',
-                footer_global_china: '중국',
-                footer_global_na: '북미',
-                btn_view: '자세히 보기',
-                btn_back: '제품 목록으로 가기'
+                footer_hours: '?곷떞?쒓컙 | ??湲?09:00~17:00 (????怨듯쑕???대Т)',
+                footer_biz_info: '?ъ뾽?먮벑濡앸쾲??| 619-81-07276   媛쒖씤?뺣낫蹂댄샇梨낆엫??| ?쒓만??,
+                footer_products: '?쒗뭹',
+                footer_support: '吏??,
+                footer_global: '湲濡쒕쾶',
+                footer_global_japan: '?쇰낯',
+                footer_global_asia: '?꾩떆??,
+                footer_global_australia: '?몄＜',
+                footer_global_europe: '?좊읇',
+                footer_global_china: '以묎뎅',
+                footer_global_na: '遺곷?',
+                btn_view: '?먯꽭??蹂닿린',
+                btn_back: '?쒗뭹 紐⑸줉?쇰줈 媛湲?
             },
             en: {
                 nav_about: 'About Us',
@@ -558,7 +556,7 @@ HDP-D90에는 OEM헤드 유닛이나 애프터마켓 헤드유닛 또는 HDS-990
 
         const paramId = getParam('id');
         const productId = paramId ? parseInt(paramId) : (typeof window.STATIC_PRODUCT_ID !== 'undefined' ? window.STATIC_PRODUCT_ID : null);
-        let product = null; // async 초기화로 채워짐
+        let product = null; // async 珥덇린?붾줈 梨꾩썙吏?
         const container = document.getElementById('productDetail');
 
         // Helper to fix paths for assets when in pages/ directory
@@ -595,7 +593,7 @@ HDP-D90에는 OEM헤드 유닛이나 애프터마켓 헤드유닛 또는 HDS-990
             const isEnglish = lang === 'en';
             const priceDisplay = isEnglish ?
                 '$' + Math.round(product.price / 1400).toLocaleString() :
-                '₩' + product.price.toLocaleString();
+                '?? + product.price.toLocaleString();
 
             // Prepare detail content
             let blocksHTML = '';
@@ -666,7 +664,7 @@ HDP-D90에는 OEM헤드 유닛이나 애프터마켓 헤드유닛 또는 HDS-990
                                     <span style="margin-right: 8px;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                                     </span>
-                                    인터렉티브 매뉴얼
+                                    ?명꽣?됲떚釉?留ㅻ돱??
                                 </a>
                             </div>
                         `;
@@ -691,7 +689,7 @@ HDP-D90에는 OEM헤드 유닛이나 애프터마켓 헤드유닛 또는 HDS-990
                         <span style="margin-right: 8px;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                         </span>
-                        인터렉티브 매뉴얼
+                        ?명꽣?됲떚釉?留ㅻ돱??
                     </a>
                     <style>
                         .interactive-manual-btn:hover {
@@ -714,7 +712,7 @@ HDP-D90에는 OEM헤드 유닛이나 애프터마켓 헤드유닛 또는 HDS-990
                         <p class="detail-summary">${product.desc}</p>
                         <div class="detail-price">
                             ${priceDisplay} 
-                            ${product.soldOut ? '<span style="color: #d9534f; font-size: 1rem; margin-left: 10px;">(품절 / SOLD OUT)</span>' : ''}
+                            ${product.soldOut ? '<span style="color: #d9534f; font-size: 1rem; margin-left: 10px;">(?덉젅 / SOLD OUT)</span>' : ''}
                         </div>
                         <p class="detail-summary">${product.desc_bottom !== undefined ? product.desc_bottom : product.desc}</p>
                         ${attachmentsHTML}
@@ -724,7 +722,7 @@ HDP-D90에는 OEM헤드 유닛이나 애프터마켓 헤드유닛 또는 HDS-990
                 <div class="detail-content">
                     ${blocksHTML || `
                         <div style="text-align: center; color: #999; padding: 40px;">
-                            ${isEnglish ? 'Detailed information is not registered.' : '상세 정보가 등록되지 않았습니다.'}
+                            ${isEnglish ? 'Detailed information is not registered.' : '?곸꽭 ?뺣낫媛 ?깅줉?섏? ?딆븯?듬땲??'}
                         </div>
                     `}
                 </div>
@@ -767,10 +765,10 @@ HDP-D90에는 OEM헤드 유닛이나 애프터마켓 헤드유닛 또는 HDS-990
                         "@type": "Review",
                         "author": {
                             "@type": "Person",
-                            "name": "알파인고객"
+                            "name": "?뚰뙆?멸퀬媛?
                         },
                         "datePublished": new Date().toISOString().split('T')[0],
-                        "reviewBody": "최상의 사운드 경험을 선사하는 솔루션입니다.",
+                        "reviewBody": "理쒖긽???ъ슫??寃쏀뿕???좎궗?섎뒗 ?붾（?섏엯?덈떎.",
                         "reviewRating": {
                             "@type": "Rating",
                             "ratingValue": "5",
@@ -794,13 +792,13 @@ HDP-D90에는 OEM헤드 유닛이나 애프터마켓 헤드유닛 또는 HDS-990
                     {
                         "@type": "ListItem",
                         "position": 1,
-                        "name": "홈",
+                        "name": "??,
                         "item": "https://www.alpine-korea.co.kr/"
                     },
                     {
                         "@type": "ListItem",
                         "position": 2,
-                        "name": "제품",
+                        "name": "?쒗뭹",
                         "item": "https://www.alpine-korea.co.kr/index.html"
                     },
                     {
@@ -850,21 +848,21 @@ HDP-D90에는 OEM헤드 유닛이나 애프터마켓 헤드유닛 또는 HDS-990
             });
         }
 
-        // Supabase 우선으로 제품 데이터 로드 후 렌더링
+        // Supabase ?곗꽑?쇰줈 ?쒗뭹 ?곗씠??濡쒕뱶 ???뚮뜑留?
         async function initDetail() {
-            // 1. Supabase에서 ID로 단일 제품 조회 시도
+            // 1. Supabase?먯꽌 ID濡??⑥씪 ?쒗뭹 議고쉶 ?쒕룄
             if (productId && typeof fetchProductList === 'function') {
                 const sbData = await fetchProductList();
                 if (sbData && sbData.length > 0) {
                     product = sbData.find(p => p.id === productId) || null;
                 }
             }
-            // 2. Supabase 실패 또는 데이터 없으면 JS 파일 fallback
+            // 2. Supabase ?ㅽ뙣 ?먮뒗 ?곗씠???놁쑝硫?JS ?뚯씪 fallback
             if (!product && typeof productData !== 'undefined') {
                 product = productData.find(p => p.id === productId) || null;
             }
 
-            // 3. 렌더링
+            // 3. ?뚮뜑留?
             const savedLang = sessionStorage.getItem('lang') || 'ko';
             if (langText) langText.textContent = savedLang.toUpperCase();
 

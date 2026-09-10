@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>알파인(ALPINE Korea) - 견적 데이터 관리</title>
+    <title>?뚰뙆??ALPINE Korea) - 寃ъ쟻 ?곗씠??愿由?/title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -160,22 +160,22 @@
                 <ul class="nav-menu">
                     <li><a href="about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
                     <li class="dropdown">
-                        <a href="../index.html" class="nav-link" data-i18n="nav_products">제품소개</a>
+                        <a href="../index.html" class="nav-link" data-i18n="nav_products">?쒗뭹?뚭컻</a>
                     </li>
                     <li>
-                        <a href="dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
+                        <a href="dealers.html" class="nav-link" data-i18n="nav_dealers">?꾧뎅 ?由ъ젏 紐⑸줉</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
+                        <a href="#" class="nav-link" data-i18n="nav_support">怨좉컼吏??/a>
                         <ul class="dropdown-content">
                             <li><a href="../support/product.html" class="dropdown-item"
-                                    data-i18n="nav_support_product">제품 자료실</a>
+                                    data-i18n="nav_support_product">?쒗뭹 ?먮즺??/a>
                             </li>
                             <li><a href="../support/install.html" class="dropdown-item"
-                                    data-i18n="nav_support_install">시공자료실</a>
+                                    data-i18n="nav_support_install">?쒓났?먮즺??/a>
                             </li>
                             <li><a href="../support/promo.html" class="dropdown-item"
-                                    data-i18n="nav_support_promo">홍보자료실</a></li>
+                                    data-i18n="nav_support_promo">?띾낫?먮즺??/a></li>
                         </ul>
                     </li>
                     <li class="social-icons">
@@ -212,63 +212,63 @@
 
     <main class="container" style="padding-top: 100px; max-width: 1200px;">
         <h2 class="section-title">Estimate Data Management</h2>
-        <p class="section-desc">가상 견적 시스템의 차량 및 구성 데이터를 엑셀로 일괄 관리합니다.</p>
+        <p class="section-desc">媛??寃ъ쟻 ?쒖뒪?쒖쓽 李⑤웾 諛?援ъ꽦 ?곗씠?곕? ?묒?濡??쇨큵 愿由ы빀?덈떎.</p>
 
         <div id="adminContent">
             <div class="control-panel">
                 <div
                     style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
                     <div>
-                        <button class="btn btn-excel" onclick="downloadExcel()">📊 차량 엑셀 다운로드</button>
+                        <button class="btn btn-excel" onclick="downloadExcel()">?뱤 李⑤웾 ?묒? ?ㅼ슫濡쒕뱶</button>
                         <input type="file" id="excelInput" style="display: none;" accept=".xlsx, .xls">
-                        <button class="btn btn-upload" onclick="document.getElementById('excelInput').click()">📥 차량
-                            엑셀 업로드</button>
+                        <button class="btn btn-upload" onclick="document.getElementById('excelInput').click()">?뱿 李⑤웾
+                            ?묒? ?낅줈??/button>
                     </div>
                     <div>
-                        <button class="btn btn-excel" onclick="downloadPnpRuleExcel()">📊 PnP 규칙 다운로드</button>
+                        <button class="btn btn-excel" onclick="downloadPnpRuleExcel()">?뱤 PnP 洹쒖튃 ?ㅼ슫濡쒕뱶</button>
                         <input type="file" id="pnpRuleExcelInput" style="display: none;" accept=".xlsx, .xls">
-                        <button class="btn btn-upload" onclick="document.getElementById('pnpRuleExcelInput').click()">📥
-                            PnP 규칙 업로드</button>
+                        <button class="btn btn-upload" onclick="document.getElementById('pnpRuleExcelInput').click()">?뱿
+                            PnP 洹쒖튃 ?낅줈??/button>
                     </div>
                     <div style="margin-top: 10px;">
-                        <button class="btn btn-excel" onclick="downloadLaborRuleExcel()">📊 제품별 기술료 다운로드</button>
+                        <button class="btn btn-excel" onclick="downloadLaborRuleExcel()">?뱤 ?쒗뭹蹂?湲곗닠猷??ㅼ슫濡쒕뱶</button>
                         <input type="file" id="laborRuleExcelInput" style="display: none;" accept=".xlsx, .xls">
-                        <button class="btn btn-upload" onclick="document.getElementById('laborRuleExcelInput').click()">📥 제품별 기술료 업로드</button>
+                        <button class="btn btn-upload" onclick="document.getElementById('laborRuleExcelInput').click()">?뱿 ?쒗뭹蹂?湲곗닠猷??낅줈??/button>
                         
                         <div style="margin-top: 10px; font-size: 0.85em; color: #555; background: #f9f9f9; padding: 10px; border-left: 3px solid #007aff; line-height: 1.5;">
-                            <strong>[ 제품별 기술료 적용 규칙 ]</strong><br>
-                            1. 단일 품목만 선택된 경우 설정된 기본 장착비 혹은 제품가 반영 비율에 따라 기술료가 적용됩니다.<br>
-                            2. <strong>Speaker와 DSP가 함께 시공될 경우</strong> 엑셀에 설정된 'DSP 스피커 동시작업 공임 할인비율(%)'에 따라 기술료가 할인 적용됩니다.<br>
-                            3. <strong>ETC, Player</strong>는 단일 품목일 경우 온전히 부과되지만, <strong>분류가 DSP나 Speaker인 제품이 하나라도 시스템에 추가되면 기술료 부과에서 제외(0원)</strong> 됩니다.<br>
-                            4. <strong>Subwoofer</strong>는 어떠한 조합(예: DSP + Subwoofer)에서도 면제나 동시작업 할인을 적용받지 않고, 항상 본래 설정된 기술료 100%가 온전히 부과됩니다.<br>
-                            5. <strong>차량별 추가 공임비(고급차 시공 할증비)</strong>는 추가 공임비가 적용된 차량 대상으로 <strong>DSP 스피커 동시작업 공임 할인 비율</strong>에 따라 비례 적용됩니다.
+                            <strong>[ ?쒗뭹蹂?湲곗닠猷??곸슜 洹쒖튃 ]</strong><br>
+                            1. ?⑥씪 ?덈ぉ留??좏깮??寃쎌슦 ?ㅼ젙??湲곕낯 ?μ갑鍮??뱀? ?쒗뭹媛 諛섏쁺 鍮꾩쑉???곕씪 湲곗닠猷뚭? ?곸슜?⑸땲??<br>
+                            2. <strong>Speaker? DSP媛 ?④퍡 ?쒓났??寃쎌슦</strong> ?묒????ㅼ젙??'DSP ?ㅽ뵾而??숈떆?묒뾽 怨듭엫 ?좎씤鍮꾩쑉(%)'???곕씪 湲곗닠猷뚭? ?좎씤 ?곸슜?⑸땲??<br>
+                            3. <strong>ETC, Player</strong>???⑥씪 ?덈ぉ??寃쎌슦 ?⑥쟾??遺怨쇰릺吏留? <strong>遺꾨쪟媛 DSP??Speaker???쒗뭹???섎굹?쇰룄 ?쒖뒪?쒖뿉 異붽??섎㈃ 湲곗닠猷?遺怨쇱뿉???쒖쇅(0??</strong> ?⑸땲??<br>
+                            4. <strong>Subwoofer</strong>???대뼚??議고빀(?? DSP + Subwoofer)?먯꽌??硫댁젣???숈떆?묒뾽 ?좎씤???곸슜諛쏆? ?딄퀬, ??긽 蹂몃옒 ?ㅼ젙??湲곗닠猷?100%媛 ?⑥쟾??遺怨쇰맗?덈떎.<br>
+                            5. <strong>李⑤웾蹂?異붽? 怨듭엫鍮?怨좉툒李??쒓났 ?좎쬆鍮?</strong>??異붽? 怨듭엫鍮꾧? ?곸슜??李⑤웾 ??곸쑝濡?<strong>DSP ?ㅽ뵾而??숈떆?묒뾽 怨듭엫 ?좎씤 鍮꾩쑉</strong>???곕씪 鍮꾨? ?곸슜?⑸땲??
                         </div>
                     </div>
                     <div style="margin-top: 10px;">
-                        <button class="btn btn-excel" onclick="downloadDspExcel()">📊 DSP 채널 설정 다운로드</button>
+                        <button class="btn btn-excel" onclick="downloadDspExcel()">?뱤 DSP 梨꾨꼸 ?ㅼ젙 ?ㅼ슫濡쒕뱶</button>
                         <input type="file" id="dspExcelInput" style="display: none;" accept=".xlsx, .xls">
-                        <button class="btn btn-upload" onclick="document.getElementById('dspExcelInput').click()">📥 DSP 채널 설정 업로드</button>
+                        <button class="btn btn-upload" onclick="document.getElementById('dspExcelInput').click()">?뱿 DSP 梨꾨꼸 ?ㅼ젙 ?낅줈??/button>
                     </div>
                     <div>
-                        <button class="btn btn-restore" onclick="resetToInitial()">♻️ 서버 데이터로 복구</button>
+                        <button class="btn btn-restore" onclick="resetToInitial()">?삼툘 ?쒕쾭 ?곗씠?곕줈 蹂듦뎄</button>
                     </div>
                 </div>
                 <div id="syncStatus"
                     style="margin-top: 15px; font-size: 0.9rem; color: #666; display: flex; align-items: center; gap: 20px;">
-                    <div>저장 상태: <span id="statusText">확인 중...</span></div>
-                    <div>GitHub 연결: <span id="githubStatus">확인 중...</span></div>
+                    <div>????곹깭: <span id="statusText">?뺤씤 以?..</span></div>
+                    <div>GitHub ?곌껐: <span id="githubStatus">?뺤씤 以?..</span></div>
                     <button class="btn btn-sm" onclick="toggleGithubSettings()"
-                        style="padding: 2px 10px; font-size: 0.75rem; background: #6c757d; color: white;">연결 설정</button>
+                        style="padding: 2px 10px; font-size: 0.75rem; background: #6c757d; color: white;">?곌껐 ?ㅼ젙</button>
                     <button id="manualSyncBtn" class="btn btn-github btn-sm" onclick="syncToGitHub()"
-                        style="padding: 2px 10px; font-size: 0.75rem;">☁️ GitHub 서버에 저장</button>
+                        style="padding: 2px 10px; font-size: 0.75rem;">?곻툘 GitHub ?쒕쾭?????/button>
                 </div>
             </div>
 
             <!-- GitHub Settings Panel -->
             <div id="githubSettings" class="github-settings-panel">
-                <h4>GitHub 서버 연결 설정</h4>
-                <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">이 설정은 현재 브라우저에만 저장됩니다. 다른 기기에서 접속 시 다시
-                    설정해야 합니다.</p>
+                <h4>GitHub ?쒕쾭 ?곌껐 ?ㅼ젙</h4>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">???ㅼ젙? ?꾩옱 釉뚮씪?곗??먮쭔 ??λ맗?덈떎. ?ㅻⅨ 湲곌린?먯꽌 ?묒냽 ???ㅼ떆
+                    ?ㅼ젙?댁빞 ?⑸땲??</p>
                 <div class="github-input-group">
                     <label>GitHub Personal Access Token</label>
                     <input type="password" id="ghToken" placeholder="ghp_...">
@@ -282,37 +282,37 @@
                     <input type="text" id="ghBranch" placeholder="main or master">
                 </div>
                 <div style="display: flex; gap: 10px; align-items: center;">
-                    <button class="btn btn-primary btn-sm" onclick="saveGithubConfig()">설정 저장</button>
-                    <button class="btn btn-success btn-sm" id="testConnBtn" onclick="testGithubConnection()">연결
-                        테스트</button>
-                    <button class="btn btn-secondary btn-sm" onclick="toggleGithubSettings()">닫기</button>
+                    <button class="btn btn-primary btn-sm" onclick="saveGithubConfig()">?ㅼ젙 ???/button>
+                    <button class="btn btn-success btn-sm" id="testConnBtn" onclick="testGithubConnection()">?곌껐
+                        ?뚯뒪??/button>
+                    <button class="btn btn-secondary btn-sm" onclick="toggleGithubSettings()">?リ린</button>
                     <span id="testResult" style="font-size: 0.85rem; margin-left: 10px;"></span>
                 </div>
             </div>
 
             <div class="data-table-container">
                 <div style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
-                    <h3 style="margin: 0;">현재 등록된 차량 데이터 (<span id="rowCount">0</span>건)</h3>
-                    <input type="text" id="searchInput" placeholder="검색 (브랜드, 모델...)"
+                    <h3 style="margin: 0;">?꾩옱 ?깅줉??李⑤웾 ?곗씠??(<span id="rowCount">0</span>嫄?</h3>
+                    <input type="text" id="searchInput" placeholder="寃??(釉뚮옖?? 紐⑤뜽...)"
                         style="padding: 5px 10px; border: 1px solid #ddd; border-radius: 4px;">
                 </div>
                 <table id="estimateTable">
                     <thead>
                         <tr>
-                            <th>브랜드</th>
-                            <th>모델</th>
-                            <th>연식</th>
-                            <th>시스템</th>
-                            <th>차측 PnP</th>
+                            <th>釉뚮옖??/th>
+                            <th>紐⑤뜽</th>
+                            <th>?곗떇</th>
+                            <th>?쒖뒪??/th>
+                            <th>李⑥륫 PnP</th>
                             <th>DSP</th>
                             <th>DSP PnP</th>
-                            <th>프론트 도어</th>
-                            <th>서브우퍼</th>
-                            <th>작업비</th>
+                            <th>?꾨줎???꾩뼱</th>
+                            <th>?쒕툕?고띁</th>
+                            <th>?묒뾽鍮?/th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">
-                        <!-- 데이터가 여기에 동적으로 렌더링됨 -->
+                        <!-- ?곗씠?곌? ?ш린???숈쟻?쇰줈 ?뚮뜑留곷맖 -->
                     </tbody>
                 </table>
             </div>
@@ -320,14 +320,14 @@
 
         <div id="accessDenied" style="display:none; text-align:center; color:red; margin-top: 50px;">
             <h3>Restricted Access</h3>
-            <p>관리자만 접근 가능한 페이지입니다.</p>
+            <p>愿由ъ옄留??묎렐 媛?ν븳 ?섏씠吏?낅땲??</p>
         </div>
     </main>
 
 
 
     <!-- Scripts -->
-    <script src="../js/auth.js?v=20260724b"></script>
+    <script src="../js/auth.js?v=20260910_v3"></script>
     <script src="../js/layout.js"></script>
     <script src="../js/github-client.js"></script>
     <script src="../js/admin-data-manager.js"></script>
@@ -418,7 +418,7 @@
                         document.getElementById('ghBranch').value = status.branch || 'main';
                     }
                 } catch (e) {
-                    console.warn('[GitHub] 현재 설정 조회 실패:', e.message);
+                    console.warn('[GitHub] ?꾩옱 ?ㅼ젙 議고쉶 ?ㅽ뙣:', e.message);
                 }
                 panel.style.display = 'block';
             } else {
@@ -432,11 +432,11 @@
             const branch = document.getElementById('ghBranch').value.trim() || 'main';
 
             if (!repo) {
-                alert('저장소 주소를 입력해주세요.');
+                alert('??μ냼 二쇱냼瑜??낅젰?댁＜?몄슂.');
                 return;
             }
             if (!token) {
-                alert('토큰을 입력해주세요. (한번 저장된 토큰은 보안상 다시 표시되지 않으므로, 변경할 때만 새로 입력하면 됩니다)');
+                alert('?좏겙???낅젰?댁＜?몄슂. (?쒕쾲 ??λ맂 ?좏겙? 蹂댁븞???ㅼ떆 ?쒖떆?섏? ?딆쑝誘濡? 蹂寃쏀븷 ?뚮쭔 ?덈줈 ?낅젰?섎㈃ ?⑸땲??');
                 return;
             }
 
@@ -445,11 +445,11 @@
                     await ghClient.configure(token, repo, branch);
                 }
             } catch (e) {
-                alert('저장 실패: ' + e.message);
+                alert('????ㅽ뙣: ' + e.message);
                 return;
             }
 
-            alert('서버에 안전하게 저장되었습니다.');
+            alert('?쒕쾭???덉쟾?섍쾶 ??λ릺?덉뒿?덈떎.');
             await updateGithubStatus();
             toggleGithubSettings();
         }
@@ -459,11 +459,11 @@
             const result = document.getElementById('testResult');
 
             btn.disabled = true;
-            result.textContent = '테스트 중...';
+            result.textContent = '?뚯뒪??以?..';
             result.style.color = '#666';
 
             try {
-                // 새 토큰을 입력한 경우에만 서버에 반영, 아니면 기존 서버 설정으로 테스트
+                // ???좏겙???낅젰??寃쎌슦?먮쭔 ?쒕쾭??諛섏쁺, ?꾨땲硫?湲곗〈 ?쒕쾭 ?ㅼ젙?쇰줈 ?뚯뒪??
                 const token = document.getElementById('ghToken').value.trim();
                 const repo = document.getElementById('ghRepo').value.trim();
                 const branch = document.getElementById('ghBranch').value.trim() || 'main';
@@ -474,14 +474,14 @@
 
                 const res = await ghClient.testConnection();
                 if (res.success) {
-                    result.textContent = '✅ ' + res.message;
+                    result.textContent = '??' + res.message;
                     result.style.color = '#27ae60';
                 } else {
-                    result.textContent = '❌ ' + res.message;
+                    result.textContent = '??' + res.message;
                     result.style.color = '#e74c3c';
                 }
             } catch (err) {
-                result.textContent = '❌ 오류: ' + err.message;
+                result.textContent = '???ㅻ쪟: ' + err.message;
                 result.style.color = '#e74c3c';
             } finally {
                 btn.disabled = false;
@@ -498,17 +498,17 @@
                     configured = !!status.configured;
                 }
             } catch (e) {
-                console.warn('[GitHub] 상태 조회 실패:', e.message);
+                console.warn('[GitHub] ?곹깭 議고쉶 ?ㅽ뙣:', e.message);
             }
 
             if (configured) {
-                statusBox.innerHTML = '<span class="status-connected">✅ 연결됨</span>';
+                statusBox.innerHTML = '<span class="status-connected">???곌껐??/span>';
                 syncBtn.style.opacity = '1';
                 syncBtn.title = '';
             } else {
-                statusBox.innerHTML = '<span class="status-disconnected">❌ 연결 안됨 (설정 필요)</span>';
+                statusBox.innerHTML = '<span class="status-disconnected">???곌껐 ?덈맖 (?ㅼ젙 ?꾩슂)</span>';
                 syncBtn.style.opacity = '0.5';
-                syncBtn.title = 'GitHub 설정을 먼저 완료해주세요.';
+                syncBtn.title = 'GitHub ?ㅼ젙??癒쇱? ?꾨즺?댁＜?몄슂.';
             }
         }
 
@@ -517,7 +517,7 @@
             tbody.innerHTML = '';
             document.getElementById('rowCount').textContent = data.length;
 
-            data.slice(0, 100).forEach(d => { // 성능을 위해 상위 100개만 미리보기
+            data.slice(0, 100).forEach(d => { // ?깅뒫???꾪빐 ?곸쐞 100媛쒕쭔 誘몃━蹂닿린
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td>${d.brand}</td>
@@ -536,7 +536,7 @@
 
             if (data.length > 100) {
                 const tr = document.createElement('tr');
-                tr.innerHTML = `<td colspan="9" style="text-align:center; color:#999;">... 그 외 ${data.length - 100}건이 더 있습니다. 상세 확인은 엑셀을 다운로드해 주세요.</td>`;
+                tr.innerHTML = `<td colspan="9" style="text-align:center; color:#999;">... 洹???${data.length - 100}嫄댁씠 ???덉뒿?덈떎. ?곸꽭 ?뺤씤? ?묒????ㅼ슫濡쒕뱶??二쇱꽭??</td>`;
                 tbody.appendChild(tr);
             }
         }
@@ -545,9 +545,9 @@
             const isPending = localStorage.getItem('estimate_sync_pending') === 'true';
             const statusBox = document.getElementById('statusText');
             if (isPending) {
-                statusBox.innerHTML = '<span class="status-badge sync-pending">⚠️ 변경됨 (저장 필요)</span>';
+                statusBox.innerHTML = '<span class="status-badge sync-pending">?좑툘 蹂寃쎈맖 (????꾩슂)</span>';
             } else {
-                statusBox.innerHTML = '<span class="status-badge">✅ 최신 상태</span>';
+                statusBox.innerHTML = '<span class="status-badge">??理쒖떊 ?곹깭</span>';
             }
         }
 
@@ -556,13 +556,13 @@
             const exportData = estimateData.map(d => {
                 const flat = {};
 
-                // 순서 및 명칭 지정
+                // ?쒖꽌 諛?紐낆묶 吏??
                 flat['brand'] = d.brand || '';
                 flat['model'] = d.model || '';
                 flat['year'] = d.year || '';
                 flat['code'] = d.code || '';
                 flat['system'] = d.system || '';
-                flat['차측 PnP'] = Array.isArray(d.pnp) ? d.pnp.filter(p => !p.startsWith('DS-')).join(', ') : '';
+                flat['李⑥륫 PnP'] = Array.isArray(d.pnp) ? d.pnp.filter(p => !p.startsWith('DS-')).join(', ') : '';
                 flat['dsp'] = Array.isArray(d.dsp) ? d.dsp.join(', ') : (d.dsp || '');
                 flat['DSP PnP'] = Array.isArray(d.pnp) ? d.pnp.filter(p => p.startsWith('DS-')).join(', ') : '';
                 flat['front_door'] = Array.isArray(d.front_door) ? d.front_door.join(', ') : (d.front_door || '');
@@ -579,7 +579,7 @@
                 flat['player'] = Array.isArray(d.player) ? d.player.join(', ') : (d.player || '');
                 flat['extraLabor'] = d.extraLabor || 0;
 
-                // W~AX 채널 정보 추가 (사용자 정의 순서 적용)
+                // W~AX 梨꾨꼸 ?뺣낫 異붽? (?ъ슜???뺤쓽 ?쒖꽌 ?곸슜)
                 const channels = [
                     '1', '2', '3', '4', '5', '6', '7', '8', '11A', '12A',
                     'A', 'B', 'C', 'D', 'E', 'F', '7A', '8A', '9', '10',
@@ -592,14 +592,14 @@
                 return flat;
             });
 
-            // A열부터 AX열까지 빈 V열(공란)을 포함한 정확한 컬럼 순서 배열 정의
+            // A?대???AX?닿퉴吏 鍮?V??怨듬?)???ы븿???뺥솗??而щ읆 ?쒖꽌 諛곗뿴 ?뺤쓽
             const exactHeaders = [
                 'brand', 'model', 'year', 'code', 'system', 
-                '차측 PnP', 'dsp', 'DSP PnP', 'front_door', 'tweeter', 
+                '李⑥륫 PnP', 'dsp', 'DSP PnP', 'front_door', 'tweeter', 
                 'front_baffle', 'add_front', 'rear_door', 'rear_baffle', 
                 'center', 'surround', 'subwoofer', 'amp_4ch', 'amp_sub', 
                 'player', 'extraLabor', 
-                '__EMPTY_COLUMN__', // V열 자리 비우기 (밀림 방지)
+                '__EMPTY_COLUMN__', // V???먮━ 鍮꾩슦湲?(諛由?諛⑹?)
                 '1', '2', '3', '4', '5', '6', '7', '8', '11A', '12A', 
                 'A', 'B', 'C', 'D', 'E', 'F', '7A', '8A', '9', '10', 
                 'G', 'H', 'I', 'J', 'K', 'L', '11', '12'
@@ -625,9 +625,9 @@
                     const sheet = workbook.Sheets[workbook.SheetNames[0]];
                     const json = XLSX.utils.sheet_to_json(sheet);
 
-                    if (json.length === 0) { alert('데이터가 비어있습니다.'); return; }
+                    if (json.length === 0) { alert('?곗씠?곌? 鍮꾩뼱?덉뒿?덈떎.'); return; }
 
-                    if (!confirm(`총 ${json.length}개의 차량 데이터를 불러왔습니다. 기존 데이터를 덮어쓰시겠습니까?`)) {
+                    if (!confirm(`珥?${json.length}媛쒖쓽 李⑤웾 ?곗씠?곕? 遺덈윭?붿뒿?덈떎. 湲곗〈 ?곗씠?곕? ??뼱?곗떆寃좎뒿?덇퉴?`)) {
                         return;
                     }
 
@@ -644,15 +644,15 @@
 
                         let combinedPnP = [];
 
-                        // 차측 PnP 맵핑 복원
-                        if (newRow['차측 PnP'] !== undefined) {
-                            if (typeof newRow['차측 PnP'] === 'string') {
-                                combinedPnP.push(...newRow['차측 PnP'].split(',').map(s => s.trim()).filter(s => s !== ''));
+                        // 李⑥륫 PnP 留듯븨 蹂듭썝
+                        if (newRow['李⑥륫 PnP'] !== undefined) {
+                            if (typeof newRow['李⑥륫 PnP'] === 'string') {
+                                combinedPnP.push(...newRow['李⑥륫 PnP'].split(',').map(s => s.trim()).filter(s => s !== ''));
                             }
-                            delete newRow['차측 PnP'];
+                            delete newRow['李⑥륫 PnP'];
                         }
 
-                        // DSP PnP 맵핑 복원
+                        // DSP PnP 留듯븨 蹂듭썝
                         if (newRow['DSP PnP'] !== undefined) {
                             if (typeof newRow['DSP PnP'] === 'string') {
                                 combinedPnP.push(...newRow['DSP PnP'].split(',').map(s => s.trim()).filter(s => s !== ''));
@@ -660,7 +660,7 @@
                             delete newRow['DSP PnP'];
                         }
 
-                        // 병합된 PnP 배열 할당
+                        // 蹂묓빀??PnP 諛곗뿴 ?좊떦
                         if (combinedPnP.length > 0) {
                             newRow.pnp = combinedPnP;
                         } else if (!newRow.pnp) {
@@ -676,7 +676,7 @@
                         });
                         if (newRow.extraLabor) newRow.extraLabor = parseInt(newRow.extraLabor) || 0;
 
-                        // 채널 정보 안전하게 복원
+                        // 梨꾨꼸 ?뺣낫 ?덉쟾?섍쾶 蹂듭썝
                         channels.forEach(ch => {
                             if (newRow[ch] !== undefined && newRow[ch] !== null) {
                                 newRow[ch] = String(newRow[ch]).trim();
@@ -700,7 +700,7 @@
 
                 } catch (err) {
                     console.error(err);
-                    alert('엑셀 파싱 중 오류가 발생했습니다: ' + err.message);
+                    alert('?묒? ?뚯떛 以??ㅻ쪟媛 諛쒖깮?덉뒿?덈떎: ' + err.message);
                 } finally {
                     e.target.value = '';
                 }
@@ -713,8 +713,8 @@
             const exportData = pnpRuleData.map(d => {
                 return {
                     'DSP': d.dsp || '',
-                    '호환 통합형 PnP': Array.isArray(d.integrated) ? d.integrated.join(', ') : (d.integrated || ''),
-                    '호환 DSP PnP(B타입)': Array.isArray(d.typeB) ? d.typeB.join(', ') : (d.typeB || '')
+                    '?명솚 ?듯빀??PnP': Array.isArray(d.integrated) ? d.integrated.join(', ') : (d.integrated || ''),
+                    '?명솚 DSP PnP(B???': Array.isArray(d.typeB) ? d.typeB.join(', ') : (d.typeB || '')
                 };
             });
 
@@ -738,9 +738,9 @@
                     const sheet = workbook.Sheets[workbook.SheetNames[0]];
                     const json = XLSX.utils.sheet_to_json(sheet);
 
-                    if (json.length === 0) { alert('데이터가 비어있습니다.'); return; }
+                    if (json.length === 0) { alert('?곗씠?곌? 鍮꾩뼱?덉뒿?덈떎.'); return; }
 
-                    if (!confirm(`총 ${json.length}개의 PnP 규칙 데이터를 불러왔습니다. 기존 규칙을 덮어쓰시겠습니까?`)) {
+                    if (!confirm(`珥?${json.length}媛쒖쓽 PnP 洹쒖튃 ?곗씠?곕? 遺덈윭?붿뒿?덈떎. 湲곗〈 洹쒖튃????뼱?곗떆寃좎뒿?덇퉴?`)) {
                         return;
                     }
 
@@ -748,7 +748,7 @@
                         const newRow = { dsp: row['DSP'] || '' };
 
                         // Parse integrated
-                        let intData = row['호환 통합형 PnP'];
+                        let intData = row['?명솚 ?듯빀??PnP'];
                         if (typeof intData === 'string') {
                             newRow.integrated = intData.split(',').map(s => s.trim()).filter(s => s !== '');
                         } else {
@@ -756,7 +756,7 @@
                         }
 
                         // Parse typeB
-                        let typeBData = row['호환 DSP PnP(B타입)'];
+                        let typeBData = row['?명솚 DSP PnP(B???'];
                         if (typeof typeBData === 'string') {
                             newRow.typeB = typeBData.split(',').map(s => s.trim()).filter(s => s !== '');
                         } else {
@@ -774,7 +774,7 @@
 
                 } catch (err) {
                     console.error(err);
-                    alert('엑셀 파싱 중 오류가 발생했습니다: ' + err.message);
+                    alert('?묒? ?뚯떛 以??ㅻ쪟媛 諛쒖깮?덉뒿?덈떎: ' + err.message);
                 } finally {
                     e.target.value = '';
                 }
@@ -785,12 +785,12 @@
         function downloadLaborRuleExcel() {
             let currentData = (typeof laborRuleData !== 'undefined' && laborRuleData.length > 0) ? laborRuleData : [];
             
-            // 데이터가 아예 없을 경우 (초기 진입 시), 시스템의 전체 제품 데이터를 끌어와서 템플릿 생성
+            // ?곗씠?곌? ?꾩삁 ?놁쓣 寃쎌슦 (珥덇린 吏꾩엯 ??, ?쒖뒪?쒖쓽 ?꾩껜 ?쒗뭹 ?곗씠?곕? ?뚯뼱????쒗뵆由??앹꽦
             if (currentData.length === 0 && typeof productData !== 'undefined') {
                 currentData = productData
                     .filter(p => {
                         const t = p.title || '';
-                        return !t.toUpperCase().includes('F#1'); // F#1 Status 계열 모두 삭제
+                        return !t.toUpperCase().includes('F#1'); // F#1 Status 怨꾩뿴 紐⑤몢 ??젣
                     })
                     .map(p => {
                     let defaultBase = 0;
@@ -803,25 +803,25 @@
 
                     if (cat.includes('DSP') || title.includes('DSP')) {
                         finalCategory = 'DSP';
-                        defaultPercent = 30; // DSP: 30% 제품가 반영
+                        defaultPercent = 30; // DSP: 30% ?쒗뭹媛 諛섏쁺
                         defaultDiscount = 0;
-                    } else if (cat.includes('스피커') || cat.includes('트위터') || title.includes('Speaker')) {
+                    } else if (cat.includes('?ㅽ뵾而?) || cat.includes('?몄쐞??) || title.includes('Speaker')) {
                         finalCategory = 'Speaker';
                         const excludedSpeakers = ["EV-65CF", "EV-40M-T", "EV-40MR-T", "EV-100SW 3", "EV-100SW Y", "DP2-45C-B", "DP2-45-B", "DP2-40C-B", "DP2-15TW-B", "DP2-80WF-B"];
                         if (!excludedSpeakers.includes(title)) {
                             defaultBase = 200000;
-                            defaultDiscount = 50; // DSP/스피커 동시작업 시 50% 할인 (기존 절반 부과 로직)
+                            defaultDiscount = 50; // DSP/?ㅽ뵾而??숈떆?묒뾽 ??50% ?좎씤 (湲곗〈 ?덈컲 遺怨?濡쒖쭅)
                         }
-                    } else if (cat.includes('우퍼') || title.includes('PWE') || title.includes('Subwoofer') || cat.includes('서브우퍼')) {
+                    } else if (cat.includes('?고띁') || title.includes('PWE') || title.includes('Subwoofer') || cat.includes('?쒕툕?고띁')) {
                         finalCategory = 'Subwoofer';
                         if (title.includes('PWE')) {
-                             defaultBase = 200000; // PWE 서브우퍼
+                             defaultBase = 200000; // PWE ?쒕툕?고띁
                         } else {
                              defaultPercent = 10;
                         }
                     } else {
                         finalCategory = 'AMP';
-                        defaultPercent = 10; // 일반앰프
+                        defaultPercent = 10; // ?쇰컲?고봽
                     }
 
                     return {
@@ -834,20 +834,20 @@
                     };
                 });
             } else if (currentData.length === 0) {
-                 // productData 마저 로드가 안된 경우의 최후 보루 안전망
+                 // productData 留덉? 濡쒕뱶媛 ?덈맂 寃쎌슦??理쒗썑 蹂대（ ?덉쟾留?
                  currentData = [
-                    { name: 'PXE-M60-4', category: 'DSP', desc: '(예시) DSP 제품', basePrice: 0, percentPrice: 30, discountRatio: 0 }
+                    { name: 'PXE-M60-4', category: 'DSP', desc: '(?덉떆) DSP ?쒗뭹', basePrice: 0, percentPrice: 30, discountRatio: 0 }
                  ];
             }
 
             const exportData = currentData.map(d => {
                 return {
-                    '카테고리': d.category || '',
-                    '제품명': d.name || '',
-                    '설명': d.desc || '',
-                    '기본 장착비(원)': d.basePrice || 0,
-                    '제품가 반영 비율(%)': d.percentPrice || 0,
-                    'DSP 스피커 동시작업 공임 할인비율(%)': d.discountRatio || 0
+                    '移댄뀒怨좊━': d.category || '',
+                    '?쒗뭹紐?: d.name || '',
+                    '?ㅻ챸': d.desc || '',
+                    '湲곕낯 ?μ갑鍮???': d.basePrice || 0,
+                    '?쒗뭹媛 諛섏쁺 鍮꾩쑉(%)': d.percentPrice || 0,
+                    'DSP ?ㅽ뵾而??숈떆?묒뾽 怨듭엫 ?좎씤鍮꾩쑉(%)': d.discountRatio || 0
                 };
             });
 
@@ -871,24 +871,24 @@
                     const sheet = workbook.Sheets[workbook.SheetNames[0]];
                     const json = XLSX.utils.sheet_to_json(sheet);
 
-                    if (json.length === 0) { alert('데이터가 비어있습니다.'); return; }
+                    if (json.length === 0) { alert('?곗씠?곌? 鍮꾩뼱?덉뒿?덈떎.'); return; }
 
-                    if (!confirm(`총 ${json.length}개의 기술료 규칙 데이터를 불러왔습니다. 기존 규칙을 덮어쓰시겠습니까?`)) {
+                    if (!confirm(`珥?${json.length}媛쒖쓽 湲곗닠猷?洹쒖튃 ?곗씠?곕? 遺덈윭?붿뒿?덈떎. 湲곗〈 洹쒖튃????뼱?곗떆寃좎뒿?덇퉴?`)) {
                         return;
                     }
 
                     const processed = json.map(row => {
                         return { 
-                            category: row['카테고리'] || '',
-                            name: row['제품명'] || '',
-                            desc: row['설명'] || '',
-                            basePrice: parseInt(row['기본 장착비(원)']) || 0,
-                            percentPrice: parseFloat(row['제품가 반영 비율(%)']) || 0,
-                            discountRatio: parseFloat(row['DSP 스피커 동시작업 공임 할인비율(%)']) || 0
+                            category: row['移댄뀒怨좊━'] || '',
+                            name: row['?쒗뭹紐?] || '',
+                            desc: row['?ㅻ챸'] || '',
+                            basePrice: parseInt(row['湲곕낯 ?μ갑鍮???']) || 0,
+                            percentPrice: parseFloat(row['?쒗뭹媛 諛섏쁺 鍮꾩쑉(%)']) || 0,
+                            discountRatio: parseFloat(row['DSP ?ㅽ뵾而??숈떆?묒뾽 怨듭엫 ?좎씤鍮꾩쑉(%)']) || 0
                         };
                     });
 
-                    laborRuleData = processed.filter(r => r.name !== ''); // 제품명이 없는 행은 무시
+                    laborRuleData = processed.filter(r => r.name !== ''); // ?쒗뭹紐낆씠 ?녿뒗 ?됱? 臾댁떆
                     localStorage.setItem('laborRuleData', JSON.stringify(laborRuleData));
 
                     // Trigger sync to GitHub for rules
@@ -896,7 +896,7 @@
 
                 } catch (err) {
                     console.error(err);
-                    alert('엑셀 파싱 중 오류가 발생했습니다: ' + err.message);
+                    alert('?묒? ?뚯떛 以??ㅻ쪟媛 諛쒖깮?덉뒿?덈떎: ' + err.message);
                 } finally {
                     e.target.value = '';
                 }
@@ -905,43 +905,43 @@
         }
 
         async function syncToGitHub(silent = false) {
-            if (!silent && !confirm('현재 데이터를 GitHub 서버에 저장하시겠습니까?\n이 작업은 웹사이트 전체에 반영됩니다.')) return;
+            if (!silent && !confirm('?꾩옱 ?곗씠?곕? GitHub ?쒕쾭????ν븯?쒓쿋?듬땲源?\n???묒뾽? ?뱀궗?댄듃 ?꾩껜??諛섏쁺?⑸땲??')) return;
 
             try {
-                // admin-data-manager.js의 기능을 활용
+                // admin-data-manager.js??湲곕뒫???쒖슜
                 await saveToGitHub('estimate', silent);
                 localStorage.removeItem('estimate_sync_pending');
                 updateStatus();
-                if (!silent) alert('서버 저장이 완료되었습니다. 반영까지 1~2분 정도 소요됩니다.');
+                if (!silent) alert('?쒕쾭 ??μ씠 ?꾨즺?섏뿀?듬땲?? 諛섏쁺源뚯? 1~2遺??뺣룄 ?뚯슂?⑸땲??');
             } catch (err) {
-                if (!silent) alert('저장 실패: ' + err.message);
+                if (!silent) alert('????ㅽ뙣: ' + err.message);
             }
         }
 
         async function syncPnpRuleToGitHub(silent = false) {
             try {
                 await saveToGitHub('pnpRule', silent);
-                if (!silent) alert('PnP 규칙 서버 저장이 완료되었습니다.');
+                if (!silent) alert('PnP 洹쒖튃 ?쒕쾭 ??μ씠 ?꾨즺?섏뿀?듬땲??');
             } catch (err) {
-                if (!silent) alert('저장 실패: ' + err.message);
+                if (!silent) alert('????ㅽ뙣: ' + err.message);
             }
         }
 
         async function syncLaborRuleToGitHub(silent = false) {
             try {
                 await saveToGitHub('laborRule', silent);
-                if (!silent) alert('제품별 기술료 규칙 서버 저장이 완료되었습니다.');
+                if (!silent) alert('?쒗뭹蹂?湲곗닠猷?洹쒖튃 ?쒕쾭 ??μ씠 ?꾨즺?섏뿀?듬땲??');
             } catch (err) {
-                if (!silent) alert('저장 실패: ' + err.message);
+                if (!silent) alert('????ㅽ뙣: ' + err.message);
             }
         }
 
         async function syncDspChannelToGitHub(silent = false) {
             try {
                 await saveToGitHub('dspChannel', silent);
-                if (!silent) alert('DSP 채널 매핑 규칙 서버 저장이 완료되었습니다.');
+                if (!silent) alert('DSP 梨꾨꼸 留ㅽ븨 洹쒖튃 ?쒕쾭 ??μ씠 ?꾨즺?섏뿀?듬땲??');
             } catch (err) {
-                if (!silent) alert('저장 실패: ' + err.message);
+                if (!silent) alert('????ㅽ뙣: ' + err.message);
             }
         }
 
@@ -955,7 +955,7 @@
             }
 
             if (!localData || !localData.headers || !localData.rows) {
-                alert('DSP 채널 데이터가 존재하지 않습니다.');
+                alert('DSP 梨꾨꼸 ?곗씠?곌? 議댁옱?섏? ?딆뒿?덈떎.');
                 return;
             }
 
@@ -993,13 +993,13 @@
                     
                     const rowsRaw = XLSX.utils.sheet_to_json(sheet, { header: 1 });
                     if (rowsRaw.length === 0) {
-                        alert('데이터가 비어있습니다.');
+                        alert('?곗씠?곌? 鍮꾩뼱?덉뒿?덈떎.');
                         return;
                     }
 
                     const rawHeaders = rowsRaw[0];
                     if (!rawHeaders || rawHeaders[0] !== 'NO.') {
-                        alert('엑셀 파일의 첫 번째 열 명칭은 반드시 "NO." 여야 합니다.');
+                        alert('?묒? ?뚯씪??泥?踰덉㎏ ??紐낆묶? 諛섎뱶??"NO." ?ъ빞 ?⑸땲??');
                         return;
                     }
 
@@ -1027,7 +1027,7 @@
                         });
                     }
 
-                    if (!confirm(`총 ${headers.length}개의 PnP 케이블 매칭 DSP 채널 설정을 불러왔습니다. 기존 설정을 덮어쓰시겠습니까?`)) {
+                    if (!confirm(`珥?${headers.length}媛쒖쓽 PnP 耳?대툝 留ㅼ묶 DSP 梨꾨꼸 ?ㅼ젙??遺덈윭?붿뒿?덈떎. 湲곗〈 ?ㅼ젙????뼱?곗떆寃좎뒿?덇퉴?`)) {
                         return;
                     }
 
@@ -1048,7 +1048,7 @@
 
                 } catch (err) {
                     console.error(err);
-                    alert('엑셀 파싱 에러: ' + err.message);
+                    alert('?묒? ?뚯떛 ?먮윭: ' + err.message);
                 } finally {
                     e.target.value = '';
                 }
@@ -1057,7 +1057,7 @@
         }
 
         function resetToInitial() {
-            if (!confirm('로컬에 저장된 모든 변경사항을 지우고 서버의 최신 데이터로 복구하시겠습니까?')) return;
+            if (!confirm('濡쒖뺄????λ맂 紐⑤뱺 蹂寃쎌궗??쓣 吏?곌퀬 ?쒕쾭??理쒖떊 ?곗씠?곕줈 蹂듦뎄?섏떆寃좎뒿?덇퉴?')) return;
             localStorage.removeItem('estimateData');
             localStorage.removeItem('estimateDataVersion');
             localStorage.removeItem('pnpRuleData');

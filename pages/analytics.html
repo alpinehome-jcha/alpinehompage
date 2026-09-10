@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>유입 경로 분석 - 알파인(ALPINE Korea)</title>
+    <title>?좎엯 寃쎈줈 遺꾩꽍 - ?뚰뙆??ALPINE Korea)</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" type="image/png" href="../assets/images/amark.png">
@@ -214,17 +214,17 @@
                 <ul class="nav-menu">
                     <li><a href="about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
                     <li class="dropdown">
-                        <a href="../index.html" class="nav-link" data-i18n="nav_products">제품소개</a>
+                        <a href="../index.html" class="nav-link" data-i18n="nav_products">?쒗뭹?뚭컻</a>
                     </li>
                     <li>
-                        <a href="dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
+                        <a href="dealers.html" class="nav-link" data-i18n="nav_dealers">?꾧뎅 ?由ъ젏 紐⑸줉</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
+                        <a href="#" class="nav-link" data-i18n="nav_support">怨좉컼吏??/a>
                         <ul class="dropdown-content">
-                            <li><a href="../support/product.html" class="dropdown-item" data-i18n="nav_support_product">제품 자료실</a></li>
-                            <li><a href="../support/install.html" class="dropdown-item" data-i18n="nav_support_install">시공자료실</a></li>
-                            <li><a href="../support/promo.html" class="dropdown-item" data-i18n="nav_support_promo">홍보자료실</a></li>
+                            <li><a href="../support/product.html" class="dropdown-item" data-i18n="nav_support_product">?쒗뭹 ?먮즺??/a></li>
+                            <li><a href="../support/install.html" class="dropdown-item" data-i18n="nav_support_install">?쒓났?먮즺??/a></li>
+                            <li><a href="../support/promo.html" class="dropdown-item" data-i18n="nav_support_promo">?띾낫?먮즺??/a></li>
                         </ul>
                     </li>
                     <li class="social-icons">
@@ -254,35 +254,35 @@
 
     <div id="loadingOverlay" style="display: none;">
         <div class="spinner"></div>
-        <p style="margin-top: 15px;">데이터 분석 중...</p>
+        <p style="margin-top: 15px;">?곗씠??遺꾩꽍 以?..</p>
     </div>
 
     <main class="analytics-container" style="padding-top: 100px;">
         <div class="dashboard-header">
-            <h2>📊 유입 경로 분석 (Inbound Traffic Analytics)</h2>
+            <h2>?뱤 ?좎엯 寃쎈줈 遺꾩꽍 (Inbound Traffic Analytics)</h2>
             <div class="filter-group">
-                <button class="btn-filter active" onclick="setPeriod('day')">일간</button>
-                <button class="btn-filter" onclick="setPeriod('week')">주간</button>
-                <button class="btn-filter" onclick="setPeriod('month')">월간</button>
-                <button class="btn-filter" onclick="setPeriod('year')">연간</button>
+                <button class="btn-filter active" onclick="setPeriod('day')">?쇨컙</button>
+                <button class="btn-filter" onclick="setPeriod('week')">二쇨컙</button>
+                <button class="btn-filter" onclick="setPeriod('month')">?붽컙</button>
+                <button class="btn-filter" onclick="setPeriod('year')">?곌컙</button>
             </div>
         </div>
 
         <!-- Date Range Picker -->
         <div class="card" style="margin-bottom: 20px; padding: 15px;">
             <div class="date-picker-group">
-                <span style="font-size: 0.9rem; font-weight: bold; color: #555;">조회 기간 설정:</span>
+                <span style="font-size: 0.9rem; font-weight: bold; color: #555;">議고쉶 湲곌컙 ?ㅼ젙:</span>
                 <input type="date" id="startDate">
                 <span>~</span>
                 <input type="date" id="endDate">
-                <button class="btn-search" onclick="fetchByCustomDate()">조회</button>
+                <button class="btn-search" onclick="fetchByCustomDate()">議고쉶</button>
             </div>
         </div>
 
         <div class="card-grid">
             <!-- Traffic Chart -->
             <div class="card card-full">
-                <h3>방문 트렌드 (Traffic Trends)</h3>
+                <h3>諛⑸Ц ?몃젋??(Traffic Trends)</h3>
                 <div style="height: 300px; position: relative;">
                     <canvas id="trafficChart"></canvas>
                 </div>
@@ -290,13 +290,13 @@
 
             <!-- Top Inbound Paths -->
             <div class="card">
-                <h3>🏆 주요 유입 경로 (Top Referral Sources)</h3>
+                <h3>?룇 二쇱슂 ?좎엯 寃쎈줈 (Top Referral Sources)</h3>
                 <div id="topPaths">
                     <table>
                         <thead>
                             <tr>
-                                <th>유입 출처 (Host)</th>
-                                <th style="width: 80px; text-align: center;">방문 수</th>
+                                <th>?좎엯 異쒖쿂 (Host)</th>
+                                <th style="width: 80px; text-align: center;">諛⑸Ц ??/th>
                             </tr>
                         </thead>
                         <tbody id="pathTableBody"></tbody>
@@ -306,7 +306,7 @@
 
             <!-- Top Keywords -->
             <div class="card">
-                <h3>🔍 주요 유입 키워드 (Top 50 Keywords)</h3>
+                <h3>?뵇 二쇱슂 ?좎엯 ?ㅼ썙??(Top 50 Keywords)</h3>
                 <div id="topKeywords" style="max-height: 400px; overflow-y: auto;">
                     <!-- Keywords will be populated here -->
                 </div>
@@ -319,7 +319,7 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="../js/auth.js?v=20260724b"></script>
+    <script src="../js/auth.js?v=20260910_v3"></script>
     <script>
         let currentPeriod = 'day';
         let mainChart = null;
@@ -327,7 +327,7 @@
         document.addEventListener('DOMContentLoaded', async () => {
             // Check Auth
             if (!auth.isLoggedIn() || auth.getRole() !== 'admin') {
-                alert('관리자만 접근 가능합니다.');
+                alert('愿由ъ옄留??묎렐 媛?ν빀?덈떎.');
                 window.location.href = '../index.html';
                 return;
             }
@@ -340,7 +340,7 @@
             currentPeriod = period;
             document.querySelectorAll('.btn-filter').forEach(btn => {
                 btn.classList.toggle('active', btn.innerText.includes({
-                    day: '일간', week: '주간', month: '월간', year: '연간'
+                    day: '?쇨컙', week: '二쇨컙', month: '?붽컙', year: '?곌컙'
                 }[period]));
             });
 
@@ -398,7 +398,7 @@
                 processData(data);
             } catch (e) {
                 console.error('Fetch Error:', e);
-                alert('데이터를 불러오는데 실패했습니다: ' + e.message);
+                alert('?곗씠?곕? 遺덈윭?ㅻ뒗???ㅽ뙣?덉뒿?덈떎: ' + e.message);
             } finally {
                 document.getElementById('loadingOverlay').style.display = 'none';
             }
@@ -458,7 +458,7 @@
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: '방문 수 (Sessions)',
+                        label: '諛⑸Ц ??(Sessions)',
                         data: values,
                         borderColor: '#2673E2',
                         backgroundColor: 'rgba(38, 115, 226, 0.1)',
@@ -487,7 +487,7 @@
             tbody.innerHTML = '';
             
             if (sortedHosts.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="2" style="text-align:center;">데이터가 없습니다.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="2" style="text-align:center;">?곗씠?곌? ?놁뒿?덈떎.</td></tr>';
                 return;
             }
 
@@ -506,7 +506,7 @@
             container.innerHTML = '';
 
             if (sortedKeywords.length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:#888; margin-top:20px;">검색 키워드 데이터가 없습니다.</p>';
+                container.innerHTML = '<p style="text-align:center; color:#888; margin-top:20px;">寃???ㅼ썙???곗씠?곌? ?놁뒿?덈떎.</p>';
                 return;
             }
 
@@ -521,3 +521,4 @@
 </body>
 
 </html>
+
