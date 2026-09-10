@@ -642,7 +642,7 @@
 
 
 
-    <script src="../js/auth.js?v=20260910_v1"></script>
+    <script src="../js/auth.js?v=20260907_v2"></script>
 
     <script>
         // Data Loader
@@ -2466,6 +2466,17 @@
                 console.error("Failed to load product data", e);
                 products = [];
             }
+            try {
+                const res2 = await fetch('../js/popup-data.js?v=' + Date.now());
+                if (res2.ok) {
+                    const text2 = await res2.text();
+                    const script2 = document.createElement('script');
+                    script2.textContent = text2;
+                    document.head.appendChild(script2);
+                }
+            } catch (e) {
+                console.error('Failed to load popup data', e);
+            }
 
             const { data: dbDealers } = await client.from('dealers').select('*');
             dealers = dbDealers || [];
@@ -2771,9 +2782,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <script src="../js/supabase-client.js?v=20260910_v1"></script>
-    <script src="../js/github-client.js?v=20260910_v1"></script>
+    <script src="../js/supabase-client.js?v=20260907_v2"></script>
+    <script src="../js/github-client.js?v=20260907_v2"></script>
     <script src="../js/i18n.js"></script>
 </body>
 
 </html
+
+

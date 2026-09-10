@@ -109,8 +109,7 @@ async function fetchProductList() {
 async function fetchDealerList() {
     if (!window.supabase) return [];
 
-    const { data, error } = await window.supabase
-        .from('dealers')
+    const { data, error } = await (window.supabase.schema ? window.supabase.schema('alpine-home') : window.supabase).from('dealers')
         .select('*')
         .order('id', { ascending: true });
 
@@ -147,3 +146,4 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(overlay);
     }
 });
+
