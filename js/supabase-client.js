@@ -1,4 +1,4 @@
-﻿const SC_DEFAULT_LOCAL_SUPABASE_URL = "https://supabase.alpine-korea.co.kr";
+const SC_DEFAULT_LOCAL_SUPABASE_URL = "https://supabase.alpine-korea.co.kr";
 const SC_DEFAULT_LOCAL_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us";
 
 const CLIENT_SUPABASE_URL = (typeof window !== 'undefined' && window.ENV && window.ENV.NEXT_PUBLIC_SUPABASE_URL)
@@ -135,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// 팝업 목록 조회 (공개용 — anon SELECT, RLS 허용 전제)
 async function fetchPopupList() {
     const client = await getClient();
     if (!client) return [];
@@ -147,23 +148,58 @@ async function fetchPopupList() {
     }
 }
 
-async function savePopup(popup) {
+// 팝업 저장/수정 (관리자 RPC — SECURITY DEFINER로 RLS 우회)
+async function savePopup(popup, adminUsername, adminPassword) {
     const client = await getClient();
-    if (!client) return;
+    if (!client) return { success: false, error: '클라이언트 초기화 실패' };
     try {
-        await client.from('popups').upsert([popup]);
-    } catch (e) {}
+        const { data, error } = await client.rpc('admin_upsert_popup', {
+            p_admin_username: adminUsername,
+            p_admin_password: adminPassword,
+            p_data: popup
+        });
+        if (error) return { success: false, error: error.message };
+        return data;
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
 }
 
-async function deletePopupSupabase(id) {
+// 팝업 삭제 (관리자 RPC — SECURITY DEFINER로 RLS 우회)
+async function deletePopupSupabase(id, adminUsername, adminPassword) {
     const client = await getClient();
-    if (!client) return;
+    if (!client) return { success: false, error: '클라이언트 초기화 실패' };
     try {
-        await client.from('popups').delete().eq('id', id);
-    } catch (e) {}
+        const { data, error } = await client.rpc('admin_delete_popup', {
+            p_admin_username: adminUsername,
+            p_admin_password: adminPassword,
+            p_id: id
+        });
+        if (error) return { success: false, error: error.message };
+        return data;
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 팝업 전체 조회 (관리자용 RPC — RLS 우회, 숨김 팝업도 반환)
+async function fetchPopupListAdmin(adminUsername, adminPassword) {
+    const client = await getClient();
+    if (!client) return [];
+    try {
+        const { data, error } = await client.rpc('admin_list_popups', {
+            p_admin_username: adminUsername,
+            p_admin_password: adminPassword
+        });
+        if (error || !data || !data.success) return [];
+        return data.data || [];
+    } catch (e) {
+        return [];
+    }
 }
 
 window.fetchPopupList = fetchPopupList;
+window.fetchPopupListAdmin = fetchPopupListAdmin;
 window.savePopup = savePopup;
 window.deletePopupSupabase = deletePopupSupabase;
 window.fetchDealerList = fetchDealerList;

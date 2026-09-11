@@ -54,6 +54,11 @@ if docker ps | grep -q "supabase-db"; then
     echo "Applying dealer admin RPC functions..."
     docker exec -i supabase-db psql -U supabase_admin -d postgres < ./scripts/dealer_admin_rpc.sql || true
   fi
+  # 팝업 관리 RPC 함수 적용
+  if [ -f "./scripts/popup_admin_rpc.sql" ]; then
+    echo "Applying popup admin RPC functions..."
+    docker exec -i supabase-db psql -U supabase_admin -d postgres < ./scripts/popup_admin_rpc.sql || true
+  fi
 fi
 
 
