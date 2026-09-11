@@ -348,7 +348,7 @@
         </div>
     </section>
 
-    <script src="js/auth.js?v=20260910_v4"></script>
+    <script src="js/auth.js?v=20260724b"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const images = [
@@ -467,8 +467,11 @@
 
     <!-- Supabase: product-data.js보다 먼저 로드해야 fetchProductList()를 사용할 수 있음 -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-client.js?v=20260910_v4"></script>
+    <script src="js/supabase-client.js?v=20260903"></script>
     <!-- popupData -->
+    <script>
+        document.write('<script src="js/popup-data.js?v=' + new Date().getTime() + '"><\/script>');
+    </script>
     <!-- product-data.js: Supabase 로드 실패 시 fallback으로 사용 -->
     <script>
         document.write('<script src="js/product-data.js?v=' + new Date().getTime() + '"><\/script>');
@@ -1020,6 +1023,13 @@
             renderPopups();
         });
 
+        // 브라우저 뒤로가기/캐시(BFCache) 복원 시에도 팝업 상태를 다시 확인하여 그림
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted) {
+                renderPopups();
+            }
+        });
+
         function renderPopups() {
             const container = document.getElementById('popupContainer');
             container.innerHTML = '';
@@ -1043,13 +1053,11 @@
 
             // 1. Get List
             let popupList = [];
-            if (typeof window.fetchPopupList === 'function') {
-                popupList = await window.fetchPopupList();
+
+            // Try to get from Server Data (popup-data.js)
+            if (typeof popupData !== 'undefined' && popupData.length > 0) {
+                popupList = popupData;
             } else {
-                popupList = [];
-            }
-            
-            if (popupList.length === 0) {
                 // Fallback to LocalStorage (mainly for Admin testing before deploy, or if file fails)
                 const storedList = localStorage.getItem('popupList');
                 if (storedList) {
@@ -1078,9 +1086,13 @@
             const activePopups = popupList.filter(p => {
                 if (!p.isActive) return false;
 
-                // Dealer-only check (require login)
+                // 대리점 전용 팝업: 로그인 상태여야 하고, 이번 로그인 세션에서 이미 표시됐으면 숨김
                 if (p.dealerOnly) {
                     if (typeof auth === 'undefined' || !auth.isLoggedIn()) {
+                        return false;
+                    }
+                    // 이번 로그인 세션에서 이미 한 번 표시됐으면 다시 보여주지 않음
+                    if (sessionStorage.getItem('dealerOnly_shown_' + p.id)) {
                         return false;
                     }
                 }
@@ -1122,6 +1134,12 @@
                     </div>
                 `;
                 container.appendChild(wrapper);
+
+                // 대리점 전용 팝업: DOM에 추가되는 즉시 "봤음" 기록
+                // (이미지 로드 완료 전에 새로고침해도 플래그가 유실되지 않도록 이미지 로드 기다리지 않음)
+                if (p.dealerOnly) {
+                    sessionStorage.setItem('dealerOnly_shown_' + p.id, 'true');
+                }
 
                 // Show only after image loads to avoid black box FOUC
                 const img = wrapper.querySelector('img');

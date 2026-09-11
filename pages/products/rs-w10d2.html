@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -7,7 +7,7 @@
     
     <!-- SEO_META_TAGS -->
     <meta name="description" content="10&quot; Subwoofer Shallow with Dual 2 Ohm">
-    <meta property="og:title" content="RS-W10D2 | ?뚰뙆??肄붾━??>
+    <meta property="og:title" content="RS-W10D2 | 알파인 코리아">
     <meta property="og:description" content="10&quot; Subwoofer Shallow with Dual 2 Ohm">
     <meta property="og:image" content="https://www.alpine-korea.co.kr/assets/images/spk-RSw10.jpg">
     <meta property="og:url" content="https://www.alpine-korea.co.kr/pages/products/rs-w10d2.html">
@@ -17,7 +17,7 @@
         window.STATIC_PRODUCT_ID = 1770346228726;
     </script>
     
-    <title>RS-W10D2 | ?뚰뙆??ALPINE Korea)</title>
+    <title>RS-W10D2 | 알파인(ALPINE Korea)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -149,22 +149,22 @@
                 <ul class="nav-menu">
                     <li><a href="../about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
                     <li class="dropdown">
-                        <a href="../../../index.html" class="nav-link active" data-i18n="nav_products">?쒗뭹?뚭컻</a>
+                        <a href="../../../index.html" class="nav-link active" data-i18n="nav_products">제품소개</a>
                         <!-- Submenu logic could go here if needed -->
                     </li>
                     <li>
-                        <a href="../dealers.html" class="nav-link" data-i18n="nav_dealers">?꾧뎅 ?由ъ젏 紐⑸줉</a>
+                        <a href="../dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link" data-i18n="nav_support">怨좉컼吏??/a>
+                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
                         <ul class="dropdown-content">
                             <li><a href="../../../support/product.html" class="dropdown-item"
-                                    data-i18n="nav_support_product">?쒗뭹
-                                    ?먮즺??/a></li>
+                                    data-i18n="nav_support_product">제품
+                                    자료실</a></li>
                             <li><a href="../../../support/install.html" class="dropdown-item"
-                                    data-i18n="nav_support_install">?쒓났?먮즺??/a></li>
+                                    data-i18n="nav_support_install">시공자료실</a></li>
                             <li><a href="../../../support/promo.html" class="dropdown-item"
-                                    data-i18n="nav_support_promo">?띾낫?먮즺??/a></li>
+                                    data-i18n="nav_support_promo">홍보자료실</a></li>
                         </ul>
                     </li>
                     <li class="social-icons">
@@ -210,7 +210,7 @@
             <button class="filter-btn" onclick="goToCategory('DSP/AMP')">DSP/AMP</button>
             <button class="filter-btn" onclick="goToCategory('Speakers')">Speakers</button>
             <button class="filter-btn" onclick="goToCategory('PnP Cable')">PnP Cable</button>
-            <button class="filter-btn" onclick="goToCategory('湲고??곹뭹')">湲고??곹뭹</button>
+            <button class="filter-btn" onclick="goToCategory('기타상품')">기타상품</button>
             <button class="filter-btn" onclick="goToCategory('Alpine OEM Fit')">Alpine OEM Fit</button>
             <button class="filter-btn" onclick="goToCategory('ALPINESTYLE')">ALPINESTYLE</button>
         </div>
@@ -218,11 +218,11 @@
         <!-- Sub Filters for PnP Cable (Hidden by default) -->
         <div id="subFilterContainer" class="sub-filters"
             style="display: none; justify-content: center; gap: 10px; margin-bottom: 40px; margin-top: -20px;">
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 援?궛李?)">援?궛李?PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - ?낆씪李?)">?낆씪李?PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 湲고??섏엯李?)">湲고??섏엯李?PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 국산차')">국산차 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 독일차')">독일차 PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기타수입차')">기타수입차 PnP</button>
             <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - DSP')">DSP PnP</button>
-            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 湲고?')">湲고? PnP</button>
+            <button class="sub-filter-btn" onclick="goToCategory('PnP Cable - 기타')">기타 PnP</button>
         </div>
 
         <!-- Add Styles for Active State -->
@@ -272,9 +272,9 @@
                 // Identify Parent Category
                 if (currentCat.startsWith('PnP Cable')) {
                     mainCategory = 'PnP Cable';
-                    subCategory = currentCat; // e.g., "PnP Cable - 援?궛李?(Domestic)" or just "PnP Cable - 援?궛李?
+                    subCategory = currentCat; // e.g., "PnP Cable - 국산차 (Domestic)" or just "PnP Cable - 국산차"
                 } else if (currentCat === 'Others') {
-                    mainCategory = '湲고??곹뭹'; // Button text
+                    mainCategory = '기타상품'; // Button text
                 }
 
                 // Highlight Main Button
@@ -309,24 +309,24 @@
 
                         const subButtons = document.querySelectorAll('.sub-filter-btn');
                         subButtons.forEach(subBtn => {
-                            // subBtn text: "援?궛李?PnP" -> we need to map to category "PnP Cable - 援?궛李?
+                            // subBtn text: "국산차 PnP" -> we need to map to category "PnP Cable - 국산차"
                             // active logic: check if currentCat contains the keyword?
-                            // Data category: "PnP Cable - 援?궛李?(Domestic)"
-                            // Button text: "援?궛李?PnP"
+                            // Data category: "PnP Cable - 국산차 (Domestic)"
+                            // Button text: "국산차 PnP"
 
                             const btnLabel = subBtn.innerText;
                             let keyword = '';
-                            if (btnLabel.includes('援?궛李?)) keyword = '援?궛李?;
-                            else if (btnLabel.includes('?낆씪李?)) keyword = '?낆씪李?;
-                            else if (btnLabel.includes('湲고??섏엯李?)) keyword = '湲고??섏엯李?; // or Other Imported
+                            if (btnLabel.includes('국산차')) keyword = '국산차';
+                            else if (btnLabel.includes('독일차')) keyword = '독일차';
+                            else if (btnLabel.includes('기타수입차')) keyword = '기타수입차'; // or Other Imported
                             else if (btnLabel.includes('DSP')) keyword = 'DSP';
-                            else if (btnLabel.includes('湲고?')) keyword = '湲고?';
+                            else if (btnLabel.includes('기타')) keyword = '기타';
 
                             let match = false;
                             if (keyword) {
-                                if (keyword === '湲고?') {
-                                    // "湲고?" matches "PnP Cable - 湲고?" but NOT "PnP Cable - 湲고??섏엯李?
-                                    if (currentCat.includes('湲고?') && !currentCat.includes('湲고??섏엯李?)) {
+                                if (keyword === '기타') {
+                                    // "기타" matches "PnP Cable - 기타" but NOT "PnP Cable - 기타수입차"
+                                    if (currentCat.includes('기타') && !currentCat.includes('기타수입차')) {
                                         match = true;
                                     }
                                 } else {
@@ -356,10 +356,10 @@
                         <h1 class="detail-title">RS-W10D2</h1>
                         <p class="detail-summary">10" Subwoofer Shallow with Dual 2 Ohm</p>
                         <div class="detail-price">
-                            ??,500,000 
+                            ₩1,500,000 
                             
                         </div>
-                        <p class="detail-summary">?μ갑 怨듭엫 蹂꾨룄/20留뚯썝 遺??/p>
+                        <p class="detail-summary">장착 공임 별도/20만원 부터</p>
                         <div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed #ddd;"><strong style="display: block; margin-bottom: 10px; color: #555;">Downloads:</strong><div style="display: flex; flex-direction: column; gap: 8px;">
                         <a href="../../assets/files/R-Series_Shallow_Subwoofers_OM.pdf" download target="_blank" style="display: flex; align-items: center; font-size: 0.95rem; text-decoration: none; color: #007bff; transition: color 0.2s;">
                             <span style="margin-right: 8px;">
@@ -379,8 +379,9 @@ Alpine Gen2 DD Linear Magnetic Circuit
 Cast Aluminum Frame
 Aluminum Dust Cap
 Neodymium Magnet
-Mounting Depth: 3.25??X-Max: 20mm
-Voice Coil: 4??(102mm)
+Mounting Depth: 3.25”
+X-Max: 20mm
+Voice Coil: 4” (102mm)
 Frequency Response: 25Hz-100Hz
 Sensitivity: 79 dB
 Nominal Impedance: 2 Ohm for RS-W10D4
@@ -389,20 +390,20 @@ Compatible with KTE-RS10G Subwoofer Grille Kit (Sold Separately)</p>
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">?꾩쟾???덈줈??R-?쒕━利??щ┝??Shallow Profile) ?쒕툕?고띁
-?꾩쟾???덈줈??R-?쒕━利??щ┝???쒕툕?고띁??紐⑤뱺 硫댁뿉??洹뱁븳??異붽뎄?섎ŉ, 媛뺤씤?섍퀬 嫄곗튇 ?멸???嫄몃쭪? 媛뺣젰??踰좎씠??異쒕젰???먮옉?⑸땲??
+                                <p class="detail-content-text">완전히 새로운 R-시리즈 슬림형(Shallow Profile) 서브우퍼
+완전히 새로운 R-시리즈 슬림형 서브우퍼는 모든 면에서 극한을 추구하며, 강인하고 거친 외관에 걸맞은 강력한 베이스 출력을 자랑합니다.
 
-二쇱슂 ?뱀쭠 諛??깅뒫
-?곸떊?곸씤 ?щ┝ ?붿옄?? Alpine? 理쒖꺼???붿옄?멸낵 ?붿??덉뼱留??곸떊??寃고빀?섏뿬, 踰좎씠??異쒕젰怨??덉쭏???꾪? ??묓븯吏 ?딆쑝硫댁꽌??珥덉뒳由??꾨줈?꾩쓣 ?꾩꽦??而댄뙥??踰좎씠?ㅼ쓽 ?섏??????④퀎 ?믪??듬땲??
+주요 특징 및 성능
+혁신적인 슬림 디자인: Alpine은 최첨단 디자인과 엔지니어링 혁신을 결합하여, 베이스 출력과 품질을 전혀 타협하지 않으면서도 초슬림 프로필을 완성해 컴팩트 베이스의 수준을 한 단계 높였습니다.
 
-媛뺣젰??援щ룞 ?쒖뒪?? 媛뺣젰???ㅼ삤?붾? 留덇렇?룰낵 寃고빀???낆젏?곸씤 ???媛?紐⑦꽣 援ъ“瑜??듯빐 600W RMS 諛?1800W 理쒕? 異쒕젰???믪? ?꾨젰 泥섎━媛 媛?ν빀?덈떎.
+강력한 구동 시스템: 강력한 네오디뮴 마그넷과 결합된 독점적인 듀얼 갭 모터 구조를 통해 600W RMS 및 1800W 최대 출력의 높은 전력 처리가 가능합니다.
 
-?뺣???踰좎씠???ы쁽: 留욎땄??罹먯뒪???뚮（誘몃뒆 ?꾨젅?꾧낵 ?띻린?곸씤 ?고띁 肄??붿옄?몄? 20mm??寃쎌씠濡쒖슫 ?좏삎 X-max瑜??ㅽ쁽?섏뿬 理쒖긽??踰좎씠???깅뒫??蹂댁옣?⑸땲??
+정밀한 베이스 재현: 맞춤형 캐스트 알루미늄 프레임과 획기적인 우퍼 콘 디자인은 20mm의 경이로운 선형 X-max를 실현하여 최상의 베이스 성능을 보장합니다.
 
-?꾨꼍??議고솕: Alpine??R-?쒕━利??щ┝???쒕툕?고띁???ш린? ?ъ슫?쒕씪????留덈━ ?좊겮瑜?紐⑤몢 ?≪? ?쒗뭹?낅땲??
+완벽한 조화: Alpine의 R-시리즈 슬림형 서브우퍼는 크기와 사운드라는 두 마리 토끼를 모두 잡은 제품입니다.
 
-?붿옄?멸낵 蹂댄샇???꾩꽦
-?꾨━誘몄뾼 ?듭뀡: ?좏깮 ?ы빆??硫붿돩 洹몃┫(KTE-RS10G)? 而ㅼ뒪? ?ㅼ튂 ??媛뺤씤???몄긽怨??꾨━誘몄뾼 留덇컧???뷀빐二쇰ŉ, ?λ퉬瑜??덉쟾?섍쾶 蹂댄샇?섎뒗 ??븷源뚯? ?섑뻾?⑸땲??</p>
+디자인과 보호의 완성
+프리미엄 옵션: 선택 사항인 메쉬 그릴(KTE-RS10G)은 커스텀 설치 시 강인한 인상과 프리미엄 마감을 더해주며, 장비를 안전하게 보호하는 역할까지 수행합니다.</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -410,9 +411,9 @@ Compatible with KTE-RS10G Subwoofer Grille Kit (Sold Separately)</p>
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">珥덉뒳由??붿옄??(Ultra-Shallow Design)
+                                <p class="detail-content-text">초슬림 디자인 (Ultra-Shallow Design)
 
-李⑤웾??媛뺣젰?섍퀬 源딆? ?寃⑷컧??踰좎씠?ㅻ? 異붽??섍퀬 ?띠?留? ?쒕툕?고띁瑜??ㅼ튂??怨듦컙??遺議깊빐 怨좊??섏뀲??遺꾨뱾???꾪븳 理쒖쟻???붾（?섏엯?덈떎. Alpine??R-?쒕━利??щ┝???쒕툕?고띁??湲곗〈 R-?쒕━利??쇱씤?낆뿉??湲곕??????뺣룄?곸씤 ?깅뒫怨?媛뺣젰???ъ슫?쒕? 洹몃?濡?援ы쁽?⑸땲?? ?댁젣 ?遺遺꾩쓽 李⑤웾 ?섍꼍???꾨꼍?섍쾶 ?댁슦?ъ??꾨줉 ?ㅺ퀎???щ┝???꾨줈?꾨줈 R-?쒕━利덉쓽 紐낆꽦??洹몃?濡?寃쏀뿕??蹂댁꽭??</p>
+차량에 강력하고 깊은 타격감의 베이스를 추가하고 싶지만, 서브우퍼를 설치할 공간이 부족해 고민하셨던 분들을 위한 최적의 솔루션입니다. Alpine의 R-시리즈 슬림형 서브우퍼는 기존 R-시리즈 라인업에서 기대해 온 압도적인 성능과 강력한 사운드를 그대로 구현합니다. 이제 대부분의 차량 환경에 완벽하게 어우러지도록 설계된 슬림한 프로필로 R-시리즈의 명성을 그대로 경험해 보세요.</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -420,13 +421,13 @@ Compatible with KTE-RS10G Subwoofer Grille Kit (Sold Separately)</p>
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">洹뱁븳??異쒕젰 (Extreme Output)
+                                <p class="detail-content-text">극한의 출력 (Extreme Output)
 
-?ш린???띿? 留덉꽭?? R-?쒕━利??щ┝???쒕툕?고띁???щ┝???ㅺ퀎?꾩뿉??遺덇뎄?섍퀬, ??ъ씠利?R2-?쒕━利??쒕툕?고띁? ?숈씪??**20mm 肄?吏꾪룺(Excursion)**???먮옉?섎ŉ ?뺣룄?곸씤 異쒕젰??援ы쁽?⑸땲??
+크기에 속지 마세요: R-시리즈 슬림형 서브우퍼는 슬림한 설계임에도 불구하고, 풀사이즈 R2-시리즈 서브우퍼와 동일한 **20mm 콘 진폭(Excursion)**을 자랑하며 압도적인 출력을 구현합니다.
 
-媛뺣젰???듭떖 湲곗닠: ?쒗뭹??以묒떖?먮뒗 媛뺣젰???ㅼ삤?붾? 留덇렇?룹쑝濡??쒖뼱?섎뒗 4?몄튂(102mm) ???蹂댁씠??肄붿씪???묒옱?섏뼱 ?덉뒿?덈떎.
+강력한 핵심 기술: 제품의 중심에는 강력한 네오디뮴 마그넷으로 제어되는 4인치(102mm) 대형 보이스 코일이 탑재되어 있습니다.
 
-?곸썡???꾨젰 泥섎━: ?대? ?듯빐 600W RMS???덉젙?곸씤 ?뺢꺽 異쒕젰??泥섎━?섎ŉ 源딄퀬 ?寃⑷컧 ?섏튂??踰좎씠?ㅻ? ?좎궗?⑸땲??</p>
+탁월한 전력 처리: 이를 통해 600W RMS의 안정적인 정격 출력을 처리하며 깊고 타격감 넘치는 베이스를 선사합니다.</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -434,13 +435,13 @@ Compatible with KTE-RS10G Subwoofer Grille Kit (Sold Separately)</p>
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">媛뺣젰??踰좎씠???ъ궗 (Powerful Bass Projection)
+                                <p class="detail-content-text">강력한 베이스 투사 (Powerful Bass Projection)
 
-媛蹂띿?留??⑤떒???뚮（誘몃뒆 ?뚯옱瑜??쒖슜?섏뿬 ?щ┝???ш린?먮룄 遺덇뎄?섍퀬 ?뺣룄?곸씤 ????꾨떖?μ쓣 媛뽰톬?듬땲??
+가볍지만 단단한 알루미늄 소재를 활용하여 슬림한 크기에도 불구하고 압도적인 저음 전달력을 갖췄습니다.
 
-?뚮（誘몃뒆 ?붿뒪??罹? 媛踰쇱슦硫댁꽌??媛뺤꽦???곗뼱???뚮（誘몃뒆 ?붿뒪??罹≪쓣 梨꾪깮?섏뿬 ?쒓끝??理쒖냼?뷀븯怨??뚮━瑜??좎냽?섍쾶 ?꾪솚?⑸땲??
+알루미늄 더스트 캡: 가벼우면서도 강성이 뛰어난 알루미늄 더스트 캡을 채택하여 왜곡을 최소화하고 소리를 신속하게 전환합니다.
 
-踰좎씠???ъ궗: ?ㅽ뵾而??쒕㈃?먯꽌 踰좎씠?ㅻ? ?섏엳寃?諛?대궡??Project), ?寃⑷컧 ?섏튂硫댁꽌??遺?쒕윭??????깅뒫??援ы쁽?⑸땲??</p>
+베이스 투사: 스피커 표면에서 베이스를 힘있게 밀어내어(Project), 타격감 넘치면서도 부드러운 저음 성능을 구현합니다.</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -448,9 +449,9 @@ Compatible with KTE-RS10G Subwoofer Grille Kit (Sold Separately)</p>
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">?뺣???踰좎씠???쒖뼱 (Precise Bass Control)
+                                <p class="detail-content-text">정밀한 베이스 제어 (Precise Bass Control)
 
-Alpine??2?몃? DD-由щ땲???먭린 ?뚮줈(Gen2 DD-Linear Magnetic Circuit) 湲곗닠? 肄ㅽ뙥?명븯怨??⑥쑉?곸씤 ???媛?Dual-gap) 蹂댁씠??肄붿씪 援ъ“瑜?梨꾪깮?섏뿬 紐⑦꽣瑜??붿슧 ?곗닔?섍퀬 ?좏삎?곸쑝濡??쒖뼱?????덇쾶 ?댁쨳?덈떎. 洹?寃곌낵, ?뚮━???쒓끝??以꾩씠怨??뺣???踰좎씠???쒖뼱瑜??ㅽ쁽?⑸땲??</p>
+Alpine의 2세대 DD-리니어 자기 회로(Gen2 DD-Linear Magnetic Circuit) 기술은 콤팩트하고 효율적인 듀얼 갭(Dual-gap) 보이스 코일 구조를 채택하여 모터를 더욱 우수하고 선형적으로 제어할 수 있게 해줍니다. 그 결과, 소리의 왜곡을 줄이고 정밀한 베이스 제어를 실현합니다.</p>
                             </div>
                 
                             <div class="detail-content-item">
@@ -458,11 +459,11 @@ Alpine??2?몃? DD-由щ땲???먭린 ?뚮줈(Gen2 DD-Linear Magnetic Circuit) 湲
                             </div>
                 
                             <div class="detail-content-item">
-                                <p class="detail-content-text">?꾨━誘몄뾼 ?ㅺ퀎 (Premium Construction)
+                                <p class="detail-content-text">프리미엄 설계 (Premium Construction)
 
-R-?쒕━利??щ┝???쒕툕?고띁???ㅼ씠罹먯뒪???뚮（誘몃뒆 ?꾨젅?꾩쓣 ?ъ슜?섏뿬 寃ш퀬?섍퀬 ?⑤떒?섍쾶 ?쒖옉?섏뿀?듬땲??
+R-시리즈 슬림형 서브우퍼는 다이캐스트 알루미늄 프레임을 사용하여 견고하고 단단하게 제작되었습니다.
 
-?대윭??援ъ“???믪? ?먮꼫吏 ?꾨떖?μ쓣 蹂댁옣?섎ŉ, ?꾨젅???먯껜?먯꽌 諛쒖깮?????덈뒗 怨듭쭊(Resonance)???④낵?곸쑝濡??듭젣?⑸땲??</p>
+이러한 구조는 높은 에너지 전달력을 보장하며, 프레임 자체에서 발생할 수 있는 공진(Resonance)을 효과적으로 억제합니다.</p>
                             </div>
                 
                 </div>
@@ -479,11 +480,11 @@ R-?쒕━利??щ┝???쒕툕?고띁???ㅼ씠罹먯뒪???뚮（誘몃뒆 ?꾨젅?
                     <img src="../../assets/images/jch_logo.png" alt="JCH Auto" style="height: 30px;" id="footer-logo-img">
                 </div>
                 <p class="footer-text">
-                    <strong data-i18n="footer_ceo">???| ?댁젙??/strong><br>
-                    <span data-i18n="footer_address">寃쎄린???덉뼇???숈븞援??섏뿉?ㅻ줈 136, A??1401???멸퀎?? 湲덉젙??李쮁KV1???</span><br>
+                    <strong data-i18n="footer_ceo">대표 | 이정현</strong><br>
+                    <span data-i18n="footer_address">경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)</span><br>
                     <span data-i18n="footer_contact">TEL | 1670-7425 FAX | 031-477-7220</span><br>
-                    <span data-i18n="footer_hours">?곷떞?쒓컙 | ??湲?09:00~17:00 (????怨듯쑕???대Т)</span><br>
-                    <span data-i18n="footer_biz_info">?ъ뾽?먮벑濡앸쾲??| 619-81-07276 媛쒖씤?뺣낫蹂댄샇梨낆엫??| ?쒓만??/span>
+                    <span data-i18n="footer_hours">상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)</span><br>
+                    <span data-i18n="footer_biz_info">사업자등록번호 | 619-81-07276 개인정보보호책임자 | 한길전</span>
                 </p>
             </div>
             <div class="footer-section footer-links">
@@ -494,7 +495,7 @@ R-?쒕━利??щ┝???쒕툕?고띁???ㅼ씠罹먯뒪???뚮（誘몃뒆 ?꾨젅?
                     <li><a href="../../index.html?category=DSP%2FAMP">DSP/AMP</a></li>
                     <li><a href="../../index.html?category=Speakers">Speakers</a></li>
                     <li><a href="../../index.html?category=PnP%20Cable">PnP Cable</a></li>
-                    <li><a href="../../index.html?category=湲고??곹뭹" data-i18n="filter_others">湲고??곹뭹</a></li>
+                    <li><a href="../../index.html?category=기타상품" data-i18n="filter_others">기타상품</a></li>
                     <li><a href="../../index.html?category=Alpine%20OEM%20Fit">Alpine OEM Fit</a></li>
                     <li><a href="../../index.html?category=ALPINESTYLE">ALPINESTYLE</a></li>
                 </ul>
@@ -525,12 +526,12 @@ R-?쒕━利??щ┝???쒕툕?고띁???ㅼ씠罹먯뒪???뚮（誘몃뒆 ?꾨젅?
             </div>
         </div>
         <div class="copyright">
-            COPYRIGHT짤2026 JCHAUTO,INC. ALL RIGHTS RESERVED.
+            COPYRIGHT©2026 JCHAUTO,INC. ALL RIGHTS RESERVED.
         </div>
     </footer>
 
-    <script src="../../js/auth.js?v=20260910_v3"></script>
-    <!-- Supabase: product-data.js蹂대떎 癒쇱? 濡쒕뱶 -->
+    <script src="../../js/auth.js?v=20260724b"></script>
+    <!-- Supabase: product-data.js보다 먼저 로드 -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../../js/supabase-client.js?v=20260903"></script>
     <script>
@@ -539,30 +540,30 @@ R-?쒕━利??щ┝???쒕툕?고띁???ㅼ씠罹먯뒪???뚮（誘몃뒆 ?꾨젅?
     <script>
         const translations = {
             ko: {
-                nav_about: '?뚯궗?뚭컻(About)',
-                nav_products: '?쒗뭹?뚭컻',
-                nav_dealers: '?꾧뎅 ?由ъ젏 紐⑸줉',
-                nav_support: '怨좉컼吏??,
-                nav_support_product: '?쒗뭹 ?먮즺??,
-                nav_support_install: '?쒓났?먮즺??,
-                nav_support_promo: '?띾낫?먮즺??,
-                nav_company: '?뚯궗?뚭컻',
-                footer_ceo: '???| ?댁젙??,
-                footer_address: '寃쎄린???덉뼇???숈븞援??섏뿉?ㅻ줈 136, A??1401???멸퀎?? 湲덉젙??李쮁KV1???',
+                nav_about: '회사소개(About)',
+                nav_products: '제품소개',
+                nav_dealers: '전국 대리점 목록',
+                nav_support: '고객지원',
+                nav_support_product: '제품 자료실',
+                nav_support_install: '시공자료실',
+                nav_support_promo: '홍보자료실',
+                nav_company: '회사소개',
+                footer_ceo: '대표 | 이정현',
+                footer_address: '경기도 안양시 동안구 엘에스로 136, A동 1401호(호계동, 금정역2차SKV1타워)',
                 footer_contact: 'TEL | 1670-7425   FAX | 031-477-7220',
-                footer_hours: '?곷떞?쒓컙 | ??湲?09:00~17:00 (????怨듯쑕???대Т)',
-                footer_biz_info: '?ъ뾽?먮벑濡앸쾲??| 619-81-07276   媛쒖씤?뺣낫蹂댄샇梨낆엫??| ?쒓만??,
-                footer_products: '?쒗뭹',
-                footer_support: '吏??,
-                footer_global: '湲濡쒕쾶',
-                footer_global_japan: '?쇰낯',
-                footer_global_asia: '?꾩떆??,
-                footer_global_australia: '?몄＜',
-                footer_global_europe: '?좊읇',
-                footer_global_china: '以묎뎅',
-                footer_global_na: '遺곷?',
-                btn_view: '?먯꽭??蹂닿린',
-                btn_back: '?쒗뭹 紐⑸줉?쇰줈 媛湲?
+                footer_hours: '상담시간 | 월~금 09:00~17:00 (토,일,공휴일 휴무)',
+                footer_biz_info: '사업자등록번호 | 619-81-07276   개인정보보호책임자 | 한길전',
+                footer_products: '제품',
+                footer_support: '지원',
+                footer_global: '글로벌',
+                footer_global_japan: '일본',
+                footer_global_asia: '아시아',
+                footer_global_australia: '호주',
+                footer_global_europe: '유럽',
+                footer_global_china: '중국',
+                footer_global_na: '북미',
+                btn_view: '자세히 보기',
+                btn_back: '제품 목록으로 가기'
             },
             en: {
                 nav_about: 'About Us',
@@ -599,7 +600,7 @@ R-?쒕━利??щ┝???쒕툕?고띁???ㅼ씠罹먯뒪???뚮（誘몃뒆 ?꾨젅?
 
         const paramId = getParam('id');
         const productId = paramId ? parseInt(paramId) : (typeof window.STATIC_PRODUCT_ID !== 'undefined' ? window.STATIC_PRODUCT_ID : null);
-        let product = null; // async 珥덇린?붾줈 梨꾩썙吏?
+        let product = null; // async 초기화로 채워짐
         const container = document.getElementById('productDetail');
 
         // Helper to fix paths for assets when in pages/ directory
@@ -636,7 +637,7 @@ R-?쒕━利??щ┝???쒕툕?고띁???ㅼ씠罹먯뒪???뚮（誘몃뒆 ?꾨젅?
             const isEnglish = lang === 'en';
             const priceDisplay = isEnglish ?
                 '$' + Math.round(product.price / 1400).toLocaleString() :
-                '?? + product.price.toLocaleString();
+                '₩' + product.price.toLocaleString();
 
             // Prepare detail content
             let blocksHTML = '';
@@ -707,7 +708,7 @@ R-?쒕━利??щ┝???쒕툕?고띁???ㅼ씠罹먯뒪???뚮（誘몃뒆 ?꾨젅?
                                     <span style="margin-right: 8px;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                                     </span>
-                                    ?명꽣?됲떚釉?留ㅻ돱??
+                                    인터렉티브 매뉴얼
                                 </a>
                             </div>
                         `;
@@ -732,7 +733,7 @@ R-?쒕━利??щ┝???쒕툕?고띁???ㅼ씠罹먯뒪???뚮（誘몃뒆 ?꾨젅?
                         <span style="margin-right: 8px;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                         </span>
-                        ?명꽣?됲떚釉?留ㅻ돱??
+                        인터렉티브 매뉴얼
                     </a>
                     <style>
                         .interactive-manual-btn:hover {
@@ -755,7 +756,7 @@ R-?쒕━利??щ┝???쒕툕?고띁???ㅼ씠罹먯뒪???뚮（誘몃뒆 ?꾨젅?
                         <p class="detail-summary">${product.desc}</p>
                         <div class="detail-price">
                             ${priceDisplay} 
-                            ${product.soldOut ? '<span style="color: #d9534f; font-size: 1rem; margin-left: 10px;">(?덉젅 / SOLD OUT)</span>' : ''}
+                            ${product.soldOut ? '<span style="color: #d9534f; font-size: 1rem; margin-left: 10px;">(품절 / SOLD OUT)</span>' : ''}
                         </div>
                         <p class="detail-summary">${product.desc_bottom !== undefined ? product.desc_bottom : product.desc}</p>
                         ${attachmentsHTML}
@@ -765,7 +766,7 @@ R-?쒕━利??щ┝???쒕툕?고띁???ㅼ씠罹먯뒪???뚮（誘몃뒆 ?꾨젅?
                 <div class="detail-content">
                     ${blocksHTML || `
                         <div style="text-align: center; color: #999; padding: 40px;">
-                            ${isEnglish ? 'Detailed information is not registered.' : '?곸꽭 ?뺣낫媛 ?깅줉?섏? ?딆븯?듬땲??'}
+                            ${isEnglish ? 'Detailed information is not registered.' : '상세 정보가 등록되지 않았습니다.'}
                         </div>
                     `}
                 </div>
@@ -808,10 +809,10 @@ R-?쒕━利??щ┝???쒕툕?고띁???ㅼ씠罹먯뒪???뚮（誘몃뒆 ?꾨젅?
                         "@type": "Review",
                         "author": {
                             "@type": "Person",
-                            "name": "?뚰뙆?멸퀬媛?
+                            "name": "알파인고객"
                         },
                         "datePublished": new Date().toISOString().split('T')[0],
-                        "reviewBody": "理쒖긽???ъ슫??寃쏀뿕???좎궗?섎뒗 ?붾（?섏엯?덈떎.",
+                        "reviewBody": "최상의 사운드 경험을 선사하는 솔루션입니다.",
                         "reviewRating": {
                             "@type": "Rating",
                             "ratingValue": "5",
@@ -835,13 +836,13 @@ R-?쒕━利??щ┝???쒕툕?고띁???ㅼ씠罹먯뒪???뚮（誘몃뒆 ?꾨젅?
                     {
                         "@type": "ListItem",
                         "position": 1,
-                        "name": "??,
+                        "name": "홈",
                         "item": "https://www.alpine-korea.co.kr/"
                     },
                     {
                         "@type": "ListItem",
                         "position": 2,
-                        "name": "?쒗뭹",
+                        "name": "제품",
                         "item": "https://www.alpine-korea.co.kr/index.html"
                     },
                     {
@@ -891,21 +892,21 @@ R-?쒕━利??щ┝???쒕툕?고띁???ㅼ씠罹먯뒪???뚮（誘몃뒆 ?꾨젅?
             });
         }
 
-        // Supabase ?곗꽑?쇰줈 ?쒗뭹 ?곗씠??濡쒕뱶 ???뚮뜑留?
+        // Supabase 우선으로 제품 데이터 로드 후 렌더링
         async function initDetail() {
-            // 1. Supabase?먯꽌 ID濡??⑥씪 ?쒗뭹 議고쉶 ?쒕룄
+            // 1. Supabase에서 ID로 단일 제품 조회 시도
             if (productId && typeof fetchProductList === 'function') {
                 const sbData = await fetchProductList();
                 if (sbData && sbData.length > 0) {
                     product = sbData.find(p => p.id === productId) || null;
                 }
             }
-            // 2. Supabase ?ㅽ뙣 ?먮뒗 ?곗씠???놁쑝硫?JS ?뚯씪 fallback
+            // 2. Supabase 실패 또는 데이터 없으면 JS 파일 fallback
             if (!product && typeof productData !== 'undefined') {
                 product = productData.find(p => p.id === productId) || null;
             }
 
-            // 3. ?뚮뜑留?
+            // 3. 렌더링
             const savedLang = sessionStorage.getItem('lang') || 'ko';
             if (langText) langText.textContent = savedLang.toUpperCase();
 

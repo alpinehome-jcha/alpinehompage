@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>?뚰뙆??ALPINE Korea)</title>
+    <title>알파인(ALPINE Korea)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -163,19 +163,19 @@
                 <ul class="nav-menu">
                     <li><a href="../pages/about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
                     <li class="dropdown">
-                        <a href="../index.html" class="nav-link" data-i18n="nav_products">?쒗뭹?뚭컻</a>
+                        <a href="../index.html" class="nav-link" data-i18n="nav_products">제품소개</a>
                     </li>
                     <li>
-                        <a href="../pages/dealers.html" class="nav-link" data-i18n="nav_dealers">?꾧뎅 ?由ъ젏 紐⑸줉</a>
+                        <a href="../pages/dealers.html" class="nav-link" data-i18n="nav_dealers">전국 대리점 목록</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link active" data-i18n="nav_support">怨좉컼吏??/a>
+                        <a href="#" class="nav-link active" data-i18n="nav_support">고객지원</a>
                         <ul class="dropdown-content">
-                            <li><a href="product.html" class="dropdown-item" data-i18n="nav_support_product">?쒗뭹 ?먮즺??/a>
+                            <li><a href="product.html" class="dropdown-item" data-i18n="nav_support_product">제품 자료실</a>
                             </li>
-                            <li><a href="install.html" class="dropdown-item" data-i18n="nav_support_install">?쒓났?먮즺??/a>
+                            <li><a href="install.html" class="dropdown-item" data-i18n="nav_support_install">시공자료실</a>
                             </li>
-                            <li><a href="promo.html" class="dropdown-item" data-i18n="nav_support_promo">?띾낫?먮즺??/a></li>
+                            <li><a href="promo.html" class="dropdown-item" data-i18n="nav_support_promo">홍보자료실</a></li>
                         </ul>
                     </li>
                     <li class="social-icons">
@@ -214,7 +214,7 @@
     </header>
 
     <main class="container" style="padding-top: 100px;">
-        <h2 class="section-title">?꾩슜 寃뚯떆??(Partner Board)</h2>
+        <h2 class="section-title">전용 게시판 (Partner Board)</h2>
         <p class="section-desc">Exclusive board for authorized partners.</p>
 
         <div id="accessDenied" style="display:none; text-align:center; color:red; margin-top:50px;">
@@ -226,8 +226,8 @@
             <!-- List View -->
             <div id="boardListSection" class="board-container">
                 <div class="board-header">
-                    <h3>寃뚯떆湲 紐⑸줉 (Recent Posts)</h3>
-                    <button id="btnWrite" class="btn btn-primary" onclick="openWrite()" style="display:none;">湲?곌린
+                    <h3>게시글 목록 (Recent Posts)</h3>
+                    <button id="btnWrite" class="btn btn-primary" onclick="openWrite()" style="display:none;">글쓰기
                         (Write)</button>
                 </div>
                 <table class="board-table">
@@ -242,7 +242,7 @@
                     <tbody id="boardTableBody">
                         <!-- Items rendered here -->
                         <tr>
-                            <td colspan="4" style="text-align:center;">濡쒕뵫 以?..</td>
+                            <td colspan="4" style="text-align:center;">로딩 중...</td>
                         </tr>
                     </tbody>
                 </table>
@@ -250,24 +250,24 @@
 
             <!-- Write View -->
             <div id="boardWrite" class="board-container write-form">
-                <h3 id="writeTitle">??湲 ?묒꽦 (New Post)</h3>
+                <h3 id="writeTitle">새 글 작성 (New Post)</h3>
                 <input type="hidden" id="postId">
                 <div class="form-group">
-                    <label>?쒕ぉ (Title)</label>
+                    <label>제목 (Title)</label>
                     <input type="text" id="postTitle" class="form-control" placeholder="Enter title">
                 </div>
                 <div class="form-group">
-                    <label>?댁슜 (Content)</label>
+                    <label>내용 (Content)</label>
                     <textarea id="postContent" class="form-control" rows="15" placeholder="Enter content"></textarea>
                 </div>
                 <div class="form-group">
-                    <label>????대?吏 (Main Image)</label>
+                    <label>대표 이미지 (Main Image)</label>
                     <input type="file" onchange="handleFile(this, 'postImage')">
                     <input type="text" id="postImage" class="form-control" readonly placeholder="assets/images/..."
                         style="margin-top:5px; background:#f9f9f9;">
                 </div>
                 <div class="form-group">
-                    <label>泥⑤??뚯씪 (Attachments - Max 5)</label>
+                    <label>첨부파일 (Attachments - Max 5)</label>
                     <div class="file-list">
                         <input type="file" onchange="handleFile(this, 'file1')"><input type="hidden" id="fileData1">
                         <input type="file" onchange="handleFile(this, 'file2')"><input type="hidden" id="fileData2">
@@ -275,12 +275,12 @@
                         <input type="file" onchange="handleFile(this, 'file4')"><input type="hidden" id="fileData4">
                         <input type="file" onchange="handleFile(this, 'file5')"><input type="hidden" id="fileData5">
                     </div>
-                    <small style="color:#2ecc71;">* ?뚯씪? ?먮룞?쇰줈 ?ъ씠????μ냼???낅줈?쒕맗?덈떎.</small>
+                    <small style="color:#2ecc71;">* 파일은 자동으로 사이트 저장소에 업로드됩니다.</small>
                 </div>
 
                 <div style="text-align: right; margin-top:20px;">
-                    <button class="btn btn-secondary" onclick="cancelWrite()">痍⑥냼</button>
-                    <button class="btn btn-primary" id="btnSavePost" onclick="savePost()">?깅줉</button>
+                    <button class="btn btn-secondary" onclick="cancelWrite()">취소</button>
+                    <button class="btn btn-primary" id="btnSavePost" onclick="savePost()">등록</button>
                 </div>
             </div>
 
@@ -298,15 +298,15 @@
                 <div id="viewContent" class="view-content">Content</div>
 
                 <div id="viewFiles" class="view-files" style="display:none;">
-                    <h4>泥⑤??뚯씪</h4>
+                    <h4>첨부파일</h4>
                     <div id="fileLinks"></div>
                 </div>
 
                 <div style="text-align: right; margin-top:30px; border-top:1px solid #eee; padding-top:20px;">
-                    <button id="btnEdit" class="btn btn-warning" onclick="editPost()" style="display:none;">?섏젙</button>
+                    <button id="btnEdit" class="btn btn-warning" onclick="editPost()" style="display:none;">수정</button>
                     <button id="btnDelete" class="btn btn-danger" onclick="deleteCurrentPost()"
-                        style="display:none;">??젣</button>
-                    <button class="btn btn-secondary" onclick="closeView()">紐⑸줉?쇰줈</button>
+                        style="display:none;">삭제</button>
+                    <button class="btn btn-secondary" onclick="closeView()">목록으로</button>
                 </div>
             </div>
         </div>
@@ -325,7 +325,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/supabase-client.js"></script>
 
-    <script src="../js/auth.js?v=20260910_v3"></script>
+    <script src="../js/auth.js?v=20260211"></script>
     <script src="../js/i18n.js?v=20260211"></script>
     <script src="../js/github-client.js?v=20260723_v3"></script>
 
@@ -375,7 +375,7 @@
 
             if (error) {
                 console.error('Error fetching partner board posts:', error);
-                alert("寃뚯떆湲??遺덈윭?ㅻ뒗???ㅽ뙣?덉뒿?덈떎.");
+                alert("게시글을 불러오는데 실패했습니다.");
                 posts = [];
             } else {
                 posts = data || [];
@@ -410,7 +410,7 @@
             const totalItems = posts.length;
 
             if (totalItems === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">?깅줉??寃뚯떆湲???놁뒿?덈떎.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">등록된 게시글이 없습니다.</td></tr>';
                 return;
             }
 
@@ -470,7 +470,7 @@
         function openWrite() {
             isEditMode = false;
             currentPostId = null;
-            document.getElementById('writeTitle').innerText = "??湲 ?묒꽦 (New Post)";
+            document.getElementById('writeTitle').innerText = "새 글 작성 (New Post)";
 
             document.getElementById('boardListSection').style.display = 'none';
             document.getElementById('boardView').style.display = 'none';
@@ -482,7 +482,7 @@
             document.getElementById('postContent').value = '';
             document.getElementById('postImage').value = '';
             for (let i = 1; i <= 5; i++) { if (document.getElementById('fileData' + i)) document.getElementById('fileData' + i).value = ''; }
-            document.getElementById('btnSavePost').innerText = "?깅줉";
+            document.getElementById('btnSavePost').innerText = "등록";
 
             const btnSave = document.getElementById('btnSavePost');
             btnSave.disabled = false;
@@ -494,14 +494,14 @@
             if (!post) return;
 
             isEditMode = true;
-            document.getElementById('writeTitle').innerText = "湲 ?섏젙 (Edit Post)";
+            document.getElementById('writeTitle').innerText = "글 수정 (Edit Post)";
 
             // Fill Form
             document.getElementById('postId').value = post.id;
             document.getElementById('postTitle').value = post.title;
             document.getElementById('postContent').value = post.content;
             document.getElementById('postImage').value = post.image || '';
-            document.getElementById('btnSavePost').innerText = "?섏젙";
+            document.getElementById('btnSavePost').innerText = "수정";
 
             document.getElementById('boardView').style.display = 'none';
             document.getElementById('boardWrite').style.display = 'block';
@@ -536,7 +536,7 @@
 
         async function savePost() {
             if (sessionStorage.getItem('userRole') !== 'admin') {
-                alert('愿由ъ옄留??묒꽦?????덉뒿?덈떎. (Access Denied)');
+                alert('관리자만 작성할 수 있습니다. (Access Denied)');
                 return;
             }
 
@@ -544,15 +544,15 @@
             const content = document.getElementById('postContent').value.trim();
             let image = document.getElementById('postImage').value;
             const pId = document.getElementById('postId').value;
-            const author = sessionStorage.getItem('dealerName') || '愿由ъ옄';
+            const author = sessionStorage.getItem('dealerName') || '관리자';
 
-            if (!title) { alert('?쒕ぉ???낅젰?섏꽭??'); return; }
-            if (!content) { alert('?댁슜???낅젰?섏꽭??'); return; }
+            if (!title) { alert('제목을 입력하세요.'); return; }
+            if (!content) { alert('내용을 입력하세요.'); return; }
 
             const btnSave = document.getElementById('btnSavePost');
             const originalBtnText = btnSave.innerText;
             btnSave.disabled = true;
-            btnSave.innerText = "?낅줈??諛????以?..";
+            btnSave.innerText = "업로드 및 저장 중...";
 
             try {
                 // Upload Image
@@ -562,7 +562,7 @@
                         await window.ghClient.uploadFile('assets/images/' + file.name, file, 'Upload image for Partner Board');
                     } catch (err) {
                         console.error("Image upload failed:", err);
-                        alert("?대?吏 ?낅줈?쒖뿉 ?ㅽ뙣?덉뒿?덈떎: " + err.message);
+                        alert("이미지 업로드에 실패했습니다: " + err.message);
                         throw err;
                     }
                 }
@@ -583,7 +583,7 @@
                                 }
                             } catch (err) {
                                 console.error("File upload failed:", err);
-                                alert("?뚯씪 ?낅줈?쒖뿉 ?ㅽ뙣?덉뒿?덈떎: " + err.message);
+                                alert("파일 업로드에 실패했습니다: " + err.message);
                                 throw err;
                             }
                         }
@@ -619,9 +619,9 @@
                     });
 
                     if (data && data.success) {
-                        alert(isEditMode && pId ? '?섏젙?섏뿀?듬땲??' : '?깅줉?섏뿀?듬땲??');
+                        alert(isEditMode && pId ? '수정되었습니다.' : '등록되었습니다.');
                     } else {
-                        throw new Error(data.error || '?????녿뒗 ?ㅻ쪟媛 諛쒖깮?덉뒿?덈떎.');
+                        throw new Error(data.error || '알 수 없는 오류가 발생했습니다.');
                     }
 
                 await fetchPosts();
@@ -630,7 +630,7 @@
 
             } catch (err) {
                 console.error("Save error:", err);
-                alert("???以??ㅻ쪟媛 諛쒖깮?덉뒿?덈떎: " + err.message);
+                alert("저장 중 오류가 발생했습니다: " + err.message);
             } finally {
                 btnSave.disabled = false;
                 btnSave.innerText = originalBtnText;
@@ -689,7 +689,7 @@
                 fileArray.forEach(f => {
                     const a = document.createElement('a');
                     a.href = f.url ? f.url : ('../' + f.path);
-                    a.textContent = `?뮶 ${f.name}`;
+                    a.textContent = `💾 ${f.name}`;
                     a.className = 'file-link';
                     a.target = '_blank';
                     a.download = f.name;
@@ -716,7 +716,7 @@
         }
 
         async function deleteCurrentPost() {
-            if (!confirm('?뺣쭚 ??젣?섏떆寃좎뒿?덇퉴?')) return;
+            if (!confirm('정말 삭제하시겠습니까?')) return;
 
             try {
                 const data = await window.ghClient._adminCall('admin_delete_partner_board', {
@@ -724,15 +724,15 @@
                 });
 
                 if (!data || !data.success) {
-                    throw new Error(data?.error || '?????녿뒗 ?ㅻ쪟媛 諛쒖깮?덉뒿?덈떎.');
+                    throw new Error(data?.error || '알 수 없는 오류가 발생했습니다.');
                 }
 
-                alert('??젣?섏뿀?듬땲??');
+                alert('삭제되었습니다.');
                 await fetchPosts();
                 closeView();
             } catch (err) {
                 console.error("Delete error:", err);
-                alert("??젣 以??ㅻ쪟媛 諛쒖깮?덉뒿?덈떎: " + err.message);
+                alert("삭제 중 오류가 발생했습니다: " + err.message);
             }
         }
 
