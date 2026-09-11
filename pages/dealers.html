@@ -1,13 +1,13 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>?꾧뎅 ?由ъ젏 紐⑸줉 | ?뚰뙆??肄붾━??ALPINE Korea)</title>
-    <meta name="description" content="?뚰뙆??ALPINE) ?꾧뎅 怨듭떇 ?由ъ젏 紐⑸줉?낅땲?? 吏??퀎 ?由ъ젏 ?꾩튂? ?곕씫泥섎? ?뺤씤?섍퀬 媛源뚯슫 留ㅼ옣??李얠븘蹂댁꽭??">
-    <meta property="og:title" content="?꾧뎅 ?由ъ젏 紐⑸줉 | ?뚰뙆??肄붾━??ALPINE Korea)">
-    <meta property="og:description" content="?뚰뙆??ALPINE) ?꾧뎅 怨듭떇 ?由ъ젏 紐⑸줉?낅땲?? 吏??퀎 ?由ъ젏 ?꾩튂? ?곕씫泥섎? ?뺤씤?섍퀬 媛源뚯슫 留ㅼ옣??李얠븘蹂댁꽭??">
+    <title>전국 대리점 목록 | 알파인 코리아(ALPINE Korea)</title>
+    <meta name="description" content="알파인(ALPINE) 전국 공식 대리점 목록입니다. 지역별 대리점 위치와 연락처를 확인하고 가까운 매장을 찾아보세요.">
+    <meta property="og:title" content="전국 대리점 목록 | 알파인 코리아(ALPINE Korea)">
+    <meta property="og:description" content="알파인(ALPINE) 전국 공식 대리점 목록입니다. 지역별 대리점 위치와 연락처를 확인하고 가까운 매장을 찾아보세요.">
     <meta property="og:image" content="https://www.alpine-korea.co.kr/assets/images/alpine_logo.png">
     <meta property="og:url" content="https://www.alpine-korea.co.kr/pages/dealers.html">
     <meta property="og:type" content="website">
@@ -27,7 +27,7 @@
 
     
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="../js/supabase-client.js?v=20260722_v2"></script>
+    <script src="../js/supabase-client.js?v=20260910_v6"></script>
     <style>
         .dealer-list {
             display: flex;
@@ -113,13 +113,13 @@
                 <ul class="nav-menu">
                     <li><a href="about.html" class="nav-link" data-i18n="nav_about">About Us</a></li>
                     <li class="dropdown">
-                        <a href="../index.html" class="nav-link" data-i18n="nav_products">?쒗뭹?뚭컻</a>
+                        <a href="../index.html" class="nav-link" data-i18n="nav_products">제품소개</a>
                     </li>
                     <li>
-                        <a href="dealers.html" class="nav-link active" data-i18n="nav_dealers">?꾧뎅 ?由ъ젏 紐⑸줉</a>
+                        <a href="dealers.html" class="nav-link active" data-i18n="nav_dealers">전국 대리점 목록</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link" data-i18n="nav_support">怨좉컼吏??/a>
+                        <a href="#" class="nav-link" data-i18n="nav_support">고객지원</a>
                         <ul class="dropdown-content">
                             <li><a href="../support/product.html" class="dropdown-item"
                                     data-i18n="nav_support_product">Product Archives</a>
@@ -406,23 +406,23 @@
             if (dealerList && dealerList.length > 0) {
                 // Region Order
                 const REGION_ORDER = [
-                    '?쒖슱',
-                    '寃쎄린遺곷?(怨좎뼇,?뚯＜,?섏젙遺,?묒＜)',
-                    '寃쎄린?쒕?(源??遺泥?愿묐챸,?덉궛)',
-                    '寃쎄린以묒븰(?깅궓,?덉뼇,?⑹씤,怨쇱쿇)',
-                    '寃쎄린?숇?(?⑥뼇二??섎궓,?댁쿇,?묓룊)',
-                    '寃쎄린?⑤?(?섏썝,?붿꽦,?됲깮,?덉꽦)',
-                    '?몄쿇', '???, '?몄쥌', '異⑸턿', '異⑸궓', '媛뺤썝', '?꾨턿', '愿묒＜', '?꾨궓', '?援?, '?몄궛', '寃쎈턿', '遺??, '寃쎈궓', '?쒖＜'
+                    '서울',
+                    '경기북부(고양,파주,의정부,양주)',
+                    '경기서부(김포,부천,광명,안산)',
+                    '경기중앙(성남,안양,용인,과천)',
+                    '경기동부(남양주,하남,이천,양평)',
+                    '경기남부(수원,화성,평택,안성)',
+                    '인천', '대전', '세종', '충북', '충남', '강원', '전북', '광주', '전남', '대구', '울산', '경북', '부산', '경남', '제주'
                 ];
 
                 // Fallback Regions for original IDs (Safety net)
                 const fallbackRegions = {
-                    1: '寃쎄린以묒븰(?깅궓,?덉뼇,?⑹씤,怨쇱쿇)', // Anyang
-                    2: '遺??, // Busan
-                    3: '?援?, // Daegu
-                    4: '?몄쿇', // Incheon
-                    5: '愿묒＜', // Gwangju
-                    6: '???  // Daejeon
+                    1: '경기중앙(성남,안양,용인,과천)', // Anyang
+                    2: '부산', // Busan
+                    3: '대구', // Daegu
+                    4: '인천', // Incheon
+                    5: '광주', // Gwangju
+                    6: '대전'  // Daejeon
                 };
 
                 // Helper to get effective region
@@ -433,39 +433,39 @@
                     // Smart Fallback from Address
                     if (d.address) {
                         const addr = d.address;
-                        if (addr.includes('?쒖슱') || addr.includes('Seoul')) return '?쒖슱';
-                        if (addr.includes('?몄쿇') || addr.includes('Incheon')) return '?몄쿇';
-                        if (addr.includes('???) || addr.includes('Daejeon')) return '???;
-                        if (addr.includes('?援?) || addr.includes('Daegu')) return '?援?;
-                        if (addr.includes('?쒖＜') || addr.includes('Jeju')) return '?쒖＜';
+                        if (addr.includes('서울') || addr.includes('Seoul')) return '서울';
+                        if (addr.includes('인천') || addr.includes('Incheon')) return '인천';
+                        if (addr.includes('대전') || addr.includes('Daejeon')) return '대전';
+                        if (addr.includes('대구') || addr.includes('Daegu')) return '대구';
+                        if (addr.includes('제주') || addr.includes('Jeju')) return '제주';
 
                         // Gyeonggi details
                         // Priority Check: Gyeonggi Gwangju vs Gwangju Metro
-                        if (addr.includes('寃쎄린') && addr.includes('愿묒＜')) return '寃쎄린?숇?(?⑥뼇二??섎궓,?댁쿇,?묓룊)'; // Gwangju-si, Gyeonggi-do
+                        if (addr.includes('경기') && addr.includes('광주')) return '경기동부(남양주,하남,이천,양평)'; // Gwangju-si, Gyeonggi-do
 
                         // Standard Gwangju Metro check (if not caught above)
-                        if (addr.includes('愿묒＜') || addr.includes('Gwangju')) return '愿묒＜';
+                        if (addr.includes('광주') || addr.includes('Gwangju')) return '광주';
 
-                        if (addr.includes('怨좎뼇') || addr.includes('?뚯＜') || addr.includes('?섏젙遺') || addr.includes('?묒＜')) return '寃쎄린遺곷?(怨좎뼇,?뚯＜,?섏젙遺,?묒＜)';
-                        if (addr.includes('源??) || addr.includes('遺泥?) || addr.includes('愿묐챸') || addr.includes('?덉궛')) return '寃쎄린?쒕?(源??遺泥?愿묐챸,?덉궛)';
-                        if (addr.includes('?깅궓') || addr.includes('?덉뼇') || addr.includes('?⑹씤') || addr.includes('怨쇱쿇')) return '寃쎄린以묒븰(?깅궓,?덉뼇,?⑹씤,怨쇱쿇)';
-                        if (addr.includes('?⑥뼇二?) || addr.includes('?섎궓') || addr.includes('?댁쿇') || addr.includes('?묓룊')) return '寃쎄린?숇?(?⑥뼇二??섎궓,?댁쿇,?묓룊)';
-                        if (addr.includes('?섏썝') || addr.includes('?붿꽦') || addr.includes('?됲깮') || addr.includes('?덉꽦')) return '寃쎄린?⑤?(?섏썝,?붿꽦,?됲깮,?덉꽦)';
-                        if (addr.includes('寃쎄린') || addr.includes('Gyeonggi')) return '寃쎄린以묒븰(?깅궓,?덉뼇,?⑹씤,怨쇱쿇)'; // Default Gyeonggi
+                        if (addr.includes('고양') || addr.includes('파주') || addr.includes('의정부') || addr.includes('양주')) return '경기북부(고양,파주,의정부,양주)';
+                        if (addr.includes('김포') || addr.includes('부천') || addr.includes('광명') || addr.includes('안산')) return '경기서부(김포,부천,광명,안산)';
+                        if (addr.includes('성남') || addr.includes('안양') || addr.includes('용인') || addr.includes('과천')) return '경기중앙(성남,안양,용인,과천)';
+                        if (addr.includes('남양주') || addr.includes('하남') || addr.includes('이천') || addr.includes('양평')) return '경기동부(남양주,하남,이천,양평)';
+                        if (addr.includes('수원') || addr.includes('화성') || addr.includes('평택') || addr.includes('안성')) return '경기남부(수원,화성,평택,안성)';
+                        if (addr.includes('경기') || addr.includes('Gyeonggi')) return '경기중앙(성남,안양,용인,과천)'; // Default Gyeonggi
                     }
-                    return '湲고?';
+                    return '기타';
                 }
 
                 // Data Correction Loop (Fix Bad Data on Load)
                 dealerList.forEach(d => {
                     // Fix: Auto Gallery (Oto Gallery) location
-                    if (d.name && (d.name.includes('?ㅽ넗媛ㅻ윭由?) || d.name.includes('Auto Gall') || d.name.includes('Autogallery'))) {
-                        d.region = '?쒖슱'; // Force region correction
+                    if (d.name && (d.name.includes('오토갤러리') || d.name.includes('Auto Gall') || d.name.includes('Autogallery'))) {
+                        d.region = '서울'; // Force region correction
                     }
 
-                    // Fix: Luxury Car Club (??뀛由ъ뭅?대읇)
-                    if (d.name && (d.name.includes('??뀛由ъ뭅') || d.name.includes('Luxury Car'))) {
-                        d.region = '寃쎄린?⑤?(?섏썝,?붿꽦,?됲깮,?덉꽦)';
+                    // Fix: Luxury Car Club (럭셔리카클럽)
+                    if (d.name && (d.name.includes('럭셔리카') || d.name.includes('Luxury Car'))) {
+                        d.region = '경기남부(수원,화성,평택,안성)';
                     }
                 });
 
@@ -495,32 +495,32 @@
 
                     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                         maxZoom: 19,
-                        attribution: '짤 OpenStreetMap'
+                        attribution: '© OpenStreetMap'
                     }).addTo(map);
 
                     // Region Centers for Fallback (Lat/Lng)
                     const REGION_CENTERS = {
-                        '?쒖슱': [37.5665, 126.9780],
-                        '寃쎄린遺곷?': [37.7460, 127.0540], // Uijeongbu approx
-                        '寃쎄린?쒕?': [37.4200, 126.7800], // Bucheon/Gwangmyeong
-                        '寃쎄린以묒븰': [37.3943, 126.9568], // Anyang
-                        '寃쎄린?숇?': [37.5500, 127.2500], // Hanam/Namyangju
-                        '寃쎄린?⑤?': [37.1500, 127.0500], // Osan/Pyeongtaek
-                        '?몄쿇': [37.4563, 126.7052],
-                        '???: [36.3504, 127.3845],
-                        '?몄쥌': [36.4800, 127.2890],
-                        '異⑸턿': [36.6350, 127.4914], // Cheongju
-                        '異⑸궓': [36.6588, 126.6728], // Hongseong (Provincial Gov)
-                        '媛뺤썝': [37.8854, 127.7298], // Chuncheon
-                        '?꾨턿': [35.8242, 127.1480], // Jeonju
-                        '愿묒＜': [35.1595, 126.8526],
-                        '?꾨궓': [34.8161, 126.4629], // Muan (Provincial Gov)
-                        '?援?: [35.8714, 128.6014],
-                        '?몄궛': [35.5384, 129.3114],
-                        '寃쎈턿': [36.5760, 128.5056], // Andong (Provincial Gov)
-                        '遺??: [35.1796, 129.0756],
-                        '寃쎈궓': [35.2383, 128.6922], // Changwon
-                        '?쒖＜': [33.4996, 126.5312]
+                        '서울': [37.5665, 126.9780],
+                        '경기북부': [37.7460, 127.0540], // Uijeongbu approx
+                        '경기서부': [37.4200, 126.7800], // Bucheon/Gwangmyeong
+                        '경기중앙': [37.3943, 126.9568], // Anyang
+                        '경기동부': [37.5500, 127.2500], // Hanam/Namyangju
+                        '경기남부': [37.1500, 127.0500], // Osan/Pyeongtaek
+                        '인천': [37.4563, 126.7052],
+                        '대전': [36.3504, 127.3845],
+                        '세종': [36.4800, 127.2890],
+                        '충북': [36.6350, 127.4914], // Cheongju
+                        '충남': [36.6588, 126.6728], // Hongseong (Provincial Gov)
+                        '강원': [37.8854, 127.7298], // Chuncheon
+                        '전북': [35.8242, 127.1480], // Jeonju
+                        '광주': [35.1595, 126.8526],
+                        '전남': [34.8161, 126.4629], // Muan (Provincial Gov)
+                        '대구': [35.8714, 128.6014],
+                        '울산': [35.5384, 129.3114],
+                        '경북': [36.5760, 128.5056], // Andong (Provincial Gov)
+                        '부산': [35.1796, 129.0756],
+                        '경남': [35.2383, 128.6922], // Changwon
+                        '제주': [33.4996, 126.5312]
                     };
 
                     // Collision Detection & Prevention
@@ -570,7 +570,7 @@
                         // STRICT REGION MODE: Always use Region Center
                         const r = getRegion(d);
                         let key = r;
-                        if (r.startsWith('寃쎄린')) key = r.substring(0, 4); // Match keys: 寃쎄린遺곷?, 寃쎄린?⑤? etc.
+                        if (r.startsWith('경기')) key = r.substring(0, 4); // Match keys: 경기북부, 경기남부 etc.
 
                         if (REGION_CENTERS[key]) {
                             lat = REGION_CENTERS[key][0];
@@ -639,42 +639,42 @@
 
                         if (dealer.homepage) {
                             snsLinks.push(`
-                                <a href="${dealer.homepage}" target="_blank" class="sns-link homepage" title="?덊럹?댁? 諛⑸Ц">
+                                <a href="${dealer.homepage}" target="_blank" class="sns-link homepage" title="홈페이지 방문">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sns-icon-svg"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                                 </a>
                             `);
                         }
                         if (dealer.blog_url) {
                             snsLinks.push(`
-                                <a href="${dealer.blog_url}" target="_blank" class="sns-link blog" title="?ㅼ씠踰?釉붾줈洹?諛⑸Ц">
+                                <a href="${dealer.blog_url}" target="_blank" class="sns-link blog" title="네이버 블로그 방문">
                                     <img src="../assets/images/icon-blog.png" alt="Naver Blog" style="width: 14px; height: 14px; object-fit: contain;">
                                 </a>
                             `);
                         }
                         if (dealer.tistory_url) {
                             snsLinks.push(`
-                                <a href="${dealer.tistory_url}" target="_blank" class="sns-link tistory" title="?곗뒪?좊━ 諛⑸Ц">
+                                <a href="${dealer.tistory_url}" target="_blank" class="sns-link tistory" title="티스토리 방문">
                                     <svg viewBox="0 0 24 24" width="14" height="14" class="sns-icon-svg" fill="currentColor" style="color: #EB533E;"><rect width="24" height="24" rx="4" fill="#EB533E"/><path d="M6 6h12v3h-4.5v9h-3v-9H6V6z" fill="#FFF"/></svg>
                                 </a>
                             `);
                         }
                         if (dealer.instagram_url) {
                             snsLinks.push(`
-                                <a href="${dealer.instagram_url}" target="_blank" class="sns-link instagram" title="?몄뒪?洹몃옩 諛⑸Ц">
+                                <a href="${dealer.instagram_url}" target="_blank" class="sns-link instagram" title="인스타그램 방문">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sns-icon-svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                                 </a>
                             `);
                         }
                         if (dealer.youtube_url) {
                             snsLinks.push(`
-                                <a href="${dealer.youtube_url}" target="_blank" class="sns-link youtube" title="?좏뒠釉?諛⑸Ц">
+                                <a href="${dealer.youtube_url}" target="_blank" class="sns-link youtube" title="유튜브 방문">
                                     <svg viewBox="0 0 24 24" width="14" height="14" class="sns-icon-svg" fill="currentColor" style="color: #FF0000;"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                                 </a>
                             `);
                         }
                         if (dealer.facebook_url) {
                             snsLinks.push(`
-                                <a href="${dealer.facebook_url}" target="_blank" class="sns-link facebook" title="?섏씠?ㅻ턿 諛⑸Ц">
+                                <a href="${dealer.facebook_url}" target="_blank" class="sns-link facebook" title="페이스북 방문">
                                     <svg viewBox="0 0 24 24" width="14" height="14" class="sns-icon-svg" fill="currentColor" style="color: #1877F2;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                                 </a>
                             `);
@@ -748,7 +748,7 @@
         });
     </script>
 
-    <script src="../js/auth.js?v=20260910_v3"></script>
+    <script src="../js/auth.js?v=20260910_v6"></script>
     <script src="../js/i18n.js?v=20260223"></script>
     <script>
 

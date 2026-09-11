@@ -101,6 +101,70 @@ SECURITY DEFINER -- 필수
 AS $$ ...
 ```
 
+### 5.3 DB 직접 접근 제약 사항 (CRITICAL)
+
+> ⚠️ **AI 에이전트 필독**: 아래 경로들은 모두 막혀 있습니다. 우회 시도 금지.
+
+| 접근 경로 | 결과 | 이유 |
+| :--- | :---: | :--- |
+| REST API (`anon` 키) + DELETE/INSERT | ❌ 차단 | RLS 정책 |
+| REST API (`service_role` 키) | ❌ 차단 | API Gateway 401 |
+| SSH → `docker exec supabase-db psql` | ❌ 차단 | docker socket 권한 없음 |
+| SSH → psql 직접 접속 (포트포워딩) | ❌ 차단 | Tenant 인증 실패 |
+| MCP supabase 도구 | ❌ 실제 운영 DB 아님 | `public` 스키마만 접근 (클라우드 백업용) |
+| **관리자 RPC 함수 호출** | ✅ **유일한 정상 경로** | SECURITY DEFINER로 RLS 우회 |
+
+**결론**: `dealers` 테이블 데이터를 조작할 때는 반드시 **5.4의 관리자 RPC 함수**를 사용해야 합니다.  
+배포 스크립트(`scripts/deploy.sh`)에 SQL을 주입하는 방식은 **절대 사용 금지**입니다.
+
+### 5.4 딜러 관리 RPC 함수 (AI 에이전트 DB 접근 공식 경로)
+
+`scripts/dealer_admin_rpc.sql`에 정의된 함수 3종. 배포 시 자동 적용됨.  
+호출 엔드포인트: `POST https://supabase.alpine-korea.co.kr/rest/v1/rpc/[함수명]`  
+헤더: `apikey: [ANON_KEY]`, `Content-Type: application/json`
+
+#### 딜러 삭제
+```javascript
+// 함수: public.admin_delete_dealer
+// Body: { p_admin_username, p_admin_password, p_id }
+const res = await fetch('https://supabase.alpine-korea.co.kr/rest/v1/rpc/admin_delete_dealer', {
+  method: 'POST',
+  headers: { 'apikey': ANON_KEY, 'Content-Type': 'application/json' },
+  body: JSON.stringify({ p_admin_username: 'admin', p_admin_password: '***', p_id: 1234567890 })
+});
+// 성공 응답: { "success": true, "deleted_id": 1234567890 }
+```
+
+#### 딜러 추가/수정 (upsert)
+```javascript
+// 함수: public.admin_upsert_dealer
+// Body: { p_admin_username, p_admin_password, p_data }
+// p_data.id 있으면 UPDATE, 없으면 INSERT
+const res = await fetch('https://supabase.alpine-korea.co.kr/rest/v1/rpc/admin_upsert_dealer', {
+  method: 'POST',
+  headers: { 'apikey': ANON_KEY, 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    p_admin_username: 'admin',
+    p_admin_password: '***',
+    p_data: { name: '대리점명', category: 'Alpine Dealer', username: 'id', region: '서울', ... }
+  })
+});
+// 성공 응답: { "success": true, "action": "inserted", "id": 1234567890 }
+```
+
+#### 딜러 전체 조회 (관리자용 — RLS 우회)
+```javascript
+// 함수: public.admin_list_dealers
+const res = await fetch('https://supabase.alpine-korea.co.kr/rest/v1/rpc/admin_list_dealers', {
+  method: 'POST',
+  headers: { 'apikey': ANON_KEY, 'Content-Type': 'application/json' },
+  body: JSON.stringify({ p_admin_username: 'admin', p_admin_password: '***' })
+});
+// 성공 응답: { "success": true, "data": [ ... ] }
+```
+
+> **관리자 비밀번호**: `.env.local`에 없음. `admin.html` 접속 후 관리자 로그인 시 입력하는 비밀번호와 동일. `_is_admin()` 함수가 검증.
+
 ---
 
 ## 6. 환경 변수 참조 (.env.local)
