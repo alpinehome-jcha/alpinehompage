@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -399,8 +399,6 @@
             let dealerList = [];
             if (typeof fetchDealerList === 'function') {
                 dealerList = await fetchDealerList();
-            } else if (typeof dealerData !== 'undefined') {
-                dealerList = dealerData;
             }
 
             if (dealerList && dealerList.length > 0) {

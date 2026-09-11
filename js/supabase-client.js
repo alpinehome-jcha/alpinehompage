@@ -1,4 +1,4 @@
-const SC_DEFAULT_LOCAL_SUPABASE_URL = "https://supabase.alpine-korea.co.kr";
+﻿const SC_DEFAULT_LOCAL_SUPABASE_URL = "https://supabase.alpine-korea.co.kr";
 const SC_DEFAULT_LOCAL_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2pnd29yc2VsdmthYXRkZnR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTE4MTUsImV4cCI6MjA4NzM4NzgxNX0.GUiDsLVI3UNZdr8i5aQtSYkt44vqbrZ1OcuoYWzp7us";
 
 const CLIENT_SUPABASE_URL = (typeof window !== 'undefined' && window.ENV && window.ENV.NEXT_PUBLIC_SUPABASE_URL)
@@ -9,25 +9,23 @@ const CLIENT_SUPABASE_ANON_KEY = (typeof window !== 'undefined' && window.ENV &&
     ? window.ENV.NEXT_PUBLIC_SUPABASE_ANON_KEY
     : SC_DEFAULT_LOCAL_SUPABASE_ANON_KEY;
 
-// CDN 방식으로 Supabase JS를 사용하는 경우 (별도 로드 필요)
 if (typeof supabase === 'undefined') {
     console.warn("Supabase SDK is not loaded. Make sure to include <script src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2'></script> before this script.");
 }
 
-const supabaseClient = (typeof supabase !== 'undefined')
-    ? supabase.createClient(CLIENT_SUPABASE_URL, CLIENT_SUPABASE_ANON_KEY, { db: { schema: 'public' } })
-    : null;
+async function getClient() {
+    if (typeof loadSupabase === 'function') {
+        return await loadSupabase();
+    }
+    console.warn('loadSupabase is not defined. Make sure auth.js is loaded.');
+    return null;
+}
 
-// 공유를 위해 전역 변수로 설정 (기존 소스 호환성)
-window.supabase = supabaseClient;
-
-/**
- * 가격 데이터 전체를 가져옵니다.
- * @returns {Promise<Array>}
- */
 async function fetchPriceList() {
-    if (!window.supabase) return [];
-    const client = window.supabase.schema ? window.supabase.schema('alpine-home') : window.supabase;
+    const client = await getClient();
+    if (!client) return [];
+    
+    // loadSupabase uses 'alpine-home' by default. If price_list is there, it works directly.
     const { data, error } = await client
         .from('price_list')
         .select('*')
@@ -40,17 +38,12 @@ async function fetchPriceList() {
     return data;
 }
 
-/**
- * 특정 역할(category)에 따른 가격 데이터를 가져옵니다.
- * @param {string} category 'master', 'team', 'style', 'region', 'dealer'
- * @returns {Promise<Array>}
- */
 async function fetchPriceListByCategory(category) {
-    if (category === 'admin') return fetchPriceList(); // admin은 전체 조회
-    if (!window.supabase) return [];
+    if (category === 'admin') return fetchPriceList();
+    const client = await getClient();
+    if (!client) return [];
 
-    const client = window.supabase.schema ? window.supabase.schema('public') : window.supabase;
-    const { data, error } = await client
+    const { data, error } = await client.schema('public')
         .from('price_list')
         .select('*')
         .eq('category', category)
@@ -63,17 +56,13 @@ async function fetchPriceListByCategory(category) {
     return data;
 }
 
-/**
- * 제품 데이터 전체를 Supabase에서 가져옵니다.
- * product-data.js 의 productData 배열과 동일한 형태로 반환합니다.
- * @returns {Promise<Array|null>}
- */
 async function fetchProductList() {
-    if (!window.supabase) return null;
+    const client = await getClient();
+    if (!client) return null;
 
     try {
-        const client = window.supabase.schema ? window.supabase.schema('public') : window.supabase;
-        const { data, error } = await client
+        // products is in 'public' schema according to original code
+        const { data, error } = await client.schema('public')
             .from('products')
             .select('*')
             .eq('is_active', true)
@@ -84,7 +73,6 @@ async function fetchProductList() {
             return null;
         }
 
-        // Supabase 컬럼명 → JS 필드명 변환
         return data.map(row => ({
             id: row.id,
             category: row.category,
@@ -107,10 +95,10 @@ async function fetchProductList() {
 }
 
 async function fetchDealerList() {
-    if (!window.supabase) return [];
+    const client = await getClient();
+    if (!client) return [];
 
-    const { data, error } = await window.supabase
-        (window.supabase.schema ? window.supabase.schema('alpine-home') : window.supabase).from('dealers')
+    const { data, error } = await client.from('dealers')
         .select('*')
         .order('id', { ascending: true });
 
@@ -122,7 +110,6 @@ async function fetchDealerList() {
     return data;
 }
 
-// DOMContentLoaded 시점에 로딩 오버레이 동적 삽입
 document.addEventListener('DOMContentLoaded', () => {
     if (!document.getElementById('loadingOverlay')) {
         const overlay = document.createElement('div');
@@ -149,27 +136,35 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function fetchPopupList() {
-    if (!window.supabase) return [];
+    const client = await getClient();
+    if (!client) return [];
     try {
-        const { data, error } = await (window.supabase.schema ? window.supabase.schema('alpine-home') : window.supabase).from('popups').select('*').order('id', { ascending: true });
+        const { data, error } = await client.from('popups').select('*').order('id', { ascending: true });
         if (error || !data) return [];
         return data;
     } catch (e) {
         return [];
     }
 }
+
 async function savePopup(popup) {
-    if (!window.supabase) return;
+    const client = await getClient();
+    if (!client) return;
     try {
-        await (window.supabase.schema ? window.supabase.schema('alpine-home') : window.supabase).from('popups').upsert([popup]);
+        await client.from('popups').upsert([popup]);
     } catch (e) {}
 }
+
 async function deletePopupSupabase(id) {
-    if (!window.supabase) return;
+    const client = await getClient();
+    if (!client) return;
     try {
-        await (window.supabase.schema ? window.supabase.schema('alpine-home') : window.supabase).from('popups').delete().eq('id', id);
+        await client.from('popups').delete().eq('id', id);
     } catch (e) {}
 }
+
 window.fetchPopupList = fetchPopupList;
 window.savePopup = savePopup;
 window.deletePopupSupabase = deletePopupSupabase;
+window.fetchDealerList = fetchDealerList;
+
