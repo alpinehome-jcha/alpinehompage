@@ -1152,7 +1152,7 @@
             saveToGitHub('popup', true);
         }
 
-        function deletePopup(id) {
+        async function deletePopup(id) {
             if (!confirm('Delete this popup?')) return;
             if (typeof window.deletePopupSupabase === 'function') {
                 await window.deletePopupSupabase(id);

@@ -113,5 +113,3 @@ $$;
 GRANT EXECUTE ON FUNCTION public.admin_upsert_price_list(text, text, jsonb) TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION public.admin_insert_price_list(text, text, jsonb) TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION public.admin_delete_price_list(text, text, bigint) TO anon, authenticated;
-
-DELETE FROM "alpine-home".dealers WHERE id IN (1776818521479, 1776818521480, 1776818521481, 1776818521482, 1776818521487, 1776818521488, 1770252367530);
