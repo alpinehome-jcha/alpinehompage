@@ -118,3 +118,4 @@ $$;
 GRANT EXECUTE ON FUNCTION "alpine-home".admin_delete_popup(text, text, bigint) TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION "alpine-home".admin_upsert_popup(text, text, jsonb) TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION "alpine-home".admin_list_popups(text, text) TO anon, authenticated;
+NOTIFY pgrst, 'reload schema';
