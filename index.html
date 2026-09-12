@@ -468,10 +468,7 @@
     <!-- Supabase: product-data.js보다 먼저 로드해야 fetchProductList()를 사용할 수 있음 -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase-client.js?v=20260903"></script>
-    <!-- popupData -->
-    <script>
-        document.write('<script src="js/popup-data.js?v=' + new Date().getTime() + '"><\/script>');
-    </script>
+
     <!-- product-data.js: Supabase 로드 실패 시 fallback으로 사용 -->
     <script>
         document.write('<script src="js/product-data.js?v=' + new Date().getTime() + '"><\/script>');
@@ -1030,7 +1027,7 @@
             }
         });
 
-        function renderPopups() {
+        async function renderPopups() {
             const container = document.getElementById('popupContainer');
             container.innerHTML = '';
 
@@ -1051,34 +1048,22 @@
                 console.error("Navigation API not supported or error:", e);
             }
 
-            // 1. Get List
+            // 1. Get List from Supabase DB
             let popupList = [];
-
-            // Try to get from Server Data (popup-data.js)
-            if (typeof popupData !== 'undefined' && popupData.length > 0) {
-                popupList = popupData;
-            } else {
-                // Fallback to LocalStorage (mainly for Admin testing before deploy, or if file fails)
-                const storedList = localStorage.getItem('popupList');
-                if (storedList) {
-                    popupList = JSON.parse(storedList);
-                } else {
-                    // Fallback / Migration for old config
-                    const oldConfig = localStorage.getItem('popupConfig');
-                    if (oldConfig) {
-                        const c = JSON.parse(oldConfig);
-                        if (c.isActive) {
-                            popupList.push({
-                                id: 'legacy',
-                                title: 'Event',
-                                imagePath: c.imagePath,
-                                linkUrl: c.linkUrl,
-                                hideDays: c.hideDays,
-                                isActive: true
-                            });
-                        }
-                    }
+            if (typeof window.fetchPopupList === 'function') {
+                try {
+                    popupList = await window.fetchPopupList();
+                } catch (e) {
+                    console.error("Failed to fetch popups from Supabase", e);
                 }
+            }
+
+            // Fallback (if Supabase is down or loading fails, but normally we rely on DB as SSOT)
+            if (popupList.length === 0 && typeof popupData !== 'undefined' && popupData.length > 0) {
+                // If the DB returns an empty array, it might legitimately be empty. 
+                // But if the request fails completely, we *might* want to fallback.
+                // To keep it strictly SSOT as requested, we comment out the fallback for now,
+                // or just leave it empty if DB is empty.
             }
 
             // 2. Filter Active & Not Hidden
