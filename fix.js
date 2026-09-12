@@ -1,1 +1,8 @@
-const fs = require('fs'); let content = fs.readFileSync('js/popup-data.js', 'utf8'); content = content.replace(/"id": 20260903001,[\s\S]*?"title": ".*?",/, '"id": 20260903001,\n        "title": "¾ËÆÄÀÎ ´ë¸®Á¡ ¸ðÁý",'); fs.writeFileSync('js/popup-data.js', content, 'utf8');
+ï»¿const fs = require('fs');
+const fix = f => {
+  let c = fs.readFileSync(f, 'utf8');
+  c = c.replace(/public\.admin_/g, '"alpine-home".admin_');
+  fs.writeFileSync(f, c, 'utf8');
+};
+fix('scripts/dealer_admin_rpc.sql');
+fix('scripts/popup_admin_rpc.sql');
