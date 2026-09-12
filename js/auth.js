@@ -1,4 +1,4 @@
-﻿// Centralized relative root path calculation to prevent 404 pathing errors in deep directories
+// Centralized relative root path calculation to prevent 404 pathing errors in deep directories
 const getRelativeRoot = () => {
     const pathname = window.location.pathname.toLowerCase();
     
@@ -194,6 +194,13 @@ const auth = {
             adminPassword: null
         };
         sessionStorage.removeItem('authState');
+        
+        // 팝업 본 기록 초기화 (재로그인 시 다시 뜨도록)
+        Object.keys(sessionStorage).forEach(key => {
+            if (key.startsWith('dealerOnly_shown_') || key.startsWith('popup_closed_')) {
+                sessionStorage.removeItem(key);
+            }
+        });
         
         // Security feature: wipe all partner/sensitive data from localStorage on logout
         const keysToRemove = [
