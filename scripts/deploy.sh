@@ -59,6 +59,11 @@ if docker ps | grep -q "supabase-db"; then
     echo "Applying popup admin RPC functions..."
     docker exec -i supabase-db psql -U supabase_admin -d postgres < ./scripts/popup_admin_rpc.sql || true
   fi
+  # 팝업 테이블 생성 및 데이터 복구
+  if [ -f "./scripts/create_and_restore_popups.sql" ]; then
+    echo "Restoring popup data..."
+    docker exec -i supabase-db psql -U supabase_admin -d postgres < ./scripts/create_and_restore_popups.sql || true
+  fi
 fi
 
 
