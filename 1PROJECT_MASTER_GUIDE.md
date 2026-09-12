@@ -167,6 +167,26 @@ const res = await fetch('https://supabase.alpine-korea.co.kr/rest/v1/rpc/admin_l
 
 ---
 
+
+### 5.5 프론트엔드 연동 및 DB 설계 시 주의사항 (CRITICAL)
+
+기존 레거시 프론트엔드(정적 JSON 파일 기반)를 Supabase DB 기반으로 마이그레이션하면서 발견된 핵심 주의사항입니다. 코드를 수정하거나 새로운 기능을 추가할 때 다음 3가지 원칙을 반드시 준수해야 사이드 이펙트(Side-effect)를 방지할 수 있습니다.
+
+1. **변수명 표기법 불일치 (Snake vs Camel Case)**
+   - **문제:** 기존 프론트엔드는 `isActive`, `dealerOnly` 등의 **카멜 케이스(camelCase)**를 사용하지만, Supabase(PostgreSQL) DB는 `is_active`, `dealer_only` 등의 **스네이크 케이스(snake_case)**를 사용합니다.
+   - **해결책:** DB 조회 직후(예: `fetchPopupList` 등), 프론트엔드 UI 컴포넌트로 데이터를 넘기기 전에 **반드시 매핑 로직(`is_active` -> `isActive`)을 거쳐야 합니다.** 그렇지 않으면 UI에서 값을 `undefined`로 인식하여 데이터가 화면에 출력되지 않거나 체크박스가 해제되는 치명적 버그가 발생합니다.
+
+2. **프론트엔드 주도형 ID와 무조건적 UPSERT 패턴**
+   - **문제:** 통상적인 DB 설계(Auto Increment)와 달리, 본 프로젝트의 관리자 페이지(예: `admin.html`)는 새로운 데이터를 추가할 때 **프론트엔드에서 현재 시간(Timestamp, 예: 1771558591828)을 ID로 직접 생성하여 서버로 전송**합니다.
+   - **해결책:** 서버(SQL RPC)에서 `IF id IS NOT NULL THEN UPDATE ELSE INSERT` 구조로 분기하면, 신규 데이터도 항상 ID를 달고 오기 때문에 무조건 `UPDATE` 분기(0 rows updated)를 타게 되어 신규 데이터 등록이 무시됩니다. 따라서 SQL 작성 시 항상 `INSERT INTO ... ON CONFLICT (id) DO UPDATE SET ...` 패턴(무조건 삽입을 시도하되 중복 시 수정)을 기본으로 사용해야 합니다.
+   - **안전장치:** `ON CONFLICT DO UPDATE SET` 시 `COALESCE(EXCLUDED.필드, 테이블.필드)` 패턴을 사용하여 일부 필드가 누락되어도 기존 값을 덮어쓰지 않도록 보호해야 합니다.
+
+3. **브라우저 캐시 생명주기 (반복 노출 방지 로직)**
+   - **문제:** 대리점 전용 팝업(`dealerOnly_shown_`)이나 팝업 닫기(`popup_closed_`) 같은 사용자 피로도 감소 기능은 브라우저의 `Session Storage`에 기록됩니다.
+   - **해결책:** 로그아웃 로직(`auth.logout`) 수정 등 사용자 세션을 제어할 때, 단순히 인증 토큰(`authState`)만 지워서는 안 됩니다. UI 표시 버그를 막기 위해 파생된 캐시(`dealerOnly_shown_`, `popup_closed_`)도 함께 초기화(`removeItem`)해 주어야, 다음 로그인 시 코드가 의도대로 초기 상태에서 재실행됩니다.
+
+---
+
 ## 6. 환경 변수 참조 (.env.local)
 로컬 인프라와 관련된 주요 자격 증명은 `.env.local`에 정의되어 있습니다.
 
