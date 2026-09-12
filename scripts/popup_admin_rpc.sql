@@ -104,10 +104,11 @@ BEGIN
         RETURN jsonb_build_object('error', 'unauthorized');
     END IF;
 
-    SELECT jsonb_agg(row_to_json(p))
+    SELECT jsonb_agg(row_to_json(t))
     INTO v_result
-    FROM "alpine-home".popups p
-    ORDER BY p.id ASC;
+    FROM (
+        SELECT * FROM "alpine-home".popups ORDER BY id ASC
+    ) t;
 
     RETURN jsonb_build_object('success', true, 'data', COALESCE(v_result, '[]'::jsonb));
 END;
