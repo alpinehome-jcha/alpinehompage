@@ -135,20 +135,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// 팝업 목록 조회 (공개용 — anon SELECT, RLS 허용 전제)
+// 팝업 데이터 매핑 헬퍼 (snake_case -> camelCase)
+function mapPopupData(p) {
+    return {
+        id: p.id,
+        title: p.title,
+        isActive: p.is_active,
+        dealerOnly: p.dealer_only,
+        imagePath: p.image_path,
+        hideDays: p.hide_days,
+        linkUrl: p.link_url
+    };
+}
+
+// 팝업 목록 조회 (공개용, anon SELECT, RLS 적용 전제)
 async function fetchPopupList() {
     const client = await getClient();
     if (!client) return [];
     try {
         const { data, error } = await client.from('popups').select('*').order('id', { ascending: true });
         if (error || !data) return [];
-        return data;
+        return data.map(mapPopupData);
     } catch (e) {
         return [];
     }
 }
 
-// 팝업 저장/수정 (관리자 RPC — SECURITY DEFINER로 RLS 우회)
+// 팝업 설정 수정 (관리자 RPC - SECURITY DEFINER로 RLS 우회)
 async function savePopup(popup, adminUsername, adminPassword) {
     const client = await getClient();
     if (!client) return { success: false, error: '클라이언트 초기화 실패' };
@@ -165,7 +178,7 @@ async function savePopup(popup, adminUsername, adminPassword) {
     }
 }
 
-// 팝업 삭제 (관리자 RPC — SECURITY DEFINER로 RLS 우회)
+// 팝업 삭제 (관리자 RPC - SECURITY DEFINER로 RLS 우회)
 async function deletePopupSupabase(id, adminUsername, adminPassword) {
     const client = await getClient();
     if (!client) return { success: false, error: '클라이언트 초기화 실패' };
@@ -182,7 +195,7 @@ async function deletePopupSupabase(id, adminUsername, adminPassword) {
     }
 }
 
-// 팝업 전체 조회 (관리자용 RPC — RLS 우회, 숨김 팝업도 반환)
+// 팝업 전체 조회 (관리자용 RPC - RLS 우회, 숨긴 팝업도 반환)
 async function fetchPopupListAdmin(adminUsername, adminPassword) {
     const client = await getClient();
     if (!client) return [];
@@ -192,7 +205,7 @@ async function fetchPopupListAdmin(adminUsername, adminPassword) {
             p_admin_password: adminPassword
         });
         if (error || !data || !data.success) return [];
-        return data.data || [];
+        return (data.data || []).map(mapPopupData);
     } catch (e) {
         return [];
     }
