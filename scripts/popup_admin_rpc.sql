@@ -43,47 +43,33 @@ BEGIN
         RETURN jsonb_build_object('error', 'unauthorized');
     END IF;
 
+    -- 프론트엔드가 보낸 ID 추출 (새로 생성된 ID 포함)
     v_id := NULLIF(p_data->>'id', '')::bigint;
-
-    IF v_id IS NOT NULL THEN
-        -- 수정 (UPDATE)
-        UPDATE "alpine-home".popups SET
-            title        = COALESCE(p_data->>'title', title),
-            is_active    = COALESCE((p_data->>'isActive')::boolean, is_active),
-            dealer_only  = COALESCE((p_data->>'dealerOnly')::boolean, dealer_only),
-            image_path   = COALESCE(p_data->>'imagePath', image_path),
-            hide_days    = COALESCE(NULLIF(p_data->>'hideDays', '')::int, hide_days),
-            link_url     = COALESCE(p_data->>'linkUrl', link_url)
-        WHERE id = v_id;
-        RETURN jsonb_build_object('success', true, 'action', 'updated', 'id', v_id);
-    ELSE
-        -- 추가 (INSERT) — id는 bigint 기본키이므로 직접 지정
-        v_id := (p_data->>'id')::bigint;
-        IF v_id IS NULL THEN
-            v_id := (EXTRACT(EPOCH FROM now()) * 1000)::bigint;
-        END IF;
-
-        INSERT INTO "alpine-home".popups (
-            id, title, is_active, dealer_only, image_path, hide_days, link_url
-        ) VALUES (
-            v_id,
-            p_data->>'title',
-            COALESCE((p_data->>'isActive')::boolean, false),
-            COALESCE((p_data->>'dealerOnly')::boolean, false),
-            p_data->>'imagePath',
-            COALESCE(NULLIF(p_data->>'hideDays', '')::int, 1),
-            p_data->>'linkUrl'
-        )
-        ON CONFLICT (id) DO UPDATE SET
-            title       = EXCLUDED.title,
-            is_active   = EXCLUDED.is_active,
-            dealer_only = EXCLUDED.dealer_only,
-            image_path  = EXCLUDED.image_path,
-            hide_days   = EXCLUDED.hide_days,
-            link_url    = EXCLUDED.link_url;
-
-        RETURN jsonb_build_object('success', true, 'action', 'inserted', 'id', v_id);
+    IF v_id IS NULL THEN
+        v_id := (EXTRACT(EPOCH FROM now()) * 1000)::bigint;
     END IF;
+
+    -- 무조건 INSERT 시도, 이미 해당 ID가 있으면 UPDATE 처리 (Upsert 패턴)
+    INSERT INTO "alpine-home".popups (
+        id, title, is_active, dealer_only, image_path, hide_days, link_url
+    ) VALUES (
+        v_id,
+        p_data->>'title',
+        COALESCE((p_data->>'isActive')::boolean, false),
+        COALESCE((p_data->>'dealerOnly')::boolean, false),
+        p_data->>'imagePath',
+        COALESCE(NULLIF(p_data->>'hideDays', '')::int, 1),
+        p_data->>'linkUrl'
+    )
+    ON CONFLICT (id) DO UPDATE SET
+        title       = COALESCE(EXCLUDED.title, "alpine-home".popups.title),
+        is_active   = COALESCE(EXCLUDED.is_active, "alpine-home".popups.is_active),
+        dealer_only = COALESCE(EXCLUDED.dealer_only, "alpine-home".popups.dealer_only),
+        image_path  = COALESCE(EXCLUDED.image_path, "alpine-home".popups.image_path),
+        hide_days   = COALESCE(EXCLUDED.hide_days, "alpine-home".popups.hide_days),
+        link_url    = COALESCE(EXCLUDED.link_url, "alpine-home".popups.link_url);
+
+    RETURN jsonb_build_object('success', true, 'action', 'upserted', 'id', v_id);
 END;
 $$;
 
