@@ -4,8 +4,8 @@
 -- ============================================================
 
 -- 1. 딜러 삭제
-DROP FUNCTION IF EXISTS public.admin_delete_dealer(text, text, bigint);
-CREATE OR REPLACE FUNCTION public.admin_delete_dealer(
+DROP FUNCTION IF EXISTS "alpine-home".admin_delete_dealer(text, text, bigint);
+CREATE OR REPLACE FUNCTION "alpine-home".admin_delete_dealer(
     p_admin_username text,
     p_admin_password text,
     p_id bigint
@@ -25,8 +25,8 @@ END;
 $$;
 
 -- 2. 딜러 추가/수정 (upsert)
-DROP FUNCTION IF EXISTS public.admin_upsert_dealer(text, text, jsonb);
-CREATE OR REPLACE FUNCTION public.admin_upsert_dealer(
+DROP FUNCTION IF EXISTS "alpine-home".admin_upsert_dealer(text, text, jsonb);
+CREATE OR REPLACE FUNCTION "alpine-home".admin_upsert_dealer(
     p_admin_username text,
     p_admin_password text,
     p_data jsonb
@@ -96,8 +96,8 @@ END;
 $$;
 
 -- 3. 딜러 전체 조회 (관리자용 — RLS 우회, 모든 행 반환)
-DROP FUNCTION IF EXISTS public.admin_list_dealers(text, text);
-CREATE OR REPLACE FUNCTION public.admin_list_dealers(
+DROP FUNCTION IF EXISTS "alpine-home".admin_list_dealers(text, text);
+CREATE OR REPLACE FUNCTION "alpine-home".admin_list_dealers(
     p_admin_username text,
     p_admin_password text
 )
@@ -122,6 +122,6 @@ END;
 $$;
 
 -- GRANT: anon, authenticated 역할에서 REST API로 호출 가능하게 권한 부여
-GRANT EXECUTE ON FUNCTION public.admin_delete_dealer(text, text, bigint) TO anon, authenticated;
-GRANT EXECUTE ON FUNCTION public.admin_upsert_dealer(text, text, jsonb) TO anon, authenticated;
-GRANT EXECUTE ON FUNCTION public.admin_list_dealers(text, text) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION "alpine-home".admin_delete_dealer(text, text, bigint) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION "alpine-home".admin_upsert_dealer(text, text, jsonb) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION "alpine-home".admin_list_dealers(text, text) TO anon, authenticated;
