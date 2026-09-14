@@ -1886,16 +1886,54 @@
                 loadingText.innerText = '서버에 동기화 중 (GitHub)...';
                 try {
                     await saveToGitHub(currentMode, true);
-                    overlay.style.display = 'none';
-                    if (currentId === -1 || (collection.findIndex(i => i.id === currentId) === -1)) {
-                        alert('새 항목이 추가되고 서버에 반영되었습니다.');
-                    } else {
-                        alert('변경내용을 반영했습니다.\n(GitHub 동기화 완료)');
-                    }
                 } catch (e) {
                     console.error(e);
                     overlay.style.display = 'none';
                     alert('변경내용은 저장되었으나, 서버 동기화에 실패했습니다:\n' + e.message);
+                    return;
+                }
+
+                // Supabase DB 동기화 (런타임 제품 페이지가 즉시 반영되도록)
+                loadingText.innerText = 'Supabase DB 동기화 중...';
+                try {
+                    const supaPass = await getAdminPassword();
+                    if (supaPass) {
+                        const adminUser = sessionStorage.getItem('currentUser') || 'alpineaudio';
+                        const savedItem = collection.find(i => i.id === currentId) || newItem;
+                        const client = await getSupaAdmin();
+                        const { data: spData, error: spError } = await client.rpc('admin_upsert_product', {
+                            p_admin_username: adminUser,
+                            p_admin_password: supaPass,
+                            p_data: {
+                                id: String(savedItem.id),
+                                category:      savedItem.category      || '',
+                                title:         savedItem.title         || '',
+                                description:   savedItem.desc          || '',
+                                desc_bottom:   savedItem.desc_bottom   || '',
+                                price:         savedItem.price         || 0,
+                                sold_out:      savedItem.soldOut       || false,
+                                image:         savedItem.image         || '',
+                                detail_blocks: savedItem.detailBlocks  || [],
+                                attachments:   savedItem.attachments   || [],
+                                manual_url:    savedItem.manualUrl     || '',
+                                slug:          savedItem.slug          || '',
+                            }
+                        });
+                        if (spError || (spData && spData.error)) {
+                            console.warn('[Supabase] 제품 저장 실패:', spError || spData.error);
+                        } else {
+                            console.log('[Supabase] 제품 저장 성공:', spData);
+                        }
+                    }
+                } catch (spEx) {
+                    console.warn('[Supabase] 제품 저장 예외 (GitHub는 성공):', spEx.message);
+                }
+
+                overlay.style.display = 'none';
+                if (collection.findIndex(i => i.id === currentId) <= 0 && currentId !== -1) {
+                    alert('새 항목이 추가되고 서버에 반영되었습니다.');
+                } else {
+                    alert('변경내용을 반영했습니다.\n(GitHub + Supabase 동기화 완료)');
                 }
             } else {
                 // Supabase Dealer Data + 계정 통합 동기화 (관리자 비밀번호 검증 RPC)
@@ -2180,7 +2218,29 @@
             const isProduct = currentMode === 'product';
 
             if (isProduct) {
+                // Supabase에서 먼저 삭제
+                const delSupaPass = await getAdminPassword();
+                if (!delSupaPass) return;
+                const delAdminUser = sessionStorage.getItem('currentUser') || 'alpineaudio';
+                try {
+                    const delClient = await getSupaAdmin();
+                    const { data: delData, error: delError } = await delClient.rpc('admin_delete_product', {
+                        p_admin_username: delAdminUser,
+                        p_admin_password: delSupaPass,
+                        p_id: currentId
+                    });
+                    if (delError || (delData && delData.error)) {
+                        console.warn('[Supabase] 제품 삭제 실패:', delError || delData.error);
+                    } else {
+                        console.log('[Supabase] 제품 삭제 성공:', delData);
+                    }
+                } catch (delEx) {
+                    console.warn('[Supabase] 제품 삭제 예외:', delEx.message);
+                }
+                // 메모리 + LocalStorage + GitHub 동기화
                 products = products.filter(p => p.id !== currentId);
+                localStorage.setItem('productData', JSON.stringify(products));
+                try { await saveToGitHub('product', true); } catch(e) { console.warn('GitHub 동기화 실패:', e.message); }
             } else {
                 // 삭제 전 username 저장
                 const deletedDealer = dealers.find(d => d.id === currentId);

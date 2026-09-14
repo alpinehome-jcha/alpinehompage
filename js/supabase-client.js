@@ -61,8 +61,8 @@ async function fetchProductList() {
     if (!client) return null;
 
     try {
-        // products is in 'public' schema according to original code
-        const { data, error } = await client.schema('public')
+        // alpine-home 스키마의 products 테이블 조회 (auth.js loadSupabase 기본 스키마)
+        const { data, error } = await client
             .from('products')
             .select('*')
             .eq('is_active', true)
