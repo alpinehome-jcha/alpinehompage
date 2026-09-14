@@ -1,4 +1,3 @@
-// product-data.js — last updated: 2026-09-03 (SSG rebuild trigger)
 const initialProductData = [
     {
         "id": 1770186124033,
@@ -3474,8 +3473,8 @@ const initialProductData = [
     {
         "id": 1770599178435,
         "category": "Alpine OEM Fit",
-        "title": "KGM 알파인오디오 옵션 차량 서브우퍼 패키지",
-        "desc": ".",
+        "title": "KGM 알파인오디오 옵션 차량 서브우퍼 패키지 ",
+        "desc": "(장착차종 : 토레스/액티언/무쏘EV)",
         "desc_bottom": "",
         "price": 600000,
         "soldOut": false,
@@ -3544,8 +3543,8 @@ const initialProductData = [
         "id": 1770599277781,
         "category": "Alpine OEM Fit",
         "title": "KGM 회오리 앰비언트 DM 트위터 패키지",
-        "desc": "KGM 회오리 앰비언트 트위터 커버 + DM 패키지",
-        "desc_bottom": "시공비 별도",
+        "desc": "KGM 회오리 앰비언트 트위터 커버 + DM 패키지  (장착차종 : 토레스/액티언/무쏘EV)",
+        "desc_bottom": "시공비 별도..",
         "price": 300000,
         "soldOut": false,
         "image": "assets/images/KGM_앰비언트_라이트_트위터_Small.png",
@@ -4648,9 +4647,29 @@ const initialProductData = [
         "attachments": [],
         "manualUrl": "",
         "slug": "dps-25m-chamber"
+    },
+    {
+        "id": 1789364303482,
+        "category": "DSP/AMP",
+        "slug": "x120-8a60f-패키지",
+        "title": "X120-8/A60F 패키지",
+        "desc": "PXE-X120-8과 R2-A60F로 구성된 패키지입니다.",
+        "desc_bottom": "장착 공임 별도/40만원부터",
+        "price": 2350000,
+        "soldOut": false,
+        "image": "assets/images/X120-8+A60f.jpg",
+        "detailBlocks": [
+            {
+                "id": "1789364285817991871",
+                "type": "image",
+                "value": "assets/images/X120-8+A60f-01.jpg"
+            }
+        ],
+        "attachments": [],
+        "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1788414140825;
+const PRODUCT_DATA_VERSION = 1789364304064;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
