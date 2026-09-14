@@ -4660,7 +4660,7 @@ const initialProductData = [
         "image": "assets/images/X120-8+A60f.jpg",
         "detailBlocks": [
             {
-                "id": "1789366379425424978",
+                "id": "1789369632695507098",
                 "type": "image",
                 "value": "assets/images/X120-8+A60f-01.jpg"
             }
@@ -4669,7 +4669,7 @@ const initialProductData = [
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1789366395526;
+const PRODUCT_DATA_VERSION = 1789369647490;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
