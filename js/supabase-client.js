@@ -61,8 +61,9 @@ async function fetchProductList() {
     if (!client) return null;
 
     try {
-        // alpine-home 스키마의 products 테이블 조회 (auth.js loadSupabase 기본 스키마)
+        // alpine-home 스키마 명시 (public 에러 방지)
         const { data, error } = await client
+            .schema('alpine-home')
             .from('products')
             .select('*')
             .eq('is_active', true)
