@@ -1083,7 +1083,7 @@
                 }
 
                 // Check "Do not show today" (LocalStorage)
-                const hiddenUntil = localStorage.getItem('popup_hidden_' + p.id);
+                const hiddenUntil = localStorage.getItem('popup_hidden_v2_' + p.id);
                 const now = new Date().getTime();
                 if (hiddenUntil && now < parseInt(hiddenUntil)) return false;
 
@@ -1112,7 +1112,7 @@
                         <div class="popup-image-container">
                             ${linkHtml}
                             <div class="popup-controls">
-                                <button class="popup-btn" onclick="dontShowPopup('${p.id}', ${p.hideDays})">하루동안 열지 않기</button>
+                                <button class="popup-btn" onclick="dontShowPopup('${p.id}', 1)">하루동안 열지 않기</button>
                                 <button class="popup-btn" onclick="closePopup('${p.id}')">닫기</button>
                             </div>
                         </div>
@@ -1150,7 +1150,7 @@
 
         function dontShowPopup(id, days) {
             const expiry = new Date().getTime() + (days * 24 * 60 * 60 * 1000);
-            localStorage.setItem('popup_hidden_' + id, expiry);
+            localStorage.setItem('popup_hidden_v2_' + id, expiry);
             closePopup(id);
         }
     </script>

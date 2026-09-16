@@ -99,7 +99,7 @@ async function fetchDealerList() {
     const client = await getClient();
     if (!client) return [];
 
-    const { data, error } = await client.from('dealers')
+    const { data, error } = await client.schema('alpine-home').from('dealers')
         .select('*')
         .order('id', { ascending: true });
 
@@ -154,7 +154,7 @@ async function fetchPopupList() {
     const client = await getClient();
     if (!client) return [];
     try {
-        const { data, error } = await client.from('popups').select('*').order('id', { ascending: true });
+        const { data, error } = await client.schema('alpine-home').from('popups').select('*').order('id', { ascending: true });
         if (error || !data) return [];
         return data.map(mapPopupData);
     } catch (e) {
