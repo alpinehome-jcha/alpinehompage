@@ -85,7 +85,7 @@ echo "Starting container $TARGET_CONTAINER on port $TARGET_PORT..."
 docker run -d \
   --name $TARGET_CONTAINER \
   --restart unless-stopped \
-  -p 127.0.0.1:$TARGET_PORT:80 \
+  -p "0.0.0.0:${TARGET_PORT}:80" \
   --network mariadb_default \
   alpine-korea:latest
 

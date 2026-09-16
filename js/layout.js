@@ -270,3 +270,23 @@ if (document.readyState === 'loading') {
 } else {
     Layout.initMobileMenu();
 }
+
+// ── Presence Heartbeat (솔라가드 인앱 카운터 표준 동기화) ────────
+(function initAlpinePresence() {
+    function sendPing() {
+        if (typeof document !== 'undefined' && document.visibilityState === 'hidden') return;
+        var url = 'https://www.jchauto.co.kr/api/presence?site=alpine';
+        if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+            navigator.sendBeacon(url);
+        } else {
+            fetch(url, { method: 'POST', keepalive: true }).catch(function() {});
+        }
+    }
+    sendPing();
+    setInterval(sendPing, 30000);
+    if (typeof document !== 'undefined') {
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'visible') sendPing();
+        });
+    }
+})();
