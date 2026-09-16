@@ -1,8 +1,7 @@
-﻿const fs = require('fs');
-const fix = f => {
-  let c = fs.readFileSync(f, 'utf8');
-  c = c.replace(/public\.admin_/g, '"alpine-home".admin_');
-  fs.writeFileSync(f, c, 'utf8');
-};
-fix('scripts/dealer_admin_rpc.sql');
-fix('scripts/popup_admin_rpc.sql');
+
+const fs = require("fs");
+let html = fs.readFileSync("index.html", "utf8");
+html = html.replace(/dontShowPopup\(\x27\x27, 1\)/g, "dontShowPopup(\x27${p.id}\x27, 1)");
+fs.writeFileSync("index.html", html);
+console.log("Fixed index.html");
+
