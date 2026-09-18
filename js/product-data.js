@@ -3544,7 +3544,7 @@ const initialProductData = [
         "category": "Alpine OEM Fit",
         "title": "KGM 회오리 앰비언트 DM 트위터 패키지",
         "desc": "KGM 회오리 앰비언트 트위터 커버 + DM 패키지  (장착차종 : 토레스/액티언/무쏘EV)",
-        "desc_bottom": "시공비 별도..",
+        "desc_bottom": "장착 공임 별도/5만원 부터",
         "price": 300000,
         "soldOut": false,
         "image": "assets/images/KGM_앰비언트_라이트_트위터_Small.png",
@@ -4669,7 +4669,7 @@ const initialProductData = [
         "manualUrl": ""
     }
 ];
-const PRODUCT_DATA_VERSION = 1789369647490;
+const PRODUCT_DATA_VERSION = 1789694341833;
 
 let productData = [];
 if (typeof localStorage !== 'undefined') {
